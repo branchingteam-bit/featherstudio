@@ -1,60 +1,8 @@
-import './style.css'
-
-const app = document.querySelector<HTMLDivElement>('#app')!
-
-// Theme Initialization
-let currentTheme = localStorage.getItem('theme') || 'light'
-document.documentElement.setAttribute('data-theme', currentTheme)
-
-// WhatsApp number — update here and everywhere updates automatically
-const WA_NUMBER = '971504668481'
-const WA_URL = `https://wa.me/${WA_NUMBER}`
-
-// Router
-const routes: Record<string, () => string> = {
-  '/': Home,
-  '/plans': Plans,
-  '/work': Work,
-  '/contact': Contact,
-  '/activate': Activate,
-}
-
-function navigate(path: string) {
-  window.history.pushState({}, '', path)
-  render()
-  window.scrollTo(0, 0)
-}
-
-window.addEventListener('popstate', render)
-
-// ─── SVG Icon Library ────────────────────────────────────────
-const icons = {
-  search: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>`,
-  clock: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
-  tag: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>`,
-  wrench: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>`,
-  whatsapp: `<svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>`,
-  envelope: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>`,
-  mapPin: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
-  globe: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>`,
-  zap: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`,
-  check: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`,
-  arrowRight: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>`,
-}
-
-// ─── Persistent WhatsApp FAB ──────────────────────────────────
-function WhatsAppFAB() {
-  return `
-    <a href="${WA_URL}" target="_blank" id="whatsapp-fab" title="WhatsApp Us">
-      ${icons.whatsapp}
+(function(){const a=document.createElement("link").relList;if(a&&a.supports&&a.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))s(e);new MutationObserver(e=>{for(const t of e)if(t.type==="childList")for(const c of t.addedNodes)c.tagName==="LINK"&&c.rel==="modulepreload"&&s(c)}).observe(document,{childList:!0,subtree:!0});function n(e){const t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?t.credentials="include":e.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function s(e){if(e.ep)return;e.ep=!0;const t=n(e);fetch(e.href,t)}})();const v=document.querySelector("#app");let r=localStorage.getItem("theme")||"light";document.documentElement.setAttribute("data-theme",r);const m="971504668481",l=`https://wa.me/${m}`,u={"/":h,"/plans":f,"/work":k,"/contact":A,"/activate":E};function y(o){window.history.pushState({},"",o),p(),window.scrollTo(0,0)}window.addEventListener("popstate",p);const i={search:'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',clock:'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',tag:'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>',wrench:'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>',whatsapp:'<svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>',envelope:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',mapPin:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>',globe:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>',zap:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',check:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',arrowRight:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>'};function g(){return`
+    <a href="${l}" target="_blank" id="whatsapp-fab" title="WhatsApp Us">
+      ${i.whatsapp}
     </a>
-  `
-}
-
-// ─── Navbar ───────────────────────────────────────────────────
-function Navbar() {
-  const themeIcon = currentTheme === 'light' ? '🌙' : '☀️'
-  return `
+  `}function w(){return`
     <nav class="nav" id="main-nav">
       <a href="/" class="logo" data-link>
         <img src="/feather.png" alt="Feather Studio" class="feather-icon">
@@ -65,16 +13,11 @@ function Navbar() {
         <a href="/plans" class="nav-link" data-link>Plans</a>
         <a href="/work" class="nav-link" data-link>Our Work</a>
         <a href="/contact" class="nav-link" data-link>Contact</a>
-        <button class="theme-toggle" id="theme-toggle" title="Toggle theme">${themeIcon}</button>
-        <a href="${WA_URL}" target="_blank" class="btn btn-primary">WhatsApp Us</a>
+        <button class="theme-toggle" id="theme-toggle" title="Toggle theme">${r==="light"?"🌙":"☀️"}</button>
+        <a href="${l}" target="_blank" class="btn btn-primary">WhatsApp Us</a>
       </div>
     </nav>
-  `
-}
-
-// ─── Footer ───────────────────────────────────────────────────
-function Footer() {
-  return `
+  `}function b(){return`
     <footer class="site-footer">
       <div class="container footer-grid">
         <div>
@@ -98,7 +41,7 @@ function Footer() {
           <div class="footer-links">
             <p>Dubai, UAE</p>
             <a href="mailto:hellofeatherstudio@gmail.com">hellofeatherstudio@gmail.com</a>
-            <a href="${WA_URL}" target="_blank" style="font-weight: 700; color: var(--color-accent);">WhatsApp Us</a>
+            <a href="${l}" target="_blank" style="font-weight: 700; color: var(--color-accent);">WhatsApp Us</a>
           </div>
         </div>
       </div>
@@ -106,12 +49,7 @@ function Footer() {
         <p>© 2025 Feather Studio. Dubai, UAE.</p>
       </div>
     </footer>
-  `
-}
-
-// ─── Home ─────────────────────────────────────────────────────
-function Home() {
-  return `
+  `}function h(){return`
     <!-- HERO -->
     <section class="hero">
       <div class="hero-warm-glow"></div>
@@ -121,7 +59,7 @@ function Home() {
         <p class="hero-sub">There are over 1,300 private clinics in Dubai — most have no website. Every day patients search for your specialty and book with whoever shows up first. We make sure that's you.</p>
         <div class="hero-ctas">
           <a href="/plans" class="btn btn-primary" data-link>See Our Plans</a>
-          <a href="${WA_URL}" target="_blank" class="btn btn-secondary">WhatsApp Us</a>
+          <a href="${l}" target="_blank" class="btn btn-secondary">WhatsApp Us</a>
         </div>
         <p class="hero-process-note">WhatsApp us and we'll book a quick 15 minute call to understand what you need.</p>
       </div>
@@ -131,17 +69,17 @@ function Home() {
     <div class="trust-strip">
       <div class="container trust-strip-inner">
         <div class="trust-strip-item">
-          <span class="trust-strip-icon">${icons.mapPin}</span>
+          <span class="trust-strip-icon">${i.mapPin}</span>
           <span>Based in Dubai, UAE</span>
         </div>
         <div class="trust-strip-divider"></div>
         <div class="trust-strip-item">
-          <span class="trust-strip-icon">${icons.globe}</span>
+          <span class="trust-strip-icon">${i.globe}</span>
           <span>Serving clinics across all 7 Emirates</span>
         </div>
         <div class="trust-strip-divider"></div>
         <div class="trust-strip-item">
-          <span class="trust-strip-icon">${icons.zap}</span>
+          <span class="trust-strip-icon">${i.zap}</span>
           <span>Response within 1 hour</span>
         </div>
       </div>
@@ -156,22 +94,22 @@ function Home() {
         </div>
         <div class="grid-2">
           <div class="card glass">
-            <span class="card-icon">${icons.search}</span>
+            <span class="card-icon">${i.search}</span>
             <h3>Patients search before they book</h3>
             <p>Before calling any clinic, most patients search online first. If your clinic has no website, or a poor one, they find your competitor instead. That patient is gone before you even knew they existed.</p>
           </div>
           <div class="card glass">
-            <span class="card-icon">${icons.clock}</span>
+            <span class="card-icon">${i.clock}</span>
             <h3>You have zero time for websites</h3>
             <p>You're seeing patients, managing staff, and running a business. Figuring out domains, hosting, and website updates is nobody's idea of a good use of your time. That's what we're here for.</p>
           </div>
           <div class="card glass">
-            <span class="card-icon">${icons.tag}</span>
+            <span class="card-icon">${i.tag}</span>
             <h3>Most agencies charge too much and take too long</h3>
             <p>Web agencies in Dubai charge AED 8,000 to 15,000 and take 2 to 3 months. We build professional clinic websites in 3 days at AED 1,999, with no surprises.</p>
           </div>
           <div class="card glass card-accent">
-            <span class="card-icon">${icons.wrench}</span>
+            <span class="card-icon">${i.wrench}</span>
             <h3>A website isn't a one-time thing</h3>
             <p>Domains expire. Hosting goes down. Information changes. Without someone managing it, your website becomes a liability. Our managed plan keeps everything running. You never have to think about it.</p>
           </div>
@@ -189,15 +127,15 @@ function Home() {
           <p class="body-text" style="margin-top: 16px;">We offer two options. You can own your website outright with a one-time payment and manage it yourself from there. Or you can choose our managed plan: we build it, host it, and handle every update and technical issue indefinitely. All you do is WhatsApp us when something needs changing.</p>
           <ul class="feature-list">
             <li>
-              <span class="feature-bullet">${icons.check}</span>
+              <span class="feature-bullet">${i.check}</span>
               <div><strong>UAE-based and clinic-focused.</strong> We understand the Dubai healthcare market and what patients expect when they land on a clinic website.</div>
             </li>
             <li>
-              <span class="feature-bullet">${icons.check}</span>
+              <span class="feature-bullet">${i.check}</span>
               <div><strong>Live in 3 days.</strong> You review once, we launch. No lengthy back-and-forth, no waiting months.</div>
             </li>
             <li>
-              <span class="feature-bullet">${icons.check}</span>
+              <span class="feature-bullet">${i.check}</span>
               <div><strong>Managed plan available.</strong> For clinic owners who want zero involvement. We handle hosting, updates, renewals, and maintenance every month.</div>
             </li>
           </ul>
@@ -322,13 +260,13 @@ function Home() {
             <h3>You reach out</h3>
             <p>WhatsApp us or fill in the contact form. We respond within the hour.</p>
           </div>
-          <div class="how-step-arrow">${icons.arrowRight}</div>
+          <div class="how-step-arrow">${i.arrowRight}</div>
           <div class="how-step">
             <div class="how-step-number">02</div>
             <h3>We have a quick call</h3>
             <p>A short 15-minute call to understand your clinic and what you need. No commitment, no pressure.</p>
           </div>
-          <div class="how-step-arrow">${icons.arrowRight}</div>
+          <div class="how-step-arrow">${i.arrowRight}</div>
           <div class="how-step">
             <div class="how-step-number">03</div>
             <h3>We build and launch</h3>
@@ -344,17 +282,12 @@ function Home() {
         <h2>Your patients are searching right now. Let's make sure they find you.</h2>
         <p>Getting started takes one conversation. WhatsApp us today and your clinic can be online within the week.</p>
         <div class="hero-ctas">
-          <a href="${WA_URL}" target="_blank" class="btn btn-primary btn-large">WhatsApp Us Now</a>
+          <a href="${l}" target="_blank" class="btn btn-primary btn-large">WhatsApp Us Now</a>
           <a href="/plans" class="btn btn-secondary btn-large" data-link>See Plans</a>
         </div>
       </div>
     </section>
-  `
-}
-
-// ─── Plans ────────────────────────────────────────────────────
-function Plans() {
-  return `
+  `}function f(){return`
     <header class="page-header">
       <div class="container" style="text-align:center;">
         <h1>Every clinic in the UAE deserves a professional website. Here is what it costs.</h1>
@@ -558,17 +491,12 @@ function Plans() {
         <h2>Your patients are searching right now. Let's make sure they find you.</h2>
         <p>Getting started takes one conversation. WhatsApp us today and your clinic can be online within the week.</p>
         <div class="hero-ctas">
-          <a href="${WA_URL}" target="_blank" class="btn btn-primary btn-large">WhatsApp Us Now</a>
+          <a href="${l}" target="_blank" class="btn btn-primary btn-large">WhatsApp Us Now</a>
           <a href="/contact" class="btn btn-secondary btn-large" data-link>Send an Enquiry</a>
         </div>
       </div>
     </section>
-  `
-}
-
-// ─── Work (Showcase) ──────────────────────────────────────────
-function Work() {
-  return `
+  `}function k(){return`
     <!-- PAGE HERO -->
     <section class="showcase-hero">
       <div class="container" style="text-align:center;">
@@ -885,16 +813,11 @@ function Work() {
         <p>Every website we build is designed specifically for your specialty, your patients, and your location. Built in 3 days. Managed for you every month.</p>
         <div class="hero-ctas">
           <a href="/plans" class="btn btn-primary" data-link>See Our Plans</a>
-          <a href="${WA_URL}" target="_blank" class="btn btn-secondary">WhatsApp Us</a>
+          <a href="${l}" target="_blank" class="btn btn-secondary">WhatsApp Us</a>
         </div>
       </div>
     </section>
-  `
-}
-
-// ─── Contact ──────────────────────────────────────────────────
-function Contact() {
-  return `
+  `}function A(){return`
     <section class="section-padding" style="padding-top: 180px;">
       <div class="container contact-grid">
         <div class="contact-info">
@@ -903,15 +826,15 @@ function Contact() {
           <p class="body-text">We're based in Dubai and work with clinics across the UAE. The fastest way to reach us is WhatsApp. WhatsApp us or fill in the form and we will get back to you as soon as we can.</p>
 
           <div class="contact-methods">
-            <a href="${WA_URL}" target="_blank" class="contact-method glass">
-              <span class="contact-method-icon">${icons.whatsapp.replace('fill="white"', 'fill="currentColor"')}</span>
+            <a href="${l}" target="_blank" class="contact-method glass">
+              <span class="contact-method-icon">${i.whatsapp.replace('fill="white"','fill="currentColor"')}</span>
               <div>
                 <p class="contact-method-label">WhatsApp: fastest response</p>
                 <p class="contact-method-value">+971 50 466 8481</p>
               </div>
             </a>
             <div class="contact-method glass">
-              <span class="contact-method-icon">${icons.envelope}</span>
+              <span class="contact-method-icon">${i.envelope}</span>
               <div>
                 <p class="contact-method-label">Email</p>
                 <p class="contact-method-value">hellofeatherstudio@gmail.com</p>
@@ -933,12 +856,7 @@ function Contact() {
         </div>
       </div>
     </section>
-  `
-}
-
-// ─── Activate (Hidden Management Plan Page) ─────────────────
-function Activate() {
-  return `
+  `}function E(){return`
     <section class="activate-hero">
       <div class="container">
         <div class="activate-card glass">
@@ -958,162 +876,9 @@ function Activate() {
         </div>
       </div>
     </section>
-  `
-}
-
-// ─── Render ───────────────────────────────────────────────────
-function render() {
-  const path = window.location.pathname
-  const Page = routes[path] || Home
-
-  app.innerHTML = `
-    ${Navbar()}
-    <main>${Page()}</main>
-    ${Footer()}
-    ${WhatsAppFAB()}
-  `
-
-  initEvents()
-  renderPayPalButtons()
-
-  // Fade-in effect for pages
-  setTimeout(() => {
-    const content = document.getElementById('hero-content')
-    if (content) content.classList.add('visible')
-  }, 100)
-
-  // Scrolled nav style
-  const nav = document.getElementById('main-nav')!
-  const onScroll = () => {
-    if (window.scrollY > 60) nav.classList.add('scrolled')
-    else nav.classList.remove('scrolled')
-  }
-  window.removeEventListener('scroll', onScroll)
-  window.addEventListener('scroll', onScroll)
-}
-
-function loadPayPalSDK(params: string, callback: () => void) {
-  const scriptId = 'paypal-sdk'
-  let script = document.getElementById(scriptId) as HTMLScriptElement
-
-  const onScriptLoad = () => {
-    // @ts-ignore
-    if (window.paypal) callback()
-    else {
-      // Retry in case of slow execution
-      setTimeout(() => {
-        // @ts-ignore
-        if (window.paypal) callback()
-      }, 100)
-    }
-  }
-
-  if (script) {
-    // @ts-ignore
-    if (window.paypal) {
-      callback()
-    } else {
-      // Script exists but not loaded yet. Add to list of listeners.
-      script.addEventListener('load', onScriptLoad)
-    }
-    return
-  }
-
-  script = document.createElement('script')
-  script.id = scriptId
-  // Combine core params with whatever is passed
-  script.src = `https://www.paypal.com/sdk/js?client-id=ATdtILYx2T5yoKB9AH86nDYMlD4bQ1PnOk_y_SOL3b42qP2E3nTfHlxL1KLFLu9w7Ao9jhTYvk4jfhEB&${params}`
-  script.setAttribute('data-sdk-integration-source', 'button-factory')
-  script.addEventListener('load', onScriptLoad)
-  document.head.appendChild(script)
-}
-
-function renderPayPalButtons() {
-  const path = window.location.pathname
-
-  // Subscription Button on /activate (untouched)
-  if (path === '/activate') {
-    const containerSub = document.getElementById('paypal-button-container-P-8EU78139GF1282545NHBFUDY')
-    if (containerSub && containerSub.children.length === 0) {
-      loadPayPalSDK('vault=true&intent=subscription', () => {
-        // @ts-ignore
-        window.paypal.Buttons({
-          style: {
-            shape: 'rect',
-            color: 'blue',
-            layout: 'vertical',
-            label: 'paypal'
-          },
-          createSubscription: function(_data: any, actions: any) {
-            return actions.subscription.create({
-              plan_id: 'P-8EU78139GF1282545NHBFUDY'
-            });
-          },
-          onApprove: function(_data: any, _actions: any) {
-            alert('Thank you! Your management plan is now active. We will be in touch shortly.');
-          }
-        }).render(containerSub);
-      })
-    }
-  }
-}
-
-function initEvents() {
-  document.querySelectorAll('[data-link]').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault()
-      const href = (link as HTMLAnchorElement).getAttribute('href')
-      if (href) navigate(href)
-    })
-  })
-
-  // Theme Toggle
-  const toggleBtn = document.getElementById('theme-toggle')
-  if (toggleBtn) {
-    toggleBtn.addEventListener('click', () => {
-      currentTheme = currentTheme === 'light' ? 'dark' : 'light'
-      document.documentElement.setAttribute('data-theme', currentTheme)
-      localStorage.setItem('theme', currentTheme)
-      toggleBtn.textContent = currentTheme === 'light' ? '🌙' : '☀️'
-    })
-  }
-
-  // Showcase Scroll Spy & Smooth Scroll
-  const dots = document.querySelectorAll('.showcase-dot')
-  if (dots.length > 0) {
-    // Smooth scroll for dots
-    dots.forEach(dot => {
-      dot.addEventListener('click', (e) => {
-        e.preventDefault()
-        const targetId = (dot as HTMLAnchorElement).getAttribute('href')
-        const targetEl = document.querySelector(targetId!)
-        if (targetEl) {
-          targetEl.scrollIntoView({ behavior: 'smooth' })
-        }
-      })
-    })
-
-    // Intersection Observer for scroll spy
-    const observerOptions = {
-      root: null,
-      threshold: 0.5
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = entry.target.getAttribute('id')
-          dots.forEach(dot => {
-            dot.classList.toggle('active', dot.getAttribute('href') === `#${id}`)
-          })
-        }
-      })
-    }, observerOptions)
-
-    document.querySelectorAll('.showcase-clinic').forEach(section => {
-      observer.observe(section)
-    })
-  }
-}
-
-render()
+  `}function p(){const o=window.location.pathname,a=u[o]||h;v.innerHTML=`
+    ${w()}
+    <main>${a()}</main>
+    ${b()}
+    ${g()}
+  `,S(),P(),setTimeout(()=>{const e=document.getElementById("hero-content");e&&e.classList.add("visible")},100);const n=document.getElementById("main-nav"),s=()=>{window.scrollY>60?n.classList.add("scrolled"):n.classList.remove("scrolled")};window.removeEventListener("scroll",s),window.addEventListener("scroll",s)}function x(o,a){const n="paypal-sdk";let s=document.getElementById(n);const e=()=>{window.paypal?a():setTimeout(()=>{window.paypal&&a()},100)};if(s){window.paypal?a():s.addEventListener("load",e);return}s=document.createElement("script"),s.id=n,s.src=`https://www.paypal.com/sdk/js?client-id=ATdtILYx2T5yoKB9AH86nDYMlD4bQ1PnOk_y_SOL3b42qP2E3nTfHlxL1KLFLu9w7Ao9jhTYvk4jfhEB&${o}`,s.setAttribute("data-sdk-integration-source","button-factory"),s.addEventListener("load",e),document.head.appendChild(s)}function P(){if(window.location.pathname==="/activate"){const a=document.getElementById("paypal-button-container-P-8EU78139GF1282545NHBFUDY");a&&a.children.length===0&&x("vault=true&intent=subscription",()=>{window.paypal.Buttons({style:{shape:"rect",color:"blue",layout:"vertical",label:"paypal"},createSubscription:function(n,s){return s.subscription.create({plan_id:"P-8EU78139GF1282545NHBFUDY"})},onApprove:function(n,s){alert("Thank you! Your management plan is now active. We will be in touch shortly.")}}).render(a)})}}function S(){document.querySelectorAll("[data-link]").forEach(n=>{n.addEventListener("click",s=>{s.preventDefault();const e=n.getAttribute("href");e&&y(e)})});const o=document.getElementById("theme-toggle");o&&o.addEventListener("click",()=>{r=r==="light"?"dark":"light",document.documentElement.setAttribute("data-theme",r),localStorage.setItem("theme",r),o.textContent=r==="light"?"🌙":"☀️"});const a=document.querySelectorAll(".showcase-dot");if(a.length>0){a.forEach(e=>{e.addEventListener("click",t=>{t.preventDefault();const c=e.getAttribute("href"),d=document.querySelector(c);d&&d.scrollIntoView({behavior:"smooth"})})});const n={root:null,threshold:.5},s=new IntersectionObserver(e=>{e.forEach(t=>{if(t.isIntersecting){const c=t.target.getAttribute("id");a.forEach(d=>{d.classList.toggle("active",d.getAttribute("href")===`#${c}`)})}})},n);document.querySelectorAll(".showcase-clinic").forEach(e=>{s.observe(e)})}}p();
