@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+
 /* ─── Design Tokens ─────────────────────────────────────── */
 :root {
   --color-bg: #FFFFFF;
@@ -1317,7 +1319,6 @@ ul { list-style: none; }
 }
 
 /* ── CLINIC 1: Al Noor Dental (Luxury: Deep Navy, Gold, Cream) ─────────── */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
 .dental { background: #faf9f6; color: #1a2238; font-family: 'Playfair Display', serif; }
 .dental-nav { background: transparent; border-bottom: 1px solid rgba(26,34,56,0.1); padding: 18px 24px; }
 .dental-logo { color: #1a2238; font-size: 16px; letter-spacing: 0.1em; text-transform: uppercase; }
