@@ -1,4 +1,4 @@
-(function(){const a=document.createElement("link").relList;if(a&&a.supports&&a.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))s(e);new MutationObserver(e=>{for(const t of e)if(t.type==="childList")for(const c of t.addedNodes)c.tagName==="LINK"&&c.rel==="modulepreload"&&s(c)}).observe(document,{childList:!0,subtree:!0});function n(e){const t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?t.credentials="include":e.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function s(e){if(e.ep)return;e.ep=!0;const t=n(e);fetch(e.href,t)}})();const v=document.querySelector("#app");let r=localStorage.getItem("theme")||"light";document.documentElement.setAttribute("data-theme",r);const m="971504668481",l=`https://wa.me/${m}`,u={"/":h,"/plans":f,"/work":k,"/contact":A,"/activate":E};function y(o){window.history.pushState({},"",o),p(),window.scrollTo(0,0)}window.addEventListener("popstate",p);const i={search:'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',clock:'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',tag:'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>',wrench:'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>',whatsapp:'<svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>',envelope:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',mapPin:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>',globe:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>',zap:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',check:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',arrowRight:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>'};function g(){return`
+(function(){const a=document.createElement("link").relList;if(a&&a.supports&&a.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))s(e);new MutationObserver(e=>{for(const t of e)if(t.type==="childList")for(const c of t.addedNodes)c.tagName==="LINK"&&c.rel==="modulepreload"&&s(c)}).observe(document,{childList:!0,subtree:!0});function n(e){const t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?t.credentials="include":e.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function s(e){if(e.ep)return;e.ep=!0;const t=n(e);fetch(e.href,t)}})();const v=document.querySelector("#app");let r=localStorage.getItem("theme")||"light";document.documentElement.setAttribute("data-theme",r);const m="971504668481",l=`https://wa.me/${m}`,u={"/":h,"/plans":f,"/work":A,"/contact":k,"/activate":E};function y(o){window.history.pushState({},"",o),p(),window.scrollTo(0,0)}window.addEventListener("popstate",p);const i={search:'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',clock:'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',tag:'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>',wrench:'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>',whatsapp:'<svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>',envelope:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',mapPin:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>',globe:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>',zap:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',check:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',arrowRight:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>'};function g(){return`
     <a href="${l}" target="_blank" id="whatsapp-fab" title="WhatsApp Us">
       ${i.whatsapp}
     </a>
@@ -106,7 +106,7 @@
           <div class="card glass">
             <span class="card-icon">${i.tag}</span>
             <h3>Most agencies charge too much and take too long</h3>
-            <p>Web agencies in Dubai charge AED 8,000 to 15,000 and take 2 to 3 months. We build professional clinic websites in 3 days at AED 1,999, with no surprises.</p>
+            <p>Web agencies in Dubai charge AED 8,000 to 15,000 and take 2 to 3 months. We build professional clinic websites in 3 days at AED 2,999, with no surprises.</p>
           </div>
           <div class="card glass card-accent">
             <span class="card-icon">${i.wrench}</span>
@@ -190,7 +190,7 @@
         <div class="pricing-grid">
           <div class="pricing-card glass">
             <p class="plan-label">One-Time</p>
-            <h3 class="plan-price">AED 1,999</h3>
+            <h3 class="plan-price">AED 2,999</h3>
             <p class="plan-price-sub">paid once</p>
             <p class="plan-tagline">Own it outright.</p>
             <ul class="plan-features">
@@ -201,11 +201,11 @@
               <li class="yes">Full ownership and login handed over</li>
               <li class="no">Hosting and maintenance after handover is your responsibility</li>
             </ul>
-            <!-- PayPal Button — One-Time Plan (AED 1,999) -->
+            <!-- PayPal Button — One-Time Plan (AED 2,999) -->
             <div class="paypal-button-wrapper">
-              <style>.pp-MSG32JB7RGP9C{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;width:100%;}</style>
-              <form action="https://www.paypal.com/ncp/payment/MSG32JB7RGP9C" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
-                <input class="pp-MSG32JB7RGP9C" type="submit" value="Buy Now" />
+              <style>.pp-3MBPX74TQAJ5C{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;width:100%;}</style>
+              <form action="https://www.paypal.com/ncp/payment/3MBPX74TQAJ5C" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
+                <input class="pp-3MBPX74TQAJ5C" type="submit" value="Buy Now" />
                 <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
                 <section style="font-size: 0.75rem;"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
               </form>
@@ -216,7 +216,7 @@
             <div class="popular-badge">Most Popular</div>
             <p class="plan-label accent">Managed</p>
             <div class="plan-price-managed">
-              <div class="plan-price-setup">AED 799 <span class="plan-price-tag">setup</span></div>
+              <div class="plan-price-setup">AED 1,499 <span class="plan-price-tag">setup</span></div>
               <div class="plan-price-monthly"><span class="plan-price-plus">+</span> AED 399 <span class="plan-price-tag">/ month</span></div>
             </div>
             <p class="plan-tagline">We handle everything, every month.</p>
@@ -229,11 +229,11 @@
               <li class="yes">Same-day response on all requests</li>
               <li class="yes">Cancel any time, no long-term contract</li>
             </ul>
-            <!-- PayPal Button — Managed Plan Setup (AED 799) -->
+            <!-- PayPal Button — Managed Plan Setup (AED 1,499) -->
             <div class="paypal-button-wrapper">
-              <style>.pp-PEFTFS2QHP7H4{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;width:100%;}</style>
-              <form action="https://www.paypal.com/ncp/payment/PEFTFS2QHP7H4" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
-                <input class="pp-PEFTFS2QHP7H4" type="submit" value="Buy Now" />
+              <style>.pp-ARFT7KPLLQEHN{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;width:100%;}</style>
+              <form action="https://www.paypal.com/ncp/payment/ARFT7KPLLQEHN" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
+                <input class="pp-ARFT7KPLLQEHN" type="submit" value="Buy Now" />
                 <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
                 <section style="font-size: 0.75rem;"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
               </form>
@@ -301,7 +301,7 @@
         <div class="comparison-wrap glass">
           <div class="comparison-header">
             <span class="section-label">Why Feather Studio</span>
-            <h2 class="comparison-headline">UAE web agencies charge AED 8,000 to AED 15,000 for a clinic website. We charge AED 1,999.</h2>
+            <h2 class="comparison-headline">UAE web agencies charge AED 8,000 to AED 15,000 for a clinic website. We charge AED 2,999.</h2>
           </div>
           
           <div class="table-responsive">
@@ -317,7 +317,7 @@
                 <tr>
                   <td>Website build</td>
                   <td>AED 8,000 – 15,000</td>
-                  <td class="highlight">AED 1,999</td>
+                  <td class="highlight">AED 2,999</td>
                 </tr>
                 <tr>
                   <td>Turnaround time</td>
@@ -353,7 +353,7 @@
           <!-- One-Time -->
           <div class="pricing-card glass">
             <p class="plan-label">One-Time</p>
-            <h2 class="plan-price">AED 1,999</h2>
+            <h2 class="plan-price">AED 2,999</h2>
             <p class="plan-price-sub">paid once</p>
             <p class="plan-tagline">Own it outright.</p>
             <ul class="plan-features">
@@ -364,11 +364,11 @@
               <li class="yes">Built and launched within 3 days</li>
               <li class="yes">Full ownership and login credentials handed over</li>
             </ul>
-            <!-- PayPal Button — One-Time Plan (AED 1,999) -->
+            <!-- PayPal Button — One-Time Plan (AED 2,999) -->
             <div class="paypal-button-wrapper">
-              <style>.pp-MSG32JB7RGP9C{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;width:100%;}</style>
-              <form action="https://www.paypal.com/ncp/payment/MSG32JB7RGP9C" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
-                <input class="pp-MSG32JB7RGP9C" type="submit" value="Buy Now" />
+              <style>.pp-3MBPX74TQAJ5C{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;width:100%;}</style>
+              <form action="https://www.paypal.com/ncp/payment/3MBPX74TQAJ5C" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
+                <input class="pp-3MBPX74TQAJ5C" type="submit" value="Buy Now" />
                 <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
                 <section style="font-size: 0.75rem;"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
               </form>
@@ -382,14 +382,14 @@
             <div class="popular-badge">Most Popular</div>
             <p class="plan-label accent">Managed</p>
             <div class="plan-price-managed">
-              <div class="plan-price-setup" style="font-size: 2.4rem;">AED 799 <span class="plan-price-tag">setup</span></div>
+              <div class="plan-price-setup" style="font-size: 2.4rem;">AED 1,499 <span class="plan-price-tag">setup</span></div>
               <div class="plan-price-monthly" style="font-size: 1.6rem;"><span class="plan-price-plus">+</span> AED 399 <span class="plan-price-tag">/ month</span></div>
             </div>
             <p class="plan-tagline">Everything handled, every month.</p>
             <ul class="plan-features">
               <li class="yes">Full custom website built for your clinic</li>
               <li class="yes">Home, About, Services, Gallery, Contact</li>
-              <li class="yes">AED 799 one-time setup covers the full build</li>
+              <li class="yes">AED 1,499 one-time setup covers the full build</li>
               <li class="yes">Domain included, renewed every year automatically</li>
               <li class="yes">Professional hosting, your site stays live 24/7</li>
               <li class="yes">Unlimited text and image updates via WhatsApp</li>
@@ -397,11 +397,11 @@
               <li class="yes">Same-day response on all requests</li>
               <li class="yes">Cancel any time, no minimum contract</li>
             </ul>
-            <!-- PayPal Button — Managed Plan Setup (AED 799) -->
+            <!-- PayPal Button — Managed Plan Setup (AED 1,499) -->
             <div class="paypal-button-wrapper">
-              <style>.pp-PEFTFS2QHP7H4{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;width:100%;}</style>
-              <form action="https://www.paypal.com/ncp/payment/PEFTFS2QHP7H4" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
-                <input class="pp-PEFTFS2QHP7H4" type="submit" value="Buy Now" />
+              <style>.pp-ARFT7KPLLQEHN{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;width:100%;}</style>
+              <form action="https://www.paypal.com/ncp/payment/ARFT7KPLLQEHN" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
+                <input class="pp-ARFT7KPLLQEHN" type="submit" value="Buy Now" />
                 <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
                 <section style="font-size: 0.75rem;"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
               </form>
@@ -496,7 +496,7 @@
         </div>
       </div>
     </section>
-  `}function k(){return`
+  `}function A(){return`
     <!-- PAGE HERO -->
     <section class="showcase-hero">
       <div class="container" style="text-align:center;">
@@ -817,7 +817,7 @@
         </div>
       </div>
     </section>
-  `}function A(){return`
+  `}function k(){return`
     <section class="section-padding" style="padding-top: 180px;">
       <div class="container contact-grid">
         <div class="contact-info">
@@ -881,4 +881,4 @@
     <main>${a()}</main>
     ${b()}
     ${g()}
-  `,S(),P(),setTimeout(()=>{const e=document.getElementById("hero-content");e&&e.classList.add("visible")},100);const n=document.getElementById("main-nav"),s=()=>{window.scrollY>60?n.classList.add("scrolled"):n.classList.remove("scrolled")};window.removeEventListener("scroll",s),window.addEventListener("scroll",s)}function x(o,a){const n="paypal-sdk";let s=document.getElementById(n);const e=()=>{window.paypal?a():setTimeout(()=>{window.paypal&&a()},100)};if(s){window.paypal?a():s.addEventListener("load",e);return}s=document.createElement("script"),s.id=n,s.src=`https://www.paypal.com/sdk/js?client-id=ATdtILYx2T5yoKB9AH86nDYMlD4bQ1PnOk_y_SOL3b42qP2E3nTfHlxL1KLFLu9w7Ao9jhTYvk4jfhEB&${o}`,s.setAttribute("data-sdk-integration-source","button-factory"),s.addEventListener("load",e),document.head.appendChild(s)}function P(){if(window.location.pathname==="/activate"){const a=document.getElementById("paypal-button-container-P-8EU78139GF1282545NHBFUDY");a&&a.children.length===0&&x("vault=true&intent=subscription",()=>{window.paypal.Buttons({style:{shape:"rect",color:"blue",layout:"vertical",label:"paypal"},createSubscription:function(n,s){return s.subscription.create({plan_id:"P-8EU78139GF1282545NHBFUDY"})},onApprove:function(n,s){alert("Thank you! Your management plan is now active. We will be in touch shortly.")}}).render(a)})}}function S(){document.querySelectorAll("[data-link]").forEach(n=>{n.addEventListener("click",s=>{s.preventDefault();const e=n.getAttribute("href");e&&y(e)})});const o=document.getElementById("theme-toggle");o&&o.addEventListener("click",()=>{r=r==="light"?"dark":"light",document.documentElement.setAttribute("data-theme",r),localStorage.setItem("theme",r),o.textContent=r==="light"?"🌙":"☀️"});const a=document.querySelectorAll(".showcase-dot");if(a.length>0){a.forEach(e=>{e.addEventListener("click",t=>{t.preventDefault();const c=e.getAttribute("href"),d=document.querySelector(c);d&&d.scrollIntoView({behavior:"smooth"})})});const n={root:null,threshold:.5},s=new IntersectionObserver(e=>{e.forEach(t=>{if(t.isIntersecting){const c=t.target.getAttribute("id");a.forEach(d=>{d.classList.toggle("active",d.getAttribute("href")===`#${c}`)})}})},n);document.querySelectorAll(".showcase-clinic").forEach(e=>{s.observe(e)})}}p();
+  `,C(),P(),setTimeout(()=>{const e=document.getElementById("hero-content");e&&e.classList.add("visible")},100);const n=document.getElementById("main-nav"),s=()=>{window.scrollY>60?n.classList.add("scrolled"):n.classList.remove("scrolled")};window.removeEventListener("scroll",s),window.addEventListener("scroll",s)}function x(o,a){const n="paypal-sdk";let s=document.getElementById(n);const e=()=>{window.paypal?a():setTimeout(()=>{window.paypal&&a()},100)};if(s){window.paypal?a():s.addEventListener("load",e);return}s=document.createElement("script"),s.id=n,s.src=`https://www.paypal.com/sdk/js?client-id=ATdtILYx2T5yoKB9AH86nDYMlD4bQ1PnOk_y_SOL3b42qP2E3nTfHlxL1KLFLu9w7Ao9jhTYvk4jfhEB&${o}`,s.setAttribute("data-sdk-integration-source","button-factory"),s.addEventListener("load",e),document.head.appendChild(s)}function P(){if(window.location.pathname==="/activate"){const a=document.getElementById("paypal-button-container-P-8EU78139GF1282545NHBFUDY");a&&a.children.length===0&&x("vault=true&intent=subscription",()=>{window.paypal.Buttons({style:{shape:"rect",color:"blue",layout:"vertical",label:"paypal"},createSubscription:function(n,s){return s.subscription.create({plan_id:"P-8EU78139GF1282545NHBFUDY"})},onApprove:function(n,s){alert("Thank you! Your management plan is now active. We will be in touch shortly.")}}).render(a)})}}function C(){document.querySelectorAll("[data-link]").forEach(n=>{n.addEventListener("click",s=>{s.preventDefault();const e=n.getAttribute("href");e&&y(e)})});const o=document.getElementById("theme-toggle");o&&o.addEventListener("click",()=>{r=r==="light"?"dark":"light",document.documentElement.setAttribute("data-theme",r),localStorage.setItem("theme",r),o.textContent=r==="light"?"🌙":"☀️"});const a=document.querySelectorAll(".showcase-dot");if(a.length>0){a.forEach(e=>{e.addEventListener("click",t=>{t.preventDefault();const c=e.getAttribute("href"),d=document.querySelector(c);d&&d.scrollIntoView({behavior:"smooth"})})});const n={root:null,threshold:.5},s=new IntersectionObserver(e=>{e.forEach(t=>{if(t.isIntersecting){const c=t.target.getAttribute("id");a.forEach(d=>{d.classList.toggle("active",d.getAttribute("href")===`#${c}`)})}})},n);document.querySelectorAll(".showcase-clinic").forEach(e=>{s.observe(e)})}}p();

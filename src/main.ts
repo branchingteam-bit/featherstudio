@@ -168,7 +168,7 @@ function Home() {
           <div class="card glass">
             <span class="card-icon">${icons.tag}</span>
             <h3>Most agencies charge too much and take too long</h3>
-            <p>Web agencies in Dubai charge AED 8,000 to 15,000 and take 2 to 3 months. We build professional clinic websites in 3 days at AED 1,999, with no surprises.</p>
+            <p>Web agencies in Dubai charge AED 8,000 to 15,000 and take 2 to 3 months. We build professional clinic websites in 3 days at AED 2,999, with no surprises.</p>
           </div>
           <div class="card glass card-accent">
             <span class="card-icon">${icons.wrench}</span>
@@ -252,7 +252,7 @@ function Home() {
         <div class="pricing-grid">
           <div class="pricing-card glass">
             <p class="plan-label">One-Time</p>
-            <h3 class="plan-price">AED 1,999</h3>
+            <h3 class="plan-price">AED 2,999</h3>
             <p class="plan-price-sub">paid once</p>
             <p class="plan-tagline">Own it outright.</p>
             <ul class="plan-features">
@@ -263,11 +263,11 @@ function Home() {
               <li class="yes">Full ownership and login handed over</li>
               <li class="no">Hosting and maintenance after handover is your responsibility</li>
             </ul>
-            <!-- PayPal Button — One-Time Plan (AED 1,999) -->
+            <!-- PayPal Button — One-Time Plan (AED 2,999) -->
             <div class="paypal-button-wrapper">
-              <style>.pp-MSG32JB7RGP9C{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;width:100%;}</style>
-              <form action="https://www.paypal.com/ncp/payment/MSG32JB7RGP9C" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
-                <input class="pp-MSG32JB7RGP9C" type="submit" value="Buy Now" />
+              <style>.pp-3MBPX74TQAJ5C{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;width:100%;}</style>
+              <form action="https://www.paypal.com/ncp/payment/3MBPX74TQAJ5C" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
+                <input class="pp-3MBPX74TQAJ5C" type="submit" value="Buy Now" />
                 <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
                 <section style="font-size: 0.75rem;"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
               </form>
@@ -278,7 +278,7 @@ function Home() {
             <div class="popular-badge">Most Popular</div>
             <p class="plan-label accent">Managed</p>
             <div class="plan-price-managed">
-              <div class="plan-price-setup">AED 799 <span class="plan-price-tag">setup</span></div>
+              <div class="plan-price-setup">AED 1,499 <span class="plan-price-tag">setup</span></div>
               <div class="plan-price-monthly"><span class="plan-price-plus">+</span> AED 399 <span class="plan-price-tag">/ month</span></div>
             </div>
             <p class="plan-tagline">We handle everything, every month.</p>
@@ -291,11 +291,11 @@ function Home() {
               <li class="yes">Same-day response on all requests</li>
               <li class="yes">Cancel any time, no long-term contract</li>
             </ul>
-            <!-- PayPal Button — Managed Plan Setup (AED 799) -->
+            <!-- PayPal Button — Managed Plan Setup (AED 1,499) -->
             <div class="paypal-button-wrapper">
-              <style>.pp-PEFTFS2QHP7H4{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;width:100%;}</style>
-              <form action="https://www.paypal.com/ncp/payment/PEFTFS2QHP7H4" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
-                <input class="pp-PEFTFS2QHP7H4" type="submit" value="Buy Now" />
+              <style>.pp-ARFT7KPLLQEHN{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;width:100%;}</style>
+              <form action="https://www.paypal.com/ncp/payment/ARFT7KPLLQEHN" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
+                <input class="pp-ARFT7KPLLQEHN" type="submit" value="Buy Now" />
                 <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
                 <section style="font-size: 0.75rem;"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
               </form>
@@ -368,7 +368,7 @@ function Plans() {
         <div class="comparison-wrap glass">
           <div class="comparison-header">
             <span class="section-label">Why Feather Studio</span>
-            <h2 class="comparison-headline">UAE web agencies charge AED 8,000 to AED 15,000 for a clinic website. We charge AED 1,999.</h2>
+            <h2 class="comparison-headline">UAE web agencies charge AED 8,000 to AED 15,000 for a clinic website. We charge AED 2,999.</h2>
           </div>
           
           <div class="table-responsive">
@@ -384,7 +384,7 @@ function Plans() {
                 <tr>
                   <td>Website build</td>
                   <td>AED 8,000 – 15,000</td>
-                  <td class="highlight">AED 1,999</td>
+                  <td class="highlight">AED 2,999</td>
                 </tr>
                 <tr>
                   <td>Turnaround time</td>
@@ -420,7 +420,7 @@ function Plans() {
           <!-- One-Time -->
           <div class="pricing-card glass">
             <p class="plan-label">One-Time</p>
-            <h2 class="plan-price">AED 1,999</h2>
+            <h2 class="plan-price">AED 2,999</h2>
             <p class="plan-price-sub">paid once</p>
             <p class="plan-tagline">Own it outright.</p>
             <ul class="plan-features">
@@ -431,11 +431,11 @@ function Plans() {
               <li class="yes">Built and launched within 3 days</li>
               <li class="yes">Full ownership and login credentials handed over</li>
             </ul>
-            <!-- PayPal Button — One-Time Plan (AED 1,999) -->
+            <!-- PayPal Button — One-Time Plan (AED 2,999) -->
             <div class="paypal-button-wrapper">
-              <style>.pp-MSG32JB7RGP9C{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;width:100%;}</style>
-              <form action="https://www.paypal.com/ncp/payment/MSG32JB7RGP9C" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
-                <input class="pp-MSG32JB7RGP9C" type="submit" value="Buy Now" />
+              <style>.pp-3MBPX74TQAJ5C{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;width:100%;}</style>
+              <form action="https://www.paypal.com/ncp/payment/3MBPX74TQAJ5C" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
+                <input class="pp-3MBPX74TQAJ5C" type="submit" value="Buy Now" />
                 <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
                 <section style="font-size: 0.75rem;"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
               </form>
@@ -449,14 +449,14 @@ function Plans() {
             <div class="popular-badge">Most Popular</div>
             <p class="plan-label accent">Managed</p>
             <div class="plan-price-managed">
-              <div class="plan-price-setup" style="font-size: 2.4rem;">AED 799 <span class="plan-price-tag">setup</span></div>
+              <div class="plan-price-setup" style="font-size: 2.4rem;">AED 1,499 <span class="plan-price-tag">setup</span></div>
               <div class="plan-price-monthly" style="font-size: 1.6rem;"><span class="plan-price-plus">+</span> AED 399 <span class="plan-price-tag">/ month</span></div>
             </div>
             <p class="plan-tagline">Everything handled, every month.</p>
             <ul class="plan-features">
               <li class="yes">Full custom website built for your clinic</li>
               <li class="yes">Home, About, Services, Gallery, Contact</li>
-              <li class="yes">AED 799 one-time setup covers the full build</li>
+              <li class="yes">AED 1,499 one-time setup covers the full build</li>
               <li class="yes">Domain included, renewed every year automatically</li>
               <li class="yes">Professional hosting, your site stays live 24/7</li>
               <li class="yes">Unlimited text and image updates via WhatsApp</li>
@@ -464,11 +464,11 @@ function Plans() {
               <li class="yes">Same-day response on all requests</li>
               <li class="yes">Cancel any time, no minimum contract</li>
             </ul>
-            <!-- PayPal Button — Managed Plan Setup (AED 799) -->
+            <!-- PayPal Button — Managed Plan Setup (AED 1,499) -->
             <div class="paypal-button-wrapper">
-              <style>.pp-PEFTFS2QHP7H4{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;width:100%;}</style>
-              <form action="https://www.paypal.com/ncp/payment/PEFTFS2QHP7H4" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
-                <input class="pp-PEFTFS2QHP7H4" type="submit" value="Buy Now" />
+              <style>.pp-ARFT7KPLLQEHN{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;width:100%;}</style>
+              <form action="https://www.paypal.com/ncp/payment/ARFT7KPLLQEHN" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
+                <input class="pp-ARFT7KPLLQEHN" type="submit" value="Buy Now" />
                 <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
                 <section style="font-size: 0.75rem;"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
               </form>
