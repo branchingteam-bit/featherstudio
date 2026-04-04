@@ -82,7 +82,7 @@ function Footer() {
             <img src="/feather.png" alt="Feather Studio" class="feather-icon" style="width:20px;height:20px;">
             Feather Studio
           </div>
-          <p style="color: var(--color-text-dim); max-width: 260px; font-size: 0.9rem; line-height: 1.7;">UAE-based web studio for clinics and medical professionals.</p>
+          <p style="color: var(--color-text-dim); max-width: 260px; font-size: 0.9rem; line-height: 1.7;">Specialist web studio for clinics and medical professionals.</p>
         </div>
         <div>
           <h4 class="footer-label">Links</h4>
@@ -96,14 +96,14 @@ function Footer() {
         <div>
           <h4 class="footer-label">Reach Us</h4>
           <div class="footer-links">
-            <p>Dubai, UAE</p>
+
             <a href="mailto:hellofeatherstudio@gmail.com">hellofeatherstudio@gmail.com</a>
             <a href="${WA_URL}" target="_blank" style="font-weight: 700; color: var(--color-accent);">WhatsApp Us</a>
           </div>
         </div>
       </div>
       <div class="container footer-bottom">
-        <p>© 2025 Feather Studio. Dubai, UAE.</p>
+        <p>© 2025 Feather Studio.</p>
       </div>
     </footer>
   `
@@ -116,9 +116,9 @@ function Home() {
     <section class="hero">
       <div class="hero-warm-glow"></div>
       <div class="hero-content visible" id="hero-content" style="opacity: 1; transform: translateY(0);">
-        <p class="hero-eyebrow">Feather Studio · Web Design for UAE Clinics</p>
+        <p class="hero-eyebrow">Feather Studio · Web Design for Clinics</p>
         <h1>Your patients are searching. Are they finding you?</h1>
-        <p class="hero-sub">There are over 1,300 private clinics in Dubai — most have no website. Every day patients search for your specialty and book with whoever shows up first. We make sure that's you.</p>
+        <p class="hero-sub">Most private clinics have no website — or one that doesn't work. Every day patients search for your specialty and book with whoever shows up online. We make sure that's you.</p>
         <div class="hero-ctas">
           <a href="/plans" class="btn btn-primary" data-link>See Our Plans</a>
           <a href="${WA_URL}" target="_blank" class="btn btn-secondary">WhatsApp Us</a>
@@ -127,22 +127,22 @@ function Home() {
       </div>
     </section>
 
-    <!-- UAE TRUST STRIP -->
+    <!-- TRUST STRIP -->
     <div class="trust-strip">
       <div class="container trust-strip-inner">
         <div class="trust-strip-item">
-          <span class="trust-strip-icon">${icons.mapPin}</span>
-          <span>Based in Dubai, UAE</span>
-        </div>
-        <div class="trust-strip-divider"></div>
-        <div class="trust-strip-item">
-          <span class="trust-strip-icon">${icons.globe}</span>
-          <span>Serving clinics across all 7 Emirates</span>
+          <span class="trust-strip-icon">${icons.wrench}</span>
+          <span>Specialists in clinic websites</span>
         </div>
         <div class="trust-strip-divider"></div>
         <div class="trust-strip-item">
           <span class="trust-strip-icon">${icons.zap}</span>
-          <span>Response within 1 hour</span>
+          <span>Live in 3 days, every time</span>
+        </div>
+        <div class="trust-strip-divider"></div>
+        <div class="trust-strip-item">
+          <span class="trust-strip-icon">${icons.check}</span>
+          <span>Trusted by clinic owners</span>
         </div>
       </div>
     </div>
@@ -152,7 +152,7 @@ function Home() {
       <div class="container">
         <div class="section-header">
           <span class="section-label">Why clinic owners call us</span>
-          <h2 class="section-title">Dubai has over 4,500 medical facilities. Most are invisible online.</h2>
+          <h2 class="section-title">Most private clinics are invisible online. And they're losing patients every day because of it.</h2>
         </div>
         <div class="grid-2">
           <div class="card glass">
@@ -168,7 +168,7 @@ function Home() {
           <div class="card glass">
             <span class="card-icon">${icons.tag}</span>
             <h3>Most agencies charge too much and take too long</h3>
-            <p>Web agencies in Dubai charge AED 8,000 to 15,000 and take 2 to 3 months. We build professional clinic websites in 3 days at AED 2,999, with no surprises.</p>
+            <p>Most web agencies charge thousands and take months. We build professional clinic websites in 3 days at a flat price, with no surprises.</p>
           </div>
           <div class="card glass card-accent">
             <span class="card-icon">${icons.wrench}</span>
@@ -184,13 +184,13 @@ function Home() {
       <div class="container what-we-do-grid">
         <div class="what-we-do-text">
           <span class="section-label">What We Do</span>
-          <h2 class="section-title">We build professional websites for UAE clinics. Fast, clean, and built to get patients through your door.</h2>
-          <p class="body-text">Feather Studio works exclusively with clinics, doctors, and medical professionals across the UAE. We don't take on every client. We chose this niche because we understand the local market, what patients look for, and what makes a medical practice look credible and trustworthy online.</p>
+          <h2 class="section-title">We build professional websites for clinics. Fast, clean, and built to get patients through your door.</h2>
+          <p class="body-text">Feather Studio works exclusively with clinics, doctors, and medical professionals. We don't take on every client. We chose this niche because we understand what clinic owners actually need: something professional, fast, and completely hands-off.</p>
           <p class="body-text" style="margin-top: 16px;">We offer two options. You can own your website outright with a one-time payment and manage it yourself from there. Or you can choose our managed plan: we build it, host it, and handle every update and technical issue indefinitely. All you do is WhatsApp us when something needs changing.</p>
           <ul class="feature-list">
             <li>
               <span class="feature-bullet">${icons.check}</span>
-              <div><strong>UAE-based and clinic-focused.</strong> We understand the Dubai healthcare market and what patients expect when they land on a clinic website.</div>
+              <div><strong>Clinic-focused by design.</strong> We only work with medical practices, which means we understand what patients expect when they land on a clinic website.</div>
             </li>
             <li>
               <span class="feature-bullet">${icons.check}</span>
@@ -203,17 +203,13 @@ function Home() {
           </ul>
         </div>
         <div class="what-we-do-visual">
-          <div class="visual-card glass">
+          <div class="visual-card glass" style="grid-column: span 2;">
             <div class="visual-stat">3<span>days</span></div>
-            <p>average time from first call to live website</p>
-          </div>
-          <div class="visual-card glass">
-            <div class="visual-stat">1,300+<span>clinics</span></div>
-            <p>private clinics in Dubai alone</p>
+            <p>from first call to live website</p>
           </div>
           <div class="visual-card glass" style="grid-column: span 2;">
-            <div class="visual-stat" style="font-size: 1.8rem;">Exclusively<span>UAE Medical</span></div>
-            <p>We only work with UAE medical professionals</p>
+            <div class="visual-stat" style="font-size: 1.6rem;">100%<span>clinics</span></div>
+            <p>every client we take on is a medical practice</p>
           </div>
         </div>
       </div>
@@ -223,7 +219,7 @@ function Home() {
     <section class="section-padding">
       <div class="container" style="text-align: center;">
         <span class="section-label">Our Clients</span>
-        <h2 class="section-title" style="margin-bottom: 14px;">We work with all medical specialties across the UAE</h2>
+        <h2 class="section-title" style="margin-bottom: 14px;">We work with all medical specialties</h2>
         <p class="body-text" style="max-width: 560px; margin: 0 auto 48px;">From solo practitioners to multi-branch clinics, we understand the specific needs of every medical specialty.</p>
         <div class="specialty-pills">
           <span class="specialty-pill">General Practice</span>
@@ -342,7 +338,7 @@ function Home() {
     <section class="cta-section">
       <div class="container" style="text-align: center;">
         <h2>Your patients are searching right now. Let's make sure they find you.</h2>
-        <p>Getting started takes one conversation. WhatsApp us today and your clinic can be online within the week.</p>
+        <p>Getting started takes one conversation. Get in touch today and your clinic can be online within 3 days.</p>
         <div class="hero-ctas">
           <a href="${WA_URL}" target="_blank" class="btn btn-primary btn-large">WhatsApp Us Now</a>
           <a href="/plans" class="btn btn-secondary btn-large" data-link>See Plans</a>
@@ -357,7 +353,7 @@ function Plans() {
   return `
     <header class="page-header">
       <div class="container" style="text-align:center;">
-        <h1>Every clinic in the UAE deserves a professional website. Here is what it costs.</h1>
+        <h1>Every clinic deserves a professional website. Here is what it costs.</h1>
         <p class="hero-sub" style="max-width:650px; margin: 0 auto;">Two options. One price each. No surprises, no contracts, no tech stress.</p>
       </div>
     </header>
@@ -368,7 +364,7 @@ function Plans() {
         <div class="comparison-wrap glass">
           <div class="comparison-header">
             <span class="section-label">Why Feather Studio</span>
-            <h2 class="comparison-headline">UAE web agencies charge AED 8,000 to AED 15,000 for a clinic website. We charge AED 2,999.</h2>
+            <h2 class="comparison-headline">Most web agencies charge thousands and take months. We don't.</h2>
           </div>
           
           <div class="table-responsive">
@@ -376,15 +372,15 @@ function Plans() {
               <thead>
                 <tr>
                   <th></th>
-                  <th>Other UAE Agencies</th>
+                  <th>Other Web Agencies</th>
                   <th class="highlight">Feather Studio</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>Website build</td>
-                  <td>AED 8,000 – 15,000</td>
-                  <td class="highlight">AED 2,999</td>
+                  <td>$3,000 – $8,000+</td>
+                  <td class="highlight">Flat rate, no surprises</td>
                 </tr>
                 <tr>
                   <td>Turnaround time</td>
@@ -393,8 +389,8 @@ function Plans() {
                 </tr>
                 <tr>
                   <td>Monthly maintenance</td>
-                  <td>AED 500 – 2,000</td>
-                  <td class="highlight">AED 399</td>
+                  <td>$300 – $800/month</td>
+                  <td class="highlight">Included in managed plan</td>
                 </tr>
                 <tr>
                   <td>Clinic specialist</td>
@@ -402,14 +398,14 @@ function Plans() {
                   <td class="highlight">Always</td>
                 </tr>
                 <tr>
-                  <td>WhatsApp support</td>
+                  <td>WhatsApp / direct support</td>
                   <td>No</td>
                   <td class="highlight">Yes</td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <p class="comparison-footer">Same quality. A fraction of the price. Built specifically for UAE clinics.</p>
+          <p class="comparison-footer">Same quality. A fraction of the price. Built specifically for your clinic.</p>
         </div>
       </div>
     </section>
@@ -441,7 +437,7 @@ function Plans() {
               </form>
             </div>
             <p class="plan-best-for"><strong>Best for:</strong> Clinics with in-house staff who can manage updates, or owners who prefer to own everything outright from day one.</p>
-            <p class="plan-note">After the first year, domain renewal is approximately AED 55/year paid directly to the registrar. Hosting after handover is the clinic's responsibility.</p>
+            <p class="plan-note">After the first year, domain renewal is approximately $15/year paid directly to the registrar. Hosting after handover is the clinic's responsibility.</p>
           </div>
 
           <!-- Managed -->
@@ -456,7 +452,7 @@ function Plans() {
             <ul class="plan-features">
               <li class="yes">Full custom website built for your clinic</li>
               <li class="yes">Home, About, Services, Gallery, Contact</li>
-              <li class="yes">AED 1,499 one-time setup covers the full build</li>
+              <li class="yes">One-time setup covers the full build</li>
               <li class="yes">Domain included, renewed every year automatically</li>
               <li class="yes">Professional hosting, your site stays live 24/7</li>
               <li class="yes">Unlimited text and image updates via WhatsApp</li>
@@ -476,7 +472,7 @@ function Plans() {
             <p class="plan-note-managed">After your site goes live, you will receive a link to activate your AED 399/month management plan.</p>
             <p class="plan-best-for"><strong>Best for:</strong> Busy clinic owners and doctors who want a professional online presence with zero day-to-day involvement. You focus on your patients. We handle everything else.</p>
             <p class="plan-note">Setup covers your full website build. Monthly fee covers hosting, updates, and management.</p>
-            <p class="plan-note" style="color: var(--color-text-main); font-weight: 500; font-style: normal;"><strong>Why most clinics choose this:</strong> Running a clinic is already a full-time job. For AED 399 a month, less than a single patient consultation, your website, hosting, updates, and maintenance are completely off your plate, every single month.</p>
+            <p class="plan-note" style="color: var(--color-text-main); font-weight: 500; font-style: normal;"><strong>Why most clinics choose this:</strong> Running a clinic is already a full-time job. For less than the cost of a single patient consultation each month, your website, hosting, updates, and maintenance are completely off your plate, every single month.</p>
           </div>
         </div>
 
@@ -543,11 +539,11 @@ function Plans() {
           </div>
           <div class="faq-item glass">
             <h3>Do you only work with clinics?</h3>
-            <p>Yes. We work exclusively with clinics, doctors, and medical professionals in the UAE. This focus means we understand your patients, your market, and what a medical website needs to do.</p>
+            <p>Yes. We work exclusively with clinics, doctors, and medical professionals. This focus means we understand your patients, your market, and what a medical website needs to do.</p>
           </div>
           <div class="faq-item glass">
-            <h3>Do you work across the whole UAE?</h3>
-            <p>Yes. Dubai, Abu Dhabi, Sharjah, Ajman, and beyond.</p>
+            <h3>Where are your clients based?</h3>
+            <p>We work with clinic owners remotely — no matter where your clinic is located. We handle everything online so location is never a barrier.</p>
           </div>
         </div>
       </div>
@@ -556,7 +552,7 @@ function Plans() {
     <section class="cta-section">
       <div class="container" style="text-align:center;">
         <h2>Your patients are searching right now. Let's make sure they find you.</h2>
-        <p>Getting started takes one conversation. WhatsApp us today and your clinic can be online within the week.</p>
+        <p>Getting started takes one conversation. Get in touch today and your clinic can be online within 3 days.</p>
         <div class="hero-ctas">
           <a href="${WA_URL}" target="_blank" class="btn btn-primary btn-large">WhatsApp Us Now</a>
           <a href="/contact" class="btn btn-secondary btn-large" data-link>Send an Enquiry</a>
@@ -574,7 +570,7 @@ function Work() {
       <div class="container" style="text-align:center;">
         <span class="section-label">Our Work</span>
         <h1>What your clinic could look like online.</h1>
-        <p class="hero-sub" style="max-width:600px;margin:0 auto;">Below are three example clinic websites we have built. Every site is designed specifically for the specialty, the patients, and the location. This is exactly what your website could look like.</p>
+        <p class="hero-sub" style="max-width:600px;margin:0 auto;">Below are three example clinic websites. Every site is designed specifically for the clinic's specialty, their patients, and their brand. This is exactly what your website could look like.</p>
       </div>
     </section>
 
@@ -900,7 +896,7 @@ function Contact() {
         <div class="contact-info">
           <span class="section-label">Get In Touch</span>
           <h1>Let's get your<br>clinic online.</h1>
-          <p class="body-text">We're based in Dubai and work with clinics across the UAE. The fastest way to reach us is WhatsApp. WhatsApp us or fill in the form and we will get back to you as soon as we can.</p>
+          <p class="body-text">We work with clinic owners remotely. No matter where your clinic is, we can have your website live within 3 days. WhatsApp us or fill in the form and we will get back to you as soon as we can.</p>
 
           <div class="contact-methods">
             <a href="${WA_URL}" target="_blank" class="contact-method glass">
@@ -947,7 +943,7 @@ function Activate() {
           <p>Activate your monthly management plan below to keep your site hosted, updated, and fully managed by us every month.</p>
           
           <div class="activate-price">
-            AED 399/month <span style="font-size: 0.9rem; font-weight: 500; opacity: 0.7;">— cancel any time</span>
+            $99/month <span style="font-size: 0.9rem; font-weight: 500; opacity: 0.7;">— cancel any time</span>
           </div>
 
           <div id="paypal-button-container-P-8EU78139GF1282545NHBFUDY"></div>
