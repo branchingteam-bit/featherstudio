@@ -1,4 +1,4 @@
-(function(){const a=document.createElement("link").relList;if(a&&a.supports&&a.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))s(e);new MutationObserver(e=>{for(const t of e)if(t.type==="childList")for(const c of t.addedNodes)c.tagName==="LINK"&&c.rel==="modulepreload"&&s(c)}).observe(document,{childList:!0,subtree:!0});function n(e){const t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?t.credentials="include":e.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function s(e){if(e.ep)return;e.ep=!0;const t=n(e);fetch(e.href,t)}})();const m=document.querySelector("#app");let r=localStorage.getItem("theme")||"light";document.documentElement.setAttribute("data-theme",r);const v="971504668481",l=`https://wa.me/${v}`,u={"/":h,"/plans":b,"/work":k,"/contact":A,"/activate":x};function y(o){window.history.pushState({},"",o),p(),window.scrollTo(0,0)}window.addEventListener("popstate",p);const i={search:'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',clock:'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',tag:'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>',wrench:'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>',whatsapp:'<svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>',envelope:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',zap:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',check:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',arrowRight:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>'};function g(){return`
+(function(){const a=document.createElement("link").relList;if(a&&a.supports&&a.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))s(e);new MutationObserver(e=>{for(const t of e)if(t.type==="childList")for(const c of t.addedNodes)c.tagName==="LINK"&&c.rel==="modulepreload"&&s(c)}).observe(document,{childList:!0,subtree:!0});function n(e){const t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?t.credentials="include":e.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function s(e){if(e.ep)return;e.ep=!0;const t=n(e);fetch(e.href,t)}})();const m=document.querySelector("#app");let r=localStorage.getItem("theme")||"light";document.documentElement.setAttribute("data-theme",r);const v="971504668481",l=`https://wa.me/${v}`,u={"/":h,"/plans":b,"/work":k,"/contact":A,"/activate":x};function g(o){window.history.pushState({},"",o),p(),window.scrollTo(0,0)}window.addEventListener("popstate",p);const i={search:'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',clock:'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',tag:'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>',wrench:'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>',whatsapp:'<svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>',envelope:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',zap:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',check:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',arrowRight:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>'};function y(){return`
     <a href="${l}" target="_blank" id="whatsapp-fab" title="WhatsApp Us">
       ${i.whatsapp}
     </a>
@@ -591,16 +591,15 @@
       </div>
 
       <!-- ══════════════════════════════════════════════════ -->
-      <!-- CLINIC 2 — HARMONY PHYSIOTHERAPY -->
+      <!-- CLINIC 2 — ZENITH AESTHETICS (Dubai) -->
       <!-- ══════════════════════════════════════════════════ -->
-      <div class="showcase-clinic showcase-clinic-alt" id="clinic-2">
+      <div id="clinic-2" class="showcase-clinic showcase-clinic-alt">
         <div class="container showcase-clinic-inner">
-
           <div class="showcase-label">
             <span class="showcase-number">02</span>
-            <h2 class="showcase-clinic-name">Harmony Physiotherapy</h2>
-            <p class="showcase-meta">Physiotherapy &amp; Rehabilitation &nbsp;·&nbsp; Canary Wharf, London</p>
-            <p class="showcase-desc">&ldquo;Built for a busy clinic that needed patients to understand their treatments before booking.&rdquo;</p>
+            <h2 class="showcase-clinic-name">Zenith Skin & Aesthetics</h2>
+            <p class="showcase-meta">Dermatology &amp; Medical Aesthetics &nbsp;·&nbsp; Downtown Dubai</p>
+            <p class="showcase-desc">&ldquo;A world-class aesthetic destination where medical expertise meets artistic precision.&rdquo;</p>
             <a href="/contact" class="showcase-cta" data-link>This could be your clinic &rarr;</a>
           </div>
 
@@ -610,68 +609,90 @@
                 <span class="browser-dot red"></span>
                 <span class="browser-dot yellow"></span>
                 <span class="browser-dot green"></span>
-                <span class="browser-url">harmonyphysio.com</span>
+                <span class="browser-url">zenithclinic.ae</span>
               </div>
               <div class="browser-body">
-                <div class="demo-site physio">
-
-                  <!-- PHYSIO NAV -->
-                  <header class="demo-nav physio-nav">
-                    <span class="demo-logo physio-logo">HARMONY <span style="font-weight:400; font-style:normal;">PHYSIO</span></span>
-                    <nav class="demo-navlinks physio-links">
-                      <a>REHAB</a><a>PERFORMANCE</a><a>TEAM</a><a>CONTACT</a>
-                    </nav>
-                  </header>
-
-                  <!-- PHYSIO HERO -->
-                  <section class="demo-hero physio-hero">
-                    <div class="physio-hero-accent-bar"></div>
-                    <div class="demo-hero-content physio-hero-content">
-                      <h2 class="demo-h1 physio-h1">REBUILD<br>STRONGER.</h2>
-                      <p class="demo-sub physio-sub">Elite sports rehabilitation & physiotherapy designed to get you back in the game faster.</p>
-                      <div style="display:flex;gap:12px;margin-top:20px;">
-                        <a class="demo-btn physio-btn">START RECOVERY</a>
-                      </div>
+                <div class="demo-site aesthetics">
+                  <!-- AESTHETICS NAV -->
+                  <nav class="demo-nav aesthetics-nav">
+                    <div class="demo-logo aesthetics-logo">ZENITH</div>
+                    <div class="demo-navlinks aesthetics-links">
+                      <a>Treatments</a>
+                      <a>About</a>
+                      <a>Contact</a>
                     </div>
-                    <div class="physio-hero-graphic">
-                      <div class="physio-abstract-block"></div>
+                  </nav>
+
+                  <!-- AESTHETICS HERO -->
+                  <section class="demo-hero aesthetics-hero">
+                    <div class="demo-hero-content" style="max-width: 100%;">
+                      <p class="demo-eyebrow aesthetics-eyebrow">Dermatology & Artistry</p>
+                      <h2 class="demo-h1 aesthetics-h1">The Art of the<br>Natural Look.</h2>
+                      <p class="demo-sub aesthetics-sub" style="margin-left: auto; margin-right: auto;">Expert-led dermatology and medical aesthetics in the heart of Downtown Dubai.</p>
+                      <a class="demo-btn aesthetics-btn" style="margin-bottom: 20px;">Book Consultation</a>
+                      <div class="aesthetics-hero-deco"></div>
                     </div>
                   </section>
 
-                  <!-- PHYSIO SERVICES -->
-                  <section class="demo-section physio-section-bg">
-                    <h3 class="demo-section-title physio-title" style="margin-bottom:18px;">PERFORMANCE PROTOCOLS //</h3>
-                    <div class="physio-services-grid">
-                      <div class="physio-card-dark">
-                        <span class="physio-card-num">01</span>
-                        <div>
-                          <strong>SPORTS REHAB</strong>
-                          <p>Aggressive recovery plans</p>
-                        </div>
+                  <!-- AESTHETICS SERVICES -->
+                  <section class="demo-section aesthetics-section-bg">
+                    <p class="demo-section-label aesthetics-label">Signature Treatments</p>
+                    <h3 class="demo-section-title aesthetics-title">Refined Results</h3>
+                    <div class="demo-services-grid">
+                      <div class="demo-service-card aesthetics-card">
+                        <strong>Facial Contouring</strong>
+                        <p>Artistic dermal filler treatments to enhance your natural features.</p>
                       </div>
-                      <div class="physio-card-dark">
-                        <span class="physio-card-num">02</span>
-                        <div>
-                          <strong>POST-OP</strong>
-                          <p>Surgical rehabilitation</p>
-                        </div>
+                      <div class="demo-service-card aesthetics-card">
+                        <strong>Skin Rejuvenation</strong>
+                        <p>Advanced laser and peel protocols for a flawless, radiant complexion.</p>
                       </div>
-                      <div class="physio-card-dark">
-                        <span class="physio-card-num">03</span>
-                        <div>
-                          <strong>MOBILITY</strong>
-                          <p>Performance physical therapy</p>
-                        </div>
+                      <div class="demo-service-card aesthetics-card">
+                        <strong>Medical Grade Facials</strong>
+                        <p>Bespoke clinical treatments tailored to your unique skin concerns.</p>
+                      </div>
+                      <div class="demo-service-card aesthetics-card">
+                        <strong>Longevity & Wellness</strong>
+                        <p>Innovative anti-aging protocols rooted in medical science.</p>
                       </div>
                     </div>
                   </section>
 
+                  <!-- AESTHETICS ABOUT/TEAM -->
+                  <section class="demo-section">
+                    <div class="demo-team-grid">
+                      <div class="demo-team-card aesthetics-card">
+                        <div class="demo-avatar aesthetics-avatar">MD</div>
+                        <strong>Dr. Marcus Davies</strong>
+                        <span>Medical Director</span>
+                        <p>Board-certified dermatologist specializing in non-surgical aesthetics.</p>
+                      </div>
+                      <div class="demo-team-card aesthetics-card">
+                        <div class="demo-avatar aesthetics-avatar">SL</div>
+                        <strong>Sarah Lawson</strong>
+                        <span>Lead Aesthetician</span>
+                        <p>Expert in advanced skin therapies and regenerative protocols.</p>
+                      </div>
+                    </div>
+                  </section>
 
+                  <!-- AESTHETICS TESTIMONIALS -->
+                  <section class="demo-section aesthetics-section-bg">
+                    <div class="demo-testimonials">
+                      <div class="demo-testimonial aesthetics-testimonial">
+                        <p>&ldquo;The most subtle, natural results I've ever had. Dr. Marcus is a true artist.&rdquo;</p>
+                        <strong>— Elena S., Downtown Dubai</strong>
+                      </div>
+                      <div class="demo-testimonial aesthetics-testimonial">
+                        <p>&ldquo;Professional, discreet, and clinical. The only place I trust with my skin.&rdquo;</p>
+                        <strong>— James W., DIFC</strong>
+                      </div>
+                    </div>
+                  </section>
                 </div>
               </div>
             </div>
           </div>
-
         </div>
       </div>
 
@@ -876,5 +897,5 @@
     ${w()}
     <main>${a()}</main>
     ${f()}
-    ${g()}
-  `,C(),P(),setTimeout(()=>{const e=document.getElementById("hero-content");e&&e.classList.add("visible")},100);const n=document.getElementById("main-nav"),s=()=>{window.scrollY>60?n.classList.add("scrolled"):n.classList.remove("scrolled")};window.removeEventListener("scroll",s),window.addEventListener("scroll",s)}function E(o,a){const n="paypal-sdk";let s=document.getElementById(n);const e=()=>{window.paypal?a():setTimeout(()=>{window.paypal&&a()},100)};if(s){window.paypal?a():s.addEventListener("load",e);return}s=document.createElement("script"),s.id=n,s.src=`https://www.paypal.com/sdk/js?client-id=ATdtILYx2T5yoKB9AH86nDYMlD4bQ1PnOk_y_SOL3b42qP2E3nTfHlxL1KLFLu9w7Ao9jhTYvk4jfhEB&${o}`,s.setAttribute("data-sdk-integration-source","button-factory"),s.addEventListener("load",e),document.head.appendChild(s)}function P(){if(window.location.pathname==="/activate"){const a=document.getElementById("paypal-button-container-P-8EU78139GF1282545NHBFUDY");a&&a.children.length===0&&E("vault=true&intent=subscription",()=>{window.paypal.Buttons({style:{shape:"rect",color:"blue",layout:"vertical",label:"paypal"},createSubscription:function(n,s){return s.subscription.create({plan_id:"P-8EU78139GF1282545NHBFUDY"})},onApprove:function(n,s){alert("Thank you! Your management plan is now active. We will be in touch shortly.")}}).render(a)})}}function C(){document.querySelectorAll("[data-link]").forEach(n=>{n.addEventListener("click",s=>{s.preventDefault();const e=n.getAttribute("href");e&&y(e)})});const o=document.getElementById("theme-toggle");o&&o.addEventListener("click",()=>{r=r==="light"?"dark":"light",document.documentElement.setAttribute("data-theme",r),localStorage.setItem("theme",r),o.textContent=r==="light"?"🌙":"☀️"});const a=document.querySelectorAll(".showcase-dot");if(a.length>0){a.forEach(e=>{e.addEventListener("click",t=>{t.preventDefault();const c=e.getAttribute("href"),d=document.querySelector(c);d&&d.scrollIntoView({behavior:"smooth"})})});const n={root:null,threshold:.5},s=new IntersectionObserver(e=>{e.forEach(t=>{if(t.isIntersecting){const c=t.target.getAttribute("id");a.forEach(d=>{d.classList.toggle("active",d.getAttribute("href")===`#${c}`)})}})},n);document.querySelectorAll(".showcase-clinic").forEach(e=>{s.observe(e)})}}p();
+    ${y()}
+  `,C(),S(),setTimeout(()=>{const e=document.getElementById("hero-content");e&&e.classList.add("visible")},100);const n=document.getElementById("main-nav"),s=()=>{window.scrollY>60?n.classList.add("scrolled"):n.classList.remove("scrolled")};window.removeEventListener("scroll",s),window.addEventListener("scroll",s)}function E(o,a){const n="paypal-sdk";let s=document.getElementById(n);const e=()=>{window.paypal?a():setTimeout(()=>{window.paypal&&a()},100)};if(s){window.paypal?a():s.addEventListener("load",e);return}s=document.createElement("script"),s.id=n,s.src=`https://www.paypal.com/sdk/js?client-id=ATdtILYx2T5yoKB9AH86nDYMlD4bQ1PnOk_y_SOL3b42qP2E3nTfHlxL1KLFLu9w7Ao9jhTYvk4jfhEB&${o}`,s.setAttribute("data-sdk-integration-source","button-factory"),s.addEventListener("load",e),document.head.appendChild(s)}function S(){if(window.location.pathname==="/activate"){const a=document.getElementById("paypal-button-container-P-8EU78139GF1282545NHBFUDY");a&&a.children.length===0&&E("vault=true&intent=subscription",()=>{window.paypal.Buttons({style:{shape:"rect",color:"blue",layout:"vertical",label:"paypal"},createSubscription:function(n,s){return s.subscription.create({plan_id:"P-8EU78139GF1282545NHBFUDY"})},onApprove:function(n,s){alert("Thank you! Your management plan is now active. We will be in touch shortly.")}}).render(a)})}}function C(){document.querySelectorAll("[data-link]").forEach(n=>{n.addEventListener("click",s=>{s.preventDefault();const e=n.getAttribute("href");e&&g(e)})});const o=document.getElementById("theme-toggle");o&&o.addEventListener("click",()=>{r=r==="light"?"dark":"light",document.documentElement.setAttribute("data-theme",r),localStorage.setItem("theme",r),o.textContent=r==="light"?"🌙":"☀️"});const a=document.querySelectorAll(".showcase-dot");if(a.length>0){a.forEach(e=>{e.addEventListener("click",t=>{t.preventDefault();const c=e.getAttribute("href"),d=document.querySelector(c);d&&d.scrollIntoView({behavior:"smooth"})})});const n={root:null,threshold:.5},s=new IntersectionObserver(e=>{e.forEach(t=>{if(t.isIntersecting){const c=t.target.getAttribute("id");a.forEach(d=>{d.classList.toggle("active",d.getAttribute("href")===`#${c}`)})}})},n);document.querySelectorAll(".showcase-clinic").forEach(e=>{s.observe(e)})}}p();

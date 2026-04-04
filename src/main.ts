@@ -663,16 +663,15 @@ function Work() {
       </div>
 
       <!-- ══════════════════════════════════════════════════ -->
-      <!-- CLINIC 2 — HARMONY PHYSIOTHERAPY -->
+      <!-- CLINIC 2 — ZENITH AESTHETICS (Dubai) -->
       <!-- ══════════════════════════════════════════════════ -->
-      <div class="showcase-clinic showcase-clinic-alt" id="clinic-2">
+      <div id="clinic-2" class="showcase-clinic showcase-clinic-alt">
         <div class="container showcase-clinic-inner">
-
           <div class="showcase-label">
             <span class="showcase-number">02</span>
-            <h2 class="showcase-clinic-name">Harmony Physiotherapy</h2>
-            <p class="showcase-meta">Physiotherapy &amp; Rehabilitation &nbsp;·&nbsp; Canary Wharf, London</p>
-            <p class="showcase-desc">&ldquo;Built for a busy clinic that needed patients to understand their treatments before booking.&rdquo;</p>
+            <h2 class="showcase-clinic-name">Zenith Skin & Aesthetics</h2>
+            <p class="showcase-meta">Dermatology &amp; Medical Aesthetics &nbsp;·&nbsp; Downtown Dubai</p>
+            <p class="showcase-desc">&ldquo;A world-class aesthetic destination where medical expertise meets artistic precision.&rdquo;</p>
             <a href="/contact" class="showcase-cta" data-link>This could be your clinic &rarr;</a>
           </div>
 
@@ -682,68 +681,90 @@ function Work() {
                 <span class="browser-dot red"></span>
                 <span class="browser-dot yellow"></span>
                 <span class="browser-dot green"></span>
-                <span class="browser-url">harmonyphysio.com</span>
+                <span class="browser-url">zenithclinic.ae</span>
               </div>
               <div class="browser-body">
-                <div class="demo-site physio">
-
-                  <!-- PHYSIO NAV -->
-                  <header class="demo-nav physio-nav">
-                    <span class="demo-logo physio-logo">HARMONY <span style="font-weight:400; font-style:normal;">PHYSIO</span></span>
-                    <nav class="demo-navlinks physio-links">
-                      <a>REHAB</a><a>PERFORMANCE</a><a>TEAM</a><a>CONTACT</a>
-                    </nav>
-                  </header>
-
-                  <!-- PHYSIO HERO -->
-                  <section class="demo-hero physio-hero">
-                    <div class="physio-hero-accent-bar"></div>
-                    <div class="demo-hero-content physio-hero-content">
-                      <h2 class="demo-h1 physio-h1">REBUILD<br>STRONGER.</h2>
-                      <p class="demo-sub physio-sub">Elite sports rehabilitation & physiotherapy designed to get you back in the game faster.</p>
-                      <div style="display:flex;gap:12px;margin-top:20px;">
-                        <a class="demo-btn physio-btn">START RECOVERY</a>
-                      </div>
+                <div class="demo-site aesthetics">
+                  <!-- AESTHETICS NAV -->
+                  <nav class="demo-nav aesthetics-nav">
+                    <div class="demo-logo aesthetics-logo">ZENITH</div>
+                    <div class="demo-navlinks aesthetics-links">
+                      <a>Treatments</a>
+                      <a>About</a>
+                      <a>Contact</a>
                     </div>
-                    <div class="physio-hero-graphic">
-                      <div class="physio-abstract-block"></div>
+                  </nav>
+
+                  <!-- AESTHETICS HERO -->
+                  <section class="demo-hero aesthetics-hero">
+                    <div class="demo-hero-content" style="max-width: 100%;">
+                      <p class="demo-eyebrow aesthetics-eyebrow">Dermatology & Artistry</p>
+                      <h2 class="demo-h1 aesthetics-h1">The Art of the<br>Natural Look.</h2>
+                      <p class="demo-sub aesthetics-sub" style="margin-left: auto; margin-right: auto;">Expert-led dermatology and medical aesthetics in the heart of Downtown Dubai.</p>
+                      <a class="demo-btn aesthetics-btn" style="margin-bottom: 20px;">Book Consultation</a>
+                      <div class="aesthetics-hero-deco"></div>
                     </div>
                   </section>
 
-                  <!-- PHYSIO SERVICES -->
-                  <section class="demo-section physio-section-bg">
-                    <h3 class="demo-section-title physio-title" style="margin-bottom:18px;">PERFORMANCE PROTOCOLS //</h3>
-                    <div class="physio-services-grid">
-                      <div class="physio-card-dark">
-                        <span class="physio-card-num">01</span>
-                        <div>
-                          <strong>SPORTS REHAB</strong>
-                          <p>Aggressive recovery plans</p>
-                        </div>
+                  <!-- AESTHETICS SERVICES -->
+                  <section class="demo-section aesthetics-section-bg">
+                    <p class="demo-section-label aesthetics-label">Signature Treatments</p>
+                    <h3 class="demo-section-title aesthetics-title">Refined Results</h3>
+                    <div class="demo-services-grid">
+                      <div class="demo-service-card aesthetics-card">
+                        <strong>Facial Contouring</strong>
+                        <p>Artistic dermal filler treatments to enhance your natural features.</p>
                       </div>
-                      <div class="physio-card-dark">
-                        <span class="physio-card-num">02</span>
-                        <div>
-                          <strong>POST-OP</strong>
-                          <p>Surgical rehabilitation</p>
-                        </div>
+                      <div class="demo-service-card aesthetics-card">
+                        <strong>Skin Rejuvenation</strong>
+                        <p>Advanced laser and peel protocols for a flawless, radiant complexion.</p>
                       </div>
-                      <div class="physio-card-dark">
-                        <span class="physio-card-num">03</span>
-                        <div>
-                          <strong>MOBILITY</strong>
-                          <p>Performance physical therapy</p>
-                        </div>
+                      <div class="demo-service-card aesthetics-card">
+                        <strong>Medical Grade Facials</strong>
+                        <p>Bespoke clinical treatments tailored to your unique skin concerns.</p>
+                      </div>
+                      <div class="demo-service-card aesthetics-card">
+                        <strong>Longevity & Wellness</strong>
+                        <p>Innovative anti-aging protocols rooted in medical science.</p>
                       </div>
                     </div>
                   </section>
 
+                  <!-- AESTHETICS ABOUT/TEAM -->
+                  <section class="demo-section">
+                    <div class="demo-team-grid">
+                      <div class="demo-team-card aesthetics-card">
+                        <div class="demo-avatar aesthetics-avatar">MD</div>
+                        <strong>Dr. Marcus Davies</strong>
+                        <span>Medical Director</span>
+                        <p>Board-certified dermatologist specializing in non-surgical aesthetics.</p>
+                      </div>
+                      <div class="demo-team-card aesthetics-card">
+                        <div class="demo-avatar aesthetics-avatar">SL</div>
+                        <strong>Sarah Lawson</strong>
+                        <span>Lead Aesthetician</span>
+                        <p>Expert in advanced skin therapies and regenerative protocols.</p>
+                      </div>
+                    </div>
+                  </section>
 
+                  <!-- AESTHETICS TESTIMONIALS -->
+                  <section class="demo-section aesthetics-section-bg">
+                    <div class="demo-testimonials">
+                      <div class="demo-testimonial aesthetics-testimonial">
+                        <p>&ldquo;The most subtle, natural results I've ever had. Dr. Marcus is a true artist.&rdquo;</p>
+                        <strong>— Elena S., Downtown Dubai</strong>
+                      </div>
+                      <div class="demo-testimonial aesthetics-testimonial">
+                        <p>&ldquo;Professional, discreet, and clinical. The only place I trust with my skin.&rdquo;</p>
+                        <strong>— James W., DIFC</strong>
+                      </div>
+                    </div>
+                  </section>
                 </div>
               </div>
             </div>
           </div>
-
         </div>
       </div>
 

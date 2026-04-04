@@ -1414,7 +1414,27 @@ ul { list-style: none; }
   border: 1px solid rgba(13,148,136,0.12);
 }
 .physio-testimonial p { color: #2d5050; }
-.physio-testimonial strong { color: #0d9488; }
+.physio-testimonial strong { color: #0d9488; }/* ── CLINIC 2: Zenith Aesthetics (Gold / Cream / Charcoal) ───── */
+.aesthetics { background: #fafafa; color: #1a1a1a; }
+.aesthetics-nav { background: #fff; border-bottom: 1px solid rgba(197,163,121,0.2); }
+.aesthetics-logo { color: #c5a379; font-family: 'Playfair Display', serif; font-weight: 400; font-size: 16px; letter-spacing: 0.05em; }
+.aesthetics-links a { color: #1a1a1a; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; }
+.aesthetics-eyebrow { color: #c5a379; font-weight: 600; }
+.aesthetics-hero { background: #fff; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 60px 24px; position: relative; overflow: hidden; }
+.aesthetics-h1 { color: #1a1a1a; font-family: 'Playfair Display', serif; font-weight: 400; font-size: 2.2rem; }
+.aesthetics-sub { color: #666; max-width: 320px; }
+.aesthetics-btn { background: #1a1a1a; color: #fff; border-radius: 0; padding: 12px 30px; letter-spacing: 0.1em; text-transform: uppercase; }
+.aesthetics-hero-deco { width: 100%; height: 2px; background: linear-gradient(90deg, transparent, #c5a379, transparent); margin-top: 20px; opacity: 0.4; }
+.aesthetics-section-bg { background: #fcfbf9; }
+.aesthetics-label { color: #c5a379; }
+.aesthetics-title { color: #1a1a1a; font-family: 'Playfair Display', serif; font-weight: 400; }
+.aesthetics-card { background: #fff; border: 1px solid rgba(197,163,121,0.15); border-radius: 0; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+.aesthetics-card strong { color: #1a1a1a; font-family: 'Playfair Display', serif; font-weight: 400; font-size: 13px; }
+.aesthetics-card p { color: #777; }
+.aesthetics-avatar { background: #f5f0e9; border: 1px solid #c5a379; }
+.aesthetics-team-card { background: #fff; border: 1px solid rgba(197,163,121,0.1); border-radius: 0; }
+.aesthetics-testimonial { background: #fff; border: 1px solid rgba(197,163,121,0.08); border-radius: 0; }
+.aesthetics-testimonial strong { color: #c5a379; }
 
 /* ── CLINIC 3: Rania Al Zahra (Rose / Warm White / Mauve) ───── */
 .womens { background: #fff9f7; color: #2d1a26; }
