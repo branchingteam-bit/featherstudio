@@ -186,7 +186,7 @@
         <div class="pricing-grid">
           <div class="pricing-card glass">
             <p class="plan-label">One-Time</p>
-            <h3 class="plan-price">AED 2,999</h3>
+            <h3 class="plan-price">$799</h3>
             <p class="plan-price-sub">paid once</p>
             <p class="plan-tagline">Own it outright.</p>
             <ul class="plan-features">
@@ -197,7 +197,7 @@
               <li class="yes">Full ownership and login handed over</li>
               <li class="no">Hosting and maintenance after handover is your responsibility</li>
             </ul>
-            <!-- PayPal Button — One-Time Plan (AED 2,999) -->
+            <!-- PayPal Button — One-Time Plan ($799) -->
             <div class="paypal-button-wrapper">
               <style>.pp-3MBPX74TQAJ5C{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;width:100%;}</style>
               <form action="https://www.paypal.com/ncp/payment/3MBPX74TQAJ5C" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
@@ -212,8 +212,8 @@
             <div class="popular-badge">Most Popular</div>
             <p class="plan-label accent">Managed</p>
             <div class="plan-price-managed">
-              <div class="plan-price-setup">AED 1,499 <span class="plan-price-tag">setup</span></div>
-              <div class="plan-price-monthly"><span class="plan-price-plus">+</span> AED 399 <span class="plan-price-tag">/ month</span></div>
+              <div class="plan-price-setup">$399 <span class="plan-price-tag">setup</span></div>
+              <div class="plan-price-monthly"><span class="plan-price-plus">+</span> $109 <span class="plan-price-tag">/ month</span></div>
             </div>
             <p class="plan-tagline">We handle everything, every month.</p>
             <ul class="plan-features">
@@ -225,7 +225,7 @@
               <li class="yes">Same-day response on all requests</li>
               <li class="yes">Cancel any time, no long-term contract</li>
             </ul>
-            <!-- PayPal Button — Managed Plan Setup (AED 1,499) -->
+            <!-- PayPal Button — Managed Plan Setup ($399) -->
             <div class="paypal-button-wrapper">
               <style>.pp-ARFT7KPLLQEHN{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;width:100%;}</style>
               <form action="https://www.paypal.com/ncp/payment/ARFT7KPLLQEHN" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
@@ -234,7 +234,7 @@
                 <section style="font-size: 0.75rem;"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
               </form>
             </div>
-            <p class="plan-note-managed">After your site goes live, you will receive a link to activate your AED 399/month management plan.</p>
+            <p class="plan-note-managed">After your site goes live, you will receive a link to activate your $109/month management plan.</p>
             <p class="plan-note">Setup covers your full website build. Monthly fee covers hosting, updates, and management.</p>
             <p class="plan-note" style="color: var(--color-text-main); font-weight: 500; font-style: normal;">For less than the cost of a single patient consultation each month, your entire website, hosting, updates, and maintenance is completely off your plate.</p>
           </div>
@@ -349,7 +349,7 @@
           <!-- One-Time -->
           <div class="pricing-card glass">
             <p class="plan-label">One-Time</p>
-            <h2 class="plan-price">AED 2,999</h2>
+            <h2 class="plan-price">$799</h2>
             <p class="plan-price-sub">paid once</p>
             <p class="plan-tagline">Own it outright.</p>
             <ul class="plan-features">
@@ -360,7 +360,7 @@
               <li class="yes">Built and launched within 3 days</li>
               <li class="yes">Full ownership and login credentials handed over</li>
             </ul>
-            <!-- PayPal Button — One-Time Plan (AED 2,999) -->
+            <!-- PayPal Button — One-Time Plan ($799) -->
             <div class="paypal-button-wrapper">
               <style>.pp-3MBPX74TQAJ5C{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;width:100%;}</style>
               <form action="https://www.paypal.com/ncp/payment/3MBPX74TQAJ5C" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
@@ -378,8 +378,8 @@
             <div class="popular-badge">Most Popular</div>
             <p class="plan-label accent">Managed</p>
             <div class="plan-price-managed">
-              <div class="plan-price-setup" style="font-size: 2.4rem;">AED 1,499 <span class="plan-price-tag">setup</span></div>
-              <div class="plan-price-monthly" style="font-size: 1.6rem;"><span class="plan-price-plus">+</span> AED 399 <span class="plan-price-tag">/ month</span></div>
+              <div class="plan-price-setup" style="font-size: 2.4rem;">$399 <span class="plan-price-tag">setup</span></div>
+              <div class="plan-price-monthly" style="font-size: 1.6rem;"><span class="plan-price-plus">+</span> $109 <span class="plan-price-tag">/ month</span></div>
             </div>
             <p class="plan-tagline">Everything handled, every month.</p>
             <ul class="plan-features">
@@ -393,7 +393,7 @@
               <li class="yes">Same-day response on all requests</li>
               <li class="yes">Cancel any time, no minimum contract</li>
             </ul>
-            <!-- PayPal Button — Managed Plan Setup (AED 1,499) -->
+            <!-- PayPal Button — Managed Plan Setup ($399) -->
             <div class="paypal-button-wrapper">
               <style>.pp-ARFT7KPLLQEHN{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;width:100%;}</style>
               <form action="https://www.paypal.com/ncp/payment/ARFT7KPLLQEHN" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
@@ -402,7 +402,7 @@
                 <section style="font-size: 0.75rem;"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
               </form>
             </div>
-            <p class="plan-note-managed">After your site goes live, you will receive a link to activate your AED 399/month management plan.</p>
+            <p class="plan-note-managed">After your site goes live, you will receive a link to activate your $109/month management plan.</p>
             <p class="plan-best-for"><strong>Best for:</strong> Busy clinic owners and doctors who want a professional online presence with zero day-to-day involvement. You focus on your patients. We handle everything else.</p>
             <p class="plan-note">Setup covers your full website build. Monthly fee covers hosting, updates, and management.</p>
             <p class="plan-note" style="color: var(--color-text-main); font-weight: 500; font-style: normal;"><strong>Why most clinics choose this:</strong> Running a clinic is already a full-time job. For less than the cost of a single patient consultation each month, your website, hosting, updates, and maintenance are completely off your plate, every single month.</p>
@@ -521,7 +521,7 @@
           <div class="showcase-label">
             <span class="showcase-number">01</span>
             <h2 class="showcase-clinic-name">Al Noor Dental Centre</h2>
-            <p class="showcase-meta">General &amp; Cosmetic Dentistry &nbsp;·&nbsp; Jumeirah, Dubai</p>
+            <p class="showcase-meta">General &amp; Cosmetic Dentistry &nbsp;·&nbsp; Chelsea, London</p>
             <p class="showcase-desc">&ldquo;A clean, premium dental presence that books appointments on autopilot.&rdquo;</p>
             <a href="/contact" class="showcase-cta" data-link>This could be your clinic &rarr;</a>
           </div>
@@ -532,7 +532,7 @@
                 <span class="browser-dot red"></span>
                 <span class="browser-dot yellow"></span>
                 <span class="browser-dot green"></span>
-                <span class="browser-url">alnoordentalcentre.ae</span>
+                <span class="browser-url">alnoordentalcentre.com</span>
               </div>
               <div class="browser-body">
                 <div class="demo-site dental">
@@ -548,9 +548,9 @@
                   <!-- DENTAL HERO SPLIT -->
                   <section class="demo-hero dental-hero">
                     <div class="dental-hero-text">
-                      <p class="demo-eyebrow dental-eyebrow">Cosmetic Dentistry • Jumeirah</p>
+                      <p class="demo-eyebrow dental-eyebrow">Cosmetic Dentistry • Chelsea</p>
                       <h2 class="demo-h1 dental-h1">The art of<br>the perfect smile.</h2>
-                      <p class="demo-sub dental-sub">Elevated dental care for Dubai's most discerning patients. Experience true luxury in modern dentistry.</p>
+                      <p class="demo-sub dental-sub">Elevated dental care for London's most discerning patients. Experience true luxury in modern dentistry.</p>
                       <a class="demo-btn dental-btn">Request Consultation</a>
                     </div>
                     <div class="dental-hero-image">
@@ -599,7 +599,7 @@
           <div class="showcase-label">
             <span class="showcase-number">02</span>
             <h2 class="showcase-clinic-name">Harmony Physiotherapy</h2>
-            <p class="showcase-meta">Physiotherapy &amp; Rehabilitation &nbsp;·&nbsp; Business Bay, Dubai</p>
+            <p class="showcase-meta">Physiotherapy &amp; Rehabilitation &nbsp;·&nbsp; Canary Wharf, London</p>
             <p class="showcase-desc">&ldquo;Built for a busy clinic that needed patients to understand their treatments before booking.&rdquo;</p>
             <a href="/contact" class="showcase-cta" data-link>This could be your clinic &rarr;</a>
           </div>
@@ -610,7 +610,7 @@
                 <span class="browser-dot red"></span>
                 <span class="browser-dot yellow"></span>
                 <span class="browser-dot green"></span>
-                <span class="browser-url">harmonyphysio.ae</span>
+                <span class="browser-url">harmonyphysio.com</span>
               </div>
               <div class="browser-body">
                 <div class="demo-site physio">
@@ -684,7 +684,7 @@
           <div class="showcase-label">
             <span class="showcase-number">03</span>
             <h2 class="showcase-clinic-name">Rania Al Zahra Women's Wellness</h2>
-            <p class="showcase-meta">Women's Health &amp; Gynaecology &nbsp;·&nbsp; Deira, Dubai</p>
+            <p class="showcase-meta">Women's Health &amp; Gynaecology &nbsp;·&nbsp; Marylebone, London</p>
             <p class="showcase-desc">&ldquo;A warm, reassuring website that made patients feel safe before they even walked in.&rdquo;</p>
             <a href="/contact" class="showcase-cta" data-link>This could be your clinic &rarr;</a>
           </div>
@@ -695,7 +695,7 @@
                 <span class="browser-dot red"></span>
                 <span class="browser-dot yellow"></span>
                 <span class="browser-dot green"></span>
-                <span class="browser-url">raniawomenswellness.ae</span>
+                <span class="browser-url">raniawomenswellness.com</span>
               </div>
               <div class="browser-body">
                 <div class="demo-site womens">
@@ -711,7 +711,7 @@
                   <!-- WOMENS HERO -->
                   <section class="demo-hero womens-hero">
                     <div class="demo-hero-content">
-                      <p class="demo-eyebrow womens-eyebrow">Women's Wellness Clinic, Deira</p>
+                      <p class="demo-eyebrow womens-eyebrow">Women's Wellness Clinic, Marylebone</p>
                       <h2 class="demo-h1 womens-h1">Care designed<br>around you.</h2>
                       <p class="demo-sub womens-sub">Specialist gynaecology and women's health in a warm, private, and welcoming environment.</p>
                       <a class="demo-btn womens-btn">Meet Dr. Rania</a>
@@ -763,7 +763,7 @@
                       <div>
                         <p class="demo-section-label womens-label">About the Doctor</p>
                         <h3 class="demo-section-title womens-title" style="margin-bottom:10px;">Dr. Rania Al Zahra</h3>
-                        <p style="font-size:0.78rem;color:#7a506b;line-height:1.6;">With over 15 years of experience in gynaecology and obstetrics, Dr. Rania trained at University College London before returning to the UAE. She is committed to providing compassionate, evidence-based care in a private and respectful setting.</p>
+                        <p style="font-size:0.78rem;color:#7a506b;line-height:1.6;">With over 15 years of experience in gynaecology and obstetrics, Dr. Rania trained at University College London before establishing her London practice. She is committed to providing compassionate, evidence-based care in a private and respectful setting.</p>
                       </div>
                     </div>
                   </section>
@@ -781,8 +781,8 @@
                   <section class="demo-section" style="background:#fff9f7;">
                     <p class="demo-section-label womens-label">Contact Us</p>
                     <h3 class="demo-section-title womens-title" style="margin-bottom:12px;">Book your consultation</h3>
-                    <p class="demo-contact-detail" style="color:#7a506b;">Al Rigga Medical District, Deira, Dubai</p>
-                    <p class="demo-contact-detail" style="color:#7a506b;">+971 04 000 0003</p>
+                    <p class="demo-contact-detail" style="color:#7a506b;">Harley Street, Marylebone, London</p>
+                    <p class="demo-contact-detail" style="color:#7a506b;">+44 20 7946 0003</p>
                     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;">
                       <a class="demo-btn womens-btn">Call Us</a>
                       <a class="demo-btn womens-btn-wa">WhatsApp</a>
@@ -861,7 +861,7 @@
           <p>Activate your monthly management plan below to keep your site hosted, updated, and fully managed by us every month.</p>
           
           <div class="activate-price">
-            $99/month <span style="font-size: 0.9rem; font-weight: 500; opacity: 0.7;">— cancel any time</span>
+            $109/month <span style="font-size: 0.9rem; font-weight: 500; opacity: 0.7;">— cancel any time</span>
           </div>
 
           <div id="paypal-button-container-P-8EU78139GF1282545NHBFUDY"></div>
