@@ -153,6 +153,13 @@ ul { list-style: none; }
   width: 22px;
   height: 22px;
   object-fit: contain;
+  /* Light mode: invert white logo to black */
+  filter: invert(1);
+  transition: filter 0.4s ease;
+}
+[data-theme="dark"] .feather-icon {
+  /* Dark mode: keep logo white (no invert) */
+  filter: invert(0);
 }
 
 .nav-links {
