@@ -1,11 +1,11 @@
-(function(){const a=document.createElement("link").relList;if(a&&a.supports&&a.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))s(e);new MutationObserver(e=>{for(const t of e)if(t.type==="childList")for(const c of t.addedNodes)c.tagName==="LINK"&&c.rel==="modulepreload"&&s(c)}).observe(document,{childList:!0,subtree:!0});function n(e){const t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?t.credentials="include":e.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function s(e){if(e.ep)return;e.ep=!0;const t=n(e);fetch(e.href,t)}})();const m=document.querySelector("#app");let r=localStorage.getItem("theme")||"light";document.documentElement.setAttribute("data-theme",r);const v="971504668481",l=`https://wa.me/${v}`,u={"/":h,"/plans":b,"/work":k,"/contact":A,"/activate":x};function g(o){window.history.pushState({},"",o),p(),window.scrollTo(0,0)}window.addEventListener("popstate",p);const i={search:'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',clock:'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',tag:'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>',wrench:'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>',whatsapp:'<svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>',envelope:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',zap:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',check:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',arrowRight:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>'};function y(){return`
-    <a href="${l}" target="_blank" id="whatsapp-fab" title="WhatsApp Us">
-      ${i.whatsapp}
+(function(){const a=document.createElement("link").relList;if(a&&a.supports&&a.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))s(e);new MutationObserver(e=>{for(const i of e)if(i.type==="childList")for(const r of i.addedNodes)r.tagName==="LINK"&&r.rel==="modulepreload"&&s(r)}).observe(document,{childList:!0,subtree:!0});function t(e){const i={};return e.integrity&&(i.integrity=e.integrity),e.referrerPolicy&&(i.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?i.credentials="include":e.crossOrigin==="anonymous"?i.credentials="omit":i.credentials="same-origin",i}function s(e){if(e.ep)return;e.ep=!0;const i=t(e);fetch(e.href,i)}})();const m=document.querySelector("#app");let l=localStorage.getItem("theme")||"light";document.documentElement.setAttribute("data-theme",l);const v="971504668481",c=`https://wa.me/${v}`,u={"/":h,"/plans":b,"/work":k,"/contact":A,"/activate":x};function g(o){window.history.pushState({},"",o),p(),window.scrollTo(0,0)}window.addEventListener("popstate",p);const n={search:'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',clock:'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',tag:'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>',wrench:'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>',whatsapp:'<svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>',envelope:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',zap:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',check:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',arrowRight:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>'};function y(){return`
+    <a href="${c}" target="_blank" id="whatsapp-fab" title="WhatsApp Us">
+      ${n.whatsapp}
     </a>
   `}function w(){return`
     <nav class="nav" id="main-nav">
       <a href="/" class="logo" data-link>
-        <img src="/feather.png" alt="Feather Studio" class="feather-icon">
+        <img src="${l==="light"?"/feather-light.png":"/feather-dark.png"}" alt="Feather Studio" class="feather-icon">
         Feather Studio
       </a>
       <div class="nav-links">
@@ -13,8 +13,8 @@
         <a href="/plans" class="nav-link" data-link>Plans</a>
         <a href="/work" class="nav-link" data-link>Our Work</a>
         <a href="/contact" class="nav-link" data-link>Contact</a>
-        <button class="theme-toggle" id="theme-toggle" title="Toggle theme">${r==="light"?"🌙":"☀️"}</button>
-        <a href="${l}" target="_blank" class="btn btn-primary">WhatsApp Us</a>
+        <button class="theme-toggle" id="theme-toggle" title="Toggle theme">${l==="light"?"🌙":"☀️"}</button>
+        <a href="${c}" target="_blank" class="btn btn-primary">WhatsApp Us</a>
       </div>
     </nav>
   `}function f(){return`
@@ -22,7 +22,7 @@
       <div class="container footer-grid">
         <div>
           <div class="logo" style="margin-bottom: 18px; font-size: 1.1rem;">
-            <img src="/feather.png" alt="Feather Studio" class="feather-icon" style="width:20px;height:20px;">
+            <img src="${l==="light"?"/feather-light.png":"/feather-dark.png"}" alt="Feather Studio" class="feather-icon" style="width:28px;height:28px;">
             Feather Studio
           </div>
           <p style="color: var(--color-text-dim); max-width: 260px; font-size: 0.9rem; line-height: 1.7;">Specialist web studio for clinics and medical professionals.</p>
@@ -41,7 +41,7 @@
           <div class="footer-links">
 
             <a href="mailto:hellofeatherstudio@gmail.com">hellofeatherstudio@gmail.com</a>
-            <a href="${l}" target="_blank" style="font-weight: 700; color: var(--color-accent);">WhatsApp Us</a>
+            <a href="${c}" target="_blank" style="font-weight: 700; color: var(--color-accent);">WhatsApp Us</a>
           </div>
         </div>
       </div>
@@ -59,7 +59,7 @@
         <p class="hero-sub">Most private clinics have no website — or one that doesn't work. Every day patients search for your specialty and book with whoever shows up online. We make sure that's you.</p>
         <div class="hero-ctas">
           <a href="/plans" class="btn btn-primary" data-link>See Our Plans</a>
-          <a href="${l}" target="_blank" class="btn btn-secondary">WhatsApp Us</a>
+          <a href="${c}" target="_blank" class="btn btn-secondary">WhatsApp Us</a>
         </div>
         <p class="hero-process-note">WhatsApp us and we'll book a quick 15 minute call to understand what you need.</p>
       </div>
@@ -69,17 +69,17 @@
     <div class="trust-strip">
       <div class="container trust-strip-inner">
         <div class="trust-strip-item">
-          <span class="trust-strip-icon">${i.wrench}</span>
+          <span class="trust-strip-icon">${n.wrench}</span>
           <span>Specialists in clinic websites</span>
         </div>
         <div class="trust-strip-divider"></div>
         <div class="trust-strip-item">
-          <span class="trust-strip-icon">${i.zap}</span>
+          <span class="trust-strip-icon">${n.zap}</span>
           <span>Live in 3 days, every time</span>
         </div>
         <div class="trust-strip-divider"></div>
         <div class="trust-strip-item">
-          <span class="trust-strip-icon">${i.check}</span>
+          <span class="trust-strip-icon">${n.check}</span>
           <span>Trusted by clinic owners</span>
         </div>
       </div>
@@ -94,22 +94,22 @@
         </div>
         <div class="grid-2">
           <div class="card glass">
-            <span class="card-icon">${i.search}</span>
+            <span class="card-icon">${n.search}</span>
             <h3>Patients search before they book</h3>
             <p>Before calling any clinic, most patients search online first. If your clinic has no website, or a poor one, they find your competitor instead. That patient is gone before you even knew they existed.</p>
           </div>
           <div class="card glass">
-            <span class="card-icon">${i.clock}</span>
+            <span class="card-icon">${n.clock}</span>
             <h3>You have zero time for websites</h3>
             <p>You're seeing patients, managing staff, and running a business. Figuring out domains, hosting, and website updates is nobody's idea of a good use of your time. That's what we're here for.</p>
           </div>
           <div class="card glass">
-            <span class="card-icon">${i.tag}</span>
+            <span class="card-icon">${n.tag}</span>
             <h3>Most agencies charge too much and take too long</h3>
             <p>Most web agencies charge thousands and take months. We build professional clinic websites in 3 days at a flat price, with no surprises.</p>
           </div>
           <div class="card glass card-accent">
-            <span class="card-icon">${i.wrench}</span>
+            <span class="card-icon">${n.wrench}</span>
             <h3>A website isn't a one-time thing</h3>
             <p>Domains expire. Hosting goes down. Information changes. Without someone managing it, your website becomes a liability. Our managed plan keeps everything running. You never have to think about it.</p>
           </div>
@@ -127,15 +127,15 @@
           <p class="body-text" style="margin-top: 16px;">We offer two options. You can own your website outright with a one-time payment and manage it yourself from there. Or you can choose our managed plan: we build it, host it, and handle every update and technical issue indefinitely. All you do is WhatsApp us when something needs changing.</p>
           <ul class="feature-list">
             <li>
-              <span class="feature-bullet">${i.check}</span>
+              <span class="feature-bullet">${n.check}</span>
               <div><strong>Clinic-focused by design.</strong> We only work with medical practices, which means we understand what patients expect when they land on a clinic website.</div>
             </li>
             <li>
-              <span class="feature-bullet">${i.check}</span>
+              <span class="feature-bullet">${n.check}</span>
               <div><strong>Live in 3 days.</strong> You review once, we launch. No lengthy back-and-forth, no waiting months.</div>
             </li>
             <li>
-              <span class="feature-bullet">${i.check}</span>
+              <span class="feature-bullet">${n.check}</span>
               <div><strong>Managed plan available.</strong> For clinic owners who want zero involvement. We handle hosting, updates, renewals, and maintenance every month.</div>
             </li>
           </ul>
@@ -256,13 +256,13 @@
             <h3>You reach out</h3>
             <p>WhatsApp us or fill in the contact form. We respond within the hour.</p>
           </div>
-          <div class="how-step-arrow">${i.arrowRight}</div>
+          <div class="how-step-arrow">${n.arrowRight}</div>
           <div class="how-step">
             <div class="how-step-number">02</div>
             <h3>We have a quick call</h3>
             <p>A short 15-minute call to understand your clinic and what you need. No commitment, no pressure.</p>
           </div>
-          <div class="how-step-arrow">${i.arrowRight}</div>
+          <div class="how-step-arrow">${n.arrowRight}</div>
           <div class="how-step">
             <div class="how-step-number">03</div>
             <h3>We build and launch</h3>
@@ -278,7 +278,7 @@
         <h2>Your patients are searching right now. Let's make sure they find you.</h2>
         <p>Getting started takes one conversation. Get in touch today and your clinic can be online within 3 days.</p>
         <div class="hero-ctas">
-          <a href="${l}" target="_blank" class="btn btn-primary btn-large">WhatsApp Us Now</a>
+          <a href="${c}" target="_blank" class="btn btn-primary btn-large">WhatsApp Us Now</a>
           <a href="/plans" class="btn btn-secondary btn-large" data-link>See Plans</a>
         </div>
       </div>
@@ -487,7 +487,7 @@
         <h2>Your patients are searching right now. Let's make sure they find you.</h2>
         <p>Getting started takes one conversation. Get in touch today and your clinic can be online within 3 days.</p>
         <div class="hero-ctas">
-          <a href="${l}" target="_blank" class="btn btn-primary btn-large">WhatsApp Us Now</a>
+          <a href="${c}" target="_blank" class="btn btn-primary btn-large">WhatsApp Us Now</a>
           <a href="/contact" class="btn btn-secondary btn-large" data-link>Send an Enquiry</a>
         </div>
       </div>
@@ -830,7 +830,7 @@
         <p>Every website we build is designed specifically for your specialty, your patients, and your location. Built in 3 days. Managed for you every month.</p>
         <div class="hero-ctas">
           <a href="/plans" class="btn btn-primary" data-link>See Our Plans</a>
-          <a href="${l}" target="_blank" class="btn btn-secondary">WhatsApp Us</a>
+          <a href="${c}" target="_blank" class="btn btn-secondary">WhatsApp Us</a>
         </div>
       </div>
     </section>
@@ -843,15 +843,15 @@
           <p class="body-text">We work with clinic owners remotely. No matter where your clinic is, we can have your website live within 3 days. WhatsApp us or fill in the form and we will get back to you as soon as we can.</p>
 
           <div class="contact-methods">
-            <a href="${l}" target="_blank" class="contact-method glass">
-              <span class="contact-method-icon">${i.whatsapp.replace('fill="white"','fill="currentColor"')}</span>
+            <a href="${c}" target="_blank" class="contact-method glass">
+              <span class="contact-method-icon">${n.whatsapp.replace('fill="white"','fill="currentColor"')}</span>
               <div>
                 <p class="contact-method-label">WhatsApp: fastest response</p>
                 <p class="contact-method-value">+971 50 466 8481</p>
               </div>
             </a>
             <div class="contact-method glass">
-              <span class="contact-method-icon">${i.envelope}</span>
+              <span class="contact-method-icon">${n.envelope}</span>
               <div>
                 <p class="contact-method-label">Email</p>
                 <p class="contact-method-value">hellofeatherstudio@gmail.com</p>
@@ -898,4 +898,4 @@
     <main>${a()}</main>
     ${f()}
     ${y()}
-  `,C(),S(),setTimeout(()=>{const e=document.getElementById("hero-content");e&&e.classList.add("visible")},100);const n=document.getElementById("main-nav"),s=()=>{window.scrollY>60?n.classList.add("scrolled"):n.classList.remove("scrolled")};window.removeEventListener("scroll",s),window.addEventListener("scroll",s)}function E(o,a){const n="paypal-sdk";let s=document.getElementById(n);const e=()=>{window.paypal?a():setTimeout(()=>{window.paypal&&a()},100)};if(s){window.paypal?a():s.addEventListener("load",e);return}s=document.createElement("script"),s.id=n,s.src=`https://www.paypal.com/sdk/js?client-id=ATdtILYx2T5yoKB9AH86nDYMlD4bQ1PnOk_y_SOL3b42qP2E3nTfHlxL1KLFLu9w7Ao9jhTYvk4jfhEB&${o}`,s.setAttribute("data-sdk-integration-source","button-factory"),s.addEventListener("load",e),document.head.appendChild(s)}function S(){if(window.location.pathname==="/activate"){const a=document.getElementById("paypal-button-container-P-8EU78139GF1282545NHBFUDY");a&&a.children.length===0&&E("vault=true&intent=subscription",()=>{window.paypal.Buttons({style:{shape:"rect",color:"blue",layout:"vertical",label:"paypal"},createSubscription:function(n,s){return s.subscription.create({plan_id:"P-8EU78139GF1282545NHBFUDY"})},onApprove:function(n,s){alert("Thank you! Your management plan is now active. We will be in touch shortly.")}}).render(a)})}}function C(){document.querySelectorAll("[data-link]").forEach(n=>{n.addEventListener("click",s=>{s.preventDefault();const e=n.getAttribute("href");e&&g(e)})});const o=document.getElementById("theme-toggle");o&&o.addEventListener("click",()=>{r=r==="light"?"dark":"light",document.documentElement.setAttribute("data-theme",r),localStorage.setItem("theme",r),o.textContent=r==="light"?"🌙":"☀️"});const a=document.querySelectorAll(".showcase-dot");if(a.length>0){a.forEach(e=>{e.addEventListener("click",t=>{t.preventDefault();const c=e.getAttribute("href"),d=document.querySelector(c);d&&d.scrollIntoView({behavior:"smooth"})})});const n={root:null,threshold:.5},s=new IntersectionObserver(e=>{e.forEach(t=>{if(t.isIntersecting){const c=t.target.getAttribute("id");a.forEach(d=>{d.classList.toggle("active",d.getAttribute("href")===`#${c}`)})}})},n);document.querySelectorAll(".showcase-clinic").forEach(e=>{s.observe(e)})}}p();
+  `,C(),S(),setTimeout(()=>{const e=document.getElementById("hero-content");e&&e.classList.add("visible")},100);const t=document.getElementById("main-nav"),s=()=>{window.scrollY>60?t.classList.add("scrolled"):t.classList.remove("scrolled")};window.removeEventListener("scroll",s),window.addEventListener("scroll",s)}function E(o,a){const t="paypal-sdk";let s=document.getElementById(t);const e=()=>{window.paypal?a():setTimeout(()=>{window.paypal&&a()},100)};if(s){window.paypal?a():s.addEventListener("load",e);return}s=document.createElement("script"),s.id=t,s.src=`https://www.paypal.com/sdk/js?client-id=ATdtILYx2T5yoKB9AH86nDYMlD4bQ1PnOk_y_SOL3b42qP2E3nTfHlxL1KLFLu9w7Ao9jhTYvk4jfhEB&${o}`,s.setAttribute("data-sdk-integration-source","button-factory"),s.addEventListener("load",e),document.head.appendChild(s)}function S(){if(window.location.pathname==="/activate"){const a=document.getElementById("paypal-button-container-P-8EU78139GF1282545NHBFUDY");a&&a.children.length===0&&E("vault=true&intent=subscription",()=>{window.paypal.Buttons({style:{shape:"rect",color:"blue",layout:"vertical",label:"paypal"},createSubscription:function(t,s){return s.subscription.create({plan_id:"P-8EU78139GF1282545NHBFUDY"})},onApprove:function(t,s){alert("Thank you! Your management plan is now active. We will be in touch shortly.")}}).render(a)})}}function C(){document.querySelectorAll("[data-link]").forEach(t=>{t.addEventListener("click",s=>{s.preventDefault();const e=t.getAttribute("href");e&&g(e)})});const o=document.getElementById("theme-toggle");o&&o.addEventListener("click",()=>{l=l==="light"?"dark":"light",document.documentElement.setAttribute("data-theme",l),localStorage.setItem("theme",l),o.textContent=l==="light"?"🌙":"☀️";const t=document.querySelectorAll(".feather-icon"),s=l==="light"?"/feather-light.png":"/feather-dark.png";t.forEach(e=>e.src=s)});const a=document.querySelectorAll(".showcase-dot");if(a.length>0){a.forEach(e=>{e.addEventListener("click",i=>{i.preventDefault();const r=e.getAttribute("href"),d=document.querySelector(r);d&&d.scrollIntoView({behavior:"smooth"})})});const t={root:null,threshold:.5},s=new IntersectionObserver(e=>{e.forEach(i=>{if(i.isIntersecting){const r=i.target.getAttribute("id");a.forEach(d=>{d.classList.toggle("active",d.getAttribute("href")===`#${r}`)})}})},t);document.querySelectorAll(".showcase-clinic").forEach(e=>{s.observe(e)})}}p();

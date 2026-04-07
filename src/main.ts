@@ -54,10 +54,11 @@ function WhatsAppFAB() {
 // ─── Navbar ───────────────────────────────────────────────────
 function Navbar() {
   const themeIcon = currentTheme === 'light' ? '🌙' : '☀️'
+  const logoSrc = currentTheme === 'light' ? '/feather-light.png' : '/feather-dark.png'
   return `
     <nav class="nav" id="main-nav">
       <a href="/" class="logo" data-link>
-        <img src="/feather.png" alt="Feather Studio" class="feather-icon">
+        <img src="${logoSrc}" alt="Feather Studio" class="feather-icon">
         Feather Studio
       </a>
       <div class="nav-links">
@@ -79,7 +80,7 @@ function Footer() {
       <div class="container footer-grid">
         <div>
           <div class="logo" style="margin-bottom: 18px; font-size: 1.1rem;">
-            <img src="/feather.png" alt="Feather Studio" class="feather-icon" style="width:20px;height:20px;">
+            <img src="${currentTheme === 'light' ? '/feather-light.png' : '/feather-dark.png'}" alt="Feather Studio" class="feather-icon" style="width:28px;height:28px;">
             Feather Studio
           </div>
           <p style="color: var(--color-text-dim); max-width: 260px; font-size: 0.9rem; line-height: 1.7;">Specialist web studio for clinics and medical professionals.</p>
@@ -1092,6 +1093,11 @@ function initEvents() {
       document.documentElement.setAttribute('data-theme', currentTheme)
       localStorage.setItem('theme', currentTheme)
       toggleBtn.textContent = currentTheme === 'light' ? '🌙' : '☀️'
+      
+      // Update all logos
+      const logos = document.querySelectorAll('.feather-icon') as NodeListOf<HTMLImageElement>
+      const newLogoSrc = currentTheme === 'light' ? '/feather-light.png' : '/feather-dark.png'
+      logos.forEach(img => img.src = newLogoSrc)
     })
   }
 

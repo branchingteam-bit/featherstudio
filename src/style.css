@@ -150,16 +150,10 @@ ul { list-style: none; }
   letter-spacing: -0.02em;
 }
 .feather-icon {
-  width: 22px;
-  height: 22px;
+  width: 36px;
+  height: 36px;
   object-fit: contain;
-  /* Light mode: invert white logo to black */
-  filter: invert(1);
-  transition: filter 0.4s ease;
-}
-[data-theme="dark"] .feather-icon {
-  /* Dark mode: keep logo white (no invert) */
-  filter: invert(0);
+  transition: opacity 0.3s ease;
 }
 
 .nav-links {
