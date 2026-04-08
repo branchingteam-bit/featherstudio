@@ -80,7 +80,7 @@ function Footer() {
       <div class="container footer-grid">
         <div>
           <div class="logo" style="margin-bottom: 18px; font-size: 1.1rem;">
-            <img src="${currentTheme === 'light' ? '/feather-light.png' : '/feather-dark.png'}" alt="Feather Studio" class="feather-icon" style="width:28px;height:28px;">
+            <img src="${currentTheme === 'light' ? '/feather-light.png' : '/feather-dark.png'}" alt="Feather Studio" class="feather-icon" style="width:42px;height:42px;">
             Feather Studio
           </div>
           <p style="color: var(--color-text-dim); max-width: 260px; font-size: 0.9rem; line-height: 1.7;">Specialist web studio for clinics and medical professionals.</p>

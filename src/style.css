@@ -150,10 +150,14 @@ ul { list-style: none; }
   letter-spacing: -0.02em;
 }
 .feather-icon {
-  width: 36px;
-  height: 36px;
+  width: 54px;
+  height: 54px;
   object-fit: contain;
   transition: opacity 0.3s ease;
+  mix-blend-mode: multiply;
+}
+[data-theme="dark"] .feather-icon {
+  mix-blend-mode: screen;
 }
 
 .nav-links {
