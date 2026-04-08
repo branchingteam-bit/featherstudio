@@ -119,7 +119,7 @@ function Home() {
       <div class="container" style="display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 800px; padding-top: 80px;">
         <div class="hero-content reveal revealed" id="hero-content">
           <p class="hero-eyebrow">Feather Studio · Specialist Agency</p>
-          <h1>Stop losing patients online.</h1>
+          <h1>Your competitor's website books 3x more patients.</h1>
           <p class="hero-sub" style="font-size: 1.15rem; max-width: 520px; margin-left: auto; margin-right: auto;">Most private clinics quietly lose patients to competitors who look more trustworthy online. We build high-converting, premium clinical websites in 3 days. Managed forever.</p>
           <div class="hero-ctas" style="justify-content: center; margin-bottom: 24px;">
             <a href="/plans" class="btn btn-primary" data-link>See Pricing</a>
