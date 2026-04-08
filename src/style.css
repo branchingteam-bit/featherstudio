@@ -6,8 +6,8 @@
   --color-surface: #F4F4F4;
   --color-card: #FFFFFF;
   --color-border: #000000;
-  --color-accent: #FF3300; /* Brutalist Vermillion */
-  --color-accent-dim: rgba(255, 51, 0, 0.1);
+  --color-accent: #0055FF; /* Clinical Trust Blue */
+  --color-accent-dim: rgba(0, 85, 255, 0.1);
   --color-text-main: #000000;
   --color-text-dim: #555555;
   --color-glass-highlight: transparent;
@@ -22,8 +22,8 @@
   --color-surface: #141414;
   --color-card: #0A0A0A;
   --color-border: #444444;
-  --color-accent: #FF3300;
-  --color-accent-dim: rgba(255, 51, 0, 0.15);
+  --color-accent: #0088FF;
+  --color-accent-dim: rgba(0, 136, 255, 0.15);
   --color-text-main: #FFFFFF;
   --color-text-dim: #999999;
   --color-glass-highlight: transparent;
@@ -55,7 +55,7 @@ body::before {
   position: fixed;
   inset: 0;
   background: var(--color-bg);
-  opacity: 0.85; /* makes the grid subtle */
+  opacity: 0.95; /* Makes the engineering grid extremely subtle */
   z-index: -1;
 }
 
@@ -79,12 +79,12 @@ ul { list-style: none; }
   background: var(--color-card);
   border: 2px solid var(--color-text-main);
   border-radius: 0;
-  box-shadow: 6px 6px 0 var(--color-text-main);
+  box-shadow: 4px 4px 0 var(--color-text-main);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .glass:hover {
-  transform: translate(-4px, -4px);
-  box-shadow: 12px 12px 0 var(--color-accent);
+  transform: translate(-3px, -3px);
+  box-shadow: 7px 7px 0 var(--color-accent);
 }
 
 /* ─── Typography helpers ─────────────────────────────────── */

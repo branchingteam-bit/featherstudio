@@ -2,7 +2,7 @@
     <a href="${r}" target="_blank" id="whatsapp-fab" title="WhatsApp Us">
       ${i.whatsapp}
     </a>
-  `}function f(){return`
+  `}function b(){return`
     <nav class="nav" id="main-nav">
       <a href="/" class="logo" data-link>
         <img src="${l==="light"?"/feather-light.png":"/feather-dark.png"}" alt="Feather Studio" class="feather-icon">
@@ -17,7 +17,7 @@
         <a href="${r}" target="_blank" class="btn btn-primary">WhatsApp Us</a>
       </div>
     </nav>
-  `}function b(){return`
+  `}function f(){return`
     <footer class="site-footer">
       <div class="container footer-grid">
         <div>
@@ -56,13 +56,13 @@
       <div class="hero-layout">
         <div class="hero-content reveal revealed" id="hero-content">
           <p class="hero-eyebrow">Feather Studio · Specialist Agency</p>
-          <h1>The art of<br>modern practice.</h1>
-          <p class="hero-sub" style="font-size: 1.15rem; max-width: 480px;">Elevated web experiences for clinics. We combine ruthless conversion architecture with uncompromising luxury. Fully managed, live in 3 days.</p>
+          <h1>Your competitor's website books 3x more patients.</h1>
+          <p class="hero-sub" style="font-size: 1.15rem; max-width: 480px;">Most private clinics quietly lose patients to competitors who look more trustworthy online. We build high-converting, premium clinical websites in 3 days. Managed forever.</p>
           <div class="hero-ctas">
-            <a href="/plans" class="btn btn-primary" data-link>See Our Plans</a>
-            <a href="${r}" target="_blank" class="btn btn-secondary">WhatsApp Us</a>
+            <a href="/plans" class="btn btn-primary" data-link>See Pricing</a>
+            <a href="${r}" target="_blank" class="btn btn-secondary">Book Strategy Call</a>
           </div>
-          <p class="hero-process-note">WhatsApp us and we'll book a quick 15 minute call to understand what you need.</p>
+          <p class="hero-process-note"><strong>Trusted by 40+ clinics in the UK & UAE.</strong> WhatsApp us to book a quick 15-min discovery call.</p>
         </div>
         
         <div class="hero-visual reveal revealed">
@@ -219,7 +219,7 @@
         <div class="pricing-grid reveal">
           <div class="pricing-card glass">
             <p class="plan-label">One-Time</p>
-            <h3 class="plan-price">$799</h3>
+            <h3 class="plan-price">£799</h3>
             <p class="plan-price-sub">paid once</p>
             <p class="plan-tagline">Own it outright.</p>
             <ul class="plan-features">
@@ -230,7 +230,7 @@
               <li class="yes">Full ownership and login handed over</li>
               <li class="no">Hosting and maintenance after handover is your responsibility</li>
             </ul>
-            <!-- PayPal Button — One-Time Plan ($799) -->
+            <!-- PayPal Button — One-Time Plan (£799) -->
             <div class="paypal-button-wrapper">
               <style>.pp-3MBPX74TQAJ5C{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;width:100%;}</style>
               <form action="https://www.paypal.com/ncp/payment/3MBPX74TQAJ5C" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
@@ -245,8 +245,8 @@
             <div class="popular-badge">Most Popular</div>
             <p class="plan-label accent">Managed</p>
             <div class="plan-price-managed">
-              <div class="plan-price-setup">$399 <span class="plan-price-tag">setup</span></div>
-              <div class="plan-price-monthly"><span class="plan-price-plus">+</span> $109 <span class="plan-price-tag">/ month</span></div>
+              <div class="plan-price-setup">£399 <span class="plan-price-tag">setup</span></div>
+              <div class="plan-price-monthly"><span class="plan-price-plus">+</span> £109 <span class="plan-price-tag">/ month</span></div>
             </div>
             <p class="plan-tagline">We handle everything, every month.</p>
             <ul class="plan-features">
@@ -258,7 +258,7 @@
               <li class="yes">Same-day response on all requests</li>
               <li class="yes">Cancel any time, no long-term contract</li>
             </ul>
-            <!-- PayPal Button — Managed Plan Setup ($399) -->
+            <!-- PayPal Button — Managed Plan Setup (£399) -->
             <div class="paypal-button-wrapper">
               <style>.pp-ARFT7KPLLQEHN{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;width:100%;}</style>
               <form action="https://www.paypal.com/ncp/payment/ARFT7KPLLQEHN" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
@@ -267,7 +267,7 @@
                 <section style="font-size: 0.75rem;"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
               </form>
             </div>
-            <p class="plan-note-managed">After your site goes live, you will receive a link to activate your $109/month management plan.</p>
+            <p class="plan-note-managed">After your site goes live, you will receive a link to activate your £109/month management plan.</p>
             <p class="plan-note">Setup covers your full website build. Monthly fee covers hosting, updates, and management.</p>
             <p class="plan-note" style="color: var(--color-text-main); font-weight: 500; font-style: normal;">For less than the cost of a single patient consultation each month, your entire website, hosting, updates, and maintenance is completely off your plate.</p>
           </div>
@@ -382,7 +382,7 @@
           <!-- One-Time -->
           <div class="pricing-card glass">
             <p class="plan-label">One-Time</p>
-            <h2 class="plan-price">$799</h2>
+            <h2 class="plan-price">£799</h2>
             <p class="plan-price-sub">paid once</p>
             <p class="plan-tagline">Own it outright.</p>
             <ul class="plan-features">
@@ -393,7 +393,7 @@
               <li class="yes">Built and launched within 3 days</li>
               <li class="yes">Full ownership and login credentials handed over</li>
             </ul>
-            <!-- PayPal Button — One-Time Plan ($799) -->
+            <!-- PayPal Button — One-Time Plan (£799) -->
             <div class="paypal-button-wrapper">
               <style>.pp-3MBPX74TQAJ5C{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;width:100%;}</style>
               <form action="https://www.paypal.com/ncp/payment/3MBPX74TQAJ5C" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
@@ -411,8 +411,8 @@
             <div class="popular-badge">Most Popular</div>
             <p class="plan-label accent">Managed</p>
             <div class="plan-price-managed">
-              <div class="plan-price-setup" style="font-size: 2.4rem;">$399 <span class="plan-price-tag">setup</span></div>
-              <div class="plan-price-monthly" style="font-size: 1.6rem;"><span class="plan-price-plus">+</span> $109 <span class="plan-price-tag">/ month</span></div>
+              <div class="plan-price-setup" style="font-size: 2.4rem;">£399 <span class="plan-price-tag">setup</span></div>
+              <div class="plan-price-monthly" style="font-size: 1.6rem;"><span class="plan-price-plus">+</span> £109 <span class="plan-price-tag">/ month</span></div>
             </div>
             <p class="plan-tagline">Everything handled, every month.</p>
             <ul class="plan-features">
@@ -426,7 +426,7 @@
               <li class="yes">Same-day response on all requests</li>
               <li class="yes">Cancel any time, no minimum contract</li>
             </ul>
-            <!-- PayPal Button — Managed Plan Setup ($399) -->
+            <!-- PayPal Button — Managed Plan Setup (£399) -->
             <div class="paypal-button-wrapper">
               <style>.pp-ARFT7KPLLQEHN{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;width:100%;}</style>
               <form action="https://www.paypal.com/ncp/payment/ARFT7KPLLQEHN" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
@@ -435,7 +435,7 @@
                 <section style="font-size: 0.75rem;"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
               </form>
             </div>
-            <p class="plan-note-managed">After your site goes live, you will receive a link to activate your $109/month management plan.</p>
+            <p class="plan-note-managed">After your site goes live, you will receive a link to activate your £109/month management plan.</p>
             <p class="plan-best-for"><strong>Best for:</strong> Busy clinic owners and doctors who want a professional online presence with zero day-to-day involvement. You focus on your patients. We handle everything else.</p>
             <p class="plan-note">Setup covers your full website build. Monthly fee covers hosting, updates, and management.</p>
             <p class="plan-note" style="color: var(--color-text-main); font-weight: 500; font-style: normal;"><strong>Why most clinics choose this:</strong> Running a clinic is already a full-time job. For less than the cost of a single patient consultation each month, your website, hosting, updates, and maintenance are completely off your plate, every single month.</p>
@@ -915,7 +915,7 @@
           <p>Activate your monthly management plan below to keep your site hosted, updated, and fully managed by us every month.</p>
           
           <div class="activate-price">
-            $109/month <span style="font-size: 0.9rem; font-weight: 500; opacity: 0.7;">— cancel any time</span>
+            £109/month <span style="font-size: 0.9rem; font-weight: 500; opacity: 0.7;">— cancel any time</span>
           </div>
 
           <div id="paypal-button-container-P-8EU78139GF1282545NHBFUDY"></div>
@@ -927,8 +927,8 @@
       </div>
     </section>
   `}function h(){const o=window.location.pathname,t=g[o]||v;m.innerHTML=`
-    ${f()}
-    <main>${t()}</main>
     ${b()}
+    <main>${t()}</main>
+    ${f()}
     ${w()}
   `,C(),T(),setTimeout(()=>{const e=document.getElementById("hero-content");e&&e.classList.add("visible")},100);const n=document.getElementById("main-nav"),s=()=>{window.scrollY>60?n.classList.add("scrolled"):n.classList.remove("scrolled")};window.removeEventListener("scroll",s),window.addEventListener("scroll",s)}function S(o,t){const n="paypal-sdk";let s=document.getElementById(n);const e=()=>{window.paypal?t():setTimeout(()=>{window.paypal&&t()},100)};if(s){window.paypal?t():s.addEventListener("load",e);return}s=document.createElement("script"),s.id=n,s.src=`https://www.paypal.com/sdk/js?client-id=ATdtILYx2T5yoKB9AH86nDYMlD4bQ1PnOk_y_SOL3b42qP2E3nTfHlxL1KLFLu9w7Ao9jhTYvk4jfhEB&${o}`,s.setAttribute("data-sdk-integration-source","button-factory"),s.addEventListener("load",e),document.head.appendChild(s)}function T(){if(window.location.pathname==="/activate"){const t=document.getElementById("paypal-button-container-P-8EU78139GF1282545NHBFUDY");t&&t.children.length===0&&S("vault=true&intent=subscription",()=>{window.paypal.Buttons({style:{shape:"rect",color:"blue",layout:"vertical",label:"paypal"},createSubscription:function(n,s){return s.subscription.create({plan_id:"P-8EU78139GF1282545NHBFUDY"})},onApprove:function(n,s){alert("Thank you! Your management plan is now active. We will be in touch shortly.")}}).render(t)})}}function C(){document.querySelectorAll("[data-link]").forEach(s=>{s.addEventListener("click",e=>{e.preventDefault();const a=s.getAttribute("href");a&&y(a)})});const o=document.getElementById("theme-toggle");o&&o.addEventListener("click",()=>{l=l==="light"?"dark":"light",document.documentElement.setAttribute("data-theme",l),localStorage.setItem("theme",l),o.textContent=l==="light"?"🌙":"☀️";const s=document.querySelectorAll(".feather-icon"),e=l==="light"?"/feather-light.png":"/feather-dark.png";s.forEach(a=>a.src=e)});const t=new IntersectionObserver(s=>{s.forEach(e=>{e.isIntersecting&&e.target.classList.add("revealed")})},{threshold:.1,rootMargin:"0px 0px -40px 0px"});document.querySelectorAll(".reveal").forEach(s=>t.observe(s));const n=document.querySelectorAll(".showcase-dot");if(n.length>0){n.forEach(a=>{a.addEventListener("click",c=>{c.preventDefault();const p=a.getAttribute("href"),d=document.querySelector(p);d&&d.scrollIntoView({behavior:"smooth"})})});const s={root:null,threshold:.5},e=new IntersectionObserver(a=>{a.forEach(c=>{if(c.isIntersecting){const p=c.target.getAttribute("id");n.forEach(d=>{d.classList.toggle("active",d.getAttribute("href")===`#${p}`)})}})},s);document.querySelectorAll(".showcase-clinic").forEach(a=>{e.observe(a)})}}h();
