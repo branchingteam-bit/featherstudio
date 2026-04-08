@@ -116,21 +116,54 @@ function Home() {
     <!-- HERO -->
     <section class="hero">
       <div class="hero-warm-glow"></div>
-      <div class="hero-content visible" id="hero-content" style="opacity: 1; transform: translateY(0);">
-        <p class="hero-eyebrow">Feather Studio · Web Design for Clinics</p>
-        <h1>Your patients are searching. Are they finding you?</h1>
-        <p class="hero-sub">Most private clinics have no website — or one that doesn't work. Every day patients search for your specialty and book with whoever shows up online. We make sure that's you.</p>
-        <div class="hero-ctas">
-          <a href="/plans" class="btn btn-primary" data-link>See Our Plans</a>
-          <a href="${WA_URL}" target="_blank" class="btn btn-secondary">WhatsApp Us</a>
+      <div class="hero-layout">
+        <div class="hero-content reveal revealed" id="hero-content">
+          <p class="hero-eyebrow">Feather Studio · Web Design for Clinics</p>
+          <h1>Your patients are searching. Are they finding you?</h1>
+          <p class="hero-sub">Most private clinics have no website — or one that doesn't work. Every day patients search for your specialty and book with whoever shows up online. We make sure that's you.</p>
+          <div class="hero-ctas">
+            <a href="/plans" class="btn btn-primary" data-link>See Our Plans</a>
+            <a href="${WA_URL}" target="_blank" class="btn btn-secondary">WhatsApp Us</a>
+          </div>
+          <p class="hero-process-note">WhatsApp us and we'll book a quick 15 minute call to understand what you need.</p>
         </div>
-        <p class="hero-process-note">WhatsApp us and we'll book a quick 15 minute call to understand what you need.</p>
+        
+        <div class="hero-visual reveal revealed">
+          <div class="browser-chrome" style="width: 100%; max-width: 520px; font-size: 0.85em;">
+            <div class="browser-bar" style="padding: 10px 14px;">
+              <span class="browser-dot red"></span>
+              <span class="browser-dot yellow"></span>
+              <span class="browser-dot green"></span>
+              <span class="browser-url">zenithclinic.ae</span>
+            </div>
+            <div class="browser-body">
+              <div class="demo-site aesthetics" style="height: 440px; overflow: hidden; position: relative;">
+                <nav class="demo-nav aesthetics-nav" style="padding: 18px 24px;">
+                  <div class="demo-logo aesthetics-logo" style="font-size: 14px;">ZENITH</div>
+                  <div class="demo-navlinks aesthetics-links" style="font-size: 11px;">
+                    <a>Treatments</a>
+                    <a>About</a>
+                  </div>
+                </nav>
+                <section class="demo-hero aesthetics-hero" style="min-height: 380px; padding: 40px 24px; justify-content: center;">
+                  <div class="demo-hero-content" style="max-width: 100%;">
+                    <p class="demo-eyebrow aesthetics-eyebrow" style="font-size: 9px; margin-bottom: 12px;">Dermatology & Artistry</p>
+                    <h2 class="demo-h1 aesthetics-h1" style="font-size: 28px; line-height: 1.1; margin-bottom: 16px;">The Art of the<br>Natural Look.</h2>
+                    <p class="demo-sub aesthetics-sub" style="font-size: 12px; margin: 0 auto 24px; max-width: 280px;">Expert-led dermatology and medical aesthetics in the heart of Downtown Dubai.</p>
+                    <a class="demo-btn aesthetics-btn" style="padding: 10px 20px; font-size: 11px;">Book Consultation</a>
+                    <div class="aesthetics-hero-deco"></div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- TRUST STRIP -->
     <div class="trust-strip">
-      <div class="container trust-strip-inner">
+      <div class="container trust-strip-inner reveal">
         <div class="trust-strip-item">
           <span class="trust-strip-icon">${icons.wrench}</span>
           <span>Specialists in clinic websites</span>
@@ -155,7 +188,7 @@ function Home() {
           <span class="section-label">Why clinic owners call us</span>
           <h2 class="section-title">Most private clinics are invisible online. And they're losing patients every day because of it.</h2>
         </div>
-        <div class="grid-2">
+        <div class="grid-2 reveal">
           <div class="card glass">
             <span class="card-icon">${icons.search}</span>
             <h3>Patients search before they book</h3>
@@ -182,7 +215,7 @@ function Home() {
 
     <!-- WHAT WE DO -->
     <section class="section-padding section-alt">
-      <div class="container what-we-do-grid">
+      <div class="container what-we-do-grid reveal">
         <div class="what-we-do-text">
           <span class="section-label">What We Do</span>
           <h2 class="section-title">We build professional websites for clinics. Fast, clean, and built to get patients through your door.</h2>
@@ -222,7 +255,7 @@ function Home() {
         <span class="section-label">Our Clients</span>
         <h2 class="section-title" style="margin-bottom: 14px;">We work with all medical specialties</h2>
         <p class="body-text" style="max-width: 560px; margin: 0 auto 48px;">From solo practitioners to multi-branch clinics, we understand the specific needs of every medical specialty.</p>
-        <div class="specialty-pills">
+        <div class="specialty-pills reveal">
           <span class="specialty-pill">General Practice</span>
           <span class="specialty-pill">Dental Clinics</span>
           <span class="specialty-pill">Physiotherapy</span>
@@ -246,7 +279,7 @@ function Home() {
           <span class="section-label">Pricing</span>
           <h2 class="section-title" style="margin: 0 auto 20px;">Two simple options. No surprises.</h2>
         </div>
-        <div class="pricing-grid">
+        <div class="pricing-grid reveal">
           <div class="pricing-card glass">
             <p class="plan-label">One-Time</p>
             <h3 class="plan-price">$799</h3>
@@ -313,7 +346,7 @@ function Home() {
           <h2 class="section-title" style="margin: 0 auto 14px;">Here is how it works</h2>
           <p class="body-text" style="max-width:520px; margin: 0 auto 64px;">Three simple steps from first message to live website. No surprises, no jargon.</p>
         </div>
-        <div class="how-it-works-grid">
+        <div class="how-it-works-grid reveal">
           <div class="how-step">
             <div class="how-step-number">01</div>
             <h3>You reach out</h3>
@@ -478,7 +511,7 @@ function Plans() {
         </div>
 
         <!-- Process Timeline -->
-        <div class="process-timeline">
+        <div class="process-timeline reveal">
           <h3 class="process-timeline-label">Your journey from enquiry to live website</h3>
           <div class="process-steps">
             <div class="process-step">
@@ -517,7 +550,7 @@ function Plans() {
           <span class="section-label">FAQ</span>
           <h2 class="section-title">Common questions</h2>
         </div>
-        <div class="faq-list">
+        <div class="faq-list reveal">
           <div class="faq-item glass">
             <h3>Do I need to provide content?</h3>
             <p>Not much. Your clinic name, a logo if you have one, and basic information about your services is all we need. We write the copy, structure the pages, and handle the rest.</p>
@@ -1100,6 +1133,17 @@ function initEvents() {
       logos.forEach(img => img.src = newLogoSrc)
     })
   }
+
+  // Global Scroll Reveal Animation
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed')
+      }
+    })
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' })
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el))
 
   // Showcase Scroll Spy & Smooth Scroll
   const dots = document.querySelectorAll('.showcase-dot')
