@@ -1,31 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&display=swap');
 
 /* ─── Design Tokens ─────────────────────────────────────── */
 :root {
   --color-bg: #FFFFFF;
-  --color-surface: #F7F8FA;
-  --color-card: rgba(0, 0, 0, 0.025);
-  --color-border: rgba(0, 0, 0, 0.07);
-  --color-accent: #007FFF;
-  --color-accent-dim: rgba(0, 127, 255, 0.08);
-  --color-text-main: #0D0E11;
-  --color-text-dim: #6B7280;
-  --color-glass-highlight: rgba(255, 255, 255, 0.65);
-  --font-main: 'Outfit', sans-serif;
-  --radius-card: 20px;
-  --transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  --color-surface: #F4F4F4;
+  --color-card: #FFFFFF;
+  --color-border: #000000;
+  --color-accent: #FF3300; /* Brutalist Vermillion */
+  --color-accent-dim: rgba(255, 51, 0, 0.1);
+  --color-text-main: #000000;
+  --color-text-dim: #555555;
+  --color-glass-highlight: transparent;
+  --font-main: 'Inter', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+  --radius-card: 0px;
+  --transition: all 0.3s ease;
 }
 
 [data-theme="dark"] {
-  --color-bg: #0C0D0F;
-  --color-surface: #111316;
-  --color-card: rgba(255, 255, 255, 0.04);
-  --color-border: rgba(255, 255, 255, 0.08);
-  --color-accent: #00BFFF;
-  --color-accent-dim: rgba(0, 191, 255, 0.1);
-  --color-text-main: #F0F0F0;
-  --color-text-dim: #8A8F9A;
-  --color-glass-highlight: rgba(255, 255, 255, 0.1);
+  --color-bg: #000000;
+  --color-surface: #0A0A0A;
+  --color-card: #000000;
+  --color-border: #333333;
+  --color-accent: #FF3300;
+  --color-accent-dim: rgba(255, 51, 0, 0.15);
+  --color-text-main: #FFFFFF;
+  --color-text-dim: #999999;
+  --color-glass-highlight: transparent;
 }
 
 /* ─── Reset ─────────────────────────────────────────────── */
@@ -49,7 +50,7 @@ body {
 [data-theme="dark"] ::-webkit-scrollbar-thumb { background: #2a2d35; }
 
 a { text-decoration: none; color: inherit; transition: var(--transition); }
-h1, h2, h3, h4 { font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; }
+h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 800; line-height: 1; letter-spacing: -0.03em; }
 img { display: block; max-width: 100%; }
 ul { list-style: none; }
 
@@ -58,14 +59,17 @@ ul { list-style: none; }
 .section-padding { padding: 110px 0; }
 .section-alt { background: var(--color-surface); transition: background 0.5s ease; }
 
-/* ─── Glass ──────────────────────────────────────────────── */
+/* ─── Brutalist Cards ────────────────────────────────────── */
 .glass {
   background: var(--color-card);
   border: 1px solid var(--color-border);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-radius: var(--radius-card);
-  box-shadow: inset 0 1px 1px var(--color-glass-highlight);
+  border-radius: 0;
+  box-shadow: 4px 4px 0 var(--color-border);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.glass:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 var(--color-accent);
 }
 
 /* ─── Typography helpers ─────────────────────────────────── */
@@ -89,14 +93,16 @@ ul { list-style: none; }
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 13px 28px;
-  border-radius: 100px;
+  padding: 14px 32px;
+  border-radius: 0;
   font-family: var(--font-main);
-  font-weight: 600;
-  font-size: 0.9rem;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   cursor: pointer;
   border: 1px solid transparent;
-  transition: var(--transition);
+  transition: all 0.2s ease;
   white-space: nowrap;
 }
 
@@ -105,44 +111,45 @@ ul { list-style: none; }
   color: #fff;
   border-color: var(--color-accent);
 }
-[data-theme="dark"] .btn-primary { color: #fff; }
-.btn-primary:hover { filter: brightness(1.1); transform: translateY(-2px); box-shadow: 0 12px 28px var(--color-accent-dim); }
+[data-theme="dark"] .btn-primary { color: #fff; border-color: var(--color-accent); }
+.btn-primary:hover { background: #000; border-color: #000; color: #fff; }
+[data-theme="dark"] .btn-primary:hover { background: #fff; border-color: #fff; color: #000; }
 
 .btn-secondary {
   background: transparent;
   color: var(--color-text-main);
   border-color: var(--color-border);
 }
-.btn-secondary:hover { background: var(--color-card); transform: translateY(-1px); }
+.btn-secondary:hover { background: var(--color-text-main); color: var(--color-bg); }
 
 .btn-block { width: 100%; }
-.btn-large { padding: 16px 36px; font-size: 1rem; }
+.btn-large { padding: 18px 40px; font-size: 0.9rem; }
 
 /* ─── Navbar ─────────────────────────────────────────────── */
 .nav {
   position: fixed;
-  top: 18px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 36px);
-  max-width: 1100px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: none;
   z-index: 999;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 24px;
-  border-radius: 100px;
-  border: 1px solid transparent;
+  padding: 16px 40px;
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid transparent;
   transition: var(--transition);
 }
 
 .nav.scrolled {
   background: var(--color-bg);
-  border-color: var(--color-border);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.07);
-  padding: 8px 22px;
+  border-bottom-color: var(--color-border);
+  box-shadow: none;
+  padding: 12px 40px;
 }
-[data-theme="dark"] .nav.scrolled { box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+[data-theme="dark"] .nav.scrolled { box-shadow: none; }
 
 .logo {
   display: flex;
@@ -311,12 +318,12 @@ ul { list-style: none; }
 }
 
 .hero h1 {
-  font-size: clamp(2.8rem, 8.5vw, 6.2rem); /* Massive billboard font size */
-  line-height: 0.95;
+  font-size: clamp(3.2rem, 10vw, 8rem); /* Ultra-massive editorial font size */
+  line-height: 0.9;
   font-weight: 800;
   letter-spacing: -0.04em;
   margin-bottom: 30px;
-  max-width: 14ch; /* Keep it punchy */
+  max-width: 12ch;
 }
 
 .hero-sub {

@@ -118,9 +118,9 @@ function Home() {
       <div class="hero-warm-glow"></div>
       <div class="hero-layout">
         <div class="hero-content reveal revealed" id="hero-content">
-          <p class="hero-eyebrow">Feather Studio · Web Design for Clinics</p>
-          <h1>Your patients are searching. Are they finding you?</h1>
-          <p class="hero-sub">Most private clinics have no website — or one that doesn't work. Every day patients search for your specialty and book with whoever shows up online. We make sure that's you.</p>
+          <p class="hero-eyebrow">Feather Studio · Specialist Agency</p>
+          <h1>The art of<br>modern practice.</h1>
+          <p class="hero-sub" style="font-size: 1.15rem; max-width: 480px;">Elevated web experiences for clinics. We combine ruthless conversion architecture with uncompromising luxury. Fully managed, live in 3 days.</p>
           <div class="hero-ctas">
             <a href="/plans" class="btn btn-primary" data-link>See Our Plans</a>
             <a href="${WA_URL}" target="_blank" class="btn btn-secondary">WhatsApp Us</a>
