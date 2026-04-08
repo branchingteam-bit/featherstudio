@@ -116,47 +116,16 @@ function Home() {
     <!-- HERO -->
     <section class="hero">
       <div class="hero-warm-glow"></div>
-      <div class="hero-layout">
+      <div class="container" style="display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 800px; padding-top: 80px;">
         <div class="hero-content reveal revealed" id="hero-content">
           <p class="hero-eyebrow">Feather Studio · Specialist Agency</p>
-          <h1>Your competitor's website books 3x more patients.</h1>
-          <p class="hero-sub" style="font-size: 1.15rem; max-width: 480px;">Most private clinics quietly lose patients to competitors who look more trustworthy online. We build high-converting, premium clinical websites in 3 days. Managed forever.</p>
-          <div class="hero-ctas">
+          <h1>Stop losing patients online.</h1>
+          <p class="hero-sub" style="font-size: 1.15rem; max-width: 520px; margin-left: auto; margin-right: auto;">Most private clinics quietly lose patients to competitors who look more trustworthy online. We build high-converting, premium clinical websites in 3 days. Managed forever.</p>
+          <div class="hero-ctas" style="justify-content: center; margin-bottom: 24px;">
             <a href="/plans" class="btn btn-primary" data-link>See Pricing</a>
             <a href="${WA_URL}" target="_blank" class="btn btn-secondary">Book Strategy Call</a>
           </div>
-          <p class="hero-process-note"><strong>Trusted by 40+ clinics in the UK & UAE.</strong> WhatsApp us to book a quick 15-min discovery call.</p>
-        </div>
-        
-        <div class="hero-visual reveal revealed">
-          <div class="browser-chrome" style="width: 100%; max-width: 520px; font-size: 0.85em;">
-            <div class="browser-bar" style="padding: 10px 14px;">
-              <span class="browser-dot red"></span>
-              <span class="browser-dot yellow"></span>
-              <span class="browser-dot green"></span>
-              <span class="browser-url">zenithclinic.ae</span>
-            </div>
-            <div class="browser-body">
-              <div class="demo-site aesthetics" style="height: 440px; overflow: hidden; position: relative;">
-                <nav class="demo-nav aesthetics-nav" style="padding: 18px 24px;">
-                  <div class="demo-logo aesthetics-logo" style="font-size: 14px;">ZENITH</div>
-                  <div class="demo-navlinks aesthetics-links" style="font-size: 11px;">
-                    <a>Treatments</a>
-                    <a>About</a>
-                  </div>
-                </nav>
-                <section class="demo-hero aesthetics-hero" style="min-height: 380px; padding: 40px 24px; justify-content: center;">
-                  <div class="demo-hero-content" style="max-width: 100%;">
-                    <p class="demo-eyebrow aesthetics-eyebrow" style="font-size: 9px; margin-bottom: 12px;">Dermatology & Artistry</p>
-                    <h2 class="demo-h1 aesthetics-h1" style="font-size: 28px; line-height: 1.1; margin-bottom: 16px;">The Art of the<br>Natural Look.</h2>
-                    <p class="demo-sub aesthetics-sub" style="font-size: 12px; margin: 0 auto 24px; max-width: 280px;">Expert-led dermatology and medical aesthetics in the heart of Downtown Dubai.</p>
-                    <a class="demo-btn aesthetics-btn" style="padding: 10px 20px; font-size: 11px;">Book Consultation</a>
-                    <div class="aesthetics-hero-deco"></div>
-                  </div>
-                </section>
-              </div>
-            </div>
-          </div>
+          <p class="hero-process-note">WhatsApp us to book a quick 15-min discovery call.</p>
         </div>
       </div>
     </section>
@@ -282,7 +251,7 @@ function Home() {
         <div class="pricing-grid reveal">
           <div class="pricing-card glass">
             <p class="plan-label">One-Time</p>
-            <h3 class="plan-price">£799</h3>
+            <h3 class="plan-price">$799</h3>
             <p class="plan-price-sub">paid once</p>
             <p class="plan-tagline">Own it outright.</p>
             <ul class="plan-features">
@@ -293,7 +262,7 @@ function Home() {
               <li class="yes">Full ownership and login handed over</li>
               <li class="no">Hosting and maintenance after handover is your responsibility</li>
             </ul>
-            <!-- PayPal Button — One-Time Plan (£799) -->
+            <!-- PayPal Button — One-Time Plan ($799) -->
             <div class="paypal-button-wrapper">
               <style>.pp-3MBPX74TQAJ5C{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;width:100%;}</style>
               <form action="https://www.paypal.com/ncp/payment/3MBPX74TQAJ5C" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
@@ -308,8 +277,8 @@ function Home() {
             <div class="popular-badge">Most Popular</div>
             <p class="plan-label accent">Managed</p>
             <div class="plan-price-managed">
-              <div class="plan-price-setup">£399 <span class="plan-price-tag">setup</span></div>
-              <div class="plan-price-monthly"><span class="plan-price-plus">+</span> £109 <span class="plan-price-tag">/ month</span></div>
+              <div class="plan-price-setup">$399 <span class="plan-price-tag">setup</span></div>
+              <div class="plan-price-monthly"><span class="plan-price-plus">+</span> $109 <span class="plan-price-tag">/ month</span></div>
             </div>
             <p class="plan-tagline">We handle everything, every month.</p>
             <ul class="plan-features">
@@ -321,7 +290,7 @@ function Home() {
               <li class="yes">Same-day response on all requests</li>
               <li class="yes">Cancel any time, no long-term contract</li>
             </ul>
-            <!-- PayPal Button — Managed Plan Setup (£399) -->
+            <!-- PayPal Button — Managed Plan Setup ($399) -->
             <div class="paypal-button-wrapper">
               <style>.pp-ARFT7KPLLQEHN{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;width:100%;}</style>
               <form action="https://www.paypal.com/ncp/payment/ARFT7KPLLQEHN" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
@@ -330,7 +299,7 @@ function Home() {
                 <section style="font-size: 0.75rem;"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
               </form>
             </div>
-            <p class="plan-note-managed">After your site goes live, you will receive a link to activate your £109/month management plan.</p>
+            <p class="plan-note-managed">After your site goes live, you will receive a link to activate your $109/month management plan.</p>
             <p class="plan-note">Setup covers your full website build. Monthly fee covers hosting, updates, and management.</p>
             <p class="plan-note" style="color: var(--color-text-main); font-weight: 500; font-style: normal;">For less than the cost of a single patient consultation each month, your entire website, hosting, updates, and maintenance is completely off your plate.</p>
           </div>
@@ -450,7 +419,7 @@ function Plans() {
           <!-- One-Time -->
           <div class="pricing-card glass">
             <p class="plan-label">One-Time</p>
-            <h2 class="plan-price">£799</h2>
+            <h2 class="plan-price">$799</h2>
             <p class="plan-price-sub">paid once</p>
             <p class="plan-tagline">Own it outright.</p>
             <ul class="plan-features">
@@ -461,7 +430,7 @@ function Plans() {
               <li class="yes">Built and launched within 3 days</li>
               <li class="yes">Full ownership and login credentials handed over</li>
             </ul>
-            <!-- PayPal Button — One-Time Plan (£799) -->
+            <!-- PayPal Button — One-Time Plan ($799) -->
             <div class="paypal-button-wrapper">
               <style>.pp-3MBPX74TQAJ5C{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;width:100%;}</style>
               <form action="https://www.paypal.com/ncp/payment/3MBPX74TQAJ5C" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
@@ -479,8 +448,8 @@ function Plans() {
             <div class="popular-badge">Most Popular</div>
             <p class="plan-label accent">Managed</p>
             <div class="plan-price-managed">
-              <div class="plan-price-setup" style="font-size: 2.4rem;">£399 <span class="plan-price-tag">setup</span></div>
-              <div class="plan-price-monthly" style="font-size: 1.6rem;"><span class="plan-price-plus">+</span> £109 <span class="plan-price-tag">/ month</span></div>
+              <div class="plan-price-setup" style="font-size: 2.4rem;">$399 <span class="plan-price-tag">setup</span></div>
+              <div class="plan-price-monthly" style="font-size: 1.6rem;"><span class="plan-price-plus">+</span> $109 <span class="plan-price-tag">/ month</span></div>
             </div>
             <p class="plan-tagline">Everything handled, every month.</p>
             <ul class="plan-features">
@@ -494,7 +463,7 @@ function Plans() {
               <li class="yes">Same-day response on all requests</li>
               <li class="yes">Cancel any time, no minimum contract</li>
             </ul>
-            <!-- PayPal Button — Managed Plan Setup (£399) -->
+            <!-- PayPal Button — Managed Plan Setup ($399) -->
             <div class="paypal-button-wrapper">
               <style>.pp-ARFT7KPLLQEHN{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;width:100%;}</style>
               <form action="https://www.paypal.com/ncp/payment/ARFT7KPLLQEHN" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
@@ -503,7 +472,7 @@ function Plans() {
                 <section style="font-size: 0.75rem;"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
               </form>
             </div>
-            <p class="plan-note-managed">After your site goes live, you will receive a link to activate your £109/month management plan.</p>
+            <p class="plan-note-managed">After your site goes live, you will receive a link to activate your $109/month management plan.</p>
             <p class="plan-best-for"><strong>Best for:</strong> Busy clinic owners and doctors who want a professional online presence with zero day-to-day involvement. You focus on your patients. We handle everything else.</p>
             <p class="plan-note">Setup covers your full website build. Monthly fee covers hosting, updates, and management.</p>
             <p class="plan-note" style="color: var(--color-text-main); font-weight: 500; font-style: normal;"><strong>Why most clinics choose this:</strong> Running a clinic is already a full-time job. For less than the cost of a single patient consultation each month, your website, hosting, updates, and maintenance are completely off your plate, every single month.</p>
@@ -998,7 +967,7 @@ function Activate() {
           <p>Activate your monthly management plan below to keep your site hosted, updated, and fully managed by us every month.</p>
           
           <div class="activate-price">
-            £109/month <span style="font-size: 0.9rem; font-weight: 500; opacity: 0.7;">— cancel any time</span>
+            $109/month <span style="font-size: 0.9rem; font-weight: 500; opacity: 0.7;">— cancel any time</span>
           </div>
 
           <div id="paypal-button-container-P-8EU78139GF1282545NHBFUDY"></div>
