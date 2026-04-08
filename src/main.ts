@@ -120,7 +120,7 @@ function Home() {
         <div class="hero-content reveal revealed" id="hero-content">
           <p class="hero-eyebrow">Feather Studio · Specialist Agency</p>
           <h1>Your competitor's website books 3x more patients.</h1>
-          <p class="hero-sub" style="font-size: 1.15rem; max-width: 520px; margin-left: auto; margin-right: auto;">Most private clinics quietly lose patients to competitors who look more trustworthy online. We build high-converting, premium clinical websites in 3 days. Managed forever.</p>
+          <p class="hero-sub" style="font-size: 1.15rem; max-width: 520px; margin-left: auto; margin-right: auto;">Most private clinics quietly lose patients to competitors who look more trustworthy online. We build and overhaul clinic websites in 3 days.</p>
           <div class="hero-ctas" style="justify-content: center; margin-bottom: 24px;">
             <a href="/plans" class="btn btn-primary" data-link>See Pricing</a>
             <a href="${WA_URL}" target="_blank" class="btn btn-secondary">Book Strategy Call</a>
@@ -187,9 +187,9 @@ function Home() {
       <div class="container what-we-do-grid reveal">
         <div class="what-we-do-text">
           <span class="section-label">What We Do</span>
-          <h2 class="section-title">We build professional websites for clinics. Fast, clean, and built to get patients through your door.</h2>
-          <p class="body-text">Feather Studio works exclusively with clinics, doctors, and medical professionals. We don't take on every client. We chose this niche because we understand what clinic owners actually need: something professional, fast, and completely hands-off.</p>
-          <p class="body-text" style="margin-top: 16px;">We offer two options. You can own your website outright with a one-time payment and manage it yourself from there. Or you can choose our managed plan: we build it, host it, and handle every update and technical issue indefinitely. All you do is WhatsApp us when something needs changing.</p>
+          <h2 class="section-title">We build and overhaul websites for clinics. Fast, clean, and positioned to get more patients through your door.</h2>
+          <p class="body-text">Feather Studio works exclusively with clinics, doctors, and medical professionals. Whether you have a bad website that needs an overhaul or no website at all, we build whatever you need to look professional and trustworthy.</p>
+          <p class="body-text" style="margin-top: 16px;">We offer two options. You can own your website outright with a one-time payment. Or you can choose our managed plan where we host and handle every update for you. All you do is WhatsApp us when something needs changing.</p>
           <ul class="feature-list">
             <li>
               <span class="feature-bullet">${icons.check}</span>
@@ -223,7 +223,7 @@ function Home() {
       <div class="container" style="text-align: center;">
         <span class="section-label">Our Clients</span>
         <h2 class="section-title" style="margin-bottom: 14px;">We work with all medical specialties</h2>
-        <p class="body-text" style="max-width: 560px; margin: 0 auto 48px;">From solo practitioners to multi-branch clinics, we understand the specific needs of every medical specialty.</p>
+        <p class="body-text" style="max-width: 560px; margin: 0 auto 48px;">From solo practitioners to multi-branch clinics, we understand the specific needs of every specialty and any clinical practice.</p>
         <div class="specialty-pills reveal">
           <span class="specialty-pill">General Practice</span>
           <span class="specialty-pill">Dental Clinics</span>
@@ -246,7 +246,7 @@ function Home() {
       <div class="container">
         <div class="section-header" style="text-align: center; max-width: 100%;">
           <span class="section-label">Pricing</span>
-          <h2 class="section-title" style="margin: 0 auto 20px;">Two simple options. No surprises.</h2>
+          <h2 class="section-title" style="margin: 0 auto 20px;">Two simple options.</h2>
         </div>
         <div class="pricing-grid reveal">
           <div class="pricing-card glass">
@@ -357,7 +357,7 @@ function Plans() {
     <header class="page-header">
       <div class="container" style="text-align:center;">
         <h1>Every clinic deserves a professional website. Here is what it costs.</h1>
-        <p class="hero-sub" style="max-width:650px; margin: 0 auto;">Two options. One price each. No surprises, no contracts, no tech stress.</p>
+        <p class="hero-sub" style="max-width:650px; margin: 0 auto;">Two options. One price each. Transparent, simple, and zero tech stress.</p>
       </div>
     </header>
 
@@ -383,7 +383,7 @@ function Plans() {
                 <tr>
                   <td>Website build</td>
                   <td>$3,000 – $8,000+</td>
-                  <td class="highlight">Flat rate, no surprises</td>
+                  <td class="highlight">Flat rate pricing</td>
                 </tr>
                 <tr>
                   <td>Turnaround time</td>
