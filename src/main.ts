@@ -278,7 +278,7 @@ function Home() {
             <p class="plan-label accent">Managed</p>
             <div class="plan-price-managed">
               <div class="plan-price-setup">$399 <span class="plan-price-tag">setup</span></div>
-              <div class="plan-price-monthly"><span class="plan-price-plus">+</span> $109 <span class="plan-price-tag">/ month</span></div>
+              <div class="plan-price-monthly"><span class="plan-price-plus">+</span> $99 <span class="plan-price-tag">/ month</span></div>
             </div>
             <p class="plan-tagline">We handle everything, every month.</p>
             <ul class="plan-features">
@@ -299,7 +299,7 @@ function Home() {
                 <section style="font-size: 0.75rem;"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
               </form>
             </div>
-            <p class="plan-note-managed">After your site goes live, you will receive a link to activate your $109/month management plan.</p>
+            <p class="plan-note-managed">After your site goes live, you will receive a link to activate your $99/month management plan.</p>
             <p class="plan-note">Setup covers your full website build. Monthly fee covers hosting, updates, and management.</p>
             <p class="plan-note" style="color: var(--color-text-main); font-weight: 500; font-style: normal;">For less than the cost of a single patient consultation each month, your entire website, hosting, updates, and maintenance is completely off your plate.</p>
           </div>
@@ -449,7 +449,7 @@ function Plans() {
             <p class="plan-label accent">Managed</p>
             <div class="plan-price-managed">
               <div class="plan-price-setup" style="font-size: 2.4rem;">$399 <span class="plan-price-tag">setup</span></div>
-              <div class="plan-price-monthly" style="font-size: 1.6rem;"><span class="plan-price-plus">+</span> $109 <span class="plan-price-tag">/ month</span></div>
+              <div class="plan-price-monthly" style="font-size: 1.6rem;"><span class="plan-price-plus">+</span> $99 <span class="plan-price-tag">/ month</span></div>
             </div>
             <p class="plan-tagline">Everything handled, every month.</p>
             <ul class="plan-features">
@@ -472,7 +472,7 @@ function Plans() {
                 <section style="font-size: 0.75rem;"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
               </form>
             </div>
-            <p class="plan-note-managed">After your site goes live, you will receive a link to activate your $109/month management plan.</p>
+            <p class="plan-note-managed">After your site goes live, you will receive a link to activate your $99/month management plan.</p>
             <p class="plan-best-for"><strong>Best for:</strong> Busy clinic owners and doctors who want a professional online presence with zero day-to-day involvement. You focus on your patients. We handle everything else.</p>
             <p class="plan-note">Setup covers your full website build. Monthly fee covers hosting, updates, and management.</p>
             <p class="plan-note" style="color: var(--color-text-main); font-weight: 500; font-style: normal;"><strong>Why most clinics choose this:</strong> Running a clinic is already a full-time job. For less than the cost of a single patient consultation each month, your website, hosting, updates, and maintenance are completely off your plate, every single month.</p>
@@ -967,7 +967,7 @@ function Activate() {
           <p>Activate your monthly management plan below to keep your site hosted, updated, and fully managed by us every month.</p>
           
           <div class="activate-price">
-            $109/month <span style="font-size: 0.9rem; font-weight: 500; opacity: 0.7;">— cancel any time</span>
+            $99/month <span style="font-size: 0.9rem; font-weight: 500; opacity: 0.7;">— cancel any time</span>
           </div>
 
           <div id="paypal-button-container-P-8EU78139GF1282545NHBFUDY"></div>
