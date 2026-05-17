@@ -13,10 +13,12 @@ const WA_URL = `https://wa.me/${WA_NUMBER}`
 // Router
 const routes: Record<string, () => string> = {
   '/': Home,
+  '/kiosks': Kiosks,
   '/plans': Plans,
   '/work': Work,
   '/contact': Contact,
   '/activate': Activate,
+  '/activate-kiosks': ActivateKiosks,
 }
 
 function navigate(path: string) {
@@ -62,7 +64,8 @@ function Navbar() {
         Feather Studio
       </a>
       <div class="nav-links">
-        <a href="/" class="nav-link" data-link>Home</a>
+        <a href="/" class="nav-link" data-link>For Clinics</a>
+        <a href="/kiosks" class="nav-link" data-link>For Kiosks</a>
         <a href="/plans" class="nav-link" data-link>Plans</a>
         <a href="/work" class="nav-link" data-link>Our Work</a>
         <a href="/contact" class="nav-link" data-link>Contact</a>
@@ -88,7 +91,8 @@ function Footer() {
         <div>
           <h4 class="footer-label">Links</h4>
           <ul class="footer-links">
-            <li><a href="/" data-link>Home</a></li>
+            <li><a href="/" data-link>For Clinics</a></li>
+            <li><a href="/kiosks" data-link>For Kiosks</a></li>
             <li><a href="/plans" data-link>Plans</a></li>
             <li><a href="/work" data-link>Our Work</a></li>
             <li><a href="/contact" data-link>Contact</a></li>
@@ -565,6 +569,89 @@ function Plans() {
   `
 }
 
+// ─── Kiosks ───────────────────────────────────────────────────
+function Kiosks() {
+  return \`
+    <header class="page-header">
+      <div class="container" style="text-align:center;">
+        <h1>Professional websites for kiosk businesses.</h1>
+        <p class="hero-sub" style="max-width:650px; margin: 0 auto;">Two options. One price each. Transparent, simple, and zero tech stress.</p>
+      </div>
+    </header>
+
+    <section class="section-padding" style="padding-top: 60px;">
+      <div class="container">
+        <div class="pricing-grid">
+          <!-- One-Time -->
+          <div class="pricing-card glass">
+            <p class="plan-label">One-Time</p>
+            <h2 class="plan-price">1450 AED</h2>
+            <p class="plan-price-sub">(approx $400 USD)</p>
+            <p class="plan-tagline">Own it outright.</p>
+            <ul class="plan-features">
+              <li class="yes">Custom kiosk website</li>
+              <li class="yes">Domain name included (first year)</li>
+              <li class="yes">Mobile-optimised and fast-loading</li>
+              <li class="yes">Live within 3 days</li>
+              <li class="yes">Full ownership and login handed over</li>
+            </ul>
+            <div class="paypal-button-wrapper">
+              <style>.pp-PHGU6FSSWW8BN{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;width:100%;}</style>
+              <form action="https://www.paypal.com/ncp/payment/PHGU6FSSWW8BN" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
+                <input class="pp-PHGU6FSSWW8BN" type="submit" value="Buy Now" />
+                <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
+                <section style="font-size: 0.75rem;"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
+              </form>
+            </div>
+            <p class="plan-best-for"><strong>Best for:</strong> Kiosk owners who want to own everything outright from day one.</p>
+            <p class="plan-note">After the first year, domain renewal is approximately $15/year paid directly to the registrar. Hosting after handover is your responsibility.</p>
+          </div>
+
+          <!-- Managed -->
+          <div class="pricing-card glass featured">
+            <div class="popular-badge">Most Popular</div>
+            <p class="plan-label accent">Managed</p>
+            <div class="plan-price-managed">
+              <div class="plan-price-setup" style="font-size: 2.4rem;">500 AED <span class="plan-price-tag">setup</span></div>
+              <div class="plan-price-monthly" style="font-size: 1.6rem;"><span class="plan-price-plus">+</span> 200 AED <span class="plan-price-tag">/ month</span></div>
+            </div>
+            <p class="plan-price-sub" style="margin-top: -12px; margin-bottom: 24px;">(approx $136 setup + $55/month USD)</p>
+            <p class="plan-tagline">Everything handled, every month.</p>
+            <ul class="plan-features">
+              <li class="yes">Full custom website built for your kiosk</li>
+              <li class="yes">Domain included, renewed automatically</li>
+              <li class="yes">Professional hosting, your site stays live 24/7</li>
+              <li class="yes">Unlimited text and image updates via WhatsApp</li>
+              <li class="yes">All technical fixes and maintenance covered</li>
+            </ul>
+            <div class="paypal-button-wrapper">
+              <style>.pp-7NEAXJKFLSWN4{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;width:100%;}</style>
+              <form action="https://www.paypal.com/ncp/payment/7NEAXJKFLSWN4" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
+                <input class="pp-7NEAXJKFLSWN4" type="submit" value="Buy Now" />
+                <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
+                <section style="font-size: 0.75rem;"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
+              </form>
+            </div>
+            <p class="plan-note-managed">After your site goes live, you will receive a link to activate your $55/month management plan.</p>
+            <p class="plan-best-for"><strong>Best for:</strong> Busy kiosk owners who want a professional online presence with zero day-to-day involvement.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container" style="text-align:center;">
+        <h2>Your customers are searching right now. Let's make sure they find you.</h2>
+        <p>Getting started takes one conversation. Get in touch today and your kiosk can be online within 3 days.</p>
+        <div class="hero-ctas">
+          <a href="\${WA_URL}" target="_blank" class="btn btn-primary btn-large">WhatsApp Us Now</a>
+          <a href="/contact" class="btn btn-secondary btn-large" data-link>Send an Enquiry</a>
+        </div>
+      </div>
+    </section>
+  \`
+}
+
 // ─── Work (Showcase) ──────────────────────────────────────────
 function Work() {
   return `
@@ -981,6 +1068,31 @@ function Activate() {
   `
 }
 
+// ─── Activate Kiosks (Hidden Management Plan Page) ────────────
+function ActivateKiosks() {
+  return `
+    <section class="activate-hero">
+      <div class="container">
+        <div class="activate-card glass">
+          <span class="section-label">Management Plan</span>
+          <h2>Your website is live.</h2>
+          <p>Activate your monthly management plan below to keep your kiosk site hosted, updated, and fully managed by us every month.</p>
+          
+          <div class="activate-price">
+            $55/month <span style="font-size: 0.9rem; font-weight: 500; opacity: 0.7;">— cancel any time</span>
+          </div>
+
+          <div id="paypal-button-container-P-97W753789S6299227NIEYJ3Y"></div>
+
+          <p class="whatsapp-contact">
+            Questions? WhatsApp us at <a href="https://wa.me/971504668481">+971 50 466 8481</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  `
+}
+
 // ─── Render ───────────────────────────────────────────────────
 function render() {
   const path = window.location.pathname
@@ -1067,6 +1179,32 @@ function renderPayPalButtons() {
           createSubscription: function(_data: any, actions: any) {
             return actions.subscription.create({
               plan_id: 'P-8EU78139GF1282545NHBFUDY'
+            });
+          },
+          onApprove: function(_data: any, _actions: any) {
+            alert('Thank you! Your management plan is now active. We will be in touch shortly.');
+          }
+        }).render(containerSub);
+      })
+    }
+  }
+
+  // Subscription Button on /activate-kiosks
+  if (path === '/activate-kiosks') {
+    const containerSub = document.getElementById('paypal-button-container-P-97W753789S6299227NIEYJ3Y')
+    if (containerSub && containerSub.children.length === 0) {
+      loadPayPalSDK('vault=true&intent=subscription', () => {
+        // @ts-ignore
+        window.paypal.Buttons({
+          style: {
+            shape: 'rect',
+            color: 'blue',
+            layout: 'vertical',
+            label: 'paypal'
+          },
+          createSubscription: function(_data: any, actions: any) {
+            return actions.subscription.create({
+              plan_id: 'P-97W753789S6299227NIEYJ3Y'
             });
           },
           onApprove: function(_data: any, _actions: any) {
