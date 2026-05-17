@@ -571,7 +571,7 @@ function Plans() {
 
 // ─── Kiosks ───────────────────────────────────────────────────
 function Kiosks() {
-  return \`
+  return `
     <header class="page-header">
       <div class="container" style="text-align:center;">
         <h1>Professional websites for kiosk businesses.</h1>
@@ -644,12 +644,12 @@ function Kiosks() {
         <h2>Your customers are searching right now. Let's make sure they find you.</h2>
         <p>Getting started takes one conversation. Get in touch today and your kiosk can be online within 3 days.</p>
         <div class="hero-ctas">
-          <a href="\${WA_URL}" target="_blank" class="btn btn-primary btn-large">WhatsApp Us Now</a>
+          <a href="${WA_URL}" target="_blank" class="btn btn-primary btn-large">WhatsApp Us Now</a>
           <a href="/contact" class="btn btn-secondary btn-large" data-link>Send an Enquiry</a>
         </div>
       </div>
     </section>
-  \`
+  `
 }
 
 // ─── Work (Showcase) ──────────────────────────────────────────
