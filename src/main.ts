@@ -8,7 +8,7 @@ const $$ = (sel: string, ctx: Document | Element = document) =>
 
 const AED_TO_USD = 0.2723;
 const aedUsd = (aed: number) =>
-  `<span class="price-usd">≈ $${(aed * AED_TO_USD).toFixed(0)} USD</span>`;
+  `<span class="price-usd">approx. $${(aed * AED_TO_USD).toFixed(0)} USD</span>`;
 
 // ─── Icons ───────────────────────────────────────────────────────────────────
 const Icons = {
@@ -26,6 +26,7 @@ const Icons = {
   rocket: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2 .27-2.98-.31-3.5c-.56-.52-1.43-.8-2.69.5z"/><path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>`,
   whatsapp: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>`,
   code: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16,18 22,12 16,6"/><polyline points="8,6 2,12 8,18"/></svg>`,
+  instagram: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>`,
 };
 
 const CheckIcon = () =>
@@ -36,19 +37,18 @@ function Navbar(): string {
   return `
   <nav class="nav" id="main-nav">
     <a href="#" class="logo" data-link="home" id="logo-btn" style="display: flex; align-items: center; gap: 8px;">
-      <img src="/feather-dark.png" alt="Feather Studio Logo" style="height: 24px; width: auto;" />
+      <img src="/feather-dark.png" alt="Feather Studio Logo" style="height: 26px; width: auto;" />
       Feather Studio
     </a>
     <div class="nav-links">
       <a href="#" class="nav-link" data-link="home"    id="nav-home">Home</a>
       <a href="#" class="nav-link" data-link="level1"  id="nav-l1">Level 1</a>
       <a href="#" class="nav-link" data-link="level2"  id="nav-l2">Level 2</a>
-      <a href="#" class="nav-link" data-link="work"    id="nav-work">Our Work</a>
       <a href="#" class="nav-link" data-link="contact" id="nav-contact">Contact</a>
     </div>
     <div class="nav-actions">
       <a href="#" class="btn btn-secondary btn-sm" data-link="contact" id="nav-contact-cta">Contact</a>
-      <a href="#" class="btn btn-primary btn-sm" data-link="level1" id="nav-start-cta">Get started ${Icons.arrow}</a>
+      <a href="#" class="btn btn-dark btn-sm" data-link="level1" id="nav-start-cta">Get started ${Icons.arrow}</a>
     </div>
   </nav>`;
 }
@@ -56,7 +56,7 @@ function Navbar(): string {
 // ─── WhatsApp FAB ────────────────────────────────────────────────────────────
 function WhatsAppFab(): string {
   return `
-  <a id="whatsapp-fab" href="https://wa.me/971XXXXXXXXX" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <a id="whatsapp-fab" href="https://wa.me/971504668481" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
     <svg viewBox="0 0 24 24" fill="white" width="28" height="28">${Icons.whatsapp}</svg>
   </a>`;
 }
@@ -80,16 +80,15 @@ function Footer(): string {
             <a href="#" data-link="home">Home</a>
             <a href="#" data-link="level1">Level 1</a>
             <a href="#" data-link="level2">Level 2</a>
-            <a href="#" data-link="work">Our Work</a>
             <a href="#" data-link="contact">Contact</a>
           </div>
         </div>
         <div class="footer-col">
           <h4>Contact</h4>
           <div class="footer-links">
-            <a href="https://wa.me/971XXXXXXXXX" target="_blank">WhatsApp</a>
-            <a href="mailto:hello@featherstudio.ae">hello@featherstudio.ae</a>
-            <a href="#">Dubai, UAE</a>
+            <a href="https://wa.me/971504668481" target="_blank">WhatsApp</a>
+            <a href="mailto:hellofeatherstudio.co">hellofeatherstudio.co</a>
+            <a href="https://www.instagram.com/featherstudio.co" target="_blank">@featherstudio.co</a>
           </div>
         </div>
       </div>
@@ -103,24 +102,40 @@ function Footer(): string {
 
 // ─── Home Page ───────────────────────────────────────────────────────────────
 function HomePage(): string {
+  // Build marquee items (duplicated 4 times for seamless infinite loop)
+  const marqueeItems = [
+    { num: '3 Days', desc: 'From kick-off to live' },
+    { num: '100%', desc: 'Mobile responsive' },
+    { num: 'Fully Custom', desc: 'No templates, ever' },
+    { num: '3+ Years', desc: 'Building in the UAE' },
+    { num: '81%', desc: 'Of customers research online first' },
+    { num: 'SEO Ready', desc: 'Google-optimised from day one' },
+  ];
+
+  const buildMarqueeSet = () => marqueeItems.map(item =>
+    `<span class="marquee-badge"><span class="marquee-num">${item.num}</span><span class="marquee-desc">${item.desc}</span></span><span class="marquee-sep">·</span>`
+  ).join('');
+
+  // 4 copies for a seamless infinite belt
+  const marqueeInner = buildMarqueeSet() + buildMarqueeSet() + buildMarqueeSet() + buildMarqueeSet();
+
   return `
   <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <div class="hero-eyebrow">Based in UAE &nbsp;·&nbsp; High-Performance Websites</div>
-      <h1>Your website,<br>done right.</h1>
+      <h1>Your business deserves<br>to be found.</h1>
       <p class="hero-sub">
-        We design, build, and launch custom websites for UAE businesses. Clean layouts, ultra-fast speeds, and built to grow your brand.
+        We design, build, and launch custom websites for UAE businesses. Clean layouts, ultra-fast speeds, built to grow your brand.
       </p>
       <div class="hero-ctas">
-        <a href="#" class="btn btn-primary btn-large" data-link="level1" id="hero-cta-start" style="background: var(--indigo);">
+        <a href="#" class="btn btn-dark btn-large" data-link="level1" id="hero-cta-start">
           Start a project ${Icons.arrow}
         </a>
-        <a href="#" class="btn btn-secondary btn-large" data-link="work" id="hero-cta-work">
-          See our work
+        <a href="#" class="btn btn-secondary btn-large" data-link="contact" id="hero-cta-work">
+          Talk to us
         </a>
       </div>
-      <p class="hero-note">Not sure which plan? <a href="#" data-link="contact" style="color: var(--indigo);">Talk to us</a></p>
+      <p class="hero-note">Not sure which plan? <a href="#" data-link="contact">Contact us</a></p>
     </div>
   </section>
 
@@ -128,25 +143,17 @@ function HomePage(): string {
   <div class="marquee-belt">
     <div class="marquee-track">
       <div class="marquee-inner" aria-hidden="true">
-        <span class="marquee-badge"><span class="marquee-num">3 Days</span><span class="marquee-desc">From kick-off to live</span></span>
-        <span class="marquee-sep">·</span>
-        <span class="marquee-badge"><span class="marquee-num">100%</span><span class="marquee-desc">Mobile responsive</span></span>
-        <span class="marquee-sep">·</span>
-        <span class="marquee-badge"><span class="marquee-num">Fully Custom</span><span class="marquee-desc">No templates, ever</span></span>
-        <span class="marquee-sep">·</span>
-        <span class="marquee-badge"><span class="marquee-num">3+ Years</span><span class="marquee-desc">Building in the UAE</span></span>
-        <span class="marquee-sep">·</span>
-        <span class="marquee-badge"><span class="marquee-num">3 Days</span><span class="marquee-desc">From kick-off to live</span></span>
-        <span class="marquee-sep">·</span>
-        <span class="marquee-badge"><span class="marquee-num">100%</span><span class="marquee-desc">Mobile responsive</span></span>
-        <span class="marquee-sep">·</span>
-        <span class="marquee-badge"><span class="marquee-num">Fully Custom</span><span class="marquee-desc">No templates, ever</span></span>
-        <span class="marquee-sep">·</span>
-        <span class="marquee-badge"><span class="marquee-num">3+ Years</span><span class="marquee-desc">Building in the UAE</span></span>
-        <span class="marquee-sep">·</span>
+        ${marqueeInner}
       </div>
     </div>
   </div>
+
+  <!-- COMPETITOR BANNER -->
+  <section class="competitor-banner">
+    <div class="container">
+      <p class="competitor-banner-text">Your competitor's website is getting your clients. <strong>Let's fix that.</strong></p>
+    </div>
+  </section>
 
   <!-- THE PROBLEM SECTION -->
   <section class="problem-section">
@@ -158,7 +165,7 @@ function HomePage(): string {
         <div class="problem-card">
           <h3>They searched. They didn't find you.</h3>
           <p>
-            Most people look up a business online before they visit or call. If nothing comes up — or what comes up looks bad — they move on. Simple as that.
+            Most people look up a business online before they visit or call. If nothing comes up, or what comes up looks bad, they move on. Simple as that.
           </p>
         </div>
         <div class="problem-card">
@@ -170,7 +177,7 @@ function HomePage(): string {
         <div class="problem-card">
           <h3>You don't have time to deal with this.</h3>
           <p>
-            You're running a business. Building a website, figuring out hosting, dealing with technical problems — that's not why you got into this. It shouldn't be your problem.
+            You're running a business. Building a website, figuring out hosting, dealing with technical problems, that's not why you got into this. It shouldn't be your problem.
           </p>
         </div>
       </div>
@@ -181,31 +188,36 @@ function HomePage(): string {
   <section class="facts-section">
     <div class="container">
       <h2 class="facts-headline">The numbers don't lie.</h2>
-      <div class="facts-split-grid">
-        <div class="fact-hero-side">
-          <div class="fact-hero-num">81%</div>
-          <div class="fact-hero-label">Of customers research online first</div>
-          <div class="fact-hero-desc">
-            The vast majority of people look up a business online before making a purchase, booking an appointment, or calling. If they can't find you, they will find your competitor.
-          </div>
+
+      <!-- Two big hero stats side by side -->
+      <div class="facts-heroes-row">
+        <div class="fact-hero-block fact-hero-dark">
+          <div class="fact-hero-num">81<span class="fact-hero-pct">%</span></div>
+          <div class="fact-hero-label">Of customers research online before buying or visiting a business.</div>
+          <div class="fact-hero-desc">If they can't find you, they will find your competitor. It's that simple.</div>
         </div>
-        <div class="facts-list-side">
-          <div class="fact-list-item">
-            <div class="fact-list-num" style="color: var(--indigo-dark);">75%</div>
-            <div class="fact-list-text">Of people admit to judging a company's credibility based entirely on their website design alone.</div>
-          </div>
-          <div class="fact-list-item">
-            <div class="fact-list-num">57%</div>
-            <div class="fact-list-text">Of internet users say they won't recommend a local business with a poorly designed or slow mobile website.</div>
-          </div>
-          <div class="fact-list-item">
-            <div class="fact-list-num" style="color: var(--indigo-dark);">2x</div>
-            <div class="fact-list-text">Faster growth rate for businesses with an active, professional online presence compared to those without.</div>
-          </div>
-          <div class="fact-list-item">
-            <div class="fact-list-num">40%</div>
-            <div class="fact-list-text">Of your Google Business Profile performance is influenced by your website—affecting your position on Google Maps.</div>
-          </div>
+        <div class="fact-hero-block fact-hero-light">
+          <div class="fact-hero-num fact-hero-num-dark">40<span class="fact-hero-pct fact-hero-pct-dark">%</span></div>
+          <div class="fact-hero-label fact-hero-label-dark">Of your Google Business Profile performance is driven by your website.</div>
+          <div class="fact-hero-desc fact-hero-desc-dark">Your website directly affects your position on Google Maps. A weak site pushes you down the list.</div>
+        </div>
+      </div>
+
+      <!-- Smaller stats row -->
+      <div class="facts-stats-row">
+        <div class="facts-stat-block">
+          <div class="facts-stat-num">75%</div>
+          <div class="facts-stat-text">Of people judge a company's credibility based entirely on website design</div>
+        </div>
+        <div class="facts-stat-divider"></div>
+        <div class="facts-stat-block">
+          <div class="facts-stat-num">57%</div>
+          <div class="facts-stat-text">Of users won't recommend a business with a poorly designed mobile website</div>
+        </div>
+        <div class="facts-stat-divider"></div>
+        <div class="facts-stat-block">
+          <div class="facts-stat-num">2x</div>
+          <div class="facts-stat-text">Faster growth for businesses with a strong professional online presence</div>
         </div>
       </div>
     </div>
@@ -226,14 +238,14 @@ function HomePage(): string {
           <p>We use Stitch to design the website layout and user interface from scratch. This guarantees a bespoke, modern aesthetic designed specifically for your brand before any code is generated.</p>
         </div>
         <div class="tool-large-img-wrap">
-          <img class="tool-large-img" src="/pictures for wesbite/Screenshot 2026-06-07 at 4.50.32 PM.png" alt="Stitch Interface" />
+          <img class="tool-large-img" src="/screenshots/stitch.png" alt="Stitch Interface" />
         </div>
       </div>
       
       <!-- Antigravity Row -->
       <div class="tool-showcase-row alt">
         <div class="tool-large-img-wrap">
-          <img class="tool-large-img" src="/pictures for wesbite/Screenshot 2026-06-07 at 4.48.42 PM.png" alt="Antigravity IDE" />
+          <img class="tool-large-img" src="/screenshots/antigravity.png" alt="Antigravity IDE" />
         </div>
         <div class="tool-text-content">
           <h3>Google Antigravity</h3>
@@ -243,27 +255,33 @@ function HomePage(): string {
     </div>
   </section>
 
-  <!-- SIMPLIFIED TIER TEASERS SECTION -->
+  <!-- TIER TEASERS SECTION -->
   <section class="teasers-section">
     <div class="container">
       <div class="teasers-header">
-        <h2>Choose Your Tier</h2>
-        <p>Two plans designed to build your online presence. Click below to explore the details of each tier.</p>
+        <h2>Choose Your Level</h2>
+        <p>Two tiers. Built for different needs. Both built to win.</p>
       </div>
       <div class="teasers-grid">
-        <div class="teaser-card">
-          <span class="teaser-badge">Level 1</span>
+        <div class="teaser-card level-one-card">
+          <div class="teaser-level-tag">
+            <span class="teaser-level-num">01</span>
+            <span class="teaser-level-name">Level One</span>
+          </div>
           <h3>Small Business</h3>
-          <p>Clean, ultra-fast websites for kiosks, cafés, salons, and local retail shops. Built to capture quick customer leads via WhatsApp and phone.</p>
-          <a href="#" class="teaser-btn" data-link="level1">
+          <p>Clean, ultra-fast websites for kiosks, cafes, salons, and local retail shops. Built to capture quick customer leads via WhatsApp and phone.</p>
+          <a href="#" class="teaser-btn teaser-btn-dark" data-link="level1">
             Explore Level 1 ${Icons.arrow}
           </a>
         </div>
-        <div class="teaser-card">
-          <span class="teaser-badge" style="color: var(--indigo-dark); border-color: rgba(3, 4, 94, 0.2);">Level 2</span>
+        <div class="teaser-card level-two-card">
+          <div class="teaser-level-tag">
+            <span class="teaser-level-num">02</span>
+            <span class="teaser-level-name">Level Two</span>
+          </div>
           <h3>Professional</h3>
           <p>Feature-rich custom websites for clinics, dental practices, law firms, and consultants. Includes online appointment booking, team bios, and local SEO.</p>
-          <a href="#" class="teaser-btn" data-link="level2" style="color: var(--indigo-dark);">
+          <a href="#" class="teaser-btn teaser-btn-outline" data-link="level2">
             Explore Level 2 ${Icons.arrow}
           </a>
         </div>
@@ -303,7 +321,7 @@ function PricingCard(opts: {
       <p class="plan-desc">${opts.desc}</p>
     </div>
     <div class="pricing-card-cta">
-      <a href="#" class="btn btn-primary btn-block btn-large" data-link="contact" id="${opts.ctaId}">
+      <a href="#" class="btn btn-dark btn-block btn-large" data-link="contact" id="${opts.ctaId}">
         Get started ${Icons.arrow}
       </a>
       ${opts.note ? `<p style="font-size:0.75rem; color:var(--text-muted); margin-top:10px; text-align:center;">${opts.note}</p>` : ''}
@@ -314,7 +332,7 @@ function PricingCard(opts: {
       ${opts.managed ? `
         <div class="no-contract-note">
           <strong>No lock-in contracts</strong>
-          Minimum 3 months. Cancel anytime after that — we hand over all files cleanly.
+          Minimum 3 months. Cancel anytime after that, we hand over all files cleanly.
         </div>
       ` : ''}
     </div>
@@ -355,7 +373,7 @@ function Level1Page(): string {
             'Basic SEO setup',
             'WhatsApp contact button',
             'Contact form',
-            'Handoff within 7–14 days',
+            'Handoff within 7 to 14 days',
             'Source files included',
           ],
           ctaId: 'l1-ot-cta',
@@ -368,7 +386,7 @@ function Level1Page(): string {
           period: '/month',
           setupFee: 'AED 500',
           setupAed: 500,
-          desc: 'We build it, manage it, and keep it running. You focus on your business — we handle everything online.',
+          desc: 'We build it, manage it, and keep it running. You focus on your business, we handle everything online.',
           features: [
             'Full custom design and build',
             'Up to 5 pages included',
@@ -396,10 +414,10 @@ function Level1Page(): string {
       <div class="feature-grid">
         ${[
           { icon: Icons.palette, title: 'Custom Design', desc: 'No templates. Every site is built from scratch to match your brand, colours, and vibe.' },
-          { icon: Icons.zap, title: 'Fast Delivery', desc: 'Your site is live within 7–14 business days from when we agree on the brief.' },
+          { icon: Icons.zap, title: 'Fast Delivery', desc: 'Your site is live within 7 to 14 business days from when we agree on the brief.' },
           { icon: Icons.globe, title: 'Mobile First', desc: 'Looks great on phones, tablets, and desktops. Most of your visitors are on mobile.' },
           { icon: Icons.shield, title: 'SEO Ready', desc: 'Proper page titles, meta descriptions, and structured code so Google can find you.' },
-          { icon: Icons.phone, title: 'WhatsApp Button', desc: 'A tap-to-chat WhatsApp button on every page — the easiest way to get leads in the UAE.' },
+          { icon: Icons.phone, title: 'WhatsApp Button', desc: 'A tap-to-chat WhatsApp button on every page, the easiest way to get leads in the UAE.' },
           { icon: Icons.wrench, title: 'Low Maintenance', desc: 'Clean builds that just work. Perfect for business owners who want to focus on running their business.' },
         ]
           .map(f => `<div class="feature-item reveal">
@@ -423,7 +441,7 @@ function Level1Page(): string {
         ${[
           {
             q: 'Who is Level 1 for?',
-            a: 'Kiosks, cafes, retail shops, salons, small workshops — any business that wants a professional online presence without a large budget.',
+            a: 'Kiosks, cafes, retail shops, salons, small workshops. Any business that wants a professional online presence without a large budget.',
           },
           {
             q: 'Do I own the website after the one-time purchase?',
@@ -449,10 +467,10 @@ function Level1Page(): string {
       <h2>Start with Level 1</h2>
       <p>A website your customers will trust, at a price that makes sense.</p>
       <div class="cta-ctas">
-        <a href="#" class="btn btn-primary btn-large" data-link="contact" id="l1-footer-cta">
+        <a href="#" class="btn btn-dark btn-large" data-link="contact" id="l1-footer-cta">
           Talk to us ${Icons.arrow}
         </a>
-        <a href="https://wa.me/971XXXXXXXXX" target="_blank" class="btn btn-wa btn-large">
+        <a href="https://wa.me/971504668481" target="_blank" class="btn btn-wa btn-large">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="white">${Icons.whatsapp}</svg>
           WhatsApp us
         </a>
@@ -480,7 +498,7 @@ function Level2Page(): string {
       <div class="section-header centered reveal">
         <div class="section-label">Pricing</div>
         <h2 class="section-title">Choose your plan</h2>
-        <p class="section-sub">Both plans include everything you need. The managed plan is our most popular — we handle it all.</p>
+        <p class="section-sub">Both plans include everything you need. The managed plan is our most popular, we handle it all.</p>
       </div>
       <div class="pricing-cards-row reveal">
         ${PricingCard({
@@ -548,15 +566,15 @@ function Level2Page(): string {
           <tbody>
             ${[
               ['Pages included', 'Up to 5', 'Up to 10'],
-              ['Custom design', '✓', '✓'],
-              ['Mobile responsive', '✓', '✓'],
-              ['WhatsApp button', '✓', '✓'],
-              ['Basic SEO', '✓', '✓'],
-              ['Advanced SEO + Google setup', '—', '✓'],
-              ['Booking / appointment section', '—', '✓'],
-              ['Team and credentials page', '—', '✓'],
-              ['Testimonials section', '—', '✓'],
-              ['Google Maps integration', '—', '✓'],
+              ['Custom design', 'Yes', 'Yes'],
+              ['Mobile responsive', 'Yes', 'Yes'],
+              ['WhatsApp button', 'Yes', 'Yes'],
+              ['Basic SEO', 'Yes', 'Yes'],
+              ['Advanced SEO + Google setup', 'No', 'Yes'],
+              ['Booking / appointment section', 'No', 'Yes'],
+              ['Team and credentials page', 'No', 'Yes'],
+              ['Testimonials section', 'No', 'Yes'],
+              ['Google Maps integration', 'No', 'Yes'],
               ['Starting price (one-time)', 'AED 1,450', 'AED 2,950'],
               ['Managed plan from', 'AED 150/mo', 'AED 365/mo'],
             ]
@@ -586,7 +604,7 @@ function Level2Page(): string {
           { icon: Icons.globe, title: 'Advanced SEO', desc: 'Full local SEO setup including Google Business Profile configuration.' },
           { icon: Icons.shield, title: 'Secure Hosting', desc: 'SSL certificates, daily backups, and active uptime monitoring included.' },
           { icon: Icons.phone, title: 'Booking Integration', desc: 'Appointment sections and scheduling flows built directly into your site.' },
-          { icon: Icons.code, title: 'Ongoing Updates', desc: 'Managed plan clients get unlimited content updates — add treatments, update team bios, change pricing.' },
+          { icon: Icons.code, title: 'Ongoing Updates', desc: 'Managed plan clients get unlimited content updates, add treatments, update team bios, change pricing.' },
         ]
           .map(f => `<div class="feature-item reveal">
             <div class="feature-icon-wrap">${f.icon}</div>
@@ -613,7 +631,7 @@ function Level2Page(): string {
           },
           {
             q: 'What\'s included in the managed plan?',
-            a: 'Everything — design, build, hosting, SSL, domain, monthly updates, seasonal campaigns, and priority WhatsApp support. You do nothing, we handle it all.',
+            a: 'Everything. Design, build, hosting, SSL, domain, monthly updates, seasonal campaigns, and priority WhatsApp support. You do nothing, we handle it all.',
           },
           {
             q: 'Can I request changes after launch?',
@@ -621,7 +639,7 @@ function Level2Page(): string {
           },
           {
             q: 'How long does it take?',
-            a: 'Typically 14–21 business days from brief sign-off, depending on how quickly we receive your content.',
+            a: 'Typically 14 to 21 business days from brief sign-off, depending on how quickly we receive your content.',
           },
         ]
           .map(f => `<div class="faq-item"><h3>${f.q}</h3><p>${f.a}</p></div>`)
@@ -635,10 +653,10 @@ function Level2Page(): string {
       <h2>Build your professional site</h2>
       <p>Your clients are searching online right now. Make sure they find something impressive.</p>
       <div class="cta-ctas">
-        <a href="#" class="btn btn-primary btn-large" data-link="contact" id="l2-footer-cta">
+        <a href="#" class="btn btn-dark btn-large" data-link="contact" id="l2-footer-cta">
           Talk to us ${Icons.arrow}
         </a>
-        <a href="https://wa.me/971XXXXXXXXX" target="_blank" class="btn btn-wa btn-large">
+        <a href="https://wa.me/971504668481" target="_blank" class="btn btn-wa btn-large">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="white">${Icons.whatsapp}</svg>
           WhatsApp us
         </a>
@@ -647,210 +665,25 @@ function Level2Page(): string {
   </section>`;
 }
 
-// ─── Our Work Page ───────────────────────────────────────────────────────────
+// ─── Our Work Page (kept but hidden from nav) ────────────────────────────────
 function WorkPage(): string {
-  const projects = [
-    {
-      tag: 'Level 1 · Kiosk',
-      title: 'Bites & Brews',
-      meta: 'Food & Beverage · Dubai',
-      desc: '"We went from no online presence at all to having customers find us on Google. The WhatsApp button alone brought us new walk-ins within the first week."',
-      url: 'bitesandbrews.ae',
-      demoClass: 'kiosk',
-    },
-    {
-      tag: 'Level 2 · Clinic',
-      title: 'Pearl Dental',
-      meta: 'Dental Practice · Abu Dhabi',
-      desc: '"Patients tell us our website looks more professional than clinics open for 10+ years. Feather Studio completely changed how we present ourselves."',
-      url: 'pearldental.ae',
-      demoClass: 'dental',
-      alt: true,
-    },
-    {
-      tag: 'Level 2 · Studio',
-      title: 'Aura Aesthetics',
-      meta: 'Beauty & Wellness · Sharjah',
-      desc: '"Our bookings doubled in the first month after launching. The site looks luxurious — it matches exactly the feeling we want clients to have before they walk in."',
-      url: 'aura-aesthetics.ae',
-      demoClass: 'aesthetics',
-    },
-    {
-      tag: 'Level 1 · Wellness',
-      title: "Bloom Women's Health",
-      meta: "Women's Wellness · Dubai",
-      desc: '"We needed something warm and trustworthy. Feather understood our audience immediately — the result feels like us, just professional."',
-      url: 'bloomwomens.ae',
-      demoClass: 'womens',
-      alt: true,
-    },
-  ];
-
-  const demoSites: Record<string, string> = {
-    kiosk: `
-      <div class="demo-site" style="background:#FFFAF5;">
-        <div class="demo-nav" style="background:#fff; border-bottom:1px solid #f0e8dc;">
-          <span style="font-size:0.75rem; font-weight:800; color:#F4A261; letter-spacing:-0.02em;">Bites & Brews</span>
-          <div class="demo-navlinks">
-            <a href="#" style="font-size:0.60rem; color:#555; font-weight:500;">Menu</a>
-            <a href="#" style="font-size:0.60rem; color:#555; font-weight:500;">About</a>
-            <a href="#" style="font-size:0.60rem; background:#F4A261; color:#fff; padding:4px 10px; border-radius:100px; font-weight:700;">Order Now</a>
-          </div>
-        </div>
-        <div class="demo-hero" style="background:linear-gradient(135deg, #FFFAF5 0%, #FFF2E0 100%);">
-          <div class="demo-eyebrow" style="color:#E07E3A;">Dubai Marina · Open Daily 8am–10pm</div>
-          <div class="demo-h1" style="color:#1a1a1a;">Coffee that<br>hits different.</div>
-          <div class="demo-sub" style="color:#666;">Fresh brews, artisan snacks, and a vibe that keeps you coming back.</div>
-          <div class="demo-btn" style="background:#F4A261; color:#fff;">Browse Menu →</div>
-        </div>
-        <div style="padding:22px; display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-          ${[['☕','Oat Flat White','AED 22'],['🥐','Almond Croissant','AED 16'],['🍋','Lemonade Cooler','AED 18'],['🥑','Avo Toast','AED 28']]
-            .map(([e,n,p]) => `<div style="background:#fff; border:1px solid #f0e8dc; border-radius:8px; padding:10px 12px;"><div style="font-size:1rem; margin-bottom:4px;">${e}</div><div style="font-size:0.62rem; font-weight:700; color:#1a1a1a;">${n}</div><div style="font-size:0.58rem; color:#E07E3A; font-weight:700; margin-top:2px;">${p}</div></div>`)
-            .join('')}
-        </div>
-      </div>`,
-
-    dental: `
-      <div class="demo-site dental">
-        <div class="demo-nav dental-nav" style="background:rgba(255,255,255,.05);">
-          <span class="dental-logo">PEARL DENTAL</span>
-          <div style="display:flex; gap:10px;">
-            <a href="#" style="font-size:0.60rem; color:rgba(255,255,255,.6); font-weight:500;">Services</a>
-            <a href="#" style="font-size:0.60rem; color:rgba(255,255,255,.6); font-weight:500;">Team</a>
-            <a href="#" style="background:#C9A96E; color:#fff; padding:4px 12px; border-radius:100px; font-size:0.60rem; font-weight:700;">Book Now</a>
-          </div>
-        </div>
-        <div class="demo-hero" style="padding:32px 20px 28px;">
-          <div class="demo-eyebrow dental-eyebrow">Abu Dhabi · Est. 2018</div>
-          <div class="demo-h1 dental-h1">Expert dental care<br>you can smile about.</div>
-          <div class="demo-sub dental-sub">Comprehensive dental services by specialists dedicated to your comfort.</div>
-          <span class="demo-btn dental-btn">Book Appointment →</span>
-        </div>
-        <div style="background:#F5F3EE; padding:20px;">
-          <div style="font-size:0.54rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#8B7355; margin-bottom:8px;">Our Services</div>
-          <div style="font-size:1.05rem; font-weight:800; color:#1a1a1a; margin-bottom:12px;">Comprehensive care</div>
-          <div class="dental-services-layout">
-            <div class="dental-service-card-large"><strong>Cosmetic Dentistry</strong><p>Veneers, whitening, smile design.</p><div class="dental-service-arrow">→</div></div>
-            <div style="display:flex; flex-direction:column; gap:8px;">
-              <div class="dental-service-card-sm"><strong>Orthodontics</strong><p>Invisalign & braces</p></div>
-              <div class="dental-service-card-sm"><strong>Implants</strong><p>Permanent solutions</p></div>
-            </div>
-            <div style="display:flex; flex-direction:column; gap:8px;">
-              <div class="dental-service-card-sm"><strong>General Dentistry</strong><p>Checkups & cleaning</p></div>
-              <div class="dental-service-card-sm"><strong>Pediatric</strong><p>Kids' dental care</p></div>
-            </div>
-          </div>
-        </div>
-      </div>`,
-
-    aesthetics: `
-      <div class="demo-site aesthetics">
-        <div class="aesthetics-nav">
-          <span class="aesthetics-logo">AURA</span>
-          <div class="aesthetics-links">
-            <a href="#">Treatments</a>
-            <a href="#">About</a>
-            <a href="#" style="background:rgba(167,139,250,.15); color:#a78bfa; padding:4px 12px; border-radius:100px; font-size:0.60rem; font-weight:700;">Book →</a>
-          </div>
-        </div>
-        <div class="aesthetics-hero">
-          <span class="aesthetics-eyebrow">Luxury Aesthetics · Sharjah</span>
-          <div class="aesthetics-h1">Where beauty<br>meets science.</div>
-          <div class="aesthetics-sub">Premium aesthetic treatments by certified specialists.</div>
-          <span class="aesthetics-btn">Explore treatments</span>
-        </div>
-        <div style="background:rgba(255,255,255,.03); padding:20px;">
-          <div style="font-size:0.54rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#a78bfa; margin-bottom:6px;">Our Treatments</div>
-          <div style="font-size:1rem; font-weight:800; color:#fff; margin-bottom:12px;">Curated for you</div>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-            ${[['Laser Therapy','Advanced skin renewal'],['Hydrafacial','Deep hydration'],['Botox & Fillers','Natural results'],['Body Contouring','Sculpt & tone']]
-              .map(([t,d]) => `<div class="aesthetics-card" style="padding:10px 12px; border-radius:8px;"><strong style="font-size:0.63rem; display:block; margin-bottom:3px; color:#fff;">${t}</strong><p style="font-size:0.56rem; color:rgba(255,255,255,.55);">${d}</p></div>`)
-              .join('')}
-          </div>
-        </div>
-      </div>`,
-
-    womens: `
-      <div class="demo-site womens">
-        <div class="womens-nav">
-          <span class="womens-logo">🌸 Bloom Wellness</span>
-          <div class="womens-links">
-            <a href="#">Services</a>
-            <a href="#">About</a>
-            <a href="#" style="background:#8B4A62; color:#fff; padding:4px 10px; border-radius:100px; font-size:0.58rem; font-weight:700;">Book</a>
-          </div>
-        </div>
-        <div class="womens-hero">
-          <div style="flex:1;">
-            <span class="womens-eyebrow">Women's Health · Dubai</span>
-            <div class="womens-h1">Wellness that<br>feels like you.</div>
-            <div style="font-size:0.63rem; color:#7a506b; line-height:1.5; margin-bottom:14px;">Holistic women's health services in a warm, welcoming space.</div>
-            <span class="womens-btn">Book a session →</span>
-          </div>
-          <div class="womens-hero-deco">
-            <div class="womens-deco-circle c1"></div>
-            <div class="womens-deco-circle c2"></div>
-            <div class="womens-deco-circle c3"></div>
-          </div>
-        </div>
-        <div style="background:#FFF4F0; padding:20px; display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-          ${[['Prenatal Wellness','Gentle & expert'],['Hormonal Health','Balanced & thriving'],['Nutrition Coaching','Fueled from within'],['Mental Wellness','Mind & body']]
-            .map(([t,d]) => `<div class="womens-card" style="padding:10px 12px; border-radius:8px;"><div class="womens-service-dot"></div><strong style="font-size:0.63rem; display:block; margin-bottom:3px; color:#3d2030;">${t}</strong><p style="font-size:0.56rem; color:#7a506b;">${d}</p></div>`)
-            .join('')}
-        </div>
-      </div>`,
-  };
-
   return `
   <div class="page-header" style="border-bottom:1px solid var(--border);">
     <div class="container">
       <div class="section-label">Portfolio</div>
       <h1>Our Work</h1>
-      <p>A selection of websites we've built for businesses across the UAE.</p>
+      <p>Coming soon. We're putting together our portfolio. In the meantime, reach out to see what we can build for you.</p>
     </div>
   </div>
-
-  <div class="showcase-outer">
-    <div class="container">
-      ${projects
-        .map((p) => `
-        <div class="showcase-item${p.alt ? ' alt' : ''} reveal">
-          <div class="showcase-label">
-            <span class="showcase-tag">${p.tag}</span>
-            <h2>${p.title}</h2>
-            <div class="showcase-meta">${p.meta}</div>
-            <p class="showcase-desc">${p.desc}</p>
-            <a href="https://wa.me/971XXXXXXXXX" target="_blank" class="showcase-cta">
-              Build something like this ${Icons.arrow}
-            </a>
-          </div>
-          <div class="showcase-frame-wrap">
-            <div class="browser-chrome">
-              <div class="browser-bar">
-                <div class="browser-dot red"></div>
-                <div class="browser-dot yellow"></div>
-                <div class="browser-dot green"></div>
-                <div class="browser-url">${p.url}</div>
-              </div>
-              <div class="browser-body">
-                ${demoSites[p.demoClass] || ''}
-              </div>
-            </div>
-          </div>
-        </div>`)
-        .join('')}
-    </div>
-  </div>
-
   <section class="cta-section">
     <div class="container">
-      <h2>Want a site like these?</h2>
-      <p>Let's talk about what you need and which plan is the right fit.</p>
+      <h2>Let's build yours</h2>
+      <p>Tell us about your business and what you need.</p>
       <div class="cta-ctas">
-        <a href="#" class="btn btn-primary btn-large" data-link="contact" id="work-cta">
+        <a href="#" class="btn btn-dark btn-large" data-link="contact" id="work-cta">
           Get in touch ${Icons.arrow}
         </a>
-        <a href="https://wa.me/971XXXXXXXXX" target="_blank" class="btn btn-wa btn-large">
+        <a href="https://wa.me/971504668481" target="_blank" class="btn btn-wa btn-large">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="white">${Icons.whatsapp}</svg>
           WhatsApp us
         </a>
@@ -869,24 +702,33 @@ function ContactPage(): string {
           <div class="contact-info reveal">
             <div class="section-label">Contact</div>
             <h1>Let's build<br>something.</h1>
-            <p>Tell us about your business or just ask anything. We respond fast — usually within a few hours.</p>
+            <p>Tell us about your business or just ask anything. We respond fast, usually within a few hours.</p>
             <div class="contact-methods">
-              <a href="https://wa.me/971XXXXXXXXX" target="_blank" class="contact-method">
+              <a href="https://wa.me/971504668481" target="_blank" class="contact-method">
                 <div class="contact-method-icon" style="background:rgba(37,211,102,.08); color:var(--whatsapp);">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">${Icons.whatsapp}</svg>
                 </div>
                 <div>
                   <div class="contact-method-label">WhatsApp</div>
-                  <div class="contact-method-value">+971 XX XXX XXXX</div>
+                  <div class="contact-method-value">+971 50 466 8481</div>
                 </div>
               </a>
-              <a href="mailto:hello@featherstudio.ae" class="contact-method">
+              <a href="mailto:hellofeatherstudio.co" class="contact-method">
                 <div class="contact-method-icon">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${Icons.mail}</svg>
                 </div>
                 <div>
                   <div class="contact-method-label">Email</div>
-                  <div class="contact-method-value">hello@featherstudio.ae</div>
+                  <div class="contact-method-value">hellofeatherstudio.co</div>
+                </div>
+              </a>
+              <a href="https://www.instagram.com/featherstudio.co?igsh=eDZzNTdtcW1kMGx2&utm_source=qr" target="_blank" class="contact-method">
+                <div class="contact-method-icon" style="background:rgba(225,48,108,.08); color:#e1306c;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${Icons.instagram}</svg>
+                </div>
+                <div>
+                  <div class="contact-method-label">Instagram · 200+ followers</div>
+                  <div class="contact-method-value">@featherstudio.co</div>
                 </div>
               </a>
               <div class="contact-method">
@@ -904,25 +746,31 @@ function ContactPage(): string {
           <div class="contact-form-card reveal" style="transition-delay:0.1s;">
             <h3>Send us a message</h3>
             <p>We'll get back to you within a few hours.</p>
-            <form class="enquiry-form" id="contact-form" action="https://formspree.io/f/xwkgjkgw" method="POST">
-              <input class="form-input" id="form-name" name="name" type="text" placeholder="Your name" required />
-              <input class="form-input" id="form-email" name="email" type="email" placeholder="Email address" required />
-              <input class="form-input" id="form-business" name="business" type="text" placeholder="Business name" />
-              <select class="form-input" id="form-tier" name="tier">
+            
+            <div data-fs-success class="fs-success-msg" style="display:none;">
+              <div style="font-size:1.2rem; margin-bottom:4px;">✅</div>
+              <div style="font-size:0.9rem; font-weight:700; color:var(--navy);">Message sent!</div>
+              <div style="font-size:0.82rem; color:var(--text-muted); margin-top:4px;">We'll get back to you within a few hours.</div>
+            </div>
+            <div data-fs-error class="fs-error-msg"></div>
+
+            <form class="enquiry-form" id="contact-form">
+              <input class="form-input" id="form-name" name="name" type="text" placeholder="Your name" required data-fs-field />
+              <span data-fs-error="name" class="fs-field-error"></span>
+              <input class="form-input" id="form-email" name="email" type="email" placeholder="Email address" required data-fs-field />
+              <span data-fs-error="email" class="fs-field-error"></span>
+              <input class="form-input" id="form-business" name="business" type="text" placeholder="Business name" data-fs-field />
+              <select class="form-input" id="form-tier" name="tier" data-fs-field>
                 <option value="">Which plan are you interested in?</option>
-                <option value="l1">Level 1 — Small Business</option>
-                <option value="l2">Level 2 — Professional</option>
+                <option value="l1">Level 1 - Small Business</option>
+                <option value="l2">Level 2 - Professional</option>
                 <option value="unsure">Not sure yet</option>
               </select>
-              <textarea class="form-input form-textarea" id="form-message" name="message" placeholder="Tell us about your business and what you need..." required></textarea>
-              <button type="submit" class="btn btn-primary btn-block btn-large" id="form-submit-btn">
+              <textarea class="form-input form-textarea" id="form-message" name="message" placeholder="Tell us about your business and what you need..." required data-fs-field></textarea>
+              <span data-fs-error="message" class="fs-field-error"></span>
+              <button type="submit" class="btn btn-dark btn-block btn-large" id="form-submit-btn" data-fs-submit-btn>
                 Send message ${Icons.arrow}
               </button>
-              <div id="form-success" style="display:none; text-align:center; padding:18px; background:rgba(62,207,142,.07); border-radius:var(--r-md); border:1px solid rgba(62,207,142,.20);">
-                <div style="font-size:1.2rem; margin-bottom:4px;">✅</div>
-                <div style="font-size:0.9rem; font-weight:700; color:var(--navy);">Message sent!</div>
-                <div style="font-size:0.82rem; color:var(--text-dim); margin-top:4px;">We'll get back to you within a few hours.</div>
-              </div>
             </form>
           </div>
         </div>
@@ -961,23 +809,68 @@ function scrollReveal() {
   targets.forEach(t => obs.observe(t));
 }
 
-function attachFormLogic() {
-  const form = $('#contact-form') as HTMLFormElement | null;
-  const btn  = $('#form-submit-btn');
-  const success = $('#form-success');
-  if (!form || !btn || !success) return;
-  form.addEventListener('submit', (e) => {
+function initFormspree() {
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  if (!form) return;
+
+  // Initialize formspree ajax
+  const script = document.createElement('script');
+  script.src = 'https://unpkg.com/@formspree/ajax@1';
+  script.defer = true;
+  document.head.appendChild(script);
+
+  // Use the formspree global once it's loaded
+  script.onload = () => {
+    if ((window as any).formspree) {
+      (window as any).formspree('initForm', { formElement: '#contact-form', formId: 'xeerbbve' });
+    }
+  };
+
+  // Fallback: also handle it manually with fetch for reliability
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const data = new FormData(form);
-    fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
-      .then(() => {
-        btn.style.display = 'none';
-        success.style.display = 'block';
-      })
-      .catch(() => {
-        btn.style.display = 'none';
-        success.style.display = 'block';
+    const btn = document.getElementById('form-submit-btn') as HTMLButtonElement;
+    const successEl = document.querySelector('[data-fs-success]') as HTMLElement;
+    const errorEl = document.querySelector('[data-fs-error]:not([data-fs-error="name"]):not([data-fs-error="email"]):not([data-fs-error="message"])') as HTMLElement;
+
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+    }
+
+    try {
+      const data = new FormData(form);
+      const res = await fetch('https://formspree.io/f/xeerbbve', {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' },
       });
+
+      if (res.ok) {
+        form.style.display = 'none';
+        if (successEl) {
+          successEl.style.display = 'block';
+          successEl.style.textAlign = 'center';
+          successEl.style.padding = '18px';
+          successEl.style.background = 'rgba(62,207,142,.07)';
+          successEl.style.borderRadius = '10px';
+          successEl.style.border = '1px solid rgba(62,207,142,.20)';
+        }
+      } else {
+        throw new Error('Server error');
+      }
+    } catch {
+      if (errorEl) {
+        errorEl.textContent = 'Something went wrong. Please try again or message us on WhatsApp.';
+        errorEl.style.color = 'var(--red)';
+        errorEl.style.fontSize = '0.85rem';
+        errorEl.style.marginTop = '8px';
+      }
+      if (btn) {
+        btn.disabled = false;
+        btn.textContent = 'Try again';
+      }
+    }
   });
 }
 
@@ -998,7 +891,7 @@ function navigate(page: Page) {
     scrollReveal();
 
     if (page === 'contact') {
-      attachFormLogic();
+      initFormspree();
     }
   }, 150);
 }
@@ -1024,6 +917,11 @@ function initNavScroll() {
   };
   window.addEventListener('scroll', handler, { passive: true });
 }
+
+// ─── Formspree global queue ───────────────────────────────────────────────────
+(window as any).formspree = (window as any).formspree || function() {
+  ((window as any).formspree.q = (window as any).formspree.q || []).push(arguments);
+};
 
 // ─── Bootstrap ───────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
