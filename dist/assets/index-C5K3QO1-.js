@@ -1,43 +1,4 @@
-import './style.css';
-
-// ─── Utilities ──────────────────────────────────────────────────────────────
-const $ = (sel: string, ctx: Document | Element = document) =>
-  ctx.querySelector<HTMLElement>(sel);
-const $$ = (sel: string, ctx: Document | Element = document) =>
-  [...ctx.querySelectorAll<HTMLElement>(sel)];
-
-// AED → USD rate
-const AED_TO_USD = 0.2723;
-const aedUsd = (aed: number) =>
-  `<span class="price-usd">≈ $${(aed * AED_TO_USD).toFixed(0)} USD</span>`;
-
-// ─── Icons ──────────────────────────────────────────────────────────────────
-const Icons = {
-  arrow: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="2" y1="8" x2="13" y2="8"/><polyline points="9,4 13,8 9,12"/></svg>`,
-  arrowLg: `<svg width="18" height="18" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="2" y1="8" x2="13" y2="8"/><polyline points="9,4 13,8 9,12"/></svg>`,
-  check: `<svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,5.5 3.8,8 8.5,2"/></svg>`,
-  feather: `<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M26 4C14 4 6 14 6 22" stroke="#635BFF" stroke-width="2.2" stroke-linecap="round"/><path d="M6 22c3-3 8-5 13-3" stroke="#635BFF" stroke-width="2" stroke-linecap="round"/><path d="M6 22L3 29" stroke="#635BFF" stroke-width="2" stroke-linecap="round"/><path d="M26 4C24 8 21 11 18 14M18 14C15 17 12 19 9 20M18 14L16 16" stroke="#635BFF" stroke-width="1.5" stroke-linecap="round"/></svg>`,
-  globe: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
-  phone: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.79a19.79 19.79 0 01-3.07-8.7A2 2 0 012 0h3a2 2 0 012 1.72c.12.96.36 1.9.69 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.33 1.85.57 2.81.69A2 2 0 0122 16.92z"/></svg>`,
-  mail: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>`,
-  map: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
-  star: `<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`,
-  code: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16,18 22,12 16,6"/><polyline points="8,6 2,12 8,18"/></svg>`,
-  zap: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"/></svg>`,
-  shield: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
-  palette: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>`,
-  rocket: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2 .27-2.98-.31-3.5c-.56-.52-1.43-.8-2.69.5z"/><path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>`,
-  chartUp: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23,6 13.5,15.5 8.5,10.5 1,18"/><polyline points="17,6 23,6 23,12"/></svg>`,
-  wrench: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>`,
-  whatsapp: `<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>`,
-};
-
-const CheckIcon = () =>
-  `<span class="check-icon">${Icons.check}</span>`;
-
-// ─── Navbar ──────────────────────────────────────────────────────────────────
-function Navbar(): string {
-  return `
+(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const i of document.querySelectorAll('link[rel="modulepreload"]'))o(i);new MutationObserver(i=>{for(const n of i)if(n.type==="childList")for(const d of n.addedNodes)d.tagName==="LINK"&&d.rel==="modulepreload"&&o(d)}).observe(document,{childList:!0,subtree:!0});function s(i){const n={};return i.integrity&&(n.integrity=i.integrity),i.referrerPolicy&&(n.referrerPolicy=i.referrerPolicy),i.crossOrigin==="use-credentials"?n.credentials="include":i.crossOrigin==="anonymous"?n.credentials="omit":n.credentials="same-origin",n}function o(i){if(i.ep)return;i.ep=!0;const n=s(i);fetch(i.href,n)}})();const r=(e,t=document)=>t.querySelector(e),b=(e,t=document)=>[...t.querySelectorAll(e)],M=.2723,v=e=>`<span class="price-usd">≈ $${(e*M).toFixed(0)} USD</span>`,a={arrow:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="2" y1="8" x2="13" y2="8"/><polyline points="9,4 13,8 9,12"/></svg>',arrowLg:'<svg width="18" height="18" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="2" y1="8" x2="13" y2="8"/><polyline points="9,4 13,8 9,12"/></svg>',check:'<svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,5.5 3.8,8 8.5,2"/></svg>',globe:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',phone:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.79a19.79 19.79 0 01-3.07-8.7A2 2 0 012 0h3a2 2 0 012 1.72c.12.96.36 1.9.69 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.33 1.85.57 2.81.69A2 2 0 0122 16.92z"/></svg>',mail:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',map:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>',star:'<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>',code:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16,18 22,12 16,6"/><polyline points="8,6 2,12 8,18"/></svg>',zap:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"/></svg>',shield:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',palette:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>',rocket:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2 .27-2.98-.31-3.5c-.56-.52-1.43-.8-2.69.5z"/><path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>',wrench:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>',whatsapp:'<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>'},g=()=>`<span class="check-icon">${a.check}</span>`;function S(){return`
   <nav class="nav" id="main-nav">
     <a href="#" class="logo" data-link="home" id="logo-btn">
       <svg class="feather-icon" width="30" height="30" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -57,22 +18,12 @@ function Navbar(): string {
     </div>
     <div class="nav-actions">
       <a href="#" class="btn btn-secondary btn-sm" data-link="contact" id="nav-contact-cta">Get in touch</a>
-      <a href="#" class="btn btn-primary btn-sm" data-link="level1" id="nav-start-cta">Start a project ${Icons.arrow}</a>
+      <a href="#" class="btn btn-primary btn-sm" data-link="level1" id="nav-start-cta">Start a project ${a.arrow}</a>
     </div>
-  </nav>`;
-}
-
-// ─── WhatsApp FAB ────────────────────────────────────────────────────────────
-function WhatsAppFab(): string {
-  return `
+  </nav>`}function B(){return`
   <a id="whatsapp-fab" href="https://wa.me/971XXXXXXXXX" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
-    <svg viewBox="0 0 24 24" fill="white">${Icons.whatsapp}</svg>
-  </a>`;
-}
-
-// ─── Footer ──────────────────────────────────────────────────────────────────
-function Footer(): string {
-  return `
+    <svg viewBox="0 0 24 24" fill="white">${a.whatsapp}</svg>
+  </a>`}function W(){return`
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
@@ -112,12 +63,7 @@ function Footer(): string {
         <span>Crafted with care in the UAE</span>
       </div>
     </div>
-  </footer>`;
-}
-
-// ─── Home Page ───────────────────────────────────────────────────────────────
-function HomePage(): string {
-  return `
+  </footer>`}function X(){return`
   <div class="page-gradient-bg">
     <div class="slanted-canvas-container">
       <div class="slanted-canvas">
@@ -140,7 +86,7 @@ function HomePage(): string {
             </p>
             <div class="hero-ctas">
               <a href="#" class="btn btn-primary btn-large" data-link="level1" id="hero-cta-start">
-                Start a project ${Icons.arrowLg}
+                Start a project ${a.arrowLg}
               </a>
               <a href="#" class="btn btn-secondary btn-large" data-link="work" id="hero-cta-work">
                 See our work
@@ -209,22 +155,22 @@ function HomePage(): string {
     <div class="container">
       <div class="trust-bar-inner">
         <div class="trust-item">
-          <span class="trust-icon">${Icons.shield}</span>
+          <span class="trust-icon">${a.shield}</span>
           No hidden fees
         </div>
         <div class="trust-sep"></div>
         <div class="trust-item">
-          <span class="trust-icon">${Icons.zap}</span>
+          <span class="trust-icon">${a.zap}</span>
           Live in 7–14 days
         </div>
         <div class="trust-sep"></div>
         <div class="trust-item">
-          <span class="trust-icon">${Icons.globe}</span>
+          <span class="trust-icon">${a.globe}</span>
           Fully custom design
         </div>
         <div class="trust-sep"></div>
         <div class="trust-item">
-          <span class="trust-icon">${Icons.star}</span>
+          <span class="trust-icon">${a.star}</span>
           Based in the UAE
         </div>
       </div>
@@ -262,7 +208,7 @@ function HomePage(): string {
   <section class="section-pad" style="background:var(--white);">
     <div class="container">
       <div class="section-header centered reveal">
-        <span class="label">${Icons.globe} Our Services</span>
+        <span class="label">${a.globe} Our Services</span>
         <h2 class="section-heading">Two tiers, built for<br>where you actually are</h2>
         <p class="section-sub">
           Whether you're just starting out or running an established practice —
@@ -289,7 +235,7 @@ function HomePage(): string {
             <div class="tier-price-hint">
               From <strong>AED 1,450</strong> one-time · or <strong>AED 150/mo</strong> managed
             </div>
-            <span class="tier-cta">Explore Level 1 ${Icons.arrow}</span>
+            <span class="tier-cta">Explore Level 1 ${a.arrow}</span>
           </div>
           <div class="tier-plate l1" id="tier-plate-l1">
             <div class="checkout-widget" id="l1-interactive-checkout" style="transform: scale(0.95);">
@@ -307,7 +253,7 @@ function HomePage(): string {
                 <div class="cw-price">AED 650</div>
               </div>
               <div class="cw-total"><span>Total</span><strong id="cw-total-price">AED 1,450</strong></div>
-              <div class="cw-btn" id="cw-order-btn">${Icons.zap} Place order</div>
+              <div class="cw-btn" id="cw-order-btn">${a.zap} Place order</div>
             </div>
           </div>
         </div>
@@ -343,7 +289,7 @@ function HomePage(): string {
             <div class="tier-price-hint">
               From <strong>AED 2,950</strong> one-time · or <strong>AED 365/mo</strong> managed
             </div>
-            <span class="tier-cta">Explore Level 2 ${Icons.arrow}</span>
+            <span class="tier-cta">Explore Level 2 ${a.arrow}</span>
           </div>
         </div>
       </div>
@@ -354,7 +300,7 @@ function HomePage(): string {
   <section class="section-pad" style="background:var(--surface);">
     <div class="container">
       <div class="section-header reveal">
-        <span class="label">${Icons.rocket} Process</span>
+        <span class="label">${a.rocket} Process</span>
         <h2 class="section-heading">How it works</h2>
         <p class="section-sub">Simple, straight-to-the-point. No meetings that go nowhere.</p>
       </div>
@@ -385,19 +331,14 @@ function HomePage(): string {
       <p>Whether you're a kiosk or a clinic, we'll build you a website worth being proud of.</p>
       <div class="cta-ctas">
         <a href="#" class="btn btn-primary btn-large" data-link="contact" id="home-cta-contact">
-          Get in touch ${Icons.arrowLg}
+          Get in touch ${a.arrowLg}
         </a>
         <a href="#" class="btn btn-secondary btn-large" data-link="work" id="home-cta-work">
           See our work
         </a>
       </div>
     </div>
-  </section>`;
-}
-
-// ─── Level 1 Page ────────────────────────────────────────────────────────────
-function Level1Page(): string {
-  return `
+  </section>`}function D(){return`
   <div class="page-gradient-bg">
     <div class="slanted-canvas-container subpage">
       <div class="slanted-canvas">
@@ -406,7 +347,7 @@ function Level1Page(): string {
     </div>
     <div class="page-header">
       <div class="container">
-        <span class="label" style="justify-content:center;">${Icons.zap} Level 1 · Small Business</span>
+        <span class="label" style="justify-content:center;">${a.zap} Level 1 · Small Business</span>
         <h1>Great websites for<br>growing businesses</h1>
         <p>For kiosks, cafes, salons, retail shops, and anyone who wants to look
         professional online without a huge budget.</p>
@@ -430,13 +371,13 @@ function Level1Page(): string {
           <div class="popular-ribbon" style="top:18px; right:-26px;">Best Value</div>
           <span class="plan-name" style="font-size:0.67rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted); margin-bottom:12px; display:block;">One-Time · Level 1</span>
           <div class="price-main" style="font-size:2.8rem; font-weight:800; color:var(--navy); line-height:1; letter-spacing:-0.03em; margin-bottom:4px;">AED 1,450</div>
-          ${aedUsd(1450)}
+          ${v(1450)}
           <div class="plan-tagline" style="font-size:0.88rem; color:var(--text-dim); line-height:1.6; padding-top:20px; margin-top:20px; border-top:1px solid var(--border); margin-bottom:32px;">
             Pay once, own your website forever. You get the files, the domain, and full control.
             No recurring fees.
           </div>
           <a href="#" class="btn btn-primary btn-block btn-large" data-link="contact" id="l1-ot-cta">
-            Get started ${Icons.arrowLg}
+            Get started ${a.arrowLg}
           </a>
           <p class="plan-note" style="font-size:0.75rem; color:var(--text-muted); margin-top:12px;">Includes one round of revisions. Additional pages available for AED 150/page.</p>
         </div>
@@ -444,16 +385,7 @@ function Level1Page(): string {
           <div>
             <div class="features-title">What you get</div>
             <div class="features-list">
-              ${[
-                'Fully custom-designed website',
-                'Up to 5 pages included',
-                'Mobile responsive layout',
-                'Basic SEO setup',
-                'WhatsApp contact button',
-                'Contact form',
-                'Handoff within 7–14 days',
-                'Source files included',
-              ].map(f => `<div class="feature-row">${CheckIcon()}<span>${f}</span></div>`).join('')}
+              ${["Fully custom-designed website","Up to 5 pages included","Mobile responsive layout","Basic SEO setup","WhatsApp contact button","Contact form","Handoff within 7–14 days","Source files included"].map(e=>`<div class="feature-row">${g()}<span>${e}</span></div>`).join("")}
             </div>
           </div>
           <div style="border-top:1px solid var(--border); padding-top:24px; margin-top:12px; display:flex; flex-direction:column; align-items:center;">
@@ -473,7 +405,7 @@ function Level1Page(): string {
                 <div class="cw-price">AED 650</div>
               </div>
               <div class="cw-total"><span>Total</span><strong id="sub-cw-total-price">AED 1,450</strong></div>
-              <div class="cw-btn" id="sub-cw-order-btn">${Icons.zap} Place order</div>
+              <div class="cw-btn" id="sub-cw-order-btn">${a.zap} Place order</div>
             </div>
           </div>
         </div>
@@ -487,7 +419,7 @@ function Level1Page(): string {
             <div>
               <span style="font-size:0.78rem; text-transform:uppercase; font-weight:700; color:var(--text-dim); display:block; margin-bottom:4px;">One-Time Setup</span>
               <div class="price-setup" style="font-size:2.2rem; font-weight:800; color:var(--navy); line-height:1; letter-spacing:-0.02em;">AED 500</div>
-              ${aedUsd(500)}
+              ${v(500)}
             </div>
             <div style="border-top:1px solid var(--border); padding-top:16px;">
               <span style="font-size:0.78rem; text-transform:uppercase; font-weight:700; color:var(--text-dim); display:block; margin-bottom:4px;">Monthly Management</span>
@@ -495,27 +427,18 @@ function Level1Page(): string {
                 <div class="price-month" style="font-size:2.2rem; font-weight:800; color:var(--indigo); line-height:1; letter-spacing:-0.02em;">AED 150</div>
                 <div class="price-label" style="font-size:0.85rem; color:var(--text-muted);">/month</div>
               </div>
-              ${aedUsd(150)}
+              ${v(150)}
             </div>
           </div>
           <a href="#" class="btn btn-primary btn-block btn-large" data-link="contact" id="l1-managed-cta">
-            Get started ${Icons.arrowLg}
+            Get started ${a.arrowLg}
           </a>
         </div>
         <div class="pricing-right-pane">
           <div>
             <div class="features-title">What is covered</div>
             <div class="features-list">
-              ${[
-                'Full custom design & build',
-                'Up to 5 pages included',
-                'Domain + hosting managed by us',
-                'WhatsApp & contact form included',
-                'Mobile responsive layout',
-                'Basic SEO optimization',
-                'Monthly updates (1 round)',
-                'Priority support via WhatsApp/Email',
-              ].map(f => `<div class="feature-row">${CheckIcon()}<span>${f}</span></div>`).join('')}
+              ${["Full custom design & build","Up to 5 pages included","Domain + hosting managed by us","WhatsApp & contact form included","Mobile responsive layout","Basic SEO optimization","Monthly updates (1 round)","Priority support via WhatsApp/Email"].map(e=>`<div class="feature-row">${g()}<span>${e}</span></div>`).join("")}
             </div>
           </div>
           <div style="background:rgba(99,91,255,.04); border:1px solid rgba(99,91,255,.12); border-radius:var(--r-md); padding:18px;">
@@ -531,24 +454,15 @@ function Level1Page(): string {
   <section class="section-pad" style="background:var(--surface);">
     <div class="container">
       <div class="section-header reveal">
-        <span class="label">${Icons.code} Features</span>
+        <span class="label">${a.code} Features</span>
         <h2 class="section-heading">Built for business,<br>not just looks</h2>
       </div>
       <div class="feature-grid">
-        ${[
-          { icon: Icons.palette, title: 'Custom Design', desc: 'No templates. Every site is built from scratch to match your brand colors, fonts, and vibe.' },
-          { icon: Icons.zap, title: 'Fast Delivery', desc: 'Your site is live within 7–14 business days from when we agree on the brief.' },
-          { icon: Icons.globe, title: 'Mobile First', desc: 'Looks great on phones, tablets, and desktops. Over 70% of your visitors are on mobile.' },
-          { icon: Icons.shield, title: 'SEO Ready', desc: 'Proper page titles, meta descriptions, and structured code so Google can find you.' },
-          { icon: Icons.phone, title: 'WhatsApp Integration', desc: 'A tap-to-chat WhatsApp button on every page. The easiest way to get leads in the UAE.' },
-          { icon: Icons.wrench, title: 'Low Maintenance', desc: 'Simple and clean builds that don\'t break. Perfect for business owners who want to focus on work.' },
-        ]
-          .map(f => `<div class="feature-item reveal">
-            <div class="feature-icon-wrap">${f.icon}</div>
-            <h3>${f.title}</h3>
-            <p>${f.desc}</p>
-          </div>`)
-          .join('')}
+        ${[{icon:a.palette,title:"Custom Design",desc:"No templates. Every site is built from scratch to match your brand colors, fonts, and vibe."},{icon:a.zap,title:"Fast Delivery",desc:"Your site is live within 7–14 business days from when we agree on the brief."},{icon:a.globe,title:"Mobile First",desc:"Looks great on phones, tablets, and desktops. Over 70% of your visitors are on mobile."},{icon:a.shield,title:"SEO Ready",desc:"Proper page titles, meta descriptions, and structured code so Google can find you."},{icon:a.phone,title:"WhatsApp Integration",desc:"A tap-to-chat WhatsApp button on every page. The easiest way to get leads in the UAE."},{icon:a.wrench,title:"Low Maintenance",desc:"Simple and clean builds that don't break. Perfect for business owners who want to focus on work."}].map(e=>`<div class="feature-item reveal">
+            <div class="feature-icon-wrap">${e.icon}</div>
+            <h3>${e.title}</h3>
+            <p>${e.desc}</p>
+          </div>`).join("")}
       </div>
     </div>
   </section>
@@ -561,26 +475,7 @@ function Level1Page(): string {
         <h2 class="section-heading">Common questions</h2>
       </div>
       <div class="faq-list reveal">
-        ${[
-          {
-            q: 'Who is Level 1 for?',
-            a: 'Kiosks, cafes, retail shops, salons, small workshops — any business that wants a professional online presence without a large budget.',
-          },
-          {
-            q: 'Do I own the website after the one-time purchase?',
-            a: 'Yes, completely. We hand over all the files and you can host it wherever you want. We\'re also happy to help with hosting setup at no extra cost.',
-          },
-          {
-            q: 'What do I need to provide?',
-            a: 'Your logo (or we\'ll suggest options), photos of your business or products, and a short description of what you do. We\'ll handle the rest.',
-          },
-          {
-            q: 'Can I upgrade to Level 2 later?',
-            a: 'Absolutely. If your business grows and you need more features, we can rebuild or expand your site. Previous payments are credited where applicable.',
-          },
-        ]
-          .map(f => `<div class="faq-item"><h3>${f.q}</h3><p>${f.a}</p></div>`)
-          .join('')}
+        ${[{q:"Who is Level 1 for?",a:"Kiosks, cafes, retail shops, salons, small workshops — any business that wants a professional online presence without a large budget."},{q:"Do I own the website after the one-time purchase?",a:"Yes, completely. We hand over all the files and you can host it wherever you want. We're also happy to help with hosting setup at no extra cost."},{q:"What do I need to provide?",a:"Your logo (or we'll suggest options), photos of your business or products, and a short description of what you do. We'll handle the rest."},{q:"Can I upgrade to Level 2 later?",a:"Absolutely. If your business grows and you need more features, we can rebuild or expand your site. Previous payments are credited where applicable."}].map(e=>`<div class="faq-item"><h3>${e.q}</h3><p>${e.a}</p></div>`).join("")}
       </div>
     </div>
   </section>
@@ -591,20 +486,15 @@ function Level1Page(): string {
       <p>Get a website your customers will trust, at a price that makes sense.</p>
       <div class="cta-ctas">
         <a href="#" class="btn btn-primary btn-large" data-link="contact" id="l1-footer-cta">
-          Talk to us ${Icons.arrowLg}
+          Talk to us ${a.arrowLg}
         </a>
         <a href="https://wa.me/971XXXXXXXXX" target="_blank" class="btn btn-wa btn-large">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="white">${Icons.whatsapp}</svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white">${a.whatsapp}</svg>
           WhatsApp us
         </a>
       </div>
     </div>
-  </section>`;
-}
-
-// ─── Level 2 Page ────────────────────────────────────────────────────────────
-function Level2Page(): string {
-  return `
+  </section>`}function T(){return`
   <div class="page-gradient-bg">
     <div class="slanted-canvas-container subpage">
       <div class="slanted-canvas">
@@ -613,7 +503,7 @@ function Level2Page(): string {
     </div>
     <div class="page-header">
       <div class="container">
-        <span class="label" style="justify-content:center;">${Icons.rocket} Level 2 · Professional</span>
+        <span class="label" style="justify-content:center;">${a.rocket} Level 2 · Professional</span>
         <h1>Websites built for<br>serious businesses</h1>
         <p>For clinics, dental practices, law firms, and professional services that
         need a website that earns trust and drives appointments.</p>
@@ -637,12 +527,12 @@ function Level2Page(): string {
           <div class="popular-ribbon" style="top:18px; right:-26px;">Best Value</div>
           <span class="plan-name" style="font-size:0.67rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted); margin-bottom:12px; display:block;">One-Time · Level 2</span>
           <div class="price-main" style="font-size:2.8rem; font-weight:800; color:var(--navy); line-height:1; letter-spacing:-0.03em; margin-bottom:4px;">AED 2,950</div>
-          ${aedUsd(2950)}
+          ${v(2950)}
           <div class="plan-tagline" style="font-size:0.88rem; color:var(--text-dim); line-height:1.6; padding-top:20px; margin-top:20px; border-top:1px solid var(--border); margin-bottom:32px;">
             Pay once and own a full professional website. Ideal for established clinics and practices who want complete control.
           </div>
           <a href="#" class="btn btn-primary btn-block btn-large" data-link="contact" id="l2-ot-cta">
-            Get started ${Icons.arrowLg}
+            Get started ${a.arrowLg}
           </a>
           <p class="plan-note" style="font-size:0.75rem; color:var(--text-muted); margin-top:12px;">Includes two rounds of revisions. Additional pages available at AED 200/page.</p>
         </div>
@@ -650,17 +540,7 @@ function Level2Page(): string {
           <div>
             <div class="features-title">What you get</div>
             <div class="features-list">
-              ${[
-                'Fully custom professional design',
-                'Up to 10 pages included',
-                'Appointment / booking section',
-                'Team & credentials profiles',
-                'Services & treatment layouts',
-                'Testimonials & trust badges',
-                'Advanced local SEO configuration',
-                'WhatsApp & Google Maps setup',
-                'Source files handover',
-              ].map(f => `<div class="feature-row">${CheckIcon()}<span>${f}</span></div>`).join('')}
+              ${["Fully custom professional design","Up to 10 pages included","Appointment / booking section","Team & credentials profiles","Services & treatment layouts","Testimonials & trust badges","Advanced local SEO configuration","WhatsApp & Google Maps setup","Source files handover"].map(e=>`<div class="feature-row">${g()}<span>${e}</span></div>`).join("")}
             </div>
           </div>
           <div style="border-top:1px solid var(--border); padding-top:24px; margin-top:12px; display:flex; flex-direction:column; align-items:center;">
@@ -687,7 +567,7 @@ function Level2Page(): string {
             <div>
               <span style="font-size:0.78rem; text-transform:uppercase; font-weight:700; color:var(--text-dim); display:block; margin-bottom:4px;">One-Time Setup</span>
               <div class="price-setup" style="font-size:2.2rem; font-weight:800; color:var(--navy); line-height:1; letter-spacing:-0.02em;">AED 1,400</div>
-              ${aedUsd(1400)}
+              ${v(1400)}
             </div>
             <div style="border-top:1px solid var(--border); padding-top:16px;">
               <span style="font-size:0.78rem; text-transform:uppercase; font-weight:700; color:var(--text-dim); display:block; margin-bottom:4px;">Monthly Management</span>
@@ -695,28 +575,18 @@ function Level2Page(): string {
                 <div class="price-month" style="font-size:2.2rem; font-weight:800; color:var(--indigo); line-height:1; letter-spacing:-0.02em;">AED 365</div>
                 <div class="price-label" style="font-size:0.85rem; color:var(--text-muted);">/month</div>
               </div>
-              ${aedUsd(365)}
+              ${v(365)}
             </div>
           </div>
           <a href="#" class="btn btn-primary btn-block btn-large" data-link="contact" id="l2-managed-cta">
-            Get started ${Icons.arrowLg}
+            Get started ${a.arrowLg}
           </a>
         </div>
         <div class="pricing-right-pane">
           <div>
             <div class="features-title">What is covered</div>
             <div class="features-list">
-              ${[
-                'Full custom professional design & setup',
-                'Up to 10 pages built for conversion',
-                'Domain renewal & professional management',
-                'Secure cloud hosting & automatic daily backups',
-                'SSL monitoring & active protection',
-                'Advanced local SEO + Google profile configuration',
-                'Unlimited ongoing updates (content & treatments)',
-                '2 tailored seasonal campaigns per year',
-                'Priority WhatsApp support desk',
-              ].map(f => `<div class="feature-row">${CheckIcon()}<span>${f}</span></div>`).join('')}
+              ${["Full custom professional design & setup","Up to 10 pages built for conversion","Domain renewal & professional management","Secure cloud hosting & automatic daily backups","SSL monitoring & active protection","Advanced local SEO + Google profile configuration","Unlimited ongoing updates (content & treatments)","2 tailored seasonal campaigns per year","Priority WhatsApp support desk"].map(e=>`<div class="feature-row">${g()}<span>${e}</span></div>`).join("")}
             </div>
           </div>
           <div style="background:rgba(99,91,255,.04); border:1px solid rgba(99,91,255,.12); border-radius:var(--r-md); padding:18px;">
@@ -746,28 +616,11 @@ function Level2Page(): string {
             </tr>
           </thead>
           <tbody>
-            ${[
-              ['Pages included', 'Up to 5', 'Up to 10'],
-              ['Custom design', '✓', '✓'],
-              ['Mobile responsive', '✓', '✓'],
-              ['WhatsApp button', '✓', '✓'],
-              ['Basic SEO', '✓', '✓'],
-              ['Advanced SEO + Google setup', '—', '✓'],
-              ['Booking / appointment section', '—', '✓'],
-              ['Team & credentials page', '—', '✓'],
-              ['Testimonials section', '—', '✓'],
-              ['Google Maps integration', '—', '✓'],
-              ['Seasonal updates (managed)', '—', '2 per year'],
-              ['One-time price', 'AED 1,450', 'AED 2,950'],
-              ['Managed setup', 'AED 500', 'AED 1,400'],
-              ['Managed monthly', 'AED 150/mo', 'AED 365/mo'],
-            ]
-              .map(([feat, l1, l2]) => `<tr>
-                <td style="font-weight:500; color:var(--navy);">${feat}</td>
-                <td>${l1}</td>
-                <td class="hl">${l2}</td>
-              </tr>`)
-              .join('')}
+            ${[["Pages included","Up to 5","Up to 10"],["Custom design","✓","✓"],["Mobile responsive","✓","✓"],["WhatsApp button","✓","✓"],["Basic SEO","✓","✓"],["Advanced SEO + Google setup","—","✓"],["Booking / appointment section","—","✓"],["Team & credentials page","—","✓"],["Testimonials section","—","✓"],["Google Maps integration","—","✓"],["Seasonal updates (managed)","—","2 per year"],["One-time price","AED 1,450","AED 2,950"],["Managed setup","AED 500","AED 1,400"],["Managed monthly","AED 150/mo","AED 365/mo"]].map(([e,t,s])=>`<tr>
+                <td style="font-weight:500; color:var(--navy);">${e}</td>
+                <td>${t}</td>
+                <td class="hl">${s}</td>
+              </tr>`).join("")}
           </tbody>
         </table>
       </div>
@@ -782,26 +635,7 @@ function Level2Page(): string {
         <h2 class="section-heading">Level 2 questions</h2>
       </div>
       <div class="faq-list reveal">
-        ${[
-          {
-            q: 'Is Level 2 suitable for a dental clinic?',
-            a: 'Yes — Level 2 was specifically designed with clinics and professional practices in mind. It includes a treatment/services listing, booking section, team profiles, and trust elements that patients look for.',
-          },
-          {
-            q: 'Can you integrate an online booking system?',
-            a: 'We can link to or embed third-party booking tools (like Calendly, Setmore, or SimplyBook). Full custom booking system development is quoted separately.',
-          },
-          {
-            q: 'Will I be able to update the site myself?',
-            a: 'On the one-time plan, yes — we\'ll set you up on a CMS or guide you on making edits. On the managed plan, just send us a WhatsApp and we\'ll handle all updates.',
-          },
-          {
-            q: 'How long does Level 2 take?',
-            a: 'Typically 14–21 business days from brief sign-off, depending on how quickly we receive your content (photos, text, team bios, etc.).',
-          },
-        ]
-          .map(f => `<div class="faq-item"><h3>${f.q}</h3><p>${f.a}</p></div>`)
-          .join('')}
+        ${[{q:"Is Level 2 suitable for a dental clinic?",a:"Yes — Level 2 was specifically designed with clinics and professional practices in mind. It includes a treatment/services listing, booking section, team profiles, and trust elements that patients look for."},{q:"Can you integrate an online booking system?",a:"We can link to or embed third-party booking tools (like Calendly, Setmore, or SimplyBook). Full custom booking system development is quoted separately."},{q:"Will I be able to update the site myself?",a:"On the one-time plan, yes — we'll set you up on a CMS or guide you on making edits. On the managed plan, just send us a WhatsApp and we'll handle all updates."},{q:"How long does Level 2 take?",a:"Typically 14–21 business days from brief sign-off, depending on how quickly we receive your content (photos, text, team bios, etc.)."}].map(e=>`<div class="faq-item"><h3>${e.q}</h3><p>${e.a}</p></div>`).join("")}
       </div>
     </div>
   </section>
@@ -812,66 +646,15 @@ function Level2Page(): string {
       <p>Your clients are searching online right now. Make sure they find something impressive.</p>
       <div class="cta-ctas">
         <a href="#" class="btn btn-primary btn-large" data-link="contact" id="l2-footer-cta">
-          Talk to us ${Icons.arrowLg}
+          Talk to us ${a.arrowLg}
         </a>
         <a href="https://wa.me/971XXXXXXXXX" target="_blank" class="btn btn-wa btn-large">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="white">${Icons.whatsapp}</svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white">${a.whatsapp}</svg>
           WhatsApp us
         </a>
       </div>
     </div>
-  </section>`;
-}
-
-// ─── Our Work Page ───────────────────────────────────────────────────────────
-function WorkPage(): string {
-  const projects = [
-    {
-      tag: 'Level 1 · Kiosk',
-      title: 'Bites & Brews',
-      meta: 'Food & Beverage · Dubai',
-      desc: '"We went from no online presence at all to having customers find us on Google. The WhatsApp button alone brought us new walk-ins within the first week."',
-      url: 'bitesandbrews.ae',
-      color: '#F4A261',
-      bgLight: '#FFFAF5',
-      demoClass: 'kiosk',
-    },
-    {
-      tag: 'Level 2 · Clinic',
-      title: 'Pearl Dental',
-      meta: 'Dental Practice · Abu Dhabi',
-      desc: '"Patients tell us our website looks more professional than clinics that have been open for 10+ years. Feather Studio completely changed how we present ourselves."',
-      url: 'pearldental.ae',
-      color: '#1a1a1a',
-      bgLight: '#FAFAF8',
-      demoClass: 'dental',
-      alt: true,
-    },
-    {
-      tag: 'Level 2 · Studio',
-      title: 'Aura Aesthetics',
-      meta: 'Beauty & Wellness · Sharjah',
-      desc: '"Our bookings doubled in the first month after launching. The site just looks luxurious — it matches exactly the feeling we want clients to have before they even walk in."',
-      url: 'aura-aesthetics.ae',
-      color: '#7c3aed',
-      bgLight: '#0a0a0f',
-      demoClass: 'aesthetics',
-    },
-    {
-      tag: 'Level 1 · Wellness',
-      title: 'Bloom Women\'s Health',
-      meta: 'Women\'s Wellness · Dubai',
-      desc: '"We needed something warm and trustworthy. Feather understood our audience immediately — the result feels like us, just professional."',
-      url: 'bloomwomens.ae',
-      color: '#8B4A62',
-      bgLight: '#FFF9F7',
-      demoClass: 'womens',
-      alt: true,
-    },
-  ];
-
-  const demoSites: Record<string, string> = {
-    kiosk: `
+  </section>`}function P(){const e=[{tag:"Level 1 · Kiosk",title:"Bites & Brews",meta:"Food & Beverage · Dubai",desc:'"We went from no online presence at all to having customers find us on Google. The WhatsApp button alone brought us new walk-ins within the first week."',url:"bitesandbrews.ae",color:"#F4A261",bgLight:"#FFFAF5",demoClass:"kiosk"},{tag:"Level 2 · Clinic",title:"Pearl Dental",meta:"Dental Practice · Abu Dhabi",desc:'"Patients tell us our website looks more professional than clinics that have been open for 10+ years. Feather Studio completely changed how we present ourselves."',url:"pearldental.ae",color:"#1a1a1a",bgLight:"#FAFAF8",demoClass:"dental",alt:!0},{tag:"Level 2 · Studio",title:"Aura Aesthetics",meta:"Beauty & Wellness · Sharjah",desc:'"Our bookings doubled in the first month after launching. The site just looks luxurious — it matches exactly the feeling we want clients to have before they even walk in."',url:"aura-aesthetics.ae",color:"#7c3aed",bgLight:"#0a0a0f",demoClass:"aesthetics"},{tag:"Level 1 · Wellness",title:"Bloom Women's Health",meta:"Women's Wellness · Dubai",desc:'"We needed something warm and trustworthy. Feather understood our audience immediately — the result feels like us, just professional."',url:"bloomwomens.ae",color:"#8B4A62",bgLight:"#FFF9F7",demoClass:"womens",alt:!0}],t={kiosk:`
       <div class="demo-site" style="background:#FFFAF5;">
         <div class="demo-nav" style="background:#fff; border-bottom:1px solid #f0e8dc; padding:12px 20px; display:flex; align-items:center; justify-content:space-between;">
           <span style="font-size:0.75rem; font-weight:800; color:#F4A261; letter-spacing:-0.02em;">Bites & Brews</span>
@@ -891,24 +674,15 @@ function WorkPage(): string {
           <span class="demo-section-label" style="font-size:0.54rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#E07E3A; margin-bottom:8px; display:block;">Our Specials</span>
           <div class="demo-section-title" style="font-size:1.05rem; font-weight:800; letter-spacing:-0.02em; color:#1a1a1a; margin-bottom:14px; line-height:1.15;">Today's picks</div>
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-            ${[
-              ['☕', 'Oat Flat White', 'AED 22'],
-              ['🥐', 'Almond Croissant', 'AED 16'],
-              ['🍋', 'Lemonade Cooler', 'AED 18'],
-              ['🥑', 'Avo Toast', 'AED 28'],
-            ]
-              .map(([e, n, p]) => `
+            ${[["☕","Oat Flat White","AED 22"],["🥐","Almond Croissant","AED 16"],["🍋","Lemonade Cooler","AED 18"],["🥑","Avo Toast","AED 28"]].map(([s,o,i])=>`
               <div style="background:#fff; border:1px solid #f0e8dc; border-radius:8px; padding:10px 12px;">
-                <div style="font-size:1rem; margin-bottom:4px;">${e}</div>
-                <div style="font-size:0.62rem; font-weight:700; color:#1a1a1a;">${n}</div>
-                <div style="font-size:0.58rem; color:#E07E3A; font-weight:700; margin-top:2px;">${p}</div>
-              </div>`)
-              .join('')}
+                <div style="font-size:1rem; margin-bottom:4px;">${s}</div>
+                <div style="font-size:0.62rem; font-weight:700; color:#1a1a1a;">${o}</div>
+                <div style="font-size:0.58rem; color:#E07E3A; font-weight:700; margin-top:2px;">${i}</div>
+              </div>`).join("")}
           </div>
         </div>
-      </div>`,
-
-    dental: `
+      </div>`,dental:`
       <div class="demo-site dental">
         <div class="demo-nav dental-nav" style="display:flex; align-items:center; justify-content:space-between; padding:12px 20px;">
           <span class="dental-logo">PEARL DENTAL</span>
@@ -943,9 +717,7 @@ function WorkPage(): string {
             </div>
           </div>
         </div>
-      </div>`,
-
-    aesthetics: `
+      </div>`,aesthetics:`
       <div class="demo-site aesthetics">
         <div class="aesthetics-nav">
           <span class="aesthetics-logo">AURA</span>
@@ -965,23 +737,14 @@ function WorkPage(): string {
           <div style="font-size:0.54rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#a78bfa; margin-bottom:6px;">Our Treatments</div>
           <div style="font-size:1rem; font-weight:800; color:#fff; letter-spacing:-0.02em; margin-bottom:12px; line-height:1.2;">Curated for you</div>
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-            ${[
-              ['Laser Therapy', 'Advanced skin renewal'],
-              ['Hydrafacial', 'Deep hydration + glow'],
-              ['Botox & Fillers', 'Subtle, natural results'],
-              ['Body Contouring', 'Sculpt & tone'],
-            ]
-              .map(([t, d]) => `
+            ${[["Laser Therapy","Advanced skin renewal"],["Hydrafacial","Deep hydration + glow"],["Botox & Fillers","Subtle, natural results"],["Body Contouring","Sculpt & tone"]].map(([s,o])=>`
               <div class="aesthetics-card" style="padding:10px 12px; border-radius:8px;">
-                <strong style="font-size:0.63rem; display:block; margin-bottom:3px; color:#fff;">${t}</strong>
-                <p style="font-size:0.56rem; color:rgba(255,255,255,.55);">${d}</p>
-              </div>`)
-              .join('')}
+                <strong style="font-size:0.63rem; display:block; margin-bottom:3px; color:#fff;">${s}</strong>
+                <p style="font-size:0.56rem; color:rgba(255,255,255,.55);">${o}</p>
+              </div>`).join("")}
           </div>
         </div>
-      </div>`,
-
-    womens: `
+      </div>`,womens:`
       <div class="demo-site womens">
         <div class="womens-nav">
           <span class="womens-logo">🌸 Bloom Wellness</span>
@@ -1008,25 +771,15 @@ function WorkPage(): string {
           <div style="font-size:0.54rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#C2778A; margin-bottom:6px;">Services</div>
           <div style="font-size:1rem; font-weight:800; color:#3d2030; letter-spacing:-0.02em; margin-bottom:12px; line-height:1.2;">Care made for women</div>
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-            ${[
-              ['Prenatal Wellness', 'Gentle & expert support'],
-              ['Hormonal Health', 'Balanced & thriving'],
-              ['Nutrition Coaching', 'Fueled from within'],
-              ['Mental Wellness', 'Mind & body harmony'],
-            ]
-              .map(([t, d]) => `
+            ${[["Prenatal Wellness","Gentle & expert support"],["Hormonal Health","Balanced & thriving"],["Nutrition Coaching","Fueled from within"],["Mental Wellness","Mind & body harmony"]].map(([s,o])=>`
               <div class="womens-card" style="padding:10px 12px; border-radius:8px;">
                 <div class="womens-service-dot"></div>
-                <strong style="font-size:0.63rem; display:block; margin-bottom:3px; color:#3d2030;">${t}</strong>
-                <p style="font-size:0.56rem; color:#7a506b;">${d}</p>
-              </div>`)
-              .join('')}
+                <strong style="font-size:0.63rem; display:block; margin-bottom:3px; color:#3d2030;">${s}</strong>
+                <p style="font-size:0.56rem; color:#7a506b;">${o}</p>
+              </div>`).join("")}
           </div>
         </div>
-      </div>`,
-  };
-
-  return `
+      </div>`};return`
   <div class="page-gradient-bg">
     <div class="slanted-canvas-container subpage">
       <div class="slanted-canvas">
@@ -1035,7 +788,7 @@ function WorkPage(): string {
     </div>
     <div class="showcase-hero">
       <div class="container">
-        <span class="label" style="justify-content:center;">${Icons.star} Portfolio</span>
+        <span class="label" style="justify-content:center;">${a.star} Portfolio</span>
         <h1>Our Work</h1>
         <p>A small selection of websites we've built for businesses across the UAE.</p>
       </div>
@@ -1044,16 +797,15 @@ function WorkPage(): string {
 
   <div class="showcase-outer">
     <div class="container">
-      ${projects
-        .map((p) => `
-        <div class="showcase-item${p.alt ? ' alt' : ''} reveal">
+      ${e.map(s=>`
+        <div class="showcase-item${s.alt?" alt":""} reveal">
           <div class="showcase-label">
-            <span class="showcase-tag">${p.tag}</span>
-            <h2>${p.title}</h2>
-            <div class="showcase-meta">${p.meta}</div>
-            <p class="showcase-desc">${p.desc}</p>
+            <span class="showcase-tag">${s.tag}</span>
+            <h2>${s.title}</h2>
+            <div class="showcase-meta">${s.meta}</div>
+            <p class="showcase-desc">${s.desc}</p>
             <a href="https://wa.me/971XXXXXXXXX" target="_blank" class="showcase-cta">
-              Build something like this ${Icons.arrow}
+              Build something like this ${a.arrow}
             </a>
           </div>
           <div class="showcase-frame-wrap">
@@ -1062,15 +814,14 @@ function WorkPage(): string {
                 <div class="browser-dot red"></div>
                 <div class="browser-dot yellow"></div>
                 <div class="browser-dot green"></div>
-                <div class="browser-url">${p.url}</div>
+                <div class="browser-url">${s.url}</div>
               </div>
               <div class="browser-body">
-                ${demoSites[p.demoClass] || ''}
+                ${t[s.demoClass]||""}
               </div>
             </div>
           </div>
-        </div>`)
-        .join('')}
+        </div>`).join("")}
     </div>
   </div>
 
@@ -1080,20 +831,15 @@ function WorkPage(): string {
       <p>Let's talk about what you need and which tier is the right fit.</p>
       <div class="cta-ctas">
         <a href="#" class="btn btn-primary btn-large" data-link="contact" id="work-cta">
-          Get in touch ${Icons.arrowLg}
+          Get in touch ${a.arrowLg}
         </a>
         <a href="https://wa.me/971XXXXXXXXX" target="_blank" class="btn btn-wa btn-large">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="white">${Icons.whatsapp}</svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white">${a.whatsapp}</svg>
           WhatsApp us
         </a>
       </div>
     </div>
-  </section>`;
-}
-
-// ─── Contact Page ─────────────────────────────────────────────────────────────
-function ContactPage(): string {
-  return `
+  </section>`}function O(){return`
   <div class="page-gradient-bg" style="padding-top:80px;">
     <div class="slanted-canvas-container subpage" style="height: 600px;">
       <div class="slanted-canvas" style="height: 640px;">
@@ -1104,7 +850,7 @@ function ContactPage(): string {
       <div class="container">
         <div class="contact-wrap">
           <div class="contact-info reveal">
-            <span class="label">${Icons.mail} Contact</span>
+            <span class="label">${a.mail} Contact</span>
             <h1>Let's build<br>something.</h1>
             <p>
               Tell us about your business, your idea, or just ask us anything.
@@ -1113,7 +859,7 @@ function ContactPage(): string {
             <div class="contact-methods">
               <a href="https://wa.me/971XXXXXXXXX" target="_blank" class="contact-method">
                 <div class="contact-method-icon" style="background:rgba(37,211,102,.08); color:var(--whatsapp);">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">${Icons.whatsapp}</svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">${a.whatsapp}</svg>
                 </div>
                 <div>
                   <div class="contact-method-label">WhatsApp</div>
@@ -1122,7 +868,7 @@ function ContactPage(): string {
               </a>
               <a href="mailto:hello@featherstudio.ae" class="contact-method">
                 <div class="contact-method-icon">
-                  ${Icons.mail}
+                  ${a.mail}
                 </div>
                 <div>
                   <div class="contact-method-label">Email</div>
@@ -1131,7 +877,7 @@ function ContactPage(): string {
               </a>
               <div class="contact-method">
                 <div class="contact-method-icon">
-                  ${Icons.map}
+                  ${a.map}
                 </div>
                 <div>
                   <div class="contact-method-label">Location</div>
@@ -1156,7 +902,7 @@ function ContactPage(): string {
               </select>
               <textarea class="form-input form-textarea" id="form-message" name="message" placeholder="Tell us about your business and what you need..." required></textarea>
               <button type="submit" class="btn btn-primary btn-block btn-large" id="form-submit-btn">
-                Send message ${Icons.arrowLg}
+                Send message ${a.arrowLg}
               </button>
               <div id="form-success" style="display:none; text-align:center; padding:18px; background:rgba(62,207,142,.07); border-radius:var(--r-md); border:1px solid rgba(62,207,142,.20);">
                 <div style="font-size:1.2rem; margin-bottom:4px;">✅</div>
@@ -1168,238 +914,7 @@ function ContactPage(): string {
         </div>
       </div>
     </div>
-  </div>`;
-}
-
-// ─── Router ───────────────────────────────────────────────────────────────────
-type Page = 'home' | 'level1' | 'level2' | 'work' | 'contact';
-
-const pageMap: Record<Page, () => string> = {
-  home:    HomePage,
-  level1:  Level1Page,
-  level2:  Level2Page,
-  work:    WorkPage,
-  contact: ContactPage,
-};
-
-
-
-function setActiveNav(page: Page) {
-  $$('[data-link]').forEach(el => el.classList.remove('active'));
-  const link = $(`[data-link="${page}"].nav-link`);
-  if (link) link.classList.add('active');
-}
-
-function scrollReveal() {
-  const targets = $$('.reveal');
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        (e.target as HTMLElement).classList.add('revealed');
-        obs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.07, rootMargin: '0px 0px -30px 0px' });
-  targets.forEach(t => obs.observe(t));
-}
-
-function attachTabLogic(prefix: string) {
-  const otBtn  = $(`#${prefix}-tab-ot`);
-  const mBtn   = $(`#${prefix}-tab-managed`);
-  const otPanel  = $(`#${prefix}-panel-one-time`);
-  const mPanel   = $(`#${prefix}-panel-managed`);
-  if (!otBtn || !mBtn || !otPanel || !mPanel) return;
-
-  otBtn.addEventListener('click', () => {
-    otBtn.classList.add('active'); mBtn.classList.remove('active');
-    otPanel.style.display = 'grid'; mPanel.style.display = 'none';
-  });
-  mBtn.addEventListener('click', () => {
-    mBtn.classList.add('active'); otBtn.classList.remove('active');
-    mPanel.style.display = 'grid'; otPanel.style.display = 'none';
-  });
-}
-
-function attachFormLogic() {
-  const form = $('#contact-form') as HTMLFormElement | null;
-  const btn  = $('#form-submit-btn');
-  const success = $('#form-success');
-  if (!form || !btn || !success) return;
-  form.addEventListener('submit', () => {
-    btn.style.display = 'none';
-    success.style.display = 'block';
-  });
-}
-
-let transactionValue = 4891240.23;
-let counterInterval: any = null;
-
-function startLiveCounter() {
-  if (counterInterval) {
-    clearInterval(counterInterval);
-  }
-  const el = document.getElementById('hero-live-transactions');
-  if (!el) return;
-  
-  const updateText = () => {
-    el.textContent = `AED ${transactionValue.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-  };
-  
-  updateText();
-  
-  counterInterval = setInterval(() => {
-    const increment = Math.random() * 4.5 + 0.15;
-    transactionValue += increment;
-    updateText();
-  }, 1200 + Math.random() * 800);
-}
-
-function setupCheckoutWidget(containerId: string, totalId: string, countId: string, btnId: string) {
-  const checkout = document.getElementById(containerId);
-  if (!checkout) return;
-  
-  const items = checkout.querySelectorAll('.cw-item');
-  const totalEl = checkout.querySelector(`#${totalId}`);
-  const countEl = checkout.querySelector(`#${countId}`);
-  const btn = checkout.querySelector(`#${btnId}`);
-  
-  let activePrices = [800, 650];
-  
-  items.forEach((item, index) => {
-    item.addEventListener('click', (e) => {
-      e.stopPropagation();
-      item.classList.toggle('active');
-      const price = parseInt(item.getAttribute('data-price') || '0');
-      
-      if (item.classList.contains('active')) {
-        activePrices[index] = price;
-      } else {
-        activePrices[index] = 0;
-      }
-      
-      const total = activePrices.reduce((a, b) => a + b, 0);
-      const count = activePrices.filter(p => p > 0).length;
-      
-      if (totalEl) totalEl.textContent = `AED ${total.toLocaleString()}`;
-      if (countEl) countEl.textContent = `${count} item${count === 1 ? '' : 's'}`;
-    });
-  });
-  
-  if (btn) {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const originalHtml = btn.innerHTML;
-      btn.innerHTML = '🎉 Order Placed!';
-      btn.classList.add('success');
-      setTimeout(() => {
-        btn.innerHTML = originalHtml;
-        btn.classList.remove('success');
-      }, 2000);
-    });
-  }
-}
-
-function setupSchedulerWidget(containerId: string, btnId: string) {
-  const scheduler = document.getElementById(containerId);
-  if (!scheduler) return;
-  
-  const slots = scheduler.querySelectorAll('.sw-slot:not(.booked)');
-  const btn = scheduler.querySelector(`#${btnId}`) as HTMLElement;
-  
-  slots.forEach(slot => {
-    slot.addEventListener('click', (e) => {
-      e.stopPropagation();
-      slots.forEach(s => s.classList.remove('selected'));
-      slot.classList.add('selected');
-      if (btn) {
-        btn.style.display = 'block';
-        btn.textContent = `Confirm - ${slot.querySelector('strong')?.textContent || ''}`;
-      }
-    });
-  });
-  
-  if (btn) {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      btn.textContent = '🎉 Appointment Booked!';
-      btn.style.background = 'var(--green)';
-      setTimeout(() => {
-        btn.style.display = 'none';
-        btn.style.background = 'var(--indigo)';
-      }, 2000);
-    });
-  }
-}
-
-function navigate(page: Page) {
-  const main = $('#main-content')!;
-  main.style.opacity = '0';
-  main.style.transform = 'translateY(10px)';
-
-  setTimeout(() => {
-    main.innerHTML = pageMap[page]();
-    setActiveNav(page);
-    window.scrollTo({ top: 0, behavior: 'instant' });
-    main.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
-    requestAnimationFrame(() => {
-      main.style.opacity = '1';
-      main.style.transform = 'translateY(0)';
-    });
-    scrollReveal();
-
-    // Page-specific setup
-    if (page === 'level1') {
-      attachTabLogic('l1');
-      setupCheckoutWidget('l1-subpage-checkout', 'sub-cw-total-price', 'sub-cw-items-count', 'sub-cw-order-btn');
-    }
-    if (page === 'level2') {
-      attachTabLogic('l2');
-      setupSchedulerWidget('l2-subpage-scheduler', 'sub-sw-book-btn');
-    }
-    if (page === 'contact') {
-      attachFormLogic();
-    }
-    if (page === 'home') {
-      startLiveCounter();
-      setupCheckoutWidget('l1-interactive-checkout', 'cw-total-price', 'cw-items-count', 'cw-order-btn');
-      setupSchedulerWidget('l2-interactive-scheduler', 'sw-book-btn');
-
-      // Kick hero widget bars micro-animation
-      setTimeout(() => {
-        $$('.hw-bar').forEach((bar, i) => {
-          bar.style.transition = `height 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${i * 0.07}s`;
-        });
-      }, 300);
-    }
-  }, 180);
-}
-
-// ─── Link delegation ─────────────────────────────────────────────────────────
-function delegateLinks(root: HTMLElement) {
-  root.addEventListener('click', (e) => {
-    const target = (e.target as HTMLElement).closest('[data-link]') as HTMLElement | null;
-    if (!target) return;
-    e.preventDefault();
-    const link = target.getAttribute('data-link') as Page;
-    if (link && pageMap[link]) navigate(link);
-  });
-}
-
-// ─── Navbar scroll effect ─────────────────────────────────────────────────────
-function initNavScroll() {
-  const nav = $('#main-nav');
-  if (!nav) return;
-  const handler = () => {
-    if (window.scrollY > 20) nav.classList.add('scrolled');
-    else nav.classList.remove('scrolled');
-  };
-  window.addEventListener('scroll', handler, { passive: true });
-}
-
-// ─── Bootstrap ───────────────────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', () => {
-  const app = document.getElementById('app')!;
-  app.innerHTML = `
+  </div>`}const L={home:X,level1:D,level2:T,work:P,contact:O};function j(e){b("[data-link]").forEach(s=>s.classList.remove("active"));const t=r(`[data-link="${e}"].nav-link`);t&&t.classList.add("active")}function I(){const e=b(".reveal"),t=new IntersectionObserver(s=>{s.forEach(o=>{o.isIntersecting&&(o.target.classList.add("revealed"),t.unobserve(o.target))})},{threshold:.07,rootMargin:"0px 0px -30px 0px"});e.forEach(s=>t.observe(s))}function w(e){const t=r(`#${e}-tab-ot`),s=r(`#${e}-tab-managed`),o=r(`#${e}-panel-one-time`),i=r(`#${e}-panel-managed`);!t||!s||!o||!i||(t.addEventListener("click",()=>{t.classList.add("active"),s.classList.remove("active"),o.style.display="grid",i.style.display="none"}),s.addEventListener("click",()=>{s.classList.add("active"),t.classList.remove("active"),i.style.display="grid",o.style.display="none"}))}function q(){const e=r("#contact-form"),t=r("#form-submit-btn"),s=r("#form-success");!e||!t||!s||e.addEventListener("submit",()=>{t.style.display="none",s.style.display="block"})}let k=489124023e-2,f=null;function H(){f&&clearInterval(f);const e=document.getElementById("hero-live-transactions");if(!e)return;const t=()=>{e.textContent=`AED ${k.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2})}`};t(),f=setInterval(()=>{const s=Math.random()*4.5+.15;k+=s,t()},1200+Math.random()*800)}function x(e,t,s,o){const i=document.getElementById(e);if(!i)return;const n=i.querySelectorAll(".cw-item"),d=i.querySelector(`#${t}`),p=i.querySelector(`#${s}`),l=i.querySelector(`#${o}`);let h=[800,650];n.forEach((c,m)=>{c.addEventListener("click",E=>{E.stopPropagation(),c.classList.toggle("active");const C=parseInt(c.getAttribute("data-price")||"0");c.classList.contains("active")?h[m]=C:h[m]=0;const z=h.reduce((u,F)=>u+F,0),y=h.filter(u=>u>0).length;d&&(d.textContent=`AED ${z.toLocaleString()}`),p&&(p.textContent=`${y} item${y===1?"":"s"}`)})}),l&&l.addEventListener("click",c=>{c.stopPropagation();const m=l.innerHTML;l.innerHTML="🎉 Order Placed!",l.classList.add("success"),setTimeout(()=>{l.innerHTML=m,l.classList.remove("success")},2e3)})}function A(e,t){const s=document.getElementById(e);if(!s)return;const o=s.querySelectorAll(".sw-slot:not(.booked)"),i=s.querySelector(`#${t}`);o.forEach(n=>{n.addEventListener("click",d=>{var p;d.stopPropagation(),o.forEach(l=>l.classList.remove("selected")),n.classList.add("selected"),i&&(i.style.display="block",i.textContent=`Confirm - ${((p=n.querySelector("strong"))==null?void 0:p.textContent)||""}`)})}),i&&i.addEventListener("click",n=>{n.stopPropagation(),i.textContent="🎉 Appointment Booked!",i.style.background="var(--green)",setTimeout(()=>{i.style.display="none",i.style.background="var(--indigo)"},2e3)})}function $(e){const t=r("#main-content");t.style.opacity="0",t.style.transform="translateY(10px)",setTimeout(()=>{t.innerHTML=L[e](),j(e),window.scrollTo({top:0,behavior:"instant"}),t.style.transition="opacity 0.35s ease, transform 0.35s ease",requestAnimationFrame(()=>{t.style.opacity="1",t.style.transform="translateY(0)"}),I(),e==="level1"&&(w("l1"),x("l1-subpage-checkout","sub-cw-total-price","sub-cw-items-count","sub-cw-order-btn")),e==="level2"&&(w("l2"),A("l2-subpage-scheduler","sub-sw-book-btn")),e==="contact"&&q(),e==="home"&&(H(),x("l1-interactive-checkout","cw-total-price","cw-items-count","cw-order-btn"),A("l2-interactive-scheduler","sw-book-btn"),setTimeout(()=>{b(".hw-bar").forEach((s,o)=>{s.style.transition=`height 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${o*.07}s`})},300))},180)}function U(e){e.addEventListener("click",t=>{const s=t.target.closest("[data-link]");if(!s)return;t.preventDefault();const o=s.getAttribute("data-link");o&&L[o]&&$(o)})}function N(){const e=r("#main-nav");if(!e)return;const t=()=>{window.scrollY>20?e.classList.add("scrolled"):e.classList.remove("scrolled")};window.addEventListener("scroll",t,{passive:!0})}document.addEventListener("DOMContentLoaded",()=>{const e=document.getElementById("app");e.innerHTML=`
     <div class="grid-lines-container">
       <div class="grid-line"></div>
       <div class="grid-line"></div>
@@ -1407,15 +922,8 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="grid-line"></div>
       <div class="grid-line"></div>
     </div>
-    ${Navbar()}
+    ${S()}
     <main id="main-content" style="transition: opacity 0.35s ease, transform 0.35s ease; min-height:100vh;"></main>
-    ${Footer()}
-    ${WhatsAppFab()}
-  `;
-
-  delegateLinks(app);
-  initNavScroll();
-
-  // Initial page
-  navigate('home');
-});
+    ${W()}
+    ${B()}
+  `,U(e),N(),$("home")});
