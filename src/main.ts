@@ -107,7 +107,7 @@ function HomePage(): string {
   <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <div class="hero-eyebrow" style="background: rgba(2, 62, 138, 0.08); border-color: rgba(2, 62, 138, 0.2); color: var(--indigo);">Based in UAE · High-Performance Websites</div>
+      <div class="hero-eyebrow">Based in UAE &nbsp;·&nbsp; High-Performance Websites</div>
       <h1>Your website,<br>done right.</h1>
       <p class="hero-sub">
         We design, build, and launch custom websites for UAE businesses. Clean layouts, ultra-fast speeds, and built to grow your brand.
@@ -124,26 +124,26 @@ function HomePage(): string {
     </div>
   </section>
 
-  <!-- BUSINESS FACTS STRIP -->
-  <div class="stats-row" style="background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 48px 0;">
-    <div class="container">
-      <div class="stats-grid" style="grid-template-columns: repeat(4, 1fr);">
-        <div class="stat-item" style="border-right: 1px solid var(--border); text-align: left; padding: 12px 24px;">
-          <div class="stat-num" style="color: var(--indigo); font-size: 1.6rem; margin-bottom: 4px;">Under 3 Days</div>
-          <div class="stat-label" style="color: #000000; font-weight: 600;">Live in under 3 days</div>
-        </div>
-        <div class="stat-item" style="border-right: 1px solid var(--border); text-align: left; padding: 12px 24px;">
-          <div class="stat-num" style="color: var(--indigo-dark); font-size: 1.6rem; margin-bottom: 4px;">100% Mobile</div>
-          <div class="stat-label" style="color: #000000; font-weight: 600;">Mobile responsive layout</div>
-        </div>
-        <div class="stat-item" style="border-right: 1px solid var(--border); text-align: left; padding: 12px 24px;">
-          <div class="stat-num" style="color: var(--indigo); font-size: 1.6rem; margin-bottom: 4px;">Fully Custom</div>
-          <div class="stat-label" style="color: #000000; font-weight: 600;">Custom design, no templates</div>
-        </div>
-        <div class="stat-item" style="border-right: none; text-align: left; padding: 12px 24px;">
-          <div class="stat-num" style="color: var(--indigo-dark); font-size: 1.6rem; margin-bottom: 4px;">3+ Years</div>
-          <div class="stat-label" style="color: #000000; font-weight: 600;">Website building experience</div>
-        </div>
+  <!-- MARQUEE BELT -->
+  <div class="marquee-belt">
+    <div class="marquee-track">
+      <div class="marquee-inner" aria-hidden="true">
+        <span class="marquee-badge"><span class="marquee-num">3 Days</span><span class="marquee-desc">From kick-off to live</span></span>
+        <span class="marquee-sep">·</span>
+        <span class="marquee-badge"><span class="marquee-num">100%</span><span class="marquee-desc">Mobile responsive</span></span>
+        <span class="marquee-sep">·</span>
+        <span class="marquee-badge"><span class="marquee-num">Fully Custom</span><span class="marquee-desc">No templates, ever</span></span>
+        <span class="marquee-sep">·</span>
+        <span class="marquee-badge"><span class="marquee-num">3+ Years</span><span class="marquee-desc">Building in the UAE</span></span>
+        <span class="marquee-sep">·</span>
+        <span class="marquee-badge"><span class="marquee-num">3 Days</span><span class="marquee-desc">From kick-off to live</span></span>
+        <span class="marquee-sep">·</span>
+        <span class="marquee-badge"><span class="marquee-num">100%</span><span class="marquee-desc">Mobile responsive</span></span>
+        <span class="marquee-sep">·</span>
+        <span class="marquee-badge"><span class="marquee-num">Fully Custom</span><span class="marquee-desc">No templates, ever</span></span>
+        <span class="marquee-sep">·</span>
+        <span class="marquee-badge"><span class="marquee-num">3+ Years</span><span class="marquee-desc">Building in the UAE</span></span>
+        <span class="marquee-sep">·</span>
       </div>
     </div>
   </div>
