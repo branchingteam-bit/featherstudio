@@ -117,171 +117,163 @@ function HomePage(): string {
   <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <div class="hero-eyebrow">Based in UAE · Websites that work</div>
+      <div class="hero-eyebrow" style="background: rgba(2, 62, 138, 0.08); border-color: rgba(2, 62, 138, 0.2); color: var(--indigo);">Based in UAE · High-Performance Websites</div>
       <h1>Your website,<br>done right.</h1>
       <p class="hero-sub">
-        We design and build websites for businesses across the UAE.
-        Two simple plans — from small kiosks to professional clinics.
+        We design, build, and launch custom websites for UAE businesses. Clean layouts, ultra-fast speeds, and built to grow your brand.
       </p>
       <div class="hero-ctas">
-        <a href="#" class="btn btn-primary btn-large" data-link="level1" id="hero-cta-start">
+        <a href="#" class="btn btn-primary btn-large" data-link="level1" id="hero-cta-start" style="background: var(--indigo);">
           Start a project ${Icons.arrow}
         </a>
         <a href="#" class="btn btn-secondary btn-large" data-link="work" id="hero-cta-work">
           See our work
         </a>
       </div>
-      <p class="hero-note">Not sure which plan? <a href="#" data-link="contact">Talk to us</a></p>
+      <p class="hero-note">Not sure which plan? <a href="#" data-link="contact" style="color: var(--indigo);">Talk to us</a></p>
     </div>
   </section>
 
-  <!-- MARQUEE / TRUST STRIP -->
-  <div class="logo-strip">
-    <div class="logo-strip-inner" id="logo-marquee">
-      <span class="logo-chip">${Icons.shield} No hidden fees</span>
-      <span class="logo-chip">${Icons.zap} Live in 7–14 days</span>
-      <span class="logo-chip">${Icons.globe} Fully custom design</span>
-      <span class="logo-chip">${Icons.phone} WhatsApp integration</span>
-      <span class="logo-chip">${Icons.star} UAE-based team</span>
-      <span class="logo-chip">${Icons.shield} 3-month minimum on managed</span>
-      <span class="logo-chip">${Icons.zap} Mobile responsive</span>
-      <span class="logo-chip">${Icons.globe} SEO optimised</span>
-      <!-- duplicate for seamless loop -->
-      <span class="logo-chip">${Icons.shield} No hidden fees</span>
-      <span class="logo-chip">${Icons.zap} Live in 7–14 days</span>
-      <span class="logo-chip">${Icons.globe} Fully custom design</span>
-      <span class="logo-chip">${Icons.phone} WhatsApp integration</span>
-      <span class="logo-chip">${Icons.star} UAE-based team</span>
-      <span class="logo-chip">${Icons.shield} 3-month minimum on managed</span>
-      <span class="logo-chip">${Icons.zap} Mobile responsive</span>
-      <span class="logo-chip">${Icons.globe} SEO optimised</span>
-    </div>
-  </div>
-
-  <!-- STATS -->
-  <div class="stats-row">
+  <!-- BUSINESS FACTS STRIP -->
+  <div class="stats-row" style="background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 48px 0;">
     <div class="container">
-      <div class="stats-grid">
-        <div class="stat-item reveal">
-          <div class="stat-num">30+</div>
-          <div class="stat-label">Sites delivered</div>
+      <div class="stats-grid" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="stat-item" style="border-right: 1px solid var(--border); text-align: left; padding: 12px 24px;">
+          <div class="stat-num" style="color: var(--indigo); font-size: 1.6rem; margin-bottom: 4px;">Under 3 Days</div>
+          <div class="stat-label" style="color: rgba(0,0,0,0.65); font-weight: 600;">Live in under 3 days</div>
         </div>
-        <div class="stat-item reveal" style="transition-delay:0.08s">
-          <div class="stat-num">7–14</div>
-          <div class="stat-label">Days to launch</div>
+        <div class="stat-item" style="border-right: 1px solid var(--border); text-align: left; padding: 12px 24px;">
+          <div class="stat-num" style="color: var(--indigo-dark); font-size: 1.6rem; margin-bottom: 4px;">100% Mobile</div>
+          <div class="stat-label" style="color: rgba(0,0,0,0.65); font-weight: 600;">Mobile responsive layout</div>
         </div>
-        <div class="stat-item reveal" style="transition-delay:0.16s">
-          <div class="stat-num">100%</div>
-          <div class="stat-label">Client satisfaction</div>
+        <div class="stat-item" style="border-right: 1px solid var(--border); text-align: left; padding: 12px 24px;">
+          <div class="stat-num" style="color: var(--red); font-size: 1.6rem; margin-bottom: 4px;">Fully Custom</div>
+          <div class="stat-label" style="color: rgba(0,0,0,0.65); font-weight: 600;">Custom design, no templates</div>
         </div>
-        <div class="stat-item reveal" style="transition-delay:0.24s">
-          <div class="stat-num">3</div>
-          <div class="stat-label">UAE cities served</div>
+        <div class="stat-item" style="border-right: none; text-align: left; padding: 12px 24px;">
+          <div class="stat-num" style="color: var(--indigo); font-size: 1.6rem; margin-bottom: 4px;">3+ Years</div>
+          <div class="stat-label" style="color: rgba(0,0,0,0.65); font-weight: 600;">Website building experience</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- TWO TIERS -->
-  <section class="section-pad" style="background:#fff; border-top:1px solid var(--border);">
+  <!-- THE PROBLEM SECTION -->
+  <section class="problem-section">
     <div class="container">
-      <div class="section-header reveal">
-        <div class="section-label">Our plans</div>
-        <h2 class="section-title">Two tiers, built for where you are</h2>
-        <p class="section-sub">
-          Whether you're just starting out or running an established practice,
-          there's a Feather plan that fits.
-        </p>
+      <h2 class="problem-headline">
+        Every day without a website is a customer you <span class="text-red">didn't know you lost</span>.
+      </h2>
+      <div class="problem-grid">
+        <div class="problem-card">
+          <h3 class="text-dark-blue">They searched. They didn't find you.</h3>
+          <p>
+            Most people look up a business online before they visit or call. If nothing comes up — or what comes up looks bad — they move on. Simple as that.
+          </p>
+        </div>
+        <div class="problem-card">
+          <h3 class="text-red">Your competitor got the client. Not you.</h3>
+          <p>
+            When two similar businesses show up online and one has a clean professional website, the choice is obvious. Customers always go with whoever looks more trustworthy.
+          </p>
+        </div>
+        <div class="problem-card">
+          <h3 class="text-blue">You don't have time to deal with this.</h3>
+          <p>
+            You're running a business. Building a website, figuring out hosting, dealing with technical problems — that's not why you got into this. It shouldn't be your problem.
+          </p>
+        </div>
       </div>
-      <div class="tiers-grid reveal">
-        <!-- Tier 1 -->
-        <div class="tier-card" data-link="level1" id="tier-card-l1">
-          <div class="tier-body">
-            <span class="tier-badge l1">Level 1</span>
-            <h3>Small Business</h3>
-            <p class="tier-desc">
-              Clean, fast websites for kiosks, cafes, retail shops, and growing local businesses.
-            </p>
-            <div class="tier-tags">
-              <span class="tier-tag">Kiosks</span>
-              <span class="tier-tag">Cafes</span>
-              <span class="tier-tag">Retail</span>
-              <span class="tier-tag">Salons</span>
-            </div>
-            <div class="tier-price-hint">
-              From <strong>AED 1,450</strong> one-time · or <strong>AED 150/mo</strong> managed
-            </div>
-            <span class="tier-cta">Explore Level 1 ${Icons.arrow}</span>
+    </div>
+  </section>
+
+  <!-- THE FACTS SECTION -->
+  <section class="facts-section">
+    <div class="container">
+      <h2 class="facts-headline">The numbers don't lie.</h2>
+      <div class="facts-grid">
+        <div class="fact-card accent-red">
+          <div class="fact-number">81%</div>
+          <div class="fact-desc">Of customers research a business online before making a purchase or booking</div>
+        </div>
+        <div class="fact-card">
+          <div class="fact-number">75%</div>
+          <div class="fact-desc">Of people judge a company's credibility based on their website design alone</div>
+        </div>
+        <div class="fact-card accent-dark">
+          <div class="fact-number">57%</div>
+          <div class="fact-desc">Of internet users say they won't recommend a business with a poorly designed website</div>
+        </div>
+        <div class="fact-card">
+          <div class="fact-number">2x</div>
+          <div class="fact-desc">Faster growth for businesses with a professional website compared to those without</div>
+        </div>
+        <div class="fact-card accent-dark">
+          <div class="fact-number">40%</div>
+          <div class="fact-desc">Of Google Business Profile score depends on your website — directly affecting Maps ranking</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLS WE USE SECTION -->
+  <section class="tools-section">
+    <div class="container">
+      <div class="tools-header">
+        <h2 class="text-dark-blue">The Tech Behind the Speed</h2>
+        <p>We build using cutting-edge tools to deliver beautiful interfaces backed by robust, clean code.</p>
+      </div>
+      <div class="tools-grid">
+        <div class="tool-card">
+          <div class="tool-info">
+            <h3 class="text-blue">Stitch</h3>
+            <p>Stitch is used to build the responsive layout, design, and user interfaces, ensuring a premium visual presentation before any code is generated.</p>
+          </div>
+          <div class="tool-img-wrap">
+            <img class="tool-img" src="/pictures for wesbite/Screenshot 2026-06-07 at 4.50.32 PM.png" alt="Stitch Interface" />
           </div>
         </div>
-
-        <!-- Tier 2 -->
-        <div class="tier-card featured" data-link="level2" id="tier-card-l2">
-          <div class="tier-body">
-            <span class="tier-badge l2">Level 2</span>
-            <h3>Professional</h3>
-            <p class="tier-desc">
-              Feature-rich sites for clinics, dental practices, law firms, and established businesses.
-            </p>
-            <div class="tier-tags">
-              <span class="tier-tag">Clinics</span>
-              <span class="tier-tag">Dental</span>
-              <span class="tier-tag">Law Firms</span>
-              <span class="tier-tag">Consultants</span>
-            </div>
-            <div class="tier-price-hint">
-              From <strong>AED 2,950</strong> one-time · or <strong>AED 365/mo</strong> managed
-            </div>
-            <span class="tier-cta">Explore Level 2 ${Icons.arrow}</span>
+        <div class="tool-card">
+          <div class="tool-info">
+            <h3 class="text-red">Google Antigravity</h3>
+            <p>Google Antigravity generates clean, production-ready TypeScript and CSS code, optimizing the site for extreme speed, SEO compatibility, and responsiveness.</p>
+          </div>
+          <div class="tool-img-wrap">
+            <img class="tool-img" src="/pictures for wesbite/Screenshot 2026-06-07 at 4.48.42 PM.png" alt="Antigravity IDE" />
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
-  <section class="section-pad" style="background:var(--surface); border-top:1px solid var(--border);">
+  <!-- SIMPLIFIED TIER TEASERS SECTION -->
+  <section class="teasers-section">
     <div class="container">
-      <div class="section-header reveal">
-        <div class="section-label">Process</div>
-        <h2 class="section-title">How it works</h2>
-        <p class="section-sub">Simple, straightforward. No endless back-and-forth.</p>
+      <div class="teasers-header">
+        <h2>Choose Your Tier</h2>
+        <p>Two plans designed to build your online presence. Click below to explore the details of each tier.</p>
       </div>
-      <div class="steps-grid">
-        <div class="step reveal">
-          <div class="step-num">01</div>
-          <h3>Tell us about your business</h3>
-          <p>Fill out a quick form or WhatsApp us. We ask the right questions to understand your brand and goals.</p>
+      <div class="teasers-grid">
+        <div class="teaser-card">
+          <span class="teaser-badge">Level 1</span>
+          <h3 class="text-blue">Small Business</h3>
+          <p>Clean, ultra-fast websites for kiosks, cafés, salons, and local retail shops. Built to capture quick customer leads via WhatsApp and phone.</p>
+          <a href="#" class="teaser-btn" data-link="level1">
+            Explore Level 1 ${Icons.arrow}
+          </a>
         </div>
-        <div class="step reveal" style="transition-delay:0.1s">
-          <div class="step-num">02</div>
-          <h3>We design and build</h3>
-          <p>Fully custom — no templates. We handle structure, copy guidance, and the full build from start to finish.</p>
-        </div>
-        <div class="step reveal" style="transition-delay:0.2s">
-          <div class="step-num">03</div>
-          <h3>You launch and grow</h3>
-          <p>Your site goes live in 7–14 days. Choose one-time ownership or let us handle hosting and updates.</p>
+        <div class="teaser-card">
+          <span class="teaser-badge" style="color: var(--indigo-dark); border-color: rgba(3, 4, 94, 0.2);">Level 2</span>
+          <h3 class="text-dark-blue">Professional</h3>
+          <p>Feature-rich custom websites for clinics, dental practices, law firms, and consultants. Includes online appointment booking, team bios, and local SEO.</p>
+          <a href="#" class="teaser-btn" data-link="level2" style="color: var(--indigo-dark);">
+            Explore Level 2 ${Icons.arrow}
+          </a>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- CTA -->
-  <section class="cta-section">
-    <div class="container">
-      <h2>Ready to get started?</h2>
-      <p>Whether you're a kiosk or a clinic, we'll build you a website worth being proud of.</p>
-      <div class="cta-ctas">
-        <a href="#" class="btn btn-primary btn-large" data-link="contact" id="home-cta-contact">
-          Get in touch ${Icons.arrow}
-        </a>
-        <a href="#" class="btn btn-secondary btn-large" data-link="work" id="home-cta-work">
-          See our work
-        </a>
-      </div>
-    </div>
-  </section>`;
+  `;
 }
 
 // ─── Pricing Card Builder ─────────────────────────────────────────────────────

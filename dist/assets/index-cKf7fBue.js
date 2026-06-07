@@ -1,4 +1,4 @@
-(function(){const a=document.createElement("link").relList;if(a&&a.supports&&a.supports("modulepreload"))return;for(const i of document.querySelectorAll('link[rel="modulepreload"]'))o(i);new MutationObserver(i=>{for(const n of i)if(n.type==="childList")for(const d of n.addedNodes)d.tagName==="LINK"&&d.rel==="modulepreload"&&o(d)}).observe(document,{childList:!0,subtree:!0});function t(i){const n={};return i.integrity&&(n.integrity=i.integrity),i.referrerPolicy&&(n.referrerPolicy=i.referrerPolicy),i.crossOrigin==="use-credentials"?n.credentials="include":i.crossOrigin==="anonymous"?n.credentials="omit":n.credentials="same-origin",n}function o(i){if(i.ep)return;i.ep=!0;const n=t(i);fetch(i.href,n)}})();const r=(e,a=document)=>a.querySelector(e),p=(e,a=document)=>[...a.querySelectorAll(e)],u=.2723,c=e=>`<span class="price-usd">≈ $${(e*u).toFixed(0)} USD</span>`,s={arrow:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="2" y1="8" x2="13" y2="8"/><polyline points="9,4 13,8 9,12"/></svg>',check:'<svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,5.5 3.8,8 8.5,2"/></svg>',globe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',phone:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.79a19.79 19.79 0 01-3.07-8.7A2 2 0 012 0h3a2 2 0 012 1.72c.12.96.36 1.9.69 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.33 1.85.57 2.81.69A2 2 0 0122 16.92z"/></svg>',mail:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',map:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>',star:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>',zap:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"/></svg>',shield:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',palette:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>',wrench:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>',rocket:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2 .27-2.98-.31-3.5c-.56-.52-1.43-.8-2.69.5z"/><path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>',whatsapp:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>',code:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16,18 22,12 16,6"/><polyline points="8,6 2,12 8,18"/></svg>'},m=()=>`<span class="check-icon">${s.check}</span>`;function g(){return`
+(function(){const s=document.createElement("link").relList;if(s&&s.supports&&s.supports("modulepreload"))return;for(const i of document.querySelectorAll('link[rel="modulepreload"]'))o(i);new MutationObserver(i=>{for(const n of i)if(n.type==="childList")for(const d of n.addedNodes)d.tagName==="LINK"&&d.rel==="modulepreload"&&o(d)}).observe(document,{childList:!0,subtree:!0});function t(i){const n={};return i.integrity&&(n.integrity=i.integrity),i.referrerPolicy&&(n.referrerPolicy=i.referrerPolicy),i.crossOrigin==="use-credentials"?n.credentials="include":i.crossOrigin==="anonymous"?n.credentials="omit":n.credentials="same-origin",n}function o(i){if(i.ep)return;i.ep=!0;const n=t(i);fetch(i.href,n)}})();const r=(e,s=document)=>s.querySelector(e),v=(e,s=document)=>[...s.querySelectorAll(e)],h=.2723,c=e=>`<span class="price-usd">≈ $${(e*h).toFixed(0)} USD</span>`,a={arrow:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="2" y1="8" x2="13" y2="8"/><polyline points="9,4 13,8 9,12"/></svg>',check:'<svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,5.5 3.8,8 8.5,2"/></svg>',globe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',phone:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.79a19.79 19.79 0 01-3.07-8.7A2 2 0 012 0h3a2 2 0 012 1.72c.12.96.36 1.9.69 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.33 1.85.57 2.81.69A2 2 0 0122 16.92z"/></svg>',mail:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',map:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>',zap:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"/></svg>',shield:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',palette:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>',wrench:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>',rocket:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2 .27-2.98-.31-3.5c-.56-.52-1.43-.8-2.69.5z"/><path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>',whatsapp:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>',code:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16,18 22,12 16,6"/><polyline points="8,6 2,12 8,18"/></svg>'},m=()=>`<span class="check-icon">${a.check}</span>`;function g(){return`
   <nav class="nav" id="main-nav">
     <a href="#" class="logo" data-link="home" id="logo-btn">
       <svg class="feather-icon" width="26" height="26" viewBox="0 0 32 32" fill="none">
@@ -18,11 +18,11 @@
     </div>
     <div class="nav-actions">
       <a href="#" class="btn btn-secondary btn-sm" data-link="contact" id="nav-contact-cta">Contact</a>
-      <a href="#" class="btn btn-primary btn-sm" data-link="level1" id="nav-start-cta">Get started ${s.arrow}</a>
+      <a href="#" class="btn btn-primary btn-sm" data-link="level1" id="nav-start-cta">Get started ${a.arrow}</a>
     </div>
   </nav>`}function f(){return`
   <a id="whatsapp-fab" href="https://wa.me/971XXXXXXXXX" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
-    <svg viewBox="0 0 24 24" fill="white" width="28" height="28">${s.whatsapp}</svg>
+    <svg viewBox="0 0 24 24" fill="white" width="28" height="28">${a.whatsapp}</svg>
   </a>`}function b(){return`
   <footer class="site-footer">
     <div class="container">
@@ -67,171 +67,163 @@
   <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <div class="hero-eyebrow">Based in UAE · Websites that work</div>
+      <div class="hero-eyebrow" style="background: rgba(2, 62, 138, 0.08); border-color: rgba(2, 62, 138, 0.2); color: var(--indigo);">Based in UAE · High-Performance Websites</div>
       <h1>Your website,<br>done right.</h1>
       <p class="hero-sub">
-        We design and build websites for businesses across the UAE.
-        Two simple plans — from small kiosks to professional clinics.
+        We design, build, and launch custom websites for UAE businesses. Clean layouts, ultra-fast speeds, and built to grow your brand.
       </p>
       <div class="hero-ctas">
-        <a href="#" class="btn btn-primary btn-large" data-link="level1" id="hero-cta-start">
-          Start a project ${s.arrow}
+        <a href="#" class="btn btn-primary btn-large" data-link="level1" id="hero-cta-start" style="background: var(--indigo);">
+          Start a project ${a.arrow}
         </a>
         <a href="#" class="btn btn-secondary btn-large" data-link="work" id="hero-cta-work">
           See our work
         </a>
       </div>
-      <p class="hero-note">Not sure which plan? <a href="#" data-link="contact">Talk to us</a></p>
+      <p class="hero-note">Not sure which plan? <a href="#" data-link="contact" style="color: var(--indigo);">Talk to us</a></p>
     </div>
   </section>
 
-  <!-- MARQUEE / TRUST STRIP -->
-  <div class="logo-strip">
-    <div class="logo-strip-inner" id="logo-marquee">
-      <span class="logo-chip">${s.shield} No hidden fees</span>
-      <span class="logo-chip">${s.zap} Live in 7–14 days</span>
-      <span class="logo-chip">${s.globe} Fully custom design</span>
-      <span class="logo-chip">${s.phone} WhatsApp integration</span>
-      <span class="logo-chip">${s.star} UAE-based team</span>
-      <span class="logo-chip">${s.shield} 3-month minimum on managed</span>
-      <span class="logo-chip">${s.zap} Mobile responsive</span>
-      <span class="logo-chip">${s.globe} SEO optimised</span>
-      <!-- duplicate for seamless loop -->
-      <span class="logo-chip">${s.shield} No hidden fees</span>
-      <span class="logo-chip">${s.zap} Live in 7–14 days</span>
-      <span class="logo-chip">${s.globe} Fully custom design</span>
-      <span class="logo-chip">${s.phone} WhatsApp integration</span>
-      <span class="logo-chip">${s.star} UAE-based team</span>
-      <span class="logo-chip">${s.shield} 3-month minimum on managed</span>
-      <span class="logo-chip">${s.zap} Mobile responsive</span>
-      <span class="logo-chip">${s.globe} SEO optimised</span>
-    </div>
-  </div>
-
-  <!-- STATS -->
-  <div class="stats-row">
+  <!-- BUSINESS FACTS STRIP -->
+  <div class="stats-row" style="background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 48px 0;">
     <div class="container">
-      <div class="stats-grid">
-        <div class="stat-item reveal">
-          <div class="stat-num">30+</div>
-          <div class="stat-label">Sites delivered</div>
+      <div class="stats-grid" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="stat-item" style="border-right: 1px solid var(--border); text-align: left; padding: 12px 24px;">
+          <div class="stat-num" style="color: var(--indigo); font-size: 1.6rem; margin-bottom: 4px;">Under 3 Days</div>
+          <div class="stat-label" style="color: rgba(0,0,0,0.65); font-weight: 600;">Live in under 3 days</div>
         </div>
-        <div class="stat-item reveal" style="transition-delay:0.08s">
-          <div class="stat-num">7–14</div>
-          <div class="stat-label">Days to launch</div>
+        <div class="stat-item" style="border-right: 1px solid var(--border); text-align: left; padding: 12px 24px;">
+          <div class="stat-num" style="color: var(--indigo-dark); font-size: 1.6rem; margin-bottom: 4px;">100% Mobile</div>
+          <div class="stat-label" style="color: rgba(0,0,0,0.65); font-weight: 600;">Mobile responsive layout</div>
         </div>
-        <div class="stat-item reveal" style="transition-delay:0.16s">
-          <div class="stat-num">100%</div>
-          <div class="stat-label">Client satisfaction</div>
+        <div class="stat-item" style="border-right: 1px solid var(--border); text-align: left; padding: 12px 24px;">
+          <div class="stat-num" style="color: var(--red); font-size: 1.6rem; margin-bottom: 4px;">Fully Custom</div>
+          <div class="stat-label" style="color: rgba(0,0,0,0.65); font-weight: 600;">Custom design, no templates</div>
         </div>
-        <div class="stat-item reveal" style="transition-delay:0.24s">
-          <div class="stat-num">3</div>
-          <div class="stat-label">UAE cities served</div>
+        <div class="stat-item" style="border-right: none; text-align: left; padding: 12px 24px;">
+          <div class="stat-num" style="color: var(--indigo); font-size: 1.6rem; margin-bottom: 4px;">3+ Years</div>
+          <div class="stat-label" style="color: rgba(0,0,0,0.65); font-weight: 600;">Website building experience</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- TWO TIERS -->
-  <section class="section-pad" style="background:#fff; border-top:1px solid var(--border);">
+  <!-- THE PROBLEM SECTION -->
+  <section class="problem-section">
     <div class="container">
-      <div class="section-header reveal">
-        <div class="section-label">Our plans</div>
-        <h2 class="section-title">Two tiers, built for where you are</h2>
-        <p class="section-sub">
-          Whether you're just starting out or running an established practice,
-          there's a Feather plan that fits.
-        </p>
+      <h2 class="problem-headline">
+        Every day without a website is a customer you <span class="text-red">didn't know you lost</span>.
+      </h2>
+      <div class="problem-grid">
+        <div class="problem-card">
+          <h3 class="text-dark-blue">They searched. They didn't find you.</h3>
+          <p>
+            Most people look up a business online before they visit or call. If nothing comes up — or what comes up looks bad — they move on. Simple as that.
+          </p>
+        </div>
+        <div class="problem-card">
+          <h3 class="text-red">Your competitor got the client. Not you.</h3>
+          <p>
+            When two similar businesses show up online and one has a clean professional website, the choice is obvious. Customers always go with whoever looks more trustworthy.
+          </p>
+        </div>
+        <div class="problem-card">
+          <h3 class="text-blue">You don't have time to deal with this.</h3>
+          <p>
+            You're running a business. Building a website, figuring out hosting, dealing with technical problems — that's not why you got into this. It shouldn't be your problem.
+          </p>
+        </div>
       </div>
-      <div class="tiers-grid reveal">
-        <!-- Tier 1 -->
-        <div class="tier-card" data-link="level1" id="tier-card-l1">
-          <div class="tier-body">
-            <span class="tier-badge l1">Level 1</span>
-            <h3>Small Business</h3>
-            <p class="tier-desc">
-              Clean, fast websites for kiosks, cafes, retail shops, and growing local businesses.
-            </p>
-            <div class="tier-tags">
-              <span class="tier-tag">Kiosks</span>
-              <span class="tier-tag">Cafes</span>
-              <span class="tier-tag">Retail</span>
-              <span class="tier-tag">Salons</span>
-            </div>
-            <div class="tier-price-hint">
-              From <strong>AED 1,450</strong> one-time · or <strong>AED 150/mo</strong> managed
-            </div>
-            <span class="tier-cta">Explore Level 1 ${s.arrow}</span>
+    </div>
+  </section>
+
+  <!-- THE FACTS SECTION -->
+  <section class="facts-section">
+    <div class="container">
+      <h2 class="facts-headline">The numbers don't lie.</h2>
+      <div class="facts-grid">
+        <div class="fact-card accent-red">
+          <div class="fact-number">81%</div>
+          <div class="fact-desc">Of customers research a business online before making a purchase or booking</div>
+        </div>
+        <div class="fact-card">
+          <div class="fact-number">75%</div>
+          <div class="fact-desc">Of people judge a company's credibility based on their website design alone</div>
+        </div>
+        <div class="fact-card accent-dark">
+          <div class="fact-number">57%</div>
+          <div class="fact-desc">Of internet users say they won't recommend a business with a poorly designed website</div>
+        </div>
+        <div class="fact-card">
+          <div class="fact-number">2x</div>
+          <div class="fact-desc">Faster growth for businesses with a professional website compared to those without</div>
+        </div>
+        <div class="fact-card accent-dark">
+          <div class="fact-number">40%</div>
+          <div class="fact-desc">Of Google Business Profile score depends on your website — directly affecting Maps ranking</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLS WE USE SECTION -->
+  <section class="tools-section">
+    <div class="container">
+      <div class="tools-header">
+        <h2 class="text-dark-blue">The Tech Behind the Speed</h2>
+        <p>We build using cutting-edge tools to deliver beautiful interfaces backed by robust, clean code.</p>
+      </div>
+      <div class="tools-grid">
+        <div class="tool-card">
+          <div class="tool-info">
+            <h3 class="text-blue">Stitch</h3>
+            <p>Stitch is used to build the responsive layout, design, and user interfaces, ensuring a premium visual presentation before any code is generated.</p>
+          </div>
+          <div class="tool-img-wrap">
+            <img class="tool-img" src="/pictures for wesbite/Screenshot 2026-06-07 at 4.50.32 PM.png" alt="Stitch Interface" />
           </div>
         </div>
-
-        <!-- Tier 2 -->
-        <div class="tier-card featured" data-link="level2" id="tier-card-l2">
-          <div class="tier-body">
-            <span class="tier-badge l2">Level 2</span>
-            <h3>Professional</h3>
-            <p class="tier-desc">
-              Feature-rich sites for clinics, dental practices, law firms, and established businesses.
-            </p>
-            <div class="tier-tags">
-              <span class="tier-tag">Clinics</span>
-              <span class="tier-tag">Dental</span>
-              <span class="tier-tag">Law Firms</span>
-              <span class="tier-tag">Consultants</span>
-            </div>
-            <div class="tier-price-hint">
-              From <strong>AED 2,950</strong> one-time · or <strong>AED 365/mo</strong> managed
-            </div>
-            <span class="tier-cta">Explore Level 2 ${s.arrow}</span>
+        <div class="tool-card">
+          <div class="tool-info">
+            <h3 class="text-red">Google Antigravity</h3>
+            <p>Google Antigravity generates clean, production-ready TypeScript and CSS code, optimizing the site for extreme speed, SEO compatibility, and responsiveness.</p>
+          </div>
+          <div class="tool-img-wrap">
+            <img class="tool-img" src="/pictures for wesbite/Screenshot 2026-06-07 at 4.48.42 PM.png" alt="Antigravity IDE" />
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
-  <section class="section-pad" style="background:var(--surface); border-top:1px solid var(--border);">
+  <!-- SIMPLIFIED TIER TEASERS SECTION -->
+  <section class="teasers-section">
     <div class="container">
-      <div class="section-header reveal">
-        <div class="section-label">Process</div>
-        <h2 class="section-title">How it works</h2>
-        <p class="section-sub">Simple, straightforward. No endless back-and-forth.</p>
+      <div class="teasers-header">
+        <h2>Choose Your Tier</h2>
+        <p>Two plans designed to build your online presence. Click below to explore the details of each tier.</p>
       </div>
-      <div class="steps-grid">
-        <div class="step reveal">
-          <div class="step-num">01</div>
-          <h3>Tell us about your business</h3>
-          <p>Fill out a quick form or WhatsApp us. We ask the right questions to understand your brand and goals.</p>
+      <div class="teasers-grid">
+        <div class="teaser-card">
+          <span class="teaser-badge">Level 1</span>
+          <h3 class="text-blue">Small Business</h3>
+          <p>Clean, ultra-fast websites for kiosks, cafés, salons, and local retail shops. Built to capture quick customer leads via WhatsApp and phone.</p>
+          <a href="#" class="teaser-btn" data-link="level1">
+            Explore Level 1 ${a.arrow}
+          </a>
         </div>
-        <div class="step reveal" style="transition-delay:0.1s">
-          <div class="step-num">02</div>
-          <h3>We design and build</h3>
-          <p>Fully custom — no templates. We handle structure, copy guidance, and the full build from start to finish.</p>
-        </div>
-        <div class="step reveal" style="transition-delay:0.2s">
-          <div class="step-num">03</div>
-          <h3>You launch and grow</h3>
-          <p>Your site goes live in 7–14 days. Choose one-time ownership or let us handle hosting and updates.</p>
+        <div class="teaser-card">
+          <span class="teaser-badge" style="color: var(--indigo-dark); border-color: rgba(3, 4, 94, 0.2);">Level 2</span>
+          <h3 class="text-dark-blue">Professional</h3>
+          <p>Feature-rich custom websites for clinics, dental practices, law firms, and consultants. Includes online appointment booking, team bios, and local SEO.</p>
+          <a href="#" class="teaser-btn" data-link="level2" style="color: var(--indigo-dark);">
+            Explore Level 2 ${a.arrow}
+          </a>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- CTA -->
-  <section class="cta-section">
-    <div class="container">
-      <h2>Ready to get started?</h2>
-      <p>Whether you're a kiosk or a clinic, we'll build you a website worth being proud of.</p>
-      <div class="cta-ctas">
-        <a href="#" class="btn btn-primary btn-large" data-link="contact" id="home-cta-contact">
-          Get in touch ${s.arrow}
-        </a>
-        <a href="#" class="btn btn-secondary btn-large" data-link="work" id="home-cta-work">
-          See our work
-        </a>
-      </div>
-    </div>
-  </section>`}function l(e){return`
+  `}function l(e){return`
   <div class="pricing-card${e.managed?" managed":""}">
     ${e.managed?'<div class="managed-badge">Recommended</div>':""}
     <div class="pricing-card-top">
@@ -248,13 +240,13 @@
     </div>
     <div class="pricing-card-cta">
       <a href="#" class="btn btn-primary btn-block btn-large" data-link="contact" id="${e.ctaId}">
-        Get started ${s.arrow}
+        Get started ${a.arrow}
       </a>
       ${e.note?`<p style="font-size:0.75rem; color:var(--text-muted); margin-top:10px; text-align:center;">${e.note}</p>`:""}
     </div>
     <div class="pricing-card-features">
       <div class="features-label">What's included</div>
-      ${e.features.map(a=>`<div class="feature-row">${m()}<span>${a}</span></div>`).join("")}
+      ${e.features.map(s=>`<div class="feature-row">${m()}<span>${s}</span></div>`).join("")}
       ${e.managed?`
         <div class="no-contract-note">
           <strong>No lock-in contracts</strong>
@@ -296,7 +288,7 @@
         <h2 class="section-title">Built for business, not just looks</h2>
       </div>
       <div class="feature-grid">
-        ${[{icon:s.palette,title:"Custom Design",desc:"No templates. Every site is built from scratch to match your brand, colours, and vibe."},{icon:s.zap,title:"Fast Delivery",desc:"Your site is live within 7–14 business days from when we agree on the brief."},{icon:s.globe,title:"Mobile First",desc:"Looks great on phones, tablets, and desktops. Most of your visitors are on mobile."},{icon:s.shield,title:"SEO Ready",desc:"Proper page titles, meta descriptions, and structured code so Google can find you."},{icon:s.phone,title:"WhatsApp Button",desc:"A tap-to-chat WhatsApp button on every page — the easiest way to get leads in the UAE."},{icon:s.wrench,title:"Low Maintenance",desc:"Clean builds that just work. Perfect for business owners who want to focus on running their business."}].map(e=>`<div class="feature-item reveal">
+        ${[{icon:a.palette,title:"Custom Design",desc:"No templates. Every site is built from scratch to match your brand, colours, and vibe."},{icon:a.zap,title:"Fast Delivery",desc:"Your site is live within 7–14 business days from when we agree on the brief."},{icon:a.globe,title:"Mobile First",desc:"Looks great on phones, tablets, and desktops. Most of your visitors are on mobile."},{icon:a.shield,title:"SEO Ready",desc:"Proper page titles, meta descriptions, and structured code so Google can find you."},{icon:a.phone,title:"WhatsApp Button",desc:"A tap-to-chat WhatsApp button on every page — the easiest way to get leads in the UAE."},{icon:a.wrench,title:"Low Maintenance",desc:"Clean builds that just work. Perfect for business owners who want to focus on running their business."}].map(e=>`<div class="feature-item reveal">
             <div class="feature-icon-wrap">${e.icon}</div>
             <h3>${e.title}</h3>
             <p>${e.desc}</p>
@@ -324,10 +316,10 @@
       <p>A website your customers will trust, at a price that makes sense.</p>
       <div class="cta-ctas">
         <a href="#" class="btn btn-primary btn-large" data-link="contact" id="l1-footer-cta">
-          Talk to us ${s.arrow}
+          Talk to us ${a.arrow}
         </a>
         <a href="https://wa.me/971XXXXXXXXX" target="_blank" class="btn btn-wa btn-large">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="white">${s.whatsapp}</svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white">${a.whatsapp}</svg>
           WhatsApp us
         </a>
       </div>
@@ -376,9 +368,9 @@
             </tr>
           </thead>
           <tbody>
-            ${[["Pages included","Up to 5","Up to 10"],["Custom design","✓","✓"],["Mobile responsive","✓","✓"],["WhatsApp button","✓","✓"],["Basic SEO","✓","✓"],["Advanced SEO + Google setup","—","✓"],["Booking / appointment section","—","✓"],["Team and credentials page","—","✓"],["Testimonials section","—","✓"],["Google Maps integration","—","✓"],["Starting price (one-time)","AED 1,450","AED 2,950"],["Managed plan from","AED 150/mo","AED 365/mo"]].map(([e,a,t])=>`<tr>
+            ${[["Pages included","Up to 5","Up to 10"],["Custom design","✓","✓"],["Mobile responsive","✓","✓"],["WhatsApp button","✓","✓"],["Basic SEO","✓","✓"],["Advanced SEO + Google setup","—","✓"],["Booking / appointment section","—","✓"],["Team and credentials page","—","✓"],["Testimonials section","—","✓"],["Google Maps integration","—","✓"],["Starting price (one-time)","AED 1,450","AED 2,950"],["Managed plan from","AED 150/mo","AED 365/mo"]].map(([e,s,t])=>`<tr>
                 <td>${e}</td>
-                <td>${a}</td>
+                <td>${s}</td>
                 <td class="hl">${t}</td>
               </tr>`).join("")}
           </tbody>
@@ -395,7 +387,7 @@
         <h2 class="section-title">Everything a professional needs</h2>
       </div>
       <div class="feature-grid">
-        ${[{icon:s.palette,title:"Premium Design",desc:"Custom layouts that communicate expertise and build trust with every visitor."},{icon:s.rocket,title:"Conversion Focused",desc:"Built to turn visitors into appointments, calls, or enquiries."},{icon:s.globe,title:"Advanced SEO",desc:"Full local SEO setup including Google Business Profile configuration."},{icon:s.shield,title:"Secure Hosting",desc:"SSL certificates, daily backups, and active uptime monitoring included."},{icon:s.phone,title:"Booking Integration",desc:"Appointment sections and scheduling flows built directly into your site."},{icon:s.code,title:"Ongoing Updates",desc:"Managed plan clients get unlimited content updates — add treatments, update team bios, change pricing."}].map(e=>`<div class="feature-item reveal">
+        ${[{icon:a.palette,title:"Premium Design",desc:"Custom layouts that communicate expertise and build trust with every visitor."},{icon:a.rocket,title:"Conversion Focused",desc:"Built to turn visitors into appointments, calls, or enquiries."},{icon:a.globe,title:"Advanced SEO",desc:"Full local SEO setup including Google Business Profile configuration."},{icon:a.shield,title:"Secure Hosting",desc:"SSL certificates, daily backups, and active uptime monitoring included."},{icon:a.phone,title:"Booking Integration",desc:"Appointment sections and scheduling flows built directly into your site."},{icon:a.code,title:"Ongoing Updates",desc:"Managed plan clients get unlimited content updates — add treatments, update team bios, change pricing."}].map(e=>`<div class="feature-item reveal">
             <div class="feature-icon-wrap">${e.icon}</div>
             <h3>${e.title}</h3>
             <p>${e.desc}</p>
@@ -423,15 +415,15 @@
       <p>Your clients are searching online right now. Make sure they find something impressive.</p>
       <div class="cta-ctas">
         <a href="#" class="btn btn-primary btn-large" data-link="contact" id="l2-footer-cta">
-          Talk to us ${s.arrow}
+          Talk to us ${a.arrow}
         </a>
         <a href="https://wa.me/971XXXXXXXXX" target="_blank" class="btn btn-wa btn-large">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="white">${s.whatsapp}</svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white">${a.whatsapp}</svg>
           WhatsApp us
         </a>
       </div>
     </div>
-  </section>`}function x(){const e=[{tag:"Level 1 · Kiosk",title:"Bites & Brews",meta:"Food & Beverage · Dubai",desc:'"We went from no online presence at all to having customers find us on Google. The WhatsApp button alone brought us new walk-ins within the first week."',url:"bitesandbrews.ae",demoClass:"kiosk"},{tag:"Level 2 · Clinic",title:"Pearl Dental",meta:"Dental Practice · Abu Dhabi",desc:'"Patients tell us our website looks more professional than clinics open for 10+ years. Feather Studio completely changed how we present ourselves."',url:"pearldental.ae",demoClass:"dental",alt:!0},{tag:"Level 2 · Studio",title:"Aura Aesthetics",meta:"Beauty & Wellness · Sharjah",desc:'"Our bookings doubled in the first month after launching. The site looks luxurious — it matches exactly the feeling we want clients to have before they walk in."',url:"aura-aesthetics.ae",demoClass:"aesthetics"},{tag:"Level 1 · Wellness",title:"Bloom Women's Health",meta:"Women's Wellness · Dubai",desc:'"We needed something warm and trustworthy. Feather understood our audience immediately — the result feels like us, just professional."',url:"bloomwomens.ae",demoClass:"womens",alt:!0}],a={kiosk:`
+  </section>`}function x(){const e=[{tag:"Level 1 · Kiosk",title:"Bites & Brews",meta:"Food & Beverage · Dubai",desc:'"We went from no online presence at all to having customers find us on Google. The WhatsApp button alone brought us new walk-ins within the first week."',url:"bitesandbrews.ae",demoClass:"kiosk"},{tag:"Level 2 · Clinic",title:"Pearl Dental",meta:"Dental Practice · Abu Dhabi",desc:'"Patients tell us our website looks more professional than clinics open for 10+ years. Feather Studio completely changed how we present ourselves."',url:"pearldental.ae",demoClass:"dental",alt:!0},{tag:"Level 2 · Studio",title:"Aura Aesthetics",meta:"Beauty & Wellness · Sharjah",desc:'"Our bookings doubled in the first month after launching. The site looks luxurious — it matches exactly the feeling we want clients to have before they walk in."',url:"aura-aesthetics.ae",demoClass:"aesthetics"},{tag:"Level 1 · Wellness",title:"Bloom Women's Health",meta:"Women's Wellness · Dubai",desc:'"We needed something warm and trustworthy. Feather understood our audience immediately — the result feels like us, just professional."',url:"bloomwomens.ae",demoClass:"womens",alt:!0}],s={kiosk:`
       <div class="demo-site" style="background:#FFFAF5;">
         <div class="demo-nav" style="background:#fff; border-bottom:1px solid #f0e8dc;">
           <span style="font-size:0.75rem; font-weight:800; color:#F4A261; letter-spacing:-0.02em;">Bites & Brews</span>
@@ -549,7 +541,7 @@
             <div class="showcase-meta">${t.meta}</div>
             <p class="showcase-desc">${t.desc}</p>
             <a href="https://wa.me/971XXXXXXXXX" target="_blank" class="showcase-cta">
-              Build something like this ${s.arrow}
+              Build something like this ${a.arrow}
             </a>
           </div>
           <div class="showcase-frame-wrap">
@@ -561,7 +553,7 @@
                 <div class="browser-url">${t.url}</div>
               </div>
               <div class="browser-body">
-                ${a[t.demoClass]||""}
+                ${s[t.demoClass]||""}
               </div>
             </div>
           </div>
@@ -575,10 +567,10 @@
       <p>Let's talk about what you need and which plan is the right fit.</p>
       <div class="cta-ctas">
         <a href="#" class="btn btn-primary btn-large" data-link="contact" id="work-cta">
-          Get in touch ${s.arrow}
+          Get in touch ${a.arrow}
         </a>
         <a href="https://wa.me/971XXXXXXXXX" target="_blank" class="btn btn-wa btn-large">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="white">${s.whatsapp}</svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white">${a.whatsapp}</svg>
           WhatsApp us
         </a>
       </div>
@@ -595,7 +587,7 @@
             <div class="contact-methods">
               <a href="https://wa.me/971XXXXXXXXX" target="_blank" class="contact-method">
                 <div class="contact-method-icon" style="background:rgba(37,211,102,.08); color:var(--whatsapp);">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">${s.whatsapp}</svg>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">${a.whatsapp}</svg>
                 </div>
                 <div>
                   <div class="contact-method-label">WhatsApp</div>
@@ -604,7 +596,7 @@
               </a>
               <a href="mailto:hello@featherstudio.ae" class="contact-method">
                 <div class="contact-method-icon">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${s.mail}</svg>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${a.mail}</svg>
                 </div>
                 <div>
                   <div class="contact-method-label">Email</div>
@@ -613,7 +605,7 @@
               </a>
               <div class="contact-method">
                 <div class="contact-method-icon">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${s.map}</svg>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${a.map}</svg>
                 </div>
                 <div>
                   <div class="contact-method-label">Location</div>
@@ -638,7 +630,7 @@
               </select>
               <textarea class="form-input form-textarea" id="form-message" name="message" placeholder="Tell us about your business and what you need..." required></textarea>
               <button type="submit" class="btn btn-primary btn-block btn-large" id="form-submit-btn">
-                Send message ${s.arrow}
+                Send message ${a.arrow}
               </button>
               <div id="form-success" style="display:none; text-align:center; padding:18px; background:rgba(62,207,142,.07); border-radius:var(--r-md); border:1px solid rgba(62,207,142,.20);">
                 <div style="font-size:1.2rem; margin-bottom:4px;">✅</div>
@@ -650,9 +642,9 @@
         </div>
       </div>
     </div>
-  </div>`}const v={home:w,level1:y,level2:k,work:x,contact:A};function $(e){p("[data-link]").forEach(t=>t.classList.remove("active"));const a=r(`[data-link="${e}"].nav-link`);a&&a.classList.add("active")}function F(){const e=p(".reveal"),a=new IntersectionObserver(t=>{t.forEach(o=>{o.isIntersecting&&(o.target.classList.add("revealed"),a.unobserve(o.target))})},{threshold:.07,rootMargin:"0px 0px -30px 0px"});e.forEach(t=>a.observe(t))}function E(){const e=r("#contact-form"),a=r("#form-submit-btn"),t=r("#form-success");!e||!a||!t||e.addEventListener("submit",o=>{o.preventDefault();const i=new FormData(e);fetch(e.action,{method:"POST",body:i,headers:{Accept:"application/json"}}).then(()=>{a.style.display="none",t.style.display="block"}).catch(()=>{a.style.display="none",t.style.display="block"})})}function h(e){const a=r("#main-content");a.style.opacity="0",a.style.transform="translateY(8px)",setTimeout(()=>{a.innerHTML=v[e](),$(e),window.scrollTo({top:0,behavior:"instant"}),a.style.transition="opacity 0.3s ease, transform 0.3s ease",requestAnimationFrame(()=>{a.style.opacity="1",a.style.transform="translateY(0)"}),F(),e==="contact"&&E()},150)}function C(e){e.addEventListener("click",a=>{const t=a.target.closest("[data-link]");if(!t)return;a.preventDefault();const o=t.getAttribute("data-link");o&&v[o]&&h(o)})}function L(){const e=r("#main-nav");if(!e)return;const a=()=>{window.scrollY>20?e.classList.add("scrolled"):e.classList.remove("scrolled")};window.addEventListener("scroll",a,{passive:!0})}document.addEventListener("DOMContentLoaded",()=>{const e=document.getElementById("app");e.innerHTML=`
+  </div>`}const p={home:w,level1:y,level2:k,work:x,contact:A};function E(e){v("[data-link]").forEach(t=>t.classList.remove("active"));const s=r(`[data-link="${e}"].nav-link`);s&&s.classList.add("active")}function $(){const e=v(".reveal"),s=new IntersectionObserver(t=>{t.forEach(o=>{o.isIntersecting&&(o.target.classList.add("revealed"),s.unobserve(o.target))})},{threshold:.07,rootMargin:"0px 0px -30px 0px"});e.forEach(t=>s.observe(t))}function F(){const e=r("#contact-form"),s=r("#form-submit-btn"),t=r("#form-success");!e||!s||!t||e.addEventListener("submit",o=>{o.preventDefault();const i=new FormData(e);fetch(e.action,{method:"POST",body:i,headers:{Accept:"application/json"}}).then(()=>{s.style.display="none",t.style.display="block"}).catch(()=>{s.style.display="none",t.style.display="block"})})}function u(e){const s=r("#main-content");s.style.opacity="0",s.style.transform="translateY(8px)",setTimeout(()=>{s.innerHTML=p[e](),E(e),window.scrollTo({top:0,behavior:"instant"}),s.style.transition="opacity 0.3s ease, transform 0.3s ease",requestAnimationFrame(()=>{s.style.opacity="1",s.style.transform="translateY(0)"}),$(),e==="contact"&&F()},150)}function C(e){e.addEventListener("click",s=>{const t=s.target.closest("[data-link]");if(!t)return;s.preventDefault();const o=t.getAttribute("data-link");o&&p[o]&&u(o)})}function S(){const e=r("#main-nav");if(!e)return;const s=()=>{window.scrollY>20?e.classList.add("scrolled"):e.classList.remove("scrolled")};window.addEventListener("scroll",s,{passive:!0})}document.addEventListener("DOMContentLoaded",()=>{const e=document.getElementById("app");e.innerHTML=`
     ${g()}
     <main id="main-content" style="opacity:1; min-height:100vh;"></main>
     ${b()}
     ${f()}
-  `,C(e),L(),h("home")});
+  `,C(e),S(),u("home")});
