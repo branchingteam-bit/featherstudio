@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stripe</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#e5e8eb",
+                        "surface-container": "#ebeef1",
+                        "on-background": "#181c1e",
+                        "on-primary-fixed": "#0f0069",
+                        "on-primary-fixed-variant": "#321ed2",
+                        "on-tertiary-container": "#fffaf9",
+                        "slate-text": "#425466",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#d2e4ff",
+                        "tertiary-fixed-dim": "#ffb59a",
+                        "surface-variant": "#e0e3e6",
+                        "on-tertiary-fixed": "#380d00",
+                        "inverse-on-surface": "#eef1f4",
+                        "secondary-fixed-dim": "#b0c8eb",
+                        "outline-variant": "#c7c4d8",
+                        "orange-action": "#FF6118",
+                        "primary-fixed": "#e2dfff",
+                        "tertiary-container": "#cc4700",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "on-primary-container": "#fefaff",
+                        "tertiary-fixed": "#ffdbcf",
+                        "on-secondary-fixed-variant": "#314865",
+                        "primary-container": "#635bff",
+                        "on-surface": "#181c1e",
+                        "on-secondary-fixed": "#001c37",
+                        "primary": "#493ee5",
+                        "surface": "#f7fafd",
+                        "surface-bright": "#f7fafd",
+                        "on-error-container": "#93000a",
+                        "secondary-container": "#c4dcff",
+                        "tertiary": "#a33700",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#e0e3e6",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "surface-container-low": "#f1f4f7",
+                        "on-surface-variant": "#464555",
+                        "on-tertiary-fixed-variant": "#802900",
+                        "surface-tint": "#4c42e9",
+                        "background": "#f7fafd",
+                        "surface-dim": "#d7dadd",
+                        "inverse-primary": "#c3c0ff",
+                        "surface-dark": "#0A2540",
+                        "background-subtle": "#F6F9FC",
+                        "surface-container-lowest": "#ffffff",
+                        "indigo-vibrant": "#635BFF",
+                        "secondary": "#49607e",
+                        "on-secondary-container": "#49617f",
+                        "inverse-surface": "#2d3133",
+                        "outline": "#777587",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "gutter": "32px",
+                        "container-max": "1200px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Hanken Grotesk"],
+                        "button": ["Inter"],
+                        "label-sm": ["JetBrains Mono"],
+                        "display-lg-mobile": ["Hanken Grotesk"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "button": ["15px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "label-sm": ["13px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased overflow-x-hidden">
+<!-- TopNavBar Component -->
+<nav class="fixed top-0 w-full z-50 backdrop-blur-md bg-surface/80">
+<div class="flex justify-between items-center max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-4">
+<div class="text-headline-md font-headline-md font-bold text-on-surface cursor-pointer">Stripe</div>
+<div class="hidden md:flex gap-6">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Products</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Solutions</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Developers</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Resources</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Pricing</a>
+</div>
+<div class="hidden md:flex items-center gap-4">
+<a class="text-on-surface-variant font-button text-button hover:text-primary transition-colors duration-200 scale-95 active:opacity-80 transition-transform" href="#">Sign in</a>
+<a class="bg-primary text-on-primary px-4 py-2 rounded-full font-button text-button hover:bg-surface-tint transition-colors duration-200 scale-95 active:opacity-80 transition-transform" href="#">Contact sales</a>
+</div>
+<div class="md:hidden flex items-center">
+<button class="p-2 text-on-surface-variant focus:outline-none">
+<span class="material-symbols-outlined text-2xl">menu</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Content: Seamlessly Stacked Images -->
+<main class="w-full flex flex-col items-center justify-start bg-background">
+<!-- 1. Header & Hero -->
+<img alt="" class="w-full h-auto object-cover block" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6sgpZXhqOU4NQyb-O16oSeJKB6y20G4q10LKOgJ-zdR9WeOPdIhvLhL5qgG3J0a_F542DbAcqi_Tncx5mN5Cp21Z7SzVzprnVrGag8RDAf3f8k4Cn7Cgd4KIe0iv7wZrAJ0_LjCsYCZCBmdGod9p066-3CJbkAENhNgif3CCgbYn_vxKlJRmCApko3dcjjSHE9ZtWxOkYK0MaMrfCUT6BERjs_rvuqCzPM3mQ2aLY1YDOybs7F1fv_fRpju4sOwozABltFUGpxQk"/>
+<!-- 2. Product Solutions Grid -->
+<img alt="" class="w-full h-auto object-cover block" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCf2i0gNVvdqtgtpklHRY9fgCM6rPyTSBYOVoj2fm8Rmckxzb2AiT9XVGaTzMZA85-a8yJn-llGYcRCEHQyyUedW4B-MVe2zuwflMVAIs6SmVUPpRRZ4zsQSThG5GZIipQENNG5lsp07uP9BK_kFV1WD75unjZVCX3CJmoI-yaxlSrzl2qwTAYwk2vhthQWv-4nP7aVD7KZK42S3TEWkcxJHOIuAu8RyNuKq1i2JV9XDMX97l4snXOonlKu637QKfD1alP3FZRi7_Q"/>
+<!-- 3. Interactive Features & Platform Details -->
+<img alt="" class="w-full h-auto object-cover block" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUivgpW0dgtwCqi1YuNPay1H_C-58tjNEQ7F5HBPDvsE0RLVNLHKKjvXhJhhjClJ3ZqN6PDTloPUSUDp3ioFfA-N0OsVs6fj-istVz8Q1GlNTQ3WZpBQTN4kPw07AzgIywQLKiA2rnJFHjDYijhzSfRWupi33Jy0NX73dXiCmm0MEMAD3PSJkIZk5OQsbsRLkzbm6QObpFmiVBOymqX8WWshtzJWNUcCT3y89X78lCqumvowGqXz_PYVmN8ycLNb8V7tt2jM_dGeY"/>
+<!-- 4. Global Stats & Infrastructure -->
+<img alt="" class="w-full h-auto object-cover block" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCASKXmkVVT3CdaohyTPIPTgGhPqGHUnTTge4C1eNUqarGDaqXNN8F63pYDBAYZfa2VYQCxKntTtJiJy9QB-sgNclbN1EIQCNOqmy7YfRv_TnxquRiM-g5VNL6nVfJ4MKduXRmJeJH5nFLPUYDgFQsVcHfYyWPI18924WgtS_LkHHI2hR_iUxP2VvxkgTowUY_rVVMJuVrif5RlDq4df2lL901N_XY2kbUetVF4Qmh0OZ67d5VHqYAEbeOkmLpTOm48Ynov4Fuk8V8"/>
+<!-- 5. Enterprise & Partner Showcase -->
+<img alt="" class="w-full h-auto object-cover block" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGgmVne2aPaE-wxRDfDfWz1Tzaur7gtv4jdmmp0h-rvFEiKc25mcNh3-il5ckkXv9Z3FkDTLLENEnQ24Shumpwu2_aaPUhOsqulQck1OhDUgIshTqaT7f7baU-QzYL8wdq_yCl7WLS5NIHUzOYFoHvrSIOpT_cadr4GRZgjRpWrpwFud02ocaFQSVJ6ma-d81fbC7RuqF3Ke3BVxtq97mpkcnxt1yFrb9pXrKzHf1lpiOYPm_4WONOTJpfVlysoVZNKP3JxOi78rc"/>
+<!-- 6. Enterprise Case Study (Hertz/URBN) -->
+<img alt="" class="w-full h-auto object-cover block" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTSP1e_20ud5uuwa0BWAYi8ktiy2Z7Tj2Gpj2UL26wAd_ngi8oFeZkeWQfM4U0v26n1Qh3a4N3CMvyCP27VxoL4Zy3hLhO7O0asjso24WGGqESCk_bKe6pWwDTfatnPqMPQcY_cWLYaOnP-NZB32SMpdmX5AA7Lk1baaj-xLAoSujV4yRsEoVP1-qP2lH9RplKJL_Go1aVd_WnE-MbA1w5LmlDhjz7SJHdCeiFvIT0SU2yVTo_7ZSoYSljIEcGAOyxfhNhvVps-mU"/>
+<!-- 7. Services & Experts Grid -->
+<img alt="" class="w-full h-auto object-cover block" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBd0F0jGd5DCgqUTg0c9KNClBOGxLu0PWjUQSk2Z-hqhwOgLY8PjJG73azVOMJ2paIWQ1_aCNZNVWmVL3ESpZddSMC1_OgwKL4xj9XEEpVfwB4XRcKwzz0jeBGIF-eKbr_E9mZHGv0mlYACOCiDCIj41177sGH_5ptWqGzj6HOFStI4ESsC6G86JmqyMhmWuXz_ADnIzoxOLDwcqBzsKeM_LogvFjlkSak6lIk6Yt8L8Zw5JUgH4r98YjCw-AIQ3BE5Bzfv2-SPk58"/>
+<!-- 8. Startup Showcase -->
+<img alt="" class="w-full h-auto object-cover block" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9XfT4YkndFZtib9m_GOhgm2kBMA6KcFR14P0U3UFEKVcGJuCQcUOTKOqZyfh3QEUNtig4ANXvmT106L645G3XkSeQEY1W1HP6-qYftfwxJUeFDhxXDEvioNyowiDGASjb9Gn8Kika8P7uXEMNMmyHZtsOob1fdx__ukV62uE3wVRC_jp6Ehcj78cFo7ExcXb0LBoyPDKNLE8wCkY1Y8YBHWAErqd02Xj9Q5zVevz4qdky_DRUvTkdKnusdpt43AKiu3G-gEUuxrA"/>
+</main>
+<!-- Footer Component -->
+<footer class="bg-background-subtle dark:bg-surface-dark border-t border-surface-variant w-full py-16">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-gutter max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="col-span-2 md:col-span-1 flex flex-col gap-4">
+<div class="text-headline-md font-headline-md font-bold text-on-surface">Stripe</div>
+<p class="text-slate-text dark:text-surface-variant font-body-md text-body-md">© 2024 Stripe, Inc.</p>
+</div>
+<div class="flex flex-col gap-3">
+<a class="text-slate-text dark:text-surface-variant font-body-md text-body-md hover:text-primary transition-colors opacity-80 hover:opacity-100 transition-opacity" href="#">About</a>
+<a class="text-slate-text dark:text-surface-variant font-body-md text-body-md hover:text-primary transition-colors opacity-80 hover:opacity-100 transition-opacity" href="#">Jobs</a>
+</div>
+<div class="flex flex-col gap-3">
+<a class="text-slate-text dark:text-surface-variant font-body-md text-body-md hover:text-primary transition-colors opacity-80 hover:opacity-100 transition-opacity" href="#">Press</a>
+<a class="text-slate-text dark:text-surface-variant font-body-md text-body-md hover:text-primary transition-colors opacity-80 hover:opacity-100 transition-opacity" href="#">Newsroom</a>
+</div>
+<div class="flex flex-col gap-3">
+<a class="text-slate-text dark:text-surface-variant font-body-md text-body-md hover:text-primary transition-colors opacity-80 hover:opacity-100 transition-opacity" href="#">Guides</a>
+<a class="text-slate-text dark:text-surface-variant font-body-md text-body-md hover:text-primary transition-colors opacity-80 hover:opacity-100 transition-opacity" href="#">Customer Stories</a>
+<a class="text-slate-text dark:text-surface-variant font-body-md text-body-md hover:text-primary transition-colors opacity-80 hover:opacity-100 transition-opacity" href="#">Events</a>
+</div>
+</div>
+</footer>
+</body></html>
