@@ -35,13 +35,8 @@ const CheckIcon = () =>
 function Navbar(): string {
   return `
   <nav class="nav" id="main-nav">
-    <a href="#" class="logo" data-link="home" id="logo-btn">
-      <svg class="feather-icon" width="26" height="26" viewBox="0 0 32 32" fill="none">
-        <path d="M26 4C14 4 6 14 6 22" stroke="#635BFF" stroke-width="2.2" stroke-linecap="round"/>
-        <path d="M6 22c3-3 8-5 13-3" stroke="#635BFF" stroke-width="2" stroke-linecap="round"/>
-        <path d="M6 22L3 29" stroke="#635BFF" stroke-width="2" stroke-linecap="round"/>
-        <path d="M26 4C24 8 21 11 18 14M18 14C15 17 12 19 9 20M18 14L16 16" stroke="#635BFF" stroke-width="1.5" stroke-linecap="round"/>
-      </svg>
+    <a href="#" class="logo" data-link="home" id="logo-btn" style="display: flex; align-items: center; gap: 8px;">
+      <img src="/feather-dark.png" alt="Feather Studio Logo" style="height: 24px; width: auto;" />
       Feather Studio
     </a>
     <div class="nav-links">
@@ -73,13 +68,8 @@ function Footer(): string {
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="#" class="logo" data-link="home">
-            <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
-              <path d="M26 4C14 4 6 14 6 22" stroke="#635BFF" stroke-width="2.2" stroke-linecap="round"/>
-              <path d="M6 22c3-3 8-5 13-3" stroke="#635BFF" stroke-width="2" stroke-linecap="round"/>
-              <path d="M6 22L3 29" stroke="#635BFF" stroke-width="2" stroke-linecap="round"/>
-              <path d="M26 4C24 8 21 11 18 14M18 14C15 17 12 19 9 20M18 14L16 16" stroke="#635BFF" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
+          <a href="#" class="logo" data-link="home" style="display: flex; align-items: center; gap: 8px;">
+            <img src="/feather-light.png" alt="Feather Studio Logo" style="height: 20px; width: auto;" />
             Feather Studio
           </a>
           <p>Professional websites for businesses across the UAE.</p>
@@ -140,19 +130,19 @@ function HomePage(): string {
       <div class="stats-grid" style="grid-template-columns: repeat(4, 1fr);">
         <div class="stat-item" style="border-right: 1px solid var(--border); text-align: left; padding: 12px 24px;">
           <div class="stat-num" style="color: var(--indigo); font-size: 1.6rem; margin-bottom: 4px;">Under 3 Days</div>
-          <div class="stat-label" style="color: rgba(0,0,0,0.65); font-weight: 600;">Live in under 3 days</div>
+          <div class="stat-label" style="color: #000000; font-weight: 600;">Live in under 3 days</div>
         </div>
         <div class="stat-item" style="border-right: 1px solid var(--border); text-align: left; padding: 12px 24px;">
           <div class="stat-num" style="color: var(--indigo-dark); font-size: 1.6rem; margin-bottom: 4px;">100% Mobile</div>
-          <div class="stat-label" style="color: rgba(0,0,0,0.65); font-weight: 600;">Mobile responsive layout</div>
+          <div class="stat-label" style="color: #000000; font-weight: 600;">Mobile responsive layout</div>
         </div>
         <div class="stat-item" style="border-right: 1px solid var(--border); text-align: left; padding: 12px 24px;">
-          <div class="stat-num" style="color: var(--red); font-size: 1.6rem; margin-bottom: 4px;">Fully Custom</div>
-          <div class="stat-label" style="color: rgba(0,0,0,0.65); font-weight: 600;">Custom design, no templates</div>
+          <div class="stat-num" style="color: var(--indigo); font-size: 1.6rem; margin-bottom: 4px;">Fully Custom</div>
+          <div class="stat-label" style="color: #000000; font-weight: 600;">Custom design, no templates</div>
         </div>
         <div class="stat-item" style="border-right: none; text-align: left; padding: 12px 24px;">
-          <div class="stat-num" style="color: var(--indigo); font-size: 1.6rem; margin-bottom: 4px;">3+ Years</div>
-          <div class="stat-label" style="color: rgba(0,0,0,0.65); font-weight: 600;">Website building experience</div>
+          <div class="stat-num" style="color: var(--indigo-dark); font-size: 1.6rem; margin-bottom: 4px;">3+ Years</div>
+          <div class="stat-label" style="color: #000000; font-weight: 600;">Website building experience</div>
         </div>
       </div>
     </div>
@@ -166,19 +156,19 @@ function HomePage(): string {
       </h2>
       <div class="problem-grid">
         <div class="problem-card">
-          <h3 class="text-dark-blue">They searched. They didn't find you.</h3>
+          <h3>They searched. They didn't find you.</h3>
           <p>
             Most people look up a business online before they visit or call. If nothing comes up — or what comes up looks bad — they move on. Simple as that.
           </p>
         </div>
         <div class="problem-card">
-          <h3 class="text-red">Your competitor got the client. Not you.</h3>
+          <h3>Your competitor got the client. Not you.</h3>
           <p>
             When two similar businesses show up online and one has a clean professional website, the choice is obvious. Customers always go with whoever looks more trustworthy.
           </p>
         </div>
         <div class="problem-card">
-          <h3 class="text-blue">You don't have time to deal with this.</h3>
+          <h3>You don't have time to deal with this.</h3>
           <p>
             You're running a business. Building a website, figuring out hosting, dealing with technical problems — that's not why you got into this. It shouldn't be your problem.
           </p>
@@ -191,26 +181,31 @@ function HomePage(): string {
   <section class="facts-section">
     <div class="container">
       <h2 class="facts-headline">The numbers don't lie.</h2>
-      <div class="facts-grid">
-        <div class="fact-card accent-red">
-          <div class="fact-number">81%</div>
-          <div class="fact-desc">Of customers research a business online before making a purchase or booking</div>
+      <div class="facts-split-grid">
+        <div class="fact-hero-side">
+          <div class="fact-hero-num">81%</div>
+          <div class="fact-hero-label">Of customers research online first</div>
+          <div class="fact-hero-desc">
+            The vast majority of people look up a business online before making a purchase, booking an appointment, or calling. If they can't find you, they will find your competitor.
+          </div>
         </div>
-        <div class="fact-card">
-          <div class="fact-number">75%</div>
-          <div class="fact-desc">Of people judge a company's credibility based on their website design alone</div>
-        </div>
-        <div class="fact-card accent-dark">
-          <div class="fact-number">57%</div>
-          <div class="fact-desc">Of internet users say they won't recommend a business with a poorly designed website</div>
-        </div>
-        <div class="fact-card">
-          <div class="fact-number">2x</div>
-          <div class="fact-desc">Faster growth for businesses with a professional website compared to those without</div>
-        </div>
-        <div class="fact-card accent-dark">
-          <div class="fact-number">40%</div>
-          <div class="fact-desc">Of Google Business Profile score depends on your website — directly affecting Maps ranking</div>
+        <div class="facts-list-side">
+          <div class="fact-list-item">
+            <div class="fact-list-num" style="color: var(--indigo-dark);">75%</div>
+            <div class="fact-list-text">Of people admit to judging a company's credibility based entirely on their website design alone.</div>
+          </div>
+          <div class="fact-list-item">
+            <div class="fact-list-num">57%</div>
+            <div class="fact-list-text">Of internet users say they won't recommend a local business with a poorly designed or slow mobile website.</div>
+          </div>
+          <div class="fact-list-item">
+            <div class="fact-list-num" style="color: var(--indigo-dark);">2x</div>
+            <div class="fact-list-text">Faster growth rate for businesses with an active, professional online presence compared to those without.</div>
+          </div>
+          <div class="fact-list-item">
+            <div class="fact-list-num">40%</div>
+            <div class="fact-list-text">Of your Google Business Profile performance is influenced by your website—affecting your position on Google Maps.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -220,27 +215,29 @@ function HomePage(): string {
   <section class="tools-section">
     <div class="container">
       <div class="tools-header">
-        <h2 class="text-dark-blue">The Tech Behind the Speed</h2>
-        <p>We build using cutting-edge tools to deliver beautiful interfaces backed by robust, clean code.</p>
+        <h2>The Tech Behind the Speed</h2>
+        <p>We build using cutting-edge tools to deliver beautiful, fast user experiences backed by clean code.</p>
       </div>
-      <div class="tools-grid">
-        <div class="tool-card">
-          <div class="tool-info">
-            <h3 class="text-blue">Stitch</h3>
-            <p>Stitch is used to build the responsive layout, design, and user interfaces, ensuring a premium visual presentation before any code is generated.</p>
-          </div>
-          <div class="tool-img-wrap">
-            <img class="tool-img" src="/pictures for wesbite/Screenshot 2026-06-07 at 4.50.32 PM.png" alt="Stitch Interface" />
-          </div>
+      
+      <!-- Stitch Row -->
+      <div class="tool-showcase-row">
+        <div class="tool-text-content">
+          <h3>Stitch</h3>
+          <p>We use Stitch to design the website layout and user interface from scratch. This guarantees a bespoke, modern aesthetic designed specifically for your brand before any code is generated.</p>
         </div>
-        <div class="tool-card">
-          <div class="tool-info">
-            <h3 class="text-red">Google Antigravity</h3>
-            <p>Google Antigravity generates clean, production-ready TypeScript and CSS code, optimizing the site for extreme speed, SEO compatibility, and responsiveness.</p>
-          </div>
-          <div class="tool-img-wrap">
-            <img class="tool-img" src="/pictures for wesbite/Screenshot 2026-06-07 at 4.48.42 PM.png" alt="Antigravity IDE" />
-          </div>
+        <div class="tool-large-img-wrap">
+          <img class="tool-large-img" src="/pictures for wesbite/Screenshot 2026-06-07 at 4.50.32 PM.png" alt="Stitch Interface" />
+        </div>
+      </div>
+      
+      <!-- Antigravity Row -->
+      <div class="tool-showcase-row alt">
+        <div class="tool-large-img-wrap">
+          <img class="tool-large-img" src="/pictures for wesbite/Screenshot 2026-06-07 at 4.48.42 PM.png" alt="Antigravity IDE" />
+        </div>
+        <div class="tool-text-content">
+          <h3>Google Antigravity</h3>
+          <p>We use Google Antigravity to write and optimize clean, production-ready code. This ensures your website loads instantly, operates securely, and functions perfectly on all mobile devices.</p>
         </div>
       </div>
     </div>
@@ -256,7 +253,7 @@ function HomePage(): string {
       <div class="teasers-grid">
         <div class="teaser-card">
           <span class="teaser-badge">Level 1</span>
-          <h3 class="text-blue">Small Business</h3>
+          <h3>Small Business</h3>
           <p>Clean, ultra-fast websites for kiosks, cafés, salons, and local retail shops. Built to capture quick customer leads via WhatsApp and phone.</p>
           <a href="#" class="teaser-btn" data-link="level1">
             Explore Level 1 ${Icons.arrow}
@@ -264,7 +261,7 @@ function HomePage(): string {
         </div>
         <div class="teaser-card">
           <span class="teaser-badge" style="color: var(--indigo-dark); border-color: rgba(3, 4, 94, 0.2);">Level 2</span>
-          <h3 class="text-dark-blue">Professional</h3>
+          <h3>Professional</h3>
           <p>Feature-rich custom websites for clinics, dental practices, law firms, and consultants. Includes online appointment booking, team bios, and local SEO.</p>
           <a href="#" class="teaser-btn" data-link="level2" style="color: var(--indigo-dark);">
             Explore Level 2 ${Icons.arrow}
