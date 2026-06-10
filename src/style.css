@@ -167,7 +167,7 @@ h1, h2, h3, h4 {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 80% 60% at 50% -5%, rgba(39,88,168,.05) 0%, transparent 70%);
+  background: radial-gradient(ellipse 80% 60% at 50% -5%, rgba(39,88,168,.09) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -255,7 +255,7 @@ h1, h2, h3, h4 {
 .marquee-num {
   font-size: 1.05rem;
   font-weight: 800;
-  color: var(--navy);
+  color: var(--blue);
   letter-spacing: -0.02em;
 }
 .marquee-desc {
@@ -277,9 +277,9 @@ h1, h2, h3, h4 {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--navy);
+  color: var(--blue);
   margin-bottom: 14px;
-  opacity: 0.5;
+  opacity: 0.75;
 }
 .section-title {
   font-size: clamp(1.6rem, 3vw, 2.2rem);
@@ -461,10 +461,10 @@ h1, h2, h3, h4 {
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: rgba(0,0,0,.07);
+  background: rgba(39,88,168,.1);
   flex-shrink: 0;
   margin-top: 2px;
-  color: var(--navy);
+  color: var(--blue);
 }
 .check-icon svg { width: 8px; height: 8px; }
 .no-contract-note {
@@ -550,11 +550,12 @@ h1, h2, h3, h4 {
 .faq-item h3 { font-size: 0.95rem; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
 .faq-item p { font-size: 0.87rem; color: var(--text-dim); line-height: 1.65; }
 
-/* ─── CTA section ────────────────────────────────────────────────────── */
+/* ─── CTA section ───────────────────────────────────────────────────── */
 .cta-section {
   padding: 96px 0;
   border-top: 1px solid var(--border);
   text-align: center;
+  background: linear-gradient(180deg, rgba(39,88,168,.04) 0%, transparent 60%);
 }
 .cta-section h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); margin-bottom: 12px; }
 .cta-section p { font-size: 1rem; color: var(--text-dim); margin-bottom: 32px; max-width: 460px; margin-left: auto; margin-right: auto; }
@@ -988,7 +989,7 @@ h1, h2, h3, h4 {
   transform: translateY(-3px);
 }
 .level-two-card h3 { color: #fff; }
-.level-two-card p { color: rgba(255,255,255,0.65); }
+.level-two-card p { color: rgba(255,255,255,0.75) !important; }
 
 /* Level tag inside card */
 .teaser-level-tag {
@@ -1050,6 +1051,17 @@ h1, h2, h3, h4 {
   border: 1px solid rgba(255,255,255,0.2);
 }
 .teaser-btn-outline:hover { background: rgba(255,255,255,0.2); transform: translateX(3px); }
+
+/* PayPal button wrapper */
+.paypal-btn-wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.paypal-btn-wrap form {
+  width: 100%;
+}
 
 /* Tiers grid (used on home - legacy) */
 .tiers-grid {

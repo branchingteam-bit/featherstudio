@@ -48,7 +48,7 @@ function Navbar(): string {
     </div>
     <div class="nav-actions">
       <a href="#" class="btn btn-secondary btn-sm" data-link="contact" id="nav-contact-cta">Contact</a>
-      <a href="#" class="btn btn-dark btn-sm" data-link="level1" id="nav-start-cta">Get started ${Icons.arrow}</a>
+      <a href="#" class="btn btn-dark btn-sm" data-link="level2" id="nav-start-cta">Get started ${Icons.arrow}</a>
     </div>
   </nav>`;
 }
@@ -128,7 +128,7 @@ function HomePage(): string {
         We design, build, and launch custom websites for UAE businesses. Clean layouts, ultra-fast speeds, built to grow your brand.
       </p>
       <div class="hero-ctas">
-        <a href="#" class="btn btn-dark btn-large" data-link="level1" id="hero-cta-start">
+        <a href="#" class="btn btn-dark btn-large" data-link="level2" id="hero-cta-start">
           Start a project ${Icons.arrow}
         </a>
         <a href="#" class="btn btn-secondary btn-large" data-link="contact" id="hero-cta-work">
@@ -280,7 +280,7 @@ function HomePage(): string {
             <span class="teaser-level-name">Level Two</span>
           </div>
           <h3>Professional</h3>
-          <p>Feature-rich custom websites for clinics, dental practices, law firms, and consultants. Includes online appointment booking, team bios, and local SEO.</p>
+          <p>Feature-rich custom websites for clinics, dental practices, law firms, and consultants. Built with team bios, service layouts, and solid local SEO to help your business stand out.</p>
           <a href="#" class="teaser-btn teaser-btn-outline" data-link="level2">
             Explore Level 2 ${Icons.arrow}
           </a>
@@ -304,6 +304,7 @@ function PricingCard(opts: {
   ctaId: string;
   managed?: boolean;
   note?: string;
+  paypalHtml?: string;
 }): string {
   return `
   <div class="pricing-card${opts.managed ? ' managed' : ''}">
@@ -321,9 +322,7 @@ function PricingCard(opts: {
       <p class="plan-desc">${opts.desc}</p>
     </div>
     <div class="pricing-card-cta">
-      <a href="#" class="btn btn-dark btn-block btn-large" data-link="contact" id="${opts.ctaId}">
-        Get started ${Icons.arrow}
-      </a>
+      ${opts.paypalHtml ? opts.paypalHtml : `<a href="#" class="btn btn-dark btn-block btn-large" data-link="contact" id="${opts.ctaId}">Get started ${Icons.arrow}</a>`}
       ${opts.note ? `<p style="font-size:0.75rem; color:var(--text-muted); margin-top:10px; text-align:center;">${opts.note}</p>` : ''}
     </div>
     <div class="pricing-card-features">
@@ -378,14 +377,22 @@ function Level1Page(): string {
           ],
           ctaId: 'l1-ot-cta',
           note: 'Includes one round of revisions. Additional pages at AED 150/page.',
+          paypalHtml: `<div class="paypal-btn-wrap">
+  <style>.pp-PHGU6FSSWW8BN{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;}</style>
+  <form action="https://www.paypal.com/ncp/payment/PHGU6FSSWW8BN" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
+    <input class="pp-PHGU6FSSWW8BN" type="submit" value="Buy Now — AED 1,450" style="width:100%;" />
+    <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
+    <section style="font-size: 0.75rem;"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
+  </form>
+</div>`,
         })}
         ${PricingCard({
           label: 'Managed Plan',
           price: 'AED 150',
           priceAed: 150,
           period: '/month',
-          setupFee: 'AED 500',
-          setupAed: 500,
+          setupFee: 'AED 1,000',
+          setupAed: 1000,
           desc: 'We build it, manage it, and keep it running. You focus on your business, we handle everything online.',
           features: [
             'Full custom design and build',
@@ -399,6 +406,7 @@ function Level1Page(): string {
           ],
           ctaId: 'l1-managed-cta',
           managed: true,
+          paypalHtml: `<div class="paypal-btn-wrap" id="paypal-button-container-P-97W753789S6299227NIEYJ3Y"></div>`,
         })}
       </div>
     </div>
@@ -488,7 +496,7 @@ function Level2Page(): string {
       <div class="section-label">Level 2 · Professional</div>
       <h1>Websites built for serious businesses</h1>
       <p>For clinics, dental practices, law firms, and professional services that
-      need a website that earns trust and drives appointments.</p>
+      need a website that earns trust and drives real enquiries.</p>
     </div>
   </div>
 
@@ -509,38 +517,47 @@ function Level2Page(): string {
           features: [
             'Fully custom professional design',
             'Up to 10 pages included',
-            'Appointment / booking section',
+            'Contact form and WhatsApp integration',
             'Team and credentials profiles',
             'Services and treatment layouts',
             'Testimonials and trust badges',
-            'Advanced local SEO configuration',
+            'Solid local SEO configuration',
             'WhatsApp and Google Maps setup',
             'Source files handover',
           ],
           ctaId: 'l2-ot-cta',
           note: 'Includes two rounds of revisions. Additional pages at AED 200/page.',
+          paypalHtml: `<div class="paypal-btn-wrap">
+  <style>.pp-3MBPX74TQAJ5C{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;}</style>
+  <form action="https://www.paypal.com/ncp/payment/3MBPX74TQAJ5C" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
+    <input class="pp-3MBPX74TQAJ5C" type="submit" value="Buy Now — AED 2,950" style="width:100%;" />
+    <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
+    <section style="font-size: 0.75rem;"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
+  </form>
+</div>`,
         })}
         ${PricingCard({
           label: 'Managed Plan',
-          price: 'AED 365',
-          priceAed: 365,
+          price: 'AED 300',
+          priceAed: 300,
           period: '/month',
-          setupFee: 'AED 1,400',
-          setupAed: 1400,
-          desc: 'Full-service management. We design, build, host, and maintain your site so you can focus entirely on your patients or clients.',
+          setupFee: 'AED 2,200',
+          setupAed: 2200,
+          desc: 'Full-service management. We design, build, host, and maintain your site so you can focus entirely on your clients.',
           features: [
             'Full custom professional design and setup',
             'Up to 10 pages built for conversion',
             'Domain renewal and professional management',
             'Secure cloud hosting and daily backups',
             'SSL monitoring and active protection',
-            'Advanced local SEO and Google profile setup',
-            'Unlimited ongoing content updates',
-            '2 seasonal campaigns per year',
+            'Good local SEO and Google profile setup',
+            'Regular content updates (up to 2/month)',
+            'Seasonal campaign support (on request)',
             'Priority WhatsApp support',
           ],
           ctaId: 'l2-managed-cta',
           managed: true,
+          paypalHtml: `<div class="paypal-btn-wrap" id="paypal-button-container-P-8EU78139GF1282545NHBFUDY"></div>`,
         })}
       </div>
     </div>
@@ -570,13 +587,13 @@ function Level2Page(): string {
               ['Mobile responsive', 'Yes', 'Yes'],
               ['WhatsApp button', 'Yes', 'Yes'],
               ['Basic SEO', 'Yes', 'Yes'],
-              ['Advanced SEO + Google setup', 'No', 'Yes'],
-              ['Booking / appointment section', 'No', 'Yes'],
+              ['Enhanced local SEO + Google setup', 'No', 'Yes'],
+              ['Contact form + WhatsApp integration', 'Yes', 'Yes'],
               ['Team and credentials page', 'No', 'Yes'],
               ['Testimonials section', 'No', 'Yes'],
               ['Google Maps integration', 'No', 'Yes'],
               ['Starting price (one-time)', 'AED 1,450', 'AED 2,950'],
-              ['Managed plan from', 'AED 150/mo', 'AED 365/mo'],
+              ['Managed plan from', 'AED 150/mo', 'AED 300/mo'],
             ]
               .map(([f, l1, l2]) => `<tr>
                 <td>${f}</td>
@@ -600,11 +617,11 @@ function Level2Page(): string {
       <div class="feature-grid">
         ${[
           { icon: Icons.palette, title: 'Premium Design', desc: 'Custom layouts that communicate expertise and build trust with every visitor.' },
-          { icon: Icons.rocket, title: 'Conversion Focused', desc: 'Built to turn visitors into appointments, calls, or enquiries.' },
-          { icon: Icons.globe, title: 'Advanced SEO', desc: 'Full local SEO setup including Google Business Profile configuration.' },
+          { icon: Icons.rocket, title: 'Conversion Focused', desc: 'Built to turn visitors into calls, WhatsApp enquiries, and real leads.' },
+          { icon: Icons.globe, title: 'Local SEO', desc: 'Solid local SEO setup including Google Business Profile configuration to help you get found.' },
           { icon: Icons.shield, title: 'Secure Hosting', desc: 'SSL certificates, daily backups, and active uptime monitoring included.' },
-          { icon: Icons.phone, title: 'Booking Integration', desc: 'Appointment sections and scheduling flows built directly into your site.' },
-          { icon: Icons.code, title: 'Ongoing Updates', desc: 'Managed plan clients get unlimited content updates, add treatments, update team bios, change pricing.' },
+          { icon: Icons.phone, title: 'Easy Contact', desc: 'WhatsApp button, contact form, and Google Maps built directly into your site.' },
+          { icon: Icons.code, title: 'Ongoing Updates', desc: 'Managed plan clients get regular content updates — add services, update team bios, change pricing.' },
         ]
           .map(f => `<div class="feature-item reveal">
             <div class="feature-icon-wrap">${f.icon}</div>
@@ -627,15 +644,15 @@ function Level2Page(): string {
         ${[
           {
             q: 'Who is Level 2 for?',
-            a: 'Clinics, dental practices, law firms, consultants, and established businesses that need a website that actively earns trust and drives appointments.',
+            a: 'Clinics, dental practices, law firms, consultants, and established businesses that need a website that actively earns trust and drives real enquiries.',
           },
           {
             q: 'What\'s included in the managed plan?',
-            a: 'Everything. Design, build, hosting, SSL, domain, monthly updates, seasonal campaigns, and priority WhatsApp support. You do nothing, we handle it all.',
+            a: 'Everything. Design, build, hosting, SSL, domain, regular content updates, and priority WhatsApp support. You focus on your business, we handle your site.',
           },
           {
             q: 'Can I request changes after launch?',
-            a: 'Yes. Managed plan clients get unlimited ongoing updates. One-time clients can purchase update packages or request changes at our standard rate.',
+            a: 'Yes. Managed plan clients get regular content updates (up to 2 rounds per month). One-time clients can request changes at our standard rate.',
           },
           {
             q: 'How long does it take?',
@@ -893,6 +910,14 @@ function navigate(page: Page) {
     if (page === 'contact') {
       initFormspree();
     }
+
+    // Load PayPal subscription buttons if present
+    if (page === 'level1') {
+      loadPayPalSubscriptionButton('paypal-button-container-P-97W753789S6299227NIEYJ3Y', 'P-97W753789S6299227NIEYJ3Y');
+    }
+    if (page === 'level2') {
+      loadPayPalSubscriptionButton('paypal-button-container-P-8EU78139GF1282545NHBFUDY', 'P-8EU78139GF1282545NHBFUDY');
+    }
   }, 150);
 }
 
@@ -922,6 +947,36 @@ function initNavScroll() {
 (window as any).formspree = (window as any).formspree || function() {
   ((window as any).formspree.q = (window as any).formspree.q || []).push(arguments);
 };
+
+// ─── PayPal Subscription Button Loader ────────────────────────────────────────
+function loadPayPalSubscriptionButton(containerId: string, planId: string) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  // Only load the PayPal SDK once
+  const sdkId = 'paypal-sdk';
+  if (!document.getElementById(sdkId)) {
+    const script = document.createElement('script');
+    script.id = sdkId;
+    script.src = 'https://www.paypal.com/sdk/js?client-id=ATdtILYx2T5yoKB9AH86nDYMlD4bQ1PnOk_y_SOL3b42qP2E3nTfHlxL1KLFLu9w7Ao9jhTYvk4jfhEB&vault=true&intent=subscription';
+    script.setAttribute('data-sdk-integration-source', 'button-factory');
+    script.onload = () => renderPayPalButton(containerId, planId);
+    document.head.appendChild(script);
+  } else {
+    // SDK already loaded
+    setTimeout(() => renderPayPalButton(containerId, planId), 200);
+  }
+}
+
+function renderPayPalButton(containerId: string, planId: string) {
+  const pp = (window as any).paypal;
+  if (!pp) return;
+  pp.Buttons({
+    style: { shape: 'rect', color: 'blue', layout: 'vertical', label: 'subscribe' },
+    createSubscription: (_data: any, actions: any) => actions.subscription.create({ plan_id: planId }),
+    onApprove: (data: any) => { alert('Subscription confirmed! ID: ' + data.subscriptionID); },
+  }).render('#' + containerId);
+}
 
 // ─── Bootstrap ───────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
