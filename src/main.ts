@@ -936,83 +936,74 @@ function initNavScroll() {
   ((window as any).formspree.q = (window as any).formspree.q || []).push(arguments);
 };
 
-// ─── PayPal Subscription Button Loader ────────────────────────────────────────
+// ─── PayPal unified SDK loader ────────────────────────────────────────────────
+// One SDK, one window.paypal, all 4 buttons share it via a queue.
+const PAYPAL_CLIENT_ID = 'ATdtILYx2T5yoKB9AH86nDYMlD4bQ1PnOk_y_SOL3b42qP2E3nTfHlxL1KLFLu9w7Ao9jhTYvk4jfhEB';
+let _ppReady = false;
+const _ppQueue: Array<() => void> = [];
+
+function withPayPal(fn: () => void) {
+  if (_ppReady && (window as any).paypal) {
+    fn();
+    return;
+  }
+  _ppQueue.push(fn);
+  if (document.getElementById('paypal-sdk')) return; // already loading
+  const s = document.createElement('script');
+  s.id = 'paypal-sdk';
+  // vault=true enables subscriptions; no intent= so both createOrder and createSubscription work
+  s.src = `https://www.paypal.com/sdk/js?client-id=${PAYPAL_CLIENT_ID}&vault=true&currency=USD&components=buttons`;
+  s.onload = () => {
+    _ppReady = true;
+    _ppQueue.splice(0).forEach(f => f());
+  };
+  s.onerror = () => {
+    // SDK failed to load — show fallback links in all containers
+    document.querySelectorAll<HTMLElement>('.pp-loading').forEach(el => {
+      el.innerHTML = `<a href="https://www.paypal.com" target="_blank" rel="noopener" class="btn btn-dark btn-block btn-large" style="margin-top:4px;">Pay via PayPal ↗</a>`;
+    });
+  };
+  document.head.appendChild(s);
+}
+
+// ─── Subscription button ──────────────────────────────────────────────────────
 function loadPayPalSubscriptionButton(containerId: string, planId: string) {
-  const container = document.getElementById(containerId);
-  if (!container) return;
-
-  // Only load the subscription SDK once
-  const sdkId = 'paypal-sdk-subscription';
-  if (!document.getElementById(sdkId)) {
-    const script = document.createElement('script');
-    script.id = sdkId;
-    script.src = 'https://www.paypal.com/sdk/js?client-id=ATdtILYx2T5yoKB9AH86nDYMlD4bQ1PnOk_y_SOL3b42qP2E3nTfHlxL1KLFLu9w7Ao9jhTYvk4jfhEB&vault=true&intent=subscription&data-namespace=paypalSubscription';
-    script.setAttribute('data-namespace', 'paypalSubscription');
-    script.setAttribute('data-sdk-integration-source', 'button-factory');
-    script.onload = () => renderPayPalButton(containerId, planId);
-    document.head.appendChild(script);
-  } else {
-    // SDK already loaded
-    setTimeout(() => renderPayPalButton(containerId, planId), 200);
-  }
+  withPayPal(() => {
+    const pp = (window as any).paypal;
+    if (!pp?.Buttons) return;
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.classList.remove('pp-loading');
+    pp.Buttons({
+      style: { shape: 'rect', color: 'blue', layout: 'vertical', label: 'subscribe' },
+      createSubscription: (_d: any, a: any) => a.subscription.create({ plan_id: planId }),
+      onApprove: (d: any) => { alert('Subscription confirmed! ID: ' + d.subscriptionID); },
+    }).render('#' + containerId);
+  });
 }
 
-function renderPayPalButton(containerId: string, planId: string) {
-  const pp = (window as any).paypalSubscription || (window as any).paypal;
-  if (!pp) return;
-  pp.Buttons({
-    style: { shape: 'rect', color: 'blue', layout: 'vertical', label: 'subscribe' },
-    createSubscription: (_data: any, actions: any) => actions.subscription.create({ plan_id: planId }),
-    onApprove: (data: any) => { alert('Subscription confirmed! ID: ' + data.subscriptionID); },
-  }).render('#' + containerId);
-}
-
-// ─── PayPal One-Time Order Button Loader ──────────────────────────────────────
+// ─── One-time order button ────────────────────────────────────────────────────
 function loadPayPalOrderButton(containerId: string, amountUSD: number) {
-  const container = document.getElementById(containerId);
-  if (!container) return;
-
-  const CLIENT_ID = 'ATdtILYx2T5yoKB9AH86nDYMlD4bQ1PnOk_y_SOL3b42qP2E3nTfHlxL1KLFLu9w7Ao9jhTYvk4jfhEB';
-  const sdkId = 'paypal-sdk-capture';
-
-  const doRender = () => renderPayPalOrderButton(containerId, amountUSD);
-
-  if (!document.getElementById(sdkId)) {
-    const script = document.createElement('script');
-    script.id = sdkId;
-    script.src = `https://www.paypal.com/sdk/js?client-id=${CLIENT_ID}&currency=USD&intent=capture&data-namespace=paypalCapture`;
-    script.setAttribute('data-namespace', 'paypalCapture');
-    script.onload = doRender;
-    document.head.appendChild(script);
-  } else {
-    setTimeout(doRender, 200);
-  }
-}
-
-function renderPayPalOrderButton(containerId: string, amountUSD: number) {
-  const pp = (window as any).paypalCapture;
-  if (!pp) return;
-  const container = document.getElementById(containerId);
-  if (!container) return;
-
-  pp.Buttons({
-    style: { shape: 'rect', color: 'gold', layout: 'vertical', label: 'buynow' },
-    createOrder: (_data: any, actions: any) => {
-      return actions.order.create({
-        purchase_units: [{
-          amount: { value: amountUSD.toFixed(2), currency_code: 'USD' },
-        }],
-      });
-    },
-    onApprove: (_data: any, actions: any) => {
-      return actions.order.capture().then(() => {
-        container.innerHTML = `<div style="text-align:center;padding:18px;background:rgba(62,207,142,.07);border-radius:10px;border:1px solid rgba(62,207,142,.20);"><div style="font-size:1.2rem;">✅</div><div style="font-weight:700;margin-top:4px;">Payment confirmed!</div><div style="font-size:0.82rem;color:#888;margin-top:4px;">We'll be in touch shortly.</div></div>`;
-      });
-    },
-    onError: () => {
-      container.innerHTML = `<div style="text-align:center;padding:12px;font-size:0.85rem;color:#c0392b;">Something went wrong. Please try again or message us on WhatsApp.</div>`;
-    },
-  }).render('#' + containerId);
+  withPayPal(() => {
+    const pp = (window as any).paypal;
+    if (!pp?.Buttons) return;
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.classList.remove('pp-loading');
+    pp.Buttons({
+      style: { shape: 'rect', color: 'gold', layout: 'vertical', label: 'buynow' },
+      createOrder: (_d: any, a: any) => a.order.create({
+        purchase_units: [{ amount: { value: amountUSD.toFixed(2), currency_code: 'USD' } }],
+      }),
+      onApprove: (_d: any, a: any) => a.order.capture().then(() => {
+        container.innerHTML = `<div style="text-align:center;padding:18px;background:rgba(62,207,142,.07);border-radius:10px;border:1px solid rgba(62,207,142,.20);"><div style="font-size:1.5rem;">✅</div><div style="font-weight:700;margin-top:6px;">Payment received!</div><div style="font-size:0.82rem;color:#888;margin-top:4px;">We'll be in touch within a few hours.</div></div>`;
+      }),
+      onError: (err: any) => {
+        console.error('PayPal error', err);
+        container.innerHTML = `<div style="text-align:center;padding:12px;font-size:0.85rem;color:#c0392b;">Something went wrong. Please try again or <a href="https://wa.me/971504668481" target="_blank">message us on WhatsApp</a>.</div>`;
+      },
+    }).render('#' + containerId);
+  });
 }
 
 // ─── Bootstrap ───────────────────────────────────────────────────────────────
