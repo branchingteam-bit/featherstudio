@@ -377,14 +377,7 @@ function Level1Page(): string {
           ],
           ctaId: 'l1-ot-cta',
           note: 'Includes one round of revisions. Additional pages at AED 150/page.',
-          paypalHtml: `<div class="paypal-btn-wrap">
-  <style>.pp-PHGU6FSSWW8BN{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;}</style>
-  <form action="https://www.paypal.com/ncp/payment/PHGU6FSSWW8BN" method="get" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
-    <input class="pp-PHGU6FSSWW8BN" type="submit" value="Buy Now — AED 1,450" style="width:100%;" />
-    <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
-    <section style="font-size: 0.75rem;"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
-  </form>
-</div>`,
+          paypalHtml: `<div class="paypal-btn-wrap" id="paypal-capture-container-l1"></div>`,
         })}
         ${PricingCard({
           label: 'Managed Plan',
@@ -527,14 +520,7 @@ function Level2Page(): string {
           ],
           ctaId: 'l2-ot-cta',
           note: 'Includes two rounds of revisions. Additional pages at AED 200/page.',
-          paypalHtml: `<div class="paypal-btn-wrap">
-  <style>.pp-3MBPX74TQAJ5C{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;}</style>
-  <form action="https://www.paypal.com/ncp/payment/3MBPX74TQAJ5C" method="get" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
-    <input class="pp-3MBPX74TQAJ5C" type="submit" value="Buy Now — AED 2,950" style="width:100%;" />
-    <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
-    <section style="font-size: 0.75rem;"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
-  </form>
-</div>`,
+          paypalHtml: `<div class="paypal-btn-wrap" id="paypal-capture-container-l2"></div>`,
         })}
         ${PricingCard({
           label: 'Managed Plan',
@@ -914,9 +900,11 @@ function navigate(page: Page) {
     // Load PayPal subscription buttons if present
     if (page === 'level1') {
       loadPayPalSubscriptionButton('paypal-button-container-P-97W753789S6299227NIEYJ3Y', 'P-97W753789S6299227NIEYJ3Y');
+      loadPayPalOrderButton('paypal-capture-container-l1', 395.00);
     }
     if (page === 'level2') {
       loadPayPalSubscriptionButton('paypal-button-container-P-8EU78139GF1282545NHBFUDY', 'P-8EU78139GF1282545NHBFUDY');
+      loadPayPalOrderButton('paypal-capture-container-l2', 803.00);
     }
   }, 150);
 }
@@ -953,12 +941,13 @@ function loadPayPalSubscriptionButton(containerId: string, planId: string) {
   const container = document.getElementById(containerId);
   if (!container) return;
 
-  // Only load the PayPal SDK once
-  const sdkId = 'paypal-sdk';
+  // Only load the subscription SDK once
+  const sdkId = 'paypal-sdk-subscription';
   if (!document.getElementById(sdkId)) {
     const script = document.createElement('script');
     script.id = sdkId;
-    script.src = 'https://www.paypal.com/sdk/js?client-id=ATdtILYx2T5yoKB9AH86nDYMlD4bQ1PnOk_y_SOL3b42qP2E3nTfHlxL1KLFLu9w7Ao9jhTYvk4jfhEB&vault=true&intent=subscription';
+    script.src = 'https://www.paypal.com/sdk/js?client-id=ATdtILYx2T5yoKB9AH86nDYMlD4bQ1PnOk_y_SOL3b42qP2E3nTfHlxL1KLFLu9w7Ao9jhTYvk4jfhEB&vault=true&intent=subscription&data-namespace=paypalSubscription';
+    script.setAttribute('data-namespace', 'paypalSubscription');
     script.setAttribute('data-sdk-integration-source', 'button-factory');
     script.onload = () => renderPayPalButton(containerId, planId);
     document.head.appendChild(script);
@@ -969,12 +958,60 @@ function loadPayPalSubscriptionButton(containerId: string, planId: string) {
 }
 
 function renderPayPalButton(containerId: string, planId: string) {
-  const pp = (window as any).paypal;
+  const pp = (window as any).paypalSubscription || (window as any).paypal;
   if (!pp) return;
   pp.Buttons({
     style: { shape: 'rect', color: 'blue', layout: 'vertical', label: 'subscribe' },
     createSubscription: (_data: any, actions: any) => actions.subscription.create({ plan_id: planId }),
     onApprove: (data: any) => { alert('Subscription confirmed! ID: ' + data.subscriptionID); },
+  }).render('#' + containerId);
+}
+
+// ─── PayPal One-Time Order Button Loader ──────────────────────────────────────
+function loadPayPalOrderButton(containerId: string, amountUSD: number) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  const CLIENT_ID = 'ATdtILYx2T5yoKB9AH86nDYMlD4bQ1PnOk_y_SOL3b42qP2E3nTfHlxL1KLFLu9w7Ao9jhTYvk4jfhEB';
+  const sdkId = 'paypal-sdk-capture';
+
+  const doRender = () => renderPayPalOrderButton(containerId, amountUSD);
+
+  if (!document.getElementById(sdkId)) {
+    const script = document.createElement('script');
+    script.id = sdkId;
+    script.src = `https://www.paypal.com/sdk/js?client-id=${CLIENT_ID}&currency=USD&intent=capture&data-namespace=paypalCapture`;
+    script.setAttribute('data-namespace', 'paypalCapture');
+    script.onload = doRender;
+    document.head.appendChild(script);
+  } else {
+    setTimeout(doRender, 200);
+  }
+}
+
+function renderPayPalOrderButton(containerId: string, amountUSD: number) {
+  const pp = (window as any).paypalCapture;
+  if (!pp) return;
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  pp.Buttons({
+    style: { shape: 'rect', color: 'gold', layout: 'vertical', label: 'buynow' },
+    createOrder: (_data: any, actions: any) => {
+      return actions.order.create({
+        purchase_units: [{
+          amount: { value: amountUSD.toFixed(2), currency_code: 'USD' },
+        }],
+      });
+    },
+    onApprove: (_data: any, actions: any) => {
+      return actions.order.capture().then(() => {
+        container.innerHTML = `<div style="text-align:center;padding:18px;background:rgba(62,207,142,.07);border-radius:10px;border:1px solid rgba(62,207,142,.20);"><div style="font-size:1.2rem;">✅</div><div style="font-weight:700;margin-top:4px;">Payment confirmed!</div><div style="font-size:0.82rem;color:#888;margin-top:4px;">We'll be in touch shortly.</div></div>`;
+      });
+    },
+    onError: () => {
+      container.innerHTML = `<div style="text-align:center;padding:12px;font-size:0.85rem;color:#c0392b;">Something went wrong. Please try again or message us on WhatsApp.</div>`;
+    },
   }).render('#' + containerId);
 }
 
