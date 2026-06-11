@@ -37,8 +37,8 @@ function Navbar(): string {
   return `
   <nav class="nav" id="main-nav">
     <a href="#" class="logo" data-link="home" id="logo-btn" style="display: flex; align-items: center; gap: 8px;">
-      <img src="/feather-dark.png" alt="Feather Studio Logo" style="height: 26px; width: auto;" />
-      Feather Studio
+      <img src="/logo.png" alt="Feather Logo" style="height: 26px; width: auto;" />
+      Feather
     </a>
     <div class="nav-links">
       <a href="#" class="nav-link" data-link="home"    id="nav-home">Home</a>
@@ -69,8 +69,8 @@ function Footer(): string {
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="#" class="logo" data-link="home" style="display: flex; align-items: center; gap: 8px;">
-            <img src="/feather-light.png" alt="Feather Studio Logo" style="height: 20px; width: auto;" />
-            Feather Studio
+            <img src="/logo.png" alt="Feather Logo" style="height: 20px; width: auto; filter: invert(1);" />
+            Feather
           </a>
           <p>Professional websites for businesses across the UAE.</p>
         </div>
@@ -93,7 +93,7 @@ function Footer(): string {
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© ${new Date().getFullYear()} Feather Studio. All rights reserved.</span>
+        <span>© ${new Date().getFullYear()} Feather. All rights reserved.</span>
         <span>Dubai, UAE</span>
       </div>
     </div>
