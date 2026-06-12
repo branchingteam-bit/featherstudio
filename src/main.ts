@@ -36,9 +36,9 @@ const CheckIcon = () =>
 function Navbar(): string {
   return `
   <nav class="nav" id="main-nav">
-    <a href="#" class="logo" data-link="home" id="logo-btn" style="display: flex; align-items: center; gap: 8px;">
-      <img src="/logo.png" alt="Feather Logo" style="height: 26px; width: auto;" />
-      Feather
+    <a href="#" class="logo" data-link="home" id="logo-btn">
+      <span class="logo-wordmark">Atlantic</span>
+      <img src="/atlanticbear-logo.png" alt="Atlantic Bear Logo" class="logo-bear-img" />
     </a>
     <div class="nav-links">
       <a href="#" class="nav-link" data-link="home"    id="nav-home">Home</a>
@@ -68,9 +68,9 @@ function Footer(): string {
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="#" class="logo" data-link="home" style="display: flex; align-items: center; gap: 8px;">
-            <img src="/logo.png" alt="Feather Logo" style="height: 20px; width: auto; filter: invert(1);" />
-            Feather
+          <a href="#" class="logo" data-link="home">
+            <span class="logo-wordmark">Atlantic</span>
+            <img src="/atlanticbear-logo.png" alt="Atlantic Bear Logo" class="footer-bear-img" />
           </a>
           <p>Professional websites for businesses across the UAE.</p>
         </div>
@@ -87,13 +87,13 @@ function Footer(): string {
           <h4>Contact</h4>
           <div class="footer-links">
             <a href="https://wa.me/971504668481" target="_blank">WhatsApp</a>
-            <a href="mailto:hellofeatherstudio.co">hellofeatherstudio.co</a>
-            <a href="https://www.instagram.com/featherstudio.co" target="_blank">@featherstudio.co</a>
+            <a href="mailto:hello@atlanticbear.com">hello@atlanticbear.com</a>
+            <a href="https://www.instagram.com/atlanticbear.com" target="_blank">@atlanticbear.com</a>
           </div>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© ${new Date().getFullYear()} Feather. All rights reserved.</span>
+        <span>© ${new Date().getFullYear()} Atlantic Bear. All rights reserved.</span>
         <span>Dubai, UAE</span>
       </div>
     </div>
@@ -121,11 +121,12 @@ function HomePage(): string {
 
   return `
   <!-- HERO -->
-  <section class="hero">
-    <div class="container">
+  <section class="hero" style="position: relative; overflow: hidden;">
+    <img src="/atlanticbear-logo.png" class="huge-bear" alt="Atlantic Bear Watermark" />
+    <div class="container" style="position: relative; z-index: 1;">
       <h1>Your business deserves<br>to be found.</h1>
       <p class="hero-sub">
-        We design, build, and launch custom websites for UAE businesses. Clean layouts, ultra-fast speeds, built to grow your brand.
+        We design, build, and launch custom websites for UAE businesses — clean layouts, ultra-fast speeds, built to grow your brand.
       </p>
       <div class="hero-ctas">
         <a href="#" class="btn btn-dark btn-large" data-link="level2" id="hero-cta-start">
@@ -159,7 +160,7 @@ function HomePage(): string {
   <section class="problem-section">
     <div class="container">
       <h2 class="problem-headline">
-        Every day without a website is a customer you <span class="text-red">didn't know you lost</span>.
+        Every day without a website is a customer you <span class="text-blue">didn't know you lost</span>.
       </h2>
       <div class="problem-grid">
         <div class="problem-card">
@@ -235,7 +236,7 @@ function HomePage(): string {
       <div class="tool-showcase-row">
         <div class="tool-text-content">
           <h3>Stitch</h3>
-          <p>We use Stitch to design the website layout and user interface from scratch. This guarantees a bespoke, modern aesthetic designed specifically for your brand before any code is generated.</p>
+          <p>We use Stitch to design the website layout and user interface from scratch — guaranteeing a bespoke, modern aesthetic designed specifically for your brand before any code is written.</p>
         </div>
         <div class="tool-large-img-wrap">
           <img class="tool-large-img" src="/screenshots/stitch.png" alt="Stitch Interface" />
@@ -249,7 +250,7 @@ function HomePage(): string {
         </div>
         <div class="tool-text-content">
           <h3>Google Antigravity</h3>
-          <p>We use Google Antigravity to write and optimize clean, production-ready code. This ensures your website loads instantly, operates securely, and functions perfectly on all mobile devices.</p>
+          <p>We use Google Antigravity to write and optimize clean, production-ready code — so your website loads instantly, operates securely, and works perfectly on every device.</p>
         </div>
       </div>
     </div>
@@ -716,22 +717,22 @@ function ContactPage(): string {
                   <div class="contact-method-value">+971 50 466 8481</div>
                 </div>
               </a>
-              <a href="mailto:hellofeatherstudio.co" class="contact-method">
+              <a href="mailto:hello@atlanticbear.com" class="contact-method">
                 <div class="contact-method-icon">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${Icons.mail}</svg>
                 </div>
                 <div>
                   <div class="contact-method-label">Email</div>
-                  <div class="contact-method-value">hellofeatherstudio.co</div>
+                  <div class="contact-method-value">hello@atlanticbear.com</div>
                 </div>
               </a>
-              <a href="https://www.instagram.com/featherstudio.co?igsh=eDZzNTdtcW1kMGx2&utm_source=qr" target="_blank" class="contact-method">
+              <a href="https://www.instagram.com/atlanticbear.com" target="_blank" class="contact-method">
                 <div class="contact-method-icon" style="background:rgba(225,48,108,.08); color:#e1306c;">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${Icons.instagram}</svg>
                 </div>
                 <div>
-                  <div class="contact-method-label">Instagram · 200+ followers</div>
-                  <div class="contact-method-value">@featherstudio.co</div>
+                  <div class="contact-method-label">Instagram</div>
+                  <div class="contact-method-value">@atlanticbear.com</div>
                 </div>
               </a>
               <div class="contact-method">
@@ -753,7 +754,7 @@ function ContactPage(): string {
             <div data-fs-success class="fs-success-msg" style="display:none;">
               <div style="font-size:1.2rem; margin-bottom:4px;">✅</div>
               <div style="font-size:0.9rem; font-weight:700; color:var(--navy);">Message sent!</div>
-              <div style="font-size:0.82rem; color:var(--text-muted); margin-top:4px;">We'll get back to you within a few hours.</div>
+              <div style="font-size:0.82rem; color:var(--text-muted); margin-top:4px;">We'll get back to you within a few hours — usually faster.</div>
             </div>
             <div data-fs-error class="fs-error-msg"></div>
 
