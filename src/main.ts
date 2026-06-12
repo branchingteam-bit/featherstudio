@@ -826,7 +826,7 @@ function initFormspree() {
   // Use the formspree global once it's loaded
   script.onload = () => {
     if ((window as any).formspree) {
-      (window as any).formspree('initForm', { formElement: '#contact-form', formId: 'xeerbbve' });
+      (window as any).formspree('initForm', { formElement: '#contact-form', formId: 'mykanvrr' });
     }
   };
 
@@ -844,7 +844,7 @@ function initFormspree() {
 
     try {
       const data = new FormData(form);
-      const res = await fetch('https://formspree.io/f/xeerbbve', {
+      const res = await fetch('https://formspree.io/f/mykanvrr', {
         method: 'POST',
         body: data,
         headers: { 'Accept': 'application/json' },
