@@ -261,32 +261,74 @@ function HomePage(): string {
     <div class="container">
       <div class="teasers-header">
         <h2>Choose Your Level</h2>
-        <p>Two tiers. Built for different needs. Both built to win.</p>
+        <p>Two plans. Built for where your business actually is right now.</p>
       </div>
       <div class="teasers-grid">
+
+        <!-- Level 1 -->
         <div class="teaser-card level-one-card">
           <div class="teaser-level-tag">
             <span class="teaser-level-num">01</span>
             <span class="teaser-level-name">Level One</span>
           </div>
           <h3>Small Business</h3>
-          <p>Clean, ultra-fast websites for kiosks, cafes, salons, and local retail shops. Built to capture quick customer leads via WhatsApp and phone.</p>
-          <a href="#" class="teaser-btn teaser-btn-dark" data-link="level1">
+          <p class="teaser-pitch">You need to look professional online, get found, and make it easy for customers to reach you — without a big investment.</p>
+          <div class="teaser-price">
+            <div class="teaser-price-main">AED 1,450</div>
+            <div class="teaser-price-sub">one-time &nbsp;·&nbsp; or AED 150/mo managed</div>
+          </div>
+          <div class="teaser-pills">
+            <span class="teaser-pill">Café</span>
+            <span class="teaser-pill">Salon</span>
+            <span class="teaser-pill">Retail shop</span>
+            <span class="teaser-pill">Kiosk</span>
+          </div>
+          <a href="#" class="teaser-btn teaser-btn-dark" data-link="level1" id="home-l1-cta">
             Explore Level 1 ${Icons.arrow}
           </a>
         </div>
+
+        <!-- Level 2 -->
         <div class="teaser-card level-two-card">
           <div class="teaser-level-tag">
             <span class="teaser-level-num">02</span>
-            <span class="teaser-level-name">Level Two</span>
+            <span class="teaser-level-name">Level Two · Most Popular</span>
           </div>
           <h3>Professional</h3>
-          <p>Feature-rich custom websites for clinics, dental practices, law firms, and consultants. Built with team bios, service layouts, and solid local SEO to help your business stand out.</p>
-          <a href="#" class="teaser-btn teaser-btn-outline" data-link="level2">
+          <p class="teaser-pitch">Your business depends on trust. Patients, clients, and customers need to feel confident before they book. This site does that work for you.</p>
+          <div class="teaser-price">
+            <div class="teaser-price-main">AED 2,950</div>
+            <div class="teaser-price-sub">one-time &nbsp;·&nbsp; or AED 300/mo managed</div>
+          </div>
+          <div class="teaser-pills">
+            <span class="teaser-pill">Clinic</span>
+            <span class="teaser-pill">Dental practice</span>
+            <span class="teaser-pill">Law firm</span>
+            <span class="teaser-pill">Consultant</span>
+          </div>
+          <a href="#" class="teaser-btn teaser-btn-outline" data-link="level2" id="home-l2-cta">
             Explore Level 2 ${Icons.arrow}
           </a>
         </div>
+
       </div>
+
+      <!-- The real difference -->
+      <div class="real-diff-block reveal">
+        <div class="real-diff-side">
+          <div class="real-diff-tag tag-one">Level 1</div>
+          <h4>Level 1 is about being <em>found</em></h4>
+          <p>A customer walks past your café or sees your shop. They Google you before coming in. Level 1 makes sure they find a clean, professional site — and tap to WhatsApp you immediately.</p>
+        </div>
+        <div class="real-diff-divider"></div>
+        <div class="real-diff-side">
+          <div class="real-diff-tag tag-two">Level 2</div>
+          <h4>Level 2 is about being <em>trusted</em></h4>
+          <p>Someone needs a dentist or lawyer. They spend 10 minutes reading about you before they ever call. Level 2 gives them the team page, the credentials, the reviews, and the reassurance they need to book.</p>
+        </div>
+      </div>
+      <p class="real-diff-note">Not sure which level? <strong>Start with Level 1</strong> — you can always upgrade later and we credit previous payments toward your new plan.</p>
+
     </div>
   </section>
   `;
