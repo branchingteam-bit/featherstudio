@@ -1173,7 +1173,7 @@ h1, h2, h3, h4 {
 /* Huge Bear Background */
 .huge-bear {
   position: absolute;
-  left: 5%;
+  left: -2%;
   top: 50%;
   transform: translateY(-50%);
   width: 600px;
@@ -1186,7 +1186,7 @@ h1, h2, h3, h4 {
 @media (max-width: 768px) {
   .huge-bear {
     width: 300px;
-    left: -5%;
+    left: -15%;
     top: 50%;
   }
 }
