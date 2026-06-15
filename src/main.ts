@@ -79,7 +79,7 @@ function Footer(): string {
         <div class="footer-col">
           <h4>Contact</h4>
           <div class="footer-links">
-            <a href="mailto:hello@atlanticbear.com">hello@atlanticbear.com</a>
+            <a href="mailto:officialatlanticbear@gmail.com">officialatlanticbear@gmail.com</a>
             <a href="https://www.instagram.com/officialatlanticbear/" target="_blank">@officialatlanticbear</a>
           </div>
         </div>
@@ -730,13 +730,13 @@ function ContactPage(): string {
             <h1>Let's build<br>something.</h1>
             <p>Tell us about your business or just ask anything. We respond fast, usually within a few hours.</p>
             <div class="contact-methods">
-              <a href="mailto:hello@atlanticbear.com" class="contact-method">
+              <a href="mailto:officialatlanticbear@gmail.com" class="contact-method">
                 <div class="contact-method-icon">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${Icons.mail}</svg>
                 </div>
                 <div>
                   <div class="contact-method-label">Email</div>
-                  <div class="contact-method-value">hello@atlanticbear.com</div>
+                  <div class="contact-method-value">officialatlanticbear@gmail.com</div>
                 </div>
               </a>
               <a href="https://www.instagram.com/officialatlanticbear/" target="_blank" class="contact-method">
@@ -970,7 +970,7 @@ function initFormspree() {
       }
     } catch {
       if (errorEl) {
-        errorEl.textContent = 'Something went wrong. Please try again or email hello@atlanticbear.com.';
+        errorEl.textContent = 'Something went wrong. Please try again or email officialatlanticbear@gmail.com.';
         errorEl.style.color = 'var(--red)';
         errorEl.style.fontSize = '0.85rem';
         errorEl.style.marginTop = '8px';
@@ -1121,7 +1121,7 @@ function loadPayPalOrderButton(containerId: string, amountUSD: number) {
       }),
       onError: (err: any) => {
         console.error('PayPal error', err);
-        container.innerHTML = `<div style="text-align:center;padding:12px;font-size:0.85rem;color:#c0392b;">Something went wrong. Please try again or email hello@atlanticbear.com.</div>`;
+        container.innerHTML = `<div style="text-align:center;padding:12px;font-size:0.85rem;color:#c0392b;">Something went wrong. Please try again or email officialatlanticbear@gmail.com.</div>`;
       },
     }).render('#' + containerId);
   });
