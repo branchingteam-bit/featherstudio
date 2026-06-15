@@ -53,13 +53,6 @@ function Navbar(): string {
   </nav>`;
 }
 
-// ─── WhatsApp FAB ────────────────────────────────────────────────────────────
-function WhatsAppFab(): string {
-  return `
-  <a id="whatsapp-fab" href="https://wa.me/971504668481" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
-    <svg viewBox="0 0 24 24" fill="white" width="28" height="28">${Icons.whatsapp}</svg>
-  </a>`;
-}
 
 // ─── Footer ──────────────────────────────────────────────────────────────────
 function Footer(): string {
@@ -86,9 +79,8 @@ function Footer(): string {
         <div class="footer-col">
           <h4>Contact</h4>
           <div class="footer-links">
-            <a href="https://wa.me/971504668481" target="_blank">WhatsApp</a>
             <a href="mailto:hello@atlanticbear.com">hello@atlanticbear.com</a>
-            <a href="https://www.instagram.com/atlanticbear.com" target="_blank">@atlanticbear.com</a>
+            <a href="https://www.instagram.com/officialatlanticbear/" target="_blank">@officialatlanticbear</a>
           </div>
         </div>
       </div>
@@ -413,7 +405,7 @@ function Level1Page(): string {
             'Up to 5 pages included',
             'Mobile responsive layout',
             'Basic SEO setup',
-            'WhatsApp contact button',
+            'Email and contact form options',
             'Contact form',
             'Handoff within 7 to 14 days',
             'Source files included',
@@ -434,11 +426,11 @@ function Level1Page(): string {
             'Full custom design and build',
             'Up to 5 pages included',
             'Domain and hosting managed by us',
-            'WhatsApp and contact form included',
+            'Email and contact form support',
             'Mobile responsive layout',
             'Basic SEO optimisation',
             'Monthly content updates (1 round)',
-            'Priority support via WhatsApp',
+            'Priority support via Email',
           ],
           ctaId: 'l1-managed-cta',
           managed: true,
@@ -447,7 +439,7 @@ function Level1Page(): string {
       </div>
     </div>
   </section>
-
+ 
   <!-- FEATURES -->
   <section class="section-pad" style="background:var(--surface); border-top:1px solid var(--border);">
     <div class="container">
@@ -461,7 +453,7 @@ function Level1Page(): string {
           { icon: Icons.zap, title: 'Fast Delivery', desc: 'Your site is live within 7 to 14 business days from when we agree on the brief.' },
           { icon: Icons.globe, title: 'Mobile First', desc: 'Looks great on phones, tablets, and desktops. Most of your visitors are on mobile.' },
           { icon: Icons.shield, title: 'SEO Ready', desc: 'Proper page titles, meta descriptions, and structured code so Google can find you.' },
-          { icon: Icons.phone, title: 'WhatsApp Button', desc: 'A tap-to-chat WhatsApp button on every page, the easiest way to get leads in the UAE.' },
+          { icon: Icons.mail, title: 'Email Support', desc: 'An integrated contact form and direct email connection on every page.' },
           { icon: Icons.wrench, title: 'Low Maintenance', desc: 'Clean builds that just work. Perfect for business owners who want to focus on running their business.' },
         ]
           .map(f => `<div class="feature-item reveal">
@@ -473,7 +465,7 @@ function Level1Page(): string {
       </div>
     </div>
   </section>
-
+ 
   <!-- FAQ -->
   <section class="section-pad" style="border-top:1px solid var(--border);">
     <div class="container">
@@ -505,7 +497,7 @@ function Level1Page(): string {
       </div>
     </div>
   </section>
-
+ 
   <section class="cta-section">
     <div class="container">
       <h2>Start with Level 1</h2>
@@ -513,10 +505,6 @@ function Level1Page(): string {
       <div class="cta-ctas">
         <a href="/contact" class="btn btn-dark btn-large" data-link="contact" id="l1-footer-cta">
           Talk to us ${Icons.arrow}
-        </a>
-        <a href="https://wa.me/971504668481" target="_blank" class="btn btn-wa btn-large">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="white">${Icons.whatsapp}</svg>
-          WhatsApp us
         </a>
       </div>
     </div>
@@ -553,12 +541,12 @@ function Level2Page(): string {
           features: [
             'Fully custom professional design',
             'Up to 10 pages included',
-            'Contact form and WhatsApp integration',
+            'Contact form integration',
             'Team and credentials profiles',
             'Services and treatment layouts',
             'Testimonials and trust badges',
             'Solid local SEO configuration',
-            'WhatsApp and Google Maps setup',
+            'Google Maps setup',
             'Source files handover',
           ],
           ctaId: 'l2-ot-cta',
@@ -582,7 +570,7 @@ function Level2Page(): string {
             'Good local SEO and Google profile setup',
             'Regular content updates (up to 2/month)',
             'Seasonal campaign support (on request)',
-            'Priority WhatsApp support',
+            'Priority email support',
           ],
           ctaId: 'l2-managed-cta',
           managed: true,
@@ -614,10 +602,10 @@ function Level2Page(): string {
               ['Pages included', 'Up to 5', 'Up to 10'],
               ['Custom design', 'Yes', 'Yes'],
               ['Mobile responsive', 'Yes', 'Yes'],
-              ['WhatsApp button', 'Yes', 'Yes'],
+              ['Contact form', 'Yes', 'Yes'],
               ['Basic SEO', 'Yes', 'Yes'],
               ['Enhanced local SEO + Google setup', 'No', 'Yes'],
-              ['Contact form + WhatsApp integration', 'Yes', 'Yes'],
+              ['Contact form integration', 'Yes', 'Yes'],
               ['Team and credentials page', 'No', 'Yes'],
               ['Testimonials section', 'No', 'Yes'],
               ['Google Maps integration', 'No', 'Yes'],
@@ -646,10 +634,10 @@ function Level2Page(): string {
       <div class="feature-grid">
         ${[
           { icon: Icons.palette, title: 'Premium Design', desc: 'Custom layouts that communicate expertise and build trust with every visitor.' },
-          { icon: Icons.rocket, title: 'Conversion Focused', desc: 'Built to turn visitors into calls, WhatsApp enquiries, and real leads.' },
+          { icon: Icons.rocket, title: 'Conversion Focused', desc: 'Built to turn visitors into emails and real leads.' },
           { icon: Icons.globe, title: 'Local SEO', desc: 'Solid local SEO setup including Google Business Profile configuration to help you get found.' },
           { icon: Icons.shield, title: 'Secure Hosting', desc: 'SSL certificates, daily backups, and active uptime monitoring included.' },
-          { icon: Icons.phone, title: 'Easy Contact', desc: 'WhatsApp button, contact form, and Google Maps built directly into your site.' },
+          { icon: Icons.mail, title: 'Easy Contact', desc: 'Contact form, email, and Google Maps built directly into your site.' },
           { icon: Icons.code, title: 'Ongoing Updates', desc: 'Managed plan clients get regular content updates — add services, update team bios, change pricing.' },
         ]
           .map(f => `<div class="feature-item reveal">
@@ -677,7 +665,7 @@ function Level2Page(): string {
           },
           {
             q: 'What\'s included in the managed plan?',
-            a: 'Everything. Design, build, hosting, SSL, domain, regular content updates, and priority WhatsApp support. You focus on your business, we handle your site.',
+            a: 'Everything. Design, build, hosting, SSL, domain, regular content updates, and priority email support. You focus on your business, we handle your site.',
           },
           {
             q: 'Can I request changes after launch?',
@@ -702,10 +690,6 @@ function Level2Page(): string {
         <a href="/contact" class="btn btn-dark btn-large" data-link="contact" id="l2-footer-cta">
           Talk to us ${Icons.arrow}
         </a>
-        <a href="https://wa.me/971504668481" target="_blank" class="btn btn-wa btn-large">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="white">${Icons.whatsapp}</svg>
-          WhatsApp us
-        </a>
       </div>
     </div>
   </section>`;
@@ -729,10 +713,6 @@ function WorkPage(): string {
         <a href="/contact" class="btn btn-dark btn-large" data-link="contact" id="work-cta">
           Get in touch ${Icons.arrow}
         </a>
-        <a href="https://wa.me/971504668481" target="_blank" class="btn btn-wa btn-large">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="white">${Icons.whatsapp}</svg>
-          WhatsApp us
-        </a>
       </div>
     </div>
   </section>`;
@@ -750,15 +730,6 @@ function ContactPage(): string {
             <h1>Let's build<br>something.</h1>
             <p>Tell us about your business or just ask anything. We respond fast, usually within a few hours.</p>
             <div class="contact-methods">
-              <a href="https://wa.me/971504668481" target="_blank" class="contact-method">
-                <div class="contact-method-icon" style="background:rgba(37,211,102,.08); color:var(--whatsapp);">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">${Icons.whatsapp}</svg>
-                </div>
-                <div>
-                  <div class="contact-method-label">WhatsApp</div>
-                  <div class="contact-method-value">+971 50 466 8481</div>
-                </div>
-              </a>
               <a href="mailto:hello@atlanticbear.com" class="contact-method">
                 <div class="contact-method-icon">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${Icons.mail}</svg>
@@ -768,13 +739,13 @@ function ContactPage(): string {
                   <div class="contact-method-value">hello@atlanticbear.com</div>
                 </div>
               </a>
-              <a href="https://www.instagram.com/atlanticbear.com" target="_blank" class="contact-method">
+              <a href="https://www.instagram.com/officialatlanticbear/" target="_blank" class="contact-method">
                 <div class="contact-method-icon" style="background:rgba(225,48,108,.08); color:#e1306c;">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${Icons.instagram}</svg>
                 </div>
                 <div>
                   <div class="contact-method-label">Instagram</div>
-                  <div class="contact-method-value">@atlanticbear.com</div>
+                  <div class="contact-method-value">@officialatlanticbear</div>
                 </div>
               </a>
               <div class="contact-method">
@@ -855,7 +826,7 @@ const pageMeta: Record<Page, { title: string; desc: string }> = {
   },
   contact: {
     title: 'Contact Atlantic Bear | Start Your UAE Website Project',
-    desc: 'Get in touch with Atlantic Bear. Let\'s discuss your business website needs. Fast response, custom layouts, and direct WhatsApp support in Dubai & UAE.'
+    desc: 'Get in touch with Atlantic Bear. Let\'s discuss your business website needs. Fast response and custom layouts in Dubai & UAE.'
   }
 };
 
@@ -999,7 +970,7 @@ function initFormspree() {
       }
     } catch {
       if (errorEl) {
-        errorEl.textContent = 'Something went wrong. Please try again or message us on WhatsApp.';
+        errorEl.textContent = 'Something went wrong. Please try again or email hello@atlanticbear.com.';
         errorEl.style.color = 'var(--red)';
         errorEl.style.fontSize = '0.85rem';
         errorEl.style.marginTop = '8px';
@@ -1150,7 +1121,7 @@ function loadPayPalOrderButton(containerId: string, amountUSD: number) {
       }),
       onError: (err: any) => {
         console.error('PayPal error', err);
-        container.innerHTML = `<div style="text-align:center;padding:12px;font-size:0.85rem;color:#c0392b;">Something went wrong. Please try again or <a href="https://wa.me/971504668481" target="_blank">message us on WhatsApp</a>.</div>`;
+        container.innerHTML = `<div style="text-align:center;padding:12px;font-size:0.85rem;color:#c0392b;">Something went wrong. Please try again or email hello@atlanticbear.com.</div>`;
       },
     }).render('#' + containerId);
   });
@@ -1163,7 +1134,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ${Navbar()}
     <main id="main-content" style="opacity:1; min-height:100vh;"></main>
     ${Footer()}
-    ${WhatsAppFab()}
   `;
 
   delegateLinks(app);
