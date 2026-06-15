@@ -36,19 +36,19 @@ const CheckIcon = () =>
 function Navbar(): string {
   return `
   <nav class="nav" id="main-nav">
-    <a href="#" class="logo" data-link="home" id="logo-btn">
+    <a href="/" class="logo" data-link="home" id="logo-btn">
       <span class="logo-wordmark">Atlantic</span>
-      <img src="/atlanticbear-logo.png" alt="Atlantic Bear Logo" class="logo-bear-img" />
+      <img src="/atlanticbear-logo.png" alt="Atlantic Bear Logo" class="logo-bear-img" width="42" height="42" />
     </a>
     <div class="nav-links">
-      <a href="#" class="nav-link" data-link="home"    id="nav-home">Home</a>
-      <a href="#" class="nav-link" data-link="level1"  id="nav-l1">Level 1</a>
-      <a href="#" class="nav-link" data-link="level2"  id="nav-l2">Level 2</a>
-      <a href="#" class="nav-link" data-link="contact" id="nav-contact">Contact</a>
+      <a href="/" class="nav-link" data-link="home"    id="nav-home">Home</a>
+      <a href="/level1" class="nav-link" data-link="level1"  id="nav-l1">Level 1</a>
+      <a href="/level2" class="nav-link" data-link="level2"  id="nav-l2">Level 2</a>
+      <a href="/contact" class="nav-link" data-link="contact" id="nav-contact">Contact</a>
     </div>
     <div class="nav-actions">
-      <a href="#" class="btn btn-secondary btn-sm" data-link="contact" id="nav-contact-cta">Contact</a>
-      <a href="#" class="btn btn-dark btn-sm" data-link="level2" id="nav-start-cta">Get started ${Icons.arrow}</a>
+      <a href="/contact" class="btn btn-secondary btn-sm" data-link="contact" id="nav-contact-cta">Contact</a>
+      <a href="/level2" class="btn btn-dark btn-sm" data-link="level2" id="nav-start-cta">Get started ${Icons.arrow}</a>
     </div>
   </nav>`;
 }
@@ -68,19 +68,19 @@ function Footer(): string {
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="#" class="logo" data-link="home">
+          <a href="/" class="logo" data-link="home">
             <span class="logo-wordmark">Atlantic</span>
-            <img src="/atlanticbear-logo.png" alt="Atlantic Bear Logo" class="footer-bear-img" />
+            <img src="/atlanticbear-logo.png" alt="Atlantic Bear Logo" class="footer-bear-img" width="28" height="28" />
           </a>
           <p>Professional websites for businesses across the UAE.</p>
         </div>
         <div class="footer-col">
           <h4>Pages</h4>
           <div class="footer-links">
-            <a href="#" data-link="home">Home</a>
-            <a href="#" data-link="level1">Level 1</a>
-            <a href="#" data-link="level2">Level 2</a>
-            <a href="#" data-link="contact">Contact</a>
+            <a href="/" data-link="home">Home</a>
+            <a href="/level1" data-link="level1">Level 1</a>
+            <a href="/level2" data-link="level2">Level 2</a>
+            <a href="/contact" data-link="contact">Contact</a>
           </div>
         </div>
         <div class="footer-col">
@@ -122,21 +122,21 @@ function HomePage(): string {
   return `
   <!-- HERO -->
   <section class="hero" style="position: relative; overflow: hidden;">
-    <img src="/atlanticbear-logo.png" class="huge-bear" alt="Atlantic Bear Watermark" />
+    <img src="/atlanticbear-logo.png" class="huge-bear" alt="Atlantic Bear Watermark" fetchpriority="high" width="600" height="600" />
     <div class="container" style="position: relative; z-index: 1;">
       <h1>Your business deserves<br>to be found.</h1>
       <p class="hero-sub">
         We design, build, and launch custom websites for UAE businesses — clean layouts, ultra-fast speeds, built to grow your brand.
       </p>
       <div class="hero-ctas">
-        <a href="#" class="btn btn-dark btn-large" data-link="level2" id="hero-cta-start">
+        <a href="/level2" class="btn btn-dark btn-large" data-link="level2" id="hero-cta-start">
           Start a project ${Icons.arrow}
         </a>
-        <a href="#" class="btn btn-secondary btn-large" data-link="contact" id="hero-cta-work">
+        <a href="/contact" class="btn btn-secondary btn-large" data-link="contact" id="hero-cta-work">
           Talk to us
         </a>
       </div>
-      <p class="hero-note">Not sure which plan? <a href="#" data-link="contact">Contact us</a></p>
+      <p class="hero-note">Not sure which plan? <a href="/contact" data-link="contact">Contact us</a></p>
     </div>
   </section>
 
@@ -239,14 +239,14 @@ function HomePage(): string {
           <p>We use Stitch to design the website layout and user interface from scratch — guaranteeing a bespoke, modern aesthetic designed specifically for your brand before any code is written.</p>
         </div>
         <div class="tool-large-img-wrap">
-          <img class="tool-large-img" src="/screenshots/stitch.png" alt="Stitch Interface" />
+          <img class="tool-large-img" src="/screenshots/stitch.png" alt="Stitch Interface" width="800" height="500" loading="lazy" />
         </div>
       </div>
       
       <!-- Antigravity Row -->
       <div class="tool-showcase-row alt">
         <div class="tool-large-img-wrap">
-          <img class="tool-large-img" src="/screenshots/antigravity.png" alt="Antigravity IDE" />
+          <img class="tool-large-img" src="/screenshots/antigravity.png" alt="Antigravity IDE" width="800" height="500" loading="lazy" />
         </div>
         <div class="tool-text-content">
           <h3>Google Antigravity</h3>
@@ -283,7 +283,7 @@ function HomePage(): string {
             <span class="teaser-pill">Retail shop</span>
             <span class="teaser-pill">Kiosk</span>
           </div>
-          <a href="#" class="teaser-btn teaser-btn-dark" data-link="level1" id="home-l1-cta">
+          <a href="/level1" class="teaser-btn teaser-btn-dark" data-link="level1" id="home-l1-cta">
             Explore Level 1 ${Icons.arrow}
           </a>
         </div>
@@ -306,7 +306,7 @@ function HomePage(): string {
             <span class="teaser-pill">Law firm</span>
             <span class="teaser-pill">Consultant</span>
           </div>
-          <a href="#" class="teaser-btn teaser-btn-outline" data-link="level2" id="home-l2-cta">
+          <a href="/level2" class="teaser-btn teaser-btn-outline" data-link="level2" id="home-l2-cta">
             Explore Level 2 ${Icons.arrow}
           </a>
         </div>
@@ -365,7 +365,7 @@ function PricingCard(opts: {
       <p class="plan-desc">${opts.desc}</p>
     </div>
     <div class="pricing-card-cta">
-      ${opts.paypalHtml ? opts.paypalHtml : `<a href="#" class="btn btn-dark btn-block btn-large" data-link="contact" id="${opts.ctaId}">Get started ${Icons.arrow}</a>`}
+      ${opts.paypalHtml ? opts.paypalHtml : `<a href="/contact" class="btn btn-dark btn-block btn-large" data-link="contact" id="${opts.ctaId}">Get started ${Icons.arrow}</a>`}
       ${opts.note ? `<p style="font-size:0.75rem; color:var(--text-muted); margin-top:10px; text-align:center;">${opts.note}</p>` : ''}
     </div>
     <div class="pricing-card-features">
@@ -511,7 +511,7 @@ function Level1Page(): string {
       <h2>Start with Level 1</h2>
       <p>A website your customers will trust, at a price that makes sense.</p>
       <div class="cta-ctas">
-        <a href="#" class="btn btn-dark btn-large" data-link="contact" id="l1-footer-cta">
+        <a href="/contact" class="btn btn-dark btn-large" data-link="contact" id="l1-footer-cta">
           Talk to us ${Icons.arrow}
         </a>
         <a href="https://wa.me/971504668481" target="_blank" class="btn btn-wa btn-large">
@@ -699,7 +699,7 @@ function Level2Page(): string {
       <h2>Build your professional site</h2>
       <p>Your clients are searching online right now. Make sure they find something impressive.</p>
       <div class="cta-ctas">
-        <a href="#" class="btn btn-dark btn-large" data-link="contact" id="l2-footer-cta">
+        <a href="/contact" class="btn btn-dark btn-large" data-link="contact" id="l2-footer-cta">
           Talk to us ${Icons.arrow}
         </a>
         <a href="https://wa.me/971504668481" target="_blank" class="btn btn-wa btn-large">
@@ -726,7 +726,7 @@ function WorkPage(): string {
       <h2>Let's build yours</h2>
       <p>Tell us about your business and what you need.</p>
       <div class="cta-ctas">
-        <a href="#" class="btn btn-dark btn-large" data-link="contact" id="work-cta">
+        <a href="/contact" class="btn btn-dark btn-large" data-link="contact" id="work-cta">
           Get in touch ${Icons.arrow}
         </a>
         <a href="https://wa.me/971504668481" target="_blank" class="btn btn-wa btn-large">
@@ -836,6 +836,98 @@ const pageMap: Record<Page, () => string> = {
   contact: ContactPage,
 };
 
+const pageMeta: Record<Page, { title: string; desc: string }> = {
+  home: {
+    title: 'Atlantic Bear | Professional Websites for UAE Businesses. Live in 3 Days.',
+    desc: 'Atlantic Bear designs, builds, and launches custom professional websites for UAE businesses. Clean layouts, ultra-fast speeds, built to grow your brand. Live in 3 days, fully managed.'
+  },
+  level1: {
+    title: 'Level 1 Plan: Custom Websites for UAE Small Businesses | Atlantic Bear',
+    desc: 'Affordable, custom-designed websites for cafés, salons, kiosks, and retail shops in the UAE. Get found online and get direct WhatsApp leads. Live in 7-14 days.'
+  },
+  level2: {
+    title: 'Level 2 Plan: Professional Websites for UAE Practices & Clinics | Atlantic Bear',
+    desc: 'Premium websites built to earn trust for clinics, law firms, dental practices, and consultants in Dubai & UAE. Local SEO and full management included.'
+  },
+  work: {
+    title: 'Our Work | Atlantic Bear Portfolio',
+    desc: 'Explore custom websites designed and developed for UAE businesses. Professional layouts, mobile optimization, and fast load times.'
+  },
+  contact: {
+    title: 'Contact Atlantic Bear | Start Your UAE Website Project',
+    desc: 'Get in touch with Atlantic Bear. Let\'s discuss your business website needs. Fast response, custom layouts, and direct WhatsApp support in Dubai & UAE.'
+  }
+};
+
+function updateMetadata(page: Page) {
+  const meta = pageMeta[page] || pageMeta.home;
+  document.title = meta.title;
+  
+  // Update meta description
+  let descTag = document.querySelector('meta[name="description"]');
+  if (!descTag) {
+    descTag = document.createElement('meta');
+    descTag.setAttribute('name', 'description');
+    document.head.appendChild(descTag);
+  }
+  descTag.setAttribute('content', meta.desc);
+
+  // Update canonical link
+  let canonicalTag = document.querySelector('link[rel="canonical"]');
+  if (!canonicalTag) {
+    canonicalTag = document.createElement('link');
+    canonicalTag.setAttribute('rel', 'canonical');
+    document.head.appendChild(canonicalTag);
+  }
+  const canonicalUrl = `${window.location.origin}${page === 'home' ? '' : '/' + page}`;
+  canonicalTag.setAttribute('href', canonicalUrl);
+
+  // Update OpenGraph tags
+  const ogTags = {
+    'og:title': meta.title,
+    'og:description': meta.desc,
+    'og:url': canonicalUrl,
+    'og:type': 'website',
+    'og:image': `${window.location.origin}/logo.png`
+  };
+
+  for (const [property, content] of Object.entries(ogTags)) {
+    let ogTag = document.querySelector(`meta[property="${property}"]`);
+    if (!ogTag) {
+      ogTag = document.createElement('meta');
+      ogTag.setAttribute('property', property);
+      document.head.appendChild(ogTag);
+    }
+    ogTag.setAttribute('content', content);
+  }
+
+  // Update Twitter Card tags
+  const twitterTags = {
+    'twitter:card': 'summary_large_image',
+    'twitter:title': meta.title,
+    'twitter:description': meta.desc,
+    'twitter:image': `${window.location.origin}/logo.png`
+  };
+
+  for (const [name, content] of Object.entries(twitterTags)) {
+    let twitterTag = document.querySelector(`meta[name="${name}"]`);
+    if (!twitterTag) {
+      twitterTag = document.createElement('meta');
+      twitterTag.setAttribute('name', name);
+      document.head.appendChild(twitterTag);
+    }
+    twitterTag.setAttribute('content', content);
+  }
+}
+
+function getPageFromPath(path: string): Page {
+  const cleanPath = path.replace(/^\/|\/$/g, '');
+  if (cleanPath === 'level1' || cleanPath === 'level2' || cleanPath === 'work' || cleanPath === 'contact') {
+    return cleanPath as Page;
+  }
+  return 'home';
+}
+
 function setActiveNav(page: Page) {
   $$('[data-link]').forEach(el => el.classList.remove('active'));
   const link = $(`[data-link="${page}"].nav-link`);
@@ -920,7 +1012,7 @@ function initFormspree() {
   });
 }
 
-function navigate(page: Page) {
+function navigate(page: Page, pushHistory = true) {
   const main = $('#main-content')!;
   main.style.opacity = '0';
   main.style.transform = 'translateY(8px)';
@@ -949,6 +1041,15 @@ function navigate(page: Page) {
       loadPayPalSubscriptionButton('paypal-button-container-P-8EU78139GF1282545NHBFUDY', 'P-8EU78139GF1282545NHBFUDY');
       loadPayPalOrderButton('paypal-capture-container-l2', 803.00);
     }
+
+    updateMetadata(page);
+
+    if (pushHistory) {
+      const path = page === 'home' ? '/' : `/${page}`;
+      if (window.location.pathname !== path) {
+        history.pushState(null, '', path);
+      }
+    }
   }, 150);
 }
 
@@ -957,9 +1058,15 @@ function delegateLinks(root: HTMLElement) {
   root.addEventListener('click', (e) => {
     const target = (e.target as HTMLElement).closest('[data-link]') as HTMLElement | null;
     if (!target) return;
+
+    // Check if it's a normal click (not cmd+click, middle click, etc.)
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+
     e.preventDefault();
     const link = target.getAttribute('data-link') as Page;
-    if (link && pageMap[link]) navigate(link);
+    if (link && pageMap[link]) {
+      navigate(link);
+    }
   });
 }
 
@@ -1061,5 +1168,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   delegateLinks(app);
   initNavScroll();
-  navigate('home');
+
+  const initialPage = getPageFromPath(window.location.pathname);
+  navigate(initialPage, false);
+
+  window.addEventListener('popstate', () => {
+    const page = getPageFromPath(window.location.pathname);
+    navigate(page, false);
+  });
 });
