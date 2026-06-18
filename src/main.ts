@@ -10,9 +10,6 @@ const AED_TO_USD = 0.2723;
 const aedUsd = (aed: number) =>
   `<span class="price-usd">approx. $${(aed * AED_TO_USD).toFixed(0)} USD</span>`;
 
-const prefersReducedMotion = () =>
-  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
 // ─── Icons ───────────────────────────────────────────────────────────────────
 const Icons = {
   arrow: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="2" y1="8" x2="13" y2="8"/><polyline points="9,4 13,8 9,12"/></svg>`,
@@ -30,77 +27,32 @@ const Icons = {
   whatsapp: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>`,
   code: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16,18 22,12 16,6"/><polyline points="8,6 2,12 8,18"/></svg>`,
   instagram: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>`,
-  search: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>`,
-  eye: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`,
-  heart: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`,
 };
 
 const CheckIcon = () =>
   `<span class="check-icon">${Icons.check}</span>`;
-
-const eyebrow = (label: string) => `<span class="eyebrow">${label}</span>`;
-
-// ─── Device mockup + CSS mini-sites (authentic, no AI/stock imagery) ──────────
-const miniSites: Record<string, { a: string; b: string; accent: string; tag: string; h: string; p: string; btn: string }> = {
-  cafe:   { a: '#3A2A1E', b: '#1C130C', accent: '#D98A2B', tag: 'Artisan Coffee · Dubai', h: 'Your morning, perfected.', p: 'Freshly roasted, served with care in the heart of the city.', btn: 'View menu' },
-  dental: { a: '#15384A', b: '#0A2230', accent: '#37B6C0', tag: 'Dental Care · Abu Dhabi', h: 'Smiles you can trust.', p: 'Gentle, modern dentistry for the whole family.', btn: 'Book a visit' },
-  law:    { a: '#1A2740', b: '#0B1426', accent: '#C5A45E', tag: 'Legal Consultants · UAE', h: 'Counsel you can rely on.', p: 'Clear, confident advice for businesses and individuals.', btn: 'Free consult' },
-  salon:  { a: '#3A1E2E', b: '#1C0C16', accent: '#E0913C', tag: 'Beauty Studio · Sharjah', h: 'Look and feel your best.', p: 'Hair, skin and care from a team that gets you.', btn: 'Book now' },
-};
-
-function MiniSite(variant: string): string {
-  const m = miniSites[variant] || miniSites.cafe;
-  return `
-    <div class="minisite" style="--mini-a:${m.a}; --mini-b:${m.b}; --mini-accent:${m.accent};">
-      <div class="minisite-hero">
-        <div class="minisite-tag">${m.tag}</div>
-        <div class="minisite-h">${m.h}</div>
-        <div class="minisite-p">${m.p}</div>
-        <span class="minisite-btn">${m.btn}</span>
-      </div>
-      <div class="minisite-row">
-        <div class="minisite-card"></div>
-        <div class="minisite-card"></div>
-        <div class="minisite-card"></div>
-      </div>
-    </div>`;
-}
-
-function DeviceMockup(opts: { url: string; variant?: string; img?: string }): string {
-  const screen = opts.img
-    ? `<img class="mockup-screen" src="${opts.img}" alt="Client website preview" loading="lazy" />`
-    : `<div class="mockup-screen">${MiniSite(opts.variant || 'cafe')}</div>`;
-  return `
-    <div class="mockup">
-      <div class="mockup-bar">
-        <span class="mockup-dot"></span><span class="mockup-dot"></span><span class="mockup-dot"></span>
-        <span class="mockup-url">${opts.url}</span>
-      </div>
-      ${screen}
-    </div>`;
-}
 
 // ─── Navbar ──────────────────────────────────────────────────────────────────
 function Navbar(): string {
   return `
   <nav class="nav" id="main-nav">
     <a href="/" class="logo" data-link="home" id="logo-btn">
-      <img src="/atlanticbear-logo.png" alt="Atlantic Bear Logo" class="logo-bear-img" width="38" height="38" />
-      <span class="logo-wordmark">Atlantic Bear</span>
+      <span class="logo-wordmark">Atlantic</span>
+      <img src="/atlanticbear-logo.png" alt="Atlantic Bear Logo" class="logo-bear-img" width="42" height="42" />
     </a>
     <div class="nav-links">
       <a href="/" class="nav-link" data-link="home"    id="nav-home">Home</a>
       <a href="/level1" class="nav-link" data-link="level1"  id="nav-l1">Level 1</a>
       <a href="/level2" class="nav-link" data-link="level2"  id="nav-l2">Level 2</a>
-      <a href="/work" class="nav-link" data-link="work" id="nav-work">Work</a>
-      <a href="/about" class="nav-link" data-link="about" id="nav-about">About</a>
+      <a href="/contact" class="nav-link" data-link="contact" id="nav-contact">Contact</a>
     </div>
     <div class="nav-actions">
       <a href="/contact" class="btn btn-secondary btn-sm" data-link="contact" id="nav-contact-cta">Contact</a>
-      <a href="/contact" class="btn btn-honey btn-sm" data-link="contact" id="nav-start-cta">Get a free demo ${Icons.arrow}</a>
+      <a href="/level2" class="btn btn-dark btn-sm" data-link="level2" id="nav-start-cta">Get started ${Icons.arrow}</a>
     </div>
   </nav>`;
 }
+
 
 // ─── Footer ──────────────────────────────────────────────────────────────────
 function Footer(): string {
@@ -110,25 +62,23 @@ function Footer(): string {
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="/" class="logo" data-link="home">
+            <span class="logo-wordmark">Atlantic</span>
             <img src="/atlanticbear-logo.png" alt="Atlantic Bear Logo" class="footer-bear-img" width="28" height="28" />
-            <span class="logo-wordmark">Atlantic Bear</span>
           </a>
-          <p>Custom websites for UAE businesses. We build a free demo first — you only pay once it's live and you love it.</p>
+          <p>Professional websites for businesses across the UAE.</p>
         </div>
         <div class="footer-col">
-          <h4>Explore</h4>
+          <h4>Pages</h4>
           <div class="footer-links">
             <a href="/" data-link="home">Home</a>
-            <a href="/level1" data-link="level1">Level 1 · Small Business</a>
-            <a href="/level2" data-link="level2">Level 2 · Professional</a>
-            <a href="/work" data-link="work">Our Work</a>
-            <a href="/about" data-link="about">About</a>
+            <a href="/level1" data-link="level1">Level 1</a>
+            <a href="/level2" data-link="level2">Level 2</a>
+            <a href="/contact" data-link="contact">Contact</a>
           </div>
         </div>
         <div class="footer-col">
           <h4>Contact</h4>
           <div class="footer-links">
-            <a href="/contact" data-link="contact">Start a project</a>
             <a href="mailto:officialatlanticbear@gmail.com">officialatlanticbear@gmail.com</a>
             <a href="https://www.instagram.com/officialatlanticbear/" target="_blank">@officialatlanticbear</a>
           </div>
@@ -144,260 +94,177 @@ function Footer(): string {
 
 // ─── Home Page ───────────────────────────────────────────────────────────────
 function HomePage(): string {
+  // Build marquee items (duplicated 4 times for seamless infinite loop)
   const marqueeItems = [
-    { num: 'Free demo', desc: 'Before you pay anything' },
-    { num: 'Pay when live', desc: 'Not a dirham before' },
-    { num: '100%', desc: 'Custom — no templates' },
-    { num: 'Mobile-first', desc: 'Built for every screen' },
-    { num: 'WhatsApp', desc: 'Tap-to-chat on every site' },
-    { num: 'Made in the UAE', desc: 'For UAE businesses' },
+    { num: '3 Days', desc: 'From kick-off to live' },
+    { num: '100%', desc: 'Mobile responsive' },
+    { num: 'Fully Custom', desc: 'No templates, ever' },
+    { num: '3+ Years', desc: 'Building in the UAE' },
+    { num: '81%', desc: 'Of customers research online first' },
+    { num: 'SEO Ready', desc: 'Google-optimised from day one' },
   ];
+
   const buildMarqueeSet = () => marqueeItems.map(item =>
-    `<span class="marquee-badge"><span class="marquee-num">${item.num}</span><span class="marquee-desc">${item.desc}</span></span><span class="marquee-sep">✦</span>`
+    `<span class="marquee-badge"><span class="marquee-num">${item.num}</span><span class="marquee-desc">${item.desc}</span></span><span class="marquee-sep">·</span>`
   ).join('');
+
+  // 4 copies for a seamless infinite belt
   const marqueeInner = buildMarqueeSet() + buildMarqueeSet() + buildMarqueeSet() + buildMarqueeSet();
 
   return `
   <!-- HERO -->
-  <section class="hero">
-    <img src="/atlanticbear-logo.png" class="huge-bear" alt="" aria-hidden="true" fetchpriority="high" width="720" height="720" />
-    <div class="container">
-      ${eyebrow('UAE Web Design Studio')}
-      <h1>Get found. Get trusted.<br><em>Get booked.</em></h1>
+  <section class="hero" style="position: relative; overflow: hidden;">
+    <img src="/atlanticbear-logo.png" class="huge-bear" alt="Atlantic Bear Watermark" fetchpriority="high" width="600" height="600" />
+    <div class="container" style="position: relative; z-index: 1;">
+      <h1>Your business deserves<br>to be found.</h1>
       <p class="hero-sub">
-        We design and build custom websites for UAE businesses — clean, fast, and made to win you customers. See yours before you pay a single dirham.
+        We design, build, and launch custom websites for UAE businesses — clean layouts, ultra-fast speeds, built to grow your brand.
       </p>
       <div class="hero-ctas">
-        <a href="/contact" class="btn btn-honey btn-large" data-link="contact" id="hero-cta-start">
-          Get a free demo ${Icons.arrow}
+        <a href="/level2" class="btn btn-dark btn-large" data-link="level2" id="hero-cta-start">
+          Start a project ${Icons.arrow}
         </a>
-        <a href="/work" class="btn btn-secondary btn-large" data-link="work" id="hero-cta-work">
-          See our work
+        <a href="/contact" class="btn btn-secondary btn-large" data-link="contact" id="hero-cta-work">
+          Talk to us
         </a>
       </div>
-      <p class="hero-note">No deposit. No risk. <a href="#how" data-link="home">See how it works ↓</a></p>
-    </div>
-    <div class="hero-stage reveal">
-      ${DeviceMockup({ url: 'yourbusiness.ae', variant: 'cafe' })}
+      <p class="hero-note">Not sure which plan? <a href="/contact" data-link="contact">Contact us</a></p>
     </div>
   </section>
 
   <!-- MARQUEE BELT -->
   <div class="marquee-belt">
     <div class="marquee-track">
-      <div class="marquee-inner" aria-hidden="true">${marqueeInner}</div>
+      <div class="marquee-inner" aria-hidden="true">
+        ${marqueeInner}
+      </div>
     </div>
   </div>
 
   <!-- COMPETITOR BANNER -->
   <section class="competitor-banner">
     <div class="container">
-      <p class="competitor-banner-text">Your competitor's website is getting your customers. <strong>Let's fix that.</strong></p>
+      <p class="competitor-banner-text">Your competitor's website is getting your clients. <strong>Let's fix that.</strong></p>
     </div>
   </section>
 
-  <!-- THE PROBLEM -->
+  <!-- THE PROBLEM SECTION -->
   <section class="problem-section">
     <div class="container">
       <h2 class="problem-headline">
         Every day without a website is a customer you <span class="text-blue">didn't know you lost</span>.
       </h2>
       <div class="problem-grid">
-        <div class="problem-card reveal">
-          <div class="pc-num">01</div>
+        <div class="problem-card">
           <h3>They searched. They didn't find you.</h3>
-          <p>People look you up before they visit or call. If nothing comes up — or what comes up looks dated — they move on. Simple as that.</p>
-        </div>
-        <div class="problem-card reveal">
-          <div class="pc-num">02</div>
-          <h3>Your competitor got the client.</h3>
-          <p>When two similar businesses show up and one has a clean, professional site, the choice is obvious. Customers go with whoever looks more trustworthy.</p>
-        </div>
-        <div class="problem-card reveal">
-          <div class="pc-num">03</div>
-          <h3>You don't have time for this.</h3>
-          <p>You're running a business. Wrestling with hosting and tech isn't why you started. It shouldn't be your problem — that's our job.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- THE OFFER -->
-  <section class="offer-section">
-    <div class="container">
-      <div class="offer-inner">
-        <div class="reveal">
-          ${eyebrow('The Atlantic Bear Promise')}
-          <h2 class="offer-h">See it before<br>you <em>pay a dirham.</em></h2>
-          <p class="offer-p">
-            We build you a <strong>real, working demo of your site — for free.</strong> You see exactly what you're getting. If you love it, we polish it and put it live. <strong>You only pay once it's live.</strong> If you don't, you walk away owing nothing. That's the whole point.
+          <p>
+            Most people look up a business online before they visit or call. If nothing comes up, or what comes up looks bad, they move on. Simple as that.
           </p>
-          <a href="/contact" class="btn btn-honey btn-large" data-link="contact" id="offer-cta">
-            Start with a free demo ${Icons.arrow}
-          </a>
         </div>
-        <div class="offer-card reveal">
-          <div class="offer-points">
-            <div class="offer-point">
-              <div class="offer-point-num">$0</div>
-              <div class="offer-point-txt"><h4>No deposit to start</h4><p>We build the first version on us. No card, no commitment.</p></div>
-            </div>
-            <div class="offer-point">
-              <div class="offer-point-num">✓</div>
-              <div class="offer-point-txt"><h4>Pay only when it's live</h4><p>Money changes hands after your site is online and you're happy.</p></div>
-            </div>
-            <div class="offer-point">
-              <div class="offer-point-num">↺</div>
-              <div class="offer-point-txt"><h4>Don't like it? Walk away.</h4><p>No pressure, no fees. The risk is entirely on us, not you.</p></div>
-            </div>
-          </div>
+        <div class="problem-card">
+          <h3>Your competitor got the client. Not you.</h3>
+          <p>
+            When two similar businesses show up online and one has a clean professional website, the choice is obvious. Customers always go with whoever looks more trustworthy.
+          </p>
+        </div>
+        <div class="problem-card">
+          <h3>You don't have time to deal with this.</h3>
+          <p>
+            You're running a business. Building a website, figuring out hosting, dealing with technical problems, that's not why you got into this. It shouldn't be your problem.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
-  <section class="how-section" id="how">
-    <div class="container">
-      <div class="how-layout">
-        <div class="how-sticky reveal">
-          ${eyebrow('How it works')}
-          <h2>Four steps.<br>Zero <em>risk.</em></h2>
-          <p>From first message to live website — here's exactly how we work, start to finish.</p>
-          <a href="/contact" class="btn btn-dark btn-large" data-link="contact" id="how-cta">Let's begin ${Icons.arrow}</a>
-        </div>
-        <div class="how-steps">
-          <div class="how-step reveal">
-            <div class="how-step-num">1</div>
-            <div>
-              <h3>We build a free demo</h3>
-              <p>Tell us about your business. We design and build a real preview of your website — completely free.<br><span class="how-step-free">No payment</span></p>
-            </div>
-          </div>
-          <div class="how-step reveal">
-            <div class="how-step-num">2</div>
-            <div>
-              <h3>You review it</h3>
-              <p>You see the real thing, not a sketch. Tell us what you love and what you'd change — colours, copy, layout, anything.</p>
-            </div>
-          </div>
-          <div class="how-step reveal">
-            <div class="how-step-num">3</div>
-            <div>
-              <h3>We refine it</h3>
-              <p>We polish until it's exactly right. WhatsApp button, reviews, your photos and details — all wired in.</p>
-            </div>
-          </div>
-          <div class="how-step reveal">
-            <div class="how-step-num">4</div>
-            <div>
-              <h3>Go live &amp; pay</h3>
-              <p>We put your site online. <em>Only now</em> do you pay. You're up, running, and found — with zero risk taken.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHAT EVERY SITE INCLUDES -->
-  <section class="section-pad" style="background:var(--paper);">
-    <div class="container">
-      <div class="section-header centered reveal">
-        ${eyebrow('Standard on every build')}
-        <h2 class="section-title">What every site <em>comes with</em></h2>
-        <p class="section-sub">No upsells for the essentials. Every Atlantic Bear website ships with these, on both levels.</p>
-      </div>
-      <div class="feature-grid">
-        ${[
-          { icon: Icons.whatsapp, title: 'Tap-to-WhatsApp', desc: 'A floating WhatsApp button so customers can message you in one tap, from any page.', wa: true },
-          { icon: Icons.star, title: 'Reviews & testimonials', desc: 'Real customer reviews and trust badges built in — the social proof that closes the sale.' },
-          { icon: Icons.globe, title: 'Mobile-first design', desc: 'Looks flawless on phones, tablets, and desktops. Most of your visitors are on mobile.' },
-          { icon: Icons.zap, title: 'Fast loading', desc: 'Clean, lightweight code so your site opens instantly. Slow sites lose customers.' },
-          { icon: Icons.search, title: 'Found on Google', desc: 'Proper titles, descriptions, and structure so Google can find and rank you.' },
-          { icon: Icons.palette, title: 'Fully custom design', desc: 'No templates, ever. Built from scratch to match your brand, colours, and vibe.' },
-        ].map(f => `<div class="feature-item reveal${(f as any).wa ? ' is-wa' : ''}">
-            <div class="feature-icon-wrap">${f.icon}</div>
-            <h3>${f.title}</h3>
-            <p>${f.desc}</p>
-          </div>`).join('')}
-      </div>
-    </div>
-  </section>
-
-  <!-- THE NUMBERS -->
+  <!-- THE FACTS SECTION -->
   <section class="facts-section">
     <div class="container">
-      <h2 class="facts-headline">The numbers <em>don't lie.</em></h2>
+      <h2 class="facts-headline">The numbers don't lie.</h2>
+
+      <!-- Two big hero stats side by side -->
       <div class="facts-heroes-row">
-        <div class="fact-hero-block fact-hero-dark reveal">
-          <div class="fact-hero-num"><span class="count" data-to="81">0</span><span class="fact-hero-pct">%</span></div>
+        <div class="fact-hero-block fact-hero-dark">
+          <div class="fact-hero-num">81<span class="fact-hero-pct">%</span></div>
           <div class="fact-hero-label">Of customers research online before buying or visiting a business.</div>
-          <div class="fact-hero-desc">If they can't find you, they'll find your competitor. It's that simple.</div>
+          <div class="fact-hero-desc">If they can't find you, they will find your competitor. It's that simple.</div>
         </div>
-        <div class="fact-hero-block fact-hero-light reveal">
-          <div class="fact-hero-num fact-hero-num-dark"><span class="count" data-to="40">0</span><span class="fact-hero-pct fact-hero-pct-dark">%</span></div>
+        <div class="fact-hero-block fact-hero-light">
+          <div class="fact-hero-num fact-hero-num-dark">40<span class="fact-hero-pct fact-hero-pct-dark">%</span></div>
           <div class="fact-hero-label fact-hero-label-dark">Of your Google Business Profile performance is driven by your website.</div>
-          <div class="fact-hero-desc fact-hero-desc-dark">Your website directly affects your spot on Google Maps. A weak site pushes you down the list.</div>
+          <div class="fact-hero-desc fact-hero-desc-dark">Your website directly affects your position on Google Maps. A weak site pushes you down the list.</div>
         </div>
       </div>
+
+      <!-- Smaller stats row -->
       <div class="facts-stats-row">
-        <div class="facts-stat-block reveal">
-          <div class="facts-stat-num"><span class="count" data-to="75">0</span>%</div>
-          <div class="facts-stat-text">Of people judge a company's credibility entirely on its website design</div>
+        <div class="facts-stat-block">
+          <div class="facts-stat-num">75%</div>
+          <div class="facts-stat-text">Of people judge a company's credibility based entirely on website design</div>
         </div>
-        <div class="facts-stat-block reveal">
-          <div class="facts-stat-num"><span class="count" data-to="57">0</span>%</div>
-          <div class="facts-stat-text">Of users won't recommend a business with a poorly designed mobile site</div>
+        <div class="facts-stat-divider"></div>
+        <div class="facts-stat-block">
+          <div class="facts-stat-num">57%</div>
+          <div class="facts-stat-text">Of users won't recommend a business with a poorly designed mobile website</div>
         </div>
-        <div class="facts-stat-block reveal">
-          <div class="facts-stat-num"><span class="count" data-to="2">0</span>×</div>
+        <div class="facts-stat-divider"></div>
+        <div class="facts-stat-block">
+          <div class="facts-stat-num">2x</div>
           <div class="facts-stat-text">Faster growth for businesses with a strong professional online presence</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- HOW WE BUILD -->
-  <section class="build-section">
+  <!-- TOOLS WE USE SECTION -->
+  <section class="tools-section">
     <div class="container">
-      <div class="section-header reveal">
-        ${eyebrow('How we build')}
-        <h2 class="section-title">Designed by hand.<br>Built to <em>perform.</em></h2>
+      <div class="tools-header">
+        <h2>The Tech Behind the Speed</h2>
+        <p>We build using cutting-edge tools to deliver beautiful, fast user experiences backed by clean code.</p>
       </div>
-      <div class="build-row reveal">
-        <div class="build-text">
-          <h3>Custom design, <em>no templates</em></h3>
-          <p>We design every layout from scratch around your brand — your colours, your words, your customers. Nothing off-the-shelf, nothing recycled. Your site looks like you, not a thousand others.</p>
+      
+      <!-- Stitch Row -->
+      <div class="tool-showcase-row">
+        <div class="tool-text-content">
+          <h3>Stitch</h3>
+          <p>We use Stitch to design the website layout and user interface from scratch — guaranteeing a bespoke, modern aesthetic designed specifically for your brand before any code is written.</p>
         </div>
-        <div class="build-visual">${DeviceMockup({ url: 'salonstudio.ae', variant: 'salon' })}</div>
+        <div class="tool-large-img-wrap">
+          <img class="tool-large-img" src="/screenshots/stitch.png" alt="Stitch Interface" width="800" height="500" loading="lazy" />
+        </div>
       </div>
-      <div class="build-row alt reveal">
-        <div class="build-text">
-          <h3>Clean code, <em>instant loads</em></h3>
-          <p>Under the hood, your site is lean and fast — built to open instantly, work on every device, and stay easy to update. Speed isn't a luxury; it's how you keep the customer who just tapped your link.</p>
+      
+      <!-- Antigravity Row -->
+      <div class="tool-showcase-row alt">
+        <div class="tool-large-img-wrap">
+          <img class="tool-large-img" src="/screenshots/antigravity.png" alt="Antigravity IDE" width="800" height="500" loading="lazy" />
         </div>
-        <div class="build-visual">${DeviceMockup({ url: 'dentalcare.ae', variant: 'dental' })}</div>
+        <div class="tool-text-content">
+          <h3>Google Antigravity</h3>
+          <p>We use Google Antigravity to write and optimize clean, production-ready code — so your website loads instantly, operates securely, and works perfectly on every device.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- CHOOSE YOUR LEVEL -->
+  <!-- TIER TEASERS SECTION -->
   <section class="teasers-section">
     <div class="container">
-      <div class="teasers-header reveal">
-        ${eyebrow('Two ways to start')}
-        <h2>Choose your <em>level</em></h2>
-        <p>Two plans, built for exactly where your business is right now.</p>
+      <div class="teasers-header">
+        <h2>Choose Your Level</h2>
+        <p>Two plans. Built for where your business actually is right now.</p>
       </div>
       <div class="teasers-grid">
-        <div class="teaser-card level-one-card reveal">
+
+        <!-- Level 1 -->
+        <div class="teaser-card level-one-card">
           <div class="teaser-level-tag">
             <span class="teaser-level-num">01</span>
             <span class="teaser-level-name">Level One</span>
           </div>
           <h3>Small Business</h3>
-          <p class="teaser-pitch">Look professional, get found, and make it easy for customers to reach you — without a big investment.</p>
+          <p class="teaser-pitch">You need to look professional online, get found, and make it easy for customers to reach you — without a big investment.</p>
           <div class="teaser-price">
             <div class="teaser-price-main">AED 1,450</div>
             <div class="teaser-price-sub">one-time &nbsp;·&nbsp; or AED 150/mo managed</div>
@@ -405,131 +272,58 @@ function HomePage(): string {
           <div class="teaser-pills">
             <span class="teaser-pill">Café</span>
             <span class="teaser-pill">Salon</span>
-            <span class="teaser-pill">Retail</span>
+            <span class="teaser-pill">Retail shop</span>
             <span class="teaser-pill">Kiosk</span>
           </div>
-          <a href="/level1" class="teaser-btn teaser-btn-dark" data-link="level1" id="home-l1-cta">Explore Level 1 ${Icons.arrow}</a>
+          <a href="/level1" class="teaser-btn teaser-btn-dark" data-link="level1" id="home-l1-cta">
+            Explore Level 1 ${Icons.arrow}
+          </a>
         </div>
-        <div class="teaser-card level-two-card reveal">
+
+        <!-- Level 2 -->
+        <div class="teaser-card level-two-card">
           <div class="teaser-level-tag">
             <span class="teaser-level-num">02</span>
             <span class="teaser-level-name">Level Two · Most Popular</span>
           </div>
           <h3>Professional</h3>
-          <p class="teaser-pitch">Your business runs on trust. Clients need to feel confident before they book — this site does that work for you.</p>
+          <p class="teaser-pitch">Your business depends on trust. Patients, clients, and customers need to feel confident before they book. This site does that work for you.</p>
           <div class="teaser-price">
             <div class="teaser-price-main">AED 2,950</div>
             <div class="teaser-price-sub">one-time &nbsp;·&nbsp; or AED 300/mo managed</div>
           </div>
           <div class="teaser-pills">
             <span class="teaser-pill">Clinic</span>
-            <span class="teaser-pill">Dental</span>
+            <span class="teaser-pill">Dental practice</span>
             <span class="teaser-pill">Law firm</span>
             <span class="teaser-pill">Consultant</span>
           </div>
-          <a href="/level2" class="teaser-btn teaser-btn-outline" data-link="level2" id="home-l2-cta">Explore Level 2 ${Icons.arrow}</a>
+          <a href="/level2" class="teaser-btn teaser-btn-outline" data-link="level2" id="home-l2-cta">
+            Explore Level 2 ${Icons.arrow}
+          </a>
         </div>
+
       </div>
 
+      <!-- The real difference -->
       <div class="real-diff-block reveal">
         <div class="real-diff-side">
           <div class="real-diff-tag tag-one">Level 1</div>
           <h4>Level 1 is about being <em>found</em></h4>
-          <p>A customer walks past your café or shop. They Google you before coming in. Level 1 makes sure they find a clean, professional site — and tap to WhatsApp you immediately.</p>
+          <p>A customer walks past your café or sees your shop. They Google you before coming in. Level 1 makes sure they find a clean, professional site — and tap to WhatsApp you immediately.</p>
         </div>
         <div class="real-diff-divider"></div>
         <div class="real-diff-side">
           <div class="real-diff-tag tag-two">Level 2</div>
           <h4>Level 2 is about being <em>trusted</em></h4>
-          <p>Someone needs a dentist or lawyer. They spend ten minutes reading about you before they call. Level 2 gives them the team, the credentials, the reviews, and the reassurance to book.</p>
+          <p>Someone needs a dentist or lawyer. They spend 10 minutes reading about you before they ever call. Level 2 gives them the team page, the credentials, the reviews, and the reassurance they need to book.</p>
         </div>
       </div>
-      <p class="real-diff-note">Not sure which level? <strong>Start with Level 1</strong> — you can always upgrade later, and we credit previous payments toward your new plan.</p>
-    </div>
-  </section>
+      <p class="real-diff-note">Not sure which level? <strong>Start with Level 1</strong> — you can always upgrade later and we credit previous payments toward your new plan.</p>
 
-  <!-- FEATURED WORK -->
-  <section class="work-section">
-    <div class="container">
-      <div class="section-header centered reveal">
-        ${eyebrow('Selected work')}
-        <h2 class="section-title">Sites we've <em>shipped</em></h2>
-        <p class="section-sub">Real businesses, real websites. Here's a taste of what we build.</p>
-      </div>
-      <div class="work-grid">
-        ${WorkCard({ cat: 'Café & Roastery', name: 'Artisan Coffee', desc: 'A warm, mobile-first site that turns walk-bys into regulars — menu, hours, and tap-to-WhatsApp orders.', variant: 'cafe', url: 'artisancoffee.ae', tags: ['Level 1', 'WhatsApp', 'Menu'] })}
-        ${WorkCard({ cat: 'Dental Practice', name: 'Smile Dental Care', desc: 'A trust-first clinic site with team profiles, treatments, reviews, and Google Maps to drive bookings.', variant: 'dental', url: 'smiledental.ae', tags: ['Level 2', 'Local SEO', 'Reviews'] })}
-      </div>
-      <div class="cta-ctas" style="margin-top:40px;">
-        <a href="/work" class="btn btn-secondary btn-large" data-link="work" id="home-work-cta">View all work ${Icons.arrow}</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  ${Testimonials()}
-
-  <!-- FINAL CTA -->
-  <section class="cta-section">
-    <div class="container">
-      ${eyebrow('Ready when you are')}
-      <h2>Let's build yours — <em>free to start.</em></h2>
-      <p>Tell us about your business. We'll send back a real demo of your website, on us. You only pay if you love it and it goes live.</p>
-      <div class="cta-ctas">
-        <a href="/contact" class="btn btn-honey btn-large" data-link="contact" id="home-final-cta">Get my free demo ${Icons.arrow}</a>
-        <a href="/work" class="btn btn-ghost-light btn-large" data-link="work" id="home-final-work">See our work</a>
-      </div>
     </div>
   </section>
   `;
-}
-
-// ─── Work card builder ────────────────────────────────────────────────────────
-function WorkCard(opts: { cat: string; name: string; desc: string; variant?: string; img?: string; url: string; tags: string[] }): string {
-  return `
-  <div class="work-card reveal">
-    <div class="work-card-visual">${DeviceMockup({ url: opts.url, variant: opts.variant, img: opts.img })}</div>
-    <div class="work-card-body">
-      <div class="work-card-cat">${opts.cat}</div>
-      <h3>${opts.name}</h3>
-      <p>${opts.desc}</p>
-      <div class="work-card-tags">${opts.tags.map(t => `<span class="work-tag">${t}</span>`).join('')}</div>
-    </div>
-  </div>`;
-}
-
-// ─── Testimonials builder ─────────────────────────────────────────────────────
-function Testimonials(): string {
-  const stars = `<div class="testi-stars">${Array(5).fill(Icons.star).join('')}</div>`;
-  const items = [
-    { text: 'They sent me a full demo before I paid anything. I just had to approve it. Honestly the easiest decision — bookings went up within the first month.', name: 'Layla A.', biz: 'Dental Clinic, Abu Dhabi', initial: 'L' },
-    { text: 'My old site looked like everyone else\'s. This one actually looks like my brand. Customers message me on WhatsApp straight from the page now.', name: 'Omar S.', biz: 'Café & Roastery, Dubai', initial: 'O' },
-    { text: 'Fast, professional, and no pressure. The fact that you only pay when it\'s live tells you everything about how confident they are.', name: 'Priya M.', biz: 'Beauty Studio, Sharjah', initial: 'P' },
-  ];
-  return `
-  <section class="testi-section">
-    <div class="container">
-      <div class="section-header centered reveal">
-        ${eyebrow('What clients say')}
-        <h2 class="section-title">Loved by <em>local businesses</em></h2>
-        <p class="section-sub">We work with the same businesses you are — cafés, clinics, salons, shops across the UAE.</p>
-      </div>
-      <div class="testi-grid">
-        ${items.map(t => `
-          <div class="testi-card reveal">
-            ${stars}
-            <p class="testi-text">${t.text}</p>
-            <div class="testi-who">
-              <div class="testi-avatar">${t.initial}</div>
-              <div>
-                <div class="testi-name">${t.name}</div>
-                <div class="testi-biz">${t.biz}</div>
-              </div>
-            </div>
-          </div>`).join('')}
-      </div>
-    </div>
-  </section>`;
 }
 
 // ─── Pricing Card Builder ─────────────────────────────────────────────────────
@@ -583,11 +377,12 @@ function PricingCard(opts: {
 function Level1Page(): string {
   return `
   <!-- PAGE HEADER -->
-  <div class="page-header centered">
+  <div class="page-header" style="border-bottom:1px solid var(--border);">
     <div class="container">
-      ${eyebrow('Level 1 · Small Business')}
-      <h1>Great websites for <em>growing businesses</em></h1>
-      <p>For kiosks, cafés, salons, retail shops, and anyone who wants to look professional online without a large budget.</p>
+      <div class="section-label">Level 1 · Small Business</div>
+      <h1>Great websites for growing businesses</h1>
+      <p>For kiosks, cafes, salons, retail shops, and anyone who wants to look
+      professional online without a large budget.</p>
     </div>
   </div>
 
@@ -595,7 +390,7 @@ function Level1Page(): string {
   <section class="section-pad">
     <div class="container">
       <div class="section-header centered reveal">
-        ${eyebrow('Pricing')}
+        <div class="section-label">Pricing</div>
         <h2 class="section-title">Choose your plan</h2>
         <p class="section-sub">Both plans include a fully custom-designed website. Pick the one that suits how you want to work.</p>
       </div>
@@ -609,9 +404,9 @@ function Level1Page(): string {
             'Fully custom-designed website',
             'Up to 5 pages included',
             'Mobile responsive layout',
-            'Tap-to-WhatsApp + contact form',
-            'Reviews & testimonials section',
             'Basic SEO setup',
+            'Email and contact form options',
+            'Contact form',
             'Handoff within 7 to 14 days',
             'Source files included',
           ],
@@ -631,11 +426,11 @@ function Level1Page(): string {
             'Full custom design and build',
             'Up to 5 pages included',
             'Domain and hosting managed by us',
-            'Tap-to-WhatsApp + contact form',
-            'Reviews & testimonials section',
+            'Email and contact form support',
             'Mobile responsive layout',
+            'Basic SEO optimisation',
             'Monthly content updates (1 round)',
-            'Priority support via email',
+            'Priority support via Email',
           ],
           ctaId: 'l1-managed-cta',
           managed: true,
@@ -644,56 +439,73 @@ function Level1Page(): string {
       </div>
     </div>
   </section>
-
+ 
   <!-- FEATURES -->
-  <section class="section-pad" style="background:var(--sand);">
+  <section class="section-pad" style="background:var(--surface); border-top:1px solid var(--border);">
     <div class="container">
       <div class="section-header reveal">
-        ${eyebrow('Features')}
-        <h2 class="section-title">Built for business, <em>not just looks</em></h2>
+        <div class="section-label">Features</div>
+        <h2 class="section-title">Built for business, not just looks</h2>
       </div>
       <div class="feature-grid">
         ${[
           { icon: Icons.palette, title: 'Custom Design', desc: 'No templates. Every site is built from scratch to match your brand, colours, and vibe.' },
           { icon: Icons.zap, title: 'Fast Delivery', desc: 'Your site is live within 7 to 14 business days from when we agree on the brief.' },
           { icon: Icons.globe, title: 'Mobile First', desc: 'Looks great on phones, tablets, and desktops. Most of your visitors are on mobile.' },
-          { icon: Icons.search, title: 'SEO Ready', desc: 'Proper page titles, meta descriptions, and structured code so Google can find you.' },
-          { icon: Icons.whatsapp, title: 'WhatsApp Built In', desc: 'A tap-to-chat WhatsApp button on every page, plus an integrated contact form.' },
-          { icon: Icons.wrench, title: 'Low Maintenance', desc: 'Clean builds that just work. Perfect for owners who want to focus on the business.' },
-        ].map(f => `<div class="feature-item reveal">
+          { icon: Icons.shield, title: 'SEO Ready', desc: 'Proper page titles, meta descriptions, and structured code so Google can find you.' },
+          { icon: Icons.mail, title: 'Email Support', desc: 'An integrated contact form and direct email connection on every page.' },
+          { icon: Icons.wrench, title: 'Low Maintenance', desc: 'Clean builds that just work. Perfect for business owners who want to focus on running their business.' },
+        ]
+          .map(f => `<div class="feature-item reveal">
             <div class="feature-icon-wrap">${f.icon}</div>
             <h3>${f.title}</h3>
             <p>${f.desc}</p>
-          </div>`).join('')}
+          </div>`)
+          .join('')}
       </div>
     </div>
   </section>
-
+ 
   <!-- FAQ -->
-  <section class="section-pad">
+  <section class="section-pad" style="border-top:1px solid var(--border);">
     <div class="container">
       <div class="section-header reveal">
-        ${eyebrow('FAQ')}
+        <div class="section-label">FAQ</div>
         <h2 class="section-title">Common questions</h2>
       </div>
       <div class="faq-list reveal">
         ${[
-          { q: 'Who is Level 1 for?', a: 'Kiosks, cafés, retail shops, salons, small workshops. Any business that wants a professional online presence without a large budget.' },
-          { q: 'Do I really see it before I pay?', a: 'Yes. We build a free demo of your site first. You only pay once it\'s live and you\'re happy with it — no deposit to start.' },
-          { q: 'Do I own the website after the one-time purchase?', a: 'Completely. We hand over all the files and you can host it wherever you want. We\'re also happy to help with hosting setup at no extra cost.' },
-          { q: 'Can I upgrade to Level 2 later?', a: 'Absolutely. If your business grows and you need more, we can expand your site. Previous payments are credited where applicable.' },
-        ].map(f => `<div class="faq-item"><h3>${f.q}</h3><p>${f.a}</p></div>`).join('')}
+          {
+            q: 'Who is Level 1 for?',
+            a: 'Kiosks, cafes, retail shops, salons, small workshops. Any business that wants a professional online presence without a large budget.',
+          },
+          {
+            q: 'Do I own the website after the one-time purchase?',
+            a: 'Yes, completely. We hand over all the files and you can host it wherever you want. We\'re also happy to help with hosting setup at no extra cost.',
+          },
+          {
+            q: 'What do I need to provide?',
+            a: 'Your logo (or we\'ll suggest options), photos of your business or products, and a short description of what you do. We\'ll handle the rest.',
+          },
+          {
+            q: 'Can I upgrade to Level 2 later?',
+            a: 'Absolutely. If your business grows and you need more features, we can rebuild or expand your site. Previous payments are credited where applicable.',
+          },
+        ]
+          .map(f => `<div class="faq-item"><h3>${f.q}</h3><p>${f.a}</p></div>`)
+          .join('')}
       </div>
     </div>
   </section>
-
+ 
   <section class="cta-section">
     <div class="container">
-      ${eyebrow('Free to start')}
-      <h2>Start with <em>Level 1</em></h2>
-      <p>A website your customers will trust, at a price that makes sense. See your free demo before you pay a dirham.</p>
+      <h2>Start with Level 1</h2>
+      <p>A website your customers will trust, at a price that makes sense.</p>
       <div class="cta-ctas">
-        <a href="/contact" class="btn btn-honey btn-large" data-link="contact" id="l1-footer-cta">Get my free demo ${Icons.arrow}</a>
+        <a href="/contact" class="btn btn-dark btn-large" data-link="contact" id="l1-footer-cta">
+          Talk to us ${Icons.arrow}
+        </a>
       </div>
     </div>
   </section>`;
@@ -703,11 +515,12 @@ function Level1Page(): string {
 function Level2Page(): string {
   return `
   <!-- PAGE HEADER -->
-  <div class="page-header centered">
+  <div class="page-header" style="border-bottom:1px solid var(--border);">
     <div class="container">
-      ${eyebrow('Level 2 · Professional')}
-      <h1>Websites built for <em>serious businesses</em></h1>
-      <p>For clinics, dental practices, law firms, and professional services that need a website that earns trust and drives real enquiries.</p>
+      <div class="section-label">Level 2 · Professional</div>
+      <h1>Websites built for serious businesses</h1>
+      <p>For clinics, dental practices, law firms, and professional services that
+      need a website that earns trust and drives real enquiries.</p>
     </div>
   </div>
 
@@ -715,9 +528,9 @@ function Level2Page(): string {
   <section class="section-pad">
     <div class="container">
       <div class="section-header centered reveal">
-        ${eyebrow('Pricing')}
+        <div class="section-label">Pricing</div>
         <h2 class="section-title">Choose your plan</h2>
-        <p class="section-sub">Both plans include everything you need. The managed plan is our most popular — we handle it all.</p>
+        <p class="section-sub">Both plans include everything you need. The managed plan is our most popular, we handle it all.</p>
       </div>
       <div class="pricing-cards-row reveal">
         ${PricingCard({
@@ -728,7 +541,7 @@ function Level2Page(): string {
           features: [
             'Fully custom professional design',
             'Up to 10 pages included',
-            'Tap-to-WhatsApp + contact form',
+            'Contact form integration',
             'Team and credentials profiles',
             'Services and treatment layouts',
             'Testimonials and trust badges',
@@ -768,32 +581,43 @@ function Level2Page(): string {
   </section>
 
   <!-- COMPARISON TABLE -->
-  <section class="section-pad" style="background:var(--sand);">
+  <section class="section-pad" style="background:var(--surface); border-top:1px solid var(--border);">
     <div class="container">
       <div class="section-header centered reveal">
-        ${eyebrow('Compare')}
+        <div class="section-label">Compare</div>
         <h2 class="section-title">Level 1 vs Level 2</h2>
         <p class="section-sub">Not sure which is right? Here's a quick side-by-side.</p>
       </div>
       <div class="comparison-wrap reveal">
         <table class="comparison-table">
           <thead>
-            <tr><th>Feature</th><th>Level 1</th><th class="hl">Level 2</th></tr>
+            <tr>
+              <th>Feature</th>
+              <th>Level 1</th>
+              <th class="hl">Level 2</th>
+            </tr>
           </thead>
           <tbody>
             ${[
               ['Pages included', 'Up to 5', 'Up to 10'],
               ['Custom design', 'Yes', 'Yes'],
               ['Mobile responsive', 'Yes', 'Yes'],
-              ['Tap-to-WhatsApp', 'Yes', 'Yes'],
-              ['Reviews & testimonials', 'Yes', 'Yes'],
+              ['Contact form', 'Yes', 'Yes'],
               ['Basic SEO', 'Yes', 'Yes'],
               ['Enhanced local SEO + Google setup', 'No', 'Yes'],
+              ['Contact form integration', 'Yes', 'Yes'],
               ['Team and credentials page', 'No', 'Yes'],
+              ['Testimonials section', 'No', 'Yes'],
               ['Google Maps integration', 'No', 'Yes'],
               ['Starting price (one-time)', 'AED 1,450', 'AED 2,950'],
               ['Managed plan from', 'AED 150/mo', 'AED 300/mo'],
-            ].map(([f, l1, l2]) => `<tr><td>${f}</td><td>${l1}</td><td class="hl">${l2}</td></tr>`).join('')}
+            ]
+              .map(([f, l1, l2]) => `<tr>
+                <td>${f}</td>
+                <td>${l1}</td>
+                <td class="hl">${l2}</td>
+              </tr>`)
+              .join('')}
           </tbody>
         </table>
       </div>
@@ -801,143 +625,94 @@ function Level2Page(): string {
   </section>
 
   <!-- FEATURES -->
-  <section class="section-pad">
+  <section class="section-pad" style="border-top:1px solid var(--border);">
     <div class="container">
       <div class="section-header reveal">
-        ${eyebrow('Features')}
-        <h2 class="section-title">Everything a <em>professional</em> needs</h2>
+        <div class="section-label">Features</div>
+        <h2 class="section-title">Everything a professional needs</h2>
       </div>
       <div class="feature-grid">
         ${[
           { icon: Icons.palette, title: 'Premium Design', desc: 'Custom layouts that communicate expertise and build trust with every visitor.' },
-          { icon: Icons.rocket, title: 'Conversion Focused', desc: 'Built to turn visitors into enquiries, bookings, and real leads.' },
-          { icon: Icons.globe, title: 'Local SEO', desc: 'Solid local SEO setup including Google Business Profile configuration to get you found.' },
+          { icon: Icons.rocket, title: 'Conversion Focused', desc: 'Built to turn visitors into emails and real leads.' },
+          { icon: Icons.globe, title: 'Local SEO', desc: 'Solid local SEO setup including Google Business Profile configuration to help you get found.' },
           { icon: Icons.shield, title: 'Secure Hosting', desc: 'SSL certificates, daily backups, and active uptime monitoring included.' },
-          { icon: Icons.star, title: 'Trust & Reviews', desc: 'Testimonials, credentials, and trust badges that reassure clients before they book.' },
-          { icon: Icons.code, title: 'Ongoing Updates', desc: 'Managed clients get regular content updates — add services, update bios, change pricing.' },
-        ].map(f => `<div class="feature-item reveal">
+          { icon: Icons.mail, title: 'Easy Contact', desc: 'Contact form, email, and Google Maps built directly into your site.' },
+          { icon: Icons.code, title: 'Ongoing Updates', desc: 'Managed plan clients get regular content updates — add services, update team bios, change pricing.' },
+        ]
+          .map(f => `<div class="feature-item reveal">
             <div class="feature-icon-wrap">${f.icon}</div>
             <h3>${f.title}</h3>
             <p>${f.desc}</p>
-          </div>`).join('')}
+          </div>`)
+          .join('')}
       </div>
     </div>
   </section>
 
   <!-- FAQ -->
-  <section class="section-pad" style="background:var(--sand);">
+  <section class="section-pad" style="background:var(--surface); border-top:1px solid var(--border);">
     <div class="container">
       <div class="section-header reveal">
-        ${eyebrow('FAQ')}
+        <div class="section-label">FAQ</div>
         <h2 class="section-title">Common questions</h2>
       </div>
       <div class="faq-list reveal">
         ${[
-          { q: 'Who is Level 2 for?', a: 'Clinics, dental practices, law firms, consultants, and established businesses that need a website that actively earns trust and drives real enquiries.' },
-          { q: 'Do I see it before I pay?', a: 'Yes — same promise as everything we do. We build a demo first; you only pay once it\'s live and you\'re happy.' },
-          { q: 'What\'s included in the managed plan?', a: 'Everything. Design, build, hosting, SSL, domain, regular content updates, and priority email support. You focus on your business, we handle your site.' },
-          { q: 'How long does it take?', a: 'Typically 14 to 21 business days from brief sign-off, depending on how quickly we receive your content.' },
-        ].map(f => `<div class="faq-item"><h3>${f.q}</h3><p>${f.a}</p></div>`).join('')}
+          {
+            q: 'Who is Level 2 for?',
+            a: 'Clinics, dental practices, law firms, consultants, and established businesses that need a website that actively earns trust and drives real enquiries.',
+          },
+          {
+            q: 'What\'s included in the managed plan?',
+            a: 'Everything. Design, build, hosting, SSL, domain, regular content updates, and priority email support. You focus on your business, we handle your site.',
+          },
+          {
+            q: 'Can I request changes after launch?',
+            a: 'Yes. Managed plan clients get regular content updates (up to 2 rounds per month). One-time clients can request changes at our standard rate.',
+          },
+          {
+            q: 'How long does it take?',
+            a: 'Typically 14 to 21 business days from brief sign-off, depending on how quickly we receive your content.',
+          },
+        ]
+          .map(f => `<div class="faq-item"><h3>${f.q}</h3><p>${f.a}</p></div>`)
+          .join('')}
       </div>
     </div>
   </section>
 
   <section class="cta-section">
     <div class="container">
-      ${eyebrow('Free to start')}
-      <h2>Build your <em>professional site</em></h2>
-      <p>Your clients are searching online right now. Make sure they find something impressive — see your free demo first.</p>
+      <h2>Build your professional site</h2>
+      <p>Your clients are searching online right now. Make sure they find something impressive.</p>
       <div class="cta-ctas">
-        <a href="/contact" class="btn btn-honey btn-large" data-link="contact" id="l2-footer-cta">Get my free demo ${Icons.arrow}</a>
+        <a href="/contact" class="btn btn-dark btn-large" data-link="contact" id="l2-footer-cta">
+          Talk to us ${Icons.arrow}
+        </a>
       </div>
     </div>
   </section>`;
 }
 
-// ─── Our Work Page ────────────────────────────────────────────────────────────
+// ─── Our Work Page (kept but hidden from nav) ────────────────────────────────
 function WorkPage(): string {
   return `
-  <div class="page-header centered">
+  <div class="page-header" style="border-bottom:1px solid var(--border);">
     <div class="container">
-      ${eyebrow('Portfolio')}
-      <h1>Our <em>work</em></h1>
-      <p>Custom websites for real UAE businesses. Clean design, fast loads, and built to win customers — see the kind of work we deliver.</p>
+      <div class="section-label">Portfolio</div>
+      <h1>Our Work</h1>
+      <p>Coming soon. We're putting together our portfolio. In the meantime, reach out to see what we can build for you.</p>
     </div>
   </div>
-
-  <section class="work-section" style="padding-top:48px;">
-    <div class="container">
-      <div class="work-grid">
-        ${WorkCard({ cat: 'Café & Roastery', name: 'Artisan Coffee', desc: 'A warm, mobile-first site that turns walk-bys into regulars — menu, opening hours, and tap-to-WhatsApp ordering front and centre.', variant: 'cafe', url: 'artisancoffee.ae', tags: ['Level 1', 'WhatsApp', 'Menu'] })}
-        ${WorkCard({ cat: 'Dental Practice', name: 'Smile Dental Care', desc: 'A trust-first clinic site: team profiles, treatments, patient reviews, and Google Maps wired in to drive bookings.', variant: 'dental', url: 'smiledental.ae', tags: ['Level 2', 'Local SEO', 'Reviews'] })}
-        ${WorkCard({ cat: 'Legal Consultants', name: 'Meridian Legal', desc: 'A calm, authoritative site for a boutique firm — practice areas, credentials, and an easy path to a first consultation.', variant: 'law', url: 'meridianlegal.ae', tags: ['Level 2', 'Credibility', 'Contact'] })}
-        ${WorkCard({ cat: 'Beauty Studio', name: 'Lumière Studio', desc: 'A stylish booking-focused site for a salon — services, gallery, and instant WhatsApp appointments.', variant: 'salon', url: 'lumierestudio.ae', tags: ['Level 1', 'Booking', 'Gallery'] })}
-      </div>
-      <p class="real-diff-note" style="margin-top:40px;">These are representative of our build quality. Want to see a demo built for <strong>your</strong> business? It's free — just ask.</p>
-    </div>
-  </section>
-
   <section class="cta-section">
     <div class="container">
-      ${eyebrow('Your turn')}
-      <h2>Let's build <em>yours</em></h2>
-      <p>Tell us about your business and what you need. We'll send back a free demo — no payment until it's live.</p>
+      <h2>Let's build yours</h2>
+      <p>Tell us about your business and what you need.</p>
       <div class="cta-ctas">
-        <a href="/contact" class="btn btn-honey btn-large" data-link="contact" id="work-cta">Get my free demo ${Icons.arrow}</a>
-      </div>
-    </div>
-  </section>`;
-}
-
-// ─── About Page ───────────────────────────────────────────────────────────────
-function AboutPage(): string {
-  return `
-  <div class="page-header centered">
-    <div class="container">
-      ${eyebrow('About Atlantic Bear')}
-      <h1>A small team that <em>actually cares</em></h1>
-      <p>We're a UAE web studio building websites for the businesses that keep this country running — the cafés, clinics, salons, and shops.</p>
-    </div>
-  </div>
-
-  <section class="section-pad">
-    <div class="container-narrow">
-      <p class="about-lead reveal">
-        We started Atlantic Bear because too many great local businesses were stuck with <em>no website, or a bad one</em> — losing customers they never even knew they had. So we made the offer simple: we build it first, and you only pay when you love it.
-      </p>
-    </div>
-  </section>
-
-  <section class="section-pad" style="background:var(--sand); padding-top:0; background:transparent;">
-    <div class="container">
-      <div class="about-values">
-        <div class="about-value reveal">
-          <div class="feature-icon-wrap">${Icons.shield}</div>
-          <h3>Risk on us, not you</h3>
-          <p>You see a real demo before any money changes hands. If it's not right, you walk away owing nothing. We earn the sale by doing the work first.</p>
-        </div>
-        <div class="about-value reveal">
-          <div class="feature-icon-wrap">${Icons.heart}</div>
-          <h3>Custom, every time</h3>
-          <p>No templates, no copy-paste. Every site is designed from scratch around your brand. If it doesn't look like you, we haven't finished.</p>
-        </div>
-        <div class="about-value reveal">
-          <div class="feature-icon-wrap">${Icons.zap}</div>
-          <h3>Fast and personal</h3>
-          <p>You talk to the people building your site — not a call centre. We move quickly and reply fast, usually within a few hours.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="cta-section">
-    <div class="container">
-      ${eyebrow('Say hello')}
-      <h2>Let's make your business <em>impossible to miss</em></h2>
-      <p>Tell us what you do. We'll send back a free demo of your website — no strings, no payment until it's live.</p>
-      <div class="cta-ctas">
-        <a href="/contact" class="btn btn-honey btn-large" data-link="contact" id="about-cta">Get my free demo ${Icons.arrow}</a>
-        <a href="/work" class="btn btn-ghost-light btn-large" data-link="work" id="about-work-cta">See our work</a>
+        <a href="/contact" class="btn btn-dark btn-large" data-link="contact" id="work-cta">
+          Get in touch ${Icons.arrow}
+        </a>
       </div>
     </div>
   </section>`;
@@ -946,14 +721,14 @@ function AboutPage(): string {
 // ─── Contact Page ─────────────────────────────────────────────────────────────
 function ContactPage(): string {
   return `
-  <div class="page-header" style="text-align:left; padding-bottom:0; background:transparent;">
+  <div class="page-header" style="border-bottom:1px solid var(--border); text-align:left; padding-bottom:0;">
     <div class="container">
       <div class="section-pad">
         <div class="contact-wrap">
           <div class="contact-info reveal">
-            ${eyebrow('Contact')}
-            <h1>Let's build<br><em>something.</em></h1>
-            <p>Tell us about your business — or just ask anything. We respond fast, usually within a few hours. Remember: the first demo is free.</p>
+            <div class="section-label">Contact</div>
+            <h1>Let's build<br>something.</h1>
+            <p>Tell us about your business or just ask anything. We respond fast, usually within a few hours.</p>
             <div class="contact-methods">
               <a href="mailto:officialatlanticbear@gmail.com" class="contact-method">
                 <div class="contact-method-icon">
@@ -986,12 +761,12 @@ function ContactPage(): string {
           </div>
 
           <div class="contact-form-card reveal" style="transition-delay:0.1s;">
-            <h3>Request a free demo</h3>
-            <p>Tell us a little about your business — we'll get back to you within a few hours.</p>
-
+            <h3>Send us a message</h3>
+            <p>We'll get back to you within a few hours.</p>
+            
             <div data-fs-success class="fs-success-msg" style="display:none;">
               <div style="font-size:1.2rem; margin-bottom:4px;">✅</div>
-              <div style="font-size:0.9rem; font-weight:700; color:var(--ink);">Message sent!</div>
+              <div style="font-size:0.9rem; font-weight:700; color:var(--navy);">Message sent!</div>
               <div style="font-size:0.82rem; color:var(--text-muted); margin-top:4px;">We'll get back to you within a few hours — usually faster.</div>
             </div>
             <div data-fs-error class="fs-error-msg"></div>
@@ -1010,7 +785,7 @@ function ContactPage(): string {
               </select>
               <textarea class="form-input form-textarea" id="form-message" name="message" placeholder="Tell us about your business and what you need..." required data-fs-field></textarea>
               <span data-fs-error="message" class="fs-field-error"></span>
-              <button type="submit" class="btn btn-honey btn-block btn-large" id="form-submit-btn" data-fs-submit-btn>
+              <button type="submit" class="btn btn-dark btn-block btn-large" id="form-submit-btn" data-fs-submit-btn>
                 Send message ${Icons.arrow}
               </button>
             </form>
@@ -1022,48 +797,44 @@ function ContactPage(): string {
 }
 
 // ─── Router ───────────────────────────────────────────────────────────────────
-type Page = 'home' | 'level1' | 'level2' | 'work' | 'about' | 'contact';
+type Page = 'home' | 'level1' | 'level2' | 'work' | 'contact';
 
 const pageMap: Record<Page, () => string> = {
   home:    HomePage,
   level1:  Level1Page,
   level2:  Level2Page,
   work:    WorkPage,
-  about:   AboutPage,
   contact: ContactPage,
 };
 
 const pageMeta: Record<Page, { title: string; desc: string }> = {
   home: {
-    title: 'Atlantic Bear | Custom Websites for UAE Businesses — See It Before You Pay',
-    desc: 'Atlantic Bear designs and builds custom websites for UAE businesses — clean, fast, and made to win you customers. We build a free demo first; you only pay once it\'s live.'
+    title: 'Atlantic Bear | Professional Websites for UAE Businesses. Live in 3 Days.',
+    desc: 'Atlantic Bear designs, builds, and launches custom professional websites for UAE businesses. Clean layouts, ultra-fast speeds, built to grow your brand. Live in 3 days, fully managed.'
   },
   level1: {
-    title: 'Level 1: Custom Websites for UAE Small Businesses | Atlantic Bear',
-    desc: 'Affordable, custom-designed websites for cafés, salons, kiosks, and retail shops in the UAE. Tap-to-WhatsApp, reviews, and a free demo before you pay. Live in 7-14 days.'
+    title: 'Level 1 Plan: Custom Websites for UAE Small Businesses | Atlantic Bear',
+    desc: 'Affordable, custom-designed websites for cafés, salons, kiosks, and retail shops in the UAE. Get found online and get direct WhatsApp leads. Live in 7-14 days.'
   },
   level2: {
-    title: 'Level 2: Professional Websites for UAE Practices & Clinics | Atlantic Bear',
-    desc: 'Premium websites built to earn trust for clinics, law firms, dental practices, and consultants in Dubai & the UAE. Local SEO, reviews, and full management included.'
+    title: 'Level 2 Plan: Professional Websites for UAE Practices & Clinics | Atlantic Bear',
+    desc: 'Premium websites built to earn trust for clinics, law firms, dental practices, and consultants in Dubai & UAE. Local SEO and full management included.'
   },
   work: {
     title: 'Our Work | Atlantic Bear Portfolio',
-    desc: 'Custom websites designed and built for UAE businesses — cafés, clinics, law firms, and salons. Clean layouts, mobile-first, and fast.'
-  },
-  about: {
-    title: 'About Atlantic Bear | A UAE Web Studio That Builds First, Bills Later',
-    desc: 'We\'re a small UAE web studio building custom websites for local businesses. We build a free demo first and you only pay once it\'s live and you love it.'
+    desc: 'Explore custom websites designed and developed for UAE businesses. Professional layouts, mobile optimization, and fast load times.'
   },
   contact: {
-    title: 'Contact Atlantic Bear | Request Your Free Website Demo',
-    desc: 'Get in touch with Atlantic Bear. Tell us about your business and we\'ll build a free demo of your website. Fast response in Dubai & the UAE.'
+    title: 'Contact Atlantic Bear | Start Your UAE Website Project',
+    desc: 'Get in touch with Atlantic Bear. Let\'s discuss your business website needs. Fast response and custom layouts in Dubai & UAE.'
   }
 };
 
 function updateMetadata(page: Page) {
   const meta = pageMeta[page] || pageMeta.home;
   document.title = meta.title;
-
+  
+  // Update meta description
   let descTag = document.querySelector('meta[name="description"]');
   if (!descTag) {
     descTag = document.createElement('meta');
@@ -1072,6 +843,7 @@ function updateMetadata(page: Page) {
   }
   descTag.setAttribute('content', meta.desc);
 
+  // Update canonical link
   let canonicalTag = document.querySelector('link[rel="canonical"]');
   if (!canonicalTag) {
     canonicalTag = document.createElement('link');
@@ -1081,6 +853,7 @@ function updateMetadata(page: Page) {
   const canonicalUrl = `${window.location.origin}${page === 'home' ? '' : '/' + page}`;
   canonicalTag.setAttribute('href', canonicalUrl);
 
+  // Update OpenGraph tags
   const ogTags = {
     'og:title': meta.title,
     'og:description': meta.desc,
@@ -1088,6 +861,7 @@ function updateMetadata(page: Page) {
     'og:type': 'website',
     'og:image': `${window.location.origin}/logo.png`
   };
+
   for (const [property, content] of Object.entries(ogTags)) {
     let ogTag = document.querySelector(`meta[property="${property}"]`);
     if (!ogTag) {
@@ -1098,12 +872,14 @@ function updateMetadata(page: Page) {
     ogTag.setAttribute('content', content);
   }
 
+  // Update Twitter Card tags
   const twitterTags = {
     'twitter:card': 'summary_large_image',
     'twitter:title': meta.title,
     'twitter:description': meta.desc,
     'twitter:image': `${window.location.origin}/logo.png`
   };
+
   for (const [name, content] of Object.entries(twitterTags)) {
     let twitterTag = document.querySelector(`meta[name="${name}"]`);
     if (!twitterTag) {
@@ -1117,7 +893,7 @@ function updateMetadata(page: Page) {
 
 function getPageFromPath(path: string): Page {
   const cleanPath = path.replace(/^\/|\/$/g, '');
-  if (cleanPath === 'level1' || cleanPath === 'level2' || cleanPath === 'work' || cleanPath === 'about' || cleanPath === 'contact') {
+  if (cleanPath === 'level1' || cleanPath === 'level2' || cleanPath === 'work' || cleanPath === 'contact') {
     return cleanPath as Page;
   }
   return 'home';
@@ -1142,49 +918,24 @@ function scrollReveal() {
   targets.forEach(t => obs.observe(t));
 }
 
-// ─── Number count-up animation ────────────────────────────────────────────────
-function countUp() {
-  const els = $$('.count');
-  if (prefersReducedMotion()) {
-    els.forEach(el => { el.textContent = el.dataset.to || el.textContent; });
-    return;
-  }
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      const el = e.target as HTMLElement;
-      const to = parseFloat(el.dataset.to || '0');
-      const dur = 1100;
-      const start = performance.now();
-      const step = (now: number) => {
-        const p = Math.min(1, (now - start) / dur);
-        const eased = 1 - Math.pow(1 - p, 3);
-        el.textContent = Math.round(to * eased).toString();
-        if (p < 1) requestAnimationFrame(step);
-        else el.textContent = to.toString();
-      };
-      requestAnimationFrame(step);
-      obs.unobserve(el);
-    });
-  }, { threshold: 0.5 });
-  els.forEach(t => obs.observe(t));
-}
-
 function initFormspree() {
   const form = document.getElementById('contact-form') as HTMLFormElement | null;
   if (!form) return;
 
+  // Initialize formspree ajax
   const script = document.createElement('script');
   script.src = 'https://unpkg.com/@formspree/ajax@1';
   script.defer = true;
   document.head.appendChild(script);
 
+  // Use the formspree global once it's loaded
   script.onload = () => {
     if ((window as any).formspree) {
       (window as any).formspree('initForm', { formElement: '#contact-form', formId: 'mykanvrr' });
     }
   };
 
+  // Fallback: also handle it manually with fetch for reliability
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = document.getElementById('form-submit-btn') as HTMLButtonElement;
@@ -1247,12 +998,12 @@ function navigate(page: Page, pushHistory = true) {
       main.style.transform = 'translateY(0)';
     });
     scrollReveal();
-    countUp();
 
     if (page === 'contact') {
       initFormspree();
     }
 
+    // Load PayPal subscription buttons if present
     if (page === 'level1') {
       loadPayPalSubscriptionButton('paypal-button-container-P-97W753789S6299227NIEYJ3Y', 'P-97W753789S6299227NIEYJ3Y');
       loadPayPalOrderButton('paypal-capture-container-l1', 395.00);
@@ -1279,6 +1030,7 @@ function delegateLinks(root: HTMLElement) {
     const target = (e.target as HTMLElement).closest('[data-link]') as HTMLElement | null;
     if (!target) return;
 
+    // Check if it's a normal click (not cmd+click, middle click, etc.)
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
 
     e.preventDefault();
@@ -1306,6 +1058,7 @@ function initNavScroll() {
 };
 
 // ─── PayPal unified SDK loader ────────────────────────────────────────────────
+// One SDK, one window.paypal, all 4 buttons share it via a queue.
 const PAYPAL_CLIENT_ID = 'ATdtILYx2T5yoKB9AH86nDYMlD4bQ1PnOk_y_SOL3b42qP2E3nTfHlxL1KLFLu9w7Ao9jhTYvk4jfhEB';
 let _ppReady = false;
 const _ppQueue: Array<() => void> = [];
@@ -1316,15 +1069,17 @@ function withPayPal(fn: () => void) {
     return;
   }
   _ppQueue.push(fn);
-  if (document.getElementById('paypal-sdk')) return;
+  if (document.getElementById('paypal-sdk')) return; // already loading
   const s = document.createElement('script');
   s.id = 'paypal-sdk';
+  // vault=true enables subscriptions; no intent= so both createOrder and createSubscription work
   s.src = `https://www.paypal.com/sdk/js?client-id=${PAYPAL_CLIENT_ID}&vault=true&currency=USD&components=buttons`;
   s.onload = () => {
     _ppReady = true;
     _ppQueue.splice(0).forEach(f => f());
   };
   s.onerror = () => {
+    // SDK failed to load — show fallback links in all containers
     document.querySelectorAll<HTMLElement>('.pp-loading').forEach(el => {
       el.innerHTML = `<a href="https://www.paypal.com" target="_blank" rel="noopener" class="btn btn-dark btn-block btn-large" style="margin-top:4px;">Pay via PayPal ↗</a>`;
     });
