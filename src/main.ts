@@ -723,116 +723,57 @@ function WorkPage(): string {
 // ─── Testimonials Page ───────────────────────────────────────────────────────
 function TestimonialsPage(): string {
   return `
-  <!-- CINEMATIC HERO -->
-  <section class="t-hero">
-    <div class="t-hero-content">
-      <div class="t-hero-label">Client Transformations</div>
-      <h1 class="t-hero-title">We don't just build<br>websites. We transform<br>businesses.</h1>
-      <p class="t-hero-sub">See the real before-and-after. One client. One transformation. The results speak for themselves.</p>
-      <div class="t-hero-scroll-hint">
-        <span>Scroll to explore</span>
-        <div class="t-scroll-line"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CLIENT INTRO -->
-  <section class="t-client-section">
-    <div class="t-client-inner reveal">
-      <div class="t-client-eyebrow">Featured Project</div>
-      <h2 class="t-client-name">Sonder Training Group</h2>
-      <p class="t-client-desc">A UK-based career development organisation delivering QCF Level 6 qualifications. Their old website didn't reflect the quality of their programmes — or build trust with prospective students. We changed that.</p>
-    </div>
-  </section>
-
-  <!-- BEFORE — FULL BLEED -->
-  <section class="t-screenshot-section t-before-section">
-    <div class="t-screenshot-header reveal">
-      <div class="t-screenshot-tag t-tag-before">Before</div>
-      <h3 class="t-screenshot-title">This is what their website looked like.</h3>
-      <p class="t-screenshot-desc">Dated layout. No visual hierarchy. No clear call to action. Visitors had no reason to stay — and no reason to trust.</p>
-    </div>
-    <div class="t-screenshot-fullbleed reveal" style="transition-delay:0.1s;">
-      <div class="t-browser-frame">
-        <div class="t-browser-dots">
-          <span></span><span></span><span></span>
-        </div>
-        <div class="t-browser-url">sondertraininggroup.com</div>
-      </div>
-      <img src="/screenshots/sonder-old.png" alt="Sonder Training Group — Original Website" loading="lazy" />
-    </div>
-  </section>
-
-  <!-- AFTER — FULL BLEED -->
-  <section class="t-screenshot-section t-after-section">
-    <div class="t-screenshot-header reveal">
-      <div class="t-screenshot-tag t-tag-after">After</div>
-      <h3 class="t-screenshot-title">This is what we built.</h3>
-      <p class="t-screenshot-desc">Modern, conversion-focused design. Clear navigation, trust signals, professional imagery, and a layout that guides visitors to take action.</p>
-    </div>
-    <div class="t-screenshot-fullbleed reveal" style="transition-delay:0.1s;">
-      <div class="t-browser-frame t-browser-frame-dark">
-        <div class="t-browser-dots">
-          <span></span><span></span><span></span>
-        </div>
-        <div class="t-browser-url">sondertraininggroup.com</div>
-      </div>
-      <img src="/screenshots/sonder-new.png" alt="Sonder Training Group — Redesigned by Atlantic Bear" loading="lazy" />
-    </div>
-  </section>
-
-  <!-- WHAT CHANGED — BIG STATS -->
-  <section class="t-stats-section">
+  <!-- HEADER -->
+  <div class="page-header" style="border-bottom:1px solid var(--border);">
     <div class="container">
-      <h2 class="t-stats-headline reveal">What changed.</h2>
-      <div class="t-stats-grid reveal" style="transition-delay:0.1s;">
-        <div class="t-stat-card">
-          <div class="t-stat-icon">${Icons.palette}</div>
-          <h3>Complete Visual Overhaul</h3>
-          <p>From a basic template to a fully custom, modern design built to reflect professionalism and expertise.</p>
-        </div>
-        <div class="t-stat-card">
-          <div class="t-stat-icon">${Icons.globe}</div>
-          <h3>Fully Responsive</h3>
-          <p>Seamless experience across every screen — desktop, tablet, and mobile. Every pixel considered.</p>
-        </div>
-        <div class="t-stat-card">
-          <div class="t-stat-icon">${Icons.rocket}</div>
-          <h3>Conversion Architecture</h3>
-          <p>Strategic placement of CTAs, credential badges, and trust signals that guide visitors to enquire.</p>
-        </div>
-        <div class="t-stat-card">
-          <div class="t-stat-icon">${Icons.shield}</div>
-          <h3>SEO From Day One</h3>
-          <p>Structured data, proper meta tags, fast loading, and clean code — built for Google from the ground up.</p>
+      <div class="tm-bear-wrap reveal">
+        <img src="/atlanticbear-logo.png" alt="Atlantic Bear" class="tm-bear-logo" />
+      </div>
+      <div class="section-label reveal" style="transition-delay:0.05s;">Client Work</div>
+      <h1 class="reveal" style="transition-delay:0.1s;">Here's one we're proud of.</h1>
+      <p class="reveal" style="transition-delay:0.15s;">We work with businesses across the UK and UAE. This is a look at what we do — one example from our portfolio.</p>
+    </div>
+  </div>
+
+  <!-- BEFORE / AFTER -->
+  <section class="section-pad">
+    <div class="container">
+
+      <!-- BEFORE -->
+      <div class="tm-shot-block reveal">
+        <div class="tm-shot-label tm-label-before">Before</div>
+        <div class="tm-browser">
+          <div class="tm-browser-bar">
+            <span class="tm-dot"></span><span class="tm-dot"></span><span class="tm-dot"></span>
+            <div class="tm-url">sondertraininggroup.com</div>
+          </div>
+          <img src="/screenshots/sonder-old.png" alt="Client website — before" loading="lazy" class="tm-screenshot" />
         </div>
       </div>
+
+      <!-- AFTER -->
+      <div class="tm-shot-block reveal" style="transition-delay:0.08s;">
+        <div class="tm-shot-label tm-label-after">After</div>
+        <div class="tm-browser">
+          <div class="tm-browser-bar">
+            <span class="tm-dot"></span><span class="tm-dot"></span><span class="tm-dot"></span>
+            <div class="tm-url">sondertraininggroup.com</div>
+          </div>
+          <img src="/screenshots/sonder-new.png" alt="Client website — after, built by Atlantic Bear" loading="lazy" class="tm-screenshot" />
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- FULL-WIDTH QUOTE -->
-  <section class="t-quote-section">
-    <div class="t-quote-inner reveal">
-      <div class="t-quote-mark">&ldquo;</div>
-      <blockquote class="t-quote-text">
-        Atlantic Bear completely transformed our online presence. The new website perfectly captures the professionalism and quality of our training programmes. We've seen a genuine increase in enquiries since launch.
-      </blockquote>
-      <div class="t-quote-attribution">
-        <div class="t-quote-line"></div>
-        <div class="t-quote-author">Sonder Training Group</div>
-        <div class="t-quote-role">Career Development Organisation · United Kingdom</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- YOUR TURN CTA -->
-  <section class="t-final-cta">
-    <div class="t-final-cta-inner reveal">
-      <h2 class="t-final-title">Your website could<br>look like this.</h2>
-      <p class="t-final-desc">More transformations are coming. Yours could be next.</p>
-      <div class="t-final-btns">
+  <!-- CTA -->
+  <section class="cta-section" style="border-top:1px solid var(--border);">
+    <div class="container">
+      <h2>Want results like this?</h2>
+      <p>Tell us about your business and let's get started.</p>
+      <div class="cta-ctas">
         <a href="/contact" class="btn btn-dark btn-large" data-link="contact" id="testimonials-cta">
-          Start your project ${Icons.arrow}
+          Get in touch ${Icons.arrow}
         </a>
         <a href="/level2" class="btn btn-secondary btn-large" data-link="level2" id="testimonials-plans-cta">
           View plans
