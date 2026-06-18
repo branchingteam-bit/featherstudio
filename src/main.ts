@@ -44,6 +44,7 @@ function Navbar(): string {
       <a href="/" class="nav-link" data-link="home"    id="nav-home">Home</a>
       <a href="/level1" class="nav-link" data-link="level1"  id="nav-l1">Level 1</a>
       <a href="/level2" class="nav-link" data-link="level2"  id="nav-l2">Level 2</a>
+      <a href="/testimonials" class="nav-link" data-link="testimonials" id="nav-testimonials">Testimonials</a>
       <a href="/contact" class="nav-link" data-link="contact" id="nav-contact">Contact</a>
     </div>
     <div class="nav-actions">
@@ -73,6 +74,7 @@ function Footer(): string {
             <a href="/" data-link="home">Home</a>
             <a href="/level1" data-link="level1">Level 1</a>
             <a href="/level2" data-link="level2">Level 2</a>
+            <a href="/testimonials" data-link="testimonials">Testimonials</a>
             <a href="/contact" data-link="contact">Contact</a>
           </div>
         </div>
@@ -718,6 +720,128 @@ function WorkPage(): string {
   </section>`;
 }
 
+// ─── Testimonials Page ───────────────────────────────────────────────────────
+function TestimonialsPage(): string {
+  return `
+  <!-- CINEMATIC HERO -->
+  <section class="t-hero">
+    <div class="t-hero-content">
+      <div class="t-hero-label">Client Transformations</div>
+      <h1 class="t-hero-title">We don't just build<br>websites. We transform<br>businesses.</h1>
+      <p class="t-hero-sub">See the real before-and-after. One client. One transformation. The results speak for themselves.</p>
+      <div class="t-hero-scroll-hint">
+        <span>Scroll to explore</span>
+        <div class="t-scroll-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENT INTRO -->
+  <section class="t-client-section">
+    <div class="t-client-inner reveal">
+      <div class="t-client-eyebrow">Featured Project</div>
+      <h2 class="t-client-name">Sonder Training Group</h2>
+      <p class="t-client-desc">A UK-based career development organisation delivering QCF Level 6 qualifications. Their old website didn't reflect the quality of their programmes — or build trust with prospective students. We changed that.</p>
+    </div>
+  </section>
+
+  <!-- BEFORE — FULL BLEED -->
+  <section class="t-screenshot-section t-before-section">
+    <div class="t-screenshot-header reveal">
+      <div class="t-screenshot-tag t-tag-before">Before</div>
+      <h3 class="t-screenshot-title">This is what their website looked like.</h3>
+      <p class="t-screenshot-desc">Dated layout. No visual hierarchy. No clear call to action. Visitors had no reason to stay — and no reason to trust.</p>
+    </div>
+    <div class="t-screenshot-fullbleed reveal" style="transition-delay:0.1s;">
+      <div class="t-browser-frame">
+        <div class="t-browser-dots">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="t-browser-url">sondertraininggroup.com</div>
+      </div>
+      <img src="/screenshots/sonder-old.png" alt="Sonder Training Group — Original Website" loading="lazy" />
+    </div>
+  </section>
+
+  <!-- AFTER — FULL BLEED -->
+  <section class="t-screenshot-section t-after-section">
+    <div class="t-screenshot-header reveal">
+      <div class="t-screenshot-tag t-tag-after">After</div>
+      <h3 class="t-screenshot-title">This is what we built.</h3>
+      <p class="t-screenshot-desc">Modern, conversion-focused design. Clear navigation, trust signals, professional imagery, and a layout that guides visitors to take action.</p>
+    </div>
+    <div class="t-screenshot-fullbleed reveal" style="transition-delay:0.1s;">
+      <div class="t-browser-frame t-browser-frame-dark">
+        <div class="t-browser-dots">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="t-browser-url">sondertraininggroup.com</div>
+      </div>
+      <img src="/screenshots/sonder-new.png" alt="Sonder Training Group — Redesigned by Atlantic Bear" loading="lazy" />
+    </div>
+  </section>
+
+  <!-- WHAT CHANGED — BIG STATS -->
+  <section class="t-stats-section">
+    <div class="container">
+      <h2 class="t-stats-headline reveal">What changed.</h2>
+      <div class="t-stats-grid reveal" style="transition-delay:0.1s;">
+        <div class="t-stat-card">
+          <div class="t-stat-icon">${Icons.palette}</div>
+          <h3>Complete Visual Overhaul</h3>
+          <p>From a basic template to a fully custom, modern design built to reflect professionalism and expertise.</p>
+        </div>
+        <div class="t-stat-card">
+          <div class="t-stat-icon">${Icons.globe}</div>
+          <h3>Fully Responsive</h3>
+          <p>Seamless experience across every screen — desktop, tablet, and mobile. Every pixel considered.</p>
+        </div>
+        <div class="t-stat-card">
+          <div class="t-stat-icon">${Icons.rocket}</div>
+          <h3>Conversion Architecture</h3>
+          <p>Strategic placement of CTAs, credential badges, and trust signals that guide visitors to enquire.</p>
+        </div>
+        <div class="t-stat-card">
+          <div class="t-stat-icon">${Icons.shield}</div>
+          <h3>SEO From Day One</h3>
+          <p>Structured data, proper meta tags, fast loading, and clean code — built for Google from the ground up.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FULL-WIDTH QUOTE -->
+  <section class="t-quote-section">
+    <div class="t-quote-inner reveal">
+      <div class="t-quote-mark">&ldquo;</div>
+      <blockquote class="t-quote-text">
+        Atlantic Bear completely transformed our online presence. The new website perfectly captures the professionalism and quality of our training programmes. We've seen a genuine increase in enquiries since launch.
+      </blockquote>
+      <div class="t-quote-attribution">
+        <div class="t-quote-line"></div>
+        <div class="t-quote-author">Sonder Training Group</div>
+        <div class="t-quote-role">Career Development Organisation · United Kingdom</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- YOUR TURN CTA -->
+  <section class="t-final-cta">
+    <div class="t-final-cta-inner reveal">
+      <h2 class="t-final-title">Your website could<br>look like this.</h2>
+      <p class="t-final-desc">More transformations are coming. Yours could be next.</p>
+      <div class="t-final-btns">
+        <a href="/contact" class="btn btn-dark btn-large" data-link="contact" id="testimonials-cta">
+          Start your project ${Icons.arrow}
+        </a>
+        <a href="/level2" class="btn btn-secondary btn-large" data-link="level2" id="testimonials-plans-cta">
+          View plans
+        </a>
+      </div>
+    </div>
+  </section>`;
+}
+
 // ─── Contact Page ─────────────────────────────────────────────────────────────
 function ContactPage(): string {
   return `
@@ -797,14 +921,15 @@ function ContactPage(): string {
 }
 
 // ─── Router ───────────────────────────────────────────────────────────────────
-type Page = 'home' | 'level1' | 'level2' | 'work' | 'contact';
+type Page = 'home' | 'level1' | 'level2' | 'work' | 'contact' | 'testimonials';
 
 const pageMap: Record<Page, () => string> = {
-  home:    HomePage,
-  level1:  Level1Page,
-  level2:  Level2Page,
-  work:    WorkPage,
-  contact: ContactPage,
+  home:         HomePage,
+  level1:       Level1Page,
+  level2:       Level2Page,
+  work:         WorkPage,
+  contact:      ContactPage,
+  testimonials: TestimonialsPage,
 };
 
 const pageMeta: Record<Page, { title: string; desc: string }> = {
@@ -827,6 +952,10 @@ const pageMeta: Record<Page, { title: string; desc: string }> = {
   contact: {
     title: 'Contact Atlantic Bear | Start Your UAE Website Project',
     desc: 'Get in touch with Atlantic Bear. Let\'s discuss your business website needs. Fast response and custom layouts in Dubai & UAE.'
+  },
+  testimonials: {
+    title: 'Client Testimonials & Transformations | Atlantic Bear',
+    desc: 'See real website transformations by Atlantic Bear. Before and after case studies showing how we help businesses across the UAE look professional online.'
   }
 };
 
@@ -893,7 +1022,7 @@ function updateMetadata(page: Page) {
 
 function getPageFromPath(path: string): Page {
   const cleanPath = path.replace(/^\/|\/$/g, '');
-  if (cleanPath === 'level1' || cleanPath === 'level2' || cleanPath === 'work' || cleanPath === 'contact') {
+  if (cleanPath === 'level1' || cleanPath === 'level2' || cleanPath === 'work' || cleanPath === 'contact' || cleanPath === 'testimonials') {
     return cleanPath as Page;
   }
   return 'home';
