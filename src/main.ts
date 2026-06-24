@@ -269,7 +269,7 @@ function HomePage(): string {
           <p class="teaser-pitch">You need to look professional online, get found, and make it easy for customers to reach you — without a big investment.</p>
           <div class="teaser-price">
             <div class="teaser-price-main">AED 1,450</div>
-            <div class="teaser-price-sub">one-time &nbsp;·&nbsp; or AED 150/mo managed</div>
+            <div class="teaser-price-sub">one-time &nbsp;·&nbsp; or AED 2,000 + 150/mo managed</div>
           </div>
           <div class="teaser-pills">
             <span class="teaser-pill">Café</span>
@@ -292,7 +292,7 @@ function HomePage(): string {
           <p class="teaser-pitch">Your business depends on trust. Patients, clients, and customers need to feel confident before they book. This site does that work for you.</p>
           <div class="teaser-price">
             <div class="teaser-price-main">AED 2,950</div>
-            <div class="teaser-price-sub">one-time &nbsp;·&nbsp; or AED 300/mo managed</div>
+            <div class="teaser-price-sub">one-time &nbsp;·&nbsp; or AED 3,500 + 300/mo managed</div>
           </div>
           <div class="teaser-pills">
             <span class="teaser-pill">Clinic</span>
@@ -421,8 +421,8 @@ function Level1Page(): string {
           price: 'AED 150',
           priceAed: 150,
           period: '/month',
-          setupFee: 'AED 1,000',
-          setupAed: 1000,
+          setupFee: 'AED 2,000',
+          setupAed: 2000,
           desc: 'We build it, manage it, and keep it running. You focus on your business, we handle everything online.',
           features: [
             'Full custom design and build',
@@ -560,8 +560,8 @@ function Level2Page(): string {
           price: 'AED 300',
           priceAed: 300,
           period: '/month',
-          setupFee: 'AED 2,200',
-          setupAed: 2200,
+          setupFee: 'AED 3,500',
+          setupAed: 3500,
           desc: 'Full-service management. We design, build, host, and maintain your site so you can focus entirely on your clients.',
           features: [
             'Full custom professional design and setup',
@@ -612,7 +612,7 @@ function Level2Page(): string {
               ['Testimonials section', 'No', 'Yes'],
               ['Google Maps integration', 'No', 'Yes'],
               ['Starting price (one-time)', 'AED 1,450', 'AED 2,950'],
-              ['Managed plan from', 'AED 150/mo', 'AED 300/mo'],
+              ['Managed plan from', 'AED 2,000 + 150/mo', 'AED 3,500 + 300/mo'],
             ]
               .map(([f, l1, l2]) => `<tr>
                 <td>${f}</td>
