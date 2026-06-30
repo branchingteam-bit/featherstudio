@@ -193,7 +193,7 @@ function HomePage(): string {
       <div class="steps-grid">
         <div class="step reveal">
           <div class="step-num">STEP 01</div>
-          <h3>Discovery Call — 20 minutes</h3>
+          <h3>Discovery Call — 30 minutes</h3>
           <p>A quick call where we get to know your business, answer your questions, and figure out exactly what you need.</p>
         </div>
         <div class="step reveal" style="transition-delay:0.1s;">
@@ -203,7 +203,7 @@ function HomePage(): string {
         </div>
         <div class="step reveal" style="transition-delay:0.2s;">
           <div class="step-num">STEP 03</div>
-          <h3>Launch Call — 20 minutes</h3>
+          <h3>Launch Call — 30 minutes</h3>
           <p>We walk you through your finished website, answer any questions, and make sure you are happy with everything before it goes live.</p>
         </div>
       </div>
@@ -246,7 +246,7 @@ function HomePage(): string {
         </div>
         <div class="feature-item reveal" style="display:flex; flex-direction:column; justify-content:center; background:var(--surface);">
           <h3 style="font-size:1.1rem; margin-bottom:8px;">Ready to start?</h3>
-          <p style="margin-bottom:16px; font-size:0.82rem; color:var(--text-muted);">Book your free 20-minute discovery call and get a custom demo website.</p>
+          <p style="margin-bottom:16px; font-size:0.82rem; color:var(--text-muted);">Book your free 30-minute discovery call and get a custom demo website.</p>
           <a href="/booking" class="btn btn-dark btn-sm" data-link="booking" style="align-self:flex-start;">Book a Call ${Icons.arrow}</a>
         </div>
       </div>
@@ -1009,6 +1009,23 @@ function TestimonialsPage(): string {
   <section class="section-pad">
     <div class="container">
 
+      <!-- VIDEO TESTIMONIAL -->
+      <div class="tm-shot-block reveal" style="margin-bottom: 64px;">
+        <div class="tm-shot-label tm-label-after">Video Review</div>
+        <div class="tm-browser">
+          <div class="tm-browser-bar">
+            <span class="tm-dot"></span><span class="tm-dot"></span><span class="tm-dot"></span>
+            <div class="tm-url">sondertraininggroup.com</div>
+          </div>
+          <div style="background: #000; display: flex; justify-content: center; align-items: center; overflow: hidden;">
+            <video controls style="width: 100%; display: block; border: none; aspect-ratio: 16/9; object-fit: contain;">
+              <source src="/testimonials/sonder%20training%20group%20testimonial.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+
       <!-- BEFORE -->
       <div class="tm-shot-block reveal">
         <div class="tm-shot-label tm-label-before">Before</div>
@@ -1157,7 +1174,7 @@ function BookingPage(): string {
               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </div>
             <span class="video-placeholder-title">Atlantic Bear — Process Overview</span>
-            <span class="video-placeholder-duration">Video coming soon (2:30)</span>
+            <span class="video-placeholder-duration">Play Video</span>
           </div>
         </div>
 
@@ -1180,23 +1197,24 @@ function BookingPage(): string {
           </div>
         </div>
 
-        <!-- STEP 3: TESTIMONIALS / SAMPLES -->
+        <!-- STEP 3: VIDEO TESTIMONIAL -->
         <div class="booking-step-card reveal" style="transition-delay: 0.2s;">
           <div class="booking-step-header">
-            <h2 class="booking-step-title">Step 3: See the results we deliver</h2>
+            <h2 class="booking-step-title">Step 3: Listen to what our clients have to say</h2>
           </div>
           
           <div class="booking-testimonials-wrap">
-            <!-- BEFORE -->
-            <div class="tm-shot-block">
-              <div class="tm-shot-label tm-label-before" style="font-size: 1rem; margin-bottom: 12px;">Before (Old Website)</div>
-              <img src="/screenshots/sonder-old.png" alt="Client website — before" loading="lazy" style="width: 100%; border-radius: 12px; border: 1px solid var(--border); box-shadow: var(--shadow-md);" />
-            </div>
-
-            <!-- AFTER -->
-            <div class="tm-shot-block">
-              <div class="tm-shot-label tm-label-after" style="font-size: 1rem; margin-bottom: 12px;">After (Redesigned by Atlantic Bear)</div>
-              <img src="/screenshots/sonder-new.png" alt="Client website — after" loading="lazy" style="width: 100%; border-radius: 12px; border: 1px solid var(--border); box-shadow: var(--shadow-lg);" />
+            <div class="tm-browser" style="margin-top: 16px;">
+              <div class="tm-browser-bar">
+                <span class="tm-dot"></span><span class="tm-dot"></span><span class="tm-dot"></span>
+                <div class="tm-url">sondertraininggroup.com</div>
+              </div>
+              <div style="background: #000; display: flex; justify-content: center; align-items: center; overflow: hidden;">
+                <video controls style="width: 100%; display: block; border: none; aspect-ratio: 16/9; object-fit: contain;">
+                  <source src="/testimonials/sonder%20training%20group%20testimonial.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
             </div>
           </div>
         </div>
@@ -1252,7 +1270,7 @@ const pageMeta: Record<Page, { title: string; desc: string }> = {
   },
   booking: {
     title: 'Book a Call | Atlantic Bear Discovery Session',
-    desc: 'Watch our video, schedule your free 20-minute discovery call, and view our client success stories. Start your UAE website project today.'
+    desc: 'Watch our video, schedule your free 30-minute discovery call, and view our client success stories. Start your UAE website project today.'
   }
 };
 
@@ -1447,6 +1465,25 @@ function loadCalendlyWidget() {
   document.head.appendChild(script);
 }
 
+// ─── Booking Page Video Loader ────────────────────────────────────────────────
+function initBookingPageVideo() {
+  const container = document.getElementById('video-placeholder-container');
+  if (!container) return;
+
+  container.addEventListener('click', () => {
+    container.classList.add('playing');
+    container.innerHTML = `
+      <iframe src="https://www.loom.com/embed/6664d2eeb90a40caa58284dffb395568?autoplay=1" 
+              frameborder="0" 
+              webkitallowfullscreen 
+              mozallowfullscreen 
+              allowfullscreen 
+              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; display: block;">
+      </iframe>
+    `;
+  });
+}
+
 function navigate(page: Page, pushHistory = true) {
   const main = $('#main-content')!;
   main.style.opacity = '0';
@@ -1469,6 +1506,7 @@ function navigate(page: Page, pushHistory = true) {
 
     if (page === 'booking') {
       loadCalendlyWidget();
+      initBookingPageVideo();
     }
 
     // Load PayPal one-time buttons if present

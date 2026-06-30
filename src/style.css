@@ -1571,3 +1571,11 @@ h1, h2, h3, h4 {
     font-size: 1.8rem;
   }
 }
+
+.video-box-placeholder.playing::before {
+  display: none;
+}
+.video-box-placeholder.playing {
+  cursor: default;
+  transform: none !important;
+}
