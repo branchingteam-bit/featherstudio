@@ -2,21 +2,21 @@
 
 /* ─── Design Tokens ──────────────────────────────────────────────── */
 :root {
-  --blue:        #37475b;
-  --blue-hover:  #2b3847;
-  --navy:        #0a0a0a;
-  --text:        #0a0a0a;
-  --text-dim:    #0a0a0a;
-  --text-muted:  rgba(10,10,10,0.52);
+  --blue:        #3b69ff;
+  --blue-hover:  #1f53ff;
+  --navy:        #000000;
+  --text:        #000000;
+  --text-dim:    #000000;
+  --text-muted:  rgba(0,0,0,0.52);
   --white:       #FFFFFF;
-  --surface:     #f6f6f6;
-  --border:      rgba(0,0,0,0.09);
+  --surface:     #f9f9f9;
+  --border:      rgba(0,0,0,0.08);
   --border-mid:  rgba(0,0,0,0.16);
   --red:         #c1121f;
-  --whatsapp:    #25D366;
-  /* brand accent = the slate blue */
-  --accent:      #37475b;
-  --accent-dark: #2b3847;
+  --whatsapp:    #3b69ff;
+  /* brand accent = the brand blue */
+  --accent:      #3b69ff;
+  --accent-dark: #1f53ff;
   --font:        'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
   --r-sm:        6px;
   --r-md:        10px;
@@ -272,7 +272,7 @@ h1, h2, h3, h4 {
 .marquee-num {
   font-size: 1.05rem;
   font-weight: 800;
-  color: var(--accent);
+  color: var(--navy);
   letter-spacing: -0.02em;
 }
 .marquee-desc {
@@ -710,11 +710,11 @@ h1, h2, h3, h4 {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 16px rgba(37,211,102,.4);
+  box-shadow: 0 4px 16px rgba(59,105,255,0.4);
   z-index: 200;
   transition: var(--ease);
 }
-#whatsapp-fab:hover { transform: scale(1.08); box-shadow: 0 6px 20px rgba(37,211,102,.5); }
+#whatsapp-fab:hover { transform: scale(1.08); box-shadow: 0 6px 20px rgba(59,105,255,0.5); }
 #whatsapp-fab svg { width: 28px; height: 28px; }
 
 /* ─── Text utilities ─────────────────────────────────────────────── */
@@ -978,9 +978,9 @@ h1, h2, h3, h4 {
 }
 .teasers-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -1015,6 +1015,19 @@ h1, h2, h3, h4 {
 .level-two-card h3 { color: #fff !important; }
 .level-two-card p { color: rgba(255,255,255,0.75) !important; }
 
+.level-three-card {
+  background: linear-gradient(135deg, #090e1a 0%, #111a30 100%);
+  border: 1px solid rgba(59,105,255,0.3);
+  box-shadow: 0 12px 40px rgba(59,105,255,0.15);
+}
+.level-three-card:hover {
+  border-color: var(--blue);
+  box-shadow: 0 16px 48px rgba(59,105,255,0.25);
+  transform: translateY(-3px);
+}
+.level-three-card h3 { color: #fff !important; }
+.level-three-card p { color: rgba(255,255,255,0.75) !important; }
+
 /* Level tag inside card */
 .teaser-level-tag {
   display: flex;
@@ -1030,6 +1043,7 @@ h1, h2, h3, h4 {
   font-variant-numeric: tabular-nums;
 }
 .level-two-card .teaser-level-num { color: rgba(255,255,255,0.35); }
+.level-three-card .teaser-level-num { color: rgba(59,105,255,0.6); }
 .teaser-level-name {
   font-size: 0.7rem;
   font-weight: 700;
@@ -1038,6 +1052,7 @@ h1, h2, h3, h4 {
   color: var(--text-muted);
 }
 .level-two-card .teaser-level-name { color: rgba(255,255,255,0.45); }
+.level-three-card .teaser-level-name { color: var(--blue); }
 
 .teaser-card h3 {
   font-size: 1.6rem;
@@ -1210,9 +1225,11 @@ h1, h2, h3, h4 {
 }
 .level-one-card .teaser-price-main { color: var(--navy); }
 .level-two-card .teaser-price-main { color: #fff; }
+.level-three-card .teaser-price-main { color: #fff; }
 .teaser-price-sub { font-size: 0.75rem; font-weight: 500; margin-top: 4px; }
 .level-one-card .teaser-price-sub { color: rgba(0,0,0,.4); }
 .level-two-card .teaser-price-sub { color: rgba(255,255,255,.4); }
+.level-three-card .teaser-price-sub { color: rgba(255,255,255,.4); }
 
 .teaser-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 28px; }
 .teaser-pill {
@@ -1230,6 +1247,11 @@ h1, h2, h3, h4 {
   background: rgba(255,255,255,.1);
   color: rgba(255,255,255,.8);
   border: 1px solid rgba(255,255,255,.15);
+}
+.level-three-card .teaser-pill {
+  background: rgba(59,105,255,.15);
+  color: #8fa6ff;
+  border: 1px solid rgba(59,105,255,.25);
 }
 
 /* ─── Real Difference block ──────────────────────────────────────── */
@@ -1400,4 +1422,152 @@ h1, h2, h3, h4 {
 @media (max-width: 640px) {
   .tm-bear-logo { width: 64px; height: 64px; }
   .tm-shot-block { margin-bottom: 40px; }
+}
+
+/* ─── Booking Page Styles ────────────────────────────────────────── */
+.booking-section {
+  padding: 64px 0 96px;
+}
+.booking-steps-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 88px;
+  max-width: 1060px; /* Match standard site container width */
+  margin: 0 auto;
+}
+.booking-step-card {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 24px 0;
+  position: relative;
+  transition: var(--ease);
+}
+.booking-step-header {
+  margin-bottom: 24px;
+}
+.booking-step-num-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.booking-step-title {
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: -0.035em;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.booking-step-desc {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* Step 1: Video Placeholder */
+.video-box-placeholder {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #000000;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-lg);
+  transition: var(--ease);
+}
+.video-box-placeholder:hover {
+  transform: scale(1.005);
+  box-shadow: var(--shadow-lg);
+}
+.video-box-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%);
+  z-index: 1;
+}
+.video-play-btn {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  color: #ffffff;
+  transition: var(--ease);
+  box-shadow: 0 6px 24px rgba(59,105,255,0.4);
+}
+.video-box-placeholder:hover .video-play-btn {
+  background: var(--accent-dark);
+  transform: scale(1.08);
+  box-shadow: 0 8px 32px rgba(59,105,255,0.6);
+}
+.video-play-btn svg {
+  width: 32px;
+  height: 32px;
+  fill: currentColor;
+  margin-left: 6px;
+}
+.video-placeholder-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 24px;
+  z-index: 2;
+  letter-spacing: -0.01em;
+}
+.video-placeholder-duration {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.6);
+  margin-top: 6px;
+  z-index: 2;
+}
+
+/* Step 2: Calendly */
+.calendly-widget-wrap {
+  width: 100%;
+  background: transparent;
+  min-height: 900px; /* Increased height to avoid inner scroll/cropping */
+}
+.fallback-calendly-link-wrap {
+  margin-top: 24px;
+  text-align: center;
+}
+.fallback-calendly-link {
+  font-size: 0.95rem;
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.fallback-calendly-link:hover {
+  color: var(--accent-dark);
+}
+
+/* Step 3: Testimonials before/after (huge stacked images) */
+.booking-testimonials-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .booking-step-card {
+    padding: 16px 0;
+  }
+  .booking-step-title {
+    font-size: 1.8rem;
+  }
 }
