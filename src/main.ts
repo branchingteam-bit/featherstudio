@@ -153,34 +153,30 @@ function HomePage(): string {
     </div>
   </section>
 
-  <!-- FEATURES SECTION -->
+  <!-- THE PROBLEM SECTION -->
   <section class="problem-section" style="border-bottom: 1px solid var(--border);">
     <div class="container">
-      <div class="section-header reveal">
-        <div class="section-label">Features</div>
-        <h2 class="section-title">A website that actually works for your business</h2>
-        <p class="section-sub">Get a website that turns visitors into real enquiries — calls, WhatsApp messages, and form submissions that come straight to you.</p>
-      </div>
-      <div class="feature-grid">
-        <div class="feature-item reveal">
-          <div class="feature-icon-wrap">${Icons.globe}</div>
-          <h3>Get found on Google</h3>
-          <p>If someone searches for your business and nothing comes up, they call your competitor. We make sure that does not happen.</p>
+      <h2 class="problem-headline reveal">
+        Every day without a website is a customer you <span class="text-red">didn't know you lost</span>.
+      </h2>
+      <div class="problem-grid">
+        <div class="problem-card reveal">
+          <h3>They searched. They didn't find you.</h3>
+          <p>
+            Most people look up a business online before they visit or call. If nothing comes up, or what comes up looks bad, they move on. Simple as that.
+          </p>
         </div>
-        <div class="feature-item reveal">
-          <div class="feature-icon-wrap">${Icons.star}</div>
-          <h3>Show off your best reviews</h3>
-          <p>Every business has a bad review somewhere. We put your best ones front and centre so that is what people see first.</p>
+        <div class="problem-card reveal" style="transition-delay:0.1s;">
+          <h3>Your competitor got the client. Not you.</h3>
+          <p>
+            When two similar businesses show up online and one has a clean professional website, the choice is obvious. Customers always go with whoever looks more trustworthy.
+          </p>
         </div>
-        <div class="feature-item reveal">
-          <div class="feature-icon-wrap">${Icons.phone}</div>
-          <h3>Built for mobile</h3>
-          <p>87% of people visit websites on their phone. We make sure your business looks exactly right on every screen.</p>
-        </div>
-        <div class="feature-item reveal">
-          <div class="feature-icon-wrap">${Icons.map}</div>
-          <h3>Local SEO included</h3>
-          <p>We set up your website so Google knows where you are, what you do, and who to show you to.</p>
+        <div class="problem-card reveal" style="transition-delay:0.2s;">
+          <h3>You don't have time to deal with this.</h3>
+          <p>
+            You're running a business. Building a website, figuring out hosting, dealing with technical problems, that's not why you got into this. It shouldn't be your problem.
+          </p>
         </div>
       </div>
     </div>
@@ -224,29 +220,29 @@ function HomePage(): string {
       </div>
       <div class="feature-grid">
         <div class="feature-item reveal">
-          <div class="feature-icon-wrap">${Icons.zap}</div>
-          <h3>Simple</h3>
-          <p>Everything we build is designed to be easy to understand and easy to use. No tech knowledge needed.</p>
+          <div class="feature-icon-wrap">${Icons.globe}</div>
+          <h3>Get found on Google</h3>
+          <p>If someone searches for your business and nothing comes up, they call your competitor. We make sure that does not happen.</p>
         </div>
         <div class="feature-item reveal">
-          <div class="feature-icon-wrap">${Icons.check}</div>
-          <h3>Affordable</h3>
-          <p>Our prices are low compared to competitors.</p>
+          <div class="feature-icon-wrap">${Icons.star}</div>
+          <h3>Show off your best reviews</h3>
+          <p>Every business has a bad review somewhere. We put your best ones front and centre so that is what people see first.</p>
+        </div>
+        <div class="feature-item reveal">
+          <div class="feature-icon-wrap">${Icons.map}</div>
+          <h3>Local SEO included</h3>
+          <p>We set up your website so Google knows where you are, what you do, and who to show you to.</p>
+        </div>
+        <div class="feature-item reveal">
+          <div class="feature-icon-wrap">${Icons.phone}</div>
+          <h3>Built for mobile</h3>
+          <p>87% of people visit websites on their phone. We make sure your business looks exactly right on every screen.</p>
         </div>
         <div class="feature-item reveal">
           <div class="feature-icon-wrap">${Icons.rocket}</div>
           <h3>No contracts</h3>
           <p>If we do good work, you will stay. We do not need a contract to make that happen.</p>
-        </div>
-        <div class="feature-item reveal">
-          <div class="feature-icon-wrap">${Icons.shield}</div>
-          <h3>No nonsense</h3>
-          <p>We tell you exactly what we are going to do and we do it. No fluff, no surprises.</p>
-        </div>
-        <div class="feature-item reveal">
-          <div class="feature-icon-wrap">${Icons.star}</div>
-          <h3>We have proof</h3>
-          <p>We back everything up with real results from real clients.</p>
         </div>
         <div class="feature-item reveal" style="display:flex; flex-direction:column; justify-content:center; background:var(--surface);">
           <h3 style="font-size:1.1rem; margin-bottom:8px;">Ready to start?</h3>
@@ -346,8 +342,8 @@ function HomePage(): string {
           <h3>Small Business</h3>
           <p class="teaser-pitch">You need to look professional online, get found, and make it easy for customers to reach you — without a big investment.</p>
           <div class="teaser-price">
-            <div class="teaser-price-main">AED 1,450</div>
-            <div class="teaser-price-sub">one-time &nbsp;·&nbsp; or AED 2,000 + 150/mo managed</div>
+            <div class="teaser-price-main">AED 2,000</div>
+            <div class="teaser-price-sub">+ AED 150/mo managed</div>
           </div>
           <div class="teaser-pills">
             <span class="teaser-pill">Café</span>
@@ -369,8 +365,8 @@ function HomePage(): string {
           <h3>Professional</h3>
           <p class="teaser-pitch">Your business depends on trust. Patients, clients, and customers need to feel confident before they book. This site does that work for you.</p>
           <div class="teaser-price">
-            <div class="teaser-price-main">AED 2,950</div>
-            <div class="teaser-price-sub">one-time &nbsp;·&nbsp; or AED 3,500 + 300/mo managed</div>
+            <div class="teaser-price-main">AED 3,500</div>
+            <div class="teaser-price-sub">+ AED 300/mo managed</div>
           </div>
           <div class="teaser-pills">
             <span class="teaser-pill">Clinic</span>
@@ -392,8 +388,8 @@ function HomePage(): string {
           <h3>Elite Brand & SEO</h3>
           <p class="teaser-pitch">For businesses needing elite branding, best-of-the-best SEO, up to 20 pages, dynamic media, blog setup, and priority developers.</p>
           <div class="teaser-price">
-            <div class="teaser-price-main">AED 300<span style="font-size:1rem; font-weight:500; opacity:0.7;">/mo</span></div>
-            <div class="teaser-price-sub">AED 7,950 setup &nbsp;·&nbsp; Managed plan only</div>
+            <div class="teaser-price-main">AED 7,950</div>
+            <div class="teaser-price-sub">+ AED 300/mo managed</div>
           </div>
           <div class="teaser-pills">
             <span class="teaser-pill">High Growth</span>
@@ -407,22 +403,6 @@ function HomePage(): string {
         </div>
 
       </div>
-
-      <!-- The real difference -->
-      <div class="real-diff-block reveal">
-        <div class="real-diff-side">
-          <div class="real-diff-tag tag-one">Level 1</div>
-          <h4>Level 1 is about being <em>found</em></h4>
-          <p>A customer walks past your café or sees your shop. They Google you before coming in. Level 1 makes sure they find a clean, professional site — and tap to WhatsApp you immediately.</p>
-        </div>
-        <div class="real-diff-divider"></div>
-        <div class="real-diff-side">
-          <div class="real-diff-tag tag-two">Level 2</div>
-          <h4>Level 2 is about being <em>trusted</em></h4>
-          <p>Someone needs a dentist or lawyer. They spend 10 minutes reading about you before they ever call. Level 2 gives them the team page, the credentials, the reviews, and the reassurance they need to book.</p>
-        </div>
-      </div>
-      <p class="real-diff-note">Not sure which level? <strong>Start with Level 1</strong> — you can always upgrade later and we credit previous payments toward your new plan.</p>
 
     </div>
   </section>

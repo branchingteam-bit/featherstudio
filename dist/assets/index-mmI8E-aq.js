@@ -1,4 +1,4 @@
-(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const o of document.querySelectorAll('link[rel="modulepreload"]'))i(o);new MutationObserver(o=>{for(const n of o)if(n.type==="childList")for(const l of n.addedNodes)l.tagName==="LINK"&&l.rel==="modulepreload"&&i(l)}).observe(document,{childList:!0,subtree:!0});function s(o){const n={};return o.integrity&&(n.integrity=o.integrity),o.referrerPolicy&&(n.referrerPolicy=o.referrerPolicy),o.crossOrigin==="use-credentials"?n.credentials="include":o.crossOrigin==="anonymous"?n.credentials="omit":n.credentials="same-origin",n}function i(o){if(o.ep)return;o.ep=!0;const n=s(o);fetch(o.href,n)}})();const h=(e,t=document)=>t.querySelector(e),w=(e,t=document)=>[...t.querySelectorAll(e)],E=.2723,v=e=>`<span class="price-usd">approx. $${(e*E).toFixed(0)} USD</span>`,a={arrow:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="2" y1="8" x2="13" y2="8"/><polyline points="9,4 13,8 9,12"/></svg>',check:'<svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,5.5 3.8,8 8.5,2"/></svg>',globe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',phone:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.79a19.79 19.79 0 01-3.07-8.7A2 2 0 012 0h3a2 2 0 012 1.72c.12.96.36 1.9.69 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.33 1.85.57 2.81.69A2 2 0 0122 16.92z"/></svg>',mail:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',map:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>',star:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>',zap:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"/></svg>',shield:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',palette:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>',wrench:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>',rocket:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2 .27-2.98-.31-3.5c-.56-.52-1.43-.8-2.69.5z"/><path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>',code:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16,18 22,12 16,6"/><polyline points="8,6 2,12 8,18"/></svg>',instagram:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>'},A=()=>`<span class="check-icon">${a.check}</span>`;function S(){return`
+(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const o of document.querySelectorAll('link[rel="modulepreload"]'))a(o);new MutationObserver(o=>{for(const n of o)if(n.type==="childList")for(const l of n.addedNodes)l.tagName==="LINK"&&l.rel==="modulepreload"&&a(l)}).observe(document,{childList:!0,subtree:!0});function s(o){const n={};return o.integrity&&(n.integrity=o.integrity),o.referrerPolicy&&(n.referrerPolicy=o.referrerPolicy),o.crossOrigin==="use-credentials"?n.credentials="include":o.crossOrigin==="anonymous"?n.credentials="omit":n.credentials="same-origin",n}function a(o){if(o.ep)return;o.ep=!0;const n=s(o);fetch(o.href,n)}})();const h=(e,t=document)=>t.querySelector(e),w=(e,t=document)=>[...t.querySelectorAll(e)],E=.2723,v=e=>`<span class="price-usd">approx. $${(e*E).toFixed(0)} USD</span>`,i={arrow:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="2" y1="8" x2="13" y2="8"/><polyline points="9,4 13,8 9,12"/></svg>',check:'<svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,5.5 3.8,8 8.5,2"/></svg>',globe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',phone:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.79a19.79 19.79 0 01-3.07-8.7A2 2 0 012 0h3a2 2 0 012 1.72c.12.96.36 1.9.69 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.33 1.85.57 2.81.69A2 2 0 0122 16.92z"/></svg>',mail:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',map:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>',star:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>',zap:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"/></svg>',shield:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',palette:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>',wrench:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>',rocket:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2 .27-2.98-.31-3.5c-.56-.52-1.43-.8-2.69.5z"/><path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>',code:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16,18 22,12 16,6"/><polyline points="8,6 2,12 8,18"/></svg>',instagram:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>'},A=()=>`<span class="check-icon">${i.check}</span>`;function S(){return`
   <nav class="nav" id="main-nav">
     <a href="/" class="logo" data-link="home" id="logo-btn">
       <span class="logo-wordmark">Atlantic</span>
@@ -14,7 +14,7 @@
     </div>
     <div class="nav-actions">
       <a href="/contact" class="btn btn-secondary btn-sm" data-link="contact" id="nav-contact-cta">Contact</a>
-      <a href="/booking" class="btn btn-dark btn-sm" data-link="booking" id="nav-book-cta">Book a Call ${a.arrow}</a>
+      <a href="/booking" class="btn btn-dark btn-sm" data-link="booking" id="nav-book-cta">Book a Call ${i.arrow}</a>
     </div>
   </nav>`}function x(){return`
   <footer class="site-footer">
@@ -52,7 +52,7 @@
         <span>Dubai, UAE</span>
       </div>
     </div>
-  </footer>`}function C(){const e=[{num:"3 Days",desc:"From kick-off to live"},{num:"100%",desc:"Mobile responsive"},{num:"Fully Custom",desc:"No templates, ever"},{num:"3+ Years",desc:"Building in the UAE"},{num:"81%",desc:"Of customers research online first"},{num:"SEO Ready",desc:"Google-optimised from day one"}],t=()=>e.map(i=>`<span class="marquee-badge"><span class="marquee-num">${i.num}</span><span class="marquee-desc">${i.desc}</span></span><span class="marquee-sep">·</span>`).join(""),s=t()+t()+t()+t();return`
+  </footer>`}function C(){const e=[{num:"3 Days",desc:"From kick-off to live"},{num:"100%",desc:"Mobile responsive"},{num:"Fully Custom",desc:"No templates, ever"},{num:"3+ Years",desc:"Building in the UAE"},{num:"81%",desc:"Of customers research online first"},{num:"SEO Ready",desc:"Google-optimised from day one"}],t=()=>e.map(a=>`<span class="marquee-badge"><span class="marquee-num">${a.num}</span><span class="marquee-desc">${a.desc}</span></span><span class="marquee-sep">·</span>`).join(""),s=t()+t()+t()+t();return`
   <!-- HERO -->
   <section class="hero" style="position: relative; overflow: hidden;">
     <img src="/atlanticbear-logo.png" class="huge-bear" alt="Atlantic Bear Watermark" fetchpriority="high" width="600" height="600" />
@@ -63,7 +63,7 @@
       </p>
       <div class="hero-ctas">
         <a href="/booking" class="btn btn-dark btn-large" data-link="booking" id="hero-cta-book">
-          Book a Call ${a.arrow}
+          Book a Call ${i.arrow}
         </a>
         <a href="/level2" class="btn btn-secondary btn-large" data-link="level2" id="hero-cta-plans">
           View Plans
@@ -89,34 +89,30 @@
     </div>
   </section>
 
-  <!-- FEATURES SECTION -->
+  <!-- THE PROBLEM SECTION -->
   <section class="problem-section" style="border-bottom: 1px solid var(--border);">
     <div class="container">
-      <div class="section-header reveal">
-        <div class="section-label">Features</div>
-        <h2 class="section-title">A website that actually works for your business</h2>
-        <p class="section-sub">Get a website that turns visitors into real enquiries — calls, WhatsApp messages, and form submissions that come straight to you.</p>
-      </div>
-      <div class="feature-grid">
-        <div class="feature-item reveal">
-          <div class="feature-icon-wrap">${a.globe}</div>
-          <h3>Get found on Google</h3>
-          <p>If someone searches for your business and nothing comes up, they call your competitor. We make sure that does not happen.</p>
+      <h2 class="problem-headline reveal">
+        Every day without a website is a customer you <span class="text-red">didn't know you lost</span>.
+      </h2>
+      <div class="problem-grid">
+        <div class="problem-card reveal">
+          <h3>They searched. They didn't find you.</h3>
+          <p>
+            Most people look up a business online before they visit or call. If nothing comes up, or what comes up looks bad, they move on. Simple as that.
+          </p>
         </div>
-        <div class="feature-item reveal">
-          <div class="feature-icon-wrap">${a.star}</div>
-          <h3>Show off your best reviews</h3>
-          <p>Every business has a bad review somewhere. We put your best ones front and centre so that is what people see first.</p>
+        <div class="problem-card reveal" style="transition-delay:0.1s;">
+          <h3>Your competitor got the client. Not you.</h3>
+          <p>
+            When two similar businesses show up online and one has a clean professional website, the choice is obvious. Customers always go with whoever looks more trustworthy.
+          </p>
         </div>
-        <div class="feature-item reveal">
-          <div class="feature-icon-wrap">${a.phone}</div>
-          <h3>Built for mobile</h3>
-          <p>87% of people visit websites on their phone. We make sure your business looks exactly right on every screen.</p>
-        </div>
-        <div class="feature-item reveal">
-          <div class="feature-icon-wrap">${a.map}</div>
-          <h3>Local SEO included</h3>
-          <p>We set up your website so Google knows where you are, what you do, and who to show you to.</p>
+        <div class="problem-card reveal" style="transition-delay:0.2s;">
+          <h3>You don't have time to deal with this.</h3>
+          <p>
+            You're running a business. Building a website, figuring out hosting, dealing with technical problems, that's not why you got into this. It shouldn't be your problem.
+          </p>
         </div>
       </div>
     </div>
@@ -160,34 +156,34 @@
       </div>
       <div class="feature-grid">
         <div class="feature-item reveal">
-          <div class="feature-icon-wrap">${a.zap}</div>
-          <h3>Simple</h3>
-          <p>Everything we build is designed to be easy to understand and easy to use. No tech knowledge needed.</p>
+          <div class="feature-icon-wrap">${i.globe}</div>
+          <h3>Get found on Google</h3>
+          <p>If someone searches for your business and nothing comes up, they call your competitor. We make sure that does not happen.</p>
         </div>
         <div class="feature-item reveal">
-          <div class="feature-icon-wrap">${a.check}</div>
-          <h3>Affordable</h3>
-          <p>Our prices are low compared to competitors.</p>
+          <div class="feature-icon-wrap">${i.star}</div>
+          <h3>Show off your best reviews</h3>
+          <p>Every business has a bad review somewhere. We put your best ones front and centre so that is what people see first.</p>
         </div>
         <div class="feature-item reveal">
-          <div class="feature-icon-wrap">${a.rocket}</div>
+          <div class="feature-icon-wrap">${i.map}</div>
+          <h3>Local SEO included</h3>
+          <p>We set up your website so Google knows where you are, what you do, and who to show you to.</p>
+        </div>
+        <div class="feature-item reveal">
+          <div class="feature-icon-wrap">${i.phone}</div>
+          <h3>Built for mobile</h3>
+          <p>87% of people visit websites on their phone. We make sure your business looks exactly right on every screen.</p>
+        </div>
+        <div class="feature-item reveal">
+          <div class="feature-icon-wrap">${i.rocket}</div>
           <h3>No contracts</h3>
           <p>If we do good work, you will stay. We do not need a contract to make that happen.</p>
-        </div>
-        <div class="feature-item reveal">
-          <div class="feature-icon-wrap">${a.shield}</div>
-          <h3>No nonsense</h3>
-          <p>We tell you exactly what we are going to do and we do it. No fluff, no surprises.</p>
-        </div>
-        <div class="feature-item reveal">
-          <div class="feature-icon-wrap">${a.star}</div>
-          <h3>We have proof</h3>
-          <p>We back everything up with real results from real clients.</p>
         </div>
         <div class="feature-item reveal" style="display:flex; flex-direction:column; justify-content:center; background:var(--surface);">
           <h3 style="font-size:1.1rem; margin-bottom:8px;">Ready to start?</h3>
           <p style="margin-bottom:16px; font-size:0.82rem; color:var(--text-muted);">Book your free 20-minute discovery call and get a custom demo website.</p>
-          <a href="/booking" class="btn btn-dark btn-sm" data-link="booking" style="align-self:flex-start;">Book a Call ${a.arrow}</a>
+          <a href="/booking" class="btn btn-dark btn-sm" data-link="booking" style="align-self:flex-start;">Book a Call ${i.arrow}</a>
         </div>
       </div>
     </div>
@@ -282,8 +278,8 @@
           <h3>Small Business</h3>
           <p class="teaser-pitch">You need to look professional online, get found, and make it easy for customers to reach you — without a big investment.</p>
           <div class="teaser-price">
-            <div class="teaser-price-main">AED 1,450</div>
-            <div class="teaser-price-sub">one-time &nbsp;·&nbsp; or AED 2,000 + 150/mo managed</div>
+            <div class="teaser-price-main">AED 2,000</div>
+            <div class="teaser-price-sub">+ AED 150/mo managed</div>
           </div>
           <div class="teaser-pills">
             <span class="teaser-pill">Café</span>
@@ -292,7 +288,7 @@
             <span class="teaser-pill">Kiosk</span>
           </div>
           <a href="/level1" class="teaser-btn teaser-btn-dark" data-link="level1" id="home-l1-cta">
-            Explore Level 1 ${a.arrow}
+            Explore Level 1 ${i.arrow}
           </a>
         </div>
 
@@ -305,8 +301,8 @@
           <h3>Professional</h3>
           <p class="teaser-pitch">Your business depends on trust. Patients, clients, and customers need to feel confident before they book. This site does that work for you.</p>
           <div class="teaser-price">
-            <div class="teaser-price-main">AED 2,950</div>
-            <div class="teaser-price-sub">one-time &nbsp;·&nbsp; or AED 3,500 + 300/mo managed</div>
+            <div class="teaser-price-main">AED 3,500</div>
+            <div class="teaser-price-sub">+ AED 300/mo managed</div>
           </div>
           <div class="teaser-pills">
             <span class="teaser-pill">Clinic</span>
@@ -315,7 +311,7 @@
             <span class="teaser-pill">Consultant</span>
           </div>
           <a href="/level2" class="teaser-btn teaser-btn-outline" data-link="level2" id="home-l2-cta">
-            Explore Level 2 ${a.arrow}
+            Explore Level 2 ${i.arrow}
           </a>
         </div>
 
@@ -328,8 +324,8 @@
           <h3>Elite Brand & SEO</h3>
           <p class="teaser-pitch">For businesses needing elite branding, best-of-the-best SEO, up to 20 pages, dynamic media, blog setup, and priority developers.</p>
           <div class="teaser-price">
-            <div class="teaser-price-main">AED 300<span style="font-size:1rem; font-weight:500; opacity:0.7;">/mo</span></div>
-            <div class="teaser-price-sub">AED 7,950 setup &nbsp;·&nbsp; Managed plan only</div>
+            <div class="teaser-price-main">AED 7,950</div>
+            <div class="teaser-price-sub">+ AED 300/mo managed</div>
           </div>
           <div class="teaser-pills">
             <span class="teaser-pill">High Growth</span>
@@ -338,27 +334,11 @@
             <span class="teaser-pill">20 Pages</span>
           </div>
           <a href="/level3" class="teaser-btn teaser-btn-outline" data-link="level3" id="home-l3-cta">
-            Explore Level 3 ${a.arrow}
+            Explore Level 3 ${i.arrow}
           </a>
         </div>
 
       </div>
-
-      <!-- The real difference -->
-      <div class="real-diff-block reveal">
-        <div class="real-diff-side">
-          <div class="real-diff-tag tag-one">Level 1</div>
-          <h4>Level 1 is about being <em>found</em></h4>
-          <p>A customer walks past your café or sees your shop. They Google you before coming in. Level 1 makes sure they find a clean, professional site — and tap to WhatsApp you immediately.</p>
-        </div>
-        <div class="real-diff-divider"></div>
-        <div class="real-diff-side">
-          <div class="real-diff-tag tag-two">Level 2</div>
-          <h4>Level 2 is about being <em>trusted</em></h4>
-          <p>Someone needs a dentist or lawyer. They spend 10 minutes reading about you before they ever call. Level 2 gives them the team page, the credentials, the reviews, and the reassurance they need to book.</p>
-        </div>
-      </div>
-      <p class="real-diff-note">Not sure which level? <strong>Start with Level 1</strong> — you can always upgrade later and we credit previous payments toward your new plan.</p>
 
     </div>
   </section>
@@ -378,7 +358,7 @@
       <p class="plan-desc">${e.desc}</p>
     </div>
     <div class="pricing-card-cta">
-      ${e.paypalHtml?e.paypalHtml:`<a href="/booking" class="btn btn-dark btn-block btn-large" data-link="booking" id="${e.ctaId}">Get started ${a.arrow}</a>`}
+      ${e.paypalHtml?e.paypalHtml:`<a href="/booking" class="btn btn-dark btn-block btn-large" data-link="booking" id="${e.ctaId}">Get started ${i.arrow}</a>`}
       ${e.note?`<p style="font-size:0.75rem; color:var(--text-muted); margin-top:10px; text-align:center;">${e.note}</p>`:""}
     </div>
     <div class="pricing-card-features">
@@ -432,7 +412,7 @@
         <h2 class="section-title">Built for business, not just looks</h2>
       </div>
       <div class="feature-grid">
-        ${[{icon:a.palette,title:"Custom Design",desc:"No templates. Every site is built from scratch to match your brand, colours, and vibe."},{icon:a.zap,title:"Fast Delivery",desc:"Your site is live within 7 to 14 business days from when we agree on the brief."},{icon:a.globe,title:"Mobile First",desc:"Looks great on phones, tablets, and desktops. Most of your visitors are on mobile."},{icon:a.shield,title:"SEO Ready",desc:"Proper page titles, meta descriptions, and structured code so Google can find you."},{icon:a.mail,title:"Email Support",desc:"An integrated contact form and direct email connection on every page."},{icon:a.wrench,title:"Low Maintenance",desc:"Clean builds that just work. Perfect for business owners who want to focus on running their business."}].map(e=>`<div class="feature-item reveal">
+        ${[{icon:i.palette,title:"Custom Design",desc:"No templates. Every site is built from scratch to match your brand, colours, and vibe."},{icon:i.zap,title:"Fast Delivery",desc:"Your site is live within 7 to 14 business days from when we agree on the brief."},{icon:i.globe,title:"Mobile First",desc:"Looks great on phones, tablets, and desktops. Most of your visitors are on mobile."},{icon:i.shield,title:"SEO Ready",desc:"Proper page titles, meta descriptions, and structured code so Google can find you."},{icon:i.mail,title:"Email Support",desc:"An integrated contact form and direct email connection on every page."},{icon:i.wrench,title:"Low Maintenance",desc:"Clean builds that just work. Perfect for business owners who want to focus on running their business."}].map(e=>`<div class="feature-item reveal">
             <div class="feature-icon-wrap">${e.icon}</div>
             <h3>${e.title}</h3>
             <p>${e.desc}</p>
@@ -460,7 +440,7 @@
       <p>A website your customers will trust, at a price that makes sense.</p>
       <div class="cta-ctas">
         <a href="/booking" class="btn btn-dark btn-large" data-link="booking" id="l1-footer-cta">
-          Book a Call ${a.arrow}
+          Book a Call ${i.arrow}
         </a>
       </div>
     </div>
@@ -516,11 +496,11 @@
             </tr>
           </thead>
           <tbody>
-            ${[["Pages included","Up to 5","Up to 10","Up to 20"],["Custom design","Yes","Yes","Elite Brand (Cleaner)"],["Mobile responsive","Yes","Yes","Yes (Optimized)"],["SEO Optimization","Basic","Enhanced Local SEO","Best of the Best Site SEO"],["Blog for SEO","No","No","Yes (Optional)"],["Media Assets","Standard","Enhanced","Video & Image optimized"],["Design Revisions","1 Round","2 Rounds","More Iterations"],["Developer Access","Standard","Senior Developer","Best Developers"],["Starting Price (One-time)","AED 1,450","AED 2,950","N/A (Managed Only)"],["Managed Plan from","AED 2,000 + 150/mo","AED 3,500 + 300/mo","AED 7,950 + 300/mo"]].map(([e,t,s,i])=>`<tr>
+            ${[["Pages included","Up to 5","Up to 10","Up to 20"],["Custom design","Yes","Yes","Elite Brand (Cleaner)"],["Mobile responsive","Yes","Yes","Yes (Optimized)"],["SEO Optimization","Basic","Enhanced Local SEO","Best of the Best Site SEO"],["Blog for SEO","No","No","Yes (Optional)"],["Media Assets","Standard","Enhanced","Video & Image optimized"],["Design Revisions","1 Round","2 Rounds","More Iterations"],["Developer Access","Standard","Senior Developer","Best Developers"],["Starting Price (One-time)","AED 1,450","AED 2,950","N/A (Managed Only)"],["Managed Plan from","AED 2,000 + 150/mo","AED 3,500 + 300/mo","AED 7,950 + 300/mo"]].map(([e,t,s,a])=>`<tr>
                 <td>${e}</td>
                 <td>${t}</td>
                 <td class="hl">${s}</td>
-                <td>${i}</td>
+                <td>${a}</td>
               </tr>`).join("")}
           </tbody>
         </table>
@@ -536,7 +516,7 @@
         <h2 class="section-title">Everything a professional needs</h2>
       </div>
       <div class="feature-grid">
-        ${[{icon:a.palette,title:"Premium Design",desc:"Custom layouts that communicate expertise and build trust with every visitor."},{icon:a.rocket,title:"Conversion Focused",desc:"Built to turn visitors into emails and real leads."},{icon:a.globe,title:"Local SEO",desc:"Solid local SEO setup including Google Business Profile configuration to help you get found."},{icon:a.shield,title:"Secure Hosting",desc:"SSL certificates, daily backups, and active uptime monitoring included."},{icon:a.mail,title:"Easy Contact",desc:"Contact form, email, and Google Maps built directly into your site."},{icon:a.code,title:"Ongoing Updates",desc:"Managed plan clients get regular content updates — add services, update team bios, change pricing."}].map(e=>`<div class="feature-item reveal">
+        ${[{icon:i.palette,title:"Premium Design",desc:"Custom layouts that communicate expertise and build trust with every visitor."},{icon:i.rocket,title:"Conversion Focused",desc:"Built to turn visitors into emails and real leads."},{icon:i.globe,title:"Local SEO",desc:"Solid local SEO setup including Google Business Profile configuration to help you get found."},{icon:i.shield,title:"Secure Hosting",desc:"SSL certificates, daily backups, and active uptime monitoring included."},{icon:i.mail,title:"Easy Contact",desc:"Contact form, email, and Google Maps built directly into your site."},{icon:i.code,title:"Ongoing Updates",desc:"Managed plan clients get regular content updates — add services, update team bios, change pricing."}].map(e=>`<div class="feature-item reveal">
             <div class="feature-icon-wrap">${e.icon}</div>
             <h3>${e.title}</h3>
             <p>${e.desc}</p>
@@ -564,7 +544,7 @@
       <p>Your clients are searching online right now. Make sure they find something impressive.</p>
       <div class="cta-ctas">
         <a href="/booking" class="btn btn-dark btn-large" data-link="booking" id="l2-footer-cta">
-          Book a Call ${a.arrow}
+          Book a Call ${i.arrow}
         </a>
       </div>
     </div>
@@ -621,11 +601,11 @@
             </tr>
           </thead>
           <tbody>
-            ${[["Pages included","Up to 5","Up to 10","Up to 20"],["Custom design","Yes","Yes","Elite Brand (Way Cleaner)"],["Mobile responsive","Yes","Yes","Yes (Optimized)"],["SEO Optimization","Basic","Enhanced Local SEO","Best of the Best Site SEO"],["Blog for SEO","No","No","Yes (Optional)"],["Media Assets","Standard","Enhanced","Video & Image optimized"],["Design Revisions","1 Round","2 Rounds","More Iterations"],["Developer Access","Standard","Senior Developer","Best Developers"],["Starting Price (One-time)","AED 1,450","AED 2,950","N/A (Managed Only)"],["Managed Plan from","AED 2,000 + 150/mo","AED 3,500 + 300/mo","AED 7,950 + 300/mo"]].map(([e,t,s,i])=>`<tr>
+            ${[["Pages included","Up to 5","Up to 10","Up to 20"],["Custom design","Yes","Yes","Elite Brand (Way Cleaner)"],["Mobile responsive","Yes","Yes","Yes (Optimized)"],["SEO Optimization","Basic","Enhanced Local SEO","Best of the Best Site SEO"],["Blog for SEO","No","No","Yes (Optional)"],["Media Assets","Standard","Enhanced","Video & Image optimized"],["Design Revisions","1 Round","2 Rounds","More Iterations"],["Developer Access","Standard","Senior Developer","Best Developers"],["Starting Price (One-time)","AED 1,450","AED 2,950","N/A (Managed Only)"],["Managed Plan from","AED 2,000 + 150/mo","AED 3,500 + 300/mo","AED 7,950 + 300/mo"]].map(([e,t,s,a])=>`<tr>
                 <td>${e}</td>
                 <td>${t}</td>
                 <td>${s}</td>
-                <td class="hl">${i}</td>
+                <td class="hl">${a}</td>
               </tr>`).join("")}
           </tbody>
         </table>
@@ -641,7 +621,7 @@
         <h2 class="section-title">Built for elite performance</h2>
       </div>
       <div class="feature-grid">
-        ${[{icon:a.zap,title:"Best Developers",desc:"Handled by our top developers to ensure cutting-edge speed, security, and clean code architecture."},{icon:a.shield,title:"Best of the Best SEO",desc:"Thorough technical, on-page, and structural SEO so your business dominates search results."},{icon:a.palette,title:"Elite Brand & Cleaner Layouts",desc:"A bespoke digital experience tailored to project premium brand authority."},{icon:a.rocket,title:"Up to 20 Pages",desc:"Comprehensive structure to cover all your services, treatments, case studies, and campaigns."},{icon:a.globe,title:"Blog for SEO",desc:"A built-in blog to publish keyword-rich articles and continuously attract free organic search traffic."},{icon:a.wrench,title:"Systems in Place",desc:"Automated backups, active monitoring, analytics, and CRM integrations for smooth operations."}].map(e=>`<div class="feature-item reveal">
+        ${[{icon:i.zap,title:"Best Developers",desc:"Handled by our top developers to ensure cutting-edge speed, security, and clean code architecture."},{icon:i.shield,title:"Best of the Best SEO",desc:"Thorough technical, on-page, and structural SEO so your business dominates search results."},{icon:i.palette,title:"Elite Brand & Cleaner Layouts",desc:"A bespoke digital experience tailored to project premium brand authority."},{icon:i.rocket,title:"Up to 20 Pages",desc:"Comprehensive structure to cover all your services, treatments, case studies, and campaigns."},{icon:i.globe,title:"Blog for SEO",desc:"A built-in blog to publish keyword-rich articles and continuously attract free organic search traffic."},{icon:i.wrench,title:"Systems in Place",desc:"Automated backups, active monitoring, analytics, and CRM integrations for smooth operations."}].map(e=>`<div class="feature-item reveal">
             <div class="feature-icon-wrap">${e.icon}</div>
             <h3>${e.title}</h3>
             <p>${e.desc}</p>
@@ -669,11 +649,11 @@
       <p>Partner with our best team to deploy a professional, high-converting digital platform.</p>
       <div class="cta-ctas">
         <a href="/booking" class="btn btn-dark btn-large" data-link="booking" id="l3-footer-cta">
-          Book a Call ${a.arrow}
+          Book a Call ${i.arrow}
         </a>
       </div>
     </div>
-  </section>`}function $(){return`
+  </section>`}function O(){return`
   <div class="page-header" style="border-bottom:1px solid var(--border);">
     <div class="container">
       <div class="section-label">Portfolio</div>
@@ -687,11 +667,11 @@
       <p>Tell us about your business and what you need.</p>
       <div class="cta-ctas">
         <a href="/booking" class="btn btn-dark btn-large" data-link="booking" id="work-cta">
-          Book a Call ${a.arrow}
+          Book a Call ${i.arrow}
         </a>
       </div>
     </div>
-  </section>`}function O(){return`
+  </section>`}function $(){return`
   <!-- HEADER -->
   <div class="page-header" style="border-bottom:1px solid var(--border);">
     <div class="container">
@@ -742,7 +722,7 @@
       <p>Tell us about your business and let's get started.</p>
       <div class="cta-ctas">
         <a href="/booking" class="btn btn-dark btn-large" data-link="booking" id="testimonials-cta">
-          Book a Call ${a.arrow}
+          Book a Call ${i.arrow}
         </a>
         <a href="/level2" class="btn btn-secondary btn-large" data-link="level2" id="testimonials-plans-cta">
           View plans
@@ -761,7 +741,7 @@
             <div class="contact-methods">
               <a href="mailto:officialatlanticbear@gmail.com" class="contact-method">
                 <div class="contact-method-icon">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${a.mail}</svg>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${i.mail}</svg>
                 </div>
                 <div>
                   <div class="contact-method-label">Email</div>
@@ -770,7 +750,7 @@
               </a>
               <a href="https://www.instagram.com/officialatlanticbear/" target="_blank" class="contact-method">
                 <div class="contact-method-icon" style="background:rgba(59,105,255,0.08); color:var(--blue);">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${a.instagram}</svg>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${i.instagram}</svg>
                 </div>
                 <div>
                   <div class="contact-method-label">Instagram</div>
@@ -779,7 +759,7 @@
               </a>
               <div class="contact-method">
                 <div class="contact-method-icon">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${a.map}</svg>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${i.map}</svg>
                 </div>
                 <div>
                   <div class="contact-method-label">Location</div>
@@ -815,7 +795,7 @@
               <textarea class="form-input form-textarea" id="form-message" name="message" placeholder="Tell us about your business and what you need..." required data-fs-field></textarea>
               <span data-fs-error="message" class="fs-field-error"></span>
               <button type="submit" class="btn btn-dark btn-block btn-large" id="form-submit-btn" data-fs-submit-btn>
-                Send message ${a.arrow}
+                Send message ${i.arrow}
               </button>
             </form>
           </div>
@@ -893,8 +873,8 @@
       </div>
     </div>
   </section>
-  `}const k={home:C,level1:B,level2:L,level3:P,work:$,contact:T,testimonials:O,booking:D},m={home:{title:"Atlantic Bear | Professional Websites for UAE Businesses. Live in 3 Days.",desc:"Atlantic Bear designs, builds, and launches custom professional websites for UAE businesses. Clean layouts, ultra-fast speeds, built to grow your brand. Live in 3 days, fully managed."},level1:{title:"Level 1 Plan: Custom Websites for UAE Small Businesses | Atlantic Bear",desc:"Affordable, custom-designed websites for cafés, salons, kiosks, and retail shops in the UAE. Get found online and get direct WhatsApp leads. Live in 7-14 days."},level2:{title:"Level 2 Plan: Professional Websites for UAE Practices & Clinics | Atlantic Bear",desc:"Premium websites built to earn trust for clinics, law firms, dental practices, and consultants in Dubai & UAE. Local SEO and full management included."},level3:{title:"Level 3 Plan: Elite Websites & SEO for UAE | Atlantic Bear",desc:"Ultimate websites built for high-growth UAE brands. Up to 20 pages, elite brand presence, comprehensive SEO, blog, and priority developers working on it."},work:{title:"Our Work | Atlantic Bear Portfolio",desc:"Explore custom websites designed and developed for UAE businesses. Professional layouts, mobile optimization, and fast load times."},contact:{title:"Contact Atlantic Bear | Start Your UAE Website Project",desc:"Get in touch with Atlantic Bear. Let's discuss your business website needs. Fast response and custom layouts in Dubai & UAE."},testimonials:{title:"Client Testimonials & Transformations | Atlantic Bear",desc:"See real website transformations by Atlantic Bear. Before and after case studies showing how we help businesses across the UAE look professional online."},booking:{title:"Book a Call | Atlantic Bear Discovery Session",desc:"Watch our video, schedule your free 20-minute discovery call, and view our client success stories. Start your UAE website project today."}};function W(e){const t=m[e]||m.home;document.title=t.title;let s=document.querySelector('meta[name="description"]');s||(s=document.createElement("meta"),s.setAttribute("name","description"),document.head.appendChild(s)),s.setAttribute("content",t.desc);let i=document.querySelector('link[rel="canonical"]');i||(i=document.createElement("link"),i.setAttribute("rel","canonical"),document.head.appendChild(i));const o=`${window.location.origin}${e==="home"?"":"/"+e}`;i.setAttribute("href",o);const n={"og:title":t.title,"og:description":t.desc,"og:url":o,"og:type":"website","og:image":`${window.location.origin}/logo.png`};for(const[c,p]of Object.entries(n)){let r=document.querySelector(`meta[property="${c}"]`);r||(r=document.createElement("meta"),r.setAttribute("property",c),document.head.appendChild(r)),r.setAttribute("content",p)}const l={"twitter:card":"summary_large_image","twitter:title":t.title,"twitter:description":t.desc,"twitter:image":`${window.location.origin}/logo.png`};for(const[c,p]of Object.entries(l)){let r=document.querySelector(`meta[name="${c}"]`);r||(r=document.createElement("meta"),r.setAttribute("name",c),document.head.appendChild(r)),r.setAttribute("content",p)}}function g(e){const t=e.replace(/^\/|\/$/g,"");return t==="level1"||t==="level2"||t==="level3"||t==="work"||t==="contact"||t==="testimonials"||t==="booking"?t:"home"}function M(e){w("[data-link]").forEach(s=>s.classList.remove("active"));const t=h(`[data-link="${e}"].nav-link`);t&&t.classList.add("active")}function I(){const e=w(".reveal"),t=new IntersectionObserver(s=>{s.forEach(i=>{i.isIntersecting&&(i.target.classList.add("revealed"),t.unobserve(i.target))})},{threshold:.07,rootMargin:"0px 0px -30px 0px"});e.forEach(s=>t.observe(s))}function q(){const e=document.getElementById("contact-form");if(!e)return;const t=document.createElement("script");t.src="https://unpkg.com/@formspree/ajax@1",t.defer=!0,document.head.appendChild(t),t.onload=()=>{window.formspree&&window.formspree("initForm",{formElement:"#contact-form",formId:"mykanvrr"})},e.addEventListener("submit",async s=>{s.preventDefault();const i=document.getElementById("form-submit-btn"),o=document.querySelector("[data-fs-success]"),n=document.querySelector('[data-fs-error]:not([data-fs-error="name"]):not([data-fs-error="email"]):not([data-fs-error="message"])');i&&(i.disabled=!0,i.textContent="Sending...");try{const l=new FormData(e);if((await fetch("https://formspree.io/f/mykanvrr",{method:"POST",body:l,headers:{Accept:"application/json"}})).ok)e.style.display="none",o&&(o.style.display="block",o.style.textAlign="center",o.style.padding="18px",o.style.background="rgba(62,207,142,.07)",o.style.borderRadius="10px",o.style.border="1px solid rgba(62,207,142,.20)");else throw new Error("Server error")}catch{n&&(n.textContent="Something went wrong. Please try again or email officialatlanticbear@gmail.com.",n.style.color="var(--red)",n.style.fontSize="0.85rem",n.style.marginTop="8px"),i&&(i.disabled=!1,i.textContent="Try again")}})}function F(){const e=document.querySelector(".calendly-inline-widget");if(!e)return;const t=()=>{window.Calendly&&(e.innerHTML="",window.Calendly.initInlineWidget({url:"https://calendly.com/officialatlanticbear/first-meeting?hide_gdpr_banner=1",parentElement:e}))};if(window.Calendly){t();return}if(document.getElementById("calendly-sdk")){const i=setInterval(()=>{window.Calendly&&(clearInterval(i),t())},100);return}const s=document.createElement("script");s.id="calendly-sdk",s.src="https://assets.calendly.com/assets/external/widget.js",s.async=!0,s.onload=t,document.head.appendChild(s)}function u(e,t=!0){const s=h("#main-content");s.style.opacity="0",s.style.transform="translateY(8px)",setTimeout(()=>{if(s.innerHTML=k[e](),M(e),window.scrollTo({top:0,behavior:"instant"}),s.style.transition="opacity 0.3s ease, transform 0.3s ease",requestAnimationFrame(()=>{s.style.opacity="1",s.style.transform="translateY(0)"}),I(),e==="contact"&&q(),e==="booking"&&F(),e==="level1"&&y("paypal-capture-container-l1",395),e==="level2"&&y("paypal-capture-container-l2",803),W(e),t){const i=e==="home"?"/":`/${e}`;window.location.pathname!==i&&history.pushState(null,"",i)}},150)}function z(e){e.addEventListener("click",t=>{const s=t.target.closest("[data-link]");if(!s||t.metaKey||t.ctrlKey||t.shiftKey||t.button!==0)return;t.preventDefault();const i=s.getAttribute("data-link");i&&k[i]&&u(i)})}function j(){const e=h("#main-nav");if(!e)return;const t=()=>{window.scrollY>20?e.classList.add("scrolled"):e.classList.remove("scrolled")};window.addEventListener("scroll",t,{passive:!0})}window.formspree=window.formspree||function(){(window.formspree.q=window.formspree.q||[]).push(arguments)};const R="ATdtILYx2T5yoKB9AH86nDYMlD4bQ1PnOk_y_SOL3b42qP2E3nTfHlxL1KLFLu9w7Ao9jhTYvk4jfhEB";let f=!1;const b=[];function U(e){if(f&&window.paypal){e();return}if(b.push(e),document.getElementById("paypal-sdk"))return;const t=document.createElement("script");t.id="paypal-sdk",t.src=`https://www.paypal.com/sdk/js?client-id=${R}&vault=true&currency=USD&components=buttons`,t.onload=()=>{f=!0,b.splice(0).forEach(s=>s())},t.onerror=()=>{document.querySelectorAll(".pp-loading").forEach(s=>{s.innerHTML='<a href="https://www.paypal.com" target="_blank" rel="noopener" class="btn btn-dark btn-block btn-large" style="margin-top:4px;">Pay via PayPal ↗</a>'})},document.head.appendChild(t)}function y(e,t){U(()=>{const s=window.paypal;if(!(s!=null&&s.Buttons))return;const i=document.getElementById(e);i&&(i.classList.remove("pp-loading"),s.Buttons({style:{shape:"rect",color:"gold",layout:"vertical",label:"buynow"},createOrder:(o,n)=>n.order.create({purchase_units:[{amount:{value:t.toFixed(2),currency_code:"USD"}}]}),onApprove:(o,n)=>n.order.capture().then(()=>{i.innerHTML=`<div style="text-align:center;padding:18px;background:rgba(62,207,142,.07);border-radius:10px;border:1px solid rgba(62,207,142,.20);"><div style="font-size:1.5rem;">✅</div><div style="font-weight:700;margin-top:6px;">Payment received!</div><div style="font-size:0.82rem;color:#888;margin-top:4px;">We'll be in touch within a few hours.</div></div>`}),onError:o=>{console.error("PayPal error",o),i.innerHTML='<div style="text-align:center;padding:12px;font-size:0.85rem;color:#c0392b;">Something went wrong. Please try again or email officialatlanticbear@gmail.com.</div>'}}).render("#"+e))})}document.addEventListener("DOMContentLoaded",()=>{const e=document.getElementById("app");e.innerHTML=`
+  `}const k={home:C,level1:B,level2:L,level3:P,work:O,contact:T,testimonials:$,booking:D},m={home:{title:"Atlantic Bear | Professional Websites for UAE Businesses. Live in 3 Days.",desc:"Atlantic Bear designs, builds, and launches custom professional websites for UAE businesses. Clean layouts, ultra-fast speeds, built to grow your brand. Live in 3 days, fully managed."},level1:{title:"Level 1 Plan: Custom Websites for UAE Small Businesses | Atlantic Bear",desc:"Affordable, custom-designed websites for cafés, salons, kiosks, and retail shops in the UAE. Get found online and get direct WhatsApp leads. Live in 7-14 days."},level2:{title:"Level 2 Plan: Professional Websites for UAE Practices & Clinics | Atlantic Bear",desc:"Premium websites built to earn trust for clinics, law firms, dental practices, and consultants in Dubai & UAE. Local SEO and full management included."},level3:{title:"Level 3 Plan: Elite Websites & SEO for UAE | Atlantic Bear",desc:"Ultimate websites built for high-growth UAE brands. Up to 20 pages, elite brand presence, comprehensive SEO, blog, and priority developers working on it."},work:{title:"Our Work | Atlantic Bear Portfolio",desc:"Explore custom websites designed and developed for UAE businesses. Professional layouts, mobile optimization, and fast load times."},contact:{title:"Contact Atlantic Bear | Start Your UAE Website Project",desc:"Get in touch with Atlantic Bear. Let's discuss your business website needs. Fast response and custom layouts in Dubai & UAE."},testimonials:{title:"Client Testimonials & Transformations | Atlantic Bear",desc:"See real website transformations by Atlantic Bear. Before and after case studies showing how we help businesses across the UAE look professional online."},booking:{title:"Book a Call | Atlantic Bear Discovery Session",desc:"Watch our video, schedule your free 20-minute discovery call, and view our client success stories. Start your UAE website project today."}};function M(e){const t=m[e]||m.home;document.title=t.title;let s=document.querySelector('meta[name="description"]');s||(s=document.createElement("meta"),s.setAttribute("name","description"),document.head.appendChild(s)),s.setAttribute("content",t.desc);let a=document.querySelector('link[rel="canonical"]');a||(a=document.createElement("link"),a.setAttribute("rel","canonical"),document.head.appendChild(a));const o=`${window.location.origin}${e==="home"?"":"/"+e}`;a.setAttribute("href",o);const n={"og:title":t.title,"og:description":t.desc,"og:url":o,"og:type":"website","og:image":`${window.location.origin}/logo.png`};for(const[c,p]of Object.entries(n)){let r=document.querySelector(`meta[property="${c}"]`);r||(r=document.createElement("meta"),r.setAttribute("property",c),document.head.appendChild(r)),r.setAttribute("content",p)}const l={"twitter:card":"summary_large_image","twitter:title":t.title,"twitter:description":t.desc,"twitter:image":`${window.location.origin}/logo.png`};for(const[c,p]of Object.entries(l)){let r=document.querySelector(`meta[name="${c}"]`);r||(r=document.createElement("meta"),r.setAttribute("name",c),document.head.appendChild(r)),r.setAttribute("content",p)}}function g(e){const t=e.replace(/^\/|\/$/g,"");return t==="level1"||t==="level2"||t==="level3"||t==="work"||t==="contact"||t==="testimonials"||t==="booking"?t:"home"}function I(e){w("[data-link]").forEach(s=>s.classList.remove("active"));const t=h(`[data-link="${e}"].nav-link`);t&&t.classList.add("active")}function W(){const e=w(".reveal"),t=new IntersectionObserver(s=>{s.forEach(a=>{a.isIntersecting&&(a.target.classList.add("revealed"),t.unobserve(a.target))})},{threshold:.07,rootMargin:"0px 0px -30px 0px"});e.forEach(s=>t.observe(s))}function q(){const e=document.getElementById("contact-form");if(!e)return;const t=document.createElement("script");t.src="https://unpkg.com/@formspree/ajax@1",t.defer=!0,document.head.appendChild(t),t.onload=()=>{window.formspree&&window.formspree("initForm",{formElement:"#contact-form",formId:"mykanvrr"})},e.addEventListener("submit",async s=>{s.preventDefault();const a=document.getElementById("form-submit-btn"),o=document.querySelector("[data-fs-success]"),n=document.querySelector('[data-fs-error]:not([data-fs-error="name"]):not([data-fs-error="email"]):not([data-fs-error="message"])');a&&(a.disabled=!0,a.textContent="Sending...");try{const l=new FormData(e);if((await fetch("https://formspree.io/f/mykanvrr",{method:"POST",body:l,headers:{Accept:"application/json"}})).ok)e.style.display="none",o&&(o.style.display="block",o.style.textAlign="center",o.style.padding="18px",o.style.background="rgba(62,207,142,.07)",o.style.borderRadius="10px",o.style.border="1px solid rgba(62,207,142,.20)");else throw new Error("Server error")}catch{n&&(n.textContent="Something went wrong. Please try again or email officialatlanticbear@gmail.com.",n.style.color="var(--red)",n.style.fontSize="0.85rem",n.style.marginTop="8px"),a&&(a.disabled=!1,a.textContent="Try again")}})}function F(){const e=document.querySelector(".calendly-inline-widget");if(!e)return;const t=()=>{window.Calendly&&(e.innerHTML="",window.Calendly.initInlineWidget({url:"https://calendly.com/officialatlanticbear/first-meeting?hide_gdpr_banner=1",parentElement:e}))};if(window.Calendly){t();return}if(document.getElementById("calendly-sdk")){const a=setInterval(()=>{window.Calendly&&(clearInterval(a),t())},100);return}const s=document.createElement("script");s.id="calendly-sdk",s.src="https://assets.calendly.com/assets/external/widget.js",s.async=!0,s.onload=t,document.head.appendChild(s)}function u(e,t=!0){const s=h("#main-content");s.style.opacity="0",s.style.transform="translateY(8px)",setTimeout(()=>{if(s.innerHTML=k[e](),I(e),window.scrollTo({top:0,behavior:"instant"}),s.style.transition="opacity 0.3s ease, transform 0.3s ease",requestAnimationFrame(()=>{s.style.opacity="1",s.style.transform="translateY(0)"}),W(),e==="contact"&&q(),e==="booking"&&F(),e==="level1"&&y("paypal-capture-container-l1",395),e==="level2"&&y("paypal-capture-container-l2",803),M(e),t){const a=e==="home"?"/":`/${e}`;window.location.pathname!==a&&history.pushState(null,"",a)}},150)}function j(e){e.addEventListener("click",t=>{const s=t.target.closest("[data-link]");if(!s||t.metaKey||t.ctrlKey||t.shiftKey||t.button!==0)return;t.preventDefault();const a=s.getAttribute("data-link");a&&k[a]&&u(a)})}function R(){const e=h("#main-nav");if(!e)return;const t=()=>{window.scrollY>20?e.classList.add("scrolled"):e.classList.remove("scrolled")};window.addEventListener("scroll",t,{passive:!0})}window.formspree=window.formspree||function(){(window.formspree.q=window.formspree.q||[]).push(arguments)};const z="ATdtILYx2T5yoKB9AH86nDYMlD4bQ1PnOk_y_SOL3b42qP2E3nTfHlxL1KLFLu9w7Ao9jhTYvk4jfhEB";let b=!1;const f=[];function U(e){if(b&&window.paypal){e();return}if(f.push(e),document.getElementById("paypal-sdk"))return;const t=document.createElement("script");t.id="paypal-sdk",t.src=`https://www.paypal.com/sdk/js?client-id=${z}&vault=true&currency=USD&components=buttons`,t.onload=()=>{b=!0,f.splice(0).forEach(s=>s())},t.onerror=()=>{document.querySelectorAll(".pp-loading").forEach(s=>{s.innerHTML='<a href="https://www.paypal.com" target="_blank" rel="noopener" class="btn btn-dark btn-block btn-large" style="margin-top:4px;">Pay via PayPal ↗</a>'})},document.head.appendChild(t)}function y(e,t){U(()=>{const s=window.paypal;if(!(s!=null&&s.Buttons))return;const a=document.getElementById(e);a&&(a.classList.remove("pp-loading"),s.Buttons({style:{shape:"rect",color:"gold",layout:"vertical",label:"buynow"},createOrder:(o,n)=>n.order.create({purchase_units:[{amount:{value:t.toFixed(2),currency_code:"USD"}}]}),onApprove:(o,n)=>n.order.capture().then(()=>{a.innerHTML=`<div style="text-align:center;padding:18px;background:rgba(62,207,142,.07);border-radius:10px;border:1px solid rgba(62,207,142,.20);"><div style="font-size:1.5rem;">✅</div><div style="font-weight:700;margin-top:6px;">Payment received!</div><div style="font-size:0.82rem;color:#888;margin-top:4px;">We'll be in touch within a few hours.</div></div>`}),onError:o=>{console.error("PayPal error",o),a.innerHTML='<div style="text-align:center;padding:12px;font-size:0.85rem;color:#c0392b;">Something went wrong. Please try again or email officialatlanticbear@gmail.com.</div>'}}).render("#"+e))})}document.addEventListener("DOMContentLoaded",()=>{const e=document.getElementById("app");e.innerHTML=`
     ${S()}
     <main id="main-content" style="opacity:1; min-height:100vh;"></main>
     ${x()}
-  `,z(e),j();const t=g(window.location.pathname);u(t,!1),window.addEventListener("popstate",()=>{const s=g(window.location.pathname);u(s,!1)})});
+  `,j(e),R();const t=g(window.location.pathname);u(t,!1),window.addEventListener("popstate",()=>{const s=g(window.location.pathname);u(s,!1)})});
