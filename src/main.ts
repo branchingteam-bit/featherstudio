@@ -1203,18 +1203,12 @@ function BookingPage(): string {
             <h2 class="booking-step-title">Step 3: Listen to what our clients have to say</h2>
           </div>
           
-          <div class="booking-testimonials-wrap">
-            <div class="tm-browser" style="margin-top: 16px;">
-              <div class="tm-browser-bar">
-                <span class="tm-dot"></span><span class="tm-dot"></span><span class="tm-dot"></span>
-                <div class="tm-url">sondertraininggroup.com</div>
-              </div>
-              <div style="background: #000; display: flex; justify-content: center; align-items: center; overflow: hidden;">
-                <video controls style="width: 100%; display: block; border: none; aspect-ratio: 16/9; object-fit: contain;">
-                  <source src="/testimonials/sonder%20training%20group%20testimonial.mp4" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
-              </div>
+          <div class="booking-testimonials-wrap" style="display: flex; justify-content: center; margin-top: 24px;">
+            <div style="max-width: 320px; width: 100%; border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-md); background: #000; border: 1px solid var(--border);">
+              <video controls style="width: 100%; display: block; border: none; aspect-ratio: 9/16; object-fit: cover;">
+                <source src="/testimonials/sonder%20training%20group%20testimonial.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
             </div>
           </div>
         </div>
@@ -1626,6 +1620,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   delegateLinks(app);
   initNavScroll();
+
+  // Listen for Calendly event scheduling to track conversions via Meta Pixel
+  window.addEventListener('message', (e) => {
+    if (e.data && e.data.event === 'calendly.event_scheduled') {
+      if (typeof (window as any).fbq === 'function') {
+        (window as any).fbq('track', 'Schedule');
+      }
+    }
+  });
 
   const initialPage = getPageFromPath(window.location.pathname);
   navigate(initialPage, false);
