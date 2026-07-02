@@ -210,6 +210,42 @@ function HomePage(): string {
     </div>
   </section>
 
+  <!-- FREE DEMO OFFER SECTION -->
+  <section class="free-demo-section reveal">
+    <div class="container">
+      <div class="free-demo-inner">
+        <div class="free-demo-badge">Our Offer</div>
+        <h2 class="free-demo-headline">We build your website first.<br>You only pay if you love it.</h2>
+        <p class="free-demo-sub">We put our time and skill on the line — not yours. We build you a fully custom demo website for free. If you like what you see, we launch it and you pay. If you don't, you walk away and owe us nothing. Zero risk on your end.</p>
+        <div class="free-demo-steps">
+          <div class="free-demo-step">
+            <div class="free-demo-step-icon">${Icons.zap}</div>
+            <div>
+              <div class="free-demo-step-title">Free Demo Built</div>
+              <div class="free-demo-step-desc">We build you a real, fully designed website — no templates, no shortcuts.</div>
+            </div>
+          </div>
+          <div class="free-demo-step">
+            <div class="free-demo-step-icon">${Icons.check}</div>
+            <div>
+              <div class="free-demo-step-title">You Review It</div>
+              <div class="free-demo-step-desc">Walk through the demo with us. Ask questions. Request changes. No pressure.</div>
+            </div>
+          </div>
+          <div class="free-demo-step">
+            <div class="free-demo-step-icon">${Icons.rocket}</div>
+            <div>
+              <div class="free-demo-step-title">Pay Only If You're Happy</div>
+              <div class="free-demo-step-desc">Love it? We launch it and you pay. Not happy? We part ways — no invoice, no hard feelings.</div>
+            </div>
+          </div>
+        </div>
+        <a href="/booking" class="btn btn-dark btn-large free-demo-cta" data-link="booking" id="home-free-demo-cta">Get Your Free Demo ${Icons.arrow}</a>
+        <p class="free-demo-note">No credit card. No contract. No risk.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- WHY ATLANTIC BEAR SECTION -->
   <section class="section-pad">
     <div class="container">
@@ -1166,22 +1202,53 @@ function BookingPage(): string {
         <!-- STEP 1: VIDEO -->
         <div class="booking-step-card reveal">
           <div class="booking-step-header">
-            <h2 class="booking-step-title">Step 1: Watch this 5 min video</h2>
+            <h2 class="booking-step-title">Step 1: Watch this 3 min video</h2>
           </div>
           
-          <div class="video-box-placeholder" id="video-placeholder-container">
-            <div class="video-play-btn">
-              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <div class="custom-video-wrap" id="custom-video-wrap">
+            <video
+              id="booking-video"
+              class="booking-video-el"
+              preload="auto"
+              playsinline
+              src="/videos for funnel call/book a call funnel video laptop layout.mp4"
+            ></video>
+            <!-- Overlay (shown when paused/before play) -->
+            <div class="bv-overlay" id="bv-overlay">
+              <button class="bv-play-btn" id="bv-play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </button>
             </div>
-            <span class="video-placeholder-title">Atlantic Bear — Process Overview</span>
-            <span class="video-placeholder-duration">Play Video</span>
+            <!-- Custom controls bar -->
+            <div class="bv-controls" id="bv-controls">
+              <button class="bv-ctrl-btn bv-playpause" id="bv-playpause" aria-label="Play/Pause">
+                <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+              </button>
+              <div class="bv-progress-wrap" id="bv-progress-wrap">
+                <div class="bv-progress-track">
+                  <div class="bv-progress-fill" id="bv-progress-fill"></div>
+                  <div class="bv-progress-thumb" id="bv-progress-thumb"></div>
+                </div>
+              </div>
+              <span class="bv-time" id="bv-time">0:00 / 0:00</span>
+              <div class="bv-volume-wrap">
+                <button class="bv-ctrl-btn bv-mute" id="bv-mute" aria-label="Mute/Unmute">
+                  <svg class="icon-vol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11,5 6,9 2,9 2,15 6,15 11,19 11,5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path class="vol-hi" d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+                <input class="bv-volume-slider" id="bv-volume" type="range" min="0" max="1" step="0.05" value="1" aria-label="Volume"/>
+              </div>
+              <button class="bv-ctrl-btn bv-fullscreen" id="bv-fullscreen" aria-label="Fullscreen">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+              </button>
+            </div>
           </div>
         </div>
 
         <!-- STEP 2: BOOKING CALENDAR -->
         <div class="booking-step-card reveal" style="transition-delay: 0.1s;">
           <div class="booking-step-header">
-            <h2 class="booking-step-title">Step 2: Book a call below</h2>
+            <h2 class="booking-step-title">Step 2: Book a call to get your <span style="color:var(--accent);">Free Demo</span></h2>
           </div>
           
           <div class="calendly-widget-wrap">
@@ -1461,21 +1528,125 @@ function loadCalendlyWidget() {
 
 // ─── Booking Page Video Loader ────────────────────────────────────────────────
 function initBookingPageVideo() {
-  const container = document.getElementById('video-placeholder-container');
-  if (!container) return;
+  const video = document.getElementById('booking-video') as HTMLVideoElement | null;
+  const overlay = document.getElementById('bv-overlay');
+  const playBtn = document.getElementById('bv-play-btn');
+  const controls = document.getElementById('bv-controls');
+  const playpause = document.getElementById('bv-playpause');
+  const progressFill = document.getElementById('bv-progress-fill');
+  const progressThumb = document.getElementById('bv-progress-thumb');
+  const progressWrap = document.getElementById('bv-progress-wrap');
+  const timeDisplay = document.getElementById('bv-time');
+  const muteBtn = document.getElementById('bv-mute');
+  const volumeSlider = document.getElementById('bv-volume') as HTMLInputElement | null;
+  const fullscreenBtn = document.getElementById('bv-fullscreen');
+  const wrap = document.getElementById('custom-video-wrap');
+  if (!video || !overlay || !playBtn || !controls || !playpause) return;
 
-  container.addEventListener('click', () => {
-    container.classList.add('playing');
-    container.innerHTML = `
-      <iframe src="https://www.loom.com/embed/6664d2eeb90a40caa58284dffb395568?autoplay=1" 
-              frameborder="0" 
-              webkitallowfullscreen 
-              mozallowfullscreen 
-              allowfullscreen 
-              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; display: block;">
-      </iframe>
-    `;
+  const fmtTime = (s: number) => {
+    const m = Math.floor(s / 60);
+    const sec = Math.floor(s % 60);
+    return `${m}:${sec.toString().padStart(2,'0')}`;
+  };
+
+  const updateProgress = () => {
+    if (!video.duration) return;
+    const pct = (video.currentTime / video.duration) * 100;
+    if (progressFill) progressFill.style.width = pct + '%';
+    if (progressThumb) progressThumb.style.left = pct + '%';
+    if (timeDisplay) timeDisplay.textContent = `${fmtTime(video.currentTime)} / ${fmtTime(video.duration)}`;
+  };
+
+  const setPlayState = (playing: boolean) => {
+    const iconPlay = playpause?.querySelector('.icon-play') as HTMLElement | null;
+    const iconPause = playpause?.querySelector('.icon-pause') as HTMLElement | null;
+    if (iconPlay) iconPlay.style.display = playing ? 'none' : 'block';
+    if (iconPause) iconPause.style.display = playing ? 'block' : 'none';
+    if (overlay) overlay.style.display = playing ? 'none' : 'flex';
+  };
+
+  // Play on overlay click
+  overlay.addEventListener('click', () => {
+    video.play();
   });
+
+  // Click on video toggles play/pause
+  video.addEventListener('click', () => {
+    if (video.paused) video.play(); else video.pause();
+  });
+
+  video.addEventListener('play', () => setPlayState(true));
+  video.addEventListener('pause', () => setPlayState(false));
+  video.addEventListener('ended', () => setPlayState(false));
+  video.addEventListener('timeupdate', updateProgress);
+  video.addEventListener('loadedmetadata', updateProgress);
+
+  // Playpause button
+  playpause.addEventListener('click', () => {
+    if (video.paused) video.play(); else video.pause();
+  });
+
+  // Progress bar scrubbing
+  if (progressWrap) {
+    const scrub = (e: MouseEvent | TouchEvent) => {
+      const rect = (progressWrap as HTMLElement).getBoundingClientRect();
+      const clientX = e instanceof MouseEvent ? e.clientX : e.touches[0].clientX;
+      const pct = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+      video.currentTime = pct * video.duration;
+      updateProgress();
+    };
+    let dragging = false;
+    progressWrap.addEventListener('mousedown', (e) => { dragging = true; scrub(e as MouseEvent); });
+    window.addEventListener('mousemove', (e) => { if (dragging) scrub(e); });
+    window.addEventListener('mouseup', () => { dragging = false; });
+    progressWrap.addEventListener('touchstart', (e) => scrub(e as TouchEvent), { passive: true });
+    progressWrap.addEventListener('touchmove', (e) => scrub(e as TouchEvent), { passive: true });
+  }
+
+  // Volume
+  if (volumeSlider) {
+    volumeSlider.addEventListener('input', () => {
+      video.volume = parseFloat(volumeSlider.value);
+      video.muted = video.volume === 0;
+    });
+  }
+  if (muteBtn) {
+    muteBtn.addEventListener('click', () => {
+      video.muted = !video.muted;
+      if (volumeSlider) volumeSlider.value = video.muted ? '0' : String(video.volume || 1);
+    });
+  }
+
+  // Fullscreen
+  if (fullscreenBtn && wrap) {
+    fullscreenBtn.addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        (wrap as HTMLElement).requestFullscreen?.();
+      } else {
+        document.exitFullscreen?.();
+      }
+    });
+  }
+
+  // Show/hide controls on hover
+  if (wrap) {
+    let hideTimer: number;
+    const showCtrls = () => {
+      controls.style.opacity = '1';
+      clearTimeout(hideTimer);
+      hideTimer = window.setTimeout(() => { if (!video.paused) controls.style.opacity = '0'; }, 2500);
+    };
+    wrap.addEventListener('mousemove', showCtrls);
+    wrap.addEventListener('mouseenter', showCtrls);
+    wrap.addEventListener('mouseleave', () => { if (!video.paused) controls.style.opacity = '0'; });
+    video.addEventListener('play', () => {
+      hideTimer = window.setTimeout(() => { controls.style.opacity = '0'; }, 2500);
+    });
+    video.addEventListener('pause', () => {
+      controls.style.opacity = '1';
+      clearTimeout(hideTimer);
+    });
+  }
 }
 
 function navigate(page: Page, pushHistory = true) {
