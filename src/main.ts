@@ -1620,10 +1620,24 @@ function initBookingPageVideo() {
   // Fullscreen
   if (fullscreenBtn && wrap) {
     fullscreenBtn.addEventListener('click', () => {
-      if (!document.fullscreenElement) {
-        (wrap as HTMLElement).requestFullscreen?.();
+      const isFs = !!(document.fullscreenElement || (document as any).webkitFullscreenElement);
+      if (!isFs) {
+        // Try standard fullscreen on the wrapper (Android Chrome, desktop)
+        if ((wrap as HTMLElement).requestFullscreen) {
+          (wrap as HTMLElement).requestFullscreen();
+        } else if ((wrap as any).webkitRequestFullscreen) {
+          // Safari desktop
+          (wrap as any).webkitRequestFullscreen();
+        } else if ((video as any).webkitEnterFullscreen) {
+          // iOS Safari — only video elements can go fullscreen
+          (video as any).webkitEnterFullscreen();
+        }
       } else {
-        document.exitFullscreen?.();
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if ((document as any).webkitExitFullscreen) {
+          (document as any).webkitExitFullscreen();
+        }
       }
     });
   }
