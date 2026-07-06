@@ -31,7 +31,7 @@ const Icons = {
 function Navbar(): string {
   return `
   <nav class="nav" id="main-nav">
-    <a href="/" class="logo" data-link="home" id="logo-btn">
+    <a href="/" class="logo" data-link="home" id="logo-btn" aria-label="Atlantic Bear Home">
       <span class="logo-wordmark">Atlantic</span>
       <img src="/atlanticbear-logo.png" alt="Atlantic Bear Logo" class="logo-bear-img" width="42" height="42" />
     </a>
@@ -56,7 +56,7 @@ function Footer(): string {
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="/" class="logo" data-link="home">
+          <a href="/" class="logo" data-link="home" aria-label="Atlantic Bear Home">
             <span class="logo-wordmark">Atlantic</span>
             <img src="/atlanticbear-logo.png" alt="Atlantic Bear Logo" class="footer-bear-img" width="28" height="28" />
           </a>
@@ -705,7 +705,7 @@ function TestimonialsPage(): string {
   <div class="page-header" style="border-bottom:1px solid var(--border);">
     <div class="container">
       <div class="tm-bear-wrap reveal">
-        <img src="/atlanticbear-logo.png" alt="Atlantic Bear" class="tm-bear-logo" />
+        <img src="/atlanticbear-logo.png" alt="Atlantic Bear" class="tm-bear-logo" width="88" height="88" />
       </div>
       <div class="section-label reveal" style="transition-delay:0.05s;">Client Work</div>
       <h1 class="reveal" style="transition-delay:0.1s;">Here's one we're proud of.</h1>
@@ -742,7 +742,7 @@ function TestimonialsPage(): string {
             <span class="tm-dot"></span><span class="tm-dot"></span><span class="tm-dot"></span>
             <div class="tm-url">sondertraininggroup.com</div>
           </div>
-          <img src="/screenshots/sonder-old.png" alt="Client website — before" loading="lazy" class="tm-screenshot" />
+          <img src="/screenshots/sonder-old.png" alt="Client website — before" loading="lazy" class="tm-screenshot" width="1024" height="576" />
         </div>
       </div>
 
@@ -754,7 +754,7 @@ function TestimonialsPage(): string {
             <span class="tm-dot"></span><span class="tm-dot"></span><span class="tm-dot"></span>
             <div class="tm-url">sondertraininggroup.com</div>
           </div>
-          <img src="/screenshots/sonder-new.png" alt="Client website — after, built by Atlantic Bear" loading="lazy" class="tm-screenshot" />
+          <img src="/screenshots/sonder-new.png" alt="Client website — after, built by Atlantic Bear" loading="lazy" class="tm-screenshot" width="1024" height="609" />
         </div>
       </div>
 
@@ -881,7 +881,10 @@ function BookingPage(): string {
             <video
               id="booking-video"
               class="booking-video-el"
-              preload="auto"
+              preload="none"
+              poster="/video-poster.png"
+              width="1920"
+              height="1080"
               playsinline
               src="/videos for funnel call/new video for funnel Atlantic Bear Free Demo and Website Pricing Plans.mp4"
             ></video>
