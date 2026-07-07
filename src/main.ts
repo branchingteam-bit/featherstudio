@@ -874,14 +874,14 @@ function BookingPage(): string {
         <!-- STEP 1: VIDEO -->
         <div class="booking-step-card reveal">
           <div class="booking-step-header">
-            <h2 class="booking-step-title">Step 1: Watch this 5 min video</h2>
+            <h2 class="booking-step-title">Step 1: Watch this 4 min video</h2>
           </div>
           
           <div class="custom-video-wrap" id="custom-video-wrap">
             <video
               id="booking-video"
               class="booking-video-el"
-              preload="none"
+              preload="auto"
               width="1920"
               height="1080"
               playsinline
