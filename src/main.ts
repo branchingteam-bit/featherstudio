@@ -110,7 +110,7 @@ function HomePage(): string {
   return `
   <!-- HERO -->
   <section class="hero" style="position: relative; overflow: hidden;">
-    <img src="/atlanticbear-logo.png" class="huge-bear" alt="Atlantic Bear Watermark" fetchpriority="high" width="600" height="600" />
+    <img src="/huge-bear-watermark.webp" class="huge-bear" alt="Atlantic Bear Watermark" fetchpriority="high" width="600" height="600" />
     <div class="container" style="position: relative; z-index: 1;">
       <h1>Your business deserves<br>to be found.</h1>
       <p class="hero-sub">
