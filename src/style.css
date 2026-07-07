@@ -1041,7 +1041,7 @@ h1, h2, h3, h4 {
   font-variant-numeric: tabular-nums;
 }
 .level-two-card .teaser-level-num { color: rgba(255,255,255,0.35); }
-.level-three-card .teaser-level-num { color: rgba(59,105,255,0.6); }
+.level-three-card .teaser-level-num { color: rgba(0,0,0,0.64); }
 .teaser-level-name {
   font-size: 0.7rem;
   font-weight: 700;
@@ -1050,7 +1050,7 @@ h1, h2, h3, h4 {
   color: var(--text-muted);
 }
 .level-two-card .teaser-level-name { color: rgba(255,255,255,0.45); }
-.level-three-card .teaser-level-name { color: var(--blue); }
+.level-three-card .teaser-level-name { color: #1e46c7; }
 
 .teaser-card h3 {
   font-size: 1.6rem;
@@ -1231,11 +1231,11 @@ h1, h2, h3, h4 {
 }
 .level-one-card .teaser-price-main { color: var(--navy); }
 .level-two-card .teaser-price-main { color: #fff; }
-.level-three-card .teaser-price-main { color: #fff; }
+.level-three-card .teaser-price-main { color: var(--navy); }
 .teaser-price-sub { font-size: 0.75rem; font-weight: 500; margin-top: 4px; }
-.level-one-card .teaser-price-sub { color: rgba(0,0,0,.4); }
+.level-one-card .teaser-price-sub { color: var(--text-muted); }
 .level-two-card .teaser-price-sub { color: rgba(255,255,255,.4); }
-.level-three-card .teaser-price-sub { color: rgba(255,255,255,.4); }
+.level-three-card .teaser-price-sub { color: var(--text-muted); }
 
 .teaser-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 28px; }
 .teaser-pill {
@@ -1246,8 +1246,9 @@ h1, h2, h3, h4 {
 }
 .level-one-card .teaser-pill {
   background: rgba(55,71,91,.08);
-  color: var(--accent);
+  color: #1e46c7;
   border: 1px solid rgba(55,71,91,.12);
+  font-weight: 800;
 }
 .level-two-card .teaser-pill {
   background: rgba(255,255,255,.1);
@@ -1256,8 +1257,9 @@ h1, h2, h3, h4 {
 }
 .level-three-card .teaser-pill {
   background: rgba(59,105,255,.15);
-  color: #8fa6ff;
+  color: #1e46c7;
   border: 1px solid rgba(59,105,255,.25);
+  font-weight: 800;
 }
 
 /* ─── Real Difference block ──────────────────────────────────────── */

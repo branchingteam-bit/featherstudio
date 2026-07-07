@@ -33,7 +33,7 @@ function Navbar(): string {
   <nav class="nav" id="main-nav">
     <a href="/" class="logo" data-link="home" id="logo-btn" aria-label="Atlantic Bear Home">
       <span class="logo-wordmark">Atlantic</span>
-      <img src="/atlanticbear-logo.png" alt="Atlantic Bear Logo" class="logo-bear-img" width="42" height="42" />
+      <img src="/atlanticbear-logo.png" alt="Atlantic Bear Logo" class="logo-bear-img" width="42" height="42" fetchpriority="high" />
     </a>
     <div class="nav-links">
       <a href="/" class="nav-link" data-link="home"    id="nav-home">Home</a>
@@ -124,7 +124,7 @@ function HomePage(): string {
           View Plans
         </a>
       </div>
-      <p class="hero-note">See your finished online reputation and client acquisition system before you pay a single dirham. <a href="/booking" data-link="booking">Learn more</a></p>
+      <p class="hero-note">See your finished online reputation and client acquisition system before you pay a single dirham. <a href="/booking" data-link="booking">Learn more about our free demo</a></p>
     </div>
   </section>
 
@@ -1070,8 +1070,8 @@ function getPageFromPath(path: string): Page {
 }
 
 function setActiveNav(page: Page) {
-  $$('[data-link]').forEach(el => el.classList.remove('active'));
-  const link = $(`[data-link="${page}"].nav-link`);
+  $$('#main-nav [data-link]').forEach(el => el.classList.remove('active'));
+  const link = $(`#main-nav [data-link="${page}"].nav-link`);
   if (link) link.classList.add('active');
 }
 
@@ -1340,9 +1340,9 @@ function navigate(page: Page, pushHistory = true) {
   main.style.transform = 'translateY(8px)';
 
   setTimeout(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
     main.innerHTML = pageMap[page]();
     setActiveNav(page);
-    window.scrollTo({ top: 0, behavior: 'instant' });
     main.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
     requestAnimationFrame(() => {
       main.style.opacity = '1';
