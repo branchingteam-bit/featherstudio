@@ -797,7 +797,6 @@
               id="booking-video"
               class="booking-video-el"
               preload="none"
-              poster="/video-poster.png"
               width="1920"
               height="1080"
               playsinline
