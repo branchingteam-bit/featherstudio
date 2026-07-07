@@ -874,7 +874,7 @@ function BookingPage(): string {
         <!-- STEP 1: VIDEO -->
         <div class="booking-step-card reveal">
           <div class="booking-step-header">
-            <h2 class="booking-step-title">Step 1: Watch this 4 min video</h2>
+            <h2 class="booking-step-title">Step 1: Watch this 5 min video</h2>
           </div>
           
           <div class="custom-video-wrap" id="custom-video-wrap">
@@ -886,7 +886,7 @@ function BookingPage(): string {
               width="1920"
               height="1080"
               playsinline
-              src="/videos for funnel call/new video for funnel Atlantic Bear Free Demo and Website Pricing Plans.mp4"
+              src="/videos for funnel call/final video for funnel version3/Atlantic Bear Free Demo, Pricing Plans Explained.mp4"
             ></video>
             <!-- Overlay (shown when paused/before play) -->
             <div class="bv-overlay" id="bv-overlay">
