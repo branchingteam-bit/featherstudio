@@ -114,7 +114,7 @@ function HomePage(): string {
     <div class="container" style="position: relative; z-index: 1;">
       <h1>Your business deserves<br>to be found.</h1>
       <p class="hero-sub">
-        Every person who Googles your business should find a brand presence that positions you as the market leader. We secure your dominant online presence in 5 days — and you don’t lift a finger.
+        We build custom websites for UAE businesses. Get a free demo of your site before paying to keep it. You run your business, we run your website.
       </p>
       <div class="hero-ctas">
         <a href="/booking" class="btn btn-dark btn-large" data-link="booking" id="hero-cta-book">
@@ -124,7 +124,7 @@ function HomePage(): string {
           View Plans
         </a>
       </div>
-      <p class="hero-note">See your finished online reputation and client acquisition system before you pay a single dirham. <a href="/booking" data-link="booking">Learn more about our free demo</a></p>
+      <p class="hero-note">See a demo of your website for free. <a href="/booking" data-link="booking">Learn more about our free demo</a></p>
     </div>
   </section>
 
@@ -862,8 +862,8 @@ function BookingPage(): string {
   <div class="page-header" style="border-bottom:1px solid var(--border);">
     <div class="container">
       <div class="section-label">Get Started</div>
-      <h1>Book your call to get your demo</h1>
-      <p>Follow the 3 simple steps below to meet the team, check our work, and schedule a call to talk about your website.</p>
+      <h1>Book your call to get your <span style="color:var(--accent);">demo</span></h1>
+      <p>Follow these 3 steps to understand our demo offer, to book a call, and to look at testimonials.</p>
     </div>
   </div>
 
@@ -874,7 +874,8 @@ function BookingPage(): string {
         <!-- STEP 1: VIDEO -->
         <div class="booking-step-card reveal">
           <div class="booking-step-header">
-            <h2 class="booking-step-title">Step 1: Watch this 4 min video</h2>
+            <div class="booking-video-cta-label">⬇&nbsp; Watch this video first &nbsp;⬇</div>
+            <h2 class="booking-step-title">Step 1: Watch this 4 min video to understand our offer</h2>
           </div>
           
           <div class="custom-video-wrap" id="custom-video-wrap">
@@ -974,8 +975,8 @@ const pageMap: Record<Page, () => string> = {
 
 const pageMeta: Record<Page, { title: string; desc: string }> = {
   home: {
-    title: 'Atlantic Bear | Professional Websites for UAE Businesses. Live in 3 Days.',
-    desc: 'Atlantic Bear designs, builds, and launches custom professional websites for UAE businesses. Clean layouts, ultra-fast speeds, built to grow your brand. Live in 3 days, fully managed.'
+    title: 'Atlantic Bear | Custom Website Design Agency in the UAE',
+    desc: 'Atlantic Bear is a leading website agency in the UAE. We build custom, premium websites for businesses. Get a free demo of your website before you pay anything.'
   },
   pricing: {
     title: 'More Clients Starts Here | Atlantic Bear Pricing',
