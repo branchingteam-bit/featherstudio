@@ -874,7 +874,7 @@ function BookingPage(): string {
         <!-- STEP 1: VIDEO -->
         <div class="booking-step-card reveal">
           <div class="booking-step-header">
-            <div class="booking-video-cta-label">⬇&nbsp; Watch this video first &nbsp;⬇</div>
+            <div class="booking-video-cta-label">&#x2B07;&#xFE0E;&nbsp; Watch this video first &nbsp;&#x2B07;&#xFE0E;</div>
             <h2 class="booking-step-title">Step 1: Watch this 4 min video to understand our offer</h2>
           </div>
           
@@ -1168,27 +1168,19 @@ function loadCalendlyWidget() {
     }
   };
 
+  // Script is preloaded in <head> — just wait for it to be ready
   if ((window as any).Calendly) {
     init();
     return;
   }
 
-  if (document.getElementById('calendly-sdk')) {
-    const checkInterval = setInterval(() => {
-      if ((window as any).Calendly) {
-        clearInterval(checkInterval);
-        init();
-      }
-    }, 100);
-    return;
-  }
-
-  const script = document.createElement('script');
-  script.id = 'calendly-sdk';
-  script.src = 'https://assets.calendly.com/assets/external/widget.js';
-  script.async = true;
-  script.onload = init;
-  document.head.appendChild(script);
+  // Poll until the preloaded script has executed (usually <300ms)
+  const checkInterval = setInterval(() => {
+    if ((window as any).Calendly) {
+      clearInterval(checkInterval);
+      init();
+    }
+  }, 50);
 }
 
 // ─── Booking Page Video Loader ────────────────────────────────────────────────
