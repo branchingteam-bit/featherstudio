@@ -125,6 +125,12 @@ h1, h2, h3, h4 {
   align-items: center;
   gap: 8px;
 }
+.nav-mobile-only {
+  display: none !important;
+}
+.nav-desktop-only {
+  display: inline-flex !important;
+}
 
 /* ─── Buttons ────────────────────────────────────────────────────── */
 .btn {
@@ -1176,6 +1182,8 @@ h1, h2, h3, h4 {
 @media (max-width: 640px) {
   .nav { padding: 0 20px; }
   .nav-links { display: none; }
+  .nav-desktop-only { display: none !important; }
+  .nav-mobile-only { display: inline-flex !important; }
   .container { padding: 0 20px; }
   .hero { padding: 120px 0 24px; }
   .section-pad { padding: 64px 0; }
@@ -1186,6 +1194,11 @@ h1, h2, h3, h4 {
   .facts-stats-row { grid-template-columns: 1fr; }
   .facts-stat-block { border-right: none; }
   .fact-hero-block { padding: 28px 24px; }
+}
+@media (max-width: 480px) {
+  .logo-wordmark { display: none !important; }
+  .nav { gap: 10px; }
+  .nav-actions { gap: 6px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .marquee-inner { animation: none; }
@@ -1479,7 +1492,10 @@ h1, h2, h3, h4 {
 
 /* Video CTA label (Step 1 attention grabber) */
 .booking-video-cta-label {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
   font-size: 1.75rem;
   font-weight: 900;
   letter-spacing: -0.01em;
@@ -1492,6 +1508,29 @@ h1, h2, h3, h4 {
   text-align: center;
   width: 100%;
   box-sizing: border-box;
+  white-space: nowrap;
+}
+.cta-arrow {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  stroke-width: 3.5px;
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@media (max-width: 640px) {
+  .booking-video-cta-label {
+    font-size: 1.15rem;
+    padding: 8px 14px;
+    gap: 8px;
+  }
+  .cta-arrow {
+    width: 18px;
+    height: 18px;
+    stroke-width: 4px;
+  }
 }
 
 /* Step 1: Video Placeholder */

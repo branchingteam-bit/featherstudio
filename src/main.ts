@@ -42,7 +42,8 @@ function Navbar(): string {
       <a href="/contact" class="nav-link" data-link="contact" id="nav-contact">Contact</a>
     </div>
     <div class="nav-actions">
-      <a href="/contact" class="btn btn-secondary btn-sm" data-link="contact" id="nav-contact-cta">Contact</a>
+      <a href="/contact" class="btn btn-secondary btn-sm nav-desktop-only" data-link="contact" id="nav-contact-cta">Contact</a>
+      <a href="/pricing" class="btn btn-secondary btn-sm nav-mobile-only" data-link="pricing" id="nav-pricing-cta">Pricing</a>
       <a href="/booking" class="btn btn-dark btn-sm" data-link="booking" id="nav-book-cta">Book a Call ${Icons.arrow}</a>
     </div>
   </nav>`;
@@ -874,7 +875,11 @@ function BookingPage(): string {
         <!-- STEP 1: VIDEO -->
         <div class="booking-step-card reveal">
           <div class="booking-step-header">
-            <div class="booking-video-cta-label">&#x2B07;&#xFE0E;&nbsp; Watch this video first &nbsp;&#x2B07;&#xFE0E;</div>
+            <div class="booking-video-cta-label">
+              <svg class="cta-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19,12 12,19 5,12"></polyline></svg>
+              Watch this video first
+              <svg class="cta-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19,12 12,19 5,12"></polyline></svg>
+            </div>
             <h2 class="booking-step-title">Step 1: Watch this 4 min video to understand our offer</h2>
           </div>
           
