@@ -718,25 +718,8 @@ function TestimonialsPage(): string {
   <section class="section-pad">
     <div class="container">
 
-      <!-- VIDEO TESTIMONIAL -->
-      <div class="tm-shot-block reveal" style="margin-bottom: 64px;">
-        <div class="tm-shot-label tm-label-after">Video Review</div>
-        <div class="tm-browser">
-          <div class="tm-browser-bar">
-            <span class="tm-dot"></span><span class="tm-dot"></span><span class="tm-dot"></span>
-            <div class="tm-url">sondertraininggroup.com</div>
-          </div>
-          <div style="background: #000; display: flex; justify-content: center; align-items: center; overflow: hidden;">
-            <video controls style="width: 100%; display: block; border: none; aspect-ratio: 16/9; object-fit: contain;">
-              <source src="/testimonials/sonder%20training%20group%20testimonial.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </div>
-      </div>
-
       <!-- BEFORE -->
-      <div class="tm-shot-block reveal">
+      <div class="tm-shot-block reveal" style="margin-bottom: 64px;">
         <div class="tm-shot-label tm-label-before">Before</div>
         <div class="tm-browser">
           <div class="tm-browser-bar">
@@ -748,7 +731,7 @@ function TestimonialsPage(): string {
       </div>
 
       <!-- AFTER -->
-      <div class="tm-shot-block reveal" style="transition-delay:0.08s;">
+      <div class="tm-shot-block reveal" style="transition-delay:0.08s; margin-bottom: 64px;">
         <div class="tm-shot-label tm-label-after">After</div>
         <div class="tm-browser">
           <div class="tm-browser-bar">
@@ -756,6 +739,25 @@ function TestimonialsPage(): string {
             <div class="tm-url">sondertraininggroup.com</div>
           </div>
           <img src="/screenshots/sonder-new.png" alt="Client website — after, built by Atlantic Bear" loading="lazy" class="tm-screenshot" width="1024" height="609" />
+        </div>
+      </div>
+
+      <!-- VIDEO TESTIMONIAL -->
+      <div class="tm-shot-block reveal" style="transition-delay:0.12s; max-width: 600px; margin: 0 auto;">
+        <div class="tm-shot-label tm-label-after" style="position: static; display: inline-block; margin-bottom: 16px;">Video Review</div>
+        <div class="booking-testimonials-wrap" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+          <div style="max-width: 320px; width: 100%; border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-md); background: #000; border: 1px solid var(--border);">
+            <video controls style="width: 100%; display: block; border: none; aspect-ratio: 9/16; object-fit: cover;">
+              <source src="/testimonials/sonder%20training%20group%20testimonial.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <p class="video-testimonial-quote">
+            "We approached Alexi at Atlantic Bear, who was absolutely fantastic at putting together our ideas and bringing them across on the website in a way that really engaged our target market."
+          </p>
+          <p class="video-testimonial-link-note">
+            <a href="https://sondertraininggroup.com/" target="_blank" rel="noopener">Take a look at the website we built for them</a>
+          </p>
         </div>
       </div>
 
@@ -950,13 +952,19 @@ function BookingPage(): string {
             <h2 class="booking-step-title">Step 3: Listen to what our clients have to say</h2>
           </div>
           
-          <div class="booking-testimonials-wrap" style="display: flex; justify-content: center; margin-top: 24px;">
+          <div class="booking-testimonials-wrap" style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 24px;">
             <div style="max-width: 320px; width: 100%; border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-md); background: #000; border: 1px solid var(--border);">
               <video controls style="width: 100%; display: block; border: none; aspect-ratio: 9/16; object-fit: cover;">
                 <source src="/testimonials/sonder%20training%20group%20testimonial.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
             </div>
+            <p class="video-testimonial-quote">
+              "We approached Alexi at Atlantic Bear, who was absolutely fantastic at putting together our ideas and bringing them across on the website in a way that really engaged our target market."
+            </p>
+            <p class="video-testimonial-link-note">
+              <a href="https://sondertraininggroup.com/" target="_blank" rel="noopener">Take a look at the website we built for them</a>
+            </p>
           </div>
         </div>
 

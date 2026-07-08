@@ -1358,28 +1358,28 @@ h1, h2, h3, h4 {
   margin-bottom: 0;
 }
 .tm-shot-label {
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 .tm-shot-label::before {
   content: '';
   display: inline-block;
-  width: 8px;
-  height: 8px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   flex-shrink: 0;
 }
 .tm-label-before {
-  color: rgba(0,0,0,.38);
+  color: rgba(0,0,0,.45);
 }
 .tm-label-before::before {
-  background: rgba(0,0,0,.2);
+  background: rgba(0,0,0,.3);
 }
 .tm-label-after {
   color: var(--accent);
@@ -2362,6 +2362,37 @@ h1, h2, h3, h4 {
 }
 .paypal-bonus-note strong {
   font-weight: 700;
+}
+
+/* Video Testimonial Quote Styling */
+.video-testimonial-quote {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+  text-align: center;
+  font-style: italic;
+  max-width: 320px;
+  margin: 18px auto 0;
+  padding: 0 8px;
+  font-weight: 500;
+}
+
+.video-testimonial-link-note {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 6px;
+  max-width: 320px;
+}
+.video-testimonial-link-note a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 600;
+  transition: var(--ease);
+}
+.video-testimonial-link-note a:hover {
+  color: var(--accent-dark);
 }
 
 
