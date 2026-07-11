@@ -866,7 +866,8 @@ function BookingPage(): string {
     <div class="container">
       <div class="section-label">Get Started</div>
       <h1>Book your call to get your <span style="color:var(--accent);">demo</span></h1>
-      <p>Follow these 3 steps to understand our demo offer, to book a call, and to look at testimonials.</p>
+      <p>Watch the video or book straight away. It only takes a minute.</p>
+      <a href="#booking-calendar" class="btn btn-dark btn-sm" style="margin-top: 14px;" id="skip-to-booking-btn">Book a Call Now ${Icons.arrow}</a>
     </div>
   </div>
 
@@ -874,7 +875,7 @@ function BookingPage(): string {
     <div class="container">
       <div class="booking-steps-timeline">
         
-        <!-- STEP 1: VIDEO -->
+        <!-- VIDEO -->
         <div class="booking-step-card reveal">
           <div class="booking-step-header">
             <div class="booking-video-cta-label">
@@ -882,7 +883,7 @@ function BookingPage(): string {
               Watch this video first
               <svg class="cta-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19,12 12,19 5,12"></polyline></svg>
             </div>
-            <h2 class="booking-step-title">Step 1: Watch this 4 min video to understand our offer</h2>
+            <h2 class="booking-step-title">Watch this 4 min video to understand our offer</h2>
           </div>
           
           <div class="custom-video-wrap" id="custom-video-wrap">
@@ -927,10 +928,10 @@ function BookingPage(): string {
           </div>
         </div>
 
-        <!-- STEP 2: BOOKING CALENDAR -->
-        <div class="booking-step-card reveal" style="transition-delay: 0.1s;">
+        <!-- BOOKING CALENDAR -->
+        <div class="booking-step-card reveal" style="transition-delay: 0.1s;" id="booking-calendar">
           <div class="booking-step-header">
-            <h2 class="booking-step-title">Step 2: Book a call to get your <span style="color:var(--accent);">Free Demo</span></h2>
+            <h2 class="booking-step-title">Book a call to get your <span style="color:var(--accent);">Free Demo</span></h2>
           </div>
           
           <div class="calendly-widget-wrap">
@@ -941,15 +942,15 @@ function BookingPage(): string {
           
           <div class="fallback-calendly-link-wrap">
             <a href="https://calendly.com/officialatlanticbear/first-meeting?hide_gdpr_banner=1" target="_blank" rel="noopener" class="fallback-calendly-link">
-              Open the calendar in a new tab if it doesn’t appear above.
+              Open the calendar in a new tab if it doesn't appear above.
             </a>
           </div>
         </div>
 
-        <!-- STEP 3: VIDEO TESTIMONIAL -->
+        <!-- CLIENT TESTIMONIAL (optional, not a step) -->
         <div class="booking-step-card reveal" style="transition-delay: 0.2s;">
           <div class="booking-step-header">
-            <h2 class="booking-step-title">Step 3: Listen to what our clients have to say</h2>
+            <h2 class="booking-step-title">Hear from our clients</h2>
           </div>
           
           <div class="booking-testimonials-wrap" style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 24px;">
@@ -1362,6 +1363,16 @@ function navigate(page: Page, pushHistory = true) {
     if (page === 'booking') {
       loadCalendlyWidget();
       initBookingPageVideo();
+
+      // "Book a Call Now" skip button — smooth scroll to calendar
+      const skipBtn = document.getElementById('skip-to-booking-btn');
+      if (skipBtn) {
+        skipBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const cal = document.getElementById('booking-calendar');
+          if (cal) cal.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
     }
 
 
