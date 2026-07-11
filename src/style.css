@@ -1447,6 +1447,66 @@ h1, h2, h3, h4 {
 }
 
 /* ─── Booking Page Styles ────────────────────────────────────────── */
+/* ─── Booking page redesign ────────────────────────────────────── */
+.booking-page-header {
+  padding: 110px 0 72px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+.booking-page-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(59,105,255,0.07);
+  border: 1px solid rgba(59,105,255,0.18);
+  border-radius: var(--r-pill);
+  padding: 5px 14px;
+  margin-bottom: 24px;
+}
+.booking-page-header h1 {
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+  font-weight: 900;
+  letter-spacing: -0.045em;
+  line-height: 1.1;
+  margin-bottom: 28px;
+}
+.booking-page-value-prop {
+  font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+  color: var(--text-muted);
+  max-width: 420px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.booking-page-divider {
+  width: 36px;
+  height: 2px;
+  background: var(--border-mid);
+  border-radius: 2px;
+  margin: 28px auto;
+}
+.booking-page-cta-text {
+  font-size: clamp(0.88rem, 2.2vw, 0.95rem);
+  color: rgba(0,0,0,0.45);
+  max-width: 360px;
+  margin: 0 auto;
+  line-height: 1.55;
+  font-style: italic;
+}
+.booking-bridge-text {
+  text-align: center;
+  padding: 0 16px;
+}
+.booking-bridge-text p {
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: -0.02em;
+}
+
 .booking-section {
   padding: 64px 0 96px;
 }
