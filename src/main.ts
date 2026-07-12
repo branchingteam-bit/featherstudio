@@ -438,7 +438,7 @@ function PricingPage(): string {
       <div class="pricing-grid-two">
         
         <!-- PLAN 1: THE LAUNCH PLAN -->
-        <div class="pricing-plan-card relative">
+        <div class="pricing-plan-card featured">
           <div class="pricing-card-badge">Most Popular</div>
           <div class="pricing-plan-top">
             <h2 class="pricing-plan-title">The Launch Plan</h2>
@@ -470,7 +470,7 @@ function PricingPage(): string {
                 <span class="feature-val">AED 800 Value</span>
               </div>
               <div class="pricing-feature-row">
-                <span class="feature-desc">Full site SEO setup: titles, descriptions, site structure, speed, and Google indexing</span>
+                <span class="feature-desc">Essential SEO setup: standard page titles, descriptions, and Google indexing</span>
                 <span class="feature-val">AED 1,000 Value</span>
               </div>
               <div class="pricing-feature-row">
@@ -498,6 +498,19 @@ function PricingPage(): string {
                 <span class="feature-val">Included</span>
               </div>
             </div>
+
+            <!-- DEDICATED BONUS CARD -->
+            <div class="pricing-bonus-block">
+              <div class="bonus-header-row">
+                <span class="bonus-badge-label">FREE BONUS</span>
+                <span class="bonus-value-badge">AED 1,500 VALUE</span>
+              </div>
+              <h4 class="bonus-title">Free Video Guide for Meta Ads</h4>
+              <p class="bonus-subtitle">Get immediate traction after launch with step-by-step video templates:</p>
+              <ul class="bonus-bullet-list">
+                <li>Video guide: how to run Instagram and Facebook ads for your business, step by step</li>
+              </ul>
+            </div>
           </div>
 
           <div class="pricing-plan-footer">
@@ -522,8 +535,7 @@ function PricingPage(): string {
         </div>
 
         <!-- PLAN 2: THE GROWTH PLAN -->
-        <div class="pricing-plan-card growth">
-          <div class="pricing-card-badge">Best Value</div>
+        <div class="pricing-plan-card">
           <div class="pricing-plan-top">
             <h2 class="pricing-plan-title">The Growth Plan</h2>
             <p class="pricing-plan-subtitle">For businesses that want to look like the market leader and get more out of every visitor.</p>
@@ -542,12 +554,12 @@ function PricingPage(): string {
                 <span class="feature-val">Increased Care</span>
               </div>
               <div class="pricing-feature-row">
-                <span class="feature-desc">More room to grow: up to 12 pages built for conversion</span>
+                <span class="feature-desc">More room to grow: up to 10 pages built for conversion</span>
                 <span class="feature-val">AED 3,000 Value</span>
               </div>
               <div class="pricing-feature-row">
-                <span class="feature-desc">Deeper site SEO: keyword mapping for every service you offer, so each page targets what people actually search</span>
-                <span class="feature-val">AED 1,500 Value</span>
+                <span class="feature-desc">Enhanced SEO: targeting search terms for your main service pages</span>
+                <span class="feature-val">AED 800 Value</span>
               </div>
               <div class="pricing-feature-row">
                 <span class="feature-desc">Blog set up with 3 SEO articles written for your niche</span>
@@ -583,20 +595,19 @@ function PricingPage(): string {
             <div class="pricing-bonus-block">
               <div class="bonus-header-row">
                 <span class="bonus-badge-label">FREE BONUS</span>
-                <span class="bonus-value-badge">AED 2,700 VALUE</span>
+                <span class="bonus-value-badge">AED 1,500 VALUE</span>
               </div>
-              <h4 class="bonus-title">Free Video Guide for Meta and Google Ads</h4>
+              <h4 class="bonus-title">Free Video Guide for Meta Ads</h4>
               <p class="bonus-subtitle">Get immediate traction after launch with step-by-step video templates:</p>
               <ul class="bonus-bullet-list">
-                <li>Video guide: how to run Meta ads for your business, step by step</li>
-                <li>Video guide: how to run Google Ads for your business, step by step</li>
+                <li>Video guide: how to run Instagram and Facebook ads for your business, step by step</li>
               </ul>
             </div>
           </div>
 
           <div class="pricing-plan-footer">
             <div class="value-comparison-box">
-              <div class="val-comp-row"><span class="val-comp-label">Total Package Value:</span><span class="val-comp-value">AED 20,000+</span></div>
+              <div class="val-comp-row"><span class="val-comp-label">Total Package Value:</span><span class="val-comp-value">AED 15,000+</span></div>
               <div class="val-comp-row main"><span class="val-comp-label">Your Setup Cost:</span><span class="val-comp-value-price">AED 6,500</span></div>
             </div>
             <a href="javascript:void(0)" class="btn btn-dark btn-block btn-large">Book Call to See Your Demo</a>
@@ -619,7 +630,7 @@ function PricingPage(): string {
 
       <!-- Growth teaser note between offers -->
       <div class="growth-teaser-text">
-        Want video on your site, a real contact form, a blog, 12 pages, and 3 changes a month instead of 1? That's the Growth Plan.
+        Want video on your site, a real contact form, a blog, 10 pages, and 3 changes a month instead of 1? That's the Growth Plan.
       </div>
       
       <!-- Content change footnote -->
@@ -887,7 +898,7 @@ function BookingPage(): string {
               width="1920"
               height="1080"
               playsinline
-              src="/videos for funnel call/final video for funnel version3/Atlantic Bear Free Demo, Pricing Plans Explained.mp4"
+              src="/videos for funnel call/video for funnel v4/Atlantic Bear Free Website Demo Pricing Plans.mp4"
             ></video>
             <!-- Overlay (shown when paused/before play) -->
             <div class="bv-overlay" id="bv-overlay">

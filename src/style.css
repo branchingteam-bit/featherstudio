@@ -2030,7 +2030,7 @@ h1, h2, h3, h4 {
 .pricing-plan-card:hover {
   border-color: var(--border-mid);
 }
-.pricing-plan-card.growth {
+.pricing-plan-card.featured {
   border: 2.5px solid var(--blue);
   position: relative;
 }
@@ -2091,6 +2091,8 @@ h1, h2, h3, h4 {
 }
 .pricing-plan-body {
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 .pricing-stack-header {
   font-size: 0.72rem;
@@ -2223,7 +2225,7 @@ h1, h2, h3, h4 {
 
 /* Free Bonus Block (striking layout) */
 .pricing-bonus-block {
-  margin-top: 28px;
+  margin-top: auto;
   padding: 28px;
   background: rgba(59, 105, 255, 0.04);
   border: 2.5px dashed var(--blue);
