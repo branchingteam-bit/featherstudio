@@ -8,16 +8,115 @@ const $$ = (sel: string, ctx: Document | Element = document) =>
 
 const ABACUS_NAMESPACE = 'atlanticbear_analytics_8d24';
 
-function trackAbacusEvent(event: string) {
-  // 1. Fire global hit
-  fetch(`https://abacus.jasoncameron.dev/hit/${ABACUS_NAMESPACE}/${event}`).catch(() => {});
+function trackAbacusEvent(event: string, delay = 0) {
+  const fire = () => {
+    // 1. Fire global hit
+    fetch(`https://abacus.jasoncameron.dev/hit/${ABACUS_NAMESPACE}/${event}`).catch(() => {});
 
-  // 2. Fire daily hit (YYYY-MM-DD)
-  try {
-    const localDateStr = getLocalDateString();
-    fetch(`https://abacus.jasoncameron.dev/hit/${ABACUS_NAMESPACE}/${localDateStr}_${event}`).catch(() => {});
-  } catch (e) {
-    // Ignore
+    // 2. Fire daily hit (YYYY-MM-DD)
+    try {
+      const localDateStr = getLocalDateString();
+      fetch(`https://abacus.jasoncameron.dev/hit/${ABACUS_NAMESPACE}/${localDateStr}_${event}`).catch(() => {});
+    } catch (e) {
+      // Ignore
+    }
+  };
+
+  if (delay > 0) {
+    setTimeout(fire, delay);
+  } else {
+    fire();
+  }
+}
+
+// ─── Time and Scroll Tracking ───
+let timeTrackers: Record<string, number> = {};
+
+function startPageTimeTracking() {
+  stopPageTimeTracking();
+  const trackTime = (seconds: number) => {
+    timeTrackers[`t${seconds}`] = window.setTimeout(() => {
+      trackAbacusEvent(`time_${seconds}s`);
+      if (typeof (window as any).fbq === 'function') {
+        (window as any).fbq('trackCustom', `Time_${seconds}s`, { page: 'booking' });
+      }
+    }, seconds * 1000);
+  };
+  trackTime(5);
+  trackTime(15);
+  trackTime(30);
+  trackTime(60);
+}
+
+function stopPageTimeTracking() {
+  Object.values(timeTrackers).forEach(clearTimeout);
+  timeTrackers = {};
+}
+
+let scrollTracked = { s25: false, s50: false, s75: false, s100: false, calendar: false };
+let scrollListener: (() => void) | null = null;
+
+function startScrollTracking() {
+  stopScrollTracking();
+  scrollTracked = { s25: false, s50: false, s75: false, s100: false, calendar: false };
+
+  scrollListener = () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    if (docHeight <= 0) return;
+
+    const pct = Math.round((scrollTop / docHeight) * 100);
+
+    if (pct >= 25 && !scrollTracked.s25) {
+      scrollTracked.s25 = true;
+      trackAbacusEvent('scroll_25');
+      if (typeof (window as any).fbq === 'function') {
+        (window as any).fbq('trackCustom', 'Scroll_25pct');
+      }
+    }
+    if (pct >= 50 && !scrollTracked.s50) {
+      scrollTracked.s50 = true;
+      trackAbacusEvent('scroll_50');
+      if (typeof (window as any).fbq === 'function') {
+        (window as any).fbq('trackCustom', 'Scroll_50pct');
+      }
+    }
+    if (pct >= 75 && !scrollTracked.s75) {
+      scrollTracked.s75 = true;
+      trackAbacusEvent('scroll_75');
+      if (typeof (window as any).fbq === 'function') {
+        (window as any).fbq('trackCustom', 'Scroll_75pct');
+      }
+    }
+    if (pct >= 95 && !scrollTracked.s100) {
+      scrollTracked.s100 = true;
+      trackAbacusEvent('scroll_100');
+      if (typeof (window as any).fbq === 'function') {
+        (window as any).fbq('trackCustom', 'Scroll_100pct');
+      }
+    }
+
+    // Also track calendar view
+    const cal = document.getElementById('booking-calendar');
+    if (cal && !scrollTracked.calendar) {
+      const rect = cal.getBoundingClientRect();
+      if (rect.top < window.innerHeight) {
+        scrollTracked.calendar = true;
+        trackAbacusEvent('scroll_calendar');
+        if (typeof (window as any).fbq === 'function') {
+          (window as any).fbq('trackCustom', 'Scroll_To_Calendar');
+        }
+      }
+    }
+  };
+
+  window.addEventListener('scroll', scrollListener, { passive: true });
+}
+
+function stopScrollTracking() {
+  if (scrollListener) {
+    window.removeEventListener('scroll', scrollListener);
+    scrollListener = null;
   }
 }
 
@@ -1191,6 +1290,114 @@ function AdminPage(): string {
             </div>
           </div>
         </div>
+
+        <!-- New Stats Row: Engagement & Scroll Depth -->
+        <div class="admin-stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); margin-top: 30px; align-items: start;">
+          <!-- Card 1: Attention Span -->
+          <div class="admin-funnel-card">
+            <h2>Attention Span (Dwell Time)</h2>
+            <div class="funnel-container">
+              <div class="funnel-step">
+                <span class="funnel-step-label" style="color: var(--red);">Quick Bounce (<5s)</span>
+                <div class="funnel-bar-wrap" style="border-color: rgba(231, 76, 60, 0.3);">
+                  <div class="funnel-bar-fill" id="funnel-bar-bounce" style="width: 0%; background: linear-gradient(90deg, #e74c3c 0%, #c0392b 100%);">
+                    <span class="funnel-bar-pct" id="funnel-pct-bounce">0%</span>
+                  </div>
+                </div>
+                <span class="funnel-step-val" id="funnel-val-bounce" style="color: var(--red);">0</span>
+              </div>
+              <div class="funnel-step">
+                <span class="funnel-step-label">Stayed >5s</span>
+                <div class="funnel-bar-wrap">
+                  <div class="funnel-bar-fill" id="funnel-bar-time_5s" style="width: 0%; background: #f39c12;">
+                    <span class="funnel-bar-pct" id="funnel-pct-time_5s">0%</span>
+                  </div>
+                </div>
+                <span class="funnel-step-val" id="funnel-val-time_5s">0</span>
+              </div>
+              <div class="funnel-step">
+                <span class="funnel-step-label">Stayed >15s</span>
+                <div class="funnel-bar-wrap">
+                  <div class="funnel-bar-fill" id="funnel-bar-time_15s" style="width: 0%; background: #f1c40f;">
+                    <span class="funnel-bar-pct" id="funnel-pct-time_15s">0%</span>
+                  </div>
+                </div>
+                <span class="funnel-step-val" id="funnel-val-time_15s">0</span>
+              </div>
+              <div class="funnel-step">
+                <span class="funnel-step-label">Stayed >30s</span>
+                <div class="funnel-bar-wrap">
+                  <div class="funnel-bar-fill" id="funnel-bar-time_30s" style="width: 0%; background: #3498db;">
+                    <span class="funnel-bar-pct" id="funnel-pct-time_30s">0%</span>
+                  </div>
+                </div>
+                <span class="funnel-step-val" id="funnel-val-time_30s">0</span>
+              </div>
+              <div class="funnel-step">
+                <span class="funnel-step-label">Stayed >60s</span>
+                <div class="funnel-bar-wrap">
+                  <div class="funnel-bar-fill" id="funnel-bar-time_60s" style="width: 0%; background: #2ecc71;">
+                    <span class="funnel-bar-pct" id="funnel-pct-time_60s">0%</span>
+                  </div>
+                </div>
+                <span class="funnel-step-val" id="funnel-val-time_60s">0</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Scroll Depth -->
+          <div class="admin-funnel-card">
+            <h2>Scroll Depth</h2>
+            <div class="funnel-container">
+              <div class="funnel-step">
+                <span class="funnel-step-label">Scrolled 25%</span>
+                <div class="funnel-bar-wrap">
+                  <div class="funnel-bar-fill" id="funnel-bar-scroll_25" style="width: 0%;">
+                    <span class="funnel-bar-pct" id="funnel-pct-scroll_25">0%</span>
+                  </div>
+                </div>
+                <span class="funnel-step-val" id="funnel-val-scroll_25">0</span>
+              </div>
+              <div class="funnel-step">
+                <span class="funnel-step-label">Scrolled 50%</span>
+                <div class="funnel-bar-wrap">
+                  <div class="funnel-bar-fill" id="funnel-bar-scroll_50" style="width: 0%;">
+                    <span class="funnel-bar-pct" id="funnel-pct-scroll_50">0%</span>
+                  </div>
+                </div>
+                <span class="funnel-step-val" id="funnel-val-scroll_50">0</span>
+              </div>
+              <div class="funnel-step">
+                <span class="funnel-step-label">Scrolled 75%</span>
+                <div class="funnel-bar-wrap">
+                  <div class="funnel-bar-fill" id="funnel-bar-scroll_75" style="width: 0%;">
+                    <span class="funnel-bar-pct" id="funnel-pct-scroll_75">0%</span>
+                  </div>
+                </div>
+                <span class="funnel-step-val" id="funnel-val-scroll_75">0</span>
+              </div>
+              <div class="funnel-step">
+                <span class="funnel-step-label" style="color: #27ae60;">Saw Calendar</span>
+                <div class="funnel-bar-wrap" style="border-color: rgba(39,174,96,0.3);">
+                  <div class="funnel-bar-fill" id="funnel-bar-scroll_calendar" style="width: 0%; background: linear-gradient(90deg, #27ae60 0%, #2ecc71 100%);">
+                    <span class="funnel-bar-pct" id="funnel-pct-scroll_calendar">0%</span>
+                  </div>
+                </div>
+                <span class="funnel-step-val" id="funnel-val-scroll_calendar" style="color: #27ae60;">0</span>
+              </div>
+              <div class="funnel-step">
+                <span class="funnel-step-label">Scrolled 100%</span>
+                <div class="funnel-bar-wrap">
+                  <div class="funnel-bar-fill" id="funnel-bar-scroll_100" style="width: 0%;">
+                    <span class="funnel-bar-pct" id="funnel-pct-scroll_100">0%</span>
+                  </div>
+                </div>
+                <span class="funnel-step-val" id="funnel-val-scroll_100">0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>`;
@@ -1698,7 +1905,9 @@ const loadData = async (isDaily: boolean, dateStr: string) => {
   const keys = [
     'pageload', 'videoplay', 'videowatch_10s', 'videowatch_30s',
     'videowatch_25pct', 'videowatch_50pct', 'videowatch_75pct',
-    'videowatch_complete', 'bookedcall'
+    'videowatch_complete', 'bookedcall',
+    'time_5s', 'time_15s', 'time_30s', 'time_60s',
+    'scroll_25', 'scroll_50', 'scroll_75', 'scroll_100', 'scroll_calendar'
   ];
 
   try {
@@ -1717,6 +1926,18 @@ const loadData = async (isDaily: boolean, dateStr: string) => {
     const v75 = stats.videowatch_75pct || 0;
     const complete = stats.videowatch_complete || 0;
     const booked = stats.bookedcall || 0;
+
+    const t5 = stats.time_5s || 0;
+    const t15 = stats.time_15s || 0;
+    const t30 = stats.time_30s || 0;
+    const t60 = stats.time_60s || 0;
+    const bounce = Math.max(0, pageLoads - t5);
+
+    const s25 = stats.scroll_25 || 0;
+    const s50 = stats.scroll_50 || 0;
+    const s75 = stats.scroll_75 || 0;
+    const s100 = stats.scroll_100 || 0;
+    const scal = stats.scroll_calendar || 0;
 
     document.getElementById('stat-pageload')!.textContent = String(pageLoads);
     document.getElementById('stat-videoplay')!.textContent = String(videoPlays);
@@ -1741,6 +1962,20 @@ const loadData = async (isDaily: boolean, dateStr: string) => {
     document.getElementById('funnel-val-videowatch_complete')!.textContent = String(complete);
     document.getElementById('funnel-val-bookedcall')!.textContent = String(booked);
 
+    // Dwell Time values
+    document.getElementById('funnel-val-bounce')!.textContent = String(bounce);
+    document.getElementById('funnel-val-time_5s')!.textContent = String(t5);
+    document.getElementById('funnel-val-time_15s')!.textContent = String(t15);
+    document.getElementById('funnel-val-time_30s')!.textContent = String(t30);
+    document.getElementById('funnel-val-time_60s')!.textContent = String(t60);
+
+    // Scroll values
+    document.getElementById('funnel-val-scroll_25')!.textContent = String(s25);
+    document.getElementById('funnel-val-scroll_50')!.textContent = String(s50);
+    document.getElementById('funnel-val-scroll_75')!.textContent = String(s75);
+    document.getElementById('funnel-val-scroll_calendar')!.textContent = String(scal);
+    document.getElementById('funnel-val-scroll_100')!.textContent = String(s100);
+
     const setBar = (id: string, value: number) => {
       const pct = pageLoads ? Math.round((value / pageLoads) * 100) : 0;
       const barFill = document.getElementById(`funnel-bar-${id}`) as HTMLElement | null;
@@ -1757,6 +1992,19 @@ const loadData = async (isDaily: boolean, dateStr: string) => {
     setBar('videowatch_75pct', v75);
     setBar('videowatch_complete', complete);
     setBar('bookedcall', booked);
+
+    // Time & scroll bars
+    setBar('bounce', bounce);
+    setBar('time_5s', t5);
+    setBar('time_15s', t15);
+    setBar('time_30s', t30);
+    setBar('time_60s', t60);
+
+    setBar('scroll_25', s25);
+    setBar('scroll_50', s50);
+    setBar('scroll_75', s75);
+    setBar('scroll_calendar', scal);
+    setBar('scroll_100', s100);
 
     if (loadingEl) loadingEl.style.display = 'none';
     if (contentEl) contentEl.style.display = 'block';
@@ -1829,6 +2077,10 @@ function initAdminPage() {
 }
 
 function navigate(page: Page, pushHistory = true) {
+  // Stop previous tracking if any
+  stopPageTimeTracking();
+  stopScrollTracking();
+
   const main = $('#main-content')!;
   main.style.opacity = '0';
   main.style.transform = 'translateY(8px)';
@@ -1849,7 +2101,9 @@ function navigate(page: Page, pushHistory = true) {
     }
 
     if (page === 'booking') {
-      trackAbacusEvent('pageload');
+      trackAbacusEvent('pageload', 2000); // Deferred by 2s to not block LCP/FCP paint
+      startPageTimeTracking();
+      startScrollTracking();
       loadCalendlyWidget();
       initBookingPageVideo();
 

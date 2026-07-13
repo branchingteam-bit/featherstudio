@@ -50,11 +50,16 @@
       <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     </noscript>
 
-    <!-- Calendly preconnect + early script load for instant widget -->
+    <!-- Preload critical LCP logo image -->
+    <link rel="preload" as="image" href="/atlanticbear-logo.png" fetchpriority="high" />
+
+    <!-- Calendly and Abacus preconnect + early script load for instant widget -->
     <link rel="preconnect" href="https://assets.calendly.com">
     <link rel="preconnect" href="https://calendly.com">
+    <link rel="preconnect" href="https://abacus.jasoncameron.dev">
     <link rel="dns-prefetch" href="https://assets.calendly.com">
     <link rel="dns-prefetch" href="https://calendly.com">
+    <link rel="dns-prefetch" href="https://abacus.jasoncameron.dev">
     <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" media="print" onload="this.media='all'">
 
     <!-- Meta Pixel Code -->
