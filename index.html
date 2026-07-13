@@ -53,27 +53,38 @@
     <!-- Preload critical LCP logo image -->
     <link rel="preload" as="image" href="/atlanticbear-logo.png" fetchpriority="high" />
 
-    <!-- Calendly and Abacus preconnect + early script load for instant widget -->
-    <link rel="preconnect" href="https://assets.calendly.com">
-    <link rel="preconnect" href="https://calendly.com">
+    <!-- Preconnect for origins used at initial paint -->
     <link rel="preconnect" href="https://abacus.jasoncameron.dev">
+    <!-- dns-prefetch for deferred/lazy origins -->
     <link rel="dns-prefetch" href="https://assets.calendly.com">
     <link rel="dns-prefetch" href="https://calendly.com">
-    <link rel="dns-prefetch" href="https://abacus.jasoncameron.dev">
+    <link rel="dns-prefetch" href="https://connect.facebook.net">
     <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" media="print" onload="this.media='all'">
 
-    <!-- Meta Pixel Code -->
+    <!-- Meta Pixel Code (deferred after paint to avoid blocking LCP) -->
     <script>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
+      // Set up the fbq stub immediately so fbq('init'...) calls don't throw errors,
+      // but don't load the heavy fbevents.js until after the page is interactive.
+      !function(f,b,n){
+        if(f.fbq)return;
+        n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];
+      }(window, document);
       fbq('init', '2102730154001696');
       fbq('track', 'PageView');
+
+      // Load the actual fbevents.js AFTER the page is idle (non-blocking)
+      function _loadFbPixel() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://connect.facebook.net/en_US/fbevents.js';
+        document.head.appendChild(s);
+      }
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(_loadFbPixel, { timeout: 3000 });
+      } else {
+        setTimeout(_loadFbPixel, 2500);
+      }
     </script>
     <!-- End Meta Pixel Code -->
   </head>
