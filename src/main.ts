@@ -6,6 +6,35 @@ const $ = (sel: string, ctx: Document | Element = document) =>
 const $$ = (sel: string, ctx: Document | Element = document) =>
   [...ctx.querySelectorAll<HTMLElement>(sel)];
 
+const ABACUS_NAMESPACE = 'atlanticbear_analytics_8d24';
+
+function trackAbacusEvent(event: string) {
+  // 1. Fire global hit
+  fetch(`https://abacus.jasoncameron.dev/hit/${ABACUS_NAMESPACE}/${event}`).catch(() => {});
+
+  // 2. Fire daily hit (YYYY-MM-DD)
+  try {
+    const localDateStr = getLocalDateString();
+    fetch(`https://abacus.jasoncameron.dev/hit/${ABACUS_NAMESPACE}/${localDateStr}_${event}`).catch(() => {});
+  } catch (e) {
+    // Ignore
+  }
+}
+
+function getLocalDateString(): string {
+  const d = new Date();
+  const offset = d.getTimezoneOffset();
+  const localDate = new Date(d.getTime() - (offset * 60 * 1000));
+  return localDate.toISOString().split('T')[0];
+}
+
+async function sha256(message: string): Promise<string> {
+  const msgBuffer = new TextEncoder().encode(message);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
 
 // ─── Icons ───────────────────────────────────────────────────────────────────
 const Icons = {
@@ -984,8 +1013,191 @@ function BookingPage(): string {
   `;
 }
 
+// ─── Admin Page ──────────────────────────────────────────────────────────────
+function AdminPage(): string {
+  const isAuthenticated = sessionStorage.getItem('admin_authenticated') === 'true';
+
+  if (!isAuthenticated) {
+    return `
+    <div class="container">
+      <div class="admin-login-wrap">
+        <div class="admin-login-card">
+          <h2>Atlantic Bear Admin</h2>
+          <p>Enter password to access analytics dashboard</p>
+          <div id="login-error" class="admin-error-msg" style="display: none;"></div>
+          <form id="admin-login-form">
+            <div class="admin-input-group">
+              <label for="admin-password">Password</label>
+              <input type="password" id="admin-password" class="admin-login-input" required placeholder="••••••••" />
+            </div>
+            <button type="submit" class="btn btn-dark btn-block btn-large">Login</button>
+          </form>
+        </div>
+      </div>
+    </div>`;
+  }
+
+  const todayStr = getLocalDateString();
+
+  return `
+  <div class="container">
+    <div class="admin-dashboard-wrap">
+      <div class="admin-dashboard-header">
+        <div>
+          <h1>Analytics Dashboard</h1>
+          <p class="hero-sub" style="font-size:0.95rem; margin-top:4px; max-width:100%;">
+            Real-time video retention and conversion stats.
+          </p>
+        </div>
+        <div class="admin-controls">
+          <div class="admin-toggle-group">
+            <button class="admin-toggle-btn active" id="btn-toggle-lifetime">Lifetime</button>
+            <button class="admin-toggle-btn" id="btn-toggle-daily">Daily</button>
+          </div>
+          <input type="date" id="admin-date-select" class="admin-date-picker" value="${todayStr}" style="display: none;" />
+        </div>
+      </div>
+
+      <div id="admin-loading" style="text-align: center; padding: 40px; font-size: 1.1rem; font-weight: 600; color: var(--text-muted);">
+        Loading analytics from Abacus API...
+      </div>
+
+      <div id="admin-dashboard-content" style="display: none;">
+        <!-- Metrics Row -->
+        <div class="admin-stats-grid">
+          <div class="admin-stat-card">
+            <div class="admin-stat-label">Page Loads</div>
+            <div class="admin-stat-value" id="stat-pageload">0</div>
+            <div class="admin-stat-meta">Total visits</div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="admin-stat-label">Video Plays</div>
+            <div class="admin-stat-value" id="stat-videoplay">0</div>
+            <div class="admin-stat-meta" id="rate-play">0% Play Rate</div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="admin-stat-label">Video Completions</div>
+            <div class="admin-stat-value" id="stat-videowatch_complete">0</div>
+            <div class="admin-stat-meta" id="rate-complete">0% Comp. Rate</div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="admin-stat-label">Booked Calls</div>
+            <div class="admin-stat-value" id="stat-bookedcall">0</div>
+            <div class="admin-stat-meta" id="rate-booking">0% Booking Rate</div>
+          </div>
+        </div>
+
+        <!-- Funnel Card -->
+        <div class="admin-funnel-card">
+          <h2>Retention & Booking Funnel</h2>
+          <div class="funnel-container">
+            <!-- Step 1: Page Loads -->
+            <div class="funnel-step">
+              <span class="funnel-step-label">Page Loads</span>
+              <div class="funnel-bar-wrap">
+                <div class="funnel-bar-fill grey-fill" style="width: 100%;">
+                  <span class="funnel-bar-pct">100%</span>
+                </div>
+              </div>
+              <span class="funnel-step-val" id="funnel-val-pageload">0</span>
+            </div>
+
+            <!-- Step 2: Video Play -->
+            <div class="funnel-step">
+              <span class="funnel-step-label">Video Plays</span>
+              <div class="funnel-bar-wrap">
+                <div class="funnel-bar-fill" id="funnel-bar-videoplay" style="width: 0%;">
+                  <span class="funnel-bar-pct" id="funnel-pct-videoplay">0%</span>
+                </div>
+              </div>
+              <span class="funnel-step-val" id="funnel-val-videoplay">0</span>
+            </div>
+
+            <!-- Step 3: 10 Seconds -->
+            <div class="funnel-step">
+              <span class="funnel-step-label">Watch 10s (Hook)</span>
+              <div class="funnel-bar-wrap">
+                <div class="funnel-bar-fill" id="funnel-bar-videowatch_10s" style="width: 0%;">
+                  <span class="funnel-bar-pct" id="funnel-pct-videowatch_10s">0%</span>
+                </div>
+              </div>
+              <span class="funnel-step-val" id="funnel-val-videowatch_10s">0</span>
+            </div>
+
+            <!-- Step 4: 30 Seconds -->
+            <div class="funnel-step">
+              <span class="funnel-step-label">Watch 30s (Intro)</span>
+              <div class="funnel-bar-wrap">
+                <div class="funnel-bar-fill" id="funnel-bar-videowatch_30s" style="width: 0%;">
+                  <span class="funnel-bar-pct" id="funnel-pct-videowatch_30s">0%</span>
+                </div>
+              </div>
+              <span class="funnel-step-val" id="funnel-val-videowatch_30s">0</span>
+            </div>
+
+            <!-- Step 5: 25% -->
+            <div class="funnel-step">
+              <span class="funnel-step-label">Watch 25%</span>
+              <div class="funnel-bar-wrap">
+                <div class="funnel-bar-fill" id="funnel-bar-videowatch_25pct" style="width: 0%;">
+                  <span class="funnel-bar-pct" id="funnel-pct-videowatch_25pct">0%</span>
+                </div>
+              </div>
+              <span class="funnel-step-val" id="funnel-val-videowatch_25pct">0</span>
+            </div>
+
+            <!-- Step 6: 50% -->
+            <div class="funnel-step">
+              <span class="funnel-step-label">Watch 50%</span>
+              <div class="funnel-bar-wrap">
+                <div class="funnel-bar-fill" id="funnel-bar-videowatch_50pct" style="width: 0%;">
+                  <span class="funnel-bar-pct" id="funnel-pct-videowatch_50pct">0%</span>
+                </div>
+              </div>
+              <span class="funnel-step-val" id="funnel-val-videowatch_50pct">0</span>
+            </div>
+
+            <!-- Step 7: 75% -->
+            <div class="funnel-step">
+              <span class="funnel-step-label">Watch 75%</span>
+              <div class="funnel-bar-wrap">
+                <div class="funnel-bar-fill" id="funnel-bar-videowatch_75pct" style="width: 0%;">
+                  <span class="funnel-bar-pct" id="funnel-pct-videowatch_75pct">0%</span>
+                </div>
+              </div>
+              <span class="funnel-step-val" id="funnel-val-videowatch_75pct">0</span>
+            </div>
+
+            <!-- Step 8: Complete -->
+            <div class="funnel-step">
+              <span class="funnel-step-label">Complete Video</span>
+              <div class="funnel-bar-wrap">
+                <div class="funnel-bar-fill" id="funnel-bar-videowatch_complete" style="width: 0%;">
+                  <span class="funnel-bar-pct" id="funnel-pct-videowatch_complete">0%</span>
+                </div>
+              </div>
+              <span class="funnel-step-val" id="funnel-val-videowatch_complete">0</span>
+            </div>
+
+            <!-- Step 9: Booked Call -->
+            <div class="funnel-step">
+              <span class="funnel-step-label" style="color:#27ae60;">Booked Calls</span>
+              <div class="funnel-bar-wrap" style="border-color:rgba(39,174,96,0.3);">
+                <div class="funnel-bar-fill complete-fill" id="funnel-bar-bookedcall" style="width: 0%;">
+                  <span class="funnel-bar-pct" id="funnel-pct-bookedcall">0%</span>
+                </div>
+              </div>
+              <span class="funnel-step-val" id="funnel-val-bookedcall" style="color:#27ae60;">0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
 // ─── Router ───────────────────────────────────────────────────────────────────
-type Page = 'home' | 'pricing' | 'work' | 'contact' | 'testimonials' | 'booking';
+type Page = 'home' | 'pricing' | 'work' | 'contact' | 'testimonials' | 'booking' | 'admin';
 
 const pageMap: Record<Page, () => string> = {
   home:         HomePage,
@@ -994,6 +1206,7 @@ const pageMap: Record<Page, () => string> = {
   contact:      ContactPage,
   testimonials: TestimonialsPage,
   booking:      BookingPage,
+  admin:        AdminPage,
 };
 
 const pageMeta: Record<Page, { title: string; desc: string }> = {
@@ -1020,6 +1233,10 @@ const pageMeta: Record<Page, { title: string; desc: string }> = {
   booking: {
     title: 'Book a Call | Atlantic Bear Discovery Session',
     desc: 'Watch our video, schedule your free 30-minute discovery call, and view our client success stories. Start your UAE website project today.'
+  },
+  admin: {
+    title: 'Admin Dashboard | Atlantic Bear',
+    desc: 'Analytics and video performance dashboard for Atlantic Bear.'
   }
 };
 
@@ -1086,7 +1303,7 @@ function updateMetadata(page: Page) {
 
 function getPageFromPath(path: string): Page {
   const cleanPath = path.replace(/^\/|\/$/g, '');
-  if (cleanPath === 'pricing' || cleanPath === 'work' || cleanPath === 'contact' || cleanPath === 'testimonials' || cleanPath === 'booking') {
+  if (cleanPath === 'pricing' || cleanPath === 'work' || cleanPath === 'contact' || cleanPath === 'testimonials' || cleanPath === 'booking' || cleanPath === 'admin') {
     return cleanPath as Page;
   }
   return 'home';
@@ -1318,6 +1535,7 @@ function initBookingPageVideo() {
     // Track play initiation (at >0.5s playback)
     if (!played && currentTime > 0.5) {
       played = true;
+      trackAbacusEvent('videoplay');
       if (typeof (window as any).fbq === 'function') {
         (window as any).fbq('trackCustom', 'VideoPlay', { video_name: 'funnel_explainer' });
       }
@@ -1326,24 +1544,28 @@ function initBookingPageVideo() {
     // Milestones progress
     if (pct >= 25 && !milestonesFired.m25) {
       milestonesFired.m25 = true;
+      trackAbacusEvent('videowatch_25pct');
       if (typeof (window as any).fbq === 'function') {
         (window as any).fbq('trackCustom', 'VideoWatch_25pct', { video_name: 'funnel_explainer' });
       }
     }
     if (pct >= 50 && !milestonesFired.m50) {
       milestonesFired.m50 = true;
+      trackAbacusEvent('videowatch_50pct');
       if (typeof (window as any).fbq === 'function') {
         (window as any).fbq('trackCustom', 'VideoWatch_50pct', { video_name: 'funnel_explainer' });
       }
     }
     if (pct >= 75 && !milestonesFired.m75) {
       milestonesFired.m75 = true;
+      trackAbacusEvent('videowatch_75pct');
       if (typeof (window as any).fbq === 'function') {
         (window as any).fbq('trackCustom', 'VideoWatch_75pct', { video_name: 'funnel_explainer' });
       }
     }
     if (pct >= 98 && !milestonesFired.m100) {
       milestonesFired.m100 = true;
+      trackAbacusEvent('videowatch_complete');
       if (typeof (window as any).fbq === 'function') {
         (window as any).fbq('trackCustom', 'VideoWatch_Complete', { video_name: 'funnel_explainer' });
       }
@@ -1355,6 +1577,7 @@ function initBookingPageVideo() {
     trackingSeconds.forEach(sec => {
       if (currentSecond >= sec && !intervalsFired[sec]) {
         intervalsFired[sec] = true;
+        trackAbacusEvent(`videowatch_${sec}s`);
         if (typeof (window as any).fbq === 'function') {
           (window as any).fbq('trackCustom', `VideoWatch_${sec}s`, { video_name: 'funnel_explainer' });
         }
@@ -1451,6 +1674,160 @@ function initBookingPageVideo() {
   }
 }
 
+const fetchKey = async (key: string): Promise<number> => {
+  try {
+    const res = await fetch(`https://abacus.jasoncameron.dev/get/${ABACUS_NAMESPACE}/${key}`);
+    if (!res.ok) return 0;
+    const data = await res.json();
+    return data.value || 0;
+  } catch {
+    return 0;
+  }
+};
+
+const loadData = async (isDaily: boolean, dateStr: string) => {
+  const loadingEl = document.getElementById('admin-loading');
+  const contentEl = document.getElementById('admin-dashboard-content');
+  if (loadingEl) {
+    loadingEl.textContent = 'Loading analytics from Abacus API...';
+    loadingEl.style.display = 'block';
+  }
+  if (contentEl) contentEl.style.display = 'none';
+
+  const prefix = isDaily ? `${dateStr}_` : '';
+  const keys = [
+    'pageload', 'videoplay', 'videowatch_10s', 'videowatch_30s',
+    'videowatch_25pct', 'videowatch_50pct', 'videowatch_75pct',
+    'videowatch_complete', 'bookedcall'
+  ];
+
+  try {
+    const values = await Promise.all(keys.map(k => fetchKey(`${prefix}${k}`)));
+    const stats = keys.reduce((acc, k, i) => {
+      acc[k] = values[i];
+      return acc;
+    }, {} as Record<string, number>);
+
+    const pageLoads = stats.pageload || 0;
+    const videoPlays = stats.videoplay || 0;
+    const v10s = stats.videowatch_10s || 0;
+    const v30s = stats.videowatch_30s || 0;
+    const v25 = stats.videowatch_25pct || 0;
+    const v50 = stats.videowatch_50pct || 0;
+    const v75 = stats.videowatch_75pct || 0;
+    const complete = stats.videowatch_complete || 0;
+    const booked = stats.bookedcall || 0;
+
+    document.getElementById('stat-pageload')!.textContent = String(pageLoads);
+    document.getElementById('stat-videoplay')!.textContent = String(videoPlays);
+    document.getElementById('stat-videowatch_complete')!.textContent = String(complete);
+    document.getElementById('stat-bookedcall')!.textContent = String(booked);
+
+    const playRate = pageLoads ? Math.round((videoPlays / pageLoads) * 100) : 0;
+    const compRate = videoPlays ? Math.round((complete / videoPlays) * 100) : 0;
+    const bookingRate = pageLoads ? ((booked / pageLoads) * 100).toFixed(1) : '0.0';
+
+    document.getElementById('rate-play')!.textContent = `${playRate}% Play Rate`;
+    document.getElementById('rate-complete')!.textContent = `${compRate}% Completion Rate`;
+    document.getElementById('rate-booking')!.textContent = `${bookingRate}% Booking Rate`;
+
+    document.getElementById('funnel-val-pageload')!.textContent = String(pageLoads);
+    document.getElementById('funnel-val-videoplay')!.textContent = String(videoPlays);
+    document.getElementById('funnel-val-videowatch_10s')!.textContent = String(v10s);
+    document.getElementById('funnel-val-videowatch_30s')!.textContent = String(v30s);
+    document.getElementById('funnel-val-videowatch_25pct')!.textContent = String(v25);
+    document.getElementById('funnel-val-videowatch_50pct')!.textContent = String(v50);
+    document.getElementById('funnel-val-videowatch_75pct')!.textContent = String(v75);
+    document.getElementById('funnel-val-videowatch_complete')!.textContent = String(complete);
+    document.getElementById('funnel-val-bookedcall')!.textContent = String(booked);
+
+    const setBar = (id: string, value: number) => {
+      const pct = pageLoads ? Math.round((value / pageLoads) * 100) : 0;
+      const barFill = document.getElementById(`funnel-bar-${id}`) as HTMLElement | null;
+      const pctLabel = document.getElementById(`funnel-pct-${id}`) as HTMLElement | null;
+      if (barFill) barFill.style.width = `${pct}%`;
+      if (pctLabel) pctLabel.textContent = `${pct}%`;
+    };
+
+    setBar('videoplay', videoPlays);
+    setBar('videowatch_10s', v10s);
+    setBar('videowatch_30s', v30s);
+    setBar('videowatch_25pct', v25);
+    setBar('videowatch_50pct', v50);
+    setBar('videowatch_75pct', v75);
+    setBar('videowatch_complete', complete);
+    setBar('bookedcall', booked);
+
+    if (loadingEl) loadingEl.style.display = 'none';
+    if (contentEl) contentEl.style.display = 'block';
+  } catch {
+    if (loadingEl) loadingEl.textContent = 'Error loading stats. Please try again.';
+  }
+};
+
+function initAdminPage() {
+  const isAuth = sessionStorage.getItem('admin_authenticated') === 'true';
+  if (!isAuth) {
+    const form = document.getElementById('admin-login-form') as HTMLFormElement | null;
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const pwInput = document.getElementById('admin-password') as HTMLInputElement | null;
+        const errorEl = document.getElementById('login-error');
+        if (!pwInput || !errorEl) return;
+
+        const password = pwInput.value;
+        const hash = await sha256(password);
+
+        if (hash === '24a1cd5945cfe472b06953093188f53551fce003d9c6abb5b1b29903156377b9') {
+          sessionStorage.setItem('admin_authenticated', 'true');
+          navigate('admin', false);
+        } else {
+          errorEl.textContent = 'Incorrect password.';
+          errorEl.style.display = 'block';
+        }
+      });
+    }
+    return;
+  }
+
+  const btnLifetime = document.getElementById('btn-toggle-lifetime');
+  const btnDaily = document.getElementById('btn-toggle-daily');
+  const dateSelect = document.getElementById('admin-date-select') as HTMLInputElement | null;
+
+  let isDaily = false;
+  let selectedDate = getLocalDateString();
+
+  const updateView = () => {
+    loadData(isDaily, selectedDate);
+  };
+
+  if (btnLifetime && btnDaily && dateSelect) {
+    btnLifetime.addEventListener('click', () => {
+      isDaily = false;
+      btnLifetime.classList.add('active');
+      btnDaily.classList.remove('active');
+      dateSelect.style.display = 'none';
+      updateView();
+    });
+
+    btnDaily.addEventListener('click', () => {
+      isDaily = true;
+      btnDaily.classList.add('active');
+      btnLifetime.classList.remove('active');
+      dateSelect.style.display = 'block';
+      updateView();
+    });
+
+    dateSelect.addEventListener('change', () => {
+      selectedDate = dateSelect.value;
+      updateView();
+    });
+  }
+
+  updateView();
+}
+
 function navigate(page: Page, pushHistory = true) {
   const main = $('#main-content')!;
   main.style.opacity = '0';
@@ -1472,6 +1849,7 @@ function navigate(page: Page, pushHistory = true) {
     }
 
     if (page === 'booking') {
+      trackAbacusEvent('pageload');
       loadCalendlyWidget();
       initBookingPageVideo();
 
@@ -1484,6 +1862,10 @@ function navigate(page: Page, pushHistory = true) {
           if (cal) cal.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
       }
+    }
+
+    if (page === 'admin') {
+      initAdminPage();
     }
 
 
@@ -1549,6 +1931,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Listen for Calendly event scheduling to track conversions via Meta Pixel
   window.addEventListener('message', (e) => {
     if (e.data && e.data.event === 'calendly.event_scheduled') {
+      trackAbacusEvent('bookedcall');
       if (typeof (window as any).fbq === 'function') {
         (window as any).fbq('track', 'Schedule');
       }
