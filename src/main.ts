@@ -53,58 +53,59 @@ function stopPageTimeTracking() {
   timeTrackers = {};
 }
 
-let scrollTracked = { s25: false, s50: false, s75: false, s100: false, calendar: false };
+let scrollTracked = { moved: false, video: false, calendar: false, testimonials: false };
 let scrollListener: (() => void) | null = null;
 
 function startScrollTracking() {
   stopScrollTracking();
-  scrollTracked = { s25: false, s50: false, s75: false, s100: false, calendar: false };
+  scrollTracked = { moved: false, video: false, calendar: false, testimonials: false };
 
   scrollListener = () => {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    if (docHeight <= 0) return;
-
-    const pct = Math.round((scrollTop / docHeight) * 100);
-
-    if (pct >= 25 && !scrollTracked.s25) {
-      scrollTracked.s25 = true;
-      trackAbacusEvent('scroll_25');
+    // 1. Moved at all
+    if (window.scrollY > 50 && !scrollTracked.moved) {
+      scrollTracked.moved = true;
+      trackAbacusEvent('scroll_moved');
       if (typeof (window as any).fbq === 'function') {
-        (window as any).fbq('trackCustom', 'Scroll_25pct');
-      }
-    }
-    if (pct >= 50 && !scrollTracked.s50) {
-      scrollTracked.s50 = true;
-      trackAbacusEvent('scroll_50');
-      if (typeof (window as any).fbq === 'function') {
-        (window as any).fbq('trackCustom', 'Scroll_50pct');
-      }
-    }
-    if (pct >= 75 && !scrollTracked.s75) {
-      scrollTracked.s75 = true;
-      trackAbacusEvent('scroll_75');
-      if (typeof (window as any).fbq === 'function') {
-        (window as any).fbq('trackCustom', 'Scroll_75pct');
-      }
-    }
-    if (pct >= 95 && !scrollTracked.s100) {
-      scrollTracked.s100 = true;
-      trackAbacusEvent('scroll_100');
-      if (typeof (window as any).fbq === 'function') {
-        (window as any).fbq('trackCustom', 'Scroll_100pct');
+        (window as any).fbq('trackCustom', 'Scroll_Moved');
       }
     }
 
-    // Also track calendar view
+    // 2. Scrolled down to see video in full
+    const video = document.getElementById('booking-video');
+    if (video && !scrollTracked.video) {
+      const rect = video.getBoundingClientRect();
+      // If the bottom of the video is above the bottom of the viewport (visible)
+      if (rect.bottom < window.innerHeight) {
+        scrollTracked.video = true;
+        trackAbacusEvent('scroll_video');
+        if (typeof (window as any).fbq === 'function') {
+          (window as any).fbq('trackCustom', 'Scroll_Video_Full');
+        }
+      }
+    }
+
+    // 3. Saw the calendar well
     const cal = document.getElementById('booking-calendar');
     if (cal && !scrollTracked.calendar) {
       const rect = cal.getBoundingClientRect();
-      if (rect.top < window.innerHeight) {
+      if (rect.top < window.innerHeight - 100) {
         scrollTracked.calendar = true;
         trackAbacusEvent('scroll_calendar');
         if (typeof (window as any).fbq === 'function') {
           (window as any).fbq('trackCustom', 'Scroll_To_Calendar');
+        }
+      }
+    }
+
+    // 4. Went down to testimonials (last card in the booking steps timeline)
+    const testimonialsWrap = document.querySelector('.booking-step-card:last-child');
+    if (testimonialsWrap && !scrollTracked.testimonials) {
+      const rect = testimonialsWrap.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 100) {
+        scrollTracked.testimonials = true;
+        trackAbacusEvent('scroll_testimonials');
+        if (typeof (window as any).fbq === 'function') {
+          (window as any).fbq('trackCustom', 'Scroll_To_Testimonials');
         }
       }
     }
@@ -1109,6 +1110,11 @@ function BookingPage(): string {
       </div>
     </div>
   </section>
+
+  <!-- Floating Skip to Booking Button -->
+  <a href="#booking-calendar" class="floating-skip-btn" id="floating-skip-btn">
+    Book a Call ${Icons.arrow}
+  </a>
   `;
 }
 
@@ -1350,49 +1356,40 @@ function AdminPage(): string {
             <h2>Scroll Depth</h2>
             <div class="funnel-container">
               <div class="funnel-step">
-                <span class="funnel-step-label">Scrolled 25%</span>
+                <span class="funnel-step-label">Moved at all</span>
                 <div class="funnel-bar-wrap">
-                  <div class="funnel-bar-fill" id="funnel-bar-scroll_25" style="width: 0%;">
-                    <span class="funnel-bar-pct" id="funnel-pct-scroll_25">0%</span>
+                  <div class="funnel-bar-fill" id="funnel-bar-scroll_moved" style="width: 0%;">
+                    <span class="funnel-bar-pct" id="funnel-pct-scroll_moved">0%</span>
                   </div>
                 </div>
-                <span class="funnel-step-val" id="funnel-val-scroll_25">0</span>
+                <span class="funnel-step-val" id="funnel-val-scroll_moved">0</span>
               </div>
               <div class="funnel-step">
-                <span class="funnel-step-label">Scrolled 50%</span>
+                <span class="funnel-step-label">Saw full video</span>
                 <div class="funnel-bar-wrap">
-                  <div class="funnel-bar-fill" id="funnel-bar-scroll_50" style="width: 0%;">
-                    <span class="funnel-bar-pct" id="funnel-pct-scroll_50">0%</span>
+                  <div class="funnel-bar-fill" id="funnel-bar-scroll_video" style="width: 0%;">
+                    <span class="funnel-bar-pct" id="funnel-pct-scroll_video">0%</span>
                   </div>
                 </div>
-                <span class="funnel-step-val" id="funnel-val-scroll_50">0</span>
+                <span class="funnel-step-val" id="funnel-val-scroll_video">0</span>
               </div>
               <div class="funnel-step">
-                <span class="funnel-step-label">Scrolled 75%</span>
+                <span class="funnel-step-label">Saw Calendar</span>
                 <div class="funnel-bar-wrap">
-                  <div class="funnel-bar-fill" id="funnel-bar-scroll_75" style="width: 0%;">
-                    <span class="funnel-bar-pct" id="funnel-pct-scroll_75">0%</span>
-                  </div>
-                </div>
-                <span class="funnel-step-val" id="funnel-val-scroll_75">0</span>
-              </div>
-              <div class="funnel-step">
-                <span class="funnel-step-label" style="color: #27ae60;">Saw Calendar</span>
-                <div class="funnel-bar-wrap" style="border-color: rgba(39,174,96,0.3);">
-                  <div class="funnel-bar-fill" id="funnel-bar-scroll_calendar" style="width: 0%; background: linear-gradient(90deg, #27ae60 0%, #2ecc71 100%);">
+                  <div class="funnel-bar-fill" id="funnel-bar-scroll_calendar" style="width: 0%;">
                     <span class="funnel-bar-pct" id="funnel-pct-scroll_calendar">0%</span>
                   </div>
                 </div>
-                <span class="funnel-step-val" id="funnel-val-scroll_calendar" style="color: #27ae60;">0</span>
+                <span class="funnel-step-val" id="funnel-val-scroll_calendar">0</span>
               </div>
               <div class="funnel-step">
-                <span class="funnel-step-label">Scrolled 100%</span>
-                <div class="funnel-bar-wrap">
-                  <div class="funnel-bar-fill" id="funnel-bar-scroll_100" style="width: 0%;">
-                    <span class="funnel-bar-pct" id="funnel-pct-scroll_100">0%</span>
+                <span class="funnel-step-label" style="color: #27ae60;">Saw Testimonials</span>
+                <div class="funnel-bar-wrap" style="border-color: rgba(39,174,96,0.3);">
+                  <div class="funnel-bar-fill" id="funnel-bar-scroll_testimonials" style="width: 0%; background: linear-gradient(90deg, #27ae60 0%, #2ecc71 100%);">
+                    <span class="funnel-bar-pct" id="funnel-pct-scroll_testimonials">0%</span>
                   </div>
                 </div>
-                <span class="funnel-step-val" id="funnel-val-scroll_100">0</span>
+                <span class="funnel-step-val" id="funnel-val-scroll_testimonials" style="color: #27ae60;">0</span>
               </div>
             </div>
           </div>
@@ -1907,7 +1904,7 @@ const loadData = async (isDaily: boolean, dateStr: string) => {
     'videowatch_25pct', 'videowatch_50pct', 'videowatch_75pct',
     'videowatch_complete', 'bookedcall',
     'time_5s', 'time_15s', 'time_30s', 'time_60s',
-    'scroll_25', 'scroll_50', 'scroll_75', 'scroll_100', 'scroll_calendar'
+    'scroll_moved', 'scroll_video', 'scroll_calendar', 'scroll_testimonials'
   ];
 
   try {
@@ -1933,11 +1930,10 @@ const loadData = async (isDaily: boolean, dateStr: string) => {
     const t60 = stats.time_60s || 0;
     const bounce = Math.max(0, pageLoads - t5);
 
-    const s25 = stats.scroll_25 || 0;
-    const s50 = stats.scroll_50 || 0;
-    const s75 = stats.scroll_75 || 0;
-    const s100 = stats.scroll_100 || 0;
+    const smoved = stats.scroll_moved || 0;
+    const svideo = stats.scroll_video || 0;
     const scal = stats.scroll_calendar || 0;
+    const stest = stats.scroll_testimonials || 0;
 
     document.getElementById('stat-pageload')!.textContent = String(pageLoads);
     document.getElementById('stat-videoplay')!.textContent = String(videoPlays);
@@ -2115,6 +2111,27 @@ function navigate(page: Page, pushHistory = true) {
           const cal = document.getElementById('booking-calendar');
           if (cal) cal.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
+      }
+
+      // Floating skip button
+      const floatingSkipBtn = document.getElementById('floating-skip-btn');
+      if (floatingSkipBtn) {
+        floatingSkipBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const cal = document.getElementById('booking-calendar');
+          if (cal) {
+            cal.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            floatingSkipBtn.classList.remove('show');
+          }
+        });
+
+        // Show after 5s, hide after 20s (15s duration)
+        setTimeout(() => {
+          floatingSkipBtn.classList.add('show');
+          setTimeout(() => {
+            floatingSkipBtn.classList.remove('show');
+          }, 15000);
+        }, 5000);
       }
     }
 
