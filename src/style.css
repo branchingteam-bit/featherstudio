@@ -682,7 +682,7 @@ h1, h2, h3, h4 {
 .footer-brand .logo { color: #fff; margin-bottom: 14px; }
 .footer-brand .logo-wordmark { color: #fff; }
 .footer-brand p { font-size: 0.82rem; line-height: 1.65; max-width: 240px; }
-.footer-col h4 { font-size: 0.78rem; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 14px; }
+.footer-col h3 { font-size: 0.78rem; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 14px; }
 .footer-links { display: flex; flex-direction: column; gap: 8px; }
 .footer-links a { font-size: 0.83rem; transition: color 0.2s; }
 .footer-links a:hover { color: #fff; }
@@ -1460,7 +1460,7 @@ h1, h2, h3, h4 {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: #1a3fb5;
   background: rgba(59,105,255,0.07);
   border: 1px solid rgba(59,105,255,0.18);
   border-radius: var(--r-pill);

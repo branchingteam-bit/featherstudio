@@ -64,7 +64,7 @@ function Footer(): string {
           <p>Professional websites for businesses across the UAE.</p>
         </div>
         <div class="footer-col">
-          <h4>Pages</h4>
+          <h3>Pages</h3>
           <div class="footer-links">
             <a href="/" data-link="home">Home</a>
             <a href="/pricing" data-link="pricing">Pricing</a>
@@ -74,7 +74,7 @@ function Footer(): string {
           </div>
         </div>
         <div class="footer-col">
-          <h4>Contact</h4>
+          <h3>Contact</h3>
           <div class="footer-links">
             <a href="mailto:officialatlanticbear@gmail.com">officialatlanticbear@gmail.com</a>
             <a href="https://www.instagram.com/officialatlanticbear/" target="_blank">@officialatlanticbear</a>
@@ -505,7 +505,7 @@ function PricingPage(): string {
                 <span class="bonus-badge-label">FREE BONUS</span>
                 <span class="bonus-value-badge">AED 1,500 VALUE</span>
               </div>
-              <h4 class="bonus-title">Free Video Guide for Meta Ads</h4>
+              <h3 class="bonus-title">Free Video Guide for Meta Ads</h3>
               <p class="bonus-subtitle">Get immediate traction after launch with step-by-step video templates:</p>
               <ul class="bonus-bullet-list">
                 <li>Video guide: how to run Instagram and Facebook ads for your business, step by step</li>
@@ -597,7 +597,7 @@ function PricingPage(): string {
                 <span class="bonus-badge-label">FREE BONUS</span>
                 <span class="bonus-value-badge">AED 1,500 VALUE</span>
               </div>
-              <h4 class="bonus-title">Free Video Guide for Meta Ads</h4>
+              <h3 class="bonus-title">Free Video Guide for Meta Ads</h3>
               <p class="bonus-subtitle">Get immediate traction after launch with step-by-step video templates:</p>
               <ul class="bonus-bullet-list">
                 <li>Video guide: how to run Instagram and Facebook ads for your business, step by step</li>
@@ -758,7 +758,7 @@ function TestimonialsPage(): string {
         <div class="tm-shot-label tm-label-after" style="position: static; display: inline-block; margin-bottom: 16px;">Video Review</div>
         <div class="booking-testimonials-wrap" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
           <div style="max-width: 320px; width: 100%; border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-md); background: #000; border: 1px solid var(--border);">
-            <video controls style="width: 100%; display: block; border: none; aspect-ratio: 9/16; object-fit: cover;">
+            <video controls preload="none" style="width: 100%; display: block; border: none; aspect-ratio: 9/16; object-fit: cover;">
               <source src="/testimonials/sonder%20training%20group%20testimonial.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
@@ -894,11 +894,11 @@ function BookingPage(): string {
             <video
               id="booking-video"
               class="booking-video-el"
-              preload="auto"
+              preload="none"
               width="1920"
               height="1080"
               playsinline
-              src="/videos for funnel call/video for funnel v4/Atlantic Bear Free Website Demo Pricing Plans.mp4"
+              data-src="/videos for funnel call/video for funnel v4/Atlantic Bear Free Website Demo Pricing Plans.mp4"
             ></video>
             <!-- Overlay (shown when paused/before play) -->
             <div class="bv-overlay" id="bv-overlay">
@@ -964,7 +964,7 @@ function BookingPage(): string {
 
           <div class="booking-testimonials-wrap" style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 24px;">
             <div style="max-width: 320px; width: 100%; border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-md); background: #000; border: 1px solid var(--border);">
-              <video controls style="width: 100%; display: block; border: none; aspect-ratio: 9/16; object-fit: cover;">
+              <video controls preload="none" style="width: 100%; display: block; border: none; aspect-ratio: 9/16; object-fit: cover;">
                 <source src="/testimonials/sonder%20training%20group%20testimonial.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
@@ -1191,19 +1191,41 @@ function loadCalendlyWidget() {
     }
   };
 
-  // Script is preloaded in <head> — just wait for it to be ready
+  const loadScriptAndInit = () => {
+    if ((window as any).Calendly) {
+      init();
+      return;
+    }
+    let script = document.getElementById('calendly-sdk') as HTMLScriptElement | null;
+    if (!script) {
+      script = document.createElement('script');
+      script.id = 'calendly-sdk';
+      script.src = 'https://assets.calendly.com/assets/external/widget.js';
+      script.async = true;
+      document.head.appendChild(script);
+    }
+    script.onload = () => {
+      init();
+    };
+  };
+
+  // If Calendly is already loaded, init immediately
   if ((window as any).Calendly) {
     init();
     return;
   }
 
-  // Poll until the preloaded script has executed (usually <300ms)
-  const checkInterval = setInterval(() => {
-    if ((window as any).Calendly) {
-      clearInterval(checkInterval);
-      init();
-    }
-  }, 50);
+  // Load only when scrolled close to viewport
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        loadScriptAndInit();
+        observer.disconnect();
+      }
+    });
+  }, { rootMargin: '200px' });
+
+  observer.observe(container);
 }
 
 // ─── Booking Page Video Loader ────────────────────────────────────────────────
@@ -1222,6 +1244,19 @@ function initBookingPageVideo() {
   const fullscreenBtn = document.getElementById('bv-fullscreen');
   const wrap = document.getElementById('custom-video-wrap');
   if (!video || !overlay || !playBtn || !controls || !playpause) return;
+
+  const videoSrc = video.getAttribute('data-src');
+  const ensureVideoSource = () => {
+    if (videoSrc && !video.getAttribute('src')) {
+      video.setAttribute('src', videoSrc);
+      video.load();
+    }
+  };
+
+  // Dynamically load video source after page loads to prevent blocking initial load/render
+  setTimeout(() => {
+    ensureVideoSource();
+  }, 1500);
 
   const fmtTime = (s: number) => {
     const m = Math.floor(s / 60);
@@ -1247,11 +1282,13 @@ function initBookingPageVideo() {
 
   // Play on overlay click
   overlay.addEventListener('click', () => {
+    ensureVideoSource();
     video.play();
   });
 
   // Click on video toggles play/pause
   video.addEventListener('click', () => {
+    ensureVideoSource();
     if (video.paused) video.play(); else video.pause();
   });
 
@@ -1261,8 +1298,73 @@ function initBookingPageVideo() {
   video.addEventListener('timeupdate', updateProgress);
   video.addEventListener('loadedmetadata', updateProgress);
 
+  // ─── Video Analytics Tracking ───
+  let played = false;
+  const milestonesFired = {
+    m25: false,
+    m50: false,
+    m75: false,
+    m100: false
+  };
+  const intervalsFired: Record<number, boolean> = {};
+
+  video.addEventListener('timeupdate', () => {
+    const duration = video.duration;
+    if (!duration) return;
+
+    const currentTime = video.currentTime;
+    const pct = (currentTime / duration) * 100;
+
+    // Track play initiation (at >0.5s playback)
+    if (!played && currentTime > 0.5) {
+      played = true;
+      if (typeof (window as any).fbq === 'function') {
+        (window as any).fbq('trackCustom', 'VideoPlay', { video_name: 'funnel_explainer' });
+      }
+    }
+
+    // Milestones progress
+    if (pct >= 25 && !milestonesFired.m25) {
+      milestonesFired.m25 = true;
+      if (typeof (window as any).fbq === 'function') {
+        (window as any).fbq('trackCustom', 'VideoWatch_25pct', { video_name: 'funnel_explainer' });
+      }
+    }
+    if (pct >= 50 && !milestonesFired.m50) {
+      milestonesFired.m50 = true;
+      if (typeof (window as any).fbq === 'function') {
+        (window as any).fbq('trackCustom', 'VideoWatch_50pct', { video_name: 'funnel_explainer' });
+      }
+    }
+    if (pct >= 75 && !milestonesFired.m75) {
+      milestonesFired.m75 = true;
+      if (typeof (window as any).fbq === 'function') {
+        (window as any).fbq('trackCustom', 'VideoWatch_75pct', { video_name: 'funnel_explainer' });
+      }
+    }
+    if (pct >= 98 && !milestonesFired.m100) {
+      milestonesFired.m100 = true;
+      if (typeof (window as any).fbq === 'function') {
+        (window as any).fbq('trackCustom', 'VideoWatch_Complete', { video_name: 'funnel_explainer' });
+      }
+    }
+
+    // Time-based retention drops (10s hook and 30s intro)
+    const trackingSeconds = [10, 30];
+    const currentSecond = Math.floor(currentTime);
+    trackingSeconds.forEach(sec => {
+      if (currentSecond >= sec && !intervalsFired[sec]) {
+        intervalsFired[sec] = true;
+        if (typeof (window as any).fbq === 'function') {
+          (window as any).fbq('trackCustom', `VideoWatch_${sec}s`, { video_name: 'funnel_explainer' });
+        }
+      }
+    });
+  });
+
   // Playpause button
   playpause.addEventListener('click', () => {
+    ensureVideoSource();
     if (video.paused) video.play(); else video.pause();
   });
 
