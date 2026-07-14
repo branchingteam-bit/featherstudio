@@ -1301,52 +1301,53 @@ function AdminPage(): string {
         <div class="admin-stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); margin-top: 30px; align-items: start;">
           <!-- Card 1: Attention Span -->
           <div class="admin-funnel-card">
-            <h2>Attention Span (Dwell Time)</h2>
+            <h2>Time on Page</h2>
+            <p style="font-size:0.78rem; color:var(--text-muted); margin:-8px 0 16px 0;">Each group is exclusive — adds up to 100% of page loads.</p>
             <div class="funnel-container">
               <div class="funnel-step">
-                <span class="funnel-step-label" style="color: var(--red);">Quick Bounce (<5s)</span>
-                <div class="funnel-bar-wrap" style="border-color: rgba(231, 76, 60, 0.3);">
-                  <div class="funnel-bar-fill" id="funnel-bar-bounce" style="width: 0%; background: linear-gradient(90deg, #e74c3c 0%, #c0392b 100%);">
-                    <span class="funnel-bar-pct" id="funnel-pct-bounce">0%</span>
+                <span class="funnel-step-label" style="color: #e74c3c;">Left in &lt;5s (bounced)</span>
+                <div class="funnel-bar-wrap" style="border-color: rgba(231,76,60,0.3);">
+                  <div class="funnel-bar-fill" id="funnel-bar-bucket_bounce" style="width: 0%; background: linear-gradient(90deg,#e74c3c,#c0392b);">
+                    <span class="funnel-bar-pct" id="funnel-pct-bucket_bounce">0%</span>
                   </div>
                 </div>
-                <span class="funnel-step-val" id="funnel-val-bounce" style="color: var(--red);">0</span>
+                <span class="funnel-step-val" id="funnel-val-bucket_bounce" style="color:#e74c3c;">0</span>
               </div>
               <div class="funnel-step">
-                <span class="funnel-step-label">Stayed >5s</span>
-                <div class="funnel-bar-wrap">
-                  <div class="funnel-bar-fill" id="funnel-bar-time_5s" style="width: 0%; background: #f39c12;">
-                    <span class="funnel-bar-pct" id="funnel-pct-time_5s">0%</span>
+                <span class="funnel-step-label" style="color:#e67e22;">Left between 5 – 15s</span>
+                <div class="funnel-bar-wrap" style="border-color:rgba(230,126,34,0.3);">
+                  <div class="funnel-bar-fill" id="funnel-bar-bucket_5_15" style="width: 0%; background: linear-gradient(90deg,#e67e22,#d35400);">
+                    <span class="funnel-bar-pct" id="funnel-pct-bucket_5_15">0%</span>
                   </div>
                 </div>
-                <span class="funnel-step-val" id="funnel-val-time_5s">0</span>
+                <span class="funnel-step-val" id="funnel-val-bucket_5_15" style="color:#e67e22;">0</span>
               </div>
               <div class="funnel-step">
-                <span class="funnel-step-label">Stayed >15s</span>
-                <div class="funnel-bar-wrap">
-                  <div class="funnel-bar-fill" id="funnel-bar-time_15s" style="width: 0%; background: #f1c40f;">
-                    <span class="funnel-bar-pct" id="funnel-pct-time_15s">0%</span>
+                <span class="funnel-step-label" style="color:#f1c40f;">Left between 15 – 30s</span>
+                <div class="funnel-bar-wrap" style="border-color:rgba(241,196,15,0.3);">
+                  <div class="funnel-bar-fill" id="funnel-bar-bucket_15_30" style="width: 0%; background: linear-gradient(90deg,#f1c40f,#d4ac0d);">
+                    <span class="funnel-bar-pct" id="funnel-pct-bucket_15_30">0%</span>
                   </div>
                 </div>
-                <span class="funnel-step-val" id="funnel-val-time_15s">0</span>
+                <span class="funnel-step-val" id="funnel-val-bucket_15_30" style="color:#d4ac0d;">0</span>
               </div>
               <div class="funnel-step">
-                <span class="funnel-step-label">Stayed >30s</span>
-                <div class="funnel-bar-wrap">
-                  <div class="funnel-bar-fill" id="funnel-bar-time_30s" style="width: 0%; background: #3498db;">
-                    <span class="funnel-bar-pct" id="funnel-pct-time_30s">0%</span>
+                <span class="funnel-step-label" style="color:#3498db;">Left between 30 – 60s</span>
+                <div class="funnel-bar-wrap" style="border-color:rgba(52,152,219,0.3);">
+                  <div class="funnel-bar-fill" id="funnel-bar-bucket_30_60" style="width: 0%; background: linear-gradient(90deg,#3498db,#2980b9);">
+                    <span class="funnel-bar-pct" id="funnel-pct-bucket_30_60">0%</span>
                   </div>
                 </div>
-                <span class="funnel-step-val" id="funnel-val-time_30s">0</span>
+                <span class="funnel-step-val" id="funnel-val-bucket_30_60" style="color:#3498db;">0</span>
               </div>
               <div class="funnel-step">
-                <span class="funnel-step-label">Stayed >60s</span>
-                <div class="funnel-bar-wrap">
-                  <div class="funnel-bar-fill" id="funnel-bar-time_60s" style="width: 0%; background: #2ecc71;">
-                    <span class="funnel-bar-pct" id="funnel-pct-time_60s">0%</span>
+                <span class="funnel-step-label" style="color:#27ae60;">Stayed 60s+ (engaged)</span>
+                <div class="funnel-bar-wrap" style="border-color:rgba(39,174,96,0.3);">
+                  <div class="funnel-bar-fill" id="funnel-bar-bucket_60plus" style="width: 0%; background: linear-gradient(90deg,#27ae60,#1e8449);">
+                    <span class="funnel-bar-pct" id="funnel-pct-bucket_60plus">0%</span>
                   </div>
                 </div>
-                <span class="funnel-step-val" id="funnel-val-time_60s">0</span>
+                <span class="funnel-step-val" id="funnel-val-bucket_60plus" style="color:#27ae60;">0</span>
               </div>
             </div>
           </div>
@@ -1354,6 +1355,7 @@ function AdminPage(): string {
           <!-- Card 2: Scroll Depth -->
           <div class="admin-funnel-card">
             <h2>Scroll Depth</h2>
+            <p style="font-size:0.78rem; color:var(--text-muted); margin:-8px 0 16px 0;">% of total page loads that reached each section.</p>
             <div class="funnel-container">
               <div class="funnel-step">
                 <span class="funnel-step-label">Moved at all</span>
@@ -1365,7 +1367,7 @@ function AdminPage(): string {
                 <span class="funnel-step-val" id="funnel-val-scroll_moved">0</span>
               </div>
               <div class="funnel-step">
-                <span class="funnel-step-label">Saw full video</span>
+                <span class="funnel-step-label">Saw video fully</span>
                 <div class="funnel-bar-wrap">
                   <div class="funnel-bar-fill" id="funnel-bar-scroll_video" style="width: 0%;">
                     <span class="funnel-bar-pct" id="funnel-pct-scroll_video">0%</span>
@@ -1374,7 +1376,7 @@ function AdminPage(): string {
                 <span class="funnel-step-val" id="funnel-val-scroll_video">0</span>
               </div>
               <div class="funnel-step">
-                <span class="funnel-step-label">Saw Calendar</span>
+                <span class="funnel-step-label">Reached Calendar</span>
                 <div class="funnel-bar-wrap">
                   <div class="funnel-bar-fill" id="funnel-bar-scroll_calendar" style="width: 0%;">
                     <span class="funnel-bar-pct" id="funnel-pct-scroll_calendar">0%</span>
@@ -1383,7 +1385,7 @@ function AdminPage(): string {
                 <span class="funnel-step-val" id="funnel-val-scroll_calendar">0</span>
               </div>
               <div class="funnel-step">
-                <span class="funnel-step-label" style="color: #27ae60;">Saw Testimonials</span>
+                <span class="funnel-step-label" style="color: #27ae60;">Reached Testimonials</span>
                 <div class="funnel-bar-wrap" style="border-color: rgba(39,174,96,0.3);">
                   <div class="funnel-bar-fill" id="funnel-bar-scroll_testimonials" style="width: 0%; background: linear-gradient(90deg, #27ae60 0%, #2ecc71 100%);">
                     <span class="funnel-bar-pct" id="funnel-pct-scroll_testimonials">0%</span>
@@ -1928,7 +1930,6 @@ const loadData = async (isDaily: boolean, dateStr: string) => {
     const t15 = stats.time_15s || 0;
     const t30 = stats.time_30s || 0;
     const t60 = stats.time_60s || 0;
-    const bounce = Math.max(0, pageLoads - t5);
 
     const smoved = stats.scroll_moved || 0;
     const svideo = stats.scroll_video || 0;
@@ -1958,12 +1959,23 @@ const loadData = async (isDaily: boolean, dateStr: string) => {
     document.getElementById('funnel-val-videowatch_complete')!.textContent = String(complete);
     document.getElementById('funnel-val-bookedcall')!.textContent = String(booked);
 
-    // Dwell Time values
-    document.getElementById('funnel-val-bounce')!.textContent = String(bounce);
-    document.getElementById('funnel-val-time_5s')!.textContent = String(t5);
-    document.getElementById('funnel-val-time_15s')!.textContent = String(t15);
-    document.getElementById('funnel-val-time_30s')!.textContent = String(t30);
-    document.getElementById('funnel-val-time_60s')!.textContent = String(t60);
+    // Exclusive time-on-page buckets (non-overlapping, add up to 100% of pageLoads)
+    const bucket_bounce  = Math.max(0, pageLoads - t5);   // left in <5s
+    const bucket_5_15   = Math.max(0, t5  - t15);          // stayed 5s but left before 15s
+    const bucket_15_30  = Math.max(0, t15 - t30);          // stayed 15s but left before 30s
+    const bucket_30_60  = Math.max(0, t30 - t60);          // stayed 30s but left before 60s
+    const bucket_60plus = t60;                              // stayed 60s+
+
+    const setCount = (id: string, value: number) => {
+      const el = document.getElementById(`funnel-val-${id}`) as HTMLElement | null;
+      if (el) el.textContent = String(value);
+    };
+
+    setCount('bucket_bounce',  bucket_bounce);
+    setCount('bucket_5_15',   bucket_5_15);
+    setCount('bucket_15_30',  bucket_15_30);
+    setCount('bucket_30_60',  bucket_30_60);
+    setCount('bucket_60plus', bucket_60plus);
 
     // Scroll values
     document.getElementById('funnel-val-scroll_moved')!.textContent = String(smoved);
@@ -1971,8 +1983,8 @@ const loadData = async (isDaily: boolean, dateStr: string) => {
     document.getElementById('funnel-val-scroll_calendar')!.textContent = String(scal);
     document.getElementById('funnel-val-scroll_testimonials')!.textContent = String(stest);
 
-    const setBar = (id: string, value: number) => {
-      const pct = pageLoads ? Math.round((value / pageLoads) * 100) : 0;
+    const setBar = (id: string, value: number, base = pageLoads) => {
+      const pct = base ? Math.round((value / base) * 100) : 0;
       const barFill = document.getElementById(`funnel-bar-${id}`) as HTMLElement | null;
       const pctLabel = document.getElementById(`funnel-pct-${id}`) as HTMLElement | null;
       if (barFill) barFill.style.width = `${pct}%`;
@@ -1988,12 +2000,12 @@ const loadData = async (isDaily: boolean, dateStr: string) => {
     setBar('videowatch_complete', complete);
     setBar('bookedcall', booked);
 
-    // Time & scroll bars
-    setBar('bounce', bounce);
-    setBar('time_5s', t5);
-    setBar('time_15s', t15);
-    setBar('time_30s', t30);
-    setBar('time_60s', t60);
+    // Exclusive time buckets — each bar relative to pageLoads
+    setBar('bucket_bounce',  bucket_bounce);
+    setBar('bucket_5_15',   bucket_5_15);
+    setBar('bucket_15_30',  bucket_15_30);
+    setBar('bucket_30_60',  bucket_30_60);
+    setBar('bucket_60plus', bucket_60plus);
 
     setBar('scroll_moved', smoved);
     setBar('scroll_video', svideo);
