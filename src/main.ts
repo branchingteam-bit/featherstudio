@@ -1966,11 +1966,10 @@ const loadData = async (isDaily: boolean, dateStr: string) => {
     document.getElementById('funnel-val-time_60s')!.textContent = String(t60);
 
     // Scroll values
-    document.getElementById('funnel-val-scroll_25')!.textContent = String(s25);
-    document.getElementById('funnel-val-scroll_50')!.textContent = String(s50);
-    document.getElementById('funnel-val-scroll_75')!.textContent = String(s75);
+    document.getElementById('funnel-val-scroll_moved')!.textContent = String(smoved);
+    document.getElementById('funnel-val-scroll_video')!.textContent = String(svideo);
     document.getElementById('funnel-val-scroll_calendar')!.textContent = String(scal);
-    document.getElementById('funnel-val-scroll_100')!.textContent = String(s100);
+    document.getElementById('funnel-val-scroll_testimonials')!.textContent = String(stest);
 
     const setBar = (id: string, value: number) => {
       const pct = pageLoads ? Math.round((value / pageLoads) * 100) : 0;
@@ -1996,11 +1995,10 @@ const loadData = async (isDaily: boolean, dateStr: string) => {
     setBar('time_30s', t30);
     setBar('time_60s', t60);
 
-    setBar('scroll_25', s25);
-    setBar('scroll_50', s50);
-    setBar('scroll_75', s75);
+    setBar('scroll_moved', smoved);
+    setBar('scroll_video', svideo);
     setBar('scroll_calendar', scal);
-    setBar('scroll_100', s100);
+    setBar('scroll_testimonials', stest);
 
     if (loadingEl) loadingEl.style.display = 'none';
     if (contentEl) contentEl.style.display = 'block';
