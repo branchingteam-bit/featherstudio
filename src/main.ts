@@ -84,11 +84,11 @@ function startScrollTracking() {
       }
     }
 
-    // 3. Saw the calendar well
+    // 3. Saw the calendar well (middle of calendar crossed the bottom of the viewport)
     const cal = document.getElementById('booking-calendar');
     if (cal && !scrollTracked.calendar) {
       const rect = cal.getBoundingClientRect();
-      if (rect.top < window.innerHeight - 100) {
+      if (rect.top + (rect.height / 2) < window.innerHeight) {
         scrollTracked.calendar = true;
         trackAbacusEvent('scroll_calendar');
         if (typeof (window as any).fbq === 'function') {
@@ -97,11 +97,11 @@ function startScrollTracking() {
       }
     }
 
-    // 4. Went down to testimonials (last card in the booking steps timeline)
+    // 4. Went down to testimonials (scrolled at least 300px into the testimonials card)
     const testimonialsWrap = document.querySelector('.booking-step-card:last-child');
     if (testimonialsWrap && !scrollTracked.testimonials) {
       const rect = testimonialsWrap.getBoundingClientRect();
-      if (rect.top < window.innerHeight - 100) {
+      if (rect.top < window.innerHeight - 300) {
         scrollTracked.testimonials = true;
         trackAbacusEvent('scroll_testimonials');
         if (typeof (window as any).fbq === 'function') {
