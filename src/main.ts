@@ -1880,7 +1880,7 @@ function initBookingPageVideo() {
 
 const fetchKey = async (key: string): Promise<number> => {
   try {
-    const res = await fetch(`https://abacus.jasoncameron.dev/get/${ABACUS_NAMESPACE}/${key}`);
+    const res = await fetch(`https://abacus.jasoncameron.dev/get/${ABACUS_NAMESPACE}/${key}?t=${Date.now()}`);
     if (!res.ok) return 0;
     const data = await res.json();
     return data.value || 0;
