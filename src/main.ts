@@ -1156,10 +1156,10 @@ function AdminPage(): string {
         </div>
         <div class="admin-controls">
           <div class="admin-toggle-group">
-            <button class="admin-toggle-btn active" id="btn-toggle-lifetime">Lifetime</button>
-            <button class="admin-toggle-btn" id="btn-toggle-daily">Daily</button>
+            <button class="admin-toggle-btn" id="btn-toggle-lifetime">Lifetime</button>
+            <button class="admin-toggle-btn active" id="btn-toggle-daily">Daily</button>
           </div>
-          <input type="date" id="admin-date-select" class="admin-date-picker" value="${todayStr}" style="display: none;" />
+          <input type="date" id="admin-date-select" class="admin-date-picker" value="${todayStr}" />
         </div>
       </div>
 
@@ -1925,25 +1925,51 @@ const loadData = async (isDaily: boolean, dateStr: string) => {
       return acc;
     }, {} as Record<string, number>);
 
-    const pageLoads = stats.pageload || 0;
-    const videoPlays = stats.videoplay || 0;
-    const v10s = stats.videowatch_10s || 0;
-    const v30s = stats.videowatch_30s || 0;
-    const v25 = stats.videowatch_25pct || 0;
-    const v50 = stats.videowatch_50pct || 0;
-    const v75 = stats.videowatch_75pct || 0;
-    const complete = stats.videowatch_complete || 0;
-    const booked = stats.bookedcall || 0;
+    const raw_pageLoads = stats.pageload || 0;
+    const raw_videoPlays = stats.videoplay || 0;
+    const raw_v10s = stats.videowatch_10s || 0;
+    const raw_v30s = stats.videowatch_30s || 0;
+    const raw_v25 = stats.videowatch_25pct || 0;
+    const raw_v50 = stats.videowatch_50pct || 0;
+    const raw_v75 = stats.videowatch_75pct || 0;
+    const raw_complete = stats.videowatch_complete || 0;
+    const raw_booked = stats.bookedcall || 0;
 
-    const t5 = stats.time_5s || 0;
-    const t15 = stats.time_15s || 0;
-    const t30 = stats.time_30s || 0;
-    const t60 = stats.time_60s || 0;
+    const raw_t5 = stats.time_5s || 0;
+    const raw_t15 = stats.time_15s || 0;
+    const raw_t30 = stats.time_30s || 0;
+    const raw_t60 = stats.time_60s || 0;
 
-    const smoved = stats.scroll_moved || 0;
-    const svideo = stats.scroll_video || 0;
-    const scal = stats.scroll_calendar || 0;
-    const stest = stats.scroll_testimonials || 0;
+    const raw_smoved = stats.scroll_moved || 0;
+    const raw_svideo = stats.scroll_video || 0;
+    const raw_scal = stats.scroll_calendar || 0;
+    const raw_stest = stats.scroll_testimonials || 0;
+
+    // Enforce monotonicity (child step cannot exceed parent step)
+    // 1. Video Funnel Monotonicity
+    const booked = raw_booked;
+    const complete = Math.max(raw_complete, booked);
+    const v75 = Math.max(raw_v75, complete);
+    const v50 = Math.max(raw_v50, v75);
+    const v25 = Math.max(raw_v25, v50);
+    const v30s = Math.max(raw_v30s, v25);
+    const v10s = Math.max(raw_v10s, v30s);
+    const videoPlays = Math.max(raw_videoPlays, v10s);
+    let pageLoads = Math.max(raw_pageLoads, videoPlays);
+
+    // 2. Time Funnel Monotonicity
+    const t60 = raw_t60;
+    const t30 = Math.max(raw_t30, t60);
+    const t15 = Math.max(raw_t15, t30);
+    const t5 = Math.max(raw_t5, t15);
+    pageLoads = Math.max(pageLoads, t5);
+
+    // 3. Scroll Funnel Monotonicity
+    const stest = raw_stest;
+    const scal = Math.max(raw_scal, stest);
+    const svideo = Math.max(raw_svideo, scal);
+    const smoved = Math.max(raw_smoved, svideo);
+    pageLoads = Math.max(pageLoads, smoved);
 
     document.getElementById('stat-pageload')!.textContent = String(pageLoads);
     document.getElementById('stat-videoplay')!.textContent = String(videoPlays);
@@ -2068,7 +2094,7 @@ function initAdminPage() {
   const btnDaily = document.getElementById('btn-toggle-daily');
   const dateSelect = document.getElementById('admin-date-select') as HTMLInputElement | null;
 
-  let isDaily = false;
+  let isDaily = true;
   let selectedDate = getLocalDateString();
 
   const updateView = () => {
