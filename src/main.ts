@@ -1100,15 +1100,6 @@ function BookingPage(): string {
       </div>
     </div>
   </section>
-
-  <!-- Floating Booking Popup -->
-  <div class="floating-booking-popup" id="floating-skip-btn">
-    <div class="floating-popup-content">
-      <span>Ready to book?</span>
-      <button class="floating-popup-action-btn" id="floating-popup-action-btn">Book a Call</button>
-    </div>
-    <button class="floating-popup-close-btn" id="floating-popup-close-btn" aria-label="Close popup">&times;</button>
-  </div>
   `;
 }
 
@@ -2112,66 +2103,6 @@ function navigate(page: Page, pushHistory = true) {
           const cal = document.getElementById('booking-calendar');
           if (cal) cal.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
-      }
-
-      // Floating skip button
-      // Floating skip popup
-      const floatingSkipBtn = document.getElementById('floating-skip-btn');
-      const popupActionBtn = document.getElementById('floating-popup-action-btn');
-      const popupCloseBtn = document.getElementById('floating-popup-close-btn');
-
-      let popupTimeout: number | null = null;
-      let hideTimeout: number | null = null;
-
-      const dismissPopup = () => {
-        if (floatingSkipBtn) floatingSkipBtn.classList.remove('show');
-        if (hideTimeout) {
-          clearTimeout(hideTimeout);
-          hideTimeout = null;
-        }
-        window.removeEventListener('scroll', onScrollCheck);
-      };
-
-      function onScrollCheck() {
-        const cal = document.getElementById('booking-calendar');
-        if (cal) {
-          const rect = cal.getBoundingClientRect();
-          if (rect.top < window.innerHeight) {
-            dismissPopup();
-          }
-        }
-      }
-
-      if (floatingSkipBtn) {
-        if (popupActionBtn) {
-          popupActionBtn.addEventListener('click', () => {
-            const cal = document.getElementById('booking-calendar');
-            if (cal) {
-              cal.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-            dismissPopup();
-          });
-        }
-
-        if (popupCloseBtn) {
-          popupCloseBtn.addEventListener('click', () => {
-            dismissPopup();
-          });
-        }
-
-        // Show after 5s, hide after 10s (stay 10s)
-        popupTimeout = window.setTimeout(() => {
-          // Only show if user hasn't scrolled to calendar yet
-          const cal = document.getElementById('booking-calendar');
-          const calTop = cal ? cal.getBoundingClientRect().top + window.scrollY : 800;
-          if (window.scrollY < calTop - 300) {
-            floatingSkipBtn.classList.add('show');
-            window.addEventListener('scroll', onScrollCheck);
-            hideTimeout = window.setTimeout(() => {
-              dismissPopup();
-            }, 10000);
-          }
-        }, 5000);
       }
     }
 
