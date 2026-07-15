@@ -70,19 +70,7 @@ function startScrollTracking() {
       }
     }
 
-    // 2. Scrolled down to see video in full
-    const video = document.getElementById('booking-video');
-    if (video && !scrollTracked.video) {
-      const rect = video.getBoundingClientRect();
-      // If the bottom of the video is above the bottom of the viewport (visible)
-      if (rect.bottom < window.innerHeight) {
-        scrollTracked.video = true;
-        trackAbacusEvent('scroll_video');
-        if (typeof (window as any).fbq === 'function') {
-          (window as any).fbq('trackCustom', 'Scroll_Video_Full');
-        }
-      }
-    }
+
 
     // 3. Saw the calendar well (middle of calendar crossed the bottom of the viewport)
     const cal = document.getElementById('booking-calendar');
@@ -123,9 +111,12 @@ function stopScrollTracking() {
 
 function getLocalDateString(): string {
   const d = new Date();
-  const offset = d.getTimezoneOffset();
-  const localDate = new Date(d.getTime() - (offset * 60 * 1000));
-  return localDate.toISOString().split('T')[0];
+  // Force UAE timezone (Asia/Dubai = GMT+4)
+  const uae = new Date(d.toLocaleString('en-US', { timeZone: 'Asia/Dubai' }));
+  const year = uae.getFullYear();
+  const month = String(uae.getMonth() + 1).padStart(2, '0');
+  const day = String(uae.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
 }
 
 async function sha256(message: string): Promise<string> {
@@ -1005,11 +996,10 @@ function BookingPage(): string {
   <!-- HEADER -->
   <div class="page-header booking-page-header">
     <div class="container">
-      <div class="booking-page-badge">Free Demo Offer</div>
+      <div class="booking-page-badge">For Small Business Owners in the UAE</div>
       <h1>See Your Website<br><span style="color:var(--accent);">Before You Pay</span></h1>
-      <p class="booking-page-value-prop">We build a demo of your site first. If you love it, you pay for it. If you don't, you walk away.</p>
+      <p class="booking-page-value-prop">Whether you clicked our ad or found us online, you're here because you want a better website for your business. Watch the video below to see exactly what we'll build for you then book your free demo call.</p>
       <div class="booking-page-divider"></div>
-      <p class="booking-page-cta-text">Watch the video below to see how it works, then book your call.</p>
     </div>
   </div>
 
@@ -1063,7 +1053,7 @@ function BookingPage(): string {
 
         <!-- BRIDGE: video → calendar -->
         <div class="booking-bridge-text reveal">
-          <p>Watched the video? Book your free demo call below.</p>
+          <p>Now that you've watched the video, book your call below to get your free demo.</p>
         </div>
 
         <!-- BOOKING CALENDAR -->
@@ -1111,10 +1101,14 @@ function BookingPage(): string {
     </div>
   </section>
 
-  <!-- Floating Skip to Booking Button -->
-  <a href="#booking-calendar" class="floating-skip-btn" id="floating-skip-btn">
-    Book a Call ${Icons.arrow}
-  </a>
+  <!-- Floating Booking Popup -->
+  <div class="floating-booking-popup" id="floating-skip-btn">
+    <div class="floating-popup-content">
+      <span>Ready to book?</span>
+      <button class="floating-popup-action-btn" id="floating-popup-action-btn">Book a Call</button>
+    </div>
+    <button class="floating-popup-close-btn" id="floating-popup-close-btn" aria-label="Close popup">&times;</button>
+  </div>
   `;
 }
 
@@ -1357,15 +1351,7 @@ function AdminPage(): string {
                 </div>
                 <span class="funnel-step-val" id="funnel-val-scroll_moved">0</span>
               </div>
-              <div class="funnel-step">
-                <span class="funnel-step-label">Saw video fully</span>
-                <div class="funnel-bar-wrap">
-                  <div class="funnel-bar-fill" id="funnel-bar-scroll_video" style="width: 0%; background: #34495e;">
-                    <span class="funnel-bar-pct" id="funnel-pct-scroll_video">0%</span>
-                  </div>
-                </div>
-                <span class="funnel-step-val" id="funnel-val-scroll_video">0</span>
-              </div>
+
               <div class="funnel-step">
                 <span class="funnel-step-label">Reached Calendar</span>
                 <div class="funnel-bar-wrap">
@@ -1897,7 +1883,7 @@ const loadData = async (isDaily: boolean, dateStr: string) => {
     'videowatch_25pct', 'videowatch_50pct', 'videowatch_75pct',
     'videowatch_complete', 'bookedcall',
     'time_5s', 'time_15s', 'time_30s', 'time_60s',
-    'scroll_moved', 'scroll_video', 'scroll_calendar', 'scroll_testimonials'
+    'scroll_moved', 'scroll_calendar', 'scroll_testimonials'
   ];
 
   try {
@@ -1923,7 +1909,6 @@ const loadData = async (isDaily: boolean, dateStr: string) => {
     const raw_t60 = stats.time_60s || 0;
 
     const raw_smoved = stats.scroll_moved || 0;
-    const raw_svideo = stats.scroll_video || 0;
     const raw_scal = stats.scroll_calendar || 0;
     const raw_stest = stats.scroll_testimonials || 0;
 
@@ -1949,8 +1934,7 @@ const loadData = async (isDaily: boolean, dateStr: string) => {
     // 3. Scroll Funnel Monotonicity
     const stest = raw_stest;
     const scal = Math.max(raw_scal, stest);
-    const svideo = Math.max(raw_svideo, scal);
-    const smoved = Math.max(raw_smoved, svideo);
+    const smoved = Math.max(raw_smoved, scal);
     pageLoads = Math.max(pageLoads, smoved);
 
     document.getElementById('stat-pageload')!.textContent = String(pageLoads);
@@ -1987,7 +1971,6 @@ const loadData = async (isDaily: boolean, dateStr: string) => {
     setCount('time_60s', t60);
 
     setCount('scroll_moved', smoved);
-    setCount('scroll_video', svideo);
     setCount('scroll_calendar', scal);
     setCount('scroll_testimonials', stest);
 
@@ -2017,7 +2000,6 @@ const loadData = async (isDaily: boolean, dateStr: string) => {
 
     // Cumulative scroll depth bars (directly matching Meta columns)
     setBar('scroll_moved', smoved);
-    setBar('scroll_video', svideo);
     setBar('scroll_calendar', scal);
     setBar('scroll_testimonials', stest);
 
@@ -2133,23 +2115,62 @@ function navigate(page: Page, pushHistory = true) {
       }
 
       // Floating skip button
+      // Floating skip popup
       const floatingSkipBtn = document.getElementById('floating-skip-btn');
-      if (floatingSkipBtn) {
-        floatingSkipBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          const cal = document.getElementById('booking-calendar');
-          if (cal) {
-            cal.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            floatingSkipBtn.classList.remove('show');
-          }
-        });
+      const popupActionBtn = document.getElementById('floating-popup-action-btn');
+      const popupCloseBtn = document.getElementById('floating-popup-close-btn');
 
-        // Show after 5s, hide after 20s (15s duration)
-        setTimeout(() => {
-          floatingSkipBtn.classList.add('show');
-          setTimeout(() => {
-            floatingSkipBtn.classList.remove('show');
-          }, 15000);
+      let popupTimeout: number | null = null;
+      let hideTimeout: number | null = null;
+
+      const dismissPopup = () => {
+        if (floatingSkipBtn) floatingSkipBtn.classList.remove('show');
+        if (hideTimeout) {
+          clearTimeout(hideTimeout);
+          hideTimeout = null;
+        }
+        window.removeEventListener('scroll', onScrollCheck);
+      };
+
+      function onScrollCheck() {
+        const cal = document.getElementById('booking-calendar');
+        if (cal) {
+          const rect = cal.getBoundingClientRect();
+          if (rect.top < window.innerHeight) {
+            dismissPopup();
+          }
+        }
+      }
+
+      if (floatingSkipBtn) {
+        if (popupActionBtn) {
+          popupActionBtn.addEventListener('click', () => {
+            const cal = document.getElementById('booking-calendar');
+            if (cal) {
+              cal.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            dismissPopup();
+          });
+        }
+
+        if (popupCloseBtn) {
+          popupCloseBtn.addEventListener('click', () => {
+            dismissPopup();
+          });
+        }
+
+        // Show after 5s, hide after 10s (stay 10s)
+        popupTimeout = window.setTimeout(() => {
+          // Only show if user hasn't scrolled to calendar yet
+          const cal = document.getElementById('booking-calendar');
+          const calTop = cal ? cal.getBoundingClientRect().top + window.scrollY : 800;
+          if (window.scrollY < calTop - 300) {
+            floatingSkipBtn.classList.add('show');
+            window.addEventListener('scroll', onScrollCheck);
+            hideTimeout = window.setTimeout(() => {
+              dismissPopup();
+            }, 10000);
+          }
         }, 5000);
       }
     }
