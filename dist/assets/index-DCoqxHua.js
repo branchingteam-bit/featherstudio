@@ -1,4 +1,4 @@
-(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const a of document.querySelectorAll('link[rel="modulepreload"]'))n(a);new MutationObserver(a=>{for(const o of a)if(o.type==="childList")for(const c of o.addedNodes)c.tagName==="LINK"&&c.rel==="modulepreload"&&n(c)}).observe(document,{childList:!0,subtree:!0});function s(a){const o={};return a.integrity&&(o.integrity=a.integrity),a.referrerPolicy&&(o.referrerPolicy=a.referrerPolicy),a.crossOrigin==="use-credentials"?o.credentials="include":a.crossOrigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function n(a){if(a.ep)return;a.ep=!0;const o=s(a);fetch(a.href,o)}})();const Z=(t,e=document)=>e.querySelector(t),ie=(t,e=document)=>[...e.querySelectorAll(t)],J="atlanticbear_analytics_8d24";function A(t,e=0){const s=()=>{fetch(`https://abacus.jasoncameron.dev/hit/${J}/${t}`).catch(()=>{});try{const n=Q();fetch(`https://abacus.jasoncameron.dev/hit/${J}/${n}_${t}`).catch(()=>{})}catch{}};e>0?setTimeout(s,e):s()}let X={};function ue(){oe();const t=e=>{X[`t${e}`]=window.setTimeout(()=>{A(`time_${e}s`),typeof window.fbq=="function"&&window.fbq("trackCustom",`Time_${e}s`,{page:"booking"})},e*1e3)};t(5),t(15),t(30),t(60)}function oe(){Object.values(X).forEach(clearTimeout),X={}}let F={moved:!1,calendar:!1,testimonials:!1},U=null;function ve(){le(),F={moved:!1,video:!1,calendar:!1,testimonials:!1},U=()=>{window.scrollY>50&&!F.moved&&(F.moved=!0,A("scroll_moved"),typeof window.fbq=="function"&&window.fbq("trackCustom","Scroll_Moved"));const t=document.getElementById("booking-calendar");if(t&&!F.calendar){const s=t.getBoundingClientRect();s.top+s.height/2<window.innerHeight&&(F.calendar=!0,A("scroll_calendar"),typeof window.fbq=="function"&&window.fbq("trackCustom","Scroll_To_Calendar"))}const e=document.querySelector(".booking-step-card:last-child");e&&!F.testimonials&&e.getBoundingClientRect().top<window.innerHeight-300&&(F.testimonials=!0,A("scroll_testimonials"),typeof window.fbq=="function"&&window.fbq("trackCustom","Scroll_To_Testimonials"))},window.addEventListener("scroll",U,{passive:!0})}function le(){U&&(window.removeEventListener("scroll",U),U=null)}function Q(){const t=new Date,e=new Date(t.toLocaleString("en-US",{timeZone:"Asia/Dubai"})),s=e.getFullYear(),n=String(e.getMonth()+1).padStart(2,"0"),a=String(e.getDate()).padStart(2,"0");return`${s}-${n}-${a}`}async function me(t){const e=new TextEncoder().encode(t),s=await crypto.subtle.digest("SHA-256",e);return Array.from(new Uint8Array(s)).map(a=>a.toString(16).padStart(2,"0")).join("")}const h={arrow:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="2" y1="8" x2="13" y2="8"/><polyline points="9,4 13,8 9,12"/></svg>',globe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',phone:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.79a19.79 19.79 0 01-3.07-8.7A2 2 0 012 0h3a2 2 0 012 1.72c.12.96.36 1.9.69 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.33 1.85.57 2.81.69A2 2 0 0122 16.92z"/></svg>',mail:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',map:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>',star:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>',zap:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"/></svg>',shield:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',rocket:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2 .27-2.98-.31-3.5c-.56-.52-1.43-.8-2.69.5z"/><path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>',instagram:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>'};function fe(){return`
+(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const a of document.querySelectorAll('link[rel="modulepreload"]'))o(a);new MutationObserver(a=>{for(const i of a)if(i.type==="childList")for(const c of i.addedNodes)c.tagName==="LINK"&&c.rel==="modulepreload"&&o(c)}).observe(document,{childList:!0,subtree:!0});function s(a){const i={};return a.integrity&&(i.integrity=a.integrity),a.referrerPolicy&&(i.referrerPolicy=a.referrerPolicy),a.crossOrigin==="use-credentials"?i.credentials="include":a.crossOrigin==="anonymous"?i.credentials="omit":i.credentials="same-origin",i}function o(a){if(a.ep)return;a.ep=!0;const i=s(a);fetch(a.href,i)}})();const R=(t,e=document)=>e.querySelector(t),j=(t,e=document)=>[...e.querySelectorAll(t)],$="atlanticbear_analytics_8d24";function E(t,e=0){const s=()=>{fetch(`https://abacus.jasoncameron.dev/hit/${$}/${t}`).catch(()=>{});try{const o=X();fetch(`https://abacus.jasoncameron.dev/hit/${$}/${o}_${t}`).catch(()=>{})}catch{}};e>0?setTimeout(s,e):s()}let N={};function K(){G();const t=e=>{N[`t${e}`]=window.setTimeout(()=>{E(`time_${e}s`)},e*1e3)};t(5),t(15),t(30),t(60)}function G(){Object.values(N).forEach(clearTimeout),N={}}let C={moved:!1,calendar:!1,testimonials:!1},W=null;function J(){H(),C={moved:!1,video:!1,calendar:!1,testimonials:!1},W=()=>{window.scrollY>50&&!C.moved&&(C.moved=!0,E("scroll_moved"));const t=document.getElementById("booking-calendar");if(t&&!C.calendar){const s=t.getBoundingClientRect();s.top+s.height/2<window.innerHeight&&(C.calendar=!0,E("scroll_calendar"))}const e=document.querySelector(".booking-step-card:last-child");e&&!C.testimonials&&e.getBoundingClientRect().top<window.innerHeight-300&&(C.testimonials=!0,E("scroll_testimonials"))},window.addEventListener("scroll",W,{passive:!0})}function H(){W&&(window.removeEventListener("scroll",W),W=null)}function X(){const t=new Date,e=new Date(t.toLocaleString("en-US",{timeZone:"Asia/Dubai"})),s=e.getFullYear(),o=String(e.getMonth()+1).padStart(2,"0"),a=String(e.getDate()).padStart(2,"0");return`${s}-${o}-${a}`}const m={arrow:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="2" y1="8" x2="13" y2="8"/><polyline points="9,4 13,8 9,12"/></svg>',globe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',phone:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.79a19.79 19.79 0 01-3.07-8.7A2 2 0 012 0h3a2 2 0 012 1.72c.12.96.36 1.9.69 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.33 1.85.57 2.81.69A2 2 0 0122 16.92z"/></svg>',mail:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',map:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>',star:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>',zap:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"/></svg>',shield:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',rocket:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2 .27-2.98-.31-3.5c-.56-.52-1.43-.8-2.69.5z"/><path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>',instagram:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>'};function Z(){return`
   <nav class="nav" id="main-nav">
     <a href="/" class="logo" data-link="home" id="logo-btn" aria-label="Atlantic Bear Home">
       <span class="logo-wordmark">Atlantic</span>
@@ -13,9 +13,9 @@
     <div class="nav-actions">
       <a href="/contact" class="btn btn-secondary btn-sm nav-desktop-only" data-link="contact" id="nav-contact-cta">Contact</a>
       <a href="/pricing" class="btn btn-secondary btn-sm nav-mobile-only" data-link="pricing" id="nav-pricing-cta">Pricing</a>
-      <a href="/booking" class="btn btn-dark btn-sm" data-link="booking" id="nav-book-cta">Book a Call ${h.arrow}</a>
+      <a href="/booking" class="btn btn-dark btn-sm" data-link="booking" id="nav-book-cta">Book a Call ${m.arrow}</a>
     </div>
-  </nav>`}function ge(){return`
+  </nav>`}function Q(){return`
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
@@ -49,7 +49,7 @@
         <span>Dubai, UAE</span>
       </div>
     </div>
-  </footer>`}function he(){const t=[{num:"3 Days",desc:"From kick-off to live"},{num:"100%",desc:"Mobile responsive"},{num:"Fully Custom",desc:"No templates, ever"},{num:"3+ Years",desc:"Building in the UAE"},{num:"81%",desc:"Of customers research online first"},{num:"SEO Ready",desc:"Google-optimised from day one"}],e=()=>t.map(n=>`<span class="marquee-badge"><span class="marquee-num">${n.num}</span><span class="marquee-desc">${n.desc}</span></span><span class="marquee-sep">·</span>`).join(""),s=e()+e()+e()+e();return`
+  </footer>`}function ee(){const t=[{num:"3 Days",desc:"From kick-off to live"},{num:"100%",desc:"Mobile responsive"},{num:"Fully Custom",desc:"No templates, ever"},{num:"3+ Years",desc:"Building in the UAE"},{num:"81%",desc:"Of customers research online first"},{num:"SEO Ready",desc:"Google-optimised from day one"}],e=()=>t.map(o=>`<span class="marquee-badge"><span class="marquee-num">${o.num}</span><span class="marquee-desc">${o.desc}</span></span><span class="marquee-sep">·</span>`).join(""),s=e()+e()+e()+e();return`
   <!-- HERO -->
   <section class="hero" style="position: relative; overflow: hidden;">
     <img src="/huge-bear-watermark.webp" class="huge-bear" alt="Atlantic Bear Watermark" fetchpriority="high" width="600" height="600" />
@@ -60,7 +60,7 @@
       </p>
       <div class="hero-ctas">
         <a href="/booking" class="btn btn-dark btn-large" data-link="booking" id="hero-cta-book">
-          Book a Call ${h.arrow}
+          Book a Call ${m.arrow}
         </a>
         <a href="/pricing" class="btn btn-secondary btn-large" data-link="pricing" id="hero-cta-plans">
           View Plans
@@ -162,28 +162,28 @@
         <p class="free-demo-sub">We build your actual website first, completely free, and show it to you on a call. Only if you love the finished product do we launch it and move forward. If you don't, you walk away and owe us nothing.</p>
         <div class="free-demo-steps">
           <div class="free-demo-step">
-            <div class="free-demo-step-icon">${h.phone}</div>
+            <div class="free-demo-step-icon">${m.phone}</div>
             <div>
               <div class="free-demo-step-title">30-Minute Strategy Call</div>
               <div class="free-demo-step-desc">We map out your business positioning, category keywords, and how we will capture clients already looking for you.</div>
             </div>
           </div>
           <div class="free-demo-step">
-            <div class="free-demo-step-icon">${h.zap}</div>
+            <div class="free-demo-step-icon">${m.zap}</div>
             <div>
               <div class="free-demo-step-title">We Build Your Online Presence — 5 Days</div>
               <div class="free-demo-step-desc">Fill out a short form. We handle everything else — copywriting, layouts, graphics, and search setup.</div>
             </div>
           </div>
           <div class="free-demo-step">
-            <div class="free-demo-step-icon">${h.rocket}</div>
+            <div class="free-demo-step-icon">${m.rocket}</div>
             <div>
               <div class="free-demo-step-title">Activate Only If You Love The Outcome</div>
               <div class="free-demo-step-desc">We walk you through your high-converting brand system. Love it? We launch it and you pay. Not happy? You walk away and owe us zero.</div>
             </div>
           </div>
         </div>
-        <a href="/booking" class="btn btn-dark btn-large free-demo-cta" data-link="booking" id="home-free-demo-cta">Get Your Free Demo ${h.arrow}</a>
+        <a href="/booking" class="btn btn-dark btn-large free-demo-cta" data-link="booking" id="home-free-demo-cta">Get Your Free Demo ${m.arrow}</a>
         <p class="free-demo-note">Your total time investment: under one hour. We handle everything.</p>
       </div>
     </div>
@@ -199,34 +199,34 @@
       </div>
       <div class="feature-grid">
         <div class="feature-item reveal">
-          <div class="feature-icon-wrap">${h.globe}</div>
+          <div class="feature-icon-wrap">${m.globe}</div>
           <h3>Capture clients already looking for you</h3>
           <p>People hear about you through word of mouth, Instagram, Google Maps. They search your name, find nothing — and quietly choose your competitor. We stop that.</p>
         </div>
         <div class="feature-item reveal">
-          <div class="feature-icon-wrap">${h.star}</div>
+          <div class="feature-icon-wrap">${m.star}</div>
           <h3>Look like the biggest player in your category</h3>
           <p>A business running off WhatsApp and Instagram looks small. Your website makes you look like a 50-person company, even if you're 3 people.</p>
         </div>
         <div class="feature-item reveal">
-          <div class="feature-icon-wrap">${h.shield}</div>
+          <div class="feature-icon-wrap">${m.shield}</div>
           <h3>Own your online presence — stop renting it</h3>
           <p>Instagram can shadowban you. The algorithm can bury you. Meta can suspend your account overnight. Your website is the one asset you actually control.</p>
         </div>
         <div class="feature-item reveal">
-          <div class="feature-icon-wrap">${h.phone}</div>
+          <div class="feature-icon-wrap">${m.phone}</div>
           <h3>Every screen, every device, every time</h3>
           <p>87% of your customers visit on their phone. Your site looks flawless on every screen — mobile, tablet, desktop. No pinching, no broken layouts.</p>
         </div>
         <div class="feature-item reveal">
-          <div class="feature-icon-wrap">${h.rocket}</div>
+          <div class="feature-icon-wrap">${m.rocket}</div>
           <h3>No contracts, no lock-in</h3>
           <p>If we do good work, you stay. We don't need a contract to make that happen. Cancel anytime, we hand over everything within 48 hours.</p>
         </div>
         <div class="feature-item reveal" style="display:flex; flex-direction:column; justify-content:center; background:var(--surface);">
           <h3 style="font-size:1.1rem; margin-bottom:8px;">Your total effort: under one hour</h3>
           <p style="margin-bottom:16px; font-size:0.82rem; color:var(--text-muted);">One 30-minute discovery call. One short form. One 30-minute demo call. That's it. We handle the design, the copy, the hosting, the domain — everything.</p>
-          <a href="/booking" class="btn btn-dark btn-sm" data-link="booking" style="align-self:flex-start;">Book a Call ${h.arrow}</a>
+          <a href="/booking" class="btn btn-dark btn-sm" data-link="booking" style="align-self:flex-start;">Book a Call ${m.arrow}</a>
         </div>
       </div>
     </div>
@@ -321,7 +321,7 @@
             <span class="teaser-pill">1 Update / Mo</span>
           </div>
           <a href="/pricing" class="teaser-btn teaser-btn-dark" data-link="pricing" id="home-managed-teaser-cta">
-            Explore Launch Plan ${h.arrow}
+            Explore Launch Plan ${m.arrow}
           </a>
         </div>
 
@@ -344,7 +344,7 @@
             <span class="teaser-pill">3 Updates / Mo</span>
           </div>
           <a href="/pricing" class="teaser-btn teaser-btn-outline" data-link="pricing" id="home-growth-teaser-cta">
-            Explore Growth Plan ${h.arrow}
+            Explore Growth Plan ${m.arrow}
           </a>
         </div>
 
@@ -352,7 +352,7 @@
 
     </div>
   </section>
-  `}function be(){return`
+  `}function te(){return`
   <!-- PAGE HEADER -->
   <div class="page-header" style="border-bottom:1px solid var(--border); padding-bottom: 32px;">
     <div class="container">
@@ -619,7 +619,7 @@
       </div>
     </div>
   </section>
-  `}function ye(){return`
+  `}function ae(){return`
   <div class="page-header" style="border-bottom:1px solid var(--border);">
     <div class="container">
       <div class="section-label">Portfolio</div>
@@ -633,11 +633,11 @@
       <p>Tell us about your business and what you need.</p>
       <div class="cta-ctas">
         <a href="/booking" class="btn btn-dark btn-large" data-link="booking" id="work-cta">
-          Book a Call ${h.arrow}
+          Book a Call ${m.arrow}
         </a>
       </div>
     </div>
-  </section>`}function we(){return`
+  </section>`}function se(){return`
   <!-- HEADER -->
   <div class="page-header" style="border-bottom:1px solid var(--border);">
     <div class="container">
@@ -707,14 +707,14 @@
       <p>Tell us about your business and let's get started.</p>
       <div class="cta-ctas">
         <a href="/booking" class="btn btn-dark btn-large" data-link="booking" id="testimonials-cta">
-          Book a Call ${h.arrow}
+          Book a Call ${m.arrow}
         </a>
         <a href="/pricing" class="btn btn-secondary btn-large" data-link="pricing" id="testimonials-plans-cta">
           View Plans
         </a>
       </div>
     </div>
-  </section>`}function ke(){return`
+  </section>`}function oe(){return`
   <div class="page-header" style="border-bottom:1px solid var(--border); text-align:left; padding-bottom:0;">
     <div class="container">
       <div class="section-pad">
@@ -726,7 +726,7 @@
             <div class="contact-methods">
               <a href="mailto:officialatlanticbear@gmail.com" class="contact-method">
                 <div class="contact-method-icon">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${h.mail}</svg>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${m.mail}</svg>
                 </div>
                 <div>
                   <div class="contact-method-label">Email</div>
@@ -735,7 +735,7 @@
               </a>
               <a href="https://www.instagram.com/officialatlanticbear/" target="_blank" class="contact-method">
                 <div class="contact-method-icon" style="background:rgba(59,105,255,0.08); color:var(--blue);">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${h.instagram}</svg>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${m.instagram}</svg>
                 </div>
                 <div>
                   <div class="contact-method-label">Instagram</div>
@@ -744,7 +744,7 @@
               </a>
               <div class="contact-method">
                 <div class="contact-method-icon">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${h.map}</svg>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${m.map}</svg>
                 </div>
                 <div>
                   <div class="contact-method-label">Location</div>
@@ -780,14 +780,14 @@
               <textarea class="form-input form-textarea" id="form-message" name="message" placeholder="Tell us about your business and what you need..." required data-fs-field></textarea>
               <span data-fs-error="message" class="fs-field-error"></span>
               <button type="submit" class="btn btn-dark btn-block btn-large" id="form-submit-btn" data-fs-submit-btn>
-                Send message ${h.arrow}
+                Send message ${m.arrow}
               </button>
             </form>
           </div>
         </div>
       </div>
     </div>
-  </div>`}function Ee(){return`
+  </div>`}function ie(){return`
   <div class="funnel-page">
     <!-- Urgency Top Bar — logo left, pill centred -->
     <div class="funnel-urgency-bar">
@@ -956,7 +956,7 @@
       </div>
     </div>
   </div>
-  `}function xe(){return`
+  `}function ne(){return`
   <!-- HEADER -->
   <div class="page-header booking-page-header">
     <div class="container">
@@ -1072,264 +1072,10 @@
       </div>
     </div>
   </section>
-  `}function Ae(){return sessionStorage.getItem("admin_authenticated")==="true"?`
-  <div class="container">
-    <div class="admin-dashboard-wrap">
-      <div class="admin-dashboard-header">
-        <div>
-          <h1>Analytics Dashboard</h1>
-          <p class="hero-sub" style="font-size:0.95rem; margin-top:4px; max-width:100%;">
-            Real-time video retention and conversion stats.
-          </p>
-        </div>
-        <div class="admin-controls">
-          <div class="admin-toggle-group">
-            <button class="admin-toggle-btn" id="btn-toggle-lifetime">Lifetime</button>
-            <button class="admin-toggle-btn active" id="btn-toggle-daily">Daily</button>
-          </div>
-          <input type="date" id="admin-date-select" class="admin-date-picker" value="${Q()}" />
-        </div>
-      </div>
-
-      <div id="admin-loading" style="text-align: center; padding: 40px; font-size: 1.1rem; font-weight: 600; color: var(--text-muted);">
-        Loading analytics from Abacus API...
-      </div>
-
-      <div id="admin-dashboard-content" style="display: none;">
-        <!-- Metrics Row -->
-        <div class="admin-stats-grid">
-          <div class="admin-stat-card">
-            <div class="admin-stat-label">Page Loads</div>
-            <div class="admin-stat-value" id="stat-pageload">0</div>
-            <div class="admin-stat-meta">Total visits</div>
-          </div>
-          <div class="admin-stat-card">
-            <div class="admin-stat-label">Video Plays</div>
-            <div class="admin-stat-value" id="stat-videoplay">0</div>
-            <div class="admin-stat-meta" id="rate-play">0% Play Rate</div>
-          </div>
-          <div class="admin-stat-card">
-            <div class="admin-stat-label">Video Completions</div>
-            <div class="admin-stat-value" id="stat-videowatch_complete">0</div>
-            <div class="admin-stat-meta" id="rate-complete">0% Comp. Rate</div>
-          </div>
-          <div class="admin-stat-card">
-            <div class="admin-stat-label">Booked Calls</div>
-            <div class="admin-stat-value" id="stat-bookedcall">0</div>
-            <div class="admin-stat-meta" id="rate-booking">0% Booking Rate</div>
-          </div>
-        </div>
-
-        <!-- Funnel Card -->
-        <div class="admin-funnel-card">
-          <h2>Retention & Booking Funnel</h2>
-          <div class="funnel-container">
-            <!-- Step 1: Page Loads -->
-            <div class="funnel-step">
-              <span class="funnel-step-label">Page Loads</span>
-              <div class="funnel-bar-wrap">
-                <div class="funnel-bar-fill grey-fill" style="width: 100%;">
-                  <span class="funnel-bar-pct">100%</span>
-                </div>
-              </div>
-              <span class="funnel-step-val" id="funnel-val-pageload">0</span>
-            </div>
-
-            <!-- Step 2: Video Play -->
-            <div class="funnel-step">
-              <span class="funnel-step-label">Video Plays</span>
-              <div class="funnel-bar-wrap">
-                <div class="funnel-bar-fill" id="funnel-bar-videoplay" style="width: 0%;">
-                  <span class="funnel-bar-pct" id="funnel-pct-videoplay">0%</span>
-                </div>
-              </div>
-              <span class="funnel-step-val" id="funnel-val-videoplay">0</span>
-            </div>
-
-            <!-- Step 3: 10 Seconds -->
-            <div class="funnel-step">
-              <span class="funnel-step-label">Watch 10s (Hook)</span>
-              <div class="funnel-bar-wrap">
-                <div class="funnel-bar-fill" id="funnel-bar-videowatch_10s" style="width: 0%;">
-                  <span class="funnel-bar-pct" id="funnel-pct-videowatch_10s">0%</span>
-                </div>
-              </div>
-              <span class="funnel-step-val" id="funnel-val-videowatch_10s">0</span>
-            </div>
-
-            <!-- Step 4: 30 Seconds -->
-            <div class="funnel-step">
-              <span class="funnel-step-label">Watch 30s (Intro)</span>
-              <div class="funnel-bar-wrap">
-                <div class="funnel-bar-fill" id="funnel-bar-videowatch_30s" style="width: 0%;">
-                  <span class="funnel-bar-pct" id="funnel-pct-videowatch_30s">0%</span>
-                </div>
-              </div>
-              <span class="funnel-step-val" id="funnel-val-videowatch_30s">0</span>
-            </div>
-
-            <!-- Step 5: 25% -->
-            <div class="funnel-step">
-              <span class="funnel-step-label">Watch 25%</span>
-              <div class="funnel-bar-wrap">
-                <div class="funnel-bar-fill" id="funnel-bar-videowatch_25pct" style="width: 0%;">
-                  <span class="funnel-bar-pct" id="funnel-pct-videowatch_25pct">0%</span>
-                </div>
-              </div>
-              <span class="funnel-step-val" id="funnel-val-videowatch_25pct">0</span>
-            </div>
-
-            <!-- Step 6: 50% -->
-            <div class="funnel-step">
-              <span class="funnel-step-label">Watch 50%</span>
-              <div class="funnel-bar-wrap">
-                <div class="funnel-bar-fill" id="funnel-bar-videowatch_50pct" style="width: 0%;">
-                  <span class="funnel-bar-pct" id="funnel-pct-videowatch_50pct">0%</span>
-                </div>
-              </div>
-              <span class="funnel-step-val" id="funnel-val-videowatch_50pct">0</span>
-            </div>
-
-            <!-- Step 7: 75% -->
-            <div class="funnel-step">
-              <span class="funnel-step-label">Watch 75%</span>
-              <div class="funnel-bar-wrap">
-                <div class="funnel-bar-fill" id="funnel-bar-videowatch_75pct" style="width: 0%;">
-                  <span class="funnel-bar-pct" id="funnel-pct-videowatch_75pct">0%</span>
-                </div>
-              </div>
-              <span class="funnel-step-val" id="funnel-val-videowatch_75pct">0</span>
-            </div>
-
-            <!-- Step 8: Complete -->
-            <div class="funnel-step">
-              <span class="funnel-step-label">Complete Video</span>
-              <div class="funnel-bar-wrap">
-                <div class="funnel-bar-fill" id="funnel-bar-videowatch_complete" style="width: 0%;">
-                  <span class="funnel-bar-pct" id="funnel-pct-videowatch_complete">0%</span>
-                </div>
-              </div>
-              <span class="funnel-step-val" id="funnel-val-videowatch_complete">0</span>
-            </div>
-
-            <!-- Step 9: Booked Call -->
-            <div class="funnel-step">
-              <span class="funnel-step-label" style="color:#27ae60;">Booked Calls</span>
-              <div class="funnel-bar-wrap" style="border-color:rgba(39,174,96,0.3);">
-                <div class="funnel-bar-fill complete-fill" id="funnel-bar-bookedcall" style="width: 0%;">
-                  <span class="funnel-bar-pct" id="funnel-pct-bookedcall">0%</span>
-                </div>
-              </div>
-              <span class="funnel-step-val" id="funnel-val-bookedcall" style="color:#27ae60;">0</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- New Stats Row: Engagement & Scroll Depth -->
-        <div class="admin-stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); margin-top: 30px; align-items: start;">
-          <!-- Card 1: Attention Span -->
-          <div class="admin-funnel-card">
-            <h2>Attention Span (Dwell Time)</h2>
-            <p style="font-size:0.78rem; color:var(--text-muted); margin:-8px 0 16px 0;">% of total visits that stayed for each duration.</p>
-            <div class="funnel-container">
-              <div class="funnel-step">
-                <span class="funnel-step-label">Stayed &gt;5s</span>
-                <div class="funnel-bar-wrap">
-                  <div class="funnel-bar-fill" id="funnel-bar-time_5s" style="width: 0%; background: #f39c12;">
-                    <span class="funnel-bar-pct" id="funnel-pct-time_5s">0%</span>
-                  </div>
-                </div>
-                <span class="funnel-step-val" id="funnel-val-time_5s">0</span>
-              </div>
-              <div class="funnel-step">
-                <span class="funnel-step-label">Stayed &gt;15s</span>
-                <div class="funnel-bar-wrap">
-                  <div class="funnel-bar-fill" id="funnel-bar-time_15s" style="width: 0%; background: #f1c40f;">
-                    <span class="funnel-bar-pct" id="funnel-pct-time_15s">0%</span>
-                  </div>
-                </div>
-                <span class="funnel-step-val" id="funnel-val-time_15s">0</span>
-              </div>
-              <div class="funnel-step">
-                <span class="funnel-step-label">Stayed &gt;30s</span>
-                <div class="funnel-bar-wrap">
-                  <div class="funnel-bar-fill" id="funnel-bar-time_30s" style="background: #3498db; width: 0%;">
-                    <span class="funnel-bar-pct" id="funnel-pct-time_30s">0%</span>
-                  </div>
-                </div>
-                <span class="funnel-step-val" id="funnel-val-time_30s">0</span>
-              </div>
-              <div class="funnel-step">
-                <span class="funnel-step-label" style="color: #27ae60;">Stayed &gt;60s</span>
-                <div class="funnel-bar-wrap" style="border-color: rgba(39,174,96,0.3);">
-                  <div class="funnel-bar-fill" id="funnel-bar-time_60s" style="background: linear-gradient(90deg, #27ae60 0%, #2ecc71 100%); width: 0%;">
-                    <span class="funnel-bar-pct" id="funnel-pct-time_60s">0%</span>
-                  </div>
-                </div>
-                <span class="funnel-step-val" id="funnel-val-time_60s" style="color: #27ae60;">0</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 2: Scroll Depth -->
-          <div class="admin-funnel-card">
-            <h2>Scroll Depth</h2>
-            <p style="font-size:0.78rem; color:var(--text-muted); margin:-8px 0 16px 0;">% of total visits that reached each section.</p>
-            <div class="funnel-container">
-              <div class="funnel-step">
-                <span class="funnel-step-label">Moved at all</span>
-                <div class="funnel-bar-wrap">
-                  <div class="funnel-bar-fill" id="funnel-bar-scroll_moved" style="width: 0%; background: #95a5a6;">
-                    <span class="funnel-bar-pct" id="funnel-pct-scroll_moved">0%</span>
-                  </div>
-                </div>
-                <span class="funnel-step-val" id="funnel-val-scroll_moved">0</span>
-              </div>
-
-              <div class="funnel-step">
-                <span class="funnel-step-label">Reached Calendar</span>
-                <div class="funnel-bar-wrap">
-                  <div class="funnel-bar-fill" id="funnel-bar-scroll_calendar" style="width: 0%; background: #3498db;">
-                    <span class="funnel-bar-pct" id="funnel-pct-scroll_calendar">0%</span>
-                  </div>
-                </div>
-                <span class="funnel-step-val" id="funnel-val-scroll_calendar">0</span>
-              </div>
-              <div class="funnel-step">
-                <span class="funnel-step-label" style="color: #27ae60;">Reached Testimonials</span>
-                <div class="funnel-bar-wrap" style="border-color: rgba(39,174,96,0.3);">
-                  <div class="funnel-bar-fill" id="funnel-bar-scroll_testimonials" style="width: 0%; background: linear-gradient(90deg, #27ae60 0%, #2ecc71 100%);">
-                    <span class="funnel-bar-pct" id="funnel-pct-scroll_testimonials">0%</span>
-                  </div>
-                </div>
-                <span class="funnel-step-val" id="funnel-val-scroll_testimonials" style="color: #27ae60;">0</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>`:`
-    <div class="container">
-      <div class="admin-login-wrap">
-        <div class="admin-login-card">
-          <h2>Atlantic Bear Admin</h2>
-          <p>Enter password to access analytics dashboard</p>
-          <div id="login-error" class="admin-error-msg" style="display: none;"></div>
-          <form id="admin-login-form">
-            <div class="admin-input-group">
-              <label for="admin-password">Password</label>
-              <input type="password" id="admin-password" class="admin-login-input" required placeholder="••••••••" />
-            </div>
-            <button type="submit" class="btn btn-dark btn-block btn-large">Login</button>
-          </form>
-        </div>
-      </div>
-    </div>`}const re={home:he,pricing:be,work:ye,contact:ke,testimonials:we,booking:Ee,"booking-new":xe,admin:Ae},se={home:{title:"Atlantic Bear | Custom Website Design Agency in the UAE",desc:"Atlantic Bear is a leading website agency in the UAE. We build custom, premium websites for businesses. Get a free demo of your website before you pay anything."},pricing:{title:"More Clients Starts Here | Atlantic Bear Pricing",desc:"Transparent pricing for fully-managed brand positioning and high-conversion client acquisition platforms in the UAE. See your online presence live in 5 days, see it finished before you pay anything."},work:{title:"Our Work | Atlantic Bear Portfolio",desc:"Explore custom websites designed and developed for UAE businesses. Professional layouts, mobile optimization, and fast load times."},contact:{title:"Contact Atlantic Bear | Start Your UAE Website Project",desc:"Get in touch with Atlantic Bear. Let's discuss your business website needs. Fast response and custom layouts in Dubai & UAE."},testimonials:{title:"Client Testimonials & Transformations | Atlantic Bear",desc:"See real website transformations by Atlantic Bear. Before and after case studies showing how we help businesses across the UAE look professional online."},booking:{title:"Book a Call | Atlantic Bear Discovery Session",desc:"Watch our video, schedule your free 30-minute discovery call, and view our client success stories. Start your UAE website project today."},"booking-new":{title:"Book a Call (New Flow) | Atlantic Bear Discovery Session",desc:"Watch our video, tell us about yourself, and schedule your free 30-minute discovery call. Start your UAE website project today."},admin:{title:"Admin Dashboard | Atlantic Bear",desc:"Analytics and video performance dashboard for Atlantic Bear."}};function Be(t){const e=se[t]||se.home;document.title=e.title;let s=document.querySelector('meta[name="description"]');s||(s=document.createElement("meta"),s.setAttribute("name","description"),document.head.appendChild(s)),s.setAttribute("content",e.desc);let n=document.querySelector('link[rel="canonical"]');n||(n=document.createElement("link"),n.setAttribute("rel","canonical"),document.head.appendChild(n));const a=`${window.location.origin}${t==="home"?"":"/"+t}`;n.setAttribute("href",a);const o={"og:title":e.title,"og:description":e.desc,"og:url":a,"og:type":"website","og:image":`${window.location.origin}/logo.png`};for(const[l,m]of Object.entries(o)){let u=document.querySelector(`meta[property="${l}"]`);u||(u=document.createElement("meta"),u.setAttribute("property",l),document.head.appendChild(u)),u.setAttribute("content",m)}const c={"twitter:card":"summary_large_image","twitter:title":e.title,"twitter:description":e.desc,"twitter:image":`${window.location.origin}/logo.png`};for(const[l,m]of Object.entries(c)){let u=document.querySelector(`meta[name="${l}"]`);u||(u=document.createElement("meta"),u.setAttribute("name",l),document.head.appendChild(u)),u.setAttribute("content",m)}}function ne(t){const e=t.replace(/^\/|\/$/g,"");return e==="pricing"||e==="work"||e==="contact"||e==="testimonials"||e==="booking"||e==="booking-new"||e==="admin"?e:"home"}function Se(t){ie("#main-nav [data-link]").forEach(s=>s.classList.remove("active"));const e=Z(`#main-nav [data-link="${t}"].nav-link`);e&&e.classList.add("active")}function Ce(){const t=ie(".reveal"),e=new IntersectionObserver(s=>{s.forEach(n=>{n.isIntersecting&&(n.target.classList.add("revealed"),e.unobserve(n.target))})},{threshold:.07,rootMargin:"0px 0px -30px 0px"});t.forEach(s=>e.observe(s))}function _e(){const t=document.getElementById("contact-form");if(!t)return;const e=document.createElement("script");e.src="https://unpkg.com/@formspree/ajax@1",e.defer=!0,document.head.appendChild(e),e.onload=()=>{window.formspree&&window.formspree("initForm",{formElement:"#contact-form",formId:"mykanvrr"})},t.addEventListener("submit",async s=>{s.preventDefault();const n=document.getElementById("form-submit-btn"),a=document.querySelector("[data-fs-success]"),o=document.querySelector('[data-fs-error]:not([data-fs-error="name"]):not([data-fs-error="email"]):not([data-fs-error="message"])');n&&(n.disabled=!0,n.textContent="Sending...");try{const c=new FormData(t);if((await fetch("https://formspree.io/f/mykanvrr",{method:"POST",body:c,headers:{Accept:"application/json"}})).ok)t.style.display="none",a&&(a.style.display="block",a.style.textAlign="center",a.style.padding="18px",a.style.background="rgba(62,207,142,.07)",a.style.borderRadius="10px",a.style.border="1px solid rgba(62,207,142,.20)");else throw new Error("Server error")}catch{o&&(o.textContent="Something went wrong. Please try again or email officialatlanticbear@gmail.com.",o.style.color="var(--red)",o.style.fontSize="0.85rem",o.style.marginTop="8px"),n&&(n.disabled=!1,n.textContent="Try again")}})}function Ie(){const t=document.querySelector(".calendly-inline-widget");if(!t)return;const e=()=>{window.Calendly&&(t.innerHTML="",window.Calendly.initInlineWidget({url:"https://calendly.com/officialatlanticbear/demo-call-clone?hide_gdpr_banner=1&primary_color=3366ff",parentElement:t}))},s=()=>{if(window.Calendly){e();return}let a=document.getElementById("calendly-sdk");a||(a=document.createElement("script"),a.id="calendly-sdk",a.src="https://assets.calendly.com/assets/external/widget.js",a.async=!0,document.head.appendChild(a)),a.onload=()=>{e()}};if(window.Calendly){e();return}const n=new IntersectionObserver(a=>{a.forEach(o=>{o.isIntersecting&&(s(),n.disconnect())})},{rootMargin:"200px"});n.observe(t)}function Te(t=!1){const e=document.getElementById("booking-video"),s=document.getElementById("bv-overlay"),n=document.getElementById("bv-play-btn"),a=document.getElementById("bv-controls"),o=document.getElementById("bv-playpause"),c=document.getElementById("bv-progress-fill"),l=document.getElementById("bv-progress-thumb"),m=document.getElementById("bv-progress-wrap"),u=document.getElementById("bv-time"),C=document.getElementById("bv-mute"),v=document.getElementById("bv-volume"),g=document.getElementById("bv-fullscreen"),f=document.getElementById("custom-video-wrap");if(!e||!s||!n||!a||!o)return;const P=e.getAttribute("data-src"),E=()=>{P&&!e.getAttribute("src")&&(e.setAttribute("src",P),e.load())};setTimeout(()=>{E()},1500);const B=i=>{const d=Math.floor(i/60),p=Math.floor(i%60);return`${d}:${p.toString().padStart(2,"0")}`},x=90,S=60,R=(i,d)=>!t||d<=x?i/d*100:i<=x?i/x*S:S+(i-x)/(d-x)*(100-S),D=(i,d)=>!t||d<=x?i/100*d:i<=S?i/S*x:x+(i-S)/(100-S)*(d-x),M=()=>{if(!e.duration)return;const i=R(e.currentTime,e.duration);c&&(c.style.width=i+"%"),l&&(l.style.left=i+"%"),u&&(u.textContent=`${B(e.currentTime)} / ${B(e.duration)}`)},T=i=>{const d=o==null?void 0:o.querySelector(".icon-play"),p=o==null?void 0:o.querySelector(".icon-pause");d&&(d.style.display=i?"none":"block"),p&&(p.style.display=i?"block":"none"),s&&(s.style.display=i?"none":"flex"),f&&(i?f.classList.add("playing"):f.classList.remove("playing"))};s.addEventListener("click",()=>{E(),e.play()}),e.addEventListener("click",()=>{E(),e.paused?e.play():e.pause()}),e.addEventListener("play",()=>T(!0)),e.addEventListener("pause",()=>T(!1)),e.addEventListener("ended",()=>T(!1)),e.addEventListener("timeupdate",M),e.addEventListener("loadedmetadata",M);let $=!1;const b={m25:!1,m50:!1,m75:!1,m100:!1},r={};if(e.addEventListener("timeupdate",()=>{const i=e.duration;if(!i)return;const d=e.currentTime,p=d/i*100;!$&&d>.5&&($=!0,A("videoplay"),typeof window.fbq=="function"&&window.fbq("trackCustom","VideoPlay",{video_name:"funnel_explainer"})),p>=25&&!b.m25&&(b.m25=!0,A("videowatch_25pct"),typeof window.fbq=="function"&&window.fbq("trackCustom","VideoWatch_25pct",{video_name:"funnel_explainer"})),p>=50&&!b.m50&&(b.m50=!0,A("videowatch_50pct"),typeof window.fbq=="function"&&window.fbq("trackCustom","VideoWatch_50pct",{video_name:"funnel_explainer"})),p>=75&&!b.m75&&(b.m75=!0,A("videowatch_75pct"),typeof window.fbq=="function"&&window.fbq("trackCustom","VideoWatch_75pct",{video_name:"funnel_explainer"})),p>=98&&!b.m100&&(b.m100=!0,A("videowatch_complete"),typeof window.fbq=="function"&&window.fbq("trackCustom","VideoWatch_Complete",{video_name:"funnel_explainer"}));const _=[10,30],y=Math.floor(d);_.forEach(w=>{y>=w&&!r[w]&&(r[w]=!0,A(`videowatch_${w}s`),typeof window.fbq=="function"&&window.fbq("trackCustom",`VideoWatch_${w}s`,{video_name:"funnel_explainer"}))})}),o.addEventListener("click",()=>{E(),e.paused?e.play():e.pause()}),m){const i=p=>{const _=m.getBoundingClientRect(),y=p instanceof MouseEvent?p.clientX:p.touches[0].clientX,w=Math.max(0,Math.min(100,(y-_.left)/_.width*100));e.currentTime=D(w,e.duration),M()};let d=!1;m.addEventListener("mousedown",p=>{d=!0,i(p)}),window.addEventListener("mousemove",p=>{d&&i(p)}),window.addEventListener("mouseup",()=>{d=!1}),m.addEventListener("touchstart",p=>i(p),{passive:!0}),m.addEventListener("touchmove",p=>i(p),{passive:!0})}if(v&&v.addEventListener("input",()=>{e.volume=parseFloat(v.value),e.muted=e.volume===0}),C&&C.addEventListener("click",()=>{e.muted=!e.muted,v&&(v.value=e.muted?"0":String(e.volume||1))}),g&&f&&g.addEventListener("click",()=>{if(/iPad|iPhone|iPod/.test(navigator.userAgent)&&!window.MSStream&&e.webkitEnterFullscreen){e.webkitEnterFullscreen();return}!!(document.fullscreenElement||document.webkitFullscreenElement)?document.exitFullscreen?document.exitFullscreen():document.webkitExitFullscreen&&document.webkitExitFullscreen():f.requestFullscreen?f.requestFullscreen():f.webkitRequestFullscreen?f.webkitRequestFullscreen():e.webkitEnterFullscreen&&e.webkitEnterFullscreen()}),f){let i;const d=()=>{a.style.opacity="1",clearTimeout(i),i=window.setTimeout(()=>{e.paused||(a.style.opacity="0")},2500)};f.addEventListener("mousemove",d),f.addEventListener("mouseenter",d),f.addEventListener("mouseleave",()=>{e.paused||(a.style.opacity="0")}),e.addEventListener("play",()=>{i=window.setTimeout(()=>{a.style.opacity="0"},2500)}),e.addEventListener("pause",()=>{a.style.opacity="1",clearTimeout(i)})}}function Le(){const t=document.getElementById("booking-modal"),e=document.getElementById("book-demo-btn-v2"),s=document.getElementById("booking-modal-close-btn"),n=document.getElementById("modal-step-1"),a=document.getElementById("modal-step-2"),o=document.getElementById("modal-step-3"),c=document.getElementById("modal-step-num"),l=document.getElementById("modal-step-title"),m=document.getElementById("modal-step-badge"),u=document.getElementById("modal-progress-bar"),C=document.getElementById("modal-step1-form"),v=document.getElementById("modal-input-name"),g=document.getElementById("modal-input-phone"),f=document.getElementById("modal-step1-error"),P=document.getElementById("modal-confirm-pricing-link");if(!t||!s)return;t.parentElement!==document.body&&document.body.appendChild(t);let E="",B="",x="";const S=()=>{if(!E||!B)return;const r=`${E}|${B}`;if(x===r)return;x=r;const i=document.getElementById("modal-calendly-container");if(i){i.innerHTML="";const _={url:`https://calendly.com/officialatlanticbear/demo-call-clone?hide_gdpr_banner=1&primary_color=3366ff&name=${encodeURIComponent(E)}&a1=${encodeURIComponent(B)}`,parentElement:i,prefill:{name:E,customAnswers:{a1:B}}};if(window.Calendly)window.Calendly.initInlineWidget(_);else{let y=document.getElementById("calendly-sdk");y||(y=document.createElement("script"),y.id="calendly-sdk",y.src="https://assets.calendly.com/assets/external/widget.js",y.async=!0,document.head.appendChild(y)),y.onload=()=>{window.Calendly&&window.Calendly.initInlineWidget(_)}}}},R=()=>{const r=(v==null?void 0:v.value.trim())||"",i=(g==null?void 0:g.value.trim())||"";r.length>=3&&i.length>=5&&(E=r,B=i,S())};v==null||v.addEventListener("input",R),g==null||g.addEventListener("input",R);const D=r=>{localStorage.setItem("feather_booking_step",String(r)),r===1?(n&&(n.style.display="block"),a&&(a.style.display="none"),o&&(o.style.display="none"),c&&(c.textContent="1"),l&&(l.textContent="Tell us about yourself"),m&&(m.style.display="inline"),u&&(u.style.width="50%")):r===2?(n&&(n.style.display="none"),a&&(a.style.display="block"),o&&(o.style.display="none"),c&&(c.textContent="2"),l&&(l.textContent="Schedule your demo call"),m&&(m.style.display="inline"),u&&(u.style.width="100%"),E=(v==null?void 0:v.value.trim())||"",B=(g==null?void 0:g.value.trim())||"",S()):r===3&&(n&&(n.style.display="none"),a&&(a.style.display="none"),o&&(o.style.display="block"),l&&(l.textContent="Call Confirmed!"),m&&(m.style.display="none"),u&&(u.style.width="100%"))},M=()=>{t.classList.add("active"),document.body.style.overflow="hidden",f&&(f.style.display="none"),v&&localStorage.getItem("feather_booking_name")&&(v.value=localStorage.getItem("feather_booking_name")||""),g&&localStorage.getItem("feather_booking_phone")&&(g.value=localStorage.getItem("feather_booking_phone")||"");const r=parseInt(localStorage.getItem("feather_booking_step")||"1");D(r)},T=()=>{t.classList.remove("active"),document.body.style.overflow=""},$=r=>{r&&r.preventDefault();const i=(v==null?void 0:v.value.trim())||"",d=(g==null?void 0:g.value.trim())||"";if(!i||!d){f&&(f.style.display="block");return}f&&(f.style.display="none"),E=i,B=d,localStorage.setItem("feather_booking_name",i),localStorage.setItem("feather_booking_phone",d),localStorage.getItem("feather_booking_sheet_submitted")!=="true"&&fetch("https://script.google.com/macros/s/AKfycbyE6OQMsiNActyf_24Emjw3AepiNzWZwGc3VZWi2RCWxM1Jg04yWZSIKfxJ8ff5Cu2-/exec",{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:i,phone:d,source:"booking_funnel"})}).then(()=>{localStorage.setItem("feather_booking_sheet_submitted","true")}).catch(p=>console.error("Google Sheet submission failed:",p)),D(2)};C&&C.addEventListener("submit",$),e&&e.addEventListener("click",M),s.addEventListener("click",T),t.addEventListener("click",r=>{r.target===t&&T()});const b=r=>{r.key==="Escape"&&t.classList.contains("active")&&T()};window.addEventListener("keydown",b),P&&P.addEventListener("click",r=>{r.preventDefault(),T(),V("pricing",!0)}),window.hasCalendlyListener||(window.hasCalendlyListener=!0,window.addEventListener("message",r=>{let i=!1;if(r&&r.data&&(typeof r.data=="string"&&r.data.includes("calendly.event_scheduled")||typeof r.data=="object"&&(r.data.event==="calendly.event_scheduled"||r.data.event&&r.data.event.indexOf("event_scheduled")!==-1))&&(i=!0),i){A("bookedcall");const d=document.getElementById("booking-modal");d&&d.classList.contains("active")&&D(3)}})),window.openBookingModal=M}const Me=async t=>{try{const e=await fetch(`https://abacus.jasoncameron.dev/get/${J}/${t}?t=${Date.now()}`);return e.ok&&(await e.json()).value||0}catch{return 0}},Pe=async(t,e)=>{const s=document.getElementById("admin-loading"),n=document.getElementById("admin-dashboard-content");s&&(s.textContent="Loading analytics from Abacus API...",s.style.display="block"),n&&(n.style.display="none");const a=t?`${e}_`:"",o=["pageload","videoplay","videowatch_10s","videowatch_30s","videowatch_25pct","videowatch_50pct","videowatch_75pct","videowatch_complete","bookedcall","time_5s","time_15s","time_30s","time_60s","scroll_moved","scroll_calendar","scroll_testimonials"];try{const c=await Promise.all(o.map(L=>Me(`${a}${L}`))),l=o.reduce((L,q,W)=>(L[q]=c[W],L),{}),m=l.pageload||0,u=l.videoplay||0,C=l.videowatch_10s||0,v=l.videowatch_30s||0,g=l.videowatch_25pct||0,f=l.videowatch_50pct||0,P=l.videowatch_75pct||0,E=l.videowatch_complete||0,B=l.bookedcall||0,x=l.time_5s||0,S=l.time_15s||0,R=l.time_30s||0,D=l.time_60s||0,M=l.scroll_moved||0,T=l.scroll_calendar||0,$=l.scroll_testimonials||0,b=B,r=Math.max(E,b),i=Math.max(P,r),d=Math.max(f,i),p=Math.max(g,d),_=Math.max(v,p),y=Math.max(C,_),w=Math.max(u,y);let I=Math.max(m,w);const Y=D,N=Math.max(R,Y),j=Math.max(S,N),H=Math.max(x,j);I=Math.max(I,H);const G=$,z=Math.max(T,G),K=Math.max(M,z);I=Math.max(I,K),document.getElementById("stat-pageload").textContent=String(I),document.getElementById("stat-videoplay").textContent=String(w),document.getElementById("stat-videowatch_complete").textContent=String(r),document.getElementById("stat-bookedcall").textContent=String(b);const de=I?Math.round(w/I*100):0,ce=w?Math.round(r/w*100):0,pe=I?(b/I*100).toFixed(1):"0.0";document.getElementById("rate-play").textContent=`${de}% Play Rate`,document.getElementById("rate-complete").textContent=`${ce}% Completion Rate`,document.getElementById("rate-booking").textContent=`${pe}% Booking Rate`,document.getElementById("funnel-val-pageload").textContent=String(I),document.getElementById("funnel-val-videoplay").textContent=String(w),document.getElementById("funnel-val-videowatch_10s").textContent=String(y),document.getElementById("funnel-val-videowatch_30s").textContent=String(_),document.getElementById("funnel-val-videowatch_25pct").textContent=String(p),document.getElementById("funnel-val-videowatch_50pct").textContent=String(d),document.getElementById("funnel-val-videowatch_75pct").textContent=String(i),document.getElementById("funnel-val-videowatch_complete").textContent=String(r),document.getElementById("funnel-val-bookedcall").textContent=String(b);const O=(L,q)=>{const W=document.getElementById(`funnel-val-${L}`);W&&(W.textContent=String(q))};O("time_5s",H),O("time_15s",j),O("time_30s",N),O("time_60s",Y),O("scroll_moved",K),O("scroll_calendar",z),O("scroll_testimonials",G);const k=(L,q,W=I)=>{const ee=W?Math.round(q/W*100):0,te=document.getElementById(`funnel-bar-${L}`),ae=document.getElementById(`funnel-pct-${L}`);te&&(te.style.width=`${ee}%`),ae&&(ae.textContent=`${ee}%`)};k("videoplay",w),k("videowatch_10s",y),k("videowatch_30s",_),k("videowatch_25pct",p),k("videowatch_50pct",d),k("videowatch_75pct",i),k("videowatch_complete",r),k("bookedcall",b),k("time_5s",H),k("time_15s",j),k("time_30s",N),k("time_60s",Y),k("scroll_moved",K),k("scroll_calendar",z),k("scroll_testimonials",G),s&&(s.style.display="none"),n&&(n.style.display="block")}catch{s&&(s.textContent="Error loading stats. Please try again.")}};function De(){if(!(sessionStorage.getItem("admin_authenticated")==="true")){const l=document.getElementById("admin-login-form");l&&l.addEventListener("submit",async m=>{m.preventDefault();const u=document.getElementById("admin-password"),C=document.getElementById("login-error");if(!u||!C)return;const v=u.value;await me(v)==="24a1cd5945cfe472b06953093188f53551fce003d9c6abb5b1b29903156377b9"?(sessionStorage.setItem("admin_authenticated","true"),V("admin",!1)):(C.textContent="Incorrect password.",C.style.display="block")});return}const e=document.getElementById("btn-toggle-lifetime"),s=document.getElementById("btn-toggle-daily"),n=document.getElementById("admin-date-select");let a=!0,o=Q();const c=()=>{Pe(a,o)};e&&s&&n&&(e.addEventListener("click",()=>{a=!1,e.classList.add("active"),s.classList.remove("active"),n.style.display="none",c()}),s.addEventListener("click",()=>{a=!0,s.classList.add("active"),e.classList.remove("active"),n.style.display="block",c()}),n.addEventListener("change",()=>{o=n.value,c()})),c()}function V(t,e=!0){const s=document.getElementById("booking-modal");s&&s.remove(),document.body.style.overflow="",oe(),le();const n=document.getElementById("main-nav"),a=document.querySelector(".site-footer");t==="booking"?(n&&(n.style.display="none"),a&&(a.style.display="none")):(n&&(n.style.display=""),a&&(a.style.display=""));const o=Z("#main-content");o.style.opacity="0",o.style.transform="translateY(8px)",setTimeout(()=>{if(window.scrollTo({top:0,behavior:"instant"}),o.innerHTML=re[t](),Se(t),o.style.transition="opacity 0.3s ease, transform 0.3s ease",requestAnimationFrame(()=>{o.style.opacity="1",o.style.transform="translateY(0)"}),Ce(),t==="contact"&&_e(),t==="booking"||t==="booking-new"){A("pageload",2e3),ue(),ve(),Ie(),Te(t==="booking");const c=document.getElementById("skip-to-booking-btn");c&&c.addEventListener("click",l=>{l.preventDefault();const m=document.getElementById("booking-calendar");m&&m.scrollIntoView({behavior:"smooth",block:"start"})}),(t==="booking-new"||t==="booking")&&Le(),t==="booking"&&document.querySelectorAll(".funnel-cta-btn").forEach(l=>{l.addEventListener("click",()=>{window.openBookingModal&&window.openBookingModal()})})}if(t==="admin"&&De(),Be(t),e){const c=t==="home"?"/":`/${t}`;window.location.pathname!==c&&history.pushState(null,"",c)}},150)}function Oe(t){t.addEventListener("click",e=>{const s=e.target.closest("[data-link]");if(!s||e.metaKey||e.ctrlKey||e.shiftKey||e.button!==0)return;e.preventDefault();const n=s.getAttribute("data-link");n&&re[n]&&V(n)})}function We(){const t=Z("#main-nav");if(!t)return;const e=()=>{window.scrollY>20?t.classList.add("scrolled"):t.classList.remove("scrolled")};window.addEventListener("scroll",e,{passive:!0})}window.formspree=window.formspree||function(){(window.formspree.q=window.formspree.q||[]).push(arguments)};document.addEventListener("DOMContentLoaded",()=>{const t=document.getElementById("app");t.innerHTML=`
-    ${fe()}
+  `}const z={home:ee,pricing:te,work:ae,contact:oe,testimonials:se,booking:ie,"booking-new":ne},q={home:{title:"Atlantic Bear | Custom Website Design Agency in the UAE",desc:"Atlantic Bear is a leading website agency in the UAE. We build custom, premium websites for businesses. Get a free demo of your website before you pay anything."},pricing:{title:"More Clients Starts Here | Atlantic Bear Pricing",desc:"Transparent pricing for fully-managed brand positioning and high-conversion client acquisition platforms in the UAE. See your online presence live in 5 days, see it finished before you pay anything."},work:{title:"Our Work | Atlantic Bear Portfolio",desc:"Explore custom websites designed and developed for UAE businesses. Professional layouts, mobile optimization, and fast load times."},contact:{title:"Contact Atlantic Bear | Start Your UAE Website Project",desc:"Get in touch with Atlantic Bear. Let's discuss your business website needs. Fast response and custom layouts in Dubai & UAE."},testimonials:{title:"Client Testimonials & Transformations | Atlantic Bear",desc:"See real website transformations by Atlantic Bear. Before and after case studies showing how we help businesses across the UAE look professional online."},booking:{title:"Book a Call | Atlantic Bear Discovery Session",desc:"Watch our video, schedule your free 30-minute discovery call, and view our client success stories. Start your UAE website project today."},"booking-new":{title:"Book a Call (New Flow) | Atlantic Bear Discovery Session",desc:"Watch our video, tell us about yourself, and schedule your free 30-minute discovery call. Start your UAE website project today."}};function le(t){const e=q[t]||q.home;document.title=e.title;let s=document.querySelector('meta[name="description"]');s||(s=document.createElement("meta"),s.setAttribute("name","description"),document.head.appendChild(s)),s.setAttribute("content",e.desc);let o=document.querySelector('link[rel="canonical"]');o||(o=document.createElement("link"),o.setAttribute("rel","canonical"),document.head.appendChild(o));const a=`${window.location.origin}${t==="home"?"":"/"+t}`;o.setAttribute("href",a);const i={"og:title":e.title,"og:description":e.desc,"og:url":a,"og:type":"website","og:image":`${window.location.origin}/logo.png`};for(const[p,g]of Object.entries(i)){let d=document.querySelector(`meta[property="${p}"]`);d||(d=document.createElement("meta"),d.setAttribute("property",p),document.head.appendChild(d)),d.setAttribute("content",g)}const c={"twitter:card":"summary_large_image","twitter:title":e.title,"twitter:description":e.desc,"twitter:image":`${window.location.origin}/logo.png`};for(const[p,g]of Object.entries(c)){let d=document.querySelector(`meta[name="${p}"]`);d||(d=document.createElement("meta"),d.setAttribute("name",p),document.head.appendChild(d)),d.setAttribute("content",g)}}function V(t){const e=t.replace(/^\/|\/$/g,"");return e==="pricing"||e==="work"||e==="contact"||e==="testimonials"||e==="booking"||e==="booking-new"?e:"home"}function re(t){j("#main-nav [data-link]").forEach(s=>s.classList.remove("active"));const e=R(`#main-nav [data-link="${t}"].nav-link`);e&&e.classList.add("active")}function ce(){const t=j(".reveal"),e=new IntersectionObserver(s=>{s.forEach(o=>{o.isIntersecting&&(o.target.classList.add("revealed"),e.unobserve(o.target))})},{threshold:.07,rootMargin:"0px 0px -30px 0px"});t.forEach(s=>e.observe(s))}function de(){const t=document.getElementById("contact-form");if(!t)return;const e=document.createElement("script");e.src="https://unpkg.com/@formspree/ajax@1",e.defer=!0,document.head.appendChild(e),e.onload=()=>{window.formspree&&window.formspree("initForm",{formElement:"#contact-form",formId:"mykanvrr"})},t.addEventListener("submit",async s=>{s.preventDefault();const o=document.getElementById("form-submit-btn"),a=document.querySelector("[data-fs-success]"),i=document.querySelector('[data-fs-error]:not([data-fs-error="name"]):not([data-fs-error="email"]):not([data-fs-error="message"])');o&&(o.disabled=!0,o.textContent="Sending...");try{const c=new FormData(t);if((await fetch("https://formspree.io/f/mykanvrr",{method:"POST",body:c,headers:{Accept:"application/json"}})).ok)t.style.display="none",a&&(a.style.display="block",a.style.textAlign="center",a.style.padding="18px",a.style.background="rgba(62,207,142,.07)",a.style.borderRadius="10px",a.style.border="1px solid rgba(62,207,142,.20)");else throw new Error("Server error")}catch{i&&(i.textContent="Something went wrong. Please try again or email officialatlanticbear@gmail.com.",i.style.color="var(--red)",i.style.fontSize="0.85rem",i.style.marginTop="8px"),o&&(o.disabled=!1,o.textContent="Try again")}})}function ue(){const t=document.querySelector(".calendly-inline-widget");if(!t)return;const e=()=>{window.Calendly&&(t.innerHTML="",window.Calendly.initInlineWidget({url:"https://calendly.com/officialatlanticbear/demo-call-clone?hide_gdpr_banner=1&primary_color=3366ff",parentElement:t}))},s=()=>{if(window.Calendly){e();return}let a=document.getElementById("calendly-sdk");a||(a=document.createElement("script"),a.id="calendly-sdk",a.src="https://assets.calendly.com/assets/external/widget.js",a.async=!0,document.head.appendChild(a)),a.onload=()=>{e()}};if(window.Calendly){e();return}const o=new IntersectionObserver(a=>{a.forEach(i=>{i.isIntersecting&&(s(),o.disconnect())})},{rootMargin:"200px"});o.observe(t)}function pe(t=!1){const e=document.getElementById("booking-video"),s=document.getElementById("bv-overlay"),o=document.getElementById("bv-play-btn"),a=document.getElementById("bv-controls"),i=document.getElementById("bv-playpause"),c=document.getElementById("bv-progress-fill"),p=document.getElementById("bv-progress-thumb"),g=document.getElementById("bv-progress-wrap"),d=document.getElementById("bv-time"),L=document.getElementById("bv-mute"),v=document.getElementById("bv-volume"),h=document.getElementById("bv-fullscreen"),f=document.getElementById("custom-video-wrap");if(!e||!s||!o||!a||!i)return;let x=null,k=null;const A=()=>{try{const n=window.AudioContext||window.webkitAudioContext;if(!n)return;if(!x){x=new n;const l=x.createMediaElementSource(e);k=x.createGain(),k.gain.value=2,l.connect(k),k.connect(x.destination)}x.state==="suspended"&&x.resume()}catch(n){console.warn("AudioContext boost failed:",n)}},P=e.getAttribute("data-src"),S=()=>{P&&!e.getAttribute("src")&&(e.setAttribute("src",P),e.load())};setTimeout(()=>{S()},1500);const D=n=>{const l=Math.floor(n/60),u=Math.floor(n%60);return`${l}:${u.toString().padStart(2,"0")}`},w=90,B=60,T=(n,l)=>!t||l<=w?n/l*100:n<=w?n/w*B:B+(n-w)/(l-w)*(100-B),Y=(n,l)=>!t||l<=w?n/100*l:n<=B?n/B*w:w+(n-B)/(100-B)*(l-w),M=()=>{if(!e.duration)return;const n=T(e.currentTime,e.duration);c&&(c.style.width=n+"%"),p&&(p.style.left=n+"%"),d&&(d.textContent=`${D(e.currentTime)} / ${D(e.duration)}`)},r=n=>{const l=i==null?void 0:i.querySelector(".icon-play"),u=i==null?void 0:i.querySelector(".icon-pause");l&&(l.style.display=n?"none":"block"),u&&(u.style.display=n?"block":"none"),s&&(s.style.display=n?"none":"flex"),f&&(n?f.classList.add("playing"):f.classList.remove("playing"))};s.addEventListener("click",()=>{S(),A(),e.play()}),e.addEventListener("click",()=>{S(),A(),e.paused?e.play():e.pause()}),e.addEventListener("play",()=>r(!0)),e.addEventListener("pause",()=>r(!1)),e.addEventListener("ended",()=>r(!1)),e.addEventListener("timeupdate",M),e.addEventListener("loadedmetadata",M);let b=!1;const y={m25:!1,m50:!1,m75:!1,m100:!1},O={};if(e.addEventListener("timeupdate",()=>{const n=e.duration;if(!n)return;const l=e.currentTime,u=l/n*100;!b&&l>.5&&(b=!0,E("videoplay")),u>=25&&!y.m25&&(y.m25=!0,E("videowatch_25pct")),u>=50&&!y.m50&&(y.m50=!0,E("videowatch_50pct")),u>=75&&!y.m75&&(y.m75=!0,E("videowatch_75pct")),u>=98&&!y.m100&&(y.m100=!0,E("videowatch_complete"));const F=[10,30],U=Math.floor(l);F.forEach(I=>{U>=I&&!O[I]&&(O[I]=!0,E(`videowatch_${I}s`))})}),i.addEventListener("click",()=>{S(),A(),e.paused?e.play():e.pause()}),g){const n=u=>{const F=g.getBoundingClientRect(),U=u instanceof MouseEvent?u.clientX:u.touches[0].clientX,I=Math.max(0,Math.min(100,(U-F.left)/F.width*100));e.currentTime=Y(I,e.duration),M()};let l=!1;g.addEventListener("mousedown",u=>{l=!0,n(u)}),window.addEventListener("mousemove",u=>{l&&n(u)}),window.addEventListener("mouseup",()=>{l=!1}),g.addEventListener("touchstart",u=>n(u),{passive:!0}),g.addEventListener("touchmove",u=>n(u),{passive:!0})}if(v&&v.addEventListener("input",()=>{e.volume=parseFloat(v.value),e.muted=e.volume===0}),L&&L.addEventListener("click",()=>{e.muted=!e.muted,v&&(v.value=e.muted?"0":String(e.volume||1))}),h&&f&&h.addEventListener("click",()=>{if(/iPad|iPhone|iPod/.test(navigator.userAgent)&&!window.MSStream&&e.webkitEnterFullscreen){e.webkitEnterFullscreen();return}!!(document.fullscreenElement||document.webkitFullscreenElement)?document.exitFullscreen?document.exitFullscreen():document.webkitExitFullscreen&&document.webkitExitFullscreen():f.requestFullscreen?f.requestFullscreen():f.webkitRequestFullscreen?f.webkitRequestFullscreen():e.webkitEnterFullscreen&&e.webkitEnterFullscreen()}),f){let n;const l=()=>{a.style.opacity="1",clearTimeout(n),n=window.setTimeout(()=>{e.paused||(a.style.opacity="0")},2500)};f.addEventListener("mousemove",l),f.addEventListener("mouseenter",l),f.addEventListener("mouseleave",()=>{e.paused||(a.style.opacity="0")}),e.addEventListener("play",()=>{n=window.setTimeout(()=>{a.style.opacity="0"},2500)}),e.addEventListener("pause",()=>{a.style.opacity="1",clearTimeout(n)})}}function ve(){const t=document.getElementById("booking-modal"),e=document.getElementById("book-demo-btn-v2"),s=document.getElementById("booking-modal-close-btn"),o=document.getElementById("modal-step-1"),a=document.getElementById("modal-step-2"),i=document.getElementById("modal-step-3"),c=document.getElementById("modal-step-num"),p=document.getElementById("modal-step-title"),g=document.getElementById("modal-step-badge"),d=document.getElementById("modal-progress-bar"),L=document.getElementById("modal-step1-form"),v=document.getElementById("modal-input-name"),h=document.getElementById("modal-input-phone"),f=document.getElementById("modal-step1-error"),x=document.getElementById("modal-confirm-pricing-link");if(!t||!s)return;t.parentElement!==document.body&&document.body.appendChild(t);let k="",A="",P="";const S=()=>{if(!k||!A)return;const r=`${k}|${A}`;if(P===r)return;P=r;const b=document.getElementById("modal-calendly-container");if(b){b.innerHTML="";const n={url:`https://calendly.com/officialatlanticbear/demo-call-clone?hide_gdpr_banner=1&primary_color=3366ff&name=${encodeURIComponent(k)}&a1=${encodeURIComponent(A)}`,parentElement:b,prefill:{name:k,customAnswers:{a1:A}}};if(window.Calendly)window.Calendly.initInlineWidget(n);else{let l=document.getElementById("calendly-sdk");l||(l=document.createElement("script"),l.id="calendly-sdk",l.src="https://assets.calendly.com/assets/external/widget.js",l.async=!0,document.head.appendChild(l)),l.onload=()=>{window.Calendly&&window.Calendly.initInlineWidget(n)}}}},D=()=>{const r=(v==null?void 0:v.value.trim())||"",b=(h==null?void 0:h.value.trim())||"";r.length>=3&&b.length>=5&&(k=r,A=b,S())};v==null||v.addEventListener("input",D),h==null||h.addEventListener("input",D);const w=r=>{localStorage.setItem("feather_booking_step",String(r)),r===1?(o&&(o.style.display="block"),a&&(a.style.display="none"),i&&(i.style.display="none"),c&&(c.textContent="1"),p&&(p.textContent="Tell us about yourself"),g&&(g.style.display="inline"),d&&(d.style.width="50%")):r===2?(o&&(o.style.display="none"),a&&(a.style.display="block"),i&&(i.style.display="none"),c&&(c.textContent="2"),p&&(p.textContent="Schedule your demo call"),g&&(g.style.display="inline"),d&&(d.style.width="100%"),k=(v==null?void 0:v.value.trim())||"",A=(h==null?void 0:h.value.trim())||"",S()):r===3&&(o&&(o.style.display="none"),a&&(a.style.display="none"),i&&(i.style.display="block"),p&&(p.textContent="Call Confirmed!"),g&&(g.style.display="none"),d&&(d.style.width="100%"))},B=()=>{t.classList.add("active"),document.body.style.overflow="hidden",f&&(f.style.display="none"),v&&localStorage.getItem("feather_booking_name")&&(v.value=localStorage.getItem("feather_booking_name")||""),h&&localStorage.getItem("feather_booking_phone")&&(h.value=localStorage.getItem("feather_booking_phone")||"");const r=parseInt(localStorage.getItem("feather_booking_step")||"1");w(r)},T=()=>{t.classList.remove("active"),document.body.style.overflow=""},Y=r=>{r&&r.preventDefault();const b=(v==null?void 0:v.value.trim())||"",y=(h==null?void 0:h.value.trim())||"";if(!b||!y){f&&(f.style.display="block");return}f&&(f.style.display="none"),k=b,A=y,localStorage.setItem("feather_booking_name",b),localStorage.setItem("feather_booking_phone",y),localStorage.getItem("feather_booking_sheet_submitted")!=="true"&&fetch("https://script.google.com/macros/s/AKfycbyE6OQMsiNActyf_24Emjw3AepiNzWZwGc3VZWi2RCWxM1Jg04yWZSIKfxJ8ff5Cu2-/exec",{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:b,phone:y,source:"booking_funnel"})}).then(()=>{localStorage.setItem("feather_booking_sheet_submitted","true")}).catch(O=>console.error("Google Sheet submission failed:",O)),w(2)};L&&L.addEventListener("submit",Y),e&&e.addEventListener("click",B),s.addEventListener("click",T),t.addEventListener("click",r=>{r.target===t&&T()});const M=r=>{r.key==="Escape"&&t.classList.contains("active")&&T()};window.addEventListener("keydown",M),x&&x.addEventListener("click",r=>{r.preventDefault(),T(),_("pricing",!0)}),window.goToBookingStep=w,window.openBookingModal=B}function _(t,e=!0){const s=document.getElementById("booking-modal");s&&s.remove(),document.body.style.overflow="",G(),H();const o=document.getElementById("main-nav"),a=document.querySelector(".site-footer");t==="booking"?(o&&(o.style.display="none"),a&&(a.style.display="none")):(o&&(o.style.display=""),a&&(a.style.display=""));const i=R("#main-content");i.style.opacity="0",i.style.transform="translateY(8px)",setTimeout(()=>{if(window.scrollTo({top:0,behavior:"instant"}),i.innerHTML=z[t](),re(t),i.style.transition="opacity 0.3s ease, transform 0.3s ease",requestAnimationFrame(()=>{i.style.opacity="1",i.style.transform="translateY(0)"}),ce(),t==="contact"&&de(),t==="booking"||t==="booking-new"){E("pageload",2e3),K(),J(),ue(),pe(t==="booking");const c=document.getElementById("skip-to-booking-btn");c&&c.addEventListener("click",p=>{p.preventDefault();const g=document.getElementById("booking-calendar");g&&g.scrollIntoView({behavior:"smooth",block:"start"})}),(t==="booking-new"||t==="booking")&&ve(),t==="booking"&&document.querySelectorAll(".funnel-cta-btn").forEach(p=>{p.addEventListener("click",()=>{window.openBookingModal&&window.openBookingModal()})})}if(le(t),typeof window.fbq=="function"&&window.fbq("track","PageView"),e){const c=t==="home"?"/":`/${t}`;window.location.pathname!==c&&history.pushState(null,"",c)}},150)}function me(t){t.addEventListener("click",e=>{const s=e.target.closest("[data-link]");if(!s||e.metaKey||e.ctrlKey||e.shiftKey||e.button!==0)return;e.preventDefault();const o=s.getAttribute("data-link");o&&z[o]&&_(o)})}function ge(){const t=R("#main-nav");if(!t)return;const e=()=>{window.scrollY>20?t.classList.add("scrolled"):t.classList.remove("scrolled")};window.addEventListener("scroll",e,{passive:!0})}window.formspree=window.formspree||function(){(window.formspree.q=window.formspree.q||[]).push(arguments)};document.addEventListener("DOMContentLoaded",()=>{const t=document.getElementById("app");t.innerHTML=`
+    ${Z()}
     <main id="main-content" style="opacity:1; min-height:100vh;"></main>
-    ${ge()}
+    ${Q()}
     <!-- WhatsApp Floating Button -->
     <a href="https://wa.me/971502446531" target="_blank" rel="noopener" class="whatsapp-floating-btn" aria-label="Chat on WhatsApp">
       <span class="whatsapp-tooltip">Chat with us</span>
@@ -1337,4 +1083,4 @@
         <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.458L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.413 9.863-9.864.001-2.639-1.017-5.122-2.87-6.98C16.612 1.905 14.13 .882 11.5 0.882c-5.437 0-9.863 4.415-9.866 9.866-.001 1.776.477 3.51 1.38 5.061L1.937 21.84l6.196-1.626L8.13 20.21zm10.222-3.834c-.28-.14-1.65-.815-1.906-.907-.255-.092-.44-.138-.625.14-.185.276-.71.907-.87 1.092-.16.185-.32.208-.6.068-1.785-.892-2.92-1.747-3.927-3.48-.266-.46.267-.428.762-1.42.083-.17.042-.317-.02-.457-.063-.14-.626-1.507-.857-2.064-.225-.54-.472-.466-.647-.475-.168-.008-.36-.01-.552-.01-.192 0-.504.072-.768.36-.264.288-1.008.986-1.008 2.404s1.032 2.788 1.176 2.983c.144.195 2.03 3.1 4.916 4.347.686.297 1.22.474 1.638.607.69.219 1.317.188 1.812.114.55-.082 1.65-.674 1.884-1.324.233-.65.233-1.205.163-1.324-.07-.118-.256-.184-.536-.324z"/>
       </svg>
     </a>
-  `,Oe(t),We(),window.addEventListener("message",s=>{s.data&&s.data.event==="calendly.event_scheduled"&&(A("bookedcall"),typeof window.fbq=="function"&&window.fbq("track","Schedule"))});const e=ne(window.location.pathname);V(e,!1),window.addEventListener("popstate",()=>{const s=ne(window.location.pathname);V(s,!1)})});
+  `,me(t),ge(),window.addEventListener("message",s=>{let o=!1;if(s&&s.data&&(typeof s.data=="string"&&s.data.includes("calendly.event_scheduled")||typeof s.data=="object"&&(s.data.event==="calendly.event_scheduled"||s.data.event&&s.data.event.indexOf("event_scheduled")!==-1))&&(o=!0),o){E("bookedcall"),typeof window.fbq=="function"&&window.fbq("track","Schedule");const a=document.getElementById("booking-modal");a&&a.classList.contains("active")&&typeof window.goToBookingStep=="function"&&window.goToBookingStep(3)}});const e=V(window.location.pathname);_(e,!1),window.addEventListener("popstate",()=>{const s=V(window.location.pathname);_(s,!1)})});
