@@ -873,7 +873,7 @@
       <div class="funnel-testimonials">
         <h2 class="funnel-testimonials-heading">What our clients are saying:</h2>
         <div class="funnel-testimonial-video">
-          <video controls preload="metadata">
+          <video controls preload="none">
             <source src="/testimonials/sonder%20training%20group%20testimonial.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
