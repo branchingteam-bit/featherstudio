@@ -1864,9 +1864,6 @@ function initBookingModal() {
   inputPhone?.addEventListener('input', handleInputCheck);
 
   const goToStep = (step: number) => {
-    // Save active step progress locally
-    localStorage.setItem('feather_booking_step', String(step));
-
     if (step === 1) {
       if (step1) step1.style.display = 'block';
       if (step2) step2.style.display = 'none';
@@ -1911,9 +1908,8 @@ function initBookingModal() {
       inputPhone.value = localStorage.getItem('feather_booking_phone') || '';
     }
 
-    // Retrieve saved step, default to step 1
-    const savedStep = parseInt(localStorage.getItem('feather_booking_step') || '1');
-    goToStep(savedStep);
+    // Always start at Step 1
+    goToStep(1);
   };
 
   const closeModal = () => {
