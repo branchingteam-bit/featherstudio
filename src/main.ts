@@ -859,7 +859,7 @@ function TestimonialsPage(): string {
         <div class="tm-shot-label tm-label-after" style="position: static; display: inline-block; margin-bottom: 16px;">Video Review</div>
         <div class="booking-testimonials-wrap" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
           <div class="custom-testimonial-video-wrap" style="max-width: 320px; width: 100%; aspect-ratio: 9/16; border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-md); background: #000; border: 1px solid var(--border); position: relative;">
-            <video class="testimonial-video" loop muted playsinline style="width: 100%; height: 100%; display: block; border: none; object-fit: cover; opacity: 0; transition: opacity 0.5s ease;" data-src="/testimonials/sonder%20training%20group%20testimonial.mp4">
+            <video class="testimonial-video" preload="metadata" loop muted playsinline style="width: 100%; height: 100%; display: block; border: none; object-fit: cover;" src="/testimonials/sonder%20training%20group%20testimonial.mp4">
               Your browser does not support the video tag.
             </video>
             <div class="testimonial-video-overlay">
@@ -1011,7 +1011,7 @@ function BookingPage(): string {
             width="1920"
             height="1080"
             playsinline
-            data-src="/vsl/How to Get Found Online With a Website Demo.mp4"
+            src="/vsl/How to Get Found Online With a Website Demo.mp4"
           ></video>
           <!-- Play overlay -->
           <div class="bv-overlay" id="bv-overlay">
@@ -1065,7 +1065,7 @@ function BookingPage(): string {
         <h2 class="funnel-testimonials-heading">What our clients are saying:</h2>
         <div class="funnel-testimonial-video">
           <div class="custom-testimonial-video-wrap" style="width: 100%; aspect-ratio: 9/16; border-radius: var(--r-lg, 16px); overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.15); background: #000; position: relative;">
-            <video class="testimonial-video" loop muted playsinline style="width: 100%; height: 100%; display: block; border: none; object-fit: cover; opacity: 0; transition: opacity 0.5s ease;" data-src="/testimonials/sonder%20training%20group%20testimonial.mp4">
+            <video class="testimonial-video" preload="metadata" loop muted playsinline style="width: 100%; height: 100%; display: block; border: none; object-fit: cover;" src="/testimonials/sonder%20training%20group%20testimonial.mp4">
               Your browser does not support the video tag.
             </video>
             <div class="testimonial-video-overlay">
@@ -1257,7 +1257,7 @@ function BookingNewPage(): string {
 
           <div class="booking-testimonials-wrap" style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 24px;">
             <div class="custom-testimonial-video-wrap" style="max-width: 320px; width: 100%; aspect-ratio: 9/16; border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-md); background: #000; border: 1px solid var(--border); position: relative;">
-              <video class="testimonial-video" loop muted playsinline style="width: 100%; height: 100%; display: block; border: none; object-fit: cover; opacity: 0; transition: opacity 0.5s ease;" data-src="/testimonials/sonder%20training%20group%20testimonial.mp4">
+              <video class="testimonial-video" preload="metadata" loop muted playsinline style="width: 100%; height: 100%; display: block; border: none; object-fit: cover;" src="/testimonials/sonder%20training%20group%20testimonial.mp4">
                 Your browser does not support the video tag.
               </video>
               <div class="testimonial-video-overlay">
@@ -1506,19 +1506,23 @@ function attachLoaderToContainer(container: HTMLElement) {
   `;
   container.appendChild(spinner);
 
+  // Observe container to find when the iframe is added.
+  // Render iframe on top of the spinner (z-index 2) so it's instantly interactive as it loads.
   const observer = new MutationObserver(() => {
     const iframe = container.querySelector('iframe');
     if (iframe) {
-      iframe.style.opacity = '0';
-      iframe.style.transition = 'opacity 0.3s ease';
+      iframe.style.position = 'relative';
+      iframe.style.zIndex = '2';
+      
       iframe.onload = () => {
         spinner.remove();
-        iframe.style.opacity = '1';
       };
+      
+      // Safety fallback: remove spinner after 2.5s to ensure the screen is clean
       setTimeout(() => {
         spinner.remove();
-        iframe.style.opacity = '1';
-      }, 5000);
+      }, 2500);
+      
       observer.disconnect();
     }
   });
@@ -1528,22 +1532,17 @@ function attachLoaderToContainer(container: HTMLElement) {
 function initTestimonialVideos() {
   const wrappers = document.querySelectorAll('.custom-testimonial-video-wrap');
   
+  // Autoplay muted preview loop 4 seconds after page load (lowest priority)
   setTimeout(() => {
     wrappers.forEach(wrap => {
       const video = wrap.querySelector('video') as HTMLVideoElement | null;
-      if (video && video.dataset.src && !video.src) {
-        video.src = video.dataset.src;
-        video.load();
-        
-        video.addEventListener('canplay', () => {
-          wrap.classList.add('loaded');
-          video.play().catch(err => {
-            console.warn("Autoplay muted failed:", err);
-          });
-        }, { once: true });
+      if (video) {
+        video.play().catch(err => {
+          console.warn("Autoplay muted failed:", err);
+        });
       }
     });
-  }, 3000);
+  }, 4000);
 
   wrappers.forEach(wrap => {
     const overlay = wrap.querySelector('.testimonial-video-overlay') as HTMLElement | null;
@@ -1553,12 +1552,6 @@ function initTestimonialVideos() {
       overlay.addEventListener('click', (e) => {
         e.stopPropagation();
         
-        if (!video.src && video.dataset.src) {
-          video.src = video.dataset.src;
-          video.load();
-          wrap.classList.add('loaded');
-        }
-
         video.muted = false;
         video.currentTime = 0;
         video.controls = true;
@@ -1611,8 +1604,17 @@ function loadCalendlyWidget() {
     return;
   }
 
-  // Load after a 1.5s delay to ensure no layout/main thread blocking on initial load
-  setTimeout(loadScriptAndInit, 1500);
+  // Load using requestIdleCallback + 2s initial delay so Calendly loads in the background when the CPU/network is completely quiet
+  const scheduleLoad = () => {
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(() => {
+        setTimeout(loadScriptAndInit, 1000);
+      });
+    } else {
+      setTimeout(loadScriptAndInit, 3000);
+    }
+  };
+  setTimeout(scheduleLoad, 2000);
 }
 
 // ─── Booking Page Video Loader ────────────────────────────────────────────────
@@ -1663,10 +1665,8 @@ function initBookingPageVideo(rigged = false) {
     }
   };
 
-  // Dynamically load video source after page loads to prevent blocking initial load/render
-  setTimeout(() => {
-    ensureVideoSource();
-  }, 1500);
+  // Video src is loaded natively in HTML with preload="metadata" so the poster frame renders instantly.
+  // ensureVideoSource will run on overlay/video click as a fallback.
 
   const fmtTime = (s: number) => {
     const m = Math.floor(s / 60);
