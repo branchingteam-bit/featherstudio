@@ -1228,12 +1228,12 @@ function BookingNewPage(): string {
 
           <div class="calendly-widget-wrap">
             <!-- Calendly inline widget begin -->
-            <div class="calendly-inline-widget" data-url="https://calendly.com/officialatlanticbear/demo-call-clone?hide_gdpr_banner=1&primary_color=3366ff" style="min-width:320px;height:900px;width:100%;"></div>
+            <div class="calendly-inline-widget" data-url="https://calendly.com/officialatlanticbear/demo-call?hide_gdpr_banner=1&primary_color=3366ff" style="min-width:320px;height:900px;width:100%;"></div>
             <!-- Calendly inline widget end -->
           </div>
 
           <div class="fallback-calendly-link-wrap">
-            <a href="https://calendly.com/officialatlanticbear/demo-call-clone?hide_gdpr_banner=1&primary_color=3366ff" target="_blank" rel="noopener" class="fallback-calendly-link">
+            <a href="https://calendly.com/officialatlanticbear/demo-call?hide_gdpr_banner=1&primary_color=3366ff" target="_blank" rel="noopener" class="fallback-calendly-link">
               Open the calendar in a new tab if it doesn't appear above.
             </a>
           </div>
@@ -1473,7 +1473,7 @@ function loadCalendlyWidget() {
     if ((window as any).Calendly) {
       container.innerHTML = '';
       (window as any).Calendly.initInlineWidget({
-        url: 'https://calendly.com/officialatlanticbear/demo-call-clone?hide_gdpr_banner=1&primary_color=3366ff',
+        url: 'https://calendly.com/officialatlanticbear/demo-call?hide_gdpr_banner=1&primary_color=3366ff',
         parentElement: container,
       });
     }
@@ -1815,7 +1815,7 @@ function initBookingModal() {
     const container = document.getElementById('modal-calendly-container');
     if (container) {
       container.innerHTML = '';
-      const calendlyBaseUrl = 'https://calendly.com/officialatlanticbear/demo-call-clone?hide_gdpr_banner=1&primary_color=3366ff';
+      const calendlyBaseUrl = 'https://calendly.com/officialatlanticbear/demo-call?hide_gdpr_banner=1&primary_color=3366ff';
       const prefillUrl = `${calendlyBaseUrl}&name=${encodeURIComponent(userName)}&a1=${encodeURIComponent(userPhone)}`;
       const prefillOpts = {
         url: prefillUrl,
