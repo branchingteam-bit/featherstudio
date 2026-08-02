@@ -683,7 +683,7 @@
         <div class="tm-shot-label tm-label-after" style="position: static; display: inline-block; margin-bottom: 16px;">Video Review</div>
         <div class="booking-testimonials-wrap" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
           <div class="custom-testimonial-video-wrap" style="max-width: 320px; width: 100%; aspect-ratio: 9/16; border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-md); background: #000; border: 1px solid var(--border); position: relative;">
-            <video class="testimonial-video" preload="metadata" loop muted playsinline style="width: 100%; height: 100%; display: block; border: none; object-fit: cover;" src="/testimonials/sonder%20training%20group%20testimonial.mp4">
+            <video class="testimonial-video" preload="metadata" loop muted playsinline style="width: 100%; height: 100%; display: block; border: none; object-fit: cover;" src="/testimonials/sonder%20training%20group%20testimonial.mp4#t=0.001">
               Your browser does not support the video tag.
             </video>
             <div class="testimonial-video-overlay">
@@ -820,11 +820,11 @@
           <video
             id="booking-video"
             class="booking-video-el"
-            preload="metadata"
+            preload="auto"
             width="1920"
             height="1080"
             playsinline
-            src="/vsl/How to Get Found Online With a Website Demo.mp4"
+            src="/vsl/How to Get Found Online With a Website Demo.mp4#t=0.001"
           ></video>
           <!-- Play overlay -->
           <div class="bv-overlay" id="bv-overlay">
@@ -878,7 +878,7 @@
         <h2 class="funnel-testimonials-heading">What our clients are saying:</h2>
         <div class="funnel-testimonial-video">
           <div class="custom-testimonial-video-wrap" style="width: 100%; aspect-ratio: 9/16; border-radius: var(--r-lg, 16px); overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.15); background: #000; position: relative;">
-            <video class="testimonial-video" preload="metadata" loop muted playsinline style="width: 100%; height: 100%; display: block; border: none; object-fit: cover;" src="/testimonials/sonder%20training%20group%20testimonial.mp4">
+            <video class="testimonial-video" preload="metadata" loop muted playsinline style="width: 100%; height: 100%; display: block; border: none; object-fit: cover;" src="/testimonials/sonder%20training%20group%20testimonial.mp4#t=0.001">
               Your browser does not support the video tag.
             </video>
             <div class="testimonial-video-overlay">
@@ -987,11 +987,11 @@
             <video
               id="booking-video"
               class="booking-video-el"
-              preload="none"
+              preload="metadata"
               width="1920"
               height="1080"
               playsinline
-              data-src="/videos for funnel call/video for funnel v4/Atlantic Bear Free Website Demo Pricing Plans.mp4"
+              src="/videos for funnel call/video for funnel v4/Atlantic Bear Free Website Demo Pricing Plans.mp4#t=0.001"
             ></video>
             <!-- Overlay (shown when paused/before play) -->
             <div class="bv-overlay" id="bv-overlay">
@@ -1065,7 +1065,7 @@
 
           <div class="booking-testimonials-wrap" style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 24px;">
             <div class="custom-testimonial-video-wrap" style="max-width: 320px; width: 100%; aspect-ratio: 9/16; border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-md); background: #000; border: 1px solid var(--border); position: relative;">
-              <video class="testimonial-video" preload="metadata" loop muted playsinline style="width: 100%; height: 100%; display: block; border: none; object-fit: cover;" src="/testimonials/sonder%20training%20group%20testimonial.mp4">
+              <video class="testimonial-video" preload="metadata" loop muted playsinline style="width: 100%; height: 100%; display: block; border: none; object-fit: cover;" src="/testimonials/sonder%20training%20group%20testimonial.mp4#t=0.001">
                 Your browser does not support the video tag.
               </video>
               <div class="testimonial-video-overlay">
