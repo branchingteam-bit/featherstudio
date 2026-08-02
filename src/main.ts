@@ -1503,17 +1503,8 @@ function loadCalendlyWidget() {
     return;
   }
 
-  // Load only when scrolled close to viewport
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        loadScriptAndInit();
-        observer.disconnect();
-      }
-    });
-  }, { rootMargin: '200px' });
-
-  observer.observe(container);
+  // Load after a 1.5s delay to ensure no layout/main thread blocking on initial load
+  setTimeout(loadScriptAndInit, 1500);
 }
 
 // ─── Booking Page Video Loader ────────────────────────────────────────────────
@@ -1806,6 +1797,14 @@ function initBookingModal() {
   let userPhone = '';
   let lastPrefillStr = '';
 
+  // Restore name & phone inputs from localStorage immediately so we can preload
+  if (inputName && localStorage.getItem('feather_booking_name')) {
+    inputName.value = localStorage.getItem('feather_booking_name') || '';
+  }
+  if (inputPhone && localStorage.getItem('feather_booking_phone')) {
+    inputPhone.value = localStorage.getItem('feather_booking_phone') || '';
+  }
+
   const initCalendlyIframe = () => {
     if (!userName || !userPhone) return;
     const prefillStr = `${userName}|${userPhone}`;
@@ -1862,6 +1861,23 @@ function initBookingModal() {
 
   inputName?.addEventListener('input', handleInputCheck);
   inputPhone?.addEventListener('input', handleInputCheck);
+
+  // Preload/load Calendly script and iframe after 1.5s delay to prevent blocking initial load
+  setTimeout(() => {
+    handleInputCheck();
+
+    // If Calendly isn't loaded yet (because they didn't have saved credentials), load the script anyway
+    if (!(window as any).Calendly) {
+      let script = document.getElementById('calendly-sdk') as HTMLScriptElement | null;
+      if (!script) {
+        script = document.createElement('script');
+        script.id = 'calendly-sdk';
+        script.src = 'https://assets.calendly.com/assets/external/widget.js';
+        script.async = true;
+        document.head.appendChild(script);
+      }
+    }
+  }, 1500);
 
   const goToStep = (step: number) => {
     if (step === 1) {
