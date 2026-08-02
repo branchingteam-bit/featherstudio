@@ -1570,51 +1570,33 @@ function loadCalendlyWidget() {
   if (!container) return;
 
   const init = () => {
-    if ((window as any).Calendly) {
-      container.innerHTML = '';
-      attachLoaderToContainer(container);
-      (window as any).Calendly.initInlineWidget({
-        url: 'https://calendly.com/officialatlanticbear/demo-call?hide_gdpr_banner=1&primary_color=3366ff',
-        parentElement: container,
-      });
-    }
+    container.innerHTML = '';
+    attachLoaderToContainer(container);
+    (window as any).Calendly.initInlineWidget({
+      url: 'https://calendly.com/officialatlanticbear/demo-call?hide_gdpr_banner=1&primary_color=3366ff',
+      parentElement: container,
+    });
   };
 
-  const loadScriptAndInit = () => {
-    if ((window as any).Calendly) {
-      init();
-      return;
-    }
-    let script = document.getElementById('calendly-sdk') as HTMLScriptElement | null;
-    if (!script) {
-      script = document.createElement('script');
-      script.id = 'calendly-sdk';
-      script.src = 'https://assets.calendly.com/assets/external/widget.js';
-      script.async = true;
-      document.head.appendChild(script);
-    }
-    script.onload = () => {
-      init();
-    };
-  };
-
-  // If Calendly is already loaded, init immediately
+  // If SDK already loaded (it's in <head> as async), init right away
   if ((window as any).Calendly) {
     init();
     return;
   }
 
-  // Load using requestIdleCallback + 2s initial delay so Calendly loads in the background when the CPU/network is completely quiet
-  const scheduleLoad = () => {
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(() => {
-        setTimeout(loadScriptAndInit, 1000);
-      });
-    } else {
-      setTimeout(loadScriptAndInit, 3000);
-    }
-  };
-  setTimeout(scheduleLoad, 2000);
+  // The SDK is loading async - wait for it (poll, max 10s)
+  const script = document.getElementById('calendly-sdk') as HTMLScriptElement | null;
+  if (script) {
+    script.addEventListener('load', init, { once: true });
+  } else {
+    // Fallback: inject script if somehow not in DOM
+    const s = document.createElement('script');
+    s.id = 'calendly-sdk';
+    s.src = 'https://assets.calendly.com/assets/external/widget.js';
+    s.async = true;
+    s.addEventListener('load', init, { once: true });
+    document.head.appendChild(s);
+  }
 }
 
 // ─── Booking Page Video Loader ────────────────────────────────────────────────
@@ -1920,39 +1902,30 @@ function initBookingModal() {
     lastPrefillStr = prefillStr;
 
     const container = document.getElementById('modal-calendly-container');
-    if (container) {
-      container.innerHTML = '';
-      attachLoaderToContainer(container);
-      const calendlyBaseUrl = 'https://calendly.com/officialatlanticbear/demo-call?hide_gdpr_banner=1&primary_color=3366ff';
-      const prefillUrl = `${calendlyBaseUrl}&name=${encodeURIComponent(userName)}&a1=${encodeURIComponent(userPhone)}`;
-      const prefillOpts = {
-        url: prefillUrl,
-        parentElement: container,
-        prefill: {
-          name: userName,
-          customAnswers: {
-            a1: userPhone
-          }
-        }
-      };
+    if (!container) return;
 
-      if ((window as any).Calendly) {
-        (window as any).Calendly.initInlineWidget(prefillOpts);
-      } else {
-        // Fallback if SDK script isn't loaded yet
-        let script = document.getElementById('calendly-sdk') as HTMLScriptElement | null;
-        if (!script) {
-          script = document.createElement('script');
-          script.id = 'calendly-sdk';
-          script.src = 'https://assets.calendly.com/assets/external/widget.js';
-          script.async = true;
-          document.head.appendChild(script);
-        }
-        script.onload = () => {
-          if ((window as any).Calendly) {
-            (window as any).Calendly.initInlineWidget(prefillOpts);
-          }
-        };
+    container.innerHTML = '';
+    attachLoaderToContainer(container);
+    const calendlyBaseUrl = 'https://calendly.com/officialatlanticbear/demo-call?hide_gdpr_banner=1&primary_color=3366ff';
+    const prefillUrl = `${calendlyBaseUrl}&name=${encodeURIComponent(userName)}&a1=${encodeURIComponent(userPhone)}`;
+    const prefillOpts = {
+      url: prefillUrl,
+      parentElement: container,
+      prefill: {
+        name: userName,
+        customAnswers: { a1: userPhone }
+      }
+    };
+
+    const doInit = () => (window as any).Calendly.initInlineWidget(prefillOpts);
+
+    if ((window as any).Calendly) {
+      doInit();
+    } else {
+      // SDK is loading via <head> script — just wait for it
+      const existingScript = document.getElementById('calendly-sdk') as HTMLScriptElement | null;
+      if (existingScript) {
+        existingScript.addEventListener('load', doInit, { once: true });
       }
     }
   };
@@ -1971,22 +1944,8 @@ function initBookingModal() {
   inputName?.addEventListener('input', handleInputCheck);
   inputPhone?.addEventListener('input', handleInputCheck);
 
-  // Preload/load Calendly script and iframe after 1.5s delay to prevent blocking initial load
-  setTimeout(() => {
-    handleInputCheck();
-
-    // If Calendly isn't loaded yet (because they didn't have saved credentials), load the script anyway
-    if (!(window as any).Calendly) {
-      let script = document.getElementById('calendly-sdk') as HTMLScriptElement | null;
-      if (!script) {
-        script = document.createElement('script');
-        script.id = 'calendly-sdk';
-        script.src = 'https://assets.calendly.com/assets/external/widget.js';
-        script.async = true;
-        document.head.appendChild(script);
-      }
-    }
-  }, 1500);
+  // If user has saved name+phone, preload Calendly iframe right away
+  handleInputCheck();
 
   const goToStep = (step: number) => {
     if (step === 1) {

@@ -55,12 +55,14 @@
 
     <!-- Preconnect for origins used at initial paint -->
     <link rel="preconnect" href="https://abacus.jasoncameron.dev">
-    <!-- preconnect for Calendly to load faster -->
-    <link rel="preconnect" href="https://assets.calendly.com">
-    <link rel="preconnect" href="https://calendly.com">
+    <!-- dns-prefetch for deferred/lazy origins -->
+    <link rel="dns-prefetch" href="https://assets.calendly.com">
+    <link rel="dns-prefetch" href="https://calendly.com">
     <link rel="dns-prefetch" href="https://connect.facebook.net">
-    <link rel="preload" as="script" href="https://assets.calendly.com/assets/external/widget.js">
+    <!-- Calendly widget CSS loaded async/non-blocking -->
     <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" media="print" onload="this.media='all'">
+    <!-- Calendly SDK: load async immediately so it's ready when user reaches Step 2 -->
+    <script id="calendly-sdk" src="https://assets.calendly.com/assets/external/widget.js" async defer></script>
 
     <!-- Meta Pixel Code (deferred after paint to avoid blocking LCP) -->
     <script>
@@ -88,7 +90,7 @@
       }
     </script>
     <!-- End Meta Pixel Code -->
-    <script type="module" crossorigin src="/assets/index-CZFWntPX.js"></script>
+    <script type="module" crossorigin src="/assets/index-Cu8ijiQl.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-Dfp7SJQJ.css">
   </head>
   <body>
