@@ -2020,23 +2020,18 @@ function initBookingModal() {
     localStorage.setItem('feather_booking_name', nameVal);
     localStorage.setItem('feather_booking_phone', phoneVal);
 
-    // Send data silently to Google Sheets in background, only if not submitted yet in this session
-    if (localStorage.getItem('feather_booking_sheet_submitted') !== 'true') {
-      fetch('https://script.google.com/macros/s/AKfycbyE6OQMsiNActyf_24Emjw3AepiNzWZwGc3VZWi2RCWxM1Jg04yWZSIKfxJ8ff5Cu2-/exec', {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          name: nameVal,
-          phone: phoneVal,
-          source: 'booking_funnel'
-        })
-      }).then(() => {
-        localStorage.setItem('feather_booking_sheet_submitted', 'true');
-      }).catch(err => console.error('Google Sheet submission failed:', err));
-    }
+    // Send data silently to Google Sheets in background
+    fetch('https://script.google.com/macros/s/AKfycbyE6OQMsiNActyf_24Emjw3AepiNzWZwGc3VZWi2RCWxM1Jg04yWZSIKfxJ8ff5Cu2-/exec', {
+      method: 'POST',
+      mode: 'no-cors',
+      // Note: Do NOT set Content-Type: application/json — that triggers a CORS preflight
+      // which Google Apps Script doesn't respond to. With no-cors, the body is sent as-is.
+      body: JSON.stringify({
+        name: nameVal,
+        phone: phoneVal,
+        source: 'booking_funnel'
+      })
+    }).catch(err => console.error('Google Sheet submission failed:', err));
 
     goToStep(2);
   };
