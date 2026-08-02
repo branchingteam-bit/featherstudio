@@ -858,11 +858,15 @@ function TestimonialsPage(): string {
       <div class="tm-shot-block reveal" style="transition-delay:0.12s; max-width: 600px; margin: 0 auto;">
         <div class="tm-shot-label tm-label-after" style="position: static; display: inline-block; margin-bottom: 16px;">Video Review</div>
         <div class="booking-testimonials-wrap" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-          <div style="max-width: 320px; width: 100%; border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-md); background: #000; border: 1px solid var(--border);">
-            <video controls preload="none" style="width: 100%; display: block; border: none; aspect-ratio: 9/16; object-fit: cover;">
-              <source src="/testimonials/sonder%20training%20group%20testimonial.mp4" type="video/mp4">
+          <div class="custom-testimonial-video-wrap" style="max-width: 320px; width: 100%; aspect-ratio: 9/16; border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-md); background: #000; border: 1px solid var(--border); position: relative;">
+            <video class="testimonial-video" loop muted playsinline style="width: 100%; height: 100%; display: block; border: none; object-fit: cover; opacity: 0; transition: opacity 0.5s ease;" data-src="/testimonials/sonder%20training%20group%20testimonial.mp4">
               Your browser does not support the video tag.
             </video>
+            <div class="testimonial-video-overlay">
+              <div class="testimonial-play-btn">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="#000" style="margin-left: 3px;"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
           </div>
           <p class="video-testimonial-quote">
             "We approached Alexi at Atlantic Bear, who was absolutely fantastic at putting together our ideas and bringing them across on the website in a way that really engaged our target market."
@@ -1060,10 +1064,16 @@ function BookingPage(): string {
       <div class="funnel-testimonials">
         <h2 class="funnel-testimonials-heading">What our clients are saying:</h2>
         <div class="funnel-testimonial-video">
-          <video controls preload="none">
-            <source src="/testimonials/sonder%20training%20group%20testimonial.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
+          <div class="custom-testimonial-video-wrap" style="width: 100%; aspect-ratio: 9/16; border-radius: var(--r-lg, 16px); overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.15); background: #000; position: relative;">
+            <video class="testimonial-video" loop muted playsinline style="width: 100%; height: 100%; display: block; border: none; object-fit: cover; opacity: 0; transition: opacity 0.5s ease;" data-src="/testimonials/sonder%20training%20group%20testimonial.mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="testimonial-video-overlay">
+              <div class="testimonial-play-btn">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="#000" style="margin-left: 3px;"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+          </div>
         </div>
         <p class="funnel-testimonial-quote">"We approached Alexi at Atlantic Bear, who was absolutely fantastic at putting together our ideas and bringing them across on the website in a way that really engaged our target market."</p>
         <a href="https://sondertraininggroup.com/" target="_blank" rel="noopener" class="funnel-testimonial-link">Take a look at the website we built for them &rarr;</a>
@@ -1246,11 +1256,15 @@ function BookingNewPage(): string {
           </div>
 
           <div class="booking-testimonials-wrap" style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 24px;">
-            <div style="max-width: 320px; width: 100%; border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-md); background: #000; border: 1px solid var(--border);">
-              <video controls preload="none" style="width: 100%; display: block; border: none; aspect-ratio: 9/16; object-fit: cover;">
-                <source src="/testimonials/sonder%20training%20group%20testimonial.mp4" type="video/mp4">
+            <div class="custom-testimonial-video-wrap" style="max-width: 320px; width: 100%; aspect-ratio: 9/16; border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-md); background: #000; border: 1px solid var(--border); position: relative;">
+              <video class="testimonial-video" loop muted playsinline style="width: 100%; height: 100%; display: block; border: none; object-fit: cover; opacity: 0; transition: opacity 0.5s ease;" data-src="/testimonials/sonder%20training%20group%20testimonial.mp4">
                 Your browser does not support the video tag.
               </video>
+              <div class="testimonial-video-overlay">
+                <div class="testimonial-play-btn">
+                  <svg viewBox="0 0 24 24" width="28" height="28" fill="#000" style="margin-left: 3px;"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+              </div>
             </div>
             <p class="video-testimonial-quote">
               "We approached Alexi at Atlantic Bear, who was absolutely fantastic at putting together our ideas and bringing them across on the website in a way that really engaged our target market."
@@ -1465,6 +1479,99 @@ function initFormspree() {
 }
 
 // ─── Calendly Loader ─────────────────────────────────────────────────────────
+function attachLoaderToContainer(container: HTMLElement) {
+  const computedStyle = window.getComputedStyle(container);
+  if (computedStyle.position === 'static') {
+    container.style.position = 'relative';
+  }
+
+  const spinner = document.createElement('div');
+  spinner.className = 'calendly-spinner-wrap';
+  spinner.style.display = 'flex';
+  spinner.style.justifyContent = 'center';
+  spinner.style.alignItems = 'center';
+  spinner.style.position = 'absolute';
+  spinner.style.top = '50%';
+  spinner.style.left = '50%';
+  spinner.style.transform = 'translate(-50%, -50%)';
+  spinner.style.pointerEvents = 'none';
+  spinner.style.zIndex = '1';
+  spinner.innerHTML = `
+    <div style="width: 40px; height: 40px; border: 4px solid rgba(59,105,255,0.1); border-left-color: var(--accent, #3b69ff); border-radius: 50%; animation: calendly-spin 1s linear infinite;"></div>
+    <style>
+      @keyframes calendly-spin {
+        to { transform: rotate(360deg); }
+      }
+    </style>
+  `;
+  container.appendChild(spinner);
+
+  const observer = new MutationObserver(() => {
+    const iframe = container.querySelector('iframe');
+    if (iframe) {
+      iframe.style.opacity = '0';
+      iframe.style.transition = 'opacity 0.3s ease';
+      iframe.onload = () => {
+        spinner.remove();
+        iframe.style.opacity = '1';
+      };
+      setTimeout(() => {
+        spinner.remove();
+        iframe.style.opacity = '1';
+      }, 5000);
+      observer.disconnect();
+    }
+  });
+  observer.observe(container, { childList: true });
+}
+
+function initTestimonialVideos() {
+  const wrappers = document.querySelectorAll('.custom-testimonial-video-wrap');
+  
+  setTimeout(() => {
+    wrappers.forEach(wrap => {
+      const video = wrap.querySelector('video') as HTMLVideoElement | null;
+      if (video && video.dataset.src && !video.src) {
+        video.src = video.dataset.src;
+        video.load();
+        
+        video.addEventListener('canplay', () => {
+          wrap.classList.add('loaded');
+          video.play().catch(err => {
+            console.warn("Autoplay muted failed:", err);
+          });
+        }, { once: true });
+      }
+    });
+  }, 3000);
+
+  wrappers.forEach(wrap => {
+    const overlay = wrap.querySelector('.testimonial-video-overlay') as HTMLElement | null;
+    const video = wrap.querySelector('video') as HTMLVideoElement | null;
+    
+    if (overlay && video) {
+      overlay.addEventListener('click', (e) => {
+        e.stopPropagation();
+        
+        if (!video.src && video.dataset.src) {
+          video.src = video.dataset.src;
+          video.load();
+          wrap.classList.add('loaded');
+        }
+
+        video.muted = false;
+        video.currentTime = 0;
+        video.controls = true;
+        overlay.style.display = 'none';
+
+        video.play().catch(err => {
+          console.error("Play failed:", err);
+        });
+      });
+    }
+  });
+}
+
 function loadCalendlyWidget() {
   const container = document.querySelector('.calendly-inline-widget') as HTMLElement | null;
   if (!container) return;
@@ -1472,6 +1579,7 @@ function loadCalendlyWidget() {
   const init = () => {
     if ((window as any).Calendly) {
       container.innerHTML = '';
+      attachLoaderToContainer(container);
       (window as any).Calendly.initInlineWidget({
         url: 'https://calendly.com/officialatlanticbear/demo-call?hide_gdpr_banner=1&primary_color=3366ff',
         parentElement: container,
@@ -1814,6 +1922,7 @@ function initBookingModal() {
     const container = document.getElementById('modal-calendly-container');
     if (container) {
       container.innerHTML = '';
+      attachLoaderToContainer(container);
       const calendlyBaseUrl = 'https://calendly.com/officialatlanticbear/demo-call?hide_gdpr_banner=1&primary_color=3366ff';
       const prefillUrl = `${calendlyBaseUrl}&name=${encodeURIComponent(userName)}&a1=${encodeURIComponent(userPhone)}`;
       const prefillOpts = {
@@ -2089,6 +2198,7 @@ function navigate(page: Page, pushHistory = true) {
     }
 
     updateMetadata(page);
+    initTestimonialVideos();
 
     // Track page views in Meta Pixel (Website Visit)
     if (typeof (window as any).fbq === 'function') {
