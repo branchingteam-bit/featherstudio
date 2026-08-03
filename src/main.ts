@@ -1713,6 +1713,7 @@ function initBookingPageVideo(rigged = false) {
     video.muted = false;
     video.currentTime = 0;
     boostAudio();
+    setPlayState(true);
     video.play();
   });
 
@@ -1723,6 +1724,7 @@ function initBookingPageVideo(rigged = false) {
       video.muted = false;
       video.currentTime = 0;
       boostAudio();
+      setPlayState(true);
       video.play();
       return;
     }
