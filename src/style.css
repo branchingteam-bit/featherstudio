@@ -3244,16 +3244,37 @@ h1, h2, h3, h4 {
 .funnel-page .bv-overlay {
   background: rgba(0, 0, 0, 0.18) !important;
 }
-/* Bigger, semi-transparent play button */
+/* Bigger, semi-transparent play button with heartbeat pulse */
 .funnel-page .bv-play-btn {
   width: 72px !important;
   height: 72px !important;
-  background: rgba(59,105,255,0.55) !important;
+  background: rgba(59, 105, 255, 0.65) !important;
   backdrop-filter: blur(2px) !important;
+  animation: funnel-play-pulse 2s infinite ease-in-out;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.2s ease !important;
+}
+.funnel-page .bv-play-btn:hover {
+  transform: scale(1.15) !important;
+  background: rgba(59, 105, 255, 0.85) !important;
 }
 .funnel-page .bv-play-btn svg {
   width: 32px !important;
   height: 32px !important;
+}
+
+@keyframes funnel-play-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(59, 105, 255, 0.6);
+  }
+  70% {
+    transform: scale(1.06);
+    box-shadow: 0 0 0 16px rgba(59, 105, 255, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(59, 105, 255, 0);
+  }
 }
 /* Don't darken video when paused */
 .funnel-page .booking-video-el {
