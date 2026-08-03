@@ -3506,4 +3506,22 @@ h1, h2, h3, h4 {
   background: #ffffff;
 }
 
-
+/* Phone Input with Flag Prefix */
+.phone-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.phone-flag-prefix {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.25rem;
+  pointer-events: none;
+  z-index: 2;
+  line-height: 1;
+}
+.phone-with-flag {
+  padding-left: 44px !important;
+}

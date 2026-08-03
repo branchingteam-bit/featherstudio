@@ -1011,6 +1011,7 @@ function BookingPage(): string {
             width="1920"
             height="1080"
             playsinline
+            muted
             src="/vsl/How to Get Found Online With a Website Demo.mp4#t=0.001"
           ></video>
           <!-- Play overlay -->
@@ -1114,7 +1115,10 @@ function BookingPage(): string {
             </div>
             <div class="funnel-form-group">
               <label for="modal-input-phone" class="funnel-form-label">Phone Number</label>
-              <input type="tel" id="modal-input-phone" class="funnel-form-input" placeholder="e.g. +971 50 123 4567" required />
+              <div class="phone-input-wrap">
+                <span class="phone-flag-prefix" id="phone-flag-prefix">🇦🇪</span>
+                <input type="tel" id="modal-input-phone" class="funnel-form-input phone-with-flag" value="+971 " placeholder="+971 50 123 4567" required />
+              </div>
             </div>
             <div id="modal-step1-error" class="funnel-form-error" style="display:none;">Please enter your name and phone number to continue.</div>
             <button type="submit" id="modal-step1-next-btn" class="funnel-cta-btn funnel-modal-btn">Next &rarr;</button>
@@ -1647,8 +1651,25 @@ function initBookingPageVideo(rigged = false) {
     }
   };
 
-  // Video src is loaded natively in HTML with preload="metadata" so the poster frame renders instantly.
-  // ensureVideoSource will run on overlay/video click as a fallback.
+  // ─── Autoplay muted preview loop (0-5s) ───
+  let isPreviewLooping = true;
+  const PREVIEW_END = 5; // seconds
+
+  const startPreviewLoop = () => {
+    video.muted = true;
+    video.currentTime = 0;
+    video.play().catch(() => { /* autoplay blocked, that's fine */ });
+  };
+
+  // Loop back to 0 when hitting 5s during preview mode
+  video.addEventListener('timeupdate', () => {
+    if (isPreviewLooping && video.currentTime >= PREVIEW_END) {
+      video.currentTime = 0;
+    }
+  });
+
+  // Start the muted preview loop after a short delay
+  setTimeout(startPreviewLoop, 800);
 
   const fmtTime = (s: number) => {
     const m = Math.floor(s / 60);
@@ -1696,15 +1717,26 @@ function initBookingPageVideo(rigged = false) {
     }
   };
 
-  // Play on overlay click
+  // Play on overlay click — stop preview loop, unmute, play from 0
   overlay.addEventListener('click', () => {
+    isPreviewLooping = false;
     ensureVideoSource();
+    video.muted = false;
+    video.currentTime = 0;
     boostAudio();
     video.play();
   });
 
   // Click on video toggles play/pause
   video.addEventListener('click', () => {
+    if (isPreviewLooping) {
+      isPreviewLooping = false;
+      video.muted = false;
+      video.currentTime = 0;
+      boostAudio();
+      video.play();
+      return;
+    }
     ensureVideoSource();
     boostAudio();
     if (video.paused) video.play(); else video.pause();
@@ -1893,6 +1925,34 @@ function initBookingModal() {
   }
   if (inputPhone && localStorage.getItem('feather_booking_phone')) {
     inputPhone.value = localStorage.getItem('feather_booking_phone') || '';
+  }
+
+  // ─── Phone flag prefix logic ───
+  const flagEl = document.getElementById('phone-flag-prefix');
+  const countryFlags: Record<string, string> = {
+    '+971': '\ud83c\udde6\ud83c\uddea', '+966': '\ud83c\uddf8\ud83c\udde6', '+968': '\ud83c\uddf4\ud83c\uddf2', '+974': '\ud83c\uddf6\ud83c\udde6', '+973': '\ud83c\udde7\ud83c\udded', '+965': '\ud83c\uddf0\ud83c\uddfc',
+    '+44': '\ud83c\uddec\ud83c\udde7', '+1': '\ud83c\uddfa\ud83c\uddf8', '+91': '\ud83c\uddee\ud83c\uddf3', '+92': '\ud83c\uddf5\ud83c\uddf0', '+63': '\ud83c\uddf5\ud83c\udded',
+    '+20': '\ud83c\uddea\ud83c\uddec', '+27': '\ud83c\uddff\ud83c\udde6', '+33': '\ud83c\uddeb\ud83c\uddf7', '+49': '\ud83c\udde9\ud83c\uddea', '+61': '\ud83c\udde6\ud83c\uddfa',
+    '+62': '\ud83c\uddee\ud83c\udde9', '+90': '\ud83c\uddf9\ud83c\uddf7', '+234': '\ud83c\uddf3\ud83c\uddec', '+254': '\ud83c\uddf0\ud83c\uddea',
+  };
+
+  const updatePhoneFlag = () => {
+    if (!flagEl || !inputPhone) return;
+    const val = inputPhone.value.trim();
+    let matched = '\ud83c\udde6\ud83c\uddea'; // default UAE
+    for (const [code, flag] of Object.entries(countryFlags)) {
+      if (val.startsWith(code)) { matched = flag; break; }
+    }
+    flagEl.textContent = matched;
+  };
+
+  if (inputPhone) {
+    // Set +971 default if the field is empty or only has the HTML default
+    if (!inputPhone.value || inputPhone.value.trim() === '' || inputPhone.value.trim() === '+971') {
+      inputPhone.value = '+971 ';
+    }
+    inputPhone.addEventListener('input', updatePhoneFlag);
+    updatePhoneFlag();
   }
 
   const initCalendlyIframe = () => {
