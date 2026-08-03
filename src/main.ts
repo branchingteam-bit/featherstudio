@@ -1706,12 +1706,20 @@ function initBookingPageVideo(rigged = false) {
     }
   };
 
-  // Play on overlay click — stop preview loop, unmute, play from 0
+  // Play on overlay click — stop preview loop, unmute, play
   overlay.addEventListener('click', () => {
-    isPreviewLooping = false;
+    if (isPreviewLooping) {
+      isPreviewLooping = false;
+      video.muted = false;
+      // Strip #t=0.001 fragment to prevent Safari resetting to start on pause/resume
+      const rawSrc = video.src.split('#')[0];
+      if (video.src !== rawSrc) {
+        video.src = rawSrc;
+        video.load();
+      }
+      video.currentTime = 0;
+    }
     ensureVideoSource();
-    video.muted = false;
-    video.currentTime = 0;
     boostAudio();
     setPlayState(true);
     video.play();
@@ -1722,6 +1730,11 @@ function initBookingPageVideo(rigged = false) {
     if (isPreviewLooping) {
       isPreviewLooping = false;
       video.muted = false;
+      const rawSrc = video.src.split('#')[0];
+      if (video.src !== rawSrc) {
+        video.src = rawSrc;
+        video.load();
+      }
       video.currentTime = 0;
       boostAudio();
       setPlayState(true);
