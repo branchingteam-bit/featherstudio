@@ -1535,18 +1535,7 @@ function attachLoaderToContainer(container: HTMLElement) {
 
 function initTestimonialVideos() {
   const wrappers = document.querySelectorAll('.custom-testimonial-video-wrap');
-  
-  // Autoplay muted preview loop 4 seconds after page load (lowest priority)
-  setTimeout(() => {
-    wrappers.forEach(wrap => {
-      const video = wrap.querySelector('video') as HTMLVideoElement | null;
-      if (video) {
-        video.play().catch(err => {
-          console.warn("Autoplay muted failed:", err);
-        });
-      }
-    });
-  }, 4000);
+
 
   wrappers.forEach(wrap => {
     const overlay = wrap.querySelector('.testimonial-video-overlay') as HTMLElement | null;
@@ -1705,11 +1694,11 @@ function initBookingPageVideo(rigged = false) {
   const setPlayState = (playing: boolean) => {
     const iconPlay = playpause?.querySelector('.icon-play') as HTMLElement | null;
     const iconPause = playpause?.querySelector('.icon-pause') as HTMLElement | null;
-    if (iconPlay) iconPlay.style.display = playing ? 'none' : 'block';
-    if (iconPause) iconPause.style.display = playing ? 'block' : 'none';
-    if (overlay) overlay.style.display = playing ? 'none' : 'flex';
+    if (iconPlay) iconPlay.style.display = (playing && !isPreviewLooping) ? 'none' : 'block';
+    if (iconPause) iconPause.style.display = (playing && !isPreviewLooping) ? 'block' : 'none';
+    if (overlay) overlay.style.display = (playing && !isPreviewLooping) ? 'none' : 'flex';
     if (wrap) {
-      if (playing) {
+      if (playing && !isPreviewLooping) {
         wrap.classList.add('playing');
       } else {
         wrap.classList.remove('playing');
@@ -1946,12 +1935,64 @@ function initBookingModal() {
     flagEl.textContent = matched;
   };
 
+  const formatPhoneNumber = () => {
+    if (!inputPhone) return;
+    let val = inputPhone.value;
+    let prefix = '';
+
+    // Find country code prefix
+    for (const code of Object.keys(countryFlags)) {
+      if (val.startsWith(code)) {
+        prefix = code + ' ';
+        break;
+      }
+    }
+
+    if (!prefix && val.startsWith('+')) {
+      const spaceIdx = val.indexOf(' ');
+      if (spaceIdx > 0) {
+        prefix = val.substring(0, spaceIdx + 1);
+      } else {
+        const match = val.match(/^\+\d+/);
+        if (match) prefix = match[0] + ' ';
+      }
+    }
+
+    const suffixRaw = val.substring(prefix.length);
+    const digits = suffixRaw.replace(/\D/g, '').substring(0, 9); // max 9 digits for UAE mobile
+
+    let formattedSuffix = '';
+    if (digits.length > 0) {
+      if (digits.length <= 2) {
+        formattedSuffix = digits;
+      } else if (digits.length <= 5) {
+        formattedSuffix = `${digits.substring(0, 2)} ${digits.substring(2)}`;
+      } else {
+        formattedSuffix = `${digits.substring(0, 2)} ${digits.substring(2, 5)} ${digits.substring(5)}`;
+      }
+    }
+
+    const finalVal = prefix + formattedSuffix;
+    if (inputPhone.value !== finalVal) {
+      inputPhone.value = finalVal;
+    }
+  };
+
   if (inputPhone) {
-    // Set +971 default if the field is empty or only has the HTML default
     if (!inputPhone.value || inputPhone.value.trim() === '' || inputPhone.value.trim() === '+971') {
       inputPhone.value = '+971 ';
     }
-    inputPhone.addEventListener('input', updatePhoneFlag);
+    
+    inputPhone.addEventListener('input', (e) => {
+      const inputEvent = e as InputEvent;
+      // Allow user to backspace space characters and prefixes without auto-formatting snapping it back
+      if (inputEvent.inputType && inputEvent.inputType.startsWith('delete')) {
+        updatePhoneFlag();
+        return;
+      }
+      formatPhoneNumber();
+      updatePhoneFlag();
+    });
     updatePhoneFlag();
   }
 
@@ -2072,12 +2113,18 @@ function initBookingModal() {
       return;
     }
 
+    // Capitalize name nicely (e.g. "john smith" -> "John Smith")
+    const formattedName = nameVal
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+
     if (step1Error) step1Error.style.display = 'none';
-    userName = nameVal;
+    userName = formattedName;
     userPhone = phoneVal;
 
     // Save to localStorage
-    localStorage.setItem('feather_booking_name', nameVal);
+    localStorage.setItem('feather_booking_name', formattedName);
     localStorage.setItem('feather_booking_phone', phoneVal);
 
     // Send data silently to Google Sheets in background
