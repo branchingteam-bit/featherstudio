@@ -2368,7 +2368,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Includes value + currency to satisfy Meta's data quality requirements.
       if (typeof (window as any).fbq === 'function' && !sessionStorage.getItem('fbq_schedule_fired')) {
         (window as any).fbq('track', 'Schedule', {
-          value: 180.00,
+          value: 630.00,
           currency: 'AED'
         });
         sessionStorage.setItem('fbq_schedule_fired', '1');
