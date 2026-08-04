@@ -2100,6 +2100,9 @@ function initBookingModal() {
     document.body.style.overflow = 'hidden'; // prevent background scrolling
     if (step1Error) step1Error.style.display = 'none';
 
+    // Reset Calendly preload cache so it re-inits with whatever the user enters this session
+    lastPrefillStr = '';
+
     // Restore name & phone inputs from localStorage
     if (inputName && localStorage.getItem('feather_booking_name')) {
       inputName.value = localStorage.getItem('feather_booking_name') || '';
@@ -2149,7 +2152,7 @@ function initBookingModal() {
       // Note: Do NOT set Content-Type: application/json — that triggers a CORS preflight
       // which Google Apps Script doesn't respond to. With no-cors, the body is sent as-is.
       body: JSON.stringify({
-        name: nameVal,
+        name: formattedName,
         phone: phoneVal,
         source: 'booking_funnel'
       })
