@@ -2344,21 +2344,31 @@ document.addEventListener('DOMContentLoaded', () => {
   delegateLinks(app);
   initNavScroll();
 
-  // Listen for Calendly event scheduling to track conversions via Meta Pixel & update UI state
+  // Listen for Calendly event scheduling to track conversions via Meta Pixel & update UI state.
+  // IMPORTANT: Only accept postMessages from Calendly's origin and match the exact event name
+  // to prevent false-positive pixel fires from other iframes or scripts.
   window.addEventListener('message', (e) => {
+    // Origin guard — only trust messages from Calendly
+    if (!e.origin || !e.origin.includes('calendly.com')) return;
+
     let isScheduled = false;
     if (e && e.data) {
-      if (typeof e.data === 'string' && e.data.includes('calendly.event_scheduled')) {
-        isScheduled = true;
-      } else if (typeof e.data === 'object' && (e.data.event === 'calendly.event_scheduled' || (e.data.event && e.data.event.indexOf('event_scheduled') !== -1))) {
+      if (typeof e.data === 'object' && e.data.event === 'calendly.event_scheduled') {
         isScheduled = true;
       }
     }
 
     if (isScheduled) {
       trackAbacusEvent('bookedcall');
-      if (typeof (window as any).fbq === 'function') {
-        (window as any).fbq('track', 'Schedule');
+      // Only fire the Meta Pixel Schedule event once per session to prevent
+      // duplicate conversion tracking from testing or repeated bookings.
+      // Includes value + currency to satisfy Meta's data quality requirements.
+      if (typeof (window as any).fbq === 'function' && !sessionStorage.getItem('fbq_schedule_fired')) {
+        (window as any).fbq('track', 'Schedule', {
+          value: 180.00,
+          currency: 'AED'
+        });
+        sessionStorage.setItem('fbq_schedule_fired', '1');
       }
       const activeModal = document.getElementById('booking-modal');
       if (activeModal && activeModal.classList.contains('active')) {
