@@ -2398,12 +2398,8 @@ document.addEventListener('DOMContentLoaded', () => {
       trackAbacusEvent('bookedcall');
       // Only fire the Meta Pixel Schedule event once per session to prevent
       // duplicate conversion tracking from testing or repeated bookings.
-      // Includes value + currency to satisfy Meta's data quality requirements.
       if (typeof (window as any).fbq === 'function' && !sessionStorage.getItem('fbq_schedule_fired')) {
-        (window as any).fbq('track', 'Schedule', {
-          value: 630.00,
-          currency: 'AED'
-        });
+        (window as any).fbq('track', 'Schedule');
         sessionStorage.setItem('fbq_schedule_fired', '1');
       }
       const activeModal = document.getElementById('booking-modal');
