@@ -145,7 +145,7 @@ function Navbar(): string {
     <div class="nav-actions">
       <a href="/contact" class="btn btn-secondary btn-sm nav-desktop-only" data-link="contact" id="nav-contact-cta">Contact</a>
       <a href="/pricing" class="btn btn-secondary btn-sm nav-mobile-only" data-link="pricing" id="nav-pricing-cta">Pricing</a>
-      <a href="/booking" class="btn btn-dark btn-sm" data-link="booking" id="nav-book-cta">Book a Call ${Icons.arrow}</a>
+      <a href="/booking" class="btn btn-primary btn-sm btn-pulse" data-link="booking" id="nav-book-cta">Book a Call ${Icons.arrow}</a>
     </div>
   </nav>`;
 }
@@ -194,7 +194,7 @@ function Footer(): string {
 function HomePage(): string {
   // Build marquee items (duplicated 4 times for seamless infinite loop)
   const marqueeItems = [
-    { num: '3 Days', desc: 'From kick-off to live' },
+    { num: '5 Days', desc: 'From kick-off to live' },
     { num: '100%', desc: 'Mobile responsive' },
     { num: 'Fully Custom', desc: 'No templates, ever' },
     { num: '3+ Years', desc: 'Building in the UAE' },
@@ -214,12 +214,12 @@ function HomePage(): string {
   <section class="hero" style="position: relative; overflow: hidden;">
     <img src="/huge-bear-watermark.webp" class="huge-bear" alt="Atlantic Bear Watermark" fetchpriority="high" width="600" height="600" />
     <div class="container" style="position: relative; z-index: 1;">
-      <h1>Your business deserves<br>to be found.</h1>
+      <h1>Your business deserves<br>to be <span class="text-blue">found</span>.</h1>
       <p class="hero-sub">
-        We build custom websites for UAE businesses. Get a free demo of your site before paying to keep it. You run your business, we run your website.
+        Custom websites built exclusively for UAE small businesses. Get a free demo of your site before paying anything.
       </p>
       <div class="hero-ctas">
-        <a href="/booking" class="btn btn-dark btn-large" data-link="booking" id="hero-cta-book">
+        <a href="/booking" class="btn btn-primary btn-large btn-pulse" data-link="booking" id="hero-cta-book">
           Book a Call ${Icons.arrow}
         </a>
         <a href="/pricing" class="btn btn-secondary btn-large" data-link="pricing" id="hero-cta-plans">
@@ -242,7 +242,7 @@ function HomePage(): string {
   <!-- COMPETITOR BANNER -->
   <section class="competitor-banner">
     <div class="container">
-      <p class="competitor-banner-text">Your competitor is capturing your clients online. <strong>Let's lock down your category.</strong></p>
+      <p class="competitor-banner-text">Your competitor is capturing your clients online. <strong>Let's lock down your category in the UAE.</strong></p>
     </div>
   </section>
 
@@ -255,7 +255,7 @@ function HomePage(): string {
       <div class="facts-heroes-row">
         <div class="fact-hero-block fact-hero-dark">
           <div class="fact-hero-num">81<span class="fact-hero-pct">%</span></div>
-          <div class="fact-hero-label">Of customers research online before buying or visiting a business.</div>
+          <div class="fact-hero-label">Of UAE customers research online before buying or visiting a business.</div>
           <div class="fact-hero-desc">If they can't find you, they will find your competitor. It's that simple.</div>
         </div>
         <div class="fact-hero-block fact-hero-light">
@@ -279,35 +279,7 @@ function HomePage(): string {
         <div class="facts-stat-divider"></div>
         <div class="facts-stat-block">
           <div class="facts-stat-num">2x</div>
-          <div class="facts-stat-text">Faster growth for businesses with a strong professional online presence</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- HOW IT WORKS SECTION -->
-  <section class="section-pad" style="background: var(--surface); border-bottom: 1px solid var(--border);">
-    <div class="container">
-      <div class="section-header centered reveal">
-        <div class="section-label">Process</div>
-        <h2 class="section-title">What working with us looks like</h2>
-        <p class="section-sub">A simple, transparent process to establish your category dominance online.</p>
-      </div>
-      <div class="steps-grid">
-        <div class="step reveal">
-          <div class="step-num">STEP 01</div>
-          <h3>Discovery Call — 30 minutes</h3>
-          <p>A quick call where we get to know your business, answer your questions, and figure out exactly what you need.</p>
-        </div>
-        <div class="step reveal" style="transition-delay:0.1s;">
-          <div class="step-num">STEP 02</div>
-          <h3>Launch-Ready Brand Demo — 5 Days</h3>
-          <p>You fill out a short form. We take it from there and design your category-leading online presence.</p>
-        </div>
-        <div class="step reveal" style="transition-delay:0.2s;">
-          <div class="step-num">STEP 03</div>
-          <h3>Activation Call — 30 minutes</h3>
-          <p>We walk you through your high-converting online presence and activate it to start capturing leads instantly.</p>
+          <div class="facts-stat-text">Faster growth for UAE businesses with a strong professional online presence</div>
         </div>
       </div>
     </div>
@@ -317,7 +289,7 @@ function HomePage(): string {
   <section class="free-demo-section reveal">
     <div class="container">
       <div class="free-demo-inner">
-        <div class="free-demo-badge">See It Before You Pay It</div>
+        <div class="free-demo-badge" style="border: 1px solid var(--red); color: var(--red);">See It Before You Pay It</div>
         <h2 class="free-demo-headline">See a free demo of your actual website live in 5 days.</h2>
         <p class="free-demo-sub">We build your actual website first, completely free, and show it to you on a call. Only if you love the finished product do we launch it and move forward. If you don't, you walk away and owe us nothing.</p>
         <div class="free-demo-steps">
@@ -325,43 +297,88 @@ function HomePage(): string {
             <div class="free-demo-step-icon">${Icons.phone}</div>
             <div>
               <div class="free-demo-step-title">30-Minute Strategy Call</div>
-              <div class="free-demo-step-desc">We map out your business positioning, category keywords, and how we will capture clients already looking for you.</div>
+              <div class="free-demo-step-desc">We map out your business positioning, category keywords, and how we will capture UAE clients already looking for you.</div>
             </div>
           </div>
           <div class="free-demo-step">
             <div class="free-demo-step-icon">${Icons.zap}</div>
             <div>
-              <div class="free-demo-step-title">We Build Your Online Presence — 5 Days</div>
-              <div class="free-demo-step-desc">Fill out a short form. We handle everything else — copywriting, layouts, graphics, and search setup.</div>
+              <div class="free-demo-step-title">5-Day Demo Build</div>
+              <div class="free-demo-step-desc">Fill out a short form. We handle everything: copywriting, layouts, graphics, and search setup.</div>
             </div>
           </div>
           <div class="free-demo-step">
             <div class="free-demo-step-icon">${Icons.rocket}</div>
             <div>
-              <div class="free-demo-step-title">Activate Only If You Love The Outcome</div>
+              <div class="free-demo-step-title">Activate Only If You Love It</div>
               <div class="free-demo-step-desc">We walk you through your high-converting brand system. Love it? We launch it and you pay. Not happy? You walk away and owe us zero.</div>
             </div>
           </div>
         </div>
-        <a href="/booking" class="btn btn-dark btn-large free-demo-cta" data-link="booking" id="home-free-demo-cta">Get Your Free Demo ${Icons.arrow}</a>
+        <a href="/booking" class="btn btn-primary btn-large btn-pulse free-demo-cta" data-link="booking" id="home-free-demo-cta">Get Your Free Demo ${Icons.arrow}</a>
         <p class="free-demo-note">Your total time investment: under one hour. We handle everything.</p>
       </div>
     </div>
   </section>
 
-  <!-- WHY ATLANTIC BEAR SECTION -->
+  <!-- THE MARKET LEADER SYSTEM SECTION -->
+  <section class="section-pad" style="background: var(--surface); border-bottom: 1px solid var(--border);">
+    <div class="container">
+      <div class="section-header centered reveal">
+        <div class="section-label">The Complete System</div>
+        <h2 class="section-title">The Market Leader System</h2>
+        <p class="section-sub">Four core pillars engineered to give your business a dominant online presence in the UAE.</p>
+      </div>
+
+      <div class="basic-system-grid">
+        
+        <div class="basic-system-card reveal">
+          <span class="basic-card-num">01</span>
+          <h3>Custom Website</h3>
+          <p>A high-converting, professional website built specifically for your brand. Mobile-first design, fast performance, and a strategic layout built to turn local UAE visitors into high-value clients.</p>
+        </div>
+
+        <div class="basic-system-card reveal" style="transition-delay:0.08s;">
+          <span class="basic-card-num">02</span>
+          <h3>Site SEO</h3>
+          <p>Complete local search optimization for Dubai and the UAE. We position your business at the top of Google Search and Google Maps so customers find you when searching for your services.</p>
+        </div>
+
+        <div class="basic-system-card reveal" style="transition-delay:0.12s;">
+          <span class="basic-card-num">03</span>
+          <h3>Monthly Content Changes</h3>
+          <p>Ongoing design and copy updates whenever your business expands. We handle text, photo, pricing, or service edits on demand so your platform remains ahead of competitors.</p>
+        </div>
+
+        <div class="basic-system-card reveal" style="transition-delay:0.16s;">
+          <span class="basic-card-num">04</span>
+          <h3>Managed Hosting</h3>
+          <p>Enterprise-grade cloud hosting, SSL encryption, continuous uptime monitoring, and daily backups. Your digital infrastructure is fully managed so your website runs smoothly 24/7.</p>
+        </div>
+
+      </div>
+
+      <div class="reveal" style="text-align: center; margin-top: 48px;">
+        <a href="/booking" class="btn btn-primary btn-large btn-pulse" data-link="booking">
+          Get Started with Market Leader ${Icons.arrow}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY ATLANTIC BEAR SECTION (PLACED UNDER MARKET LEADER SYSTEM) -->
   <section class="section-pad">
     <div class="container">
       <div class="section-header reveal">
         <div class="section-label">Why Us</div>
         <h2 class="section-title">Why Atlantic Bear</h2>
-        <p class="section-sub">We don't just build websites. We build the online presence your business is missing.</p>
+        <p class="section-sub">We don't just build websites. We build the online presence your UAE business is missing.</p>
       </div>
       <div class="feature-grid">
         <div class="feature-item reveal">
           <div class="feature-icon-wrap">${Icons.globe}</div>
           <h3>Capture clients already looking for you</h3>
-          <p>People hear about you through word of mouth, Instagram, Google Maps. They search your name, find nothing — and quietly choose your competitor. We stop that.</p>
+          <p>People hear about you through word of mouth, Instagram, and Google Maps in the UAE. They search your name, find nothing, and quietly choose your competitor. We stop that.</p>
         </div>
         <div class="feature-item reveal">
           <div class="feature-icon-wrap">${Icons.star}</div>
@@ -370,13 +387,13 @@ function HomePage(): string {
         </div>
         <div class="feature-item reveal">
           <div class="feature-icon-wrap">${Icons.shield}</div>
-          <h3>Own your online presence — stop renting it</h3>
+          <h3>Own your online presence (stop renting it)</h3>
           <p>Instagram can shadowban you. The algorithm can bury you. Meta can suspend your account overnight. Your website is the one asset you actually control.</p>
         </div>
         <div class="feature-item reveal">
           <div class="feature-icon-wrap">${Icons.phone}</div>
           <h3>Every screen, every device, every time</h3>
-          <p>87% of your customers visit on their phone. Your site looks flawless on every screen — mobile, tablet, desktop. No pinching, no broken layouts.</p>
+          <p>87% of your customers visit on their phone. Your site looks flawless on every screen: mobile, tablet, desktop. No pinching, no broken layouts.</p>
         </div>
         <div class="feature-item reveal">
           <div class="feature-icon-wrap">${Icons.rocket}</div>
@@ -385,79 +402,18 @@ function HomePage(): string {
         </div>
         <div class="feature-item reveal" style="display:flex; flex-direction:column; justify-content:center; background:var(--surface);">
           <h3 style="font-size:1.1rem; margin-bottom:8px;">Your total effort: under one hour</h3>
-          <p style="margin-bottom:16px; font-size:0.82rem; color:var(--text-muted);">One 30-minute discovery call. One short form. One 30-minute demo call. That's it. We handle the design, the copy, the hosting, the domain — everything.</p>
-          <a href="/booking" class="btn btn-dark btn-sm" data-link="booking" style="align-self:flex-start;">Book a Call ${Icons.arrow}</a>
+          <p style="margin-bottom:16px; font-size:0.82rem; color:var(--text-muted);">One 30-minute discovery call. One short form. One 30-minute demo call. That's it. We handle design, copy, hosting, domain, and launch.</p>
+          <a href="/booking" class="btn btn-primary btn-sm" data-link="booking" style="align-self:flex-start;">Book a Call ${Icons.arrow}</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- THE PROBLEM SECTION -->
-  <section class="problem-section" style="border-bottom: 1px solid var(--border);">
-    <div class="container">
-      <h2 class="problem-headline reveal">
-        Every day without a website is a customer you <span class="text-red">didn't know you lost</span>.
-      </h2>
-      <div class="problem-grid">
-        <div class="problem-card reveal">
-          <h3>They searched. They didn't find you.</h3>
-          <p>
-            Most people look up a business online before they visit or call. If nothing comes up, or what comes up looks bad, they move on. Simple as that.
-          </p>
-        </div>
-        <div class="problem-card reveal" style="transition-delay:0.1s;">
-          <h3>Your competitor got the client. Not you.</h3>
-          <p>
-            When two similar businesses show up online and one has a clean professional website, the choice is obvious. Customers always go with whoever looks more trustworthy.
-          </p>
-        </div>
-        <div class="problem-card reveal" style="transition-delay:0.2s;">
-          <h3>You don't have time to deal with this.</h3>
-          <p>
-            You're running a business. Building a website, figuring out hosting, dealing with technical problems, that's not why you got into this. It shouldn't be your problem.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TOOLS WE USE SECTION -->
-  <section class="tools-section">
-    <div class="container">
-      <div class="tools-header">
-        <h2>The Tech Behind the Speed</h2>
-        <p>We build using cutting-edge tools to deliver beautiful, fast user experiences backed by clean code.</p>
-      </div>
-      
-      <!-- Stitch Row -->
-      <div class="tool-showcase-row">
-        <div class="tool-text-content">
-          <h3>Stitch</h3>
-          <p>We use Stitch to design the website layout and user interface from scratch — guaranteeing a bespoke, modern aesthetic designed specifically for your brand before any code is written.</p>
-        </div>
-        <div class="tool-large-img-wrap">
-          <img class="tool-large-img" src="/screenshots/stitch.png" alt="Stitch Interface" width="800" height="500" loading="lazy" />
-        </div>
-      </div>
-      
-      <!-- Antigravity Row -->
-      <div class="tool-showcase-row alt">
-        <div class="tool-large-img-wrap">
-          <img class="tool-large-img" src="/screenshots/antigravity.png" alt="Antigravity IDE" width="800" height="500" loading="lazy" />
-        </div>
-        <div class="tool-text-content">
-          <h3>Google Antigravity</h3>
-          <p>We use Google Antigravity to write and optimize clean, production-ready code — so your website loads instantly, operates securely, and works perfectly on every device.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TIER TEASERS SECTION -->
+  <!-- TIER TEASERS (PACKAGES) SECTION -->
   <section class="teasers-section">
     <div class="container">
       <div class="teasers-header">
-        <h2>Capture Your Category</h2>
+        <h2>Capture Your Category in the UAE</h2>
         <p>Two plans. Both fully managed. We run your online reputation while you run your business.</p>
       </div>
       <div class="teasers-grid" style="grid-template-columns: repeat(2, 1fr); max-width: 850px; margin: 0 auto; gap: 32px;">
@@ -508,6 +464,78 @@ function HomePage(): string {
           </a>
         </div>
 
+      </div>
+
+    </div>
+  </section>
+
+  <!-- META ADS HOMEPAGE BOTTOM TEASER SECTION -->
+  <section class="section-pad-sm" style="border-top: 1px solid var(--border); margin-top: 80px; background: #080b12; padding: 64px 0;">
+    <div class="container">
+      <div class="meta-ads-teaser-box reveal" style="margin-top: 0;">
+        <div class="meta-ads-teaser-content">
+          <span class="meta-ads-price-tag" style="background: rgba(235,92,92,0.2); color: #EB5C5C; font-weight: 800; font-size: 0.82rem; padding: 4px 12px; border-radius: 999px; display: inline-block; margin-bottom: 10px; border: 1px solid rgba(235,92,92,0.4);">AED 2,500 / mo retainer</span>
+          <h3>Looking for Direct Leads? We Also Run Meta Ads.</h3>
+          <p>Turn Facebook & Instagram into a direct acquisition channel for your UAE small business with targeted ad campaigns and direct WhatsApp lead capture.</p>
+        </div>
+        <a href="/meta-ads" class="btn btn-primary btn-large btn-pulse" data-link="meta-ads" style="white-space: nowrap;">
+          Explore Meta Ads ${Icons.arrow}
+        </a>
+      </div>
+    </div>
+  </section>
+  `;
+}
+
+// ─── Meta Ads Page ─────────────────────────────────────────────────────────────
+function MetaAdsPage(): string {
+  return `
+  <div class="page-header" style="border-bottom:1px solid var(--border); padding-bottom: 40px;">
+    <div class="container">
+      <div class="booking-page-badge" style="background: rgba(235,92,92,0.1); color: #EB5C5C; border: 1px solid rgba(235,92,92,0.25); display: inline-block; margin-bottom: 16px;">
+        Client Acquisition Engine
+      </div>
+      <h1 style="color: #000;">Meta Ads for UAE Small Businesses</h1>
+      <p style="color: rgba(0,0,0,0.7); max-width: 640px; margin: 12px auto 0; font-size: 1.05rem; line-height: 1.6;">
+        Drive local, qualified client leads straight to your WhatsApp and inbox with targeted Facebook & Instagram ad campaigns engineered specifically for small businesses in the UAE.
+      </p>
+    </div>
+  </div>
+
+  <section class="section-pad">
+    <div class="container">
+      <div style="background: var(--surface); border: 2px solid var(--border-mid); border-radius: var(--r-lg); padding: 40px; text-align: center; max-width: 680px; margin: 0 auto 56px;">
+        <div style="font-size: 2.8rem; font-weight: 900; color: #000; letter-spacing: -0.04em;">AED 2,500 <span style="font-size: 1.1rem; font-weight: 500; color: rgba(0,0,0,0.6);">/ month</span></div>
+        <div style="font-size: 0.9rem; color: rgba(0,0,0,0.6); font-weight: 600; margin: 6px 0 24px;">Simple Monthly Retainer · Managed Campaign Optimization</div>
+        <a href="/booking" class="btn btn-primary btn-large btn-pulse" data-link="booking">
+          Book Strategy Call ${Icons.arrow}
+        </a>
+      </div>
+
+      <div class="feature-grid" style="grid-template-columns: repeat(2, 1fr); max-width: 900px; margin: 0 auto;">
+        <div class="feature-item reveal" style="border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+          <div class="feature-icon-wrap" style="color: #EB5C5C; background: rgba(235,92,92,0.1);">${Icons.zap}</div>
+          <h3 style="color: #000; font-size: 1.05rem;">Local UAE Targeting</h3>
+          <p>We target active customers in Dubai, Abu Dhabi, or specific UAE locations who need your services immediately.</p>
+        </div>
+
+        <div class="feature-item reveal" style="border-right: none; border-bottom: 1px solid var(--border);">
+          <div class="feature-icon-wrap" style="color: #EB5C5C; background: rgba(235,92,92,0.1);">${Icons.star}</div>
+          <h3 style="color: #000; font-size: 1.05rem;">Ad Copy & Creatives</h3>
+          <p>We craft high-converting video and image ad creative designed to stop scrolling on Instagram & Facebook feeds.</p>
+        </div>
+
+        <div class="feature-item reveal" style="border-right: 1px solid var(--border); border-bottom: none;">
+          <div class="feature-icon-wrap" style="color: #EB5C5C; background: rgba(235,92,92,0.1);">${Icons.phone}</div>
+          <h3 style="color: #000; font-size: 1.05rem;">Direct WhatsApp & Form Leads</h3>
+          <p>Leads land straight on your phone or email so you can reply and convert clients without delay.</p>
+        </div>
+
+        <div class="feature-item reveal" style="border-right: none; border-bottom: none;">
+          <div class="feature-icon-wrap" style="color: #EB5C5C; background: rgba(235,92,92,0.1);">${Icons.rocket}</div>
+          <h3 style="color: #000; font-size: 1.05rem;">Continuous Management</h3>
+          <p>We monitor ad performance daily, optimize budget allocation, and provide clear reports so you track your ROI.</p>
+        </div>
       </div>
 
     </div>
@@ -619,7 +647,7 @@ function PricingPage(): string {
               <div class="val-comp-row"><span class="val-comp-label">Total Build Value:</span><span class="val-comp-value">AED 8,500+</span></div>
               <div class="val-comp-row main"><span class="val-comp-label">Your Setup Cost:</span><span class="val-comp-value-price">AED 3,500</span></div>
             </div>
-            <a href="javascript:void(0)" class="btn btn-dark btn-block btn-large">Book Call to See Your Demo</a>
+            <a href="/booking" data-link="booking" class="btn btn-primary btn-pulse btn-block btn-large">Book Call to See Your Demo</a>
             
             <div class="paypal-buy-wrapper">
               <span class="paypal-or-divider">— OR BUY IMMEDIATELY —</span>
@@ -711,7 +739,7 @@ function PricingPage(): string {
               <div class="val-comp-row"><span class="val-comp-label">Total Package Value:</span><span class="val-comp-value">AED 15,000+</span></div>
               <div class="val-comp-row main"><span class="val-comp-label">Your Setup Cost:</span><span class="val-comp-value-price">AED 6,500</span></div>
             </div>
-            <a href="javascript:void(0)" class="btn btn-dark btn-block btn-large">Book Call to See Your Demo</a>
+            <a href="/booking" data-link="booking" class="btn btn-primary btn-pulse btn-block btn-large">Book Call to See Your Demo</a>
             
             <div class="paypal-buy-wrapper">
               <span class="paypal-or-divider">— OR BUY IMMEDIATELY —</span>
@@ -838,7 +866,7 @@ function TestimonialsPage(): string {
             <span class="tm-dot"></span><span class="tm-dot"></span><span class="tm-dot"></span>
             <div class="tm-url">sondertraininggroup.com</div>
           </div>
-          <img src="/screenshots/sonder-old.png" alt="Client website — before" loading="lazy" class="tm-screenshot" width="1024" height="576" />
+          <img src="/screenshots/sonder-old.png" alt="Client website: before" loading="lazy" class="tm-screenshot" width="1024" height="576" />
         </div>
       </div>
 
@@ -850,7 +878,7 @@ function TestimonialsPage(): string {
             <span class="tm-dot"></span><span class="tm-dot"></span><span class="tm-dot"></span>
             <div class="tm-url">sondertraininggroup.com</div>
           </div>
-          <img src="/screenshots/sonder-new.png" alt="Client website — after, built by Atlantic Bear" loading="lazy" class="tm-screenshot" width="1024" height="609" />
+          <img src="/screenshots/sonder-new.png" alt="Client website: after, built by Atlantic Bear" loading="lazy" class="tm-screenshot" width="1024" height="609" />
         </div>
       </div>
 
@@ -886,7 +914,7 @@ function TestimonialsPage(): string {
       <h2>Want results like this?</h2>
       <p>Tell us about your business and let's get started.</p>
       <div class="cta-ctas">
-        <a href="/booking" class="btn btn-dark btn-large" data-link="booking" id="testimonials-cta">
+        <a href="/booking" class="btn btn-primary btn-pulse btn-large" data-link="booking" id="testimonials-cta">
           Book a Call ${Icons.arrow}
         </a>
         <a href="/pricing" class="btn btn-secondary btn-large" data-link="pricing" id="testimonials-plans-cta">
@@ -910,7 +938,7 @@ function ContactPage(): string {
             <p>Tell us about your business or just ask anything. We respond fast, usually within a few hours.</p>
             <div class="contact-methods">
               <a href="mailto:officialatlanticbear@gmail.com" class="contact-method">
-                <div class="contact-method-icon">
+                <div class="contact-method-icon" style="background:rgba(59,105,255,0.08); color:var(--blue);">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${Icons.mail}</svg>
                 </div>
                 <div>
@@ -928,7 +956,7 @@ function ContactPage(): string {
                 </div>
               </a>
               <div class="contact-method">
-                <div class="contact-method-icon">
+                <div class="contact-method-icon" style="background:rgba(59,105,255,0.08); color:var(--blue);">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${Icons.map}</svg>
                 </div>
                 <div>
@@ -939,7 +967,7 @@ function ContactPage(): string {
             </div>
           </div>
 
-          <div class="contact-form-card reveal" style="transition-delay:0.1s;">
+          <div class="contact-form-card reveal" style="transition-delay:0.1s; border-top: 3px solid var(--blue);">
             <h3>Send us a message</h3>
             <p>We'll get back to you within a few hours.</p>
             
@@ -964,7 +992,7 @@ function ContactPage(): string {
               </select>
               <textarea class="form-input form-textarea" id="form-message" name="message" placeholder="Tell us about your business and what you need..." required data-fs-field></textarea>
               <span data-fs-error="message" class="fs-field-error"></span>
-              <button type="submit" class="btn btn-dark btn-block btn-large" id="form-submit-btn" data-fs-submit-btn>
+              <button type="submit" class="btn btn-primary btn-block btn-large btn-pulse" id="form-submit-btn" data-fs-submit-btn>
                 Send message ${Icons.arrow}
               </button>
             </form>
@@ -1286,7 +1314,7 @@ function BookingNewPage(): string {
 }
 
 // ─── Router ───────────────────────────────────────────────────────────────────
-type Page = 'home' | 'pricing' | 'work' | 'contact' | 'testimonials' | 'booking' | 'booking-new';
+type Page = 'home' | 'pricing' | 'work' | 'contact' | 'testimonials' | 'booking' | 'booking-new' | 'meta-ads';
 
 const pageMap: Record<Page, () => string> = {
   home:         HomePage,
@@ -1296,6 +1324,7 @@ const pageMap: Record<Page, () => string> = {
   testimonials: TestimonialsPage,
   booking:      BookingPage,
   'booking-new': BookingNewPage,
+  'meta-ads':   MetaAdsPage,
 };
 
 const pageMeta: Record<Page, { title: string; desc: string }> = {
@@ -1326,6 +1355,10 @@ const pageMeta: Record<Page, { title: string; desc: string }> = {
   'booking-new': {
     title: 'Book a Call (New Flow) | Atlantic Bear Discovery Session',
     desc: 'Watch our video, tell us about yourself, and schedule your free 30-minute discovery call. Start your UAE website project today.'
+  },
+  'meta-ads': {
+    title: 'Meta Ads for UAE Small Businesses | Atlantic Bear',
+    desc: 'Drive local client leads via Facebook & Instagram ads for small businesses in the UAE. AED 2,500/mo retainer.'
   }
 };
 
@@ -1392,7 +1425,7 @@ function updateMetadata(page: Page) {
 
 function getPageFromPath(path: string): Page {
   const cleanPath = path.replace(/^\/|\/$/g, '');
-  if (cleanPath === 'pricing' || cleanPath === 'work' || cleanPath === 'contact' || cleanPath === 'testimonials' || cleanPath === 'booking' || cleanPath === 'booking-new') {
+  if (cleanPath === 'pricing' || cleanPath === 'work' || cleanPath === 'contact' || cleanPath === 'testimonials' || cleanPath === 'booking' || cleanPath === 'booking-new' || cleanPath === 'meta-ads') {
     return cleanPath as Page;
   }
   return 'home';

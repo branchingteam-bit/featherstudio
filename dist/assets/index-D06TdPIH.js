@@ -1,4 +1,4 @@
-(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const o of document.querySelectorAll('link[rel="modulepreload"]'))s(o);new MutationObserver(o=>{for(const n of o)if(n.type==="childList")for(const v of n.addedNodes)v.tagName==="LINK"&&v.rel==="modulepreload"&&s(v)}).observe(document,{childList:!0,subtree:!0});function a(o){const n={};return o.integrity&&(n.integrity=o.integrity),o.referrerPolicy&&(n.referrerPolicy=o.referrerPolicy),o.crossOrigin==="use-credentials"?n.credentials="include":o.crossOrigin==="anonymous"?n.credentials="omit":n.credentials="same-origin",n}function s(o){if(o.ep)return;o.ep=!0;const n=a(o);fetch(o.href,n)}})();const V=(t,e=document)=>e.querySelector(t),z=(t,e=document)=>[...e.querySelectorAll(t)],j="atlanticbear_analytics_8d24";function A(t,e=0){const a=()=>{fetch(`https://abacus.jasoncameron.dev/hit/${j}/${t}`).catch(()=>{});try{const s=te();fetch(`https://abacus.jasoncameron.dev/hit/${j}/${s}_${t}`).catch(()=>{})}catch{}};e>0?setTimeout(a,e):a()}let q={};function Q(){K();const t=e=>{q[`t${e}`]=window.setTimeout(()=>{A(`time_${e}s`)},e*1e3)};t(5),t(15),t(30),t(60)}function K(){Object.values(q).forEach(clearTimeout),q={}}let I={moved:!1,calendar:!1,testimonials:!1},R=null;function ee(){J(),I={moved:!1,video:!1,calendar:!1,testimonials:!1},R=()=>{window.scrollY>50&&!I.moved&&(I.moved=!0,A("scroll_moved"));const t=document.getElementById("booking-calendar");if(t&&!I.calendar){const a=t.getBoundingClientRect();a.top+a.height/2<window.innerHeight&&(I.calendar=!0,A("scroll_calendar"))}const e=document.querySelector(".booking-step-card:last-child");e&&!I.testimonials&&e.getBoundingClientRect().top<window.innerHeight-300&&(I.testimonials=!0,A("scroll_testimonials"))},window.addEventListener("scroll",R,{passive:!0})}function J(){R&&(window.removeEventListener("scroll",R),R=null)}function te(){const t=new Date,e=new Date(t.toLocaleString("en-US",{timeZone:"Asia/Dubai"})),a=e.getFullYear(),s=String(e.getMonth()+1).padStart(2,"0"),o=String(e.getDate()).padStart(2,"0");return`${a}-${s}-${o}`}const g={arrow:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="2" y1="8" x2="13" y2="8"/><polyline points="9,4 13,8 9,12"/></svg>',globe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',phone:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.79a19.79 19.79 0 01-3.07-8.7A2 2 0 012 0h3a2 2 0 012 1.72c.12.96.36 1.9.69 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.33 1.85.57 2.81.69A2 2 0 0122 16.92z"/></svg>',mail:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',map:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>',star:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>',zap:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"/></svg>',shield:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',rocket:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2 .27-2.98-.31-3.5c-.56-.52-1.43-.8-2.69.5z"/><path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>',instagram:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>'};function ae(){return`
+(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const o of document.querySelectorAll('link[rel="modulepreload"]'))s(o);new MutationObserver(o=>{for(const n of o)if(n.type==="childList")for(const m of n.addedNodes)m.tagName==="LINK"&&m.rel==="modulepreload"&&s(m)}).observe(document,{childList:!0,subtree:!0});function a(o){const n={};return o.integrity&&(n.integrity=o.integrity),o.referrerPolicy&&(n.referrerPolicy=o.referrerPolicy),o.crossOrigin==="use-credentials"?n.credentials="include":o.crossOrigin==="anonymous"?n.credentials="omit":n.credentials="same-origin",n}function s(o){if(o.ep)return;o.ep=!0;const n=a(o);fetch(o.href,n)}})();const z=(t,e=document)=>e.querySelector(t),H=(t,e=document)=>[...e.querySelectorAll(t)],V="atlanticbear_analytics_8d24";function A(t,e=0){const a=()=>{fetch(`https://abacus.jasoncameron.dev/hit/${V}/${t}`).catch(()=>{});try{const s=te();fetch(`https://abacus.jasoncameron.dev/hit/${V}/${s}_${t}`).catch(()=>{})}catch{}};e>0?setTimeout(a,e):a()}let Y={};function Q(){K();const t=e=>{Y[`t${e}`]=window.setTimeout(()=>{A(`time_${e}s`)},e*1e3)};t(5),t(15),t(30),t(60)}function K(){Object.values(Y).forEach(clearTimeout),Y={}}let I={moved:!1,calendar:!1,testimonials:!1},$=null;function ee(){J(),I={moved:!1,video:!1,calendar:!1,testimonials:!1},$=()=>{window.scrollY>50&&!I.moved&&(I.moved=!0,A("scroll_moved"));const t=document.getElementById("booking-calendar");if(t&&!I.calendar){const a=t.getBoundingClientRect();a.top+a.height/2<window.innerHeight&&(I.calendar=!0,A("scroll_calendar"))}const e=document.querySelector(".booking-step-card:last-child");e&&!I.testimonials&&e.getBoundingClientRect().top<window.innerHeight-300&&(I.testimonials=!0,A("scroll_testimonials"))},window.addEventListener("scroll",$,{passive:!0})}function J(){$&&(window.removeEventListener("scroll",$),$=null)}function te(){const t=new Date,e=new Date(t.toLocaleString("en-US",{timeZone:"Asia/Dubai"})),a=e.getFullYear(),s=String(e.getMonth()+1).padStart(2,"0"),o=String(e.getDate()).padStart(2,"0");return`${a}-${s}-${o}`}const u={arrow:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="2" y1="8" x2="13" y2="8"/><polyline points="9,4 13,8 9,12"/></svg>',globe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',phone:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.79a19.79 19.79 0 01-3.07-8.7A2 2 0 012 0h3a2 2 0 012 1.72c.12.96.36 1.9.69 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.33 1.85.57 2.81.69A2 2 0 0122 16.92z"/></svg>',mail:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',map:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>',star:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>',zap:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"/></svg>',shield:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',rocket:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2 .27-2.98-.31-3.5c-.56-.52-1.43-.8-2.69.5z"/><path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>',instagram:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>'};function ae(){return`
   <nav class="nav" id="main-nav">
     <a href="/" class="logo" data-link="home" id="logo-btn" aria-label="Atlantic Bear Home">
       <span class="logo-wordmark">Atlantic</span>
@@ -13,7 +13,7 @@
     <div class="nav-actions">
       <a href="/contact" class="btn btn-secondary btn-sm nav-desktop-only" data-link="contact" id="nav-contact-cta">Contact</a>
       <a href="/pricing" class="btn btn-secondary btn-sm nav-mobile-only" data-link="pricing" id="nav-pricing-cta">Pricing</a>
-      <a href="/booking" class="btn btn-dark btn-sm" data-link="booking" id="nav-book-cta">Book a Call ${g.arrow}</a>
+      <a href="/booking" class="btn btn-primary btn-sm btn-pulse" data-link="booking" id="nav-book-cta">Book a Call ${u.arrow}</a>
     </div>
   </nav>`}function se(){return`
   <footer class="site-footer">
@@ -49,18 +49,18 @@
         <span>Dubai, UAE</span>
       </div>
     </div>
-  </footer>`}function ie(){const t=[{num:"3 Days",desc:"From kick-off to live"},{num:"100%",desc:"Mobile responsive"},{num:"Fully Custom",desc:"No templates, ever"},{num:"3+ Years",desc:"Building in the UAE"},{num:"81%",desc:"Of customers research online first"},{num:"SEO Ready",desc:"Google-optimised from day one"}],e=()=>t.map(s=>`<span class="marquee-badge"><span class="marquee-num">${s.num}</span><span class="marquee-desc">${s.desc}</span></span><span class="marquee-sep">·</span>`).join(""),a=e()+e()+e()+e();return`
+  </footer>`}function ie(){const t=[{num:"5 Days",desc:"From kick-off to live"},{num:"100%",desc:"Mobile responsive"},{num:"Fully Custom",desc:"No templates, ever"},{num:"3+ Years",desc:"Building in the UAE"},{num:"81%",desc:"Of customers research online first"},{num:"SEO Ready",desc:"Google-optimised from day one"}],e=()=>t.map(s=>`<span class="marquee-badge"><span class="marquee-num">${s.num}</span><span class="marquee-desc">${s.desc}</span></span><span class="marquee-sep">·</span>`).join(""),a=e()+e()+e()+e();return`
   <!-- HERO -->
   <section class="hero" style="position: relative; overflow: hidden;">
     <img src="/huge-bear-watermark.webp" class="huge-bear" alt="Atlantic Bear Watermark" fetchpriority="high" width="600" height="600" />
     <div class="container" style="position: relative; z-index: 1;">
-      <h1>Your business deserves<br>to be found.</h1>
+      <h1>Your business deserves<br>to be <span class="text-blue">found</span>.</h1>
       <p class="hero-sub">
-        We build custom websites for UAE businesses. Get a free demo of your site before paying to keep it. You run your business, we run your website.
+        Custom websites built exclusively for UAE small businesses. Get a free demo of your site before paying anything.
       </p>
       <div class="hero-ctas">
-        <a href="/booking" class="btn btn-dark btn-large" data-link="booking" id="hero-cta-book">
-          Book a Call ${g.arrow}
+        <a href="/booking" class="btn btn-primary btn-large btn-pulse" data-link="booking" id="hero-cta-book">
+          Book a Call ${u.arrow}
         </a>
         <a href="/pricing" class="btn btn-secondary btn-large" data-link="pricing" id="hero-cta-plans">
           View Plans
@@ -82,7 +82,7 @@
   <!-- COMPETITOR BANNER -->
   <section class="competitor-banner">
     <div class="container">
-      <p class="competitor-banner-text">Your competitor is capturing your clients online. <strong>Let's lock down your category.</strong></p>
+      <p class="competitor-banner-text">Your competitor is capturing your clients online. <strong>Let's lock down your category in the UAE.</strong></p>
     </div>
   </section>
 
@@ -95,7 +95,7 @@
       <div class="facts-heroes-row">
         <div class="fact-hero-block fact-hero-dark">
           <div class="fact-hero-num">81<span class="fact-hero-pct">%</span></div>
-          <div class="fact-hero-label">Of customers research online before buying or visiting a business.</div>
+          <div class="fact-hero-label">Of UAE customers research online before buying or visiting a business.</div>
           <div class="fact-hero-desc">If they can't find you, they will find your competitor. It's that simple.</div>
         </div>
         <div class="fact-hero-block fact-hero-light">
@@ -119,35 +119,7 @@
         <div class="facts-stat-divider"></div>
         <div class="facts-stat-block">
           <div class="facts-stat-num">2x</div>
-          <div class="facts-stat-text">Faster growth for businesses with a strong professional online presence</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- HOW IT WORKS SECTION -->
-  <section class="section-pad" style="background: var(--surface); border-bottom: 1px solid var(--border);">
-    <div class="container">
-      <div class="section-header centered reveal">
-        <div class="section-label">Process</div>
-        <h2 class="section-title">What working with us looks like</h2>
-        <p class="section-sub">A simple, transparent process to establish your category dominance online.</p>
-      </div>
-      <div class="steps-grid">
-        <div class="step reveal">
-          <div class="step-num">STEP 01</div>
-          <h3>Discovery Call — 30 minutes</h3>
-          <p>A quick call where we get to know your business, answer your questions, and figure out exactly what you need.</p>
-        </div>
-        <div class="step reveal" style="transition-delay:0.1s;">
-          <div class="step-num">STEP 02</div>
-          <h3>Launch-Ready Brand Demo — 5 Days</h3>
-          <p>You fill out a short form. We take it from there and design your category-leading online presence.</p>
-        </div>
-        <div class="step reveal" style="transition-delay:0.2s;">
-          <div class="step-num">STEP 03</div>
-          <h3>Activation Call — 30 minutes</h3>
-          <p>We walk you through your high-converting online presence and activate it to start capturing leads instantly.</p>
+          <div class="facts-stat-text">Faster growth for UAE businesses with a strong professional online presence</div>
         </div>
       </div>
     </div>
@@ -157,147 +129,131 @@
   <section class="free-demo-section reveal">
     <div class="container">
       <div class="free-demo-inner">
-        <div class="free-demo-badge">See It Before You Pay It</div>
+        <div class="free-demo-badge" style="border: 1px solid var(--red); color: var(--red);">See It Before You Pay It</div>
         <h2 class="free-demo-headline">See a free demo of your actual website live in 5 days.</h2>
         <p class="free-demo-sub">We build your actual website first, completely free, and show it to you on a call. Only if you love the finished product do we launch it and move forward. If you don't, you walk away and owe us nothing.</p>
         <div class="free-demo-steps">
           <div class="free-demo-step">
-            <div class="free-demo-step-icon">${g.phone}</div>
+            <div class="free-demo-step-icon">${u.phone}</div>
             <div>
               <div class="free-demo-step-title">30-Minute Strategy Call</div>
-              <div class="free-demo-step-desc">We map out your business positioning, category keywords, and how we will capture clients already looking for you.</div>
+              <div class="free-demo-step-desc">We map out your business positioning, category keywords, and how we will capture UAE clients already looking for you.</div>
             </div>
           </div>
           <div class="free-demo-step">
-            <div class="free-demo-step-icon">${g.zap}</div>
+            <div class="free-demo-step-icon">${u.zap}</div>
             <div>
-              <div class="free-demo-step-title">We Build Your Online Presence — 5 Days</div>
-              <div class="free-demo-step-desc">Fill out a short form. We handle everything else — copywriting, layouts, graphics, and search setup.</div>
+              <div class="free-demo-step-title">5-Day Demo Build</div>
+              <div class="free-demo-step-desc">Fill out a short form. We handle everything: copywriting, layouts, graphics, and search setup.</div>
             </div>
           </div>
           <div class="free-demo-step">
-            <div class="free-demo-step-icon">${g.rocket}</div>
+            <div class="free-demo-step-icon">${u.rocket}</div>
             <div>
-              <div class="free-demo-step-title">Activate Only If You Love The Outcome</div>
+              <div class="free-demo-step-title">Activate Only If You Love It</div>
               <div class="free-demo-step-desc">We walk you through your high-converting brand system. Love it? We launch it and you pay. Not happy? You walk away and owe us zero.</div>
             </div>
           </div>
         </div>
-        <a href="/booking" class="btn btn-dark btn-large free-demo-cta" data-link="booking" id="home-free-demo-cta">Get Your Free Demo ${g.arrow}</a>
+        <a href="/booking" class="btn btn-primary btn-large btn-pulse free-demo-cta" data-link="booking" id="home-free-demo-cta">Get Your Free Demo ${u.arrow}</a>
         <p class="free-demo-note">Your total time investment: under one hour. We handle everything.</p>
       </div>
     </div>
   </section>
 
-  <!-- WHY ATLANTIC BEAR SECTION -->
+  <!-- THE MARKET LEADER SYSTEM SECTION -->
+  <section class="section-pad" style="background: var(--surface); border-bottom: 1px solid var(--border);">
+    <div class="container">
+      <div class="section-header centered reveal">
+        <div class="section-label">The Complete System</div>
+        <h2 class="section-title">The Market Leader System</h2>
+        <p class="section-sub">Four core pillars engineered to give your business a dominant online presence in the UAE.</p>
+      </div>
+
+      <div class="basic-system-grid">
+        
+        <div class="basic-system-card reveal">
+          <span class="basic-card-num">01</span>
+          <h3>Custom Website</h3>
+          <p>A high-converting, professional website built specifically for your brand. Mobile-first design, fast performance, and a strategic layout built to turn local UAE visitors into high-value clients.</p>
+        </div>
+
+        <div class="basic-system-card reveal" style="transition-delay:0.08s;">
+          <span class="basic-card-num">02</span>
+          <h3>Site SEO</h3>
+          <p>Complete local search optimization for Dubai and the UAE. We position your business at the top of Google Search and Google Maps so customers find you when searching for your services.</p>
+        </div>
+
+        <div class="basic-system-card reveal" style="transition-delay:0.12s;">
+          <span class="basic-card-num">03</span>
+          <h3>Monthly Content Changes</h3>
+          <p>Ongoing design and copy updates whenever your business expands. We handle text, photo, pricing, or service edits on demand so your platform remains ahead of competitors.</p>
+        </div>
+
+        <div class="basic-system-card reveal" style="transition-delay:0.16s;">
+          <span class="basic-card-num">04</span>
+          <h3>Managed Hosting</h3>
+          <p>Enterprise-grade cloud hosting, SSL encryption, continuous uptime monitoring, and daily backups. Your digital infrastructure is fully managed so your website runs smoothly 24/7.</p>
+        </div>
+
+      </div>
+
+      <div class="reveal" style="text-align: center; margin-top: 48px;">
+        <a href="/booking" class="btn btn-primary btn-large btn-pulse" data-link="booking">
+          Get Started with Market Leader ${u.arrow}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY ATLANTIC BEAR SECTION (PLACED UNDER MARKET LEADER SYSTEM) -->
   <section class="section-pad">
     <div class="container">
       <div class="section-header reveal">
         <div class="section-label">Why Us</div>
         <h2 class="section-title">Why Atlantic Bear</h2>
-        <p class="section-sub">We don't just build websites. We build the online presence your business is missing.</p>
+        <p class="section-sub">We don't just build websites. We build the online presence your UAE business is missing.</p>
       </div>
       <div class="feature-grid">
         <div class="feature-item reveal">
-          <div class="feature-icon-wrap">${g.globe}</div>
+          <div class="feature-icon-wrap">${u.globe}</div>
           <h3>Capture clients already looking for you</h3>
-          <p>People hear about you through word of mouth, Instagram, Google Maps. They search your name, find nothing — and quietly choose your competitor. We stop that.</p>
+          <p>People hear about you through word of mouth, Instagram, and Google Maps in the UAE. They search your name, find nothing, and quietly choose your competitor. We stop that.</p>
         </div>
         <div class="feature-item reveal">
-          <div class="feature-icon-wrap">${g.star}</div>
+          <div class="feature-icon-wrap">${u.star}</div>
           <h3>Look like the biggest player in your category</h3>
           <p>A business running off WhatsApp and Instagram looks small. Your website makes you look like a 50-person company, even if you're 3 people.</p>
         </div>
         <div class="feature-item reveal">
-          <div class="feature-icon-wrap">${g.shield}</div>
-          <h3>Own your online presence — stop renting it</h3>
+          <div class="feature-icon-wrap">${u.shield}</div>
+          <h3>Own your online presence (stop renting it)</h3>
           <p>Instagram can shadowban you. The algorithm can bury you. Meta can suspend your account overnight. Your website is the one asset you actually control.</p>
         </div>
         <div class="feature-item reveal">
-          <div class="feature-icon-wrap">${g.phone}</div>
+          <div class="feature-icon-wrap">${u.phone}</div>
           <h3>Every screen, every device, every time</h3>
-          <p>87% of your customers visit on their phone. Your site looks flawless on every screen — mobile, tablet, desktop. No pinching, no broken layouts.</p>
+          <p>87% of your customers visit on their phone. Your site looks flawless on every screen: mobile, tablet, desktop. No pinching, no broken layouts.</p>
         </div>
         <div class="feature-item reveal">
-          <div class="feature-icon-wrap">${g.rocket}</div>
+          <div class="feature-icon-wrap">${u.rocket}</div>
           <h3>No contracts, no lock-in</h3>
           <p>If we do good work, you stay. We don't need a contract to make that happen. Cancel anytime, we hand over everything within 48 hours.</p>
         </div>
         <div class="feature-item reveal" style="display:flex; flex-direction:column; justify-content:center; background:var(--surface);">
           <h3 style="font-size:1.1rem; margin-bottom:8px;">Your total effort: under one hour</h3>
-          <p style="margin-bottom:16px; font-size:0.82rem; color:var(--text-muted);">One 30-minute discovery call. One short form. One 30-minute demo call. That's it. We handle the design, the copy, the hosting, the domain — everything.</p>
-          <a href="/booking" class="btn btn-dark btn-sm" data-link="booking" style="align-self:flex-start;">Book a Call ${g.arrow}</a>
+          <p style="margin-bottom:16px; font-size:0.82rem; color:var(--text-muted);">One 30-minute discovery call. One short form. One 30-minute demo call. That's it. We handle design, copy, hosting, domain, and launch.</p>
+          <a href="/booking" class="btn btn-primary btn-sm" data-link="booking" style="align-self:flex-start;">Book a Call ${u.arrow}</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- THE PROBLEM SECTION -->
-  <section class="problem-section" style="border-bottom: 1px solid var(--border);">
-    <div class="container">
-      <h2 class="problem-headline reveal">
-        Every day without a website is a customer you <span class="text-red">didn't know you lost</span>.
-      </h2>
-      <div class="problem-grid">
-        <div class="problem-card reveal">
-          <h3>They searched. They didn't find you.</h3>
-          <p>
-            Most people look up a business online before they visit or call. If nothing comes up, or what comes up looks bad, they move on. Simple as that.
-          </p>
-        </div>
-        <div class="problem-card reveal" style="transition-delay:0.1s;">
-          <h3>Your competitor got the client. Not you.</h3>
-          <p>
-            When two similar businesses show up online and one has a clean professional website, the choice is obvious. Customers always go with whoever looks more trustworthy.
-          </p>
-        </div>
-        <div class="problem-card reveal" style="transition-delay:0.2s;">
-          <h3>You don't have time to deal with this.</h3>
-          <p>
-            You're running a business. Building a website, figuring out hosting, dealing with technical problems, that's not why you got into this. It shouldn't be your problem.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TOOLS WE USE SECTION -->
-  <section class="tools-section">
-    <div class="container">
-      <div class="tools-header">
-        <h2>The Tech Behind the Speed</h2>
-        <p>We build using cutting-edge tools to deliver beautiful, fast user experiences backed by clean code.</p>
-      </div>
-      
-      <!-- Stitch Row -->
-      <div class="tool-showcase-row">
-        <div class="tool-text-content">
-          <h3>Stitch</h3>
-          <p>We use Stitch to design the website layout and user interface from scratch — guaranteeing a bespoke, modern aesthetic designed specifically for your brand before any code is written.</p>
-        </div>
-        <div class="tool-large-img-wrap">
-          <img class="tool-large-img" src="/screenshots/stitch.png" alt="Stitch Interface" width="800" height="500" loading="lazy" />
-        </div>
-      </div>
-      
-      <!-- Antigravity Row -->
-      <div class="tool-showcase-row alt">
-        <div class="tool-large-img-wrap">
-          <img class="tool-large-img" src="/screenshots/antigravity.png" alt="Antigravity IDE" width="800" height="500" loading="lazy" />
-        </div>
-        <div class="tool-text-content">
-          <h3>Google Antigravity</h3>
-          <p>We use Google Antigravity to write and optimize clean, production-ready code — so your website loads instantly, operates securely, and works perfectly on every device.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TIER TEASERS SECTION -->
+  <!-- TIER TEASERS (PACKAGES) SECTION -->
   <section class="teasers-section">
     <div class="container">
       <div class="teasers-header">
-        <h2>Capture Your Category</h2>
+        <h2>Capture Your Category in the UAE</h2>
         <p>Two plans. Both fully managed. We run your online reputation while you run your business.</p>
       </div>
       <div class="teasers-grid" style="grid-template-columns: repeat(2, 1fr); max-width: 850px; margin: 0 auto; gap: 32px;">
@@ -321,7 +277,7 @@
             <span class="teaser-pill">1 Update / Mo</span>
           </div>
           <a href="/pricing" class="teaser-btn teaser-btn-dark" data-link="pricing" id="home-managed-teaser-cta">
-            Explore Launch Plan ${g.arrow}
+            Explore Launch Plan ${u.arrow}
           </a>
         </div>
 
@@ -344,7 +300,7 @@
             <span class="teaser-pill">3 Updates / Mo</span>
           </div>
           <a href="/pricing" class="teaser-btn teaser-btn-outline" data-link="pricing" id="home-growth-teaser-cta">
-            Explore Growth Plan ${g.arrow}
+            Explore Growth Plan ${u.arrow}
           </a>
         </div>
 
@@ -352,7 +308,74 @@
 
     </div>
   </section>
+
+  <!-- META ADS HOMEPAGE BOTTOM TEASER SECTION -->
+  <section class="section-pad-sm" style="border-top: 1px solid var(--border); margin-top: 80px; background: #080b12; padding: 64px 0;">
+    <div class="container">
+      <div class="meta-ads-teaser-box reveal" style="margin-top: 0;">
+        <div class="meta-ads-teaser-content">
+          <span class="meta-ads-price-tag" style="background: rgba(235,92,92,0.2); color: #EB5C5C; font-weight: 800; font-size: 0.82rem; padding: 4px 12px; border-radius: 999px; display: inline-block; margin-bottom: 10px; border: 1px solid rgba(235,92,92,0.4);">AED 2,500 / mo retainer</span>
+          <h3>Looking for Direct Leads? We Also Run Meta Ads.</h3>
+          <p>Turn Facebook & Instagram into a direct acquisition channel for your UAE small business with targeted ad campaigns and direct WhatsApp lead capture.</p>
+        </div>
+        <a href="/meta-ads" class="btn btn-primary btn-large btn-pulse" data-link="meta-ads" style="white-space: nowrap;">
+          Explore Meta Ads ${u.arrow}
+        </a>
+      </div>
+    </div>
+  </section>
   `}function oe(){return`
+  <div class="page-header" style="border-bottom:1px solid var(--border); padding-bottom: 40px;">
+    <div class="container">
+      <div class="booking-page-badge" style="background: rgba(235,92,92,0.1); color: #EB5C5C; border: 1px solid rgba(235,92,92,0.25); display: inline-block; margin-bottom: 16px;">
+        Client Acquisition Engine
+      </div>
+      <h1 style="color: #000;">Meta Ads for UAE Small Businesses</h1>
+      <p style="color: rgba(0,0,0,0.7); max-width: 640px; margin: 12px auto 0; font-size: 1.05rem; line-height: 1.6;">
+        Drive local, qualified client leads straight to your WhatsApp and inbox with targeted Facebook & Instagram ad campaigns engineered specifically for small businesses in the UAE.
+      </p>
+    </div>
+  </div>
+
+  <section class="section-pad">
+    <div class="container">
+      <div style="background: var(--surface); border: 2px solid var(--border-mid); border-radius: var(--r-lg); padding: 40px; text-align: center; max-width: 680px; margin: 0 auto 56px;">
+        <div style="font-size: 2.8rem; font-weight: 900; color: #000; letter-spacing: -0.04em;">AED 2,500 <span style="font-size: 1.1rem; font-weight: 500; color: rgba(0,0,0,0.6);">/ month</span></div>
+        <div style="font-size: 0.9rem; color: rgba(0,0,0,0.6); font-weight: 600; margin: 6px 0 24px;">Simple Monthly Retainer · Managed Campaign Optimization</div>
+        <a href="/booking" class="btn btn-primary btn-large btn-pulse" data-link="booking">
+          Book Strategy Call ${u.arrow}
+        </a>
+      </div>
+
+      <div class="feature-grid" style="grid-template-columns: repeat(2, 1fr); max-width: 900px; margin: 0 auto;">
+        <div class="feature-item reveal" style="border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+          <div class="feature-icon-wrap" style="color: #EB5C5C; background: rgba(235,92,92,0.1);">${u.zap}</div>
+          <h3 style="color: #000; font-size: 1.05rem;">Local UAE Targeting</h3>
+          <p>We target active customers in Dubai, Abu Dhabi, or specific UAE locations who need your services immediately.</p>
+        </div>
+
+        <div class="feature-item reveal" style="border-right: none; border-bottom: 1px solid var(--border);">
+          <div class="feature-icon-wrap" style="color: #EB5C5C; background: rgba(235,92,92,0.1);">${u.star}</div>
+          <h3 style="color: #000; font-size: 1.05rem;">Ad Copy & Creatives</h3>
+          <p>We craft high-converting video and image ad creative designed to stop scrolling on Instagram & Facebook feeds.</p>
+        </div>
+
+        <div class="feature-item reveal" style="border-right: 1px solid var(--border); border-bottom: none;">
+          <div class="feature-icon-wrap" style="color: #EB5C5C; background: rgba(235,92,92,0.1);">${u.phone}</div>
+          <h3 style="color: #000; font-size: 1.05rem;">Direct WhatsApp & Form Leads</h3>
+          <p>Leads land straight on your phone or email so you can reply and convert clients without delay.</p>
+        </div>
+
+        <div class="feature-item reveal" style="border-right: none; border-bottom: none;">
+          <div class="feature-icon-wrap" style="color: #EB5C5C; background: rgba(235,92,92,0.1);">${u.rocket}</div>
+          <h3 style="color: #000; font-size: 1.05rem;">Continuous Management</h3>
+          <p>We monitor ad performance daily, optimize budget allocation, and provide clear reports so you track your ROI.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  `}function ne(){return`
   <!-- PAGE HEADER -->
   <div class="page-header" style="border-bottom:1px solid var(--border); padding-bottom: 32px;">
     <div class="container">
@@ -453,7 +476,7 @@
               <div class="val-comp-row"><span class="val-comp-label">Total Build Value:</span><span class="val-comp-value">AED 8,500+</span></div>
               <div class="val-comp-row main"><span class="val-comp-label">Your Setup Cost:</span><span class="val-comp-value-price">AED 3,500</span></div>
             </div>
-            <a href="javascript:void(0)" class="btn btn-dark btn-block btn-large">Book Call to See Your Demo</a>
+            <a href="/booking" data-link="booking" class="btn btn-primary btn-pulse btn-block btn-large">Book Call to See Your Demo</a>
             
             <div class="paypal-buy-wrapper">
               <span class="paypal-or-divider">— OR BUY IMMEDIATELY —</span>
@@ -545,7 +568,7 @@
               <div class="val-comp-row"><span class="val-comp-label">Total Package Value:</span><span class="val-comp-value">AED 15,000+</span></div>
               <div class="val-comp-row main"><span class="val-comp-label">Your Setup Cost:</span><span class="val-comp-value-price">AED 6,500</span></div>
             </div>
-            <a href="javascript:void(0)" class="btn btn-dark btn-block btn-large">Book Call to See Your Demo</a>
+            <a href="/booking" data-link="booking" class="btn btn-primary btn-pulse btn-block btn-large">Book Call to See Your Demo</a>
             
             <div class="paypal-buy-wrapper">
               <span class="paypal-or-divider">— OR BUY IMMEDIATELY —</span>
@@ -619,7 +642,7 @@
       </div>
     </div>
   </section>
-  `}function ne(){return`
+  `}function re(){return`
   <div class="page-header" style="border-bottom:1px solid var(--border);">
     <div class="container">
       <div class="section-label">Portfolio</div>
@@ -633,7 +656,7 @@
       <p>Tell us about your business and what you need.</p>
       <div class="cta-ctas">
         <a href="/booking" class="btn btn-dark btn-large" data-link="booking" id="work-cta">
-          Book a Call ${g.arrow}
+          Book a Call ${u.arrow}
         </a>
       </div>
     </div>
@@ -662,7 +685,7 @@
             <span class="tm-dot"></span><span class="tm-dot"></span><span class="tm-dot"></span>
             <div class="tm-url">sondertraininggroup.com</div>
           </div>
-          <img src="/screenshots/sonder-old.png" alt="Client website — before" loading="lazy" class="tm-screenshot" width="1024" height="576" />
+          <img src="/screenshots/sonder-old.png" alt="Client website: before" loading="lazy" class="tm-screenshot" width="1024" height="576" />
         </div>
       </div>
 
@@ -674,7 +697,7 @@
             <span class="tm-dot"></span><span class="tm-dot"></span><span class="tm-dot"></span>
             <div class="tm-url">sondertraininggroup.com</div>
           </div>
-          <img src="/screenshots/sonder-new.png" alt="Client website — after, built by Atlantic Bear" loading="lazy" class="tm-screenshot" width="1024" height="609" />
+          <img src="/screenshots/sonder-new.png" alt="Client website: after, built by Atlantic Bear" loading="lazy" class="tm-screenshot" width="1024" height="609" />
         </div>
       </div>
 
@@ -710,15 +733,15 @@
       <h2>Want results like this?</h2>
       <p>Tell us about your business and let's get started.</p>
       <div class="cta-ctas">
-        <a href="/booking" class="btn btn-dark btn-large" data-link="booking" id="testimonials-cta">
-          Book a Call ${g.arrow}
+        <a href="/booking" class="btn btn-primary btn-pulse btn-large" data-link="booking" id="testimonials-cta">
+          Book a Call ${u.arrow}
         </a>
         <a href="/pricing" class="btn btn-secondary btn-large" data-link="pricing" id="testimonials-plans-cta">
           View Plans
         </a>
       </div>
     </div>
-  </section>`}function re(){return`
+  </section>`}function ce(){return`
   <div class="page-header" style="border-bottom:1px solid var(--border); text-align:left; padding-bottom:0;">
     <div class="container">
       <div class="section-pad">
@@ -729,8 +752,8 @@
             <p>Tell us about your business or just ask anything. We respond fast, usually within a few hours.</p>
             <div class="contact-methods">
               <a href="mailto:officialatlanticbear@gmail.com" class="contact-method">
-                <div class="contact-method-icon">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${g.mail}</svg>
+                <div class="contact-method-icon" style="background:rgba(59,105,255,0.08); color:var(--blue);">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${u.mail}</svg>
                 </div>
                 <div>
                   <div class="contact-method-label">Email</div>
@@ -739,7 +762,7 @@
               </a>
               <a href="https://www.instagram.com/officialatlanticbear/" target="_blank" class="contact-method">
                 <div class="contact-method-icon" style="background:rgba(59,105,255,0.08); color:var(--blue);">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${g.instagram}</svg>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${u.instagram}</svg>
                 </div>
                 <div>
                   <div class="contact-method-label">Instagram</div>
@@ -747,8 +770,8 @@
                 </div>
               </a>
               <div class="contact-method">
-                <div class="contact-method-icon">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${g.map}</svg>
+                <div class="contact-method-icon" style="background:rgba(59,105,255,0.08); color:var(--blue);">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${u.map}</svg>
                 </div>
                 <div>
                   <div class="contact-method-label">Location</div>
@@ -758,7 +781,7 @@
             </div>
           </div>
 
-          <div class="contact-form-card reveal" style="transition-delay:0.1s;">
+          <div class="contact-form-card reveal" style="transition-delay:0.1s; border-top: 3px solid var(--blue);">
             <h3>Send us a message</h3>
             <p>We'll get back to you within a few hours.</p>
             
@@ -783,15 +806,15 @@
               </select>
               <textarea class="form-input form-textarea" id="form-message" name="message" placeholder="Tell us about your business and what you need..." required data-fs-field></textarea>
               <span data-fs-error="message" class="fs-field-error"></span>
-              <button type="submit" class="btn btn-dark btn-block btn-large" id="form-submit-btn" data-fs-submit-btn>
-                Send message ${g.arrow}
+              <button type="submit" class="btn btn-primary btn-block btn-large btn-pulse" id="form-submit-btn" data-fs-submit-btn>
+                Send message ${u.arrow}
               </button>
             </form>
           </div>
         </div>
       </div>
     </div>
-  </div>`}function ce(){return`
+  </div>`}function de(){return`
   <div class="funnel-page">
     <!-- Urgency Top Bar — logo left, pill centred -->
     <div class="funnel-urgency-bar">
@@ -970,7 +993,7 @@
       </div>
     </div>
   </div>
-  `}function de(){return`
+  `}function pe(){return`
   <!-- HEADER -->
   <div class="page-header booking-page-header">
     <div class="container">
@@ -1090,14 +1113,14 @@
       </div>
     </div>
   </section>
-  `}const X={home:ie,pricing:oe,work:ne,contact:re,testimonials:le,booking:ce,"booking-new":de},G={home:{title:"Atlantic Bear | Custom Website Design Agency in the UAE",desc:"Atlantic Bear is a leading website agency in the UAE. We build custom, premium websites for businesses. Get a free demo of your website before you pay anything."},pricing:{title:"More Clients Starts Here | Atlantic Bear Pricing",desc:"Transparent pricing for fully-managed brand positioning and high-conversion client acquisition platforms in the UAE. See your online presence live in 5 days, see it finished before you pay anything."},work:{title:"Our Work | Atlantic Bear Portfolio",desc:"Explore custom websites designed and developed for UAE businesses. Professional layouts, mobile optimization, and fast load times."},contact:{title:"Contact Atlantic Bear | Start Your UAE Website Project",desc:"Get in touch with Atlantic Bear. Let's discuss your business website needs. Fast response and custom layouts in Dubai & UAE."},testimonials:{title:"Client Testimonials & Transformations | Atlantic Bear",desc:"See real website transformations by Atlantic Bear. Before and after case studies showing how we help businesses across the UAE look professional online."},booking:{title:"Book a Call | Atlantic Bear Discovery Session",desc:"Watch our video, schedule your free 30-minute discovery call, and view our client success stories. Start your UAE website project today."},"booking-new":{title:"Book a Call (New Flow) | Atlantic Bear Discovery Session",desc:"Watch our video, tell us about yourself, and schedule your free 30-minute discovery call. Start your UAE website project today."}};function ue(t){const e=G[t]||G.home;document.title=e.title;let a=document.querySelector('meta[name="description"]');a||(a=document.createElement("meta"),a.setAttribute("name","description"),document.head.appendChild(a)),a.setAttribute("content",e.desc);let s=document.querySelector('link[rel="canonical"]');s||(s=document.createElement("link"),s.setAttribute("rel","canonical"),document.head.appendChild(s));const o=`${window.location.origin}${t==="home"?"":"/"+t}`;s.setAttribute("href",o);const n={"og:title":e.title,"og:description":e.desc,"og:url":o,"og:type":"website","og:image":`${window.location.origin}/logo.png`};for(const[f,h]of Object.entries(n)){let m=document.querySelector(`meta[property="${f}"]`);m||(m=document.createElement("meta"),m.setAttribute("property",f),document.head.appendChild(m)),m.setAttribute("content",h)}const v={"twitter:card":"summary_large_image","twitter:title":e.title,"twitter:description":e.desc,"twitter:image":`${window.location.origin}/logo.png`};for(const[f,h]of Object.entries(v)){let m=document.querySelector(`meta[name="${f}"]`);m||(m=document.createElement("meta"),m.setAttribute("name",f),document.head.appendChild(m)),m.setAttribute("content",h)}}function H(t){const e=t.replace(/^\/|\/$/g,"");return e==="pricing"||e==="work"||e==="contact"||e==="testimonials"||e==="booking"||e==="booking-new"?e:"home"}function pe(t){z("#main-nav [data-link]").forEach(a=>a.classList.remove("active"));const e=V(`#main-nav [data-link="${t}"].nav-link`);e&&e.classList.add("active")}function ve(){const t=z(".reveal"),e=new IntersectionObserver(a=>{a.forEach(s=>{s.isIntersecting&&(s.target.classList.add("revealed"),e.unobserve(s.target))})},{threshold:.07,rootMargin:"0px 0px -30px 0px"});t.forEach(a=>e.observe(a))}function me(){const t=document.getElementById("contact-form");if(!t)return;const e=document.createElement("script");e.src="https://unpkg.com/@formspree/ajax@1",e.defer=!0,document.head.appendChild(e),e.onload=()=>{window.formspree&&window.formspree("initForm",{formElement:"#contact-form",formId:"mykanvrr"})},t.addEventListener("submit",async a=>{a.preventDefault();const s=document.getElementById("form-submit-btn"),o=document.querySelector("[data-fs-success]"),n=document.querySelector('[data-fs-error]:not([data-fs-error="name"]):not([data-fs-error="email"]):not([data-fs-error="message"])');s&&(s.disabled=!0,s.textContent="Sending...");try{const v=new FormData(t);if((await fetch("https://formspree.io/f/mykanvrr",{method:"POST",body:v,headers:{Accept:"application/json"}})).ok)t.style.display="none",o&&(o.style.display="block",o.style.textAlign="center",o.style.padding="18px",o.style.background="rgba(62,207,142,.07)",o.style.borderRadius="10px",o.style.border="1px solid rgba(62,207,142,.20)");else throw new Error("Server error")}catch{n&&(n.textContent="Something went wrong. Please try again or email officialatlanticbear@gmail.com.",n.style.color="var(--red)",n.style.fontSize="0.85rem",n.style.marginTop="8px"),s&&(s.disabled=!1,s.textContent="Try again")}})}function Z(t){window.getComputedStyle(t).position==="static"&&(t.style.position="relative");const a=document.createElement("div");a.className="calendly-spinner-wrap",a.style.display="flex",a.style.justifyContent="center",a.style.alignItems="center",a.style.position="absolute",a.style.top="50%",a.style.left="50%",a.style.transform="translate(-50%, -50%)",a.style.pointerEvents="none",a.style.zIndex="1",a.innerHTML=`
+  `}const X={home:ie,pricing:ne,work:re,contact:ce,testimonials:le,booking:de,"booking-new":pe,"meta-ads":oe},G={home:{title:"Atlantic Bear | Custom Website Design Agency in the UAE",desc:"Atlantic Bear is a leading website agency in the UAE. We build custom, premium websites for businesses. Get a free demo of your website before you pay anything."},pricing:{title:"More Clients Starts Here | Atlantic Bear Pricing",desc:"Transparent pricing for fully-managed brand positioning and high-conversion client acquisition platforms in the UAE. See your online presence live in 5 days, see it finished before you pay anything."},work:{title:"Our Work | Atlantic Bear Portfolio",desc:"Explore custom websites designed and developed for UAE businesses. Professional layouts, mobile optimization, and fast load times."},contact:{title:"Contact Atlantic Bear | Start Your UAE Website Project",desc:"Get in touch with Atlantic Bear. Let's discuss your business website needs. Fast response and custom layouts in Dubai & UAE."},testimonials:{title:"Client Testimonials & Transformations | Atlantic Bear",desc:"See real website transformations by Atlantic Bear. Before and after case studies showing how we help businesses across the UAE look professional online."},booking:{title:"Book a Call | Atlantic Bear Discovery Session",desc:"Watch our video, schedule your free 30-minute discovery call, and view our client success stories. Start your UAE website project today."},"booking-new":{title:"Book a Call (New Flow) | Atlantic Bear Discovery Session",desc:"Watch our video, tell us about yourself, and schedule your free 30-minute discovery call. Start your UAE website project today."},"meta-ads":{title:"Meta Ads for UAE Small Businesses | Atlantic Bear",desc:"Drive local client leads via Facebook & Instagram ads for small businesses in the UAE. AED 2,500/mo retainer."}};function ue(t){const e=G[t]||G.home;document.title=e.title;let a=document.querySelector('meta[name="description"]');a||(a=document.createElement("meta"),a.setAttribute("name","description"),document.head.appendChild(a)),a.setAttribute("content",e.desc);let s=document.querySelector('link[rel="canonical"]');s||(s=document.createElement("link"),s.setAttribute("rel","canonical"),document.head.appendChild(s));const o=`${window.location.origin}${t==="home"?"":"/"+t}`;s.setAttribute("href",o);const n={"og:title":e.title,"og:description":e.desc,"og:url":o,"og:type":"website","og:image":`${window.location.origin}/logo.png`};for(const[f,h]of Object.entries(n)){let g=document.querySelector(`meta[property="${f}"]`);g||(g=document.createElement("meta"),g.setAttribute("property",f),document.head.appendChild(g)),g.setAttribute("content",h)}const m={"twitter:card":"summary_large_image","twitter:title":e.title,"twitter:description":e.desc,"twitter:image":`${window.location.origin}/logo.png`};for(const[f,h]of Object.entries(m)){let g=document.querySelector(`meta[name="${f}"]`);g||(g=document.createElement("meta"),g.setAttribute("name",f),document.head.appendChild(g)),g.setAttribute("content",h)}}function j(t){const e=t.replace(/^\/|\/$/g,"");return e==="pricing"||e==="work"||e==="contact"||e==="testimonials"||e==="booking"||e==="booking-new"||e==="meta-ads"?e:"home"}function ve(t){H("#main-nav [data-link]").forEach(a=>a.classList.remove("active"));const e=z(`#main-nav [data-link="${t}"].nav-link`);e&&e.classList.add("active")}function me(){const t=H(".reveal"),e=new IntersectionObserver(a=>{a.forEach(s=>{s.isIntersecting&&(s.target.classList.add("revealed"),e.unobserve(s.target))})},{threshold:.07,rootMargin:"0px 0px -30px 0px"});t.forEach(a=>e.observe(a))}function ge(){const t=document.getElementById("contact-form");if(!t)return;const e=document.createElement("script");e.src="https://unpkg.com/@formspree/ajax@1",e.defer=!0,document.head.appendChild(e),e.onload=()=>{window.formspree&&window.formspree("initForm",{formElement:"#contact-form",formId:"mykanvrr"})},t.addEventListener("submit",async a=>{a.preventDefault();const s=document.getElementById("form-submit-btn"),o=document.querySelector("[data-fs-success]"),n=document.querySelector('[data-fs-error]:not([data-fs-error="name"]):not([data-fs-error="email"]):not([data-fs-error="message"])');s&&(s.disabled=!0,s.textContent="Sending...");try{const m=new FormData(t);if((await fetch("https://formspree.io/f/mykanvrr",{method:"POST",body:m,headers:{Accept:"application/json"}})).ok)t.style.display="none",o&&(o.style.display="block",o.style.textAlign="center",o.style.padding="18px",o.style.background="rgba(62,207,142,.07)",o.style.borderRadius="10px",o.style.border="1px solid rgba(62,207,142,.20)");else throw new Error("Server error")}catch{n&&(n.textContent="Something went wrong. Please try again or email officialatlanticbear@gmail.com.",n.style.color="var(--red)",n.style.fontSize="0.85rem",n.style.marginTop="8px"),s&&(s.disabled=!1,s.textContent="Try again")}})}function Z(t){window.getComputedStyle(t).position==="static"&&(t.style.position="relative");const a=document.createElement("div");a.className="calendly-spinner-wrap",a.style.display="flex",a.style.justifyContent="center",a.style.alignItems="center",a.style.position="absolute",a.style.top="50%",a.style.left="50%",a.style.transform="translate(-50%, -50%)",a.style.pointerEvents="none",a.style.zIndex="1",a.innerHTML=`
     <div style="width: 40px; height: 40px; border: 4px solid rgba(59,105,255,0.1); border-left-color: var(--accent, #3b69ff); border-radius: 50%; animation: calendly-spin 1s linear infinite;"></div>
     <style>
       @keyframes calendly-spin {
         to { transform: rotate(360deg); }
       }
     </style>
-  `,t.appendChild(a);const s=new MutationObserver(()=>{const o=t.querySelector("iframe");o&&(o.style.position="relative",o.style.zIndex="2",o.onload=()=>{a.remove()},setTimeout(()=>{a.remove()},2500),s.disconnect())});s.observe(t,{childList:!0})}function fe(){document.querySelectorAll(".custom-testimonial-video-wrap").forEach(e=>{const a=e.querySelector(".testimonial-video-overlay"),s=e.querySelector("video");a&&s&&a.addEventListener("click",o=>{o.stopPropagation(),s.muted=!1,s.currentTime=0,s.controls=!0,a.style.display="none",s.play().catch(n=>{console.error("Play failed:",n)})})})}function ge(){const t=document.querySelector(".calendly-inline-widget");if(!t)return;const e=()=>{t.innerHTML="",Z(t),window.Calendly.initInlineWidget({url:"https://calendly.com/officialatlanticbear/demo-call?hide_gdpr_banner=1&primary_color=3366ff",parentElement:t})};if(window.Calendly){e();return}const a=document.getElementById("calendly-sdk");if(a)a.addEventListener("load",e,{once:!0});else{const s=document.createElement("script");s.id="calendly-sdk",s.src="https://assets.calendly.com/assets/external/widget.js",s.async=!0,s.addEventListener("load",e,{once:!0}),document.head.appendChild(s)}}function he(t=!1){const e=document.getElementById("booking-video"),a=document.getElementById("bv-overlay"),s=document.getElementById("bv-play-btn"),o=document.getElementById("bv-controls"),n=document.getElementById("bv-playpause"),v=document.getElementById("bv-progress-fill"),f=document.getElementById("bv-progress-thumb"),h=document.getElementById("bv-progress-wrap"),m=document.getElementById("bv-time"),W=document.getElementById("bv-mute"),p=document.getElementById("bv-volume"),d=document.getElementById("bv-fullscreen"),b=document.getElementById("custom-video-wrap");if(!e||!a||!s||!o||!n)return;let T=null,k=null;const E=()=>{try{const i=window.AudioContext||window.webkitAudioContext;if(!i)return;if(!T){T=new i;const l=T.createMediaElementSource(e);k=T.createGain(),k.gain.value=2,l.connect(k),k.connect(T.destination)}T.state==="suspended"&&T.resume()}catch(i){console.warn("AudioContext boost failed:",i)}},L=e.getAttribute("data-src"),P=()=>{L&&!e.getAttribute("src")&&(e.setAttribute("src",L),e.load())};let x=!0;const F=5,Y=()=>{e.muted=!0,e.currentTime=0,e.play().catch(()=>{})};e.addEventListener("timeupdate",()=>{x&&e.currentTime>=F&&(e.currentTime=0)}),setTimeout(Y,800);const _=i=>{const l=Math.floor(i/60),u=Math.floor(i%60);return`${l}:${u.toString().padStart(2,"0")}`},y=90,B=60,$=(i,l)=>!t||l<=y?i/l*100:i<=y?i/y*B:B+(i-y)/(l-y)*(100-B),D=(i,l)=>!t||l<=y?i/100*l:i<=B?i/B*y:y+(i-B)/(100-B)*(l-y),N=()=>{if(!e.duration)return;const i=$(e.currentTime,e.duration);v&&(v.style.width=i+"%"),f&&(f.style.left=i+"%"),m&&(m.textContent=`${_(e.currentTime)} / ${_(e.duration)}`)},C=i=>{const l=n==null?void 0:n.querySelector(".icon-play"),u=n==null?void 0:n.querySelector(".icon-pause");l&&(l.style.display=i&&!x?"none":"block"),u&&(u.style.display=i&&!x?"block":"none"),a&&(a.style.display=i&&!x?"none":"flex"),b&&(i&&!x?b.classList.add("playing"):b.classList.remove("playing"))};a.addEventListener("click",()=>{if(x){x=!1,e.muted=!1;const i=e.src.split("#")[0];e.src!==i&&(e.src=i,e.load()),e.currentTime=0}P(),E(),C(!0),e.play()}),e.addEventListener("click",()=>{if(x){x=!1,e.muted=!1;const i=e.src.split("#")[0];e.src!==i&&(e.src=i,e.load()),e.currentTime=0,E(),C(!0),e.play();return}P(),E(),e.paused?e.play():e.pause()}),e.addEventListener("play",()=>C(!0)),e.addEventListener("pause",()=>C(!1)),e.addEventListener("ended",()=>C(!1)),e.addEventListener("timeupdate",N),e.addEventListener("loadedmetadata",N);let r=!1;const c={m25:!1,m50:!1,m75:!1,m100:!1},S={};if(e.addEventListener("timeupdate",()=>{const i=e.duration;if(!i)return;const l=e.currentTime,u=l/i*100;!r&&l>.5&&(r=!0,A("videoplay")),u>=25&&!c.m25&&(c.m25=!0,A("videowatch_25pct")),u>=50&&!c.m50&&(c.m50=!0,A("videowatch_50pct")),u>=75&&!c.m75&&(c.m75=!0,A("videowatch_75pct")),u>=98&&!c.m100&&(c.m100=!0,A("videowatch_complete"));const w=[10,30],M=Math.floor(l);w.forEach(O=>{M>=O&&!S[O]&&(S[O]=!0,A(`videowatch_${O}s`))})}),n.addEventListener("click",()=>{P(),E(),e.paused?e.play():e.pause()}),h){const i=u=>{const w=h.getBoundingClientRect(),M=u instanceof MouseEvent?u.clientX:u.touches[0].clientX,O=Math.max(0,Math.min(100,(M-w.left)/w.width*100));e.currentTime=D(O,e.duration),N()};let l=!1;h.addEventListener("mousedown",u=>{l=!0,i(u)}),window.addEventListener("mousemove",u=>{l&&i(u)}),window.addEventListener("mouseup",()=>{l=!1}),h.addEventListener("touchstart",u=>i(u),{passive:!0}),h.addEventListener("touchmove",u=>i(u),{passive:!0})}if(p&&p.addEventListener("input",()=>{e.volume=parseFloat(p.value),e.muted=e.volume===0}),W&&W.addEventListener("click",()=>{e.muted=!e.muted,p&&(p.value=e.muted?"0":String(e.volume||1))}),d&&b&&d.addEventListener("click",()=>{if(/iPad|iPhone|iPod/.test(navigator.userAgent)&&!window.MSStream&&e.webkitEnterFullscreen){e.webkitEnterFullscreen();return}!!(document.fullscreenElement||document.webkitFullscreenElement)?document.exitFullscreen?document.exitFullscreen():document.webkitExitFullscreen&&document.webkitExitFullscreen():b.requestFullscreen?b.requestFullscreen():b.webkitRequestFullscreen?b.webkitRequestFullscreen():e.webkitEnterFullscreen&&e.webkitEnterFullscreen()}),b){let i;const l=()=>{o.style.opacity="1",clearTimeout(i),i=window.setTimeout(()=>{e.paused||(o.style.opacity="0")},2500)};b.addEventListener("mousemove",l),b.addEventListener("mouseenter",l),b.addEventListener("mouseleave",()=>{e.paused||(o.style.opacity="0")}),e.addEventListener("play",()=>{i=window.setTimeout(()=>{o.style.opacity="0"},2500)}),e.addEventListener("pause",()=>{o.style.opacity="1",clearTimeout(i)})}}function be(){const t=document.getElementById("booking-modal"),e=document.getElementById("book-demo-btn-v2"),a=document.getElementById("booking-modal-close-btn"),s=document.getElementById("modal-step-1"),o=document.getElementById("modal-step-2"),n=document.getElementById("modal-step-3"),v=document.getElementById("modal-step-num"),f=document.getElementById("modal-step-title"),h=document.getElementById("modal-step-badge"),m=document.getElementById("modal-progress-bar"),W=document.getElementById("modal-step1-form"),p=document.getElementById("modal-input-name"),d=document.getElementById("modal-input-phone"),b=document.getElementById("modal-step1-error"),T=document.getElementById("modal-confirm-pricing-link");if(!t||!a)return;t.parentElement!==document.body&&document.body.appendChild(t);let k="",E="",L="";p&&localStorage.getItem("feather_booking_name")&&(p.value=localStorage.getItem("feather_booking_name")||""),d&&localStorage.getItem("feather_booking_phone")&&(d.value=localStorage.getItem("feather_booking_phone")||"");const P=document.getElementById("phone-flag-prefix"),x={"+971":"🇦🇪","+966":"🇸🇦","+968":"🇴🇲","+974":"🇶🇦","+973":"🇧🇭","+965":"🇰🇼","+44":"🇬🇧","+1":"🇺🇸","+91":"🇮🇳","+92":"🇵🇰","+63":"🇵🇭","+20":"🇪🇬","+27":"🇿🇦","+33":"🇫🇷","+49":"🇩🇪","+61":"🇦🇺","+62":"🇮🇩","+90":"🇹🇷","+234":"🇳🇬","+254":"🇰🇪"},F=()=>{if(!P||!d)return;const r=d.value.trim();let c="🇦🇪";for(const[S,i]of Object.entries(x))if(r.startsWith(S)){c=i;break}P.textContent=c},Y=()=>{if(!d)return;let r=d.value,c="";for(const w of Object.keys(x))if(r.startsWith(w)){c=w+" ";break}if(!c&&r.startsWith("+")){const w=r.indexOf(" ");if(w>0)c=r.substring(0,w+1);else{const M=r.match(/^\+\d+/);M&&(c=M[0]+" ")}}const i=r.substring(c.length).replace(/\D/g,"").substring(0,9);let l="";i.length>0&&(i.length<=2?l=i:i.length<=5?l=`${i.substring(0,2)} ${i.substring(2)}`:l=`${i.substring(0,2)} ${i.substring(2,5)} ${i.substring(5)}`);const u=c+l;d.value!==u&&(d.value=u)};d&&((!d.value||d.value.trim()===""||d.value.trim()==="+971")&&(d.value="+971 "),d.addEventListener("input",r=>{const c=r;if(c.inputType&&c.inputType.startsWith("delete")){F();return}Y(),F()}),F());const _=()=>{if(!k||!E)return;const r=`${k}|${E}`;if(L===r)return;L=r;const c=document.getElementById("modal-calendly-container");if(!c)return;c.innerHTML="",Z(c);const l={url:`https://calendly.com/officialatlanticbear/demo-call?hide_gdpr_banner=1&primary_color=3366ff&name=${encodeURIComponent(k)}&a1=${encodeURIComponent(E)}`,parentElement:c,prefill:{name:k,customAnswers:{a1:E}}},u=()=>window.Calendly.initInlineWidget(l);if(window.Calendly)u();else{const w=document.getElementById("calendly-sdk");w&&w.addEventListener("load",u,{once:!0})}},y=()=>{const r=(p==null?void 0:p.value.trim())||"",c=(d==null?void 0:d.value.trim())||"";r.length>=3&&c.length>=5&&(k=r,E=c,_())};p==null||p.addEventListener("input",y),d==null||d.addEventListener("input",y),y();const B=r=>{r===1?(s&&(s.style.display="block"),o&&(o.style.display="none"),n&&(n.style.display="none"),v&&(v.textContent="1"),f&&(f.textContent="Tell us about yourself"),h&&(h.style.display="inline"),m&&(m.style.width="50%")):r===2?(s&&(s.style.display="none"),o&&(o.style.display="block"),n&&(n.style.display="none"),v&&(v.textContent="2"),f&&(f.textContent="Schedule your demo call"),h&&(h.style.display="inline"),m&&(m.style.width="100%"),k=(p==null?void 0:p.value.trim())||"",E=(d==null?void 0:d.value.trim())||"",_()):r===3&&(s&&(s.style.display="none"),o&&(o.style.display="none"),n&&(n.style.display="block"),f&&(f.textContent="Call Confirmed!"),h&&(h.style.display="none"),m&&(m.style.width="100%"))},$=()=>{t.classList.add("active"),document.body.style.overflow="hidden",b&&(b.style.display="none"),L="",p&&localStorage.getItem("feather_booking_name")&&(p.value=localStorage.getItem("feather_booking_name")||""),d&&localStorage.getItem("feather_booking_phone")&&(d.value=localStorage.getItem("feather_booking_phone")||""),B(1)},D=()=>{t.classList.remove("active"),document.body.style.overflow=""},N=r=>{r&&r.preventDefault();const c=(p==null?void 0:p.value.trim())||"",S=(d==null?void 0:d.value.trim())||"";if(!c||!S){b&&(b.style.display="block");return}const i=c.split(" ").map(l=>l.charAt(0).toUpperCase()+l.slice(1)).join(" ");b&&(b.style.display="none"),k=i,E=S,localStorage.setItem("feather_booking_name",i),localStorage.setItem("feather_booking_phone",S),fetch("https://script.google.com/macros/s/AKfycbyE6OQMsiNActyf_24Emjw3AepiNzWZwGc3VZWi2RCWxM1Jg04yWZSIKfxJ8ff5Cu2-/exec",{method:"POST",mode:"no-cors",body:JSON.stringify({name:i,phone:S,source:"booking_funnel"})}).catch(l=>console.error("Google Sheet submission failed:",l)),B(2)};W&&W.addEventListener("submit",N),e&&e.addEventListener("click",$),a.addEventListener("click",D),t.addEventListener("click",r=>{r.target===t&&D()});const C=r=>{r.key==="Escape"&&t.classList.contains("active")&&D()};window.addEventListener("keydown",C),T&&T.addEventListener("click",r=>{r.preventDefault(),D(),U("pricing",!0)}),window.goToBookingStep=B,window.openBookingModal=$}function U(t,e=!0){const a=document.getElementById("booking-modal");a&&a.remove(),document.body.style.overflow="",K(),J();const s=document.getElementById("main-nav"),o=document.querySelector(".site-footer");t==="booking"?(s&&(s.style.display="none"),o&&(o.style.display="none")):(s&&(s.style.display=""),o&&(o.style.display=""));const n=V("#main-content");n.style.opacity="0",n.style.transform="translateY(8px)",setTimeout(()=>{if(window.scrollTo({top:0,behavior:"instant"}),n.innerHTML=X[t](),pe(t),n.style.transition="opacity 0.3s ease, transform 0.3s ease",requestAnimationFrame(()=>{n.style.opacity="1",n.style.transform="translateY(0)"}),ve(),t==="contact"&&me(),t==="booking"||t==="booking-new"){A("pageload",2e3),Q(),ee(),ge(),he(t==="booking");const v=document.getElementById("skip-to-booking-btn");v&&v.addEventListener("click",f=>{f.preventDefault();const h=document.getElementById("booking-calendar");h&&h.scrollIntoView({behavior:"smooth",block:"start"})}),(t==="booking-new"||t==="booking")&&be(),t==="booking"&&document.querySelectorAll(".funnel-cta-btn").forEach(f=>{f.addEventListener("click",()=>{window.openBookingModal&&window.openBookingModal()})})}if(ue(t),fe(),typeof window.fbq=="function"&&window.fbq("track","PageView"),e){const v=t==="home"?"/":`/${t}`;window.location.pathname!==v&&history.pushState(null,"",v)}},150)}function ye(t){t.addEventListener("click",e=>{const a=e.target.closest("[data-link]");if(!a||e.metaKey||e.ctrlKey||e.shiftKey||e.button!==0)return;e.preventDefault();const s=a.getAttribute("data-link");s&&X[s]&&U(s)})}function we(){const t=V("#main-nav");if(!t)return;const e=()=>{window.scrollY>20?t.classList.add("scrolled"):t.classList.remove("scrolled")};window.addEventListener("scroll",e,{passive:!0})}window.formspree=window.formspree||function(){(window.formspree.q=window.formspree.q||[]).push(arguments)};document.addEventListener("DOMContentLoaded",()=>{const t=document.getElementById("app");t.innerHTML=`
+  `,t.appendChild(a);const s=new MutationObserver(()=>{const o=t.querySelector("iframe");o&&(o.style.position="relative",o.style.zIndex="2",o.onload=()=>{a.remove()},setTimeout(()=>{a.remove()},2500),s.disconnect())});s.observe(t,{childList:!0})}function fe(){document.querySelectorAll(".custom-testimonial-video-wrap").forEach(e=>{const a=e.querySelector(".testimonial-video-overlay"),s=e.querySelector("video");a&&s&&a.addEventListener("click",o=>{o.stopPropagation(),s.muted=!1,s.currentTime=0,s.controls=!0,a.style.display="none",s.play().catch(n=>{console.error("Play failed:",n)})})})}function he(){const t=document.querySelector(".calendly-inline-widget");if(!t)return;const e=()=>{t.innerHTML="",Z(t),window.Calendly.initInlineWidget({url:"https://calendly.com/officialatlanticbear/demo-call?hide_gdpr_banner=1&primary_color=3366ff",parentElement:t})};if(window.Calendly){e();return}const a=document.getElementById("calendly-sdk");if(a)a.addEventListener("load",e,{once:!0});else{const s=document.createElement("script");s.id="calendly-sdk",s.src="https://assets.calendly.com/assets/external/widget.js",s.async=!0,s.addEventListener("load",e,{once:!0}),document.head.appendChild(s)}}function be(t=!1){const e=document.getElementById("booking-video"),a=document.getElementById("bv-overlay"),s=document.getElementById("bv-play-btn"),o=document.getElementById("bv-controls"),n=document.getElementById("bv-playpause"),m=document.getElementById("bv-progress-fill"),f=document.getElementById("bv-progress-thumb"),h=document.getElementById("bv-progress-wrap"),g=document.getElementById("bv-time"),W=document.getElementById("bv-mute"),v=document.getElementById("bv-volume"),d=document.getElementById("bv-fullscreen"),b=document.getElementById("custom-video-wrap");if(!e||!a||!s||!o||!n)return;let S=null,k=null;const E=()=>{try{const i=window.AudioContext||window.webkitAudioContext;if(!i)return;if(!S){S=new i;const r=S.createMediaElementSource(e);k=S.createGain(),k.gain.value=2,r.connect(k),k.connect(S.destination)}S.state==="suspended"&&S.resume()}catch(i){console.warn("AudioContext boost failed:",i)}},L=e.getAttribute("data-src"),M=()=>{L&&!e.getAttribute("src")&&(e.setAttribute("src",L),e.load())};let x=!0;const F=5,q=()=>{e.muted=!0,e.currentTime=0,e.play().catch(()=>{})};e.addEventListener("timeupdate",()=>{x&&e.currentTime>=F&&(e.currentTime=0)}),setTimeout(q,800);const U=i=>{const r=Math.floor(i/60),p=Math.floor(i%60);return`${r}:${p.toString().padStart(2,"0")}`},y=90,B=60,R=(i,r)=>!t||r<=y?i/r*100:i<=y?i/y*B:B+(i-y)/(r-y)*(100-B),D=(i,r)=>!t||r<=y?i/100*r:i<=B?i/B*y:y+(i-B)/(100-B)*(r-y),_=()=>{if(!e.duration)return;const i=R(e.currentTime,e.duration);m&&(m.style.width=i+"%"),f&&(f.style.left=i+"%"),g&&(g.textContent=`${U(e.currentTime)} / ${U(e.duration)}`)},T=i=>{const r=n==null?void 0:n.querySelector(".icon-play"),p=n==null?void 0:n.querySelector(".icon-pause");r&&(r.style.display=i&&!x?"none":"block"),p&&(p.style.display=i&&!x?"block":"none"),a&&(a.style.display=i&&!x?"none":"flex"),b&&(i&&!x?b.classList.add("playing"):b.classList.remove("playing"))};a.addEventListener("click",()=>{if(x){x=!1,e.muted=!1;const i=e.src.split("#")[0];e.src!==i&&(e.src=i,e.load()),e.currentTime=0}M(),E(),T(!0),e.play()}),e.addEventListener("click",()=>{if(x){x=!1,e.muted=!1;const i=e.src.split("#")[0];e.src!==i&&(e.src=i,e.load()),e.currentTime=0,E(),T(!0),e.play();return}M(),E(),e.paused?e.play():e.pause()}),e.addEventListener("play",()=>T(!0)),e.addEventListener("pause",()=>T(!1)),e.addEventListener("ended",()=>T(!1)),e.addEventListener("timeupdate",_),e.addEventListener("loadedmetadata",_);let l=!1;const c={m25:!1,m50:!1,m75:!1,m100:!1},C={};if(e.addEventListener("timeupdate",()=>{const i=e.duration;if(!i)return;const r=e.currentTime,p=r/i*100;!l&&r>.5&&(l=!0,A("videoplay")),p>=25&&!c.m25&&(c.m25=!0,A("videowatch_25pct")),p>=50&&!c.m50&&(c.m50=!0,A("videowatch_50pct")),p>=75&&!c.m75&&(c.m75=!0,A("videowatch_75pct")),p>=98&&!c.m100&&(c.m100=!0,A("videowatch_complete"));const w=[10,30],P=Math.floor(r);w.forEach(O=>{P>=O&&!C[O]&&(C[O]=!0,A(`videowatch_${O}s`))})}),n.addEventListener("click",()=>{M(),E(),e.paused?e.play():e.pause()}),h){const i=p=>{const w=h.getBoundingClientRect(),P=p instanceof MouseEvent?p.clientX:p.touches[0].clientX,O=Math.max(0,Math.min(100,(P-w.left)/w.width*100));e.currentTime=D(O,e.duration),_()};let r=!1;h.addEventListener("mousedown",p=>{r=!0,i(p)}),window.addEventListener("mousemove",p=>{r&&i(p)}),window.addEventListener("mouseup",()=>{r=!1}),h.addEventListener("touchstart",p=>i(p),{passive:!0}),h.addEventListener("touchmove",p=>i(p),{passive:!0})}if(v&&v.addEventListener("input",()=>{e.volume=parseFloat(v.value),e.muted=e.volume===0}),W&&W.addEventListener("click",()=>{e.muted=!e.muted,v&&(v.value=e.muted?"0":String(e.volume||1))}),d&&b&&d.addEventListener("click",()=>{if(/iPad|iPhone|iPod/.test(navigator.userAgent)&&!window.MSStream&&e.webkitEnterFullscreen){e.webkitEnterFullscreen();return}!!(document.fullscreenElement||document.webkitFullscreenElement)?document.exitFullscreen?document.exitFullscreen():document.webkitExitFullscreen&&document.webkitExitFullscreen():b.requestFullscreen?b.requestFullscreen():b.webkitRequestFullscreen?b.webkitRequestFullscreen():e.webkitEnterFullscreen&&e.webkitEnterFullscreen()}),b){let i;const r=()=>{o.style.opacity="1",clearTimeout(i),i=window.setTimeout(()=>{e.paused||(o.style.opacity="0")},2500)};b.addEventListener("mousemove",r),b.addEventListener("mouseenter",r),b.addEventListener("mouseleave",()=>{e.paused||(o.style.opacity="0")}),e.addEventListener("play",()=>{i=window.setTimeout(()=>{o.style.opacity="0"},2500)}),e.addEventListener("pause",()=>{o.style.opacity="1",clearTimeout(i)})}}function ye(){const t=document.getElementById("booking-modal"),e=document.getElementById("book-demo-btn-v2"),a=document.getElementById("booking-modal-close-btn"),s=document.getElementById("modal-step-1"),o=document.getElementById("modal-step-2"),n=document.getElementById("modal-step-3"),m=document.getElementById("modal-step-num"),f=document.getElementById("modal-step-title"),h=document.getElementById("modal-step-badge"),g=document.getElementById("modal-progress-bar"),W=document.getElementById("modal-step1-form"),v=document.getElementById("modal-input-name"),d=document.getElementById("modal-input-phone"),b=document.getElementById("modal-step1-error"),S=document.getElementById("modal-confirm-pricing-link");if(!t||!a)return;t.parentElement!==document.body&&document.body.appendChild(t);let k="",E="",L="";v&&localStorage.getItem("feather_booking_name")&&(v.value=localStorage.getItem("feather_booking_name")||""),d&&localStorage.getItem("feather_booking_phone")&&(d.value=localStorage.getItem("feather_booking_phone")||"");const M=document.getElementById("phone-flag-prefix"),x={"+971":"🇦🇪","+966":"🇸🇦","+968":"🇴🇲","+974":"🇶🇦","+973":"🇧🇭","+965":"🇰🇼","+44":"🇬🇧","+1":"🇺🇸","+91":"🇮🇳","+92":"🇵🇰","+63":"🇵🇭","+20":"🇪🇬","+27":"🇿🇦","+33":"🇫🇷","+49":"🇩🇪","+61":"🇦🇺","+62":"🇮🇩","+90":"🇹🇷","+234":"🇳🇬","+254":"🇰🇪"},F=()=>{if(!M||!d)return;const l=d.value.trim();let c="🇦🇪";for(const[C,i]of Object.entries(x))if(l.startsWith(C)){c=i;break}M.textContent=c},q=()=>{if(!d)return;let l=d.value,c="";for(const w of Object.keys(x))if(l.startsWith(w)){c=w+" ";break}if(!c&&l.startsWith("+")){const w=l.indexOf(" ");if(w>0)c=l.substring(0,w+1);else{const P=l.match(/^\+\d+/);P&&(c=P[0]+" ")}}const i=l.substring(c.length).replace(/\D/g,"").substring(0,9);let r="";i.length>0&&(i.length<=2?r=i:i.length<=5?r=`${i.substring(0,2)} ${i.substring(2)}`:r=`${i.substring(0,2)} ${i.substring(2,5)} ${i.substring(5)}`);const p=c+r;d.value!==p&&(d.value=p)};d&&((!d.value||d.value.trim()===""||d.value.trim()==="+971")&&(d.value="+971 "),d.addEventListener("input",l=>{const c=l;if(c.inputType&&c.inputType.startsWith("delete")){F();return}q(),F()}),F());const U=()=>{if(!k||!E)return;const l=`${k}|${E}`;if(L===l)return;L=l;const c=document.getElementById("modal-calendly-container");if(!c)return;c.innerHTML="",Z(c);const r={url:`https://calendly.com/officialatlanticbear/demo-call?hide_gdpr_banner=1&primary_color=3366ff&name=${encodeURIComponent(k)}&a1=${encodeURIComponent(E)}`,parentElement:c,prefill:{name:k,customAnswers:{a1:E}}},p=()=>window.Calendly.initInlineWidget(r);if(window.Calendly)p();else{const w=document.getElementById("calendly-sdk");w&&w.addEventListener("load",p,{once:!0})}},y=()=>{const l=(v==null?void 0:v.value.trim())||"",c=(d==null?void 0:d.value.trim())||"";l.length>=3&&c.length>=5&&(k=l,E=c,U())};v==null||v.addEventListener("input",y),d==null||d.addEventListener("input",y),y();const B=l=>{l===1?(s&&(s.style.display="block"),o&&(o.style.display="none"),n&&(n.style.display="none"),m&&(m.textContent="1"),f&&(f.textContent="Tell us about yourself"),h&&(h.style.display="inline"),g&&(g.style.width="50%")):l===2?(s&&(s.style.display="none"),o&&(o.style.display="block"),n&&(n.style.display="none"),m&&(m.textContent="2"),f&&(f.textContent="Schedule your demo call"),h&&(h.style.display="inline"),g&&(g.style.width="100%"),k=(v==null?void 0:v.value.trim())||"",E=(d==null?void 0:d.value.trim())||"",U()):l===3&&(s&&(s.style.display="none"),o&&(o.style.display="none"),n&&(n.style.display="block"),f&&(f.textContent="Call Confirmed!"),h&&(h.style.display="none"),g&&(g.style.width="100%"))},R=()=>{t.classList.add("active"),document.body.style.overflow="hidden",b&&(b.style.display="none"),L="",v&&localStorage.getItem("feather_booking_name")&&(v.value=localStorage.getItem("feather_booking_name")||""),d&&localStorage.getItem("feather_booking_phone")&&(d.value=localStorage.getItem("feather_booking_phone")||""),B(1)},D=()=>{t.classList.remove("active"),document.body.style.overflow=""},_=l=>{l&&l.preventDefault();const c=(v==null?void 0:v.value.trim())||"",C=(d==null?void 0:d.value.trim())||"";if(!c||!C){b&&(b.style.display="block");return}const i=c.split(" ").map(r=>r.charAt(0).toUpperCase()+r.slice(1)).join(" ");b&&(b.style.display="none"),k=i,E=C,localStorage.setItem("feather_booking_name",i),localStorage.setItem("feather_booking_phone",C),fetch("https://script.google.com/macros/s/AKfycbyE6OQMsiNActyf_24Emjw3AepiNzWZwGc3VZWi2RCWxM1Jg04yWZSIKfxJ8ff5Cu2-/exec",{method:"POST",mode:"no-cors",body:JSON.stringify({name:i,phone:C,source:"booking_funnel"})}).catch(r=>console.error("Google Sheet submission failed:",r)),B(2)};W&&W.addEventListener("submit",_),e&&e.addEventListener("click",R),a.addEventListener("click",D),t.addEventListener("click",l=>{l.target===t&&D()});const T=l=>{l.key==="Escape"&&t.classList.contains("active")&&D()};window.addEventListener("keydown",T),S&&S.addEventListener("click",l=>{l.preventDefault(),D(),N("pricing",!0)}),window.goToBookingStep=B,window.openBookingModal=R}function N(t,e=!0){const a=document.getElementById("booking-modal");a&&a.remove(),document.body.style.overflow="",K(),J();const s=document.getElementById("main-nav"),o=document.querySelector(".site-footer");t==="booking"?(s&&(s.style.display="none"),o&&(o.style.display="none")):(s&&(s.style.display=""),o&&(o.style.display=""));const n=z("#main-content");n.style.opacity="0",n.style.transform="translateY(8px)",setTimeout(()=>{if(window.scrollTo({top:0,behavior:"instant"}),n.innerHTML=X[t](),ve(t),n.style.transition="opacity 0.3s ease, transform 0.3s ease",requestAnimationFrame(()=>{n.style.opacity="1",n.style.transform="translateY(0)"}),me(),t==="contact"&&ge(),t==="booking"||t==="booking-new"){A("pageload",2e3),Q(),ee(),he(),be(t==="booking");const m=document.getElementById("skip-to-booking-btn");m&&m.addEventListener("click",f=>{f.preventDefault();const h=document.getElementById("booking-calendar");h&&h.scrollIntoView({behavior:"smooth",block:"start"})}),(t==="booking-new"||t==="booking")&&ye(),t==="booking"&&document.querySelectorAll(".funnel-cta-btn").forEach(f=>{f.addEventListener("click",()=>{window.openBookingModal&&window.openBookingModal()})})}if(ue(t),fe(),typeof window.fbq=="function"&&window.fbq("track","PageView"),e){const m=t==="home"?"/":`/${t}`;window.location.pathname!==m&&history.pushState(null,"",m)}},150)}function we(t){t.addEventListener("click",e=>{const a=e.target.closest("[data-link]");if(!a||e.metaKey||e.ctrlKey||e.shiftKey||e.button!==0)return;e.preventDefault();const s=a.getAttribute("data-link");s&&X[s]&&N(s)})}function ke(){const t=z("#main-nav");if(!t)return;const e=()=>{window.scrollY>20?t.classList.add("scrolled"):t.classList.remove("scrolled")};window.addEventListener("scroll",e,{passive:!0})}window.formspree=window.formspree||function(){(window.formspree.q=window.formspree.q||[]).push(arguments)};document.addEventListener("DOMContentLoaded",()=>{const t=document.getElementById("app");t.innerHTML=`
     ${ae()}
     <main id="main-content" style="opacity:1; min-height:100vh;"></main>
     ${se()}
@@ -1108,4 +1131,4 @@
         <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.458L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.413 9.863-9.864.001-2.639-1.017-5.122-2.87-6.98C16.612 1.905 14.13 .882 11.5 0.882c-5.437 0-9.863 4.415-9.866 9.866-.001 1.776.477 3.51 1.38 5.061L1.937 21.84l6.196-1.626L8.13 20.21zm10.222-3.834c-.28-.14-1.65-.815-1.906-.907-.255-.092-.44-.138-.625.14-.185.276-.71.907-.87 1.092-.16.185-.32.208-.6.068-1.785-.892-2.92-1.747-3.927-3.48-.266-.46.267-.428.762-1.42.083-.17.042-.317-.02-.457-.063-.14-.626-1.507-.857-2.064-.225-.54-.472-.466-.647-.475-.168-.008-.36-.01-.552-.01-.192 0-.504.072-.768.36-.264.288-1.008.986-1.008 2.404s1.032 2.788 1.176 2.983c.144.195 2.03 3.1 4.916 4.347.686.297 1.22.474 1.638.607.69.219 1.317.188 1.812.114.55-.082 1.65-.674 1.884-1.324.233-.65.233-1.205.163-1.324-.07-.118-.256-.184-.536-.324z"/>
       </svg>
     </a>
-  `,ye(t),we(),window.addEventListener("message",a=>{if(!a.origin||!a.origin.includes("calendly.com"))return;let s=!1;if(a&&a.data&&typeof a.data=="object"&&a.data.event==="calendly.event_scheduled"&&(s=!0),s){A("bookedcall"),typeof window.fbq=="function"&&!sessionStorage.getItem("fbq_schedule_fired")&&(window.fbq("track","Schedule",{value:630,currency:"AED"}),sessionStorage.setItem("fbq_schedule_fired","1"));const o=document.getElementById("booking-modal");o&&o.classList.contains("active")&&typeof window.goToBookingStep=="function"&&window.goToBookingStep(3)}});const e=H(window.location.pathname);U(e,!1),window.addEventListener("popstate",()=>{const a=H(window.location.pathname);U(a,!1)})});
+  `,we(t),ke(),window.addEventListener("message",a=>{if(!a.origin||!a.origin.includes("calendly.com"))return;let s=!1;if(a&&a.data&&typeof a.data=="object"&&a.data.event==="calendly.event_scheduled"&&(s=!0),s){A("bookedcall"),typeof window.fbq=="function"&&!sessionStorage.getItem("fbq_schedule_fired")&&(window.fbq("track","Schedule",{value:630,currency:"AED"}),sessionStorage.setItem("fbq_schedule_fired","1"));const o=document.getElementById("booking-modal");o&&o.classList.contains("active")&&typeof window.goToBookingStep=="function"&&window.goToBookingStep(3)}});const e=j(window.location.pathname);N(e,!1),window.addEventListener("popstate",()=>{const a=j(window.location.pathname);N(a,!1)})});
