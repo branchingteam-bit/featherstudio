@@ -1004,8 +1004,8 @@ function ContactPage(): string {
 }
 
 
-// ─── Booking Page (Funnel Landing) ────────────────────────────────────────────
-function BookingPage(): string {
+// ─── Strategy Call Booking Page (New /booking Funnel) ──────────────────────────
+function StrategyBookingPage(): string {
   return `
   <div class="funnel-page">
     <!-- Urgency Top Bar — logo left, pill centred -->
@@ -1017,7 +1017,7 @@ function BookingPage(): string {
       <div class="funnel-urgency-pill-wrap">
         <div class="funnel-urgency-pill">
           <span class="urgency-dot"></span>
-          <span>2/5 FREE DEMOS BUILT THIS WEEK — 3 SPOTS LEFT</span>
+          <span>LIMITED SPOTS AVAILABLE THIS WEEK — BOOK A STRATEGY CALL</span>
         </div>
       </div>
     </div>
@@ -1025,7 +1025,7 @@ function BookingPage(): string {
     <!-- Hero — dark navy bg, massive headline -->
     <div class="funnel-hero">
       <h1 class="funnel-headline">WHAT DOES YOUR BUSINESS ACTUALLY LOOK LIKE ON GOOGLE?</h1>
-      <p class="funnel-subheadline">We'll Build You a Custom Website First, You Only Pay If You Love It</p>
+      <p class="funnel-subheadline">Watch the video below to see exactly how we build custom websites for UAE businesses and get you found online, then book your strategy call.</p>
     </div>
 
     <!-- VSL Video Block — still on dark bg -->
@@ -1040,7 +1040,7 @@ function BookingPage(): string {
             height="1080"
             playsinline
             muted
-            src="/vsl/How to Get Found Online With a Website Demo.mp4#t=0.001"
+            src="/vsl/funnel biz revammpo new vsl /Stop Losing Clients to Outdated Websites.mp4#t=0.001"
           ></video>
           <!-- Play overlay -->
           <div class="bv-overlay" id="bv-overlay">
@@ -1079,11 +1079,11 @@ function BookingPage(): string {
     <div class="funnel-below-video">
 
       <!-- Supporting Text -->
-      <p class="funnel-support-text">A completely custom website, built specifically for your business, by a team that only works with small business owners across the UAE.</p>
+      <p class="funnel-support-text">&darr; Book your strategy call &darr;</p>
 
       <!-- CTA Button 1 -->
       <div class="funnel-cta-wrap">
-        <button class="funnel-cta-btn" id="funnel-cta-1">Book My Free Demo</button>
+        <button class="funnel-cta-btn strat-modal-trigger" id="strat-cta-1">Book My Call</button>
       </div>
 
       <!-- Generous Spacer -->
@@ -1110,7 +1110,7 @@ function BookingPage(): string {
 
       <!-- CTA Button 2 -->
       <div class="funnel-cta-wrap funnel-cta-wrap-bottom">
-        <button class="funnel-cta-btn" id="funnel-cta-2">Book My Free Demo</button>
+        <button class="funnel-cta-btn strat-modal-trigger" id="strat-cta-2">Book My Call</button>
       </div>
 
       <!-- Bottom Padding -->
@@ -1118,50 +1118,74 @@ function BookingPage(): string {
     </div>
   </div>
 
-  <!-- Booking Flow Modal (3-Step: Name/Phone -> Calendly -> Confirmation) -->
-  <div class="booking-modal-overlay" id="booking-modal">
+  <!-- Strategy Booking Qualifying Modal (Step 1: Contact -> Step 2: Revenue -> Step 3: Calendly -> Step 4: Confirm) -->
+  <div class="booking-modal-overlay" id="strat-booking-modal">
     <div class="booking-modal-container">
       <div class="booking-modal-header">
         <div class="booking-modal-steps">
-          <span class="step-badge" id="modal-step-badge">Step <span id="modal-step-num">1</span> of 2</span>
-          <h3 class="booking-modal-title" id="modal-step-title">Tell us about yourself</h3>
+          <span class="step-badge" id="strat-modal-step-badge">Step <span id="strat-modal-step-num">1</span> of 3</span>
+          <h3 class="booking-modal-title" id="strat-modal-step-title">Tell us about yourself</h3>
         </div>
-        <button class="booking-modal-close" id="booking-modal-close-btn" aria-label="Close modal">&times;</button>
+        <button class="booking-modal-close" id="strat-modal-close-btn" aria-label="Close modal">&times;</button>
       </div>
       
       <div class="booking-modal-progress">
-        <div class="booking-modal-progress-bar" id="modal-progress-bar" style="width: 50%;"></div>
+        <div class="booking-modal-progress-bar" id="strat-modal-progress-bar" style="width: 33%;"></div>
       </div>
       
       <div class="booking-modal-body">
         <!-- Step 1: Contact Form (Name + Phone) -->
-        <div class="booking-modal-step active" id="modal-step-1">
-          <form id="modal-step1-form" class="funnel-modal-form" onsubmit="return false;">
+        <div class="booking-modal-step active" id="strat-modal-step-1">
+          <form id="strat-modal-step1-form" class="funnel-modal-form" onsubmit="return false;">
             <div class="funnel-form-group">
-              <label for="modal-input-name" class="funnel-form-label">Full Name</label>
-              <input type="text" id="modal-input-name" class="funnel-form-input" placeholder="e.g. John Smith" required />
+              <label for="strat-input-name" class="funnel-form-label">Full Name</label>
+              <input type="text" id="strat-input-name" class="funnel-form-input" placeholder="e.g. John Smith" required />
             </div>
             <div class="funnel-form-group">
-              <label for="modal-input-phone" class="funnel-form-label">Phone Number</label>
+              <label for="strat-input-phone" class="funnel-form-label">Phone Number</label>
               <div class="phone-input-wrap">
-                <span class="phone-flag-prefix" id="phone-flag-prefix">🇦🇪</span>
-                <input type="tel" id="modal-input-phone" class="funnel-form-input phone-with-flag" value="+971 " placeholder="+971 50 123 4567" required />
+                <span class="phone-flag-prefix" id="strat-phone-flag-prefix">🇦🇪</span>
+                <input type="tel" id="strat-input-phone" class="funnel-form-input phone-with-flag" value="+971 " placeholder="+971 50 123 4567" required />
               </div>
             </div>
-            <div id="modal-step1-error" class="funnel-form-error" style="display:none;">Please enter your name and phone number to continue.</div>
-            <button type="submit" id="modal-step1-next-btn" class="funnel-cta-btn funnel-modal-btn">Next &rarr;</button>
+            <div id="strat-modal-step1-error" class="funnel-form-error" style="display:none;">Please enter your name and phone number to continue.</div>
+            <button type="submit" id="strat-modal-step1-next-btn" class="funnel-modal-btn">Next &rarr;</button>
+          </form>
+        </div>
+
+        <!-- Step 2: Business Name & Revenue Qualification -->
+        <div class="booking-modal-step" id="strat-modal-step-2" style="display: none;">
+          <form id="strat-modal-step2-form" class="funnel-modal-form" onsubmit="return false;">
+            <div class="funnel-form-group">
+              <label for="strat-input-business" class="funnel-form-label">Business / Company Name</label>
+              <input type="text" id="strat-input-business" class="funnel-form-input" placeholder="e.g. Acme Studio" required />
+            </div>
+            <div class="funnel-form-group">
+              <label for="strat-select-revenue" class="funnel-form-label">What’s your monthly revenue roughly?</label>
+              <select id="strat-select-revenue" class="funnel-form-input" required>
+                <option value="" disabled selected>Select monthly revenue range...</option>
+                <option value="Under AED 5k/month">Under AED 5k/month</option>
+                <option value="AED 5k - 20k/month">AED 5k - 20k/month</option>
+                <option value="AED 20k - 50k/month">AED 20k - 50k/month</option>
+                <option value="AED 50k - 100k/month">AED 50k - 100k/month</option>
+                <option value="AED 100k+/month">AED 100k+/month</option>
+                <option value="Rather not say">Rather not say</option>
+              </select>
+            </div>
+            <div id="strat-modal-step2-error" class="funnel-form-error" style="display:none;">Please enter your business name and select your monthly revenue.</div>
+            <button type="submit" id="strat-modal-step2-submit-btn" class="funnel-modal-btn">Continue to Calendar &rarr;</button>
           </form>
         </div>
         
-        <!-- Step 2: Calendly Embed (Prefilled) -->
-        <div class="booking-modal-step" id="modal-step-2" style="display: none;">
+        <!-- Step 3: Calendly Embed (Prefilled) -->
+        <div class="booking-modal-step" id="strat-modal-step-3" style="display: none;">
           <div class="modal-calendly-widget-wrap">
-            <div id="modal-calendly-container" style="min-width:320px;height:550px;width:100%;"></div>
+            <div id="strat-modal-calendly-container" style="min-width:320px;height:580px;width:100%;"></div>
           </div>
         </div>
 
-        <!-- Step 3: Confirmation Screen -->
-        <div class="booking-modal-step" id="modal-step-3" style="display: none;">
+        <!-- Step 4: Confirmation Screen -->
+        <div class="booking-modal-step" id="strat-modal-step-4" style="display: none;">
           <div class="funnel-confirm-container">
             <div class="funnel-confirm-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent, #3b69ff)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="48" height="48">
@@ -1169,16 +1193,16 @@ function BookingPage(): string {
                 <polyline points="22 4 12 14.01 9 11.01"></polyline>
               </svg>
             </div>
-            <h3 class="funnel-confirm-title">Confirm your call</h3>
+            <h3 class="funnel-confirm-title">Call Scheduled!</h3>
             <p class="funnel-confirm-text">You'll have a meeting invitation waiting in your inbox.</p>
-            <p class="funnel-confirm-subtext">Open the email invitation and click <strong>Yes</strong>, <strong>Accept</strong>, or <strong>Add to calendar</strong> to add the call to your calendar.</p>
+            <p class="funnel-confirm-subtext">Open the email invitation and click <strong>Yes</strong>, <strong>Accept</strong>, or <strong>Add to calendar</strong> to confirm your slot.</p>
             
             <div class="funnel-confirm-img-wrap">
               <img src="/exemple on how to accept meeting to calender.png" alt="Example of accepting meeting invitation in calendar" class="funnel-confirm-img" />
             </div>
 
             <div class="funnel-confirm-footer">
-              <a href="/pricing" data-link="pricing" class="funnel-confirm-pricing-link" id="modal-confirm-pricing-link">Want to check out our packages? Click here &rarr;</a>
+              <a href="/pricing" data-link="pricing" class="funnel-confirm-pricing-link" id="strat-confirm-pricing-link">Want to check out our packages? Click here &rarr;</a>
             </div>
           </div>
         </div>
@@ -1187,6 +1211,59 @@ function BookingPage(): string {
   </div>
   `;
 }
+
+
+
+
+// ─── Booked / Confirmation Page (/booked) ──────────────────────────────────────
+function BookedPage(): string {
+  return `
+  <div class="funnel-page">
+    <!-- Top Bar -->
+    <div class="funnel-urgency-bar">
+      <a href="/" class="funnel-urgency-logo" data-link="home" aria-label="Atlantic Bear Home">
+        <span class="logo-wordmark">Atlantic</span>
+        <img src="/atlanticbear-logo.png" alt="Atlantic Bear Logo" class="logo-bear-img" width="36" height="36" />
+      </a>
+      <div class="funnel-urgency-pill-wrap">
+        <div class="funnel-urgency-pill" style="border-color: rgba(62,207,142,0.4); background: rgba(62,207,142,0.1); color: #3ecf8e;">
+          <span class="urgency-dot" style="background: #3ecf8e;"></span>
+          <span>CALL CONFIRMED — YOU'RE ALL SET</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Confirmation Content -->
+    <div class="funnel-hero" style="padding-bottom: 60px;">
+      <div style="width:64px; height:64px; margin: 0 auto 20px; border-radius:50%; background:rgba(59,105,255,0.15); display:flex; align-items:center; justify-content:center;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent, #3b69ff)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="36" height="36">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+      </div>
+      <h1 class="funnel-headline" style="font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 14px;">CONFIRM YOUR CALL</h1>
+      <p class="funnel-subheadline" style="max-width: 640px; margin: 0 auto 16px; font-size: 1.15rem; line-height: 1.5;">
+        Go to your email right now — you'll have a meeting invitation waiting for you.
+      </p>
+      <p style="font-size: 0.98rem; color: rgba(255,255,255,0.8); max-width: 620px; margin: 0 auto 28px; line-height: 1.6;">
+        It's going to ask you to click either <strong>Yes</strong> or <strong>Accept</strong>. Simply click that to add it to your calendar so we can show up on the meeting, and we're all set!
+      </p>
+      
+      <!-- Calendar Accept Image Banner -->
+      <div style="max-width: 580px; margin: 0 auto 36px; border-radius: 16px; overflow: hidden; box-shadow: 0 12px 36px rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.15);">
+        <img src="/exemple on how to accept meeting to calender.png" alt="Example of accepting meeting invitation in calendar" style="width: 100%; display: block;" />
+      </div>
+
+      <div style="margin-top: 24px;">
+        <a href="/pricing" data-link="pricing" style="color: rgba(255,255,255,0.75); text-decoration: underline; font-size: 0.95rem; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.75)'">
+          Want to check out our packages? Click here &rarr;
+        </a>
+      </div>
+    </div>
+  </div>
+  `;
+}
+
 
 // ─── Booking Page New (with Popups) ───────────────────────────────────────────
 function BookingNewPage(): string {
@@ -1314,7 +1391,7 @@ function BookingNewPage(): string {
 }
 
 // ─── Router ───────────────────────────────────────────────────────────────────
-type Page = 'home' | 'pricing' | 'work' | 'contact' | 'testimonials' | 'booking' | 'booking-new' | 'meta-ads';
+type Page = 'home' | 'pricing' | 'work' | 'contact' | 'testimonials' | 'booking' | 'booking-new' | 'meta-ads' | 'booked';
 
 const pageMap: Record<Page, () => string> = {
   home:         HomePage,
@@ -1322,7 +1399,8 @@ const pageMap: Record<Page, () => string> = {
   work:         WorkPage,
   contact:      ContactPage,
   testimonials: TestimonialsPage,
-  booking:      BookingPage,
+  booking:      StrategyBookingPage,
+  booked:       BookedPage,
   'booking-new': BookingNewPage,
   'meta-ads':   MetaAdsPage,
 };
@@ -1349,8 +1427,12 @@ const pageMeta: Record<Page, { title: string; desc: string }> = {
     desc: 'See real website transformations by Atlantic Bear. Before and after case studies showing how we help businesses across the UAE look professional online.'
   },
   booking: {
-    title: 'Book a Call | Atlantic Bear Discovery Session',
-    desc: 'Watch our video, schedule your free 30-minute discovery call, and view our client success stories. Start your UAE website project today.'
+    title: 'Book a Strategy Call | Atlantic Bear',
+    desc: 'Watch our video, schedule your free 30-minute strategy call, and view our client success stories. Start your UAE website project today.'
+  },
+  booked: {
+    title: 'Call Confirmed | Atlantic Bear',
+    desc: 'Your call is locked in! Make sure to add the event to your calendar and watch the pre-call video before our session.'
   },
   'booking-new': {
     title: 'Book a Call (New Flow) | Atlantic Bear Discovery Session',
@@ -1425,7 +1507,7 @@ function updateMetadata(page: Page) {
 
 function getPageFromPath(path: string): Page {
   const cleanPath = path.replace(/^\/|\/$/g, '');
-  if (cleanPath === 'pricing' || cleanPath === 'work' || cleanPath === 'contact' || cleanPath === 'testimonials' || cleanPath === 'booking' || cleanPath === 'booking-new' || cleanPath === 'meta-ads') {
+  if (cleanPath === 'pricing' || cleanPath === 'work' || cleanPath === 'contact' || cleanPath === 'testimonials' || cleanPath === 'booking' || cleanPath === 'booking-new' || cleanPath === 'meta-ads' || cleanPath === 'booked') {
     return cleanPath as Page;
   }
   return 'home';
@@ -2174,23 +2256,6 @@ function initBookingModal() {
     userName = formattedName;
     userPhone = phoneVal;
 
-    // Save to localStorage
-    localStorage.setItem('feather_booking_name', formattedName);
-    localStorage.setItem('feather_booking_phone', phoneVal);
-
-    // Send data silently to Google Sheets in background
-    fetch('https://script.google.com/macros/s/AKfycbyE6OQMsiNActyf_24Emjw3AepiNzWZwGc3VZWi2RCWxM1Jg04yWZSIKfxJ8ff5Cu2-/exec', {
-      method: 'POST',
-      mode: 'no-cors',
-      // Note: Do NOT set Content-Type: application/json — that triggers a CORS preflight
-      // which Google Apps Script doesn't respond to. With no-cors, the body is sent as-is.
-      body: JSON.stringify({
-        name: formattedName,
-        phone: phoneVal,
-        source: 'booking_funnel'
-      })
-    }).catch(err => console.error('Google Sheet submission failed:', err));
-
     goToStep(2);
   };
 
@@ -2201,22 +2266,15 @@ function initBookingModal() {
   if (openBtn) openBtn.addEventListener('click', openModal);
   closeBtn.addEventListener('click', closeModal);
 
-  // Close on overlay click
   modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      closeModal();
-    }
+    if (e.target === modal) closeModal();
   });
 
-  // Esc key close
   const escHandler = (e: KeyboardEvent) => {
-    if (e.key === 'Escape' && modal.classList.contains('active')) {
-      closeModal();
-    }
+    if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
   };
   window.addEventListener('keydown', escHandler);
 
-  // Pricing link click inside Step 3 confirmation screen
   if (pricingLink) {
     pricingLink.addEventListener('click', (e) => {
       e.preventDefault();
@@ -2225,19 +2283,234 @@ function initBookingModal() {
     });
   }
 
-  // Expose globally so external scripts/listeners can trigger UI state updates
   (window as any).goToBookingStep = goToStep;
   (window as any).openBookingModal = openModal;
 }
 
 
+// ─── Strategy Booking Qualifying Modal Flow Handler (4-Step) ────────────────
+let isCurrentStrategyCallHighTier = true; // Global flag to determine if pixel should fire
+let lastSubmittedLead = {
+  name: '',
+  phone: '',
+  business: '',
+  revenue: ''
+};
+
+function initStrategyBookingModal() {
+  const modal = document.getElementById('strat-booking-modal') as HTMLElement | null;
+  const closeBtn = document.getElementById('strat-modal-close-btn') as HTMLElement | null;
+  const step1 = document.getElementById('strat-modal-step-1') as HTMLElement | null;
+  const step2 = document.getElementById('strat-modal-step-2') as HTMLElement | null;
+  const step3 = document.getElementById('strat-modal-step-3') as HTMLElement | null;
+  const step4 = document.getElementById('strat-modal-step-4') as HTMLElement | null;
+  const stepNum = document.getElementById('strat-modal-step-num') as HTMLElement | null;
+  const stepTitle = document.getElementById('strat-modal-step-title') as HTMLElement | null;
+  const stepBadge = document.getElementById('strat-modal-step-badge') as HTMLElement | null;
+  const progressBar = document.getElementById('strat-modal-progress-bar') as HTMLElement | null;
+  
+  const step1Form = document.getElementById('strat-modal-step1-form') as HTMLFormElement | null;
+  const step2Form = document.getElementById('strat-modal-step2-form') as HTMLFormElement | null;
+  const inputName = document.getElementById('strat-input-name') as HTMLInputElement | null;
+  const inputPhone = document.getElementById('strat-input-phone') as HTMLInputElement | null;
+  const inputBusiness = document.getElementById('strat-input-business') as HTMLInputElement | null;
+  const selectRevenue = document.getElementById('strat-select-revenue') as HTMLSelectElement | null;
+  const step1Error = document.getElementById('strat-modal-step1-error') as HTMLElement | null;
+  const step2Error = document.getElementById('strat-modal-step2-error') as HTMLElement | null;
+  const pricingLink = document.getElementById('strat-modal-confirm-pricing-link') as HTMLElement | null;
+
+  if (!modal || !closeBtn) return;
+
+  if (modal.parentElement !== document.body) {
+    document.body.appendChild(modal);
+  }
+
+  let stratName = '';
+  let stratPhone = '';
+  let stratBusiness = '';
+  let stratRevenue = '';
+
+  const openModal = () => {
+    // Reset form inputs each time modal opens so fields start clean
+    if (inputName) inputName.value = '';
+    if (inputPhone) inputPhone.value = '+971 ';
+    if (inputBusiness) inputBusiness.value = '';
+    if (selectRevenue) selectRevenue.value = '';
+    if (step1Error) step1Error.style.display = 'none';
+    if (step2Error) step2Error.style.display = 'none';
+    goToStep(1);
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = () => {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  const goToStep = (step: number) => {
+    if (!step1 || !step2 || !step3 || !step4 || !stepNum || !stepTitle || !stepBadge || !progressBar) return;
+
+    if (step === 1) {
+      step1.style.display = 'block'; step2.style.display = 'none'; step3.style.display = 'none'; step4.style.display = 'none';
+      stepBadge.style.display = 'inline'; stepNum.textContent = '1'; stepTitle.textContent = 'Tell us about yourself';
+      progressBar.style.width = '33%';
+    } else if (step === 2) {
+      step1.style.display = 'none'; step2.style.display = 'block'; step3.style.display = 'none'; step4.style.display = 'none';
+      stepBadge.style.display = 'inline'; stepNum.textContent = '2'; stepTitle.textContent = 'Your business details';
+      progressBar.style.width = '66%';
+    } else if (step === 3) {
+      step1.style.display = 'none'; step2.style.display = 'none'; step3.style.display = 'block'; step4.style.display = 'none';
+      stepBadge.style.display = 'inline'; stepNum.textContent = '3'; stepTitle.textContent = 'Schedule your strategy call';
+      progressBar.style.width = '100%';
+      initCalendlyEmbed();
+    } else if (step === 4) {
+      step1.style.display = 'none'; step2.style.display = 'none'; step3.style.display = 'none'; step4.style.display = 'block';
+      stepBadge.style.display = 'none'; stepTitle.textContent = 'Call Scheduled!';
+      progressBar.style.width = '100%';
+    }
+  };
+
+  const initCalendlyEmbed = () => {
+    const container = document.getElementById('strat-modal-calendly-container');
+    if (!container) return;
+
+    const isUnder5k = (
+      stratRevenue === 'Under AED 5k/month' ||
+      stratRevenue === 'Under $5k' ||
+      stratRevenue === '$0 - $5k'
+    );
+    isCurrentStrategyCallHighTier = !isUnder5k;
+
+    const calendlyBaseUrl = isUnder5k
+      ? 'https://calendly.com/officialatlanticbear/intro-call?primary_color=3b69ff'
+      : 'https://calendly.com/officialatlanticbear/strategy-call?primary_color=3b69ff';
+
+    const cleanRevenue = stratRevenue.replace(/–/g, '-').trim();
+
+    // Pass custom answers across a1, a2, a3, a4 so Revenue is prefilled regardless of question order in Calendly
+    const prefillUrl = `${calendlyBaseUrl}&name=${encodeURIComponent(stratName)}&a1=${encodeURIComponent(stratPhone)}&a2=${encodeURIComponent(stratBusiness)}&a3=${encodeURIComponent(cleanRevenue)}&a4=${encodeURIComponent(cleanRevenue)}`;
+
+    container.innerHTML = '';
+    attachLoaderToContainer(container);
+
+    const prefillOpts = {
+      url: prefillUrl,
+      parentElement: container,
+      prefill: {
+        name: stratName,
+        customAnswers: {
+          a1: stratPhone,
+          a2: stratBusiness,
+          a3: cleanRevenue,
+          a4: cleanRevenue,
+          a5: cleanRevenue
+        }
+      }
+    };
+
+    const doInit = () => (window as any).Calendly.initInlineWidget(prefillOpts);
+    if ((window as any).Calendly) {
+      doInit();
+    } else {
+      const existingScript = document.getElementById('calendly-sdk') as HTMLScriptElement | null;
+      if (existingScript) {
+        existingScript.addEventListener('load', doInit, { once: true });
+      }
+    }
+  };
+
+  // Step 1 Submission
+  if (step1Form) {
+    step1Form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nameVal = inputName?.value.trim() || '';
+      const phoneVal = inputPhone?.value.trim() || '';
+      if (!nameVal || !phoneVal) {
+        if (step1Error) step1Error.style.display = 'block';
+        return;
+      }
+      if (step1Error) step1Error.style.display = 'none';
+      stratName = nameVal;
+      stratPhone = phoneVal;
+      lastSubmittedLead.name = nameVal;
+      lastSubmittedLead.phone = phoneVal;
+      goToStep(2);
+    });
+  }
+
+  // Step 2 Submission & Apps Script POST
+  if (step2Form) {
+    step2Form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const businessVal = inputBusiness?.value.trim() || '';
+      const revenueVal = selectRevenue?.value || '';
+
+      if (!businessVal || !revenueVal) {
+        if (step2Error) step2Error.style.display = 'block';
+        return;
+      }
+      if (step2Error) step2Error.style.display = 'none';
+      stratBusiness = businessVal;
+      stratRevenue = revenueVal;
+      lastSubmittedLead.business = businessVal;
+      lastSubmittedLead.revenue = revenueVal;
+
+      const isUnder5k = (
+        revenueVal === 'Under AED 5k/month' ||
+        revenueVal === 'Under $5k' ||
+        revenueVal === '$0 - $5k'
+      );
+
+      // Only submit lead data to Google Sheets if revenue is >= AED 5k or "Rather not say"
+      if (!isUnder5k) {
+        fetch('https://script.google.com/macros/s/AKfycbxhmc6G4n4zpk0SGvjzP81_Cd9ipLxM3Wx5MZNWzF02tBqqUMD0JCAuDnH1OojQfv7vJQ/exec', {
+          method: 'POST',
+          mode: 'no-cors',
+          body: JSON.stringify({
+            action: 'form_submit',
+            name: stratName,
+            phone: stratPhone,
+            business: stratBusiness,
+            revenue: stratRevenue,
+            source: 'strategy_call'
+          })
+        }).catch(err => console.error('Google Sheet submission failed:', err));
+      }
+
+      goToStep(3);
+    });
+  }
+
+  // Close triggers
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+  });
+
+  if (pricingLink) {
+    pricingLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeModal();
+      navigate('pricing', true);
+    });
+  }
+
+  (window as any).goToStratBookingStep = goToStep;
+  (window as any).openStratBookingModal = openModal;
+}
 
 function navigate(page: Page, pushHistory = true) {
   // Remove any modal leftover from previous page render
   const oldModal = document.getElementById('booking-modal');
-  if (oldModal) {
-    oldModal.remove();
-  }
+  if (oldModal) oldModal.remove();
+  const oldStratModal = document.getElementById('strat-booking-modal');
+  if (oldStratModal) oldStratModal.remove();
+
   // Restore body overflow to default
   document.body.style.overflow = '';
 
@@ -2248,7 +2521,7 @@ function navigate(page: Page, pushHistory = true) {
   // Hide/show site chrome immediately for funnel landing page
   const navEl = document.getElementById('main-nav');
   const footerEl = document.querySelector('.site-footer') as HTMLElement | null;
-  if (page === 'booking') {
+  if (page === 'booking' || page === 'booked') {
     if (navEl) navEl.style.display = 'none';
     if (footerEl) footerEl.style.display = 'none';
   } else {
@@ -2275,34 +2548,29 @@ function navigate(page: Page, pushHistory = true) {
       initFormspree();
     }
 
-    if (page === 'booking' || page === 'booking-new') {
+    if (page === 'booking' || page === 'booked' || page === 'booking-new') {
       trackAbacusEvent('pageload', 2000); // Deferred by 2s to not block LCP/FCP paint
       startPageTimeTracking();
       startScrollTracking();
       loadCalendlyWidget();
-      initBookingPageVideo(page === 'booking');
+      initBookingPageVideo(page === 'booking' || page === 'booked');
 
-      // "Book a Call Now" skip button — smooth scroll to calendar
-      const skipBtn = document.getElementById('skip-to-booking-btn');
-      if (skipBtn) {
-        skipBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          const cal = document.getElementById('booking-calendar');
-          if (cal) cal.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-      }
-
-      // Initialize the booking modal for pages with popup booking flow
-      if (page === 'booking-new' || page === 'booking') {
+      // Initialize modals based on route
+      if (page === 'booking-new') {
         initBookingModal();
-      }
-
-      // Wire funnel CTA buttons to open the booking modal
-      if (page === 'booking') {
         document.querySelectorAll('.funnel-cta-btn').forEach(btn => {
           btn.addEventListener('click', () => {
             if ((window as any).openBookingModal) {
               (window as any).openBookingModal();
+            }
+          });
+        });
+      } else if (page === 'booking') {
+        initStrategyBookingModal();
+        document.querySelectorAll('.strat-modal-trigger, .funnel-cta-wrap .funnel-cta-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            if ((window as any).openStratBookingModal) {
+              (window as any).openStratBookingModal();
             }
           });
         });
@@ -2381,10 +2649,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavScroll();
 
   // Listen for Calendly event scheduling to track conversions via Meta Pixel & update UI state.
-  // IMPORTANT: Only accept postMessages from Calendly's origin and match the exact event name
-  // to prevent false-positive pixel fires from other iframes or scripts.
   window.addEventListener('message', (e) => {
-    // Origin guard — only trust messages from Calendly
     if (!e.origin || !e.origin.includes('calendly.com')) return;
 
     let isScheduled = false;
@@ -2395,19 +2660,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (isScheduled) {
-      trackAbacusEvent('bookedcall');
-      // Only fire the Meta Pixel Schedule event once per session to prevent
-      // duplicate conversion tracking from testing or repeated bookings.
-      if (typeof (window as any).fbq === 'function' && !sessionStorage.getItem('fbq_schedule_fired')) {
-        (window as any).fbq('track', 'Schedule');
-        sessionStorage.setItem('fbq_schedule_fired', '1');
-      }
-      const activeModal = document.getElementById('booking-modal');
-      if (activeModal && activeModal.classList.contains('active')) {
-        if (typeof (window as any).goToBookingStep === 'function') {
-          (window as any).goToBookingStep(3);
+      const stratModal = document.getElementById('strat-booking-modal');
+      const legacyModal = document.getElementById('booking-modal');
+      const isStratActive = stratModal && stratModal.classList.contains('active');
+
+      if (isStratActive) {
+        if (isCurrentStrategyCallHighTier) {
+          trackAbacusEvent('bookedcall_strategy');
+          if (typeof (window as any).fbq === 'function' && !sessionStorage.getItem('fbq_schedule_fired')) {
+            (window as any).fbq('track', 'Schedule');
+            sessionStorage.setItem('fbq_schedule_fired', '1');
+          }
+        } else {
+          trackAbacusEvent('bookedcall_intro');
         }
+        if (stratModal) stratModal.classList.remove('active');
+      } else {
+        // Legacy demo call booking
+        trackAbacusEvent('bookedcall');
+        if (legacyModal) legacyModal.classList.remove('active');
       }
+
+      document.body.style.overflow = '';
+      navigate('booked');
     }
   });
 
@@ -2419,3 +2694,4 @@ document.addEventListener('DOMContentLoaded', () => {
     navigate(page, false);
   });
 });
+
