@@ -29,6 +29,64 @@ function trackAbacusEvent(event: string, delay = 0) {
   }
 }
 
+// ─── reCAPTCHA v3 Setup ──────────────────────────────────────────────────────
+// Replace with your Google reCAPTCHA v3 Site Key from https://www.google.com/recaptcha/admin
+export const RECAPTCHA_SITE_KEY = (window as any).RECAPTCHA_SITE_KEY || '6Ldfp-gqAAAAABpP_placeholder_key';
+
+export function loadReCaptchaScript() {
+  const siteKey = (window as any).RECAPTCHA_SITE_KEY || RECAPTCHA_SITE_KEY;
+  if (!siteKey || document.getElementById('recaptcha-v3-script')) return;
+
+  const script = document.createElement('script');
+  script.id = 'recaptcha-v3-script';
+  script.src = `https://www.google.com/recaptcha/api.js?render=${encodeURIComponent(siteKey)}`;
+  script.async = true;
+  script.defer = true;
+  document.head.appendChild(script);
+}
+
+/**
+ * Safely executes Google reCAPTCHA v3 without blocking legitimate users.
+ * Returns the token if successful, or null if reCAPTCHA fails, is blocked, or times out.
+ */
+export async function getReCaptchaToken(action: string): Promise<string | null> {
+  const siteKey = (window as any).RECAPTCHA_SITE_KEY || RECAPTCHA_SITE_KEY;
+  loadReCaptchaScript();
+
+  return new Promise((resolve) => {
+    // Safety fallback timeout (2500ms max) - guarantees real users are never blocked
+    const timer = setTimeout(() => {
+      console.warn(`reCAPTCHA [${action}] timed out. Continuing submission.`);
+      resolve(null);
+    }, 2500);
+
+    const grecaptcha = (window as any).grecaptcha;
+    if (grecaptcha && typeof grecaptcha.ready === 'function') {
+      try {
+        grecaptcha.ready(() => {
+          grecaptcha.execute(siteKey, { action })
+            .then((token: string) => {
+              clearTimeout(timer);
+              resolve(token);
+            })
+            .catch((err: any) => {
+              clearTimeout(timer);
+              console.warn(`reCAPTCHA [${action}] execution error:`, err);
+              resolve(null);
+            });
+        });
+      } catch (err) {
+        clearTimeout(timer);
+        console.warn(`reCAPTCHA [${action}] error:`, err);
+        resolve(null);
+      }
+    } else {
+      clearTimeout(timer);
+      resolve(null);
+    }
+  });
+}
+
 // ─── Time and Scroll Tracking ───
 let timeTrackers: Record<string, number> = {};
 
@@ -1562,7 +1620,11 @@ function initFormspree() {
     }
 
     try {
+      const recaptchaToken = await getReCaptchaToken('contact_submit');
       const data = new FormData(form);
+      if (recaptchaToken) {
+        data.append('g-recaptcha-response', recaptchaToken);
+      }
       const res = await fetch('https://formspree.io/f/mykanvrr', {
         method: 'POST',
         body: data,
@@ -2442,7 +2504,7 @@ function initStrategyBookingModal() {
 
   // Step 2 Submission & Apps Script POST
   if (step2Form) {
-    step2Form.addEventListener('submit', (e) => {
+    step2Form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const businessVal = inputBusiness?.value.trim() || '';
       const revenueVal = selectRevenue?.value || '';
@@ -2465,6 +2527,15 @@ function initStrategyBookingModal() {
 
       // Only submit lead data to Google Sheets if revenue is >= AED 5k or "Rather not say"
       if (!isUnder5k) {
+        const submitBtn = document.getElementById('strat-modal-step2-submit-btn') as HTMLButtonElement | null;
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Verifying...';
+        }
+
+        // Execute reCAPTCHA v3 token generation before Google Sheets submission
+        const recaptchaToken = await getReCaptchaToken('booking_submit');
+
         fetch('https://script.google.com/macros/s/AKfycbxhmc6G4n4zpk0SGvjzP81_Cd9ipLxM3Wx5MZNWzF02tBqqUMD0JCAuDnH1OojQfv7vJQ/exec', {
           method: 'POST',
           mode: 'no-cors',
@@ -2474,9 +2545,15 @@ function initStrategyBookingModal() {
             phone: stratPhone,
             business: stratBusiness,
             revenue: stratRevenue,
-            source: 'strategy_call'
+            source: 'strategy_call',
+            recaptchaToken: recaptchaToken || ''
           })
         }).catch(err => console.error('Google Sheet submission failed:', err));
+
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Continue to Calendar \u2192';
+        }
       }
 
       goToStep(3);
@@ -2647,6 +2724,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   delegateLinks(app);
   initNavScroll();
+  loadReCaptchaScript();
 
   // Listen for Calendly event scheduling to track conversions via Meta Pixel & update UI state.
   window.addEventListener('message', (e) => {

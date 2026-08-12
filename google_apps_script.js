@@ -37,6 +37,38 @@ function doPost(e) {
     data = e.parameter || {};
   }
 
+  // ─── reCAPTCHA v3 Server-Side Bot Verification ──────────────────────────
+  // To enable server-side bot blocking:
+  // 1. Set RECAPTCHA_SECRET_KEY in Apps Script: Project Settings -> Script Properties -> Property: RECAPTCHA_SECRET_KEY
+  //    OR replace the empty string below with your reCAPTCHA v3 Secret Key (starts with 6L...)
+  const RECAPTCHA_SECRET_KEY = PropertiesService.getScriptProperties().getProperty("RECAPTCHA_SECRET_KEY") || "";
+
+  if (RECAPTCHA_SECRET_KEY && data.recaptchaToken) {
+    try {
+      const verifyUrl = 'https://www.google.com/recaptcha/api/siteverify';
+      const response = UrlFetchApp.fetch(verifyUrl, {
+        method: 'post',
+        payload: {
+          secret: RECAPTCHA_SECRET_KEY,
+          response: data.recaptchaToken
+        },
+        muteHttpExceptions: true
+      });
+      const result = JSON.parse(response.getContentText());
+      
+      // If reCAPTCHA score is below bot threshold (0.3), block lead from entering Google Sheets
+      if (!result.success || (typeof result.score === 'number' && result.score < 0.3)) {
+        Logger.log('Blocked bot/spam lead submission: ' + JSON.stringify(result));
+        return ContentService
+          .createTextOutput(JSON.stringify({ success: false, error: 'recaptcha_failed', score: result.score }))
+          .setMimeType(ContentService.MimeType.JSON);
+      }
+    } catch(recaptchaErr) {
+      Logger.log('Error verifying reCAPTCHA: ' + recaptchaErr.toString());
+      // Continue writing lead on unexpected network error to prevent losing valid leads
+    }
+  }
+
   const phoneFormatted = data.phone ? "'" + data.phone : "";
   const targetRow = sheet.getLastRow() + 1;
   
