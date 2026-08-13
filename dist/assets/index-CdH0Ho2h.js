@@ -127,11 +127,15 @@
       </div>
     </div>
   </section>`}const ve=[[{quote:"We approached Alexi at Atlantic Bear, who was absolutely fantastic at putting together our ideas and bringing them across on the website in a way that really engaged our target market.",name:"Sonder Training Group",role:"Training Provider, UAE"},{quote:"Seeing the finished site before paying a dirham took all the risk out of it. By the demo call it was already better than what we had.",name:"Rania Haddad",role:"Owner, Boutique Retail"},{quote:"Five days from the first call to a live site. I had budgeted two months and half of that for arguing about revisions.",name:"Tom Whitfield",role:"Founder, Dental Clinic"}],[{quote:"We now come up first for our category in Dubai. Enquiries through the site have roughly tripled since launch.",name:"Priya Nair",role:"Director, Facilities Services"},{quote:"They asked good questions, then just built it. I approved two rounds of small tweaks and that was the whole process.",name:"Marcus Oyelaran",role:"Manager, Hospitality Group"},{quote:"Most of our customers are on their phones and the old site was unusable there. The new one loads instantly.",name:"Yasmin Farouk",role:"Owner, Fitness Studio"}],[{quote:"Content changes get handled the same day I email them. No tickets, no waiting a week for a price update.",name:"Daniel Kessler",role:"Partner, Consultancy"},{quote:"The booking form alone paid for the build. We went from phone-only to a steady stream of qualified enquiries.",name:"Omar Sheikh",role:"Owner, Auto Detailing"},{quote:"Handover was clean. Domain, hosting, files, all in our name from day one, exactly as they promised.",name:"Lena Vasquez",role:"Founder, E-commerce"}]],K=[{bg:"#3b69ff",fg:"#dfe8ff"},{bg:"#1e46c7",fg:"#d5e0ff"},{bg:"#6391ff",fg:"#eef3ff"},{bg:"#2a50e0",fg:"#dbe5ff"},{bg:"#142d80",fg:"#ccd9ff"},{bg:"#4a80ff",fg:"#e7eeff"},{bg:"#27418f",fg:"#d2ddff"},{bg:"#5b7cff",fg:"#e9efff"},{bg:"#1a3fb5",fg:"#d8e2ff"}];function fe(t,e){const a=K[e%K.length],s=7.2+e%3*.5,o=14.5+e%4*.8,i=19.5-e%3*.3;return`
-    <svg class="review-avatar" viewBox="0 0 48 48" role="img" aria-label="Illustrated avatar for ${t}">
-      <circle cx="24" cy="24" r="24" fill="${a.bg}" />
-      <circle cx="24" cy="${i}" r="${s}" fill="${a.fg}" />
-      <path d="M${24-o} 46 a${o} ${o} 0 0 1 ${o*2} 0 z" fill="${a.fg}" />
-    </svg>`}function ge(t,e){return`
+    <span class="review-avatar-wrap">
+      <svg class="review-avatar" viewBox="0 0 48 48" role="img" aria-label="Avatar for ${t}">
+        <circle cx="24" cy="24" r="24" fill="${a.bg}" />
+        <circle cx="24" cy="${i}" r="${s}" fill="${a.fg}" />
+        <path d="M${24-o} 46 a${o} ${o} 0 0 1 ${o*2} 0 z" fill="${a.fg}" />
+      </svg>
+      <img class="review-avatar-img" src="/reviews/person-${e%9+1}.jpg" alt=""
+           loading="lazy" width="42" height="42" onerror="this.remove()" />
+    </span>`}function ge(t,e){return`
     <article class="review-card">
       <p class="review-quote">${t.quote}</p>
       <div class="review-author">
