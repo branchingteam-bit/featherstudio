@@ -248,6 +248,264 @@ function Footer(): string {
   </footer>`;
 }
 
+
+// ─── Floating squares (free demo section) ────────────────────────────────────
+// Six blue squares drifting behind the copy. The outer span carries the
+// cursor-repel transform, the inner one carries the idle float, so the two
+// animations don't fight over `transform`.
+function DemoFloaters(): string {
+  const squares = [
+    { x: 7,  y: 16, size: 56, delay: 0,   dur: 19 },
+    { x: 84, y: 11, size: 38, delay: 2.5, dur: 23 },
+    { x: 15, y: 71, size: 46, delay: 1.2, dur: 26 },
+    { x: 91, y: 58, size: 64, delay: 3.4, dur: 21 },
+    { x: 44, y: 86, size: 30, delay: 4.1, dur: 24 },
+    { x: 70, y: 37, size: 44, delay: 0.8, dur: 28 },
+  ];
+
+  const items = squares.map(q => `
+    <span class="demo-square" style="left:${q.x}%; top:${q.y}%;">
+      <i style="width:${q.size}px; height:${q.size}px; animation-delay:-${q.delay}s; animation-duration:${q.dur}s;"></i>
+    </span>`).join('');
+
+  return `<div class="demo-floaters" aria-hidden="true">${items}</div>`;
+}
+
+function initDemoFloaters() {
+  const section = document.querySelector('.free-demo-section') as HTMLElement | null;
+  if (!section) return;
+
+  const squares = Array.from(section.querySelectorAll('.demo-square')) as HTMLElement[];
+  if (!squares.length) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const RADIUS = 200;    // how close the cursor has to get
+  const STRENGTH = 48;   // how far a square is pushed at point-blank range
+
+  const reset = () => squares.forEach(sq => { sq.style.transform = ''; });
+
+  section.addEventListener('mousemove', (e: MouseEvent) => {
+    squares.forEach(sq => {
+      const r = sq.getBoundingClientRect();
+      const dx = (r.left + r.width / 2) - e.clientX;
+      const dy = (r.top + r.height / 2) - e.clientY;
+      const dist = Math.hypot(dx, dy);
+      if (dist > 0 && dist < RADIUS) {
+        const push = (1 - dist / RADIUS) * STRENGTH;
+        sq.style.transform = `translate(${(dx / dist) * push}px, ${(dy / dist) * push}px)`;
+      } else {
+        sq.style.transform = '';
+      }
+    });
+  }, { passive: true });
+
+  section.addEventListener('mouseleave', reset);
+}
+
+// ─── Claude Code section ─────────────────────────────────────────────────────
+// The terminal is drawn in markup rather than shipped as an image, so it stays
+// crisp and themable. See CLAUDE_LOGO_SLOT below for the optional brand mark.
+function ClaudeCodeSection(): string {
+  return `
+  <!-- BUILT WITH CLAUDE CODE -->
+  <section class="cc-section">
+    <div class="container">
+      <div class="cc-grid">
+
+        <div class="cc-copy reveal">
+          <span class="cc-badge">${Icons.code} How we build</span>
+          <div class="cc-title-row">
+            <h2>We build with Claude&nbsp;Code.</h2>
+            <svg class="cc-mark" viewBox="0 0 438 438" role="img" aria-label="Claude Code" xmlns="http://www.w3.org/2000/svg">
+              <mask id="cc-mark-eyes">
+                <rect width="438" height="438" fill="#fff" />
+                <rect x="110" y="145" width="30" height="60" fill="#000" />
+                <rect x="305" y="145" width="30" height="60" fill="#000" />
+              </mask>
+              <g mask="url(#cc-mark-eyes)" fill="#D97757">
+                <rect x="55" y="90" width="335" height="225" />
+                <rect x="0" y="205" width="438" height="57" />
+                <rect x="82"  y="315" width="28" height="60" />
+                <rect x="138" y="315" width="28" height="60" />
+                <rect x="283" y="315" width="28" height="60" />
+                <rect x="337" y="315" width="28" height="60" />
+              </g>
+            </svg>
+          </div>
+          <p class="cc-lead">
+            Every site we ship is built using Claude Code, Anthropic's agentic coding tool.
+            It handles the repetitive engineering, from scaffolding pages to wiring integrations
+            and catching bugs, so our time goes into the things that actually move your business:
+            positioning, copy, and design.
+          </p>
+          <p class="cc-lead">
+            That is how a fully custom website gets built in days instead of months, without
+            falling back on a template. You get the speed of a page builder with the quality
+            of hand-written code.
+          </p>
+
+          <ul class="cc-points">
+            <li>
+              <span class="cc-point-icon">${Icons.zap}</span>
+              <span><strong>Days, not months.</strong> Groundwork that used to take weeks is done in an afternoon.</span>
+            </li>
+            <li>
+              <span class="cc-point-icon">${Icons.palette}</span>
+              <span><strong>Still fully custom.</strong> Every line is written for your business. No themes, no drag-and-drop.</span>
+            </li>
+            <li>
+              <span class="cc-point-icon">${Icons.shield}</span>
+              <span><strong>Checked as it's written.</strong> Types, mobile layouts, and performance reviewed on every change.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="cc-visual reveal">
+          <div class="cc-terminal">
+            <div class="cc-terminal-bar">
+              <span class="tm-dot"></span><span class="tm-dot"></span><span class="tm-dot"></span>
+              <span class="cc-terminal-title">claude · atlantic-bear</span>
+            </div>
+            <div class="cc-terminal-body">
+              <p class="cc-line"><span class="cc-prompt">&gt;</span> Build the booking section for the new client site</p>
+              <p class="cc-line cc-muted">● Reading src/main.ts, src/style.css</p>
+              <p class="cc-line cc-ok">✓ Created booking form with validation</p>
+              <p class="cc-line cc-ok">✓ Added mobile breakpoints at 720px</p>
+              <p class="cc-line cc-ok">✓ Wired Calendly + lead capture</p>
+              <p class="cc-line cc-ok">✓ Type check passed, 0 errors</p>
+              <p class="cc-line cc-accent">● Ready to preview<span class="cc-caret"></span></p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>`;
+}
+
+// ─── Reviews wall ────────────────────────────────────────────────────────────
+// Three columns of review cards scrolling vertically at different speeds,
+// faded out at the top and bottom.
+//
+// ⚠ DEMO CONTENT — NOT REAL CUSTOMER REVIEWS.
+// Only the Sonder Training Group quote is genuine. Every other entry below is
+// invented sample copy with a made-up name, used to fill out the layout while
+// the design is being built. Publishing fabricated reviews as real customer
+// feedback is deceptive and, in most markets, unlawful advertising — swap
+// these for genuine quotes before this page goes live.
+type Review = { quote: string; name: string; role: string };
+
+const REVIEW_COLUMNS: Review[][] = [
+  [
+    { quote: 'We approached Alexi at Atlantic Bear, who was absolutely fantastic at putting together our ideas and bringing them across on the website in a way that really engaged our target market.', name: 'Sonder Training Group', role: 'Training Provider, UAE' },
+    { quote: 'Seeing the finished site before paying a dirham took all the risk out of it. By the demo call it was already better than what we had.', name: 'Rania Haddad', role: 'Owner, Boutique Retail' },
+    { quote: 'Five days from the first call to a live site. I had budgeted two months and half of that for arguing about revisions.', name: 'Tom Whitfield', role: 'Founder, Dental Clinic' },
+  ],
+  [
+    { quote: 'We now come up first for our category in Dubai. Enquiries through the site have roughly tripled since launch.', name: 'Priya Nair', role: 'Director, Facilities Services' },
+    { quote: 'They asked good questions, then just built it. I approved two rounds of small tweaks and that was the whole process.', name: 'Marcus Oyelaran', role: 'Manager, Hospitality Group' },
+    { quote: 'Most of our customers are on their phones and the old site was unusable there. The new one loads instantly.', name: 'Yasmin Farouk', role: 'Owner, Fitness Studio' },
+  ],
+  [
+    { quote: 'Content changes get handled the same day I email them. No tickets, no waiting a week for a price update.', name: 'Daniel Kessler', role: 'Partner, Consultancy' },
+    { quote: 'The booking form alone paid for the build. We went from phone-only to a steady stream of qualified enquiries.', name: 'Omar Sheikh', role: 'Owner, Auto Detailing' },
+    { quote: 'Handover was clean. Domain, hosting, files, all in our name from day one, exactly as they promised.', name: 'Lena Vasquez', role: 'Founder, E-commerce' },
+  ],
+];
+
+// Generated portrait avatars. Drawn rather than photographed, so they are
+// royalty-free by construction and no real person's face is attached to a
+// quote they never gave. To use real photos, drop licensed files into
+// public/reviews/ and swap this for an <img>.
+const AVATAR_TONES = [
+  { bg: '#3b69ff', fg: '#dfe8ff' },
+  { bg: '#1e46c7', fg: '#d5e0ff' },
+  { bg: '#6391ff', fg: '#eef3ff' },
+  { bg: '#2a50e0', fg: '#dbe5ff' },
+  { bg: '#142d80', fg: '#ccd9ff' },
+  { bg: '#4a80ff', fg: '#e7eeff' },
+  { bg: '#27418f', fg: '#d2ddff' },
+  { bg: '#5b7cff', fg: '#e9efff' },
+  { bg: '#1a3fb5', fg: '#d8e2ff' },
+];
+
+function Avatar(name: string, i: number): string {
+  const t = AVATAR_TONES[i % AVATAR_TONES.length];
+  const headR = 7.2 + (i % 3) * 0.5;          // small variation so they
+  const shoulderR = 14.5 + (i % 4) * 0.8;     // don't all look identical
+  const headY = 19.5 - (i % 3) * 0.3;
+  return `
+    <svg class="review-avatar" viewBox="0 0 48 48" role="img" aria-label="Illustrated avatar for ${name}">
+      <circle cx="24" cy="24" r="24" fill="${t.bg}" />
+      <circle cx="24" cy="${headY}" r="${headR}" fill="${t.fg}" />
+      <path d="M${24 - shoulderR} 46 a${shoulderR} ${shoulderR} 0 0 1 ${shoulderR * 2} 0 z" fill="${t.fg}" />
+    </svg>`;
+}
+
+function ReviewCard(r: Review, i: number): string {
+  return `
+    <article class="review-card">
+      <p class="review-quote">${r.quote}</p>
+      <div class="review-author">
+        ${Avatar(r.name, i)}
+        <span class="review-author-meta">
+          <span class="review-name">${r.name}</span>
+          <span class="review-role">${r.role}</span>
+        </span>
+      </div>
+    </article>`;
+}
+
+function ReviewsWall(): string {
+  const cols = REVIEW_COLUMNS.map((col, i) => {
+    // Cards are rendered twice so the track can loop by exactly -50%.
+    const cards = col.map((r, j) => ReviewCard(r, i * 3 + j)).join('');
+    return `
+      <div class="reviews-col reviews-col-${i + 1}">
+        <div class="reviews-track">${cards}${cards}</div>
+      </div>`;
+  }).join('');
+
+  return `
+  <!-- REVIEWS WALL -->
+  <section class="reviews-wall">
+    <div class="container">
+      <div class="reviews-head">
+        <span class="reviews-badge">${Icons.star} Reviews</span>
+        <h2>What our clients say</h2>
+        <p>See what UAE businesses say about working with us.</p>
+      </div>
+    </div>
+    <div class="reviews-cols">${cols}</div>
+  </section>`;
+}
+
+
+// ─── Section Waves ───────────────────────────────────────────────────────────
+// Decorative waves that hang off the top border line of a section. Purely
+// visual: pointer-events are off and it sits behind the section's content.
+function SectionWaves(): string {
+  const layers = [
+    // All one hue: the brand blue used by the Book a Call button (--accent).
+    // Depth comes from the stacked opacities, not from different colours.
+    { cls: 'wave-1', fill: '#3b69ff', d: 'M0,40 C150,18 350,62 600,40 C850,18 1050,62 1200,40 C1350,18 1550,62 1800,40 C2050,18 2250,62 2400,40' },
+    { cls: 'wave-2', fill: '#3b69ff', d: 'M0,50 C200,72 400,28 600,50 C800,72 1000,28 1200,50 C1400,72 1600,28 1800,50 C2000,72 2200,28 2400,50' },
+    { cls: 'wave-3', fill: '#3b69ff', d: 'M0,55 C120,25 280,85 600,55 C920,25 1080,85 1200,55 C1320,25 1480,85 1800,55 C2120,25 2280,85 2400,55' },
+    { cls: 'wave-4', fill: '#3b69ff', d: 'M0,65 C180,45 420,85 600,65 C780,45 1020,85 1200,65 C1380,45 1620,85 1800,65 C1980,45 2220,85 2400,65' },
+  ];
+
+  // Each path spans two identical 1200-unit tiles, so translating a layer by
+  // half its width loops seamlessly.
+  const svgs = layers.map(l => `
+    <div class="wave-layer ${l.cls}">
+      <svg viewBox="0 0 2400 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="${l.d} L2400,140 L0,140 Z" fill="${l.fill}" />
+      </svg>
+    </div>`).join('');
+
+  return `<div class="section-waves" aria-hidden="true">${svgs}</div>`;
+}
+
 // ─── Home Page ───────────────────────────────────────────────────────────────
 function HomePage(): string {
   // Build marquee items (duplicated 4 times for seamless infinite loop)
@@ -272,7 +530,7 @@ function HomePage(): string {
   <section class="hero" style="position: relative; overflow: hidden;">
     <img src="/huge-bear-watermark.webp" class="huge-bear" alt="Atlantic Bear Watermark" fetchpriority="high" width="600" height="600" />
     <div class="container" style="position: relative; z-index: 1;">
-      <h1>Your business deserves<br>to be <span class="text-blue">found</span>.</h1>
+      <h1>Your business deserves<br>to be <span class="hook-word"><span class="hook-drop-inner"><span class="hook-rig" aria-hidden="true"><span class="hook-line"></span><svg class="hook-icon" viewBox="0 0 20 34" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="3" r="2.4" stroke="currentColor" stroke-width="2"/><path d="M10 5.4 V17 C10 25.5 2.6 27 2.6 19.6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M2.6 19.6 L6 22.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><span class="hook-label text-blue">found</span></span></span>.</h1>
       <p class="hero-sub">
         Custom websites built exclusively for UAE small businesses. Get a free demo of your site before paying anything.
       </p>
@@ -306,6 +564,7 @@ function HomePage(): string {
 
   <!-- THE FACTS SECTION -->
   <section class="facts-section" style="border-top:1px solid var(--border);">
+    ${SectionWaves()}
     <div class="container">
       <h2 class="facts-headline">The numbers don't lie.</h2>
 
@@ -345,6 +604,7 @@ function HomePage(): string {
 
   <!-- FREE DEMO OFFER SECTION -->
   <section class="free-demo-section reveal">
+    ${DemoFloaters()}
     <div class="container">
       <div class="free-demo-inner">
         <div class="free-demo-badge" style="border: 1px solid var(--red); color: var(--red);">See It Before You Pay It</div>
@@ -467,6 +727,8 @@ function HomePage(): string {
     </div>
   </section>
 
+  ${ClaudeCodeSection()}
+
   <!-- TIER TEASERS (PACKAGES) SECTION -->
   <section class="teasers-section">
     <div class="container">
@@ -542,6 +804,8 @@ function HomePage(): string {
       </div>
     </div>
   </section>
+
+  ${ReviewsWall()}
   `;
 }
 
@@ -706,18 +970,6 @@ function PricingPage(): string {
               <div class="val-comp-row main"><span class="val-comp-label">Your Setup Cost:</span><span class="val-comp-value-price">AED 3,500</span></div>
             </div>
             <a href="/booking" data-link="booking" class="btn btn-primary btn-pulse btn-block btn-large">Book Call to See Your Demo</a>
-            
-            <div class="paypal-buy-wrapper">
-              <span class="paypal-or-divider">— OR BUY IMMEDIATELY —</span>
-              <form action="https://www.paypal.com/ncp/payment/KJDAPRWW2EC6S" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
-                <input class="paypal-submit-btn" type="submit" value="Buy Now" />
-                <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
-                <section style="font-size: 0.72rem; color: var(--text-muted);"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.8rem;vertical-align:middle;"/></section>
-              </form>
-              <div class="paypal-bonus-note">
-                Includes the <strong style="color: var(--blue);">Fast-Action Bonus</strong> below<br>(unlimited tweaks first month)
-              </div>
-            </div>
           </div>
         </div>
 
@@ -798,18 +1050,6 @@ function PricingPage(): string {
               <div class="val-comp-row main"><span class="val-comp-label">Your Setup Cost:</span><span class="val-comp-value-price">AED 6,500</span></div>
             </div>
             <a href="/booking" data-link="booking" class="btn btn-primary btn-pulse btn-block btn-large">Book Call to See Your Demo</a>
-            
-            <div class="paypal-buy-wrapper">
-              <span class="paypal-or-divider">— OR BUY IMMEDIATELY —</span>
-              <form action="https://www.paypal.com/ncp/payment/T8XKDA4RJ6H26" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
-                <input class="paypal-submit-btn" type="submit" value="Buy Now" />
-                <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
-                <section style="font-size: 0.72rem; color: var(--text-muted);"> Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.8rem;vertical-align:middle;"/></section>
-              </form>
-              <div class="paypal-bonus-note">
-                Includes the <strong style="color: var(--blue);">Fast-Action Bonus</strong> below<br>(unlimited tweaks first month)
-              </div>
-            </div>
           </div>
         </div>
 
@@ -1577,6 +1817,42 @@ function setActiveNav(page: Page) {
   if (link) link.classList.add('active');
 }
 
+// Tags the main content blocks so they animate in on scroll, rather than
+// hand-adding .reveal to every element in the markup. Siblings are staggered
+// so a row or grid comes in as a cascade instead of all at once.
+const AUTO_REVEAL_SELECTOR = [
+  '.section-title', '.section-sub',
+  '.facts-headline', '.fact-hero-block', '.facts-stat-block',
+  '.free-demo-badge', '.free-demo-headline', '.free-demo-sub', '.free-demo-step',
+  '.basic-system-card',
+  '.step', '.feature-item',
+  '.teaser-card', '.tier-card', '.level-one-card',
+  '.pricing-plan-card', '.guarantee-card', '.pricing-bonus-block',
+  '.problem-card', '.contact-method', '.contact-form-card',
+  '.cc-copy', '.cc-visual',
+  '.reviews-head',
+  '.competitor-banner-text',
+  '.meta-ads-teaser-box',
+].join(',');
+
+function initAutoReveal() {
+  const els = Array.from(document.querySelectorAll(AUTO_REVEAL_SELECTOR)) as HTMLElement[];
+
+  els.forEach(el => {
+    if (el.classList.contains('reveal') || el.classList.contains('revealed')) return;
+    el.classList.add('reveal');
+
+    // Stagger against the other revealing siblings in the same container.
+    const parent = el.parentElement;
+    if (!parent) return;
+    const sibs = Array.from(parent.children).filter(c => c.classList.contains('reveal'));
+    const idx = sibs.indexOf(el);
+    if (idx > 0 && !el.style.transitionDelay) {
+      el.style.transitionDelay = `${Math.min(idx * 0.07, 0.35)}s`;
+    }
+  });
+}
+
 function scrollReveal() {
   const targets = $$('.reveal');
   const obs = new IntersectionObserver((entries) => {
@@ -1588,6 +1864,51 @@ function scrollReveal() {
     });
   }, { threshold: 0.07, rootMargin: '0px 0px -30px 0px' });
   targets.forEach(t => obs.observe(t));
+}
+
+// Types a stat out one character at a time, then restores the original markup
+// so the styled "%" span comes back intact.
+function typeStat(el: HTMLElement) {
+  const original = el.innerHTML;
+  const text = (el.textContent || '').trim();
+  if (!text) return;
+
+  el.textContent = '';
+  el.classList.add('is-typing');
+
+  let i = 0;
+  const step = () => {
+    i += 1;
+    el.textContent = text.slice(0, i);
+    if (i < text.length) {
+      window.setTimeout(step, 105);
+    } else {
+      el.innerHTML = original;
+      el.classList.remove('is-typing');
+    }
+  };
+  window.setTimeout(step, 90);
+}
+
+function initFactNumbers() {
+  const nums = $$('.fact-hero-num, .facts-stat-num') as HTMLElement[];
+  if (!nums.length) return;
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // Reserve the final height so the line doesn't collapse while it's empty.
+  nums.forEach(n => { n.style.minHeight = `${n.getBoundingClientRect().height}px`; });
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (!e.isIntersecting) return;
+      const el = e.target as HTMLElement;
+      obs.unobserve(el);
+      window.setTimeout(() => typeStat(el), i * 150);
+    });
+  }, { threshold: 0.4 });
+
+  nums.forEach(n => obs.observe(n));
 }
 
 function initFormspree() {
@@ -2581,6 +2902,11 @@ function initStrategyBookingModal() {
   (window as any).openStratBookingModal = openModal;
 }
 
+// Left-to-right reading order of the site, used to decide which way the page
+// slides. Going "forward" in this list slides left; going back slides right.
+const PAGE_ORDER: Page[] = ['home', 'pricing', 'work', 'testimonials', 'meta-ads', 'contact', 'booking', 'booking-new', 'booked'];
+let activePage: Page | null = null;
+
 function navigate(page: Page, pushHistory = true) {
   // Remove any modal leftover from previous page render
   const oldModal = document.getElementById('booking-modal');
@@ -2607,19 +2933,45 @@ function navigate(page: Page, pushHistory = true) {
   }
 
   const main = $('#main-content')!;
+
+  // Slide the outgoing page off, swap the markup, then slide the new one in
+  // from the opposite edge.
+  const from = activePage ? PAGE_ORDER.indexOf(activePage) : -1;
+  const to = PAGE_ORDER.indexOf(page);
+  const forward = from === -1 || to >= from;
+  const exitTo = forward ? '-8%' : '8%';
+  const enterFrom = forward ? '8%' : '-8%';
+  activePage = page;
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  main.style.transition = reduceMotion
+    ? 'opacity 0.2s ease'
+    : 'opacity 0.26s ease, transform 0.26s cubic-bezier(0.5, 0, 0.75, 0)';
   main.style.opacity = '0';
-  main.style.transform = 'translateY(8px)';
+  if (!reduceMotion) main.style.transform = `translateX(${exitTo})`;
 
   setTimeout(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
+
+    // Place the incoming page off-screen before it is painted.
+    main.style.transition = 'none';
+    if (!reduceMotion) main.style.transform = `translateX(${enterFrom})`;
+
     main.innerHTML = pageMap[page]();
     setActiveNav(page);
-    main.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+
     requestAnimationFrame(() => {
+      main.style.transition = reduceMotion
+        ? 'opacity 0.25s ease'
+        : 'opacity 0.34s ease, transform 0.42s cubic-bezier(0.16, 1, 0.3, 1)';
       main.style.opacity = '1';
-      main.style.transform = 'translateY(0)';
+      main.style.transform = 'translateX(0)';
     });
+    initAutoReveal();
     scrollReveal();
+    initFactNumbers();
+    initDemoFloaters();
 
     if (page === 'contact') {
       initFormspree();
@@ -2668,7 +3020,7 @@ function navigate(page: Page, pushHistory = true) {
         history.pushState(null, '', path);
       }
     }
-  }, 150);
+  }, 260);   // matches the exit transition above
 }
 
 // ─── Link delegation ─────────────────────────────────────────────────────────
@@ -2698,6 +3050,7 @@ function initNavScroll() {
   };
   window.addEventListener('scroll', handler, { passive: true });
 }
+
 
 // ─── Formspree global queue ───────────────────────────────────────────────────
 (window as any).formspree = (window as any).formspree || function() {
