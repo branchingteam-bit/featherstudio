@@ -434,12 +434,19 @@ function Avatar(name: string, i: number): string {
   const headR = 7.2 + (i % 3) * 0.5;          // small variation so they
   const shoulderR = 14.5 + (i % 4) * 0.8;     // don't all look identical
   const headY = 19.5 - (i % 3) * 0.3;
+
+  // Photo first; if the file isn't there the <img> removes itself and the
+  // drawn avatar underneath shows through, so the layout never breaks.
   return `
-    <svg class="review-avatar" viewBox="0 0 48 48" role="img" aria-label="Illustrated avatar for ${name}">
-      <circle cx="24" cy="24" r="24" fill="${t.bg}" />
-      <circle cx="24" cy="${headY}" r="${headR}" fill="${t.fg}" />
-      <path d="M${24 - shoulderR} 46 a${shoulderR} ${shoulderR} 0 0 1 ${shoulderR * 2} 0 z" fill="${t.fg}" />
-    </svg>`;
+    <span class="review-avatar-wrap">
+      <svg class="review-avatar" viewBox="0 0 48 48" role="img" aria-label="Avatar for ${name}">
+        <circle cx="24" cy="24" r="24" fill="${t.bg}" />
+        <circle cx="24" cy="${headY}" r="${headR}" fill="${t.fg}" />
+        <path d="M${24 - shoulderR} 46 a${shoulderR} ${shoulderR} 0 0 1 ${shoulderR * 2} 0 z" fill="${t.fg}" />
+      </svg>
+      <img class="review-avatar-img" src="/reviews/person-${(i % 9) + 1}.jpg" alt=""
+           loading="lazy" width="42" height="42" onerror="this.remove()" />
+    </span>`;
 }
 
 function ReviewCard(r: Review, i: number): string {
