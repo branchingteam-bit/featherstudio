@@ -192,7 +192,7 @@ function Navbar(): string {
   <nav class="nav" id="main-nav">
     <a href="/" class="logo" data-link="home" id="logo-btn" aria-label="Atlantic Bear Home">
       <span class="logo-wordmark">Atlantic</span>
-      <img src="/atlanticbear-logo.png" alt="Atlantic Bear Logo" class="logo-bear-img" width="42" height="42" fetchpriority="high" />
+      <img src="/atlanticbear-logo-reversed.png" alt="Atlantic Bear Logo" class="logo-bear-img" width="56" height="56" fetchpriority="high" />
     </a>
     <div class="nav-links">
       <a href="/" class="nav-link" data-link="home"    id="nav-home">Home</a>
@@ -201,8 +201,6 @@ function Navbar(): string {
       <a href="/contact" class="nav-link" data-link="contact" id="nav-contact">Contact</a>
     </div>
     <div class="nav-actions">
-      <a href="/contact" class="btn btn-secondary btn-sm nav-desktop-only" data-link="contact" id="nav-contact-cta">Contact</a>
-      <a href="/pricing" class="btn btn-secondary btn-sm nav-mobile-only" data-link="pricing" id="nav-pricing-cta">Pricing</a>
       <a href="/booking" class="btn btn-primary btn-sm btn-pulse" data-link="booking" id="nav-book-cta">Book a Call ${Icons.arrow}</a>
     </div>
   </nav>`;
@@ -242,6 +240,10 @@ function Footer(): string {
       </div>
       <div class="footer-bottom">
         <span>© ${new Date().getFullYear()} Atlantic Bear. All rights reserved.</span>
+        <div class="footer-legal">
+          <a href="/terms" data-link="terms">Terms &amp; Conditions</a>
+          <a href="/privacy" data-link="privacy">Privacy Policy</a>
+        </div>
         <span>Dubai, UAE</span>
       </div>
     </div>
@@ -659,13 +661,13 @@ function HomePage(): string {
         <h2>Capture Your Category in the UAE</h2>
         <p>Two plans. Both fully managed. We run your online reputation while you run your business.</p>
       </div>
-      <div class="teasers-grid" style="grid-template-columns: repeat(2, 1fr); max-width: 850px; margin: 0 auto; gap: 32px;">
+      <div class="teasers-grid" style="grid-template-columns: repeat(2, 1fr); max-width: 1000px; margin: 0 auto; gap: 28px;">
 
         <!-- Managed Plan Teaser -->
         <div class="teaser-card level-one-card">
           <div class="teaser-level-tag">
             <span class="teaser-level-num">01</span>
-            <span class="teaser-level-name">The Launch Plan · Most Popular</span>
+            <span class="teaser-level-name">Most Popular</span>
           </div>
           <h3>The Launch Plan</h3>
           <p class="teaser-pitch">Everything your business needs to lock down a premium online reputation, capture existing word-of-mouth clients, and let customers reach you instantly.</p>
@@ -688,7 +690,7 @@ function HomePage(): string {
         <div class="teaser-card level-three-card">
           <div class="teaser-level-tag">
             <span class="teaser-level-num">02</span>
-            <span class="teaser-level-name">The Growth Plan · Scale & Video</span>
+            <span class="teaser-level-name">Scale & Video</span>
           </div>
           <h3>The Growth Plan</h3>
           <p class="teaser-pitch">For businesses that want to look like the biggest player in their field, rank for high-intent search terms, embed fast video assets, and launch marketing funnels.</p>
@@ -1103,6 +1105,29 @@ function TestimonialsPage(): string {
         </div>
       </div>
 
+      <!-- CASE STUDY WRITE-UP -->
+      <div class="case-study reveal" style="transition-delay:0.1s;">
+        <div class="case-study-main">
+          <h2>What we changed, and why</h2>
+          <p>Sonder Training Group deliver professional training. Their previous website did not reflect that. It had been put together years earlier, had drifted out of date, and the layout worked against them: the important information sat low on the page, the structure was difficult to scan, and the whole thing had the look of a site built once and never revisited. For a business whose customers are assessing credibility before they ever make contact, that is an expensive problem.</p>
+          <p>The brief was straightforward. Make it look like the organisation it represents, make it clear what they offer, and make it easy for someone who has just found them to take the next step.</p>
+          <p>We rebuilt the site rather than patching it. The content was restructured so the courses and the offer appear immediately instead of being buried, and each section was written to answer the question a prospective client actually has at that point on the page. The visual design was rebuilt around clear typography and generous spacing, so the page reads as considered rather than crowded.</p>
+          <p>The technical work matters as much as the appearance, even though none of it is visible. The site was built mobile-first, because most people who search for training providers do it on a phone. Pages were kept light so they load quickly on mobile data rather than only on office wifi. Headings, page titles, and meta descriptions were structured properly so search engines can understand what each page is about, and the site was given a sitemap and an SSL certificate as standard.</p>
+          <p>The result is a site that does the job the old one could not: it presents the business at the level it actually operates at, and it gives visitors an obvious route to get in touch.</p>
+        </div>
+        <aside class="case-study-side">
+          <h3>Project at a glance</h3>
+          <dl class="case-study-facts">
+            <div><dt>Client</dt><dd>Sonder Training Group</dd></div>
+            <div><dt>Sector</dt><dd>Professional training</dd></div>
+            <div><dt>Scope</dt><dd>Full rebuild, copywriting, hosting</dd></div>
+            <div><dt>Built for</dt><dd>Mobile first</dd></div>
+            <div><dt>Includes</dt><dd>SSL, sitemap, search setup</dd></div>
+          </dl>
+          <a href="https://sondertraininggroup.com/" target="_blank" rel="noopener" class="btn btn-secondary btn-sm case-study-link">Visit the live site ${Icons.arrow}</a>
+        </aside>
+      </div>
+
       <!-- VIDEO TESTIMONIAL -->
       <div class="tm-shot-block reveal" style="transition-delay:0.12s; max-width: 600px; margin: 0 auto;">
         <div class="tm-shot-label tm-label-after" style="position: static; display: inline-block; margin-bottom: 16px;">Video Review</div>
@@ -1158,6 +1183,15 @@ function ContactPage(): string {
             <h1>Let's build<br>something.</h1>
             <p>Tell us about your business or just ask anything. We respond fast, usually within a few hours.</p>
             <div class="contact-methods">
+              <a href="tel:+971502446531" class="contact-method">
+                <div class="contact-method-icon" style="background:rgba(59,105,255,0.08); color:var(--blue);">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${Icons.phone}</svg>
+                </div>
+                <div>
+                  <div class="contact-method-label">Phone</div>
+                  <div class="contact-method-value">+971-50-244-6531</div>
+                </div>
+              </a>
               <a href="mailto:officialatlanticbear@gmail.com" class="contact-method">
                 <div class="contact-method-icon" style="background:rgba(59,105,255,0.08); color:var(--blue);">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${Icons.mail}</svg>
@@ -1219,9 +1253,200 @@ function ContactPage(): string {
             </form>
           </div>
         </div>
+
+        ${FaqSection()}
       </div>
     </div>
   </div>`;
+}
+
+// ─── Legal pages ─────────────────────────────────────────────────────────────
+// General-purpose terms and a privacy notice covering what the site actually
+// collects (contact form, booking form, Meta Pixel, reCAPTCHA, Calendly).
+// NOTE: written as a solid starting point, not as legal advice — have a
+// UAE-qualified lawyer review both before relying on them.
+function LegalPage(title: string, updated: string, blocks: { h: string; p: string[] }[]): string {
+  const body = blocks.map(b => `
+    <section class="legal-block reveal">
+      <h2>${b.h}</h2>
+      ${b.p.map(t => `<p>${t}</p>`).join('')}
+    </section>`).join('');
+
+  return `
+  <div class="page-header" style="border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div class="section-label">Legal</div>
+      <h1>${title}</h1>
+      <p style="max-width:640px; margin:12px auto 0; color:var(--text-muted);">Last updated ${updated}</p>
+    </div>
+  </div>
+  <section class="section-pad">
+    <div class="container">
+      <div class="legal-wrap">${body}</div>
+    </div>
+  </section>`;
+}
+
+function TermsPage(): string {
+  return LegalPage('Terms &amp; Conditions', 'August 2026', [
+    { h: '1. Who we are', p: [
+      'These terms govern the website design, development, hosting, and maintenance services provided by Atlantic Bear ("we", "us", "our") to you, the client. Our registered place of business is Dubai, United Arab Emirates. You can reach us at officialatlanticbear@gmail.com or on +971-50-244-6531.',
+      'By engaging us to build or maintain a website, or by paying an invoice, you accept these terms. If you are agreeing on behalf of a company, you confirm that you are authorised to bind that company.',
+    ]},
+    { h: '2. Services and scope', p: [
+      'We design, build, host, and maintain websites. The exact deliverables for your project — the number of pages, the features included, and the timeline — are agreed with you in writing before work begins, whether by email, proposal, or the plan you select on our pricing page.',
+      'Anything not set out in that written scope is not included. Requests that fall outside it, such as adding an online shop, a booking system, additional languages, or a substantial new section, are treated as new work and quoted separately. We will always tell you the cost before starting, and we will never add charges to an invoice you have not agreed to.',
+    ]},
+    { h: '3. Fees and payment', p: [
+      'Our plans consist of a one-off build fee and a recurring monthly fee, as published on our pricing page or as quoted to you directly. The build fee covers design and development up to launch. The monthly fee covers hosting, domain renewal, SSL, security and software updates, backups, uptime monitoring, and unlimited small content changes.',
+      'Invoices are payable within 14 days of issue unless we have agreed otherwise in writing. If a monthly payment is more than 30 days overdue we may suspend hosting and support after giving you at least 7 days written notice and a reasonable chance to settle. We will not delete your site or your data because of a late payment without telling you first.',
+      'All fees are stated in UAE dirhams and are exclusive of any applicable VAT or other government charges, which will be added where legally required.',
+    ]},
+    { h: '4. Your responsibilities', p: [
+      'To build your site we need certain things from you: accurate information about your business, timely feedback at review stages, and any brand assets, photography, or existing content you want us to use.',
+      'You confirm that anything you supply is either owned by you or properly licensed to you, and that we may use it to build and operate your website. You are responsible for the accuracy and legality of the information you ask us to publish, including prices, claims about your services, qualifications, and any regulated wording that applies to your industry.',
+      'If a project stalls because we are waiting on materials or approvals from you, timelines move accordingly. We will keep asking, but we cannot hold a build slot open indefinitely.',
+    ]},
+    { h: '5. Ownership of your website', p: [
+      'Your domain name is registered in your name and belongs to you. On full payment of the build fee, the finished website design, page content, and site files we produce for you become yours to keep.',
+      'This applies whether or not you stay with us. If you decide to move to another provider, we will transfer your domain, export your site files, and provide the access you need to take over hosting, and we will do it within 48 hours of your request. We do not hold domains, files, or content hostage.',
+      'Two things stay with us: any generic underlying code, tooling, or components we reuse across client projects, and any third-party software or fonts, which remain subject to their own licences. This does not restrict your use of your own website in any way.',
+    ]},
+    { h: '6. Content changes and support', p: [
+      'While you are on an active monthly plan, small content changes are unlimited and included. That covers text edits, prices, opening hours, images, staff and service listings, and similar updates. Requests are usually completed the same working day.',
+      'Support is provided by email, phone, and WhatsApp during UAE business hours. We aim to respond within a few hours. Substantial new functionality is not covered by the monthly fee and is quoted separately as set out in section 2.',
+    ]},
+    { h: '7. Hosting, uptime, and backups', p: [
+      'We host your site on established third-party infrastructure and monitor it for availability. We take regular backups so your site can be restored if something goes wrong.',
+      'We aim for continuous availability but we do not guarantee uninterrupted service. Downtime can arise from causes outside our control, including failures at our hosting providers, domain registry issues, denial-of-service attacks, and internet outages. Where a problem is within our control we will fix it as a priority and keep you informed.',
+    ]},
+    { h: '8. Cancellation', p: [
+      'There is no minimum term and no cancellation fee. You may cancel your monthly plan at any time by telling us in writing. Your plan runs to the end of the period you have already paid for, and we do not refund part-months.',
+      'On cancellation we hand over your domain, files, and the access required to move hosting elsewhere, within 48 hours. Once your plan ends we stop hosting the site, so please arrange your new hosting before the transfer.',
+      'We may end our side of the arrangement by giving you 30 days notice, or immediately if you use our services unlawfully or ask us to publish content that is illegal, fraudulent, or infringing.',
+    ]},
+    { h: '9. Liability', p: [
+      'We provide our services with reasonable skill and care. Nothing in these terms limits our liability for death or personal injury caused by negligence, for fraud, or for anything else that cannot lawfully be limited.',
+      'Subject to that, our total liability to you in connection with our services is limited to the total fees you have paid us in the 12 months before the claim arose. We are not liable for indirect or consequential losses, including lost profits, lost revenue, lost business, or loss of anticipated savings.',
+      'We are not responsible for search engine rankings, advertising performance, or the commercial results of your website. We build sites to a professional technical standard, but no agency can guarantee a position in search results or a level of sales.',
+    ]},
+    { h: '10. Governing law', p: [
+      'These terms are governed by the laws of the United Arab Emirates and the applicable laws of the Emirate of Dubai. Any dispute that we cannot resolve between us will be subject to the exclusive jurisdiction of the courts of Dubai.',
+      'If any part of these terms is found to be unenforceable, the rest continues to apply. We may update these terms from time to time and will publish the current version on this page with the date it was last changed.',
+    ]},
+  ]);
+}
+
+function PrivacyPage(): string {
+  return LegalPage('Privacy Policy', 'August 2026', [
+    { h: '1. Introduction', p: [
+      'This policy explains what personal information Atlantic Bear collects through this website, why we collect it, how we use and store it, and what rights you have over it. We are based in Dubai, United Arab Emirates, and you can contact us about anything in this policy at officialatlanticbear@gmail.com or on +971-50-244-6531.',
+      'We keep this deliberately plain. We are a small web design business, not an advertising network, and we do not sell personal information to anyone.',
+    ]},
+    { h: '2. Information you give us directly', p: [
+      'When you fill in our contact form we collect your name, email address, business name, the plan you are interested in, and the message you write. When you book a call we collect your name, email address, and phone number so we can contact you and hold the appointment.',
+      'We use this information for one purpose: to respond to you and to provide the services you have asked about. We do not add you to unrelated marketing lists, and we do not pass your details to third parties for their own marketing.',
+    ]},
+    { h: '3. Information collected automatically', p: [
+      'Like most websites, ours records basic technical information when you visit: your IP address, browser type and version, device type, the pages you view, how long you spend on them, and the site or advertisement that referred you.',
+      'We use this in aggregate to understand which pages are useful, to find broken or slow pages, and to see whether our advertising is working. It is not used to build a personal profile of you.',
+    ]},
+    { h: '4. Cookies and third-party services', p: [
+      'We use a small number of third-party services, and each may set cookies or receive some data when you use our site.',
+      'Google reCAPTCHA protects our forms from automated spam. It collects device and browsing signals to tell humans from bots, and is governed by Google\'s own privacy policy and terms. Calendly powers our booking scheduler and receives the name, email, and phone number you enter when booking. Meta Pixel measures whether visitors who arrive from our Facebook and Instagram advertising go on to enquire, and may be used to show you our ads elsewhere. Our contact form is delivered through Formspree, and booking enquiries are recorded in Google Sheets.',
+      'You can block or delete cookies in your browser settings at any time. Doing so may stop the booking scheduler or the contact form from working properly, but the rest of the site will function normally.',
+    ]},
+    { h: '5. Legal basis and consent', p: [
+      'Where you submit a form, we process your information because you have asked us to respond to you and because it is necessary to provide the service you requested. Where we use analytics and advertising measurement, we rely on our legitimate interest in understanding and improving how our business reaches customers.',
+      'You can withdraw consent or object to our use of your information at any time by contacting us using the details in section 1.',
+    ]},
+    { h: '6. How long we keep your information', p: [
+      'Enquiries that do not become projects are kept for up to 24 months so we can follow up and so we have a record of what was discussed, then deleted. Records relating to clients, including project files, correspondence, and invoices, are kept for the duration of the engagement and for as long afterwards as UAE accounting and tax rules require.',
+      'You can ask us to delete your information sooner and we will do so unless we are legally required to keep it.',
+    ]},
+    { h: '7. How we protect your information', p: [
+      'Your data is transmitted over encrypted HTTPS connections and stored in reputable third-party services that provide their own security controls. Access is limited to the people who need it to do the work.',
+      'No system is completely secure, and we will not pretend otherwise. If a breach occurs that affects your personal information, we will tell you and any relevant authority as required.',
+    ]},
+    { h: '8. Sharing your information', p: [
+      'We share personal information only with the service providers named in section 4, which process it on our behalf to make the site and our booking process work, and with professional advisers or authorities where we are legally required to do so.',
+      'We do not sell, rent, or trade your personal information. Some of these providers are based outside the UAE, which means your information may be processed abroad under the protections those providers offer.',
+    ]},
+    { h: '9. Your rights', p: [
+      'You can ask us what personal information we hold about you, ask for a copy of it, ask us to correct anything inaccurate, ask us to delete it, or object to how we are using it. You can also ask us to stop contacting you at any time.',
+      'Write to officialatlanticbear@gmail.com and we will respond within 30 days. There is no charge for making a request.',
+    ]},
+    { h: '10. Changes and contact', p: [
+      'We may update this policy as our services or the tools we use change. The current version is always published here with the date it was last updated, and material changes will be made clear.',
+      'If you have a question or a complaint about how we handle your information, contact us first at officialatlanticbear@gmail.com or +971-50-244-6531. You also have the right to raise the matter with the relevant UAE data protection authority.',
+    ]},
+  ]);
+}
+
+// ─── FAQ ─────────────────────────────────────────────────────────────────────
+// Native <details>/<summary> so it is keyboard accessible and works without JS.
+const FAQS: { q: string; a: string }[] = [
+  {
+    q: 'How long does it take to build my website?',
+    a: 'Most websites go from kick-off to live in about five working days. We can move that quickly because we do not start from a blank page and we do not wait on you for content. After a single 30-minute call we handle the structure, the copywriting, the layouts, and the images ourselves, then bring you a finished site to review. Larger builds with many pages, e-commerce, or custom booking systems can take longer, and we will tell you honestly at the first call if yours is one of them rather than promising five days and missing it.',
+  },
+  {
+    q: 'How much does a website cost?',
+    a: 'The Launch Plan is AED 3,500 to build plus AED 300 per month, and the Growth Plan is AED 6,500 to build plus AED 300 per month. The build fee is one-off. The monthly fee covers hosting, your domain, security and software updates, backups, and unlimited small content changes. There are no setup fees, no per-page charges, and no surprise invoices later. If your project genuinely needs something outside those plans we will quote it before any work starts.',
+  },
+  {
+    q: 'Who owns the website, the domain, and the files?',
+    a: 'You do, from day one. The domain is registered in your business name, not ours, and the site files are yours. This matters more than most business owners realise: a common practice in the industry is to register the domain under the agency account, which means leaving costs you your web address and your search rankings. If you ever decide to move to another provider or bring the work in-house, we hand over everything within 48 hours and we do not hold anything back.',
+  },
+  {
+    q: 'Do I have to write the content myself?',
+    a: 'No. Writing your own website copy is the single biggest reason projects stall for months, so we remove it from your plate entirely. We research your market, look at what your competitors in the UAE are saying, and write the copy for you. You review it and tell us what to change. If you already have wording, brand guidelines, or professional photography you want used, send it over and we will build around it.',
+  },
+  {
+    q: 'Will my website work properly on mobile?',
+    a: 'Yes, and we treat mobile as the primary design rather than an afterthought. The majority of people who find a local UAE business search on a phone, often while they are out and deciding where to go. Every site we build is laid out for small screens first, tested on real devices, and tuned so it loads fast on mobile data rather than only on office wifi. Slow, awkward mobile sites are one of the fastest ways to lose a customer who was ready to buy.',
+  },
+  {
+    q: 'Will my business show up on Google?',
+    a: 'Every site is built with the technical groundwork search engines look for: clean page structure, proper headings, descriptive page titles and meta descriptions, fast loading times, a sitemap, and mobile-friendly layouts. That is what makes your site eligible to rank well. We also set up your pages around the words your customers actually search for in your category and city. Search results build over weeks and months rather than overnight, and any agency promising you the top spot immediately is not being straight with you.',
+  },
+  {
+    q: 'What does the monthly fee actually cover?',
+    a: 'Hosting, your domain renewal, an SSL certificate, ongoing security and software updates, regular backups, uptime monitoring, and unlimited small content changes such as prices, opening hours, staff, photos, and service descriptions. Email us a change and it is usually done the same day. It is not a support ticket queue and there is no limit on how often you can ask.',
+  },
+  {
+    q: 'Am I locked into a contract?',
+    a: 'No. There is no minimum term and no cancellation fee. The monthly plan runs month to month and you can stop whenever you want. We would rather keep your business by doing good work than by trapping you in paperwork. If you do leave, we hand over your domain, files, and hosting access within 48 hours.',
+  },
+  {
+    q: 'Do you work with businesses outside Dubai?',
+    a: 'Yes. We are based in Dubai and work with businesses across the whole of the UAE, including Abu Dhabi, Sharjah, Ajman, Ras Al Khaimah, Fujairah, and Umm Al Quwain. Everything is handled remotely by call, email, and WhatsApp, so where you are based makes no difference to how quickly we can build or how well we can support you afterwards.',
+  },
+  {
+    q: 'What if I want changes after the site goes live?',
+    a: 'Small content changes are included in the monthly plan for as long as you are with us, with no cap and no extra charge. That covers text, prices, images, opening hours, adding staff or services, and similar updates. Larger pieces of work, such as adding a whole new section, an online shop, or a booking system, are quoted separately so you always know the cost before we begin.',
+  },
+];
+
+function FaqSection(): string {
+  const items = FAQS.map(f => `
+    <details class="faq-item">
+      <summary class="faq-q">
+        <span>${f.q}</span>
+        <span class="faq-chevron" aria-hidden="true"></span>
+      </summary>
+      <div class="faq-a"><p>${f.a}</p></div>
+    </details>`).join('');
+
+  return `
+  <section class="faq-section">
+    <div class="faq-head reveal">
+      <div class="section-label">FAQ</div>
+      <h2>Questions we get asked a lot</h2>
+      <p>If your question is not here, call, email, or message us and we will answer it straight.</p>
+    </div>
+    <div class="faq-list reveal">${items}</div>
+  </section>`;
 }
 
 
@@ -1612,7 +1837,7 @@ function BookingNewPage(): string {
 }
 
 // ─── Router ───────────────────────────────────────────────────────────────────
-type Page = 'home' | 'pricing' | 'work' | 'contact' | 'testimonials' | 'booking' | 'booking-new' | 'meta-ads' | 'booked';
+type Page = 'home' | 'pricing' | 'work' | 'contact' | 'testimonials' | 'booking' | 'booking-new' | 'meta-ads' | 'booked' | 'terms' | 'privacy';
 
 const pageMap: Record<Page, () => string> = {
   home:         HomePage,
@@ -1624,6 +1849,8 @@ const pageMap: Record<Page, () => string> = {
   booked:       BookedPage,
   'booking-new': BookingNewPage,
   'meta-ads':   MetaAdsPage,
+  terms:        TermsPage,
+  privacy:      PrivacyPage,
 };
 
 const pageMeta: Record<Page, { title: string; desc: string }> = {
@@ -1662,6 +1889,14 @@ const pageMeta: Record<Page, { title: string; desc: string }> = {
   'meta-ads': {
     title: 'Meta Ads for UAE Small Businesses | Atlantic Bear',
     desc: 'Drive local client leads via Facebook & Instagram ads for small businesses in the UAE. AED 2,500/mo retainer.'
+  },
+  terms: {
+    title: 'Terms & Conditions | Atlantic Bear',
+    desc: 'The terms covering Atlantic Bear website design, development, hosting, and maintenance services for businesses in the UAE.'
+  },
+  privacy: {
+    title: 'Privacy Policy | Atlantic Bear',
+    desc: 'How Atlantic Bear collects, uses, stores, and protects the personal information you share through our website.'
   }
 };
 
@@ -1728,7 +1963,7 @@ function updateMetadata(page: Page) {
 
 function getPageFromPath(path: string): Page {
   const cleanPath = path.replace(/^\/|\/$/g, '');
-  if (cleanPath === 'pricing' || cleanPath === 'work' || cleanPath === 'contact' || cleanPath === 'testimonials' || cleanPath === 'booking' || cleanPath === 'booking-new' || cleanPath === 'meta-ads' || cleanPath === 'booked') {
+  if (cleanPath === 'pricing' || cleanPath === 'work' || cleanPath === 'contact' || cleanPath === 'testimonials' || cleanPath === 'booking' || cleanPath === 'booking-new' || cleanPath === 'meta-ads' || cleanPath === 'booked' || cleanPath === 'terms' || cleanPath === 'privacy') {
     return cleanPath as Page;
   }
   return 'home';
@@ -2991,7 +3226,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <a href="https://wa.me/971502446531" target="_blank" rel="noopener" class="whatsapp-floating-btn" aria-label="Chat on WhatsApp">
       <span class="whatsapp-tooltip">Chat with us</span>
       <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor">
-        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.458L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.413 9.863-9.864.001-2.639-1.017-5.122-2.87-6.98C16.612 1.905 14.13 .882 11.5 0.882c-5.437 0-9.863 4.415-9.866 9.866-.001 1.776.477 3.51 1.38 5.061L1.937 21.84l6.196-1.626L8.13 20.21zm10.222-3.834c-.28-.14-1.65-.815-1.906-.907-.255-.092-.44-.138-.625.14-.185.276-.71.907-.87 1.092-.16.185-.32.208-.6.068-1.785-.892-2.92-1.747-3.927-3.48-.266-.46.267-.428.762-1.42.083-.17.042-.317-.02-.457-.063-.14-.626-1.507-.857-2.064-.225-.54-.472-.466-.647-.475-.168-.008-.36-.01-.552-.01-.192 0-.504.072-.768.36-.264.288-1.008.986-1.008 2.404s1.032 2.788 1.176 2.983c.144.195 2.03 3.1 4.916 4.347.686.297 1.22.474 1.638.607.69.219 1.317.188 1.812.114.55-.082 1.65-.674 1.884-1.324.233-.65.233-1.205.163-1.324-.07-.118-.256-.184-.536-.324z"/>
+        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.03-.967-.273-.099-.471-.149-.67.149-.197.297-.767.967-.94 1.165-.174.198-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
       </svg>
     </a>
   `;
