@@ -1478,8 +1478,11 @@ h1, h2, h3, h4 {
 }
 .tm-screenshot {
   width: 100%;
+  /* Without this the HTML height="576" attribute is used as the box height,
+     so on narrow screens the wide screenshot got cropped by object-fit. */
+  height: auto;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
   object-position: top center;
 }
 
