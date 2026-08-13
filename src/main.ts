@@ -494,7 +494,7 @@ function HomePage(): string {
     <div class="container" style="position: relative; z-index: 1;">
       <h1>Your business deserves<br>to be <span class="hook-word"><span class="hook-drop-inner"><span class="hook-rig" aria-hidden="true"><span class="hook-line"></span><svg class="hook-icon" viewBox="0 0 20 34" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="3" r="2.4" stroke="currentColor" stroke-width="2"/><path d="M10 5.4 V17 C10 25.5 2.6 27 2.6 19.6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M2.6 19.6 L6 22.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><span class="hook-label text-blue">found</span></span></span>.</h1>
       <p class="hero-sub">
-        Custom websites built exclusively for UAE small businesses. Get a free demo of your site before paying anything.
+        Custom websites built exclusively for UAE small businesses. Live in five days, fully managed, never a template.
       </p>
       <div class="hero-ctas">
         <a href="/booking" class="btn btn-primary btn-large btn-pulse" data-link="booking" id="hero-cta-book">
@@ -504,7 +504,7 @@ function HomePage(): string {
           View Plans
         </a>
       </div>
-      <p class="hero-note">See a demo of your website for free. <a href="/booking" data-link="booking">Learn more about our free demo</a></p>
+      <p class="hero-note">No templates, no lock-in, no long timelines. <a href="/pricing" data-link="pricing">See plans and pricing</a></p>
     </div>
   </section>
 
@@ -645,7 +645,7 @@ function HomePage(): string {
         </div>
         <div class="feature-item reveal" style="display:flex; flex-direction:column; justify-content:center; background:var(--surface);">
           <h3 style="font-size:1.1rem; margin-bottom:8px;">Your total effort: under one hour</h3>
-          <p style="margin-bottom:16px; font-size:0.82rem; color:var(--text-muted);">One 30-minute discovery call. One short form. One 30-minute demo call. That's it. We handle design, copy, hosting, domain, and launch.</p>
+          <p style="margin-bottom:16px; font-size:0.82rem; color:var(--text-muted);">One 30-minute discovery call. One short form. One 30-minute review call. That's it. We handle design, copy, hosting, domain, and launch.</p>
           <a href="/booking" class="btn btn-primary btn-sm" data-link="booking" style="align-self:flex-start;">Book a Call ${Icons.arrow}</a>
         </div>
       </div>
@@ -808,7 +808,7 @@ function PricingPage(): string {
       
       <!-- Demo offer banner placed lower, right above plans -->
       <div class="header-callout-box" style="margin-top: -16px; margin-bottom: 72px;">
-        Before you commit to anything, we build you a free demo of your actual website live in 5 days. You watch it come to life on a call, and only if you love it do you move forward. If you don't, you walk away and owe us nothing.
+        Every plan is fully managed. We handle the design, the copywriting, the hosting, the domain, and the launch, and we keep it updated afterwards. No contracts, no lock-in, and you own everything from day one.
       </div>
 
       <div class="pricing-grid-two">
@@ -1856,7 +1856,7 @@ const pageMap: Record<Page, () => string> = {
 const pageMeta: Record<Page, { title: string; desc: string }> = {
   home: {
     title: 'Atlantic Bear | Custom Website Design Agency in the UAE',
-    desc: 'Atlantic Bear is a leading website agency in the UAE. We build custom, premium websites for businesses. Get a free demo of your website before you pay anything.'
+    desc: 'Atlantic Bear is a leading website agency in the UAE. We build custom, premium websites for businesses, live in five days and fully managed.'
   },
   pricing: {
     title: 'More Clients Starts Here | Atlantic Bear Pricing',
