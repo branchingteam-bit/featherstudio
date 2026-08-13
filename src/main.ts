@@ -564,6 +564,8 @@ function HomePage(): string {
     </div>
   </section>
 
+  ${ClaudeCodeSection()}
+
   <!-- THE MARKET LEADER SYSTEM SECTION -->
   <section class="section-pad" style="background: var(--surface); border-bottom: 1px solid var(--border);">
     <div class="container">
@@ -651,8 +653,6 @@ function HomePage(): string {
       </div>
     </div>
   </section>
-
-  ${ClaudeCodeSection()}
 
   <!-- TIER TEASERS (PACKAGES) SECTION -->
   <section class="teasers-section">
@@ -894,7 +894,7 @@ function PricingPage(): string {
               <div class="val-comp-row"><span class="val-comp-label">Total Build Value:</span><span class="val-comp-value">AED 8,500+</span></div>
               <div class="val-comp-row main"><span class="val-comp-label">Your Setup Cost:</span><span class="val-comp-value-price">AED 3,500</span></div>
             </div>
-            <a href="/booking" data-link="booking" class="btn btn-primary btn-pulse btn-block btn-large">Book Call to See Your Demo</a>
+            <a href="/booking" data-link="booking" class="btn btn-primary btn-pulse btn-block btn-large">Book a Call</a>
           </div>
         </div>
 
@@ -974,7 +974,7 @@ function PricingPage(): string {
               <div class="val-comp-row"><span class="val-comp-label">Total Package Value:</span><span class="val-comp-value">AED 15,000+</span></div>
               <div class="val-comp-row main"><span class="val-comp-label">Your Setup Cost:</span><span class="val-comp-value-price">AED 6,500</span></div>
             </div>
-            <a href="/booking" data-link="booking" class="btn btn-primary btn-pulse btn-block btn-large">Book Call to See Your Demo</a>
+            <a href="/booking" data-link="booking" class="btn btn-primary btn-pulse btn-block btn-large">Book a Call</a>
           </div>
         </div>
 
@@ -1032,7 +1032,7 @@ function PricingPage(): string {
 
       <!-- Pay on Call tweak note (moved here, lower) -->
       <div class="call-action-notice" style="margin-top: 72px; margin-bottom: 0;">
-        <strong>Fast-Action Bonus:</strong> If you pay on the call when we show you the demo, you get <strong>unlimited small tweaks</strong> of the website for your first month.
+        <strong>Fast-Action Bonus:</strong> If you pay on the call when we walk you through your new site, you get <strong>unlimited small tweaks</strong> of the website for your first month.
       </div>
     </div>
   </section>
