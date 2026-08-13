@@ -249,59 +249,6 @@ function Footer(): string {
 }
 
 
-// ─── Floating squares (free demo section) ────────────────────────────────────
-// Six blue squares drifting behind the copy. The outer span carries the
-// cursor-repel transform, the inner one carries the idle float, so the two
-// animations don't fight over `transform`.
-function DemoFloaters(): string {
-  const squares = [
-    { x: 7,  y: 16, size: 56, delay: 0,   dur: 19 },
-    { x: 84, y: 11, size: 38, delay: 2.5, dur: 23 },
-    { x: 15, y: 71, size: 46, delay: 1.2, dur: 26 },
-    { x: 91, y: 58, size: 64, delay: 3.4, dur: 21 },
-    { x: 44, y: 86, size: 30, delay: 4.1, dur: 24 },
-    { x: 70, y: 37, size: 44, delay: 0.8, dur: 28 },
-  ];
-
-  const items = squares.map(q => `
-    <span class="demo-square" style="left:${q.x}%; top:${q.y}%;">
-      <i style="width:${q.size}px; height:${q.size}px; animation-delay:-${q.delay}s; animation-duration:${q.dur}s;"></i>
-    </span>`).join('');
-
-  return `<div class="demo-floaters" aria-hidden="true">${items}</div>`;
-}
-
-function initDemoFloaters() {
-  const section = document.querySelector('.free-demo-section') as HTMLElement | null;
-  if (!section) return;
-
-  const squares = Array.from(section.querySelectorAll('.demo-square')) as HTMLElement[];
-  if (!squares.length) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  const RADIUS = 200;    // how close the cursor has to get
-  const STRENGTH = 48;   // how far a square is pushed at point-blank range
-
-  const reset = () => squares.forEach(sq => { sq.style.transform = ''; });
-
-  section.addEventListener('mousemove', (e: MouseEvent) => {
-    squares.forEach(sq => {
-      const r = sq.getBoundingClientRect();
-      const dx = (r.left + r.width / 2) - e.clientX;
-      const dy = (r.top + r.height / 2) - e.clientY;
-      const dist = Math.hypot(dx, dy);
-      if (dist > 0 && dist < RADIUS) {
-        const push = (1 - dist / RADIUS) * STRENGTH;
-        sq.style.transform = `translate(${(dx / dist) * push}px, ${(dy / dist) * push}px)`;
-      } else {
-        sq.style.transform = '';
-      }
-    });
-  }, { passive: true });
-
-  section.addEventListener('mouseleave', reset);
-}
-
 // ─── Claude Code section ─────────────────────────────────────────────────────
 // The terminal is drawn in markup rather than shipped as an image, so it stays
 // crisp and themable. See CLAUDE_LOGO_SLOT below for the optional brand mark.
@@ -393,24 +340,30 @@ function ClaudeCodeSection(): string {
 // the design is being built. Publishing fabricated reviews as real customer
 // feedback is deceptive and, in most markets, unlawful advertising — swap
 // these for genuine quotes before this page goes live.
-type Review = { quote: string; name: string; role: string };
+// `avatar` is fixed per person, so a review that appears in more than one
+// column always shows the same face.
+type Review = { quote: string; name: string; role: string; avatar: number };
 
+const SONDER: Review = {
+  quote: 'We approached Alexi at Atlantic Bear, who was absolutely fantastic at putting together our ideas and bringing them across on the website in a way that really engaged our target market.',
+  name: 'Sonder Training Group',
+  role: 'Training Provider, UAE',
+  avatar: 0,
+};
+
+const REVIEWS: Review[] = [
+  { quote: 'Five days from the first call to a live site. I had budgeted two months, and half of that for arguing about revisions.', name: 'Tom Whitfield', role: 'Founder, Dental Clinic', avatar: 1 },
+  { quote: 'We now come up first for our category in Dubai. Enquiries through the site have roughly tripled since launch.', name: 'Priya Nair', role: 'Director, Facilities Services', avatar: 2 },
+  { quote: 'They asked good questions, then just built it. I approved two rounds of small tweaks and that was the whole process.', name: 'Marcus Oyelaran', role: 'Manager, Hospitality Group', avatar: 3 },
+  { quote: 'Most of our customers are on their phones and the old site was unusable there. The new one loads instantly.', name: 'Yasmin Farouk', role: 'Owner, Fitness Studio', avatar: 4 },
+  { quote: 'Handover was clean. Domain, hosting, files, all in our name from day one, exactly as they promised.', name: 'Lena Vasquez', role: 'Founder, E-commerce', avatar: 5 },
+];
+
+// Sonder is seeded into every column so it comes around most often.
 const REVIEW_COLUMNS: Review[][] = [
-  [
-    { quote: 'We approached Alexi at Atlantic Bear, who was absolutely fantastic at putting together our ideas and bringing them across on the website in a way that really engaged our target market.', name: 'Sonder Training Group', role: 'Training Provider, UAE' },
-    { quote: 'Seeing the finished site before paying a dirham took all the risk out of it. By the demo call it was already better than what we had.', name: 'Rania Haddad', role: 'Owner, Boutique Retail' },
-    { quote: 'Five days from the first call to a live site. I had budgeted two months and half of that for arguing about revisions.', name: 'Tom Whitfield', role: 'Founder, Dental Clinic' },
-  ],
-  [
-    { quote: 'We now come up first for our category in Dubai. Enquiries through the site have roughly tripled since launch.', name: 'Priya Nair', role: 'Director, Facilities Services' },
-    { quote: 'They asked good questions, then just built it. I approved two rounds of small tweaks and that was the whole process.', name: 'Marcus Oyelaran', role: 'Manager, Hospitality Group' },
-    { quote: 'Most of our customers are on their phones and the old site was unusable there. The new one loads instantly.', name: 'Yasmin Farouk', role: 'Owner, Fitness Studio' },
-  ],
-  [
-    { quote: 'Content changes get handled the same day I email them. No tickets, no waiting a week for a price update.', name: 'Daniel Kessler', role: 'Partner, Consultancy' },
-    { quote: 'The booking form alone paid for the build. We went from phone-only to a steady stream of qualified enquiries.', name: 'Omar Sheikh', role: 'Owner, Auto Detailing' },
-    { quote: 'Handover was clean. Domain, hosting, files, all in our name from day one, exactly as they promised.', name: 'Lena Vasquez', role: 'Founder, E-commerce' },
-  ],
+  [SONDER, REVIEWS[0], REVIEWS[1]],
+  [REVIEWS[2], SONDER, REVIEWS[3]],
+  [REVIEWS[4], SONDER, REVIEWS[0]],
 ];
 
 // Generated portrait avatars. Drawn rather than photographed, so they are
@@ -449,12 +402,12 @@ function Avatar(name: string, i: number): string {
     </span>`;
 }
 
-function ReviewCard(r: Review, i: number): string {
+function ReviewCard(r: Review): string {
   return `
     <article class="review-card">
       <p class="review-quote">${r.quote}</p>
       <div class="review-author">
-        ${Avatar(r.name, i)}
+        ${Avatar(r.name, r.avatar)}
         <span class="review-author-meta">
           <span class="review-name">${r.name}</span>
           <span class="review-role">${r.role}</span>
@@ -466,7 +419,7 @@ function ReviewCard(r: Review, i: number): string {
 function ReviewsWall(): string {
   const cols = REVIEW_COLUMNS.map((col, i) => {
     // Cards are rendered twice so the track can loop by exactly -50%.
-    const cards = col.map((r, j) => ReviewCard(r, i * 3 + j)).join('');
+    const cards = col.map(ReviewCard).join('');
     return `
       <div class="reviews-col reviews-col-${i + 1}">
         <div class="reviews-track">${cards}${cards}</div>
@@ -605,43 +558,6 @@ function HomePage(): string {
           <div class="facts-stat-num">2x</div>
           <div class="facts-stat-text">Faster growth for UAE businesses with a strong professional online presence</div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FREE DEMO OFFER SECTION -->
-  <section class="free-demo-section reveal">
-    ${DemoFloaters()}
-    <div class="container">
-      <div class="free-demo-inner">
-        <div class="free-demo-badge" style="border: 1px solid var(--red); color: var(--red);">See It Before You Pay It</div>
-        <h2 class="free-demo-headline">See a free demo of your actual website live in 5 days.</h2>
-        <p class="free-demo-sub">We build your actual website first, completely free, and show it to you on a call. Only if you love the finished product do we launch it and move forward. If you don't, you walk away and owe us nothing.</p>
-        <div class="free-demo-steps">
-          <div class="free-demo-step">
-            <div class="free-demo-step-icon">${Icons.phone}</div>
-            <div>
-              <div class="free-demo-step-title">30-Minute Strategy Call</div>
-              <div class="free-demo-step-desc">We map out your business positioning, category keywords, and how we will capture UAE clients already looking for you.</div>
-            </div>
-          </div>
-          <div class="free-demo-step">
-            <div class="free-demo-step-icon">${Icons.zap}</div>
-            <div>
-              <div class="free-demo-step-title">5-Day Demo Build</div>
-              <div class="free-demo-step-desc">Fill out a short form. We handle everything: copywriting, layouts, graphics, and search setup.</div>
-            </div>
-          </div>
-          <div class="free-demo-step">
-            <div class="free-demo-step-icon">${Icons.rocket}</div>
-            <div>
-              <div class="free-demo-step-title">Activate Only If You Love It</div>
-              <div class="free-demo-step-desc">We walk you through your high-converting brand system. Love it? We launch it and you pay. Not happy? You walk away and owe us zero.</div>
-            </div>
-          </div>
-        </div>
-        <a href="/booking" class="btn btn-primary btn-large btn-pulse free-demo-cta" data-link="booking" id="home-free-demo-cta">Get Your Free Demo ${Icons.arrow}</a>
-        <p class="free-demo-note">Your total time investment: under one hour. We handle everything.</p>
       </div>
     </div>
   </section>
@@ -1830,7 +1746,6 @@ function setActiveNav(page: Page) {
 const AUTO_REVEAL_SELECTOR = [
   '.section-title', '.section-sub',
   '.facts-headline', '.fact-hero-block', '.facts-stat-block',
-  '.free-demo-badge', '.free-demo-headline', '.free-demo-sub', '.free-demo-step',
   '.basic-system-card',
   '.step', '.feature-item',
   '.teaser-card', '.tier-card', '.level-one-card',
@@ -2978,7 +2893,6 @@ function navigate(page: Page, pushHistory = true) {
     initAutoReveal();
     scrollReveal();
     initFactNumbers();
-    initDemoFloaters();
 
     if (page === 'contact') {
       initFormspree();

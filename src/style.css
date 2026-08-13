@@ -1770,102 +1770,6 @@ h1, h2, h3, h4 {
   transform: none !important;
 }
 
-/* ─── Free Demo Offer Section ────────────────────────────────────── */
-.free-demo-section {
-  background: var(--white);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 80px 0;
-}
-.free-demo-inner {
-  max-width: 700px;
-  margin: 0 auto;
-  text-align: center;
-}
-.free-demo-badge {
-  display: inline-block;
-  background: rgba(59,105,255,0.1);
-  color: #1e46c7;
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  border-radius: 100px;
-  padding: 5px 16px;
-  margin-bottom: 20px;
-  border: 1px solid rgba(59,105,255,0.25);
-}
-.free-demo-headline {
-  font-size: clamp(2rem, 5vw, 3.2rem);
-  font-weight: 900;
-  letter-spacing: -0.04em;
-  color: var(--navy);
-  line-height: 1.1;
-  margin-bottom: 20px;
-}
-.free-demo-sub {
-  font-size: 1.1rem;
-  color: var(--text-muted);
-  line-height: 1.7;
-  margin-bottom: 40px;
-  max-width: 580px;
-  margin-left: auto;
-  margin-right: auto;
-}
-/* One square-cornered block; the steps are rows divided by hairlines. */
-.free-demo-steps {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid var(--border);
-  margin-bottom: 40px;
-  text-align: left;
-}
-.free-demo-step {
-  display: flex;
-  align-items: flex-start;
-  gap: 18px;
-  border-top: 1px solid var(--border);
-  padding: 24px 26px;
-  transition: background-color 0.2s ease;
-}
-.free-demo-step:first-child { border-top: none; }
-.free-demo-step:hover { background: var(--surface); }
-.free-demo-step-icon {
-  width: 22px;
-  height: 22px;
-  min-width: 22px;
-  margin-top: 2px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--blue);
-}
-.free-demo-step-icon svg {
-  width: 20px;
-  height: 20px;
-  stroke: currentColor;
-  fill: none;
-}
-.free-demo-step-title {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--navy);
-  margin-bottom: 4px;
-}
-.free-demo-step-desc {
-  font-size: 0.88rem;
-  color: var(--text-muted);
-  line-height: 1.55;
-}
-.free-demo-cta {
-  margin-bottom: 14px;
-}
-.free-demo-note {
-  font-size: 0.82rem;
-  color: var(--text-muted);
-  margin-top: 10px;
-}
-
 /* ─── Custom Video Player ────────────────────────────────────────── */
 .custom-video-wrap {
   position: relative;
@@ -3857,11 +3761,9 @@ h1, h2, h3, h4 {
   will-change: transform;
   animation: reviews-scroll linear infinite;
 }
-.reviews-col-1 .reviews-track { animation-duration: 44s; }
-.reviews-col-2 .reviews-track { animation-duration: 58s; }
-.reviews-col-3 .reviews-track { animation-duration: 50s; }
-
-.reviews-cols:hover .reviews-track { animation-play-state: paused; }
+.reviews-col-1 .reviews-track { animation-duration: 24s; }
+.reviews-col-2 .reviews-track { animation-duration: 31s; }
+.reviews-col-3 .reviews-track { animation-duration: 27s; }
 
 @keyframes reviews-scroll {
   from { transform: translateY(0); }
@@ -4041,7 +3943,6 @@ h1, h2, h3, h4 {
 .video-box-placeholder,
 .cc-terminal,
 .tm-browser,
-.free-demo-steps,
 .basic-system-grid {
   border-radius: 0;
 }
@@ -4094,39 +3995,6 @@ h1, h2, h3, h4 {
 /* Page slide transition */
 #main-content { will-change: transform, opacity; }
 
-/* ─── Free demo: floating squares ────────────────────────────────── */
-.free-demo-section { position: relative; overflow: hidden; }
-.free-demo-section > .container { position: relative; z-index: 1; }
-
-.demo-floaters {
-  position: absolute;
-  inset: 0;
-  z-index: 0;              /* behind the copy */
-  pointer-events: none;    /* the section handles the cursor, not the squares */
-  overflow: hidden;
-}
-.demo-square {
-  position: absolute;
-  will-change: transform;
-  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.demo-square i {
-  display: block;
-  background: rgba(59,105,255,0.09);
-  border: 1px solid rgba(59,105,255,0.26);
-  will-change: transform;
-  animation-name: demo-float;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-}
-@keyframes demo-float {
-  0%   { transform: translate(0, 0)        rotate(0deg); }
-  25%  { transform: translate(14px, -18px) rotate(6deg); }
-  50%  { transform: translate(-10px, -30px) rotate(-4deg); }
-  75%  { transform: translate(-18px, -12px) rotate(5deg); }
-  100% { transform: translate(0, 0)        rotate(0deg); }
-}
-
 /* ─── Claude Code mark ───────────────────────────────────────────── */
 .cc-title-row {
   display: flex;
@@ -4142,7 +4010,3 @@ h1, h2, h3, h4 {
   .cc-mark { width: 60px; height: 60px; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .demo-square i { animation: none; }
-  .demo-square { transition: none; }
-}
