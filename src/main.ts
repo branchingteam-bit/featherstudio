@@ -192,7 +192,7 @@ function Navbar(): string {
   <nav class="nav" id="main-nav">
     <a href="/" class="logo" data-link="home" id="logo-btn" aria-label="Atlantic Bear Home">
       <span class="logo-wordmark">Atlantic</span>
-      <img src="/atlanticbear-logo-reversed.png" alt="Atlantic Bear Logo" class="logo-bear-img" width="56" height="56" fetchpriority="high" />
+      <img src="/atlanticbear-mark.png" alt="Atlantic Bear Logo" class="logo-bear-img" width="56" height="56" fetchpriority="high" />
     </a>
     <div class="nav-links">
       <a href="/" class="nav-link" data-link="home"    id="nav-home">Home</a>
