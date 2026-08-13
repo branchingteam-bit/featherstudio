@@ -3166,7 +3166,8 @@ function navigate(page: Page, pushHistory = true) {
     initTestimonialVideos();
 
     // Track page views in Meta Pixel (Website Visit)
-    if (typeof (window as any).fbq === 'function') {
+    // Skip pixel entirely if ?notrack=1 is set (for internal testing)
+    if (typeof (window as any).fbq === 'function' && !sessionStorage.getItem('notrack')) {
       (window as any).fbq('track', 'PageView');
     }
 
@@ -3217,6 +3218,11 @@ function initNavScroll() {
 
 // ─── Bootstrap ───────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
+  // Detect ?notrack=1 so internal test visits don't fire Meta Pixel events
+  if (new URLSearchParams(window.location.search).get('notrack') === '1') {
+    sessionStorage.setItem('notrack', '1');
+  }
+
   const app = document.getElementById('app')!;
   app.innerHTML = `
     ${Navbar()}
@@ -3254,7 +3260,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (isStratActive) {
         if (isCurrentStrategyCallHighTier) {
           trackAbacusEvent('bookedcall_strategy');
-          if (typeof (window as any).fbq === 'function' && !sessionStorage.getItem('fbq_schedule_fired')) {
+          if (typeof (window as any).fbq === 'function' && !sessionStorage.getItem('fbq_schedule_fired') && !sessionStorage.getItem('notrack')) {
             (window as any).fbq('track', 'Schedule');
             sessionStorage.setItem('fbq_schedule_fired', '1');
           }
