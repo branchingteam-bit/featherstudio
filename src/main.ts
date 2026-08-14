@@ -1470,7 +1470,7 @@ function StrategyBookingPage(): string {
 
     <!-- Hero — dark navy bg, massive headline -->
     <div class="funnel-hero">
-      <h1 class="funnel-headline">WHAT DOES YOUR BUSINESS ACTUALLY LOOK LIKE ON GOOGLE?</h1>
+      <h1 class="funnel-headline">WE BUILD WEBSITES THAT TURN VISITORS INTO PAYING CUSTOMERS.</h1>
       <p class="funnel-subheadline">Watch the video below to see exactly how we build custom websites for UAE businesses and get you found online, then book your strategy call.</p>
     </div>
 
@@ -1718,7 +1718,7 @@ function BookingNewPage(): string {
   <div class="page-header booking-page-header">
     <div class="container">
       <div class="booking-page-badge">For Small Business Owners in the UAE</div>
-      <h1>See Your Website<br><span style="color:var(--accent);">Before You Pay</span></h1>
+      <h1 class="funnel-headline" style="font-size: clamp(1.9rem, 4.5vw, 3rem); text-transform: uppercase; margin-bottom: 16px;">WE BUILD WEBSITES THAT TURN VISITORS INTO PAYING CUSTOMERS.</h1>
       <p class="booking-page-value-prop">Whether you clicked our ad or found us online, you're here because you want a better website for your business. Watch the video below to see exactly what we'll build for you then book your free demo call.</p>
       <div class="booking-page-divider"></div>
     </div>
@@ -2997,41 +2997,37 @@ function initStrategyBookingModal() {
       lastSubmittedLead.business = businessVal;
       lastSubmittedLead.revenue = revenueVal;
 
-      const isUnder5k = (
-        revenueVal === 'Under AED 5k/month' ||
-        revenueVal === 'Under $5k' ||
-        revenueVal === '$0 - $5k'
-      );
+      const submitBtn = document.getElementById('strat-modal-step2-submit-btn') as HTMLButtonElement | null;
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Verifying...';
+      }
 
-      // Only submit lead data to Google Sheets if revenue is >= AED 5k or "Rather not say"
-      if (!isUnder5k) {
-        const submitBtn = document.getElementById('strat-modal-step2-submit-btn') as HTMLButtonElement | null;
-        if (submitBtn) {
-          submitBtn.disabled = true;
-          submitBtn.textContent = 'Verifying...';
-        }
+      // Execute reCAPTCHA v3 token generation before Google Sheets submission
+      const recaptchaToken = await getReCaptchaToken('booking_submit');
 
-        // Execute reCAPTCHA v3 token generation before Google Sheets submission
-        const recaptchaToken = await getReCaptchaToken('booking_submit');
+      fetch('https://script.google.com/macros/s/AKfycbxhmc6G4n4zpk0SGvjzP81_Cd9ipLxM3Wx5MZNWzF02tBqqUMD0JCAuDnH1OojQfv7vJQ/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        body: JSON.stringify({
+          action: 'form_submit',
+          name: stratName,
+          phone: stratPhone,
+          business: stratBusiness,
+          revenue: stratRevenue,
+          source: 'strategy_call',
+          recaptchaToken: recaptchaToken || ''
+        })
+      }).catch(err => console.error('Google Sheet submission failed:', err));
 
-        fetch('https://script.google.com/macros/s/AKfycbxhmc6G4n4zpk0SGvjzP81_Cd9ipLxM3Wx5MZNWzF02tBqqUMD0JCAuDnH1OojQfv7vJQ/exec', {
-          method: 'POST',
-          mode: 'no-cors',
-          body: JSON.stringify({
-            action: 'form_submit',
-            name: stratName,
-            phone: stratPhone,
-            business: stratBusiness,
-            revenue: stratRevenue,
-            source: 'strategy_call',
-            recaptchaToken: recaptchaToken || ''
-          })
-        }).catch(err => console.error('Google Sheet submission failed:', err));
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Continue to Calendar \u2192';
+      }
 
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Continue to Calendar \u2192';
-        }
+      // Track Lead conversion event in Meta Pixel for form submission
+      if (typeof (window as any).fbq === 'function' && !sessionStorage.getItem('notrack')) {
+        (window as any).fbq('track', 'Lead');
       }
 
       goToStep(3);
@@ -3169,6 +3165,10 @@ function navigate(page: Page, pushHistory = true) {
     // Skip pixel entirely if ?notrack=1 is set (for internal testing)
     if (typeof (window as any).fbq === 'function' && !sessionStorage.getItem('notrack')) {
       (window as any).fbq('track', 'PageView');
+      if (page === 'booked' && !sessionStorage.getItem('fbq_schedule_fired')) {
+        (window as any).fbq('track', 'Schedule');
+        sessionStorage.setItem('fbq_schedule_fired', '1');
+      }
     }
 
     if (pushHistory) {
@@ -3247,7 +3247,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let isScheduled = false;
     if (e && e.data) {
-      if (typeof e.data === 'object' && e.data.event === 'calendly.event_scheduled') {
+      let data = e.data;
+      if (typeof data === 'string') {
+        try { data = JSON.parse(data); } catch (_) {}
+      }
+      if (typeof data === 'object' && data && data.event === 'calendly.event_scheduled') {
         isScheduled = true;
       }
     }
@@ -3260,10 +3264,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (isStratActive) {
         if (isCurrentStrategyCallHighTier) {
           trackAbacusEvent('bookedcall_strategy');
-          if (typeof (window as any).fbq === 'function' && !sessionStorage.getItem('fbq_schedule_fired') && !sessionStorage.getItem('notrack')) {
-            (window as any).fbq('track', 'Schedule');
-            sessionStorage.setItem('fbq_schedule_fired', '1');
-          }
         } else {
           trackAbacusEvent('bookedcall_intro');
         }
@@ -3272,6 +3272,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // Legacy demo call booking
         trackAbacusEvent('bookedcall');
         if (legacyModal) legacyModal.classList.remove('active');
+      }
+
+      // Fire Meta Pixel Schedule event for ANY completed booking
+      if (typeof (window as any).fbq === 'function' && !sessionStorage.getItem('fbq_schedule_fired') && !sessionStorage.getItem('notrack')) {
+        (window as any).fbq('track', 'Schedule');
+        sessionStorage.setItem('fbq_schedule_fired', '1');
       }
 
       document.body.style.overflow = '';
