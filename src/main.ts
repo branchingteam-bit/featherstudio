@@ -1582,16 +1582,16 @@ function StrategyBookingPage(): string {
       <div class="booking-modal-body">
         <!-- Step 1: Contact Form (Name + Phone) -->
         <div class="booking-modal-step active" id="strat-modal-step-1">
-          <form id="strat-modal-step1-form" class="funnel-modal-form" onsubmit="return false;">
+          <form id="strat-modal-step1-form" class="funnel-modal-form" onsubmit="return false;" autocomplete="off">
             <div class="funnel-form-group">
               <label for="strat-input-name" class="funnel-form-label">Full Name</label>
-              <input type="text" id="strat-input-name" class="funnel-form-input" placeholder="e.g. John Smith" required />
+              <input type="text" id="strat-input-name" class="funnel-form-input" placeholder="e.g. John Smith" autocomplete="off" required />
             </div>
             <div class="funnel-form-group">
               <label for="strat-input-phone" class="funnel-form-label">Phone Number</label>
               <div class="phone-input-wrap">
                 <span class="phone-flag-prefix" id="strat-phone-flag-prefix">🇦🇪</span>
-                <input type="tel" id="strat-input-phone" class="funnel-form-input phone-with-flag" value="+971 " placeholder="+971 50 123 4567" required />
+                <input type="tel" id="strat-input-phone" class="funnel-form-input phone-with-flag" value="+971 " placeholder="+971 50 123 4567" autocomplete="off" required />
               </div>
             </div>
             <div id="strat-modal-step1-error" class="funnel-form-error" style="display:none;">Please enter your name and phone number to continue.</div>
@@ -1601,14 +1601,14 @@ function StrategyBookingPage(): string {
 
         <!-- Step 2: Business Name & Revenue Qualification -->
         <div class="booking-modal-step" id="strat-modal-step-2" style="display: none;">
-          <form id="strat-modal-step2-form" class="funnel-modal-form" onsubmit="return false;">
+          <form id="strat-modal-step2-form" class="funnel-modal-form" onsubmit="return false;" autocomplete="off">
             <div class="funnel-form-group">
               <label for="strat-input-business" class="funnel-form-label">Business / Company Name</label>
-              <input type="text" id="strat-input-business" class="funnel-form-input" placeholder="e.g. Acme Studio" required />
+              <input type="text" id="strat-input-business" class="funnel-form-input" placeholder="e.g. Acme Studio" autocomplete="off" required />
             </div>
             <div class="funnel-form-group">
               <label for="strat-select-revenue" class="funnel-form-label">What’s your monthly revenue roughly?</label>
-              <select id="strat-select-revenue" class="funnel-form-input" required>
+              <select id="strat-select-revenue" class="funnel-form-input" autocomplete="off" required>
                 <option value="" disabled selected>Select monthly revenue range...</option>
                 <option value="Under AED 5k/month">Under AED 5k/month</option>
                 <option value="AED 5k - 20k/month">AED 5k - 20k/month</option>
@@ -2924,8 +2924,8 @@ function initStrategyBookingModal() {
     isCurrentStrategyCallHighTier = !isUnder5k;
 
     const calendlyBaseUrl = isUnder5k
-      ? 'https://calendly.com/officialatlanticbear/intro-call?primary_color=3b69ff'
-      : 'https://calendly.com/officialatlanticbear/strategy-call?primary_color=3b69ff';
+      ? 'https://calendly.com/officialatlanticbear/intro-call?hide_gdpr_banner=1&primary_color=3b69ff'
+      : 'https://calendly.com/officialatlanticbear/strategy-call?hide_gdpr_banner=1&primary_color=3b69ff';
 
     const cleanRevenue = stratRevenue.replace(/–/g, '-').trim();
 
@@ -3038,11 +3038,8 @@ function initStrategyBookingModal() {
     });
   }
 
-  // Close triggers
+  // Close triggers — only X button closes the modal (no overlay tap, no Escape on mobile)
   closeBtn.addEventListener('click', closeModal);
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) closeModal();
-  });
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
   });
