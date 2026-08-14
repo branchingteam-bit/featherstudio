@@ -2997,37 +2997,41 @@ function initStrategyBookingModal() {
       lastSubmittedLead.business = businessVal;
       lastSubmittedLead.revenue = revenueVal;
 
-      const submitBtn = document.getElementById('strat-modal-step2-submit-btn') as HTMLButtonElement | null;
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Verifying...';
-      }
+      const isUnder5k = (
+        revenueVal === 'Under AED 5k/month' ||
+        revenueVal === 'Under $5k' ||
+        revenueVal === '$0 - $5k'
+      );
 
-      // Execute reCAPTCHA v3 token generation before Google Sheets submission
-      const recaptchaToken = await getReCaptchaToken('booking_submit');
+      // Only submit lead data to Google Sheets if revenue is >= AED 5k or "Rather not say"
+      if (!isUnder5k) {
+        const submitBtn = document.getElementById('strat-modal-step2-submit-btn') as HTMLButtonElement | null;
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Verifying...';
+        }
 
-      fetch('https://script.google.com/macros/s/AKfycbxhmc6G4n4zpk0SGvjzP81_Cd9ipLxM3Wx5MZNWzF02tBqqUMD0JCAuDnH1OojQfv7vJQ/exec', {
-        method: 'POST',
-        mode: 'no-cors',
-        body: JSON.stringify({
-          action: 'form_submit',
-          name: stratName,
-          phone: stratPhone,
-          business: stratBusiness,
-          revenue: stratRevenue,
-          source: 'strategy_call',
-          recaptchaToken: recaptchaToken || ''
-        })
-      }).catch(err => console.error('Google Sheet submission failed:', err));
+        // Execute reCAPTCHA v3 token generation before Google Sheets submission
+        const recaptchaToken = await getReCaptchaToken('booking_submit');
 
-      if (submitBtn) {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Continue to Calendar \u2192';
-      }
+        fetch('https://script.google.com/macros/s/AKfycbxhmc6G4n4zpk0SGvjzP81_Cd9ipLxM3Wx5MZNWzF02tBqqUMD0JCAuDnH1OojQfv7vJQ/exec', {
+          method: 'POST',
+          mode: 'no-cors',
+          body: JSON.stringify({
+            action: 'form_submit',
+            name: stratName,
+            phone: stratPhone,
+            business: stratBusiness,
+            revenue: stratRevenue,
+            source: 'strategy_call',
+            recaptchaToken: recaptchaToken || ''
+          })
+        }).catch(err => console.error('Google Sheet submission failed:', err));
 
-      // Track Lead conversion event in Meta Pixel for form submission
-      if (typeof (window as any).fbq === 'function' && !sessionStorage.getItem('notrack')) {
-        (window as any).fbq('track', 'Lead');
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Continue to Calendar \u2192';
+        }
       }
 
       goToStep(3);
@@ -3165,10 +3169,6 @@ function navigate(page: Page, pushHistory = true) {
     // Skip pixel entirely if ?notrack=1 is set (for internal testing)
     if (typeof (window as any).fbq === 'function' && !sessionStorage.getItem('notrack')) {
       (window as any).fbq('track', 'PageView');
-      if (page === 'booked' && !sessionStorage.getItem('fbq_schedule_fired')) {
-        (window as any).fbq('track', 'Schedule');
-        sessionStorage.setItem('fbq_schedule_fired', '1');
-      }
     }
 
     if (pushHistory) {
@@ -3264,6 +3264,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (isStratActive) {
         if (isCurrentStrategyCallHighTier) {
           trackAbacusEvent('bookedcall_strategy');
+          if (typeof (window as any).fbq === 'function' && !sessionStorage.getItem('fbq_schedule_fired') && !sessionStorage.getItem('notrack')) {
+            (window as any).fbq('track', 'Schedule');
+            sessionStorage.setItem('fbq_schedule_fired', '1');
+          }
         } else {
           trackAbacusEvent('bookedcall_intro');
         }
@@ -3272,12 +3276,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Legacy demo call booking
         trackAbacusEvent('bookedcall');
         if (legacyModal) legacyModal.classList.remove('active');
-      }
-
-      // Fire Meta Pixel Schedule event for ANY completed booking
-      if (typeof (window as any).fbq === 'function' && !sessionStorage.getItem('fbq_schedule_fired') && !sessionStorage.getItem('notrack')) {
-        (window as any).fbq('track', 'Schedule');
-        sessionStorage.setItem('fbq_schedule_fired', '1');
       }
 
       document.body.style.overflow = '';
