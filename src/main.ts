@@ -1486,7 +1486,7 @@ function StrategyBookingPage(): string {
             height="1080"
             playsinline
             muted
-            src="/vsl/funnel biz revammpo new vsl /Stop Losing Clients to Outdated Websites.mp4#t=0.001"
+            src="/videos for funnel call/video for funnel v4/Atlantic Bear Free Website Demo Pricing Plans.mp4#t=0.001"
           ></video>
           <!-- Play overlay -->
           <div class="bv-overlay" id="bv-overlay">
@@ -1511,7 +1511,7 @@ function StrategyBookingPage(): string {
               <button class="bv-ctrl-btn bv-mute" id="bv-mute" aria-label="Mute/Unmute">
                 <svg class="icon-vol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11,5 6,9 2,9 2,15 6,15 11,19 11,5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path class="vol-hi" d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
               </button>
-              <input class="bv-volume-slider" id="bv-volume" type="range" min="0" max="1" step="0.05" value="1" aria-label="Volume"/>
+               <input class="bv-volume-slider" id="bv-volume" type="range" min="0" max="1" step="0.05" value="0.9" aria-label="Volume"/>
             </div>
             <button class="bv-ctrl-btn bv-fullscreen" id="bv-fullscreen" aria-label="Fullscreen">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
@@ -1763,7 +1763,7 @@ function BookingNewPage(): string {
                 <button class="bv-ctrl-btn bv-mute" id="bv-mute" aria-label="Mute/Unmute">
                   <svg class="icon-vol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11,5 6,9 2,9 2,15 6,15 11,19 11,5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path class="vol-hi" d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
                 </button>
-                <input class="bv-volume-slider" id="bv-volume" type="range" min="0" max="1" step="0.05" value="1" aria-label="Volume"/>
+                 <input class="bv-volume-slider" id="bv-volume" type="range" min="0" max="1" step="0.05" value="0.9" aria-label="Volume"/>
               </div>
               <button class="bv-ctrl-btn bv-fullscreen" id="bv-fullscreen" aria-label="Fullscreen">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
@@ -2263,6 +2263,9 @@ function initBookingPageVideo(rigged = false) {
   const fullscreenBtn = document.getElementById('bv-fullscreen');
   const wrap = document.getElementById('custom-video-wrap');
   if (!video || !overlay || !playBtn || !controls || !playpause) return;
+
+  // Set initial volume to 0.9 (speaker recorded louder)
+  video.volume = 0.9;
 
   let audioCtx: AudioContext | null = null;
   let gainNode: GainNode | null = null;
@@ -2869,6 +2872,62 @@ function initStrategyBookingModal() {
   let stratPhone = '';
   let stratBusiness = '';
   let stratRevenue = '';
+
+  // ─── Phone formatting for strat modal ───
+  const stratCountryFlags: Record<string, string> = {
+    '+971': '\ud83c\udde6\ud83c\uddea', '+966': '\ud83c\uddf8\ud83c\udde6', '+968': '\ud83c\uddf4\ud83c\uddf2', '+974': '\ud83c\uddf6\ud83c\udde6', '+973': '\ud83c\udde7\ud83c\udded', '+965': '\ud83c\uddf0\ud83c\uddfc',
+    '+44': '\ud83c\uddec\ud83c\udde7', '+1': '\ud83c\uddfa\ud83c\uddf8', '+91': '\ud83c\uddee\ud83c\uddf3', '+92': '\ud83c\uddf5\ud83c\uddf0', '+63': '\ud83c\uddf5\ud83c\udded',
+    '+20': '\ud83c\uddea\ud83c\uddec', '+27': '\ud83c\uddff\ud83c\udde6', '+33': '\ud83c\uddeb\ud83c\uddf7', '+49': '\ud83c\udde9\ud83c\uddea', '+61': '\ud83c\udde6\ud83c\uddfa',
+    '+62': '\ud83c\uddee\ud83c\udde9', '+90': '\ud83c\uddf9\ud83c\uddf7', '+234': '\ud83c\uddf3\ud83c\uddec', '+254': '\ud83c\uddf0\ud83c\uddea',
+  };
+  const stratFlagEl = document.getElementById('strat-phone-flag-prefix');
+
+  const updateStratPhoneFlag = () => {
+    if (!stratFlagEl || !inputPhone) return;
+    const val = inputPhone.value.trim();
+    let matched = '\ud83c\udde6\ud83c\uddea';
+    for (const [code, flag] of Object.entries(stratCountryFlags)) {
+      if (val.startsWith(code)) { matched = flag; break; }
+    }
+    stratFlagEl.textContent = matched;
+  };
+
+  const formatStratPhone = () => {
+    if (!inputPhone) return;
+    let val = inputPhone.value;
+    let prefix = '';
+    for (const code of Object.keys(stratCountryFlags)) {
+      if (val.startsWith(code)) { prefix = code + ' '; break; }
+    }
+    if (!prefix && val.startsWith('+')) {
+      const spaceIdx = val.indexOf(' ');
+      if (spaceIdx > 0) { prefix = val.substring(0, spaceIdx + 1); }
+      else { const m = val.match(/^\+\d+/); if (m) prefix = m[0] + ' '; }
+    }
+    const suffixRaw = val.substring(prefix.length);
+    const digits = suffixRaw.replace(/\D/g, '').substring(0, 9);
+    let formattedSuffix = '';
+    if (digits.length > 0) {
+      if (digits.length <= 2) formattedSuffix = digits;
+      else if (digits.length <= 5) formattedSuffix = `${digits.substring(0, 2)} ${digits.substring(2)}`;
+      else formattedSuffix = `${digits.substring(0, 2)} ${digits.substring(2, 5)} ${digits.substring(5)}`;
+    }
+    const finalVal = prefix + formattedSuffix;
+    if (inputPhone.value !== finalVal) inputPhone.value = finalVal;
+  };
+
+  if (inputPhone) {
+    inputPhone.addEventListener('input', (e) => {
+      const inputEvent = e as InputEvent;
+      if (inputEvent.inputType && inputEvent.inputType.startsWith('delete')) {
+        updateStratPhoneFlag();
+        return;
+      }
+      formatStratPhone();
+      updateStratPhoneFlag();
+    });
+    updateStratPhoneFlag();
+  }
 
   const openModal = () => {
     // Reset form inputs each time modal opens so fields start clean
