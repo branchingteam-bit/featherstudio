@@ -1486,7 +1486,7 @@ function StrategyBookingPage(): string {
             height="1080"
             playsinline
             muted
-            src="/videos for funnel call/video for funnel v4/Atlantic Bear Free Website Demo Pricing Plans.mp4#t=0.001"
+            src="/videos for funnel call/v5/Custom UAE Websites in Five Days.mp4#t=0.001"
           ></video>
           <!-- Play overlay -->
           <div class="bv-overlay" id="bv-overlay">
@@ -1738,7 +1738,7 @@ function BookingNewPage(): string {
               width="1920"
               height="1080"
               playsinline
-              src="/videos for funnel call/video for funnel v4/Atlantic Bear Free Website Demo Pricing Plans.mp4#t=0.001"
+              src="/videos for funnel call/v5/Custom UAE Websites in Five Days.mp4#t=0.001"
             ></video>
             <!-- Overlay (shown when paused/before play) -->
             <div class="bv-overlay" id="bv-overlay">
@@ -3032,9 +3032,10 @@ function initStrategyBookingModal() {
       }
       if (step1Error) step1Error.style.display = 'none';
       stratName = nameVal;
-      stratPhone = phoneVal;
+      // Strip spaces so Calendly prefill and Google Sheets receive a clean number (e.g. +97150123456)
+      stratPhone = phoneVal.replace(/\s+/g, '');
       lastSubmittedLead.name = nameVal;
-      lastSubmittedLead.phone = phoneVal;
+      lastSubmittedLead.phone = stratPhone;
       goToStep(2);
     });
   }
