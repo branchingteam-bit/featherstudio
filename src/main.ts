@@ -1,3 +1,4 @@
+import seo from './seo.json';
 import './style.css';
 
 // ─── Utilities ───────────────────────────────────────────────────────────────
@@ -1947,6 +1948,9 @@ const pageMap: Record<Page, () => string> = {
   blog:         BlogPage,
 };
 
+// Titles and descriptions come from src/seo.json so the client-side tags and
+// the prerendered static HTML can never drift apart. Routes that are
+// intentionally kept out of the sitemap are declared here.
 const pageMeta: Record<Page, { title: string; desc: string }> = {
   home: {
     title: 'Website Design Agency in Dubai, UAE | Atlantic Bear',
@@ -1974,7 +1978,7 @@ const pageMeta: Record<Page, { title: string; desc: string }> = {
   },
   booked: {
     title: 'Call Confirmed | Atlantic Bear',
-    desc: 'Your call is locked in! Make sure to add the event to your calendar and watch the pre-call video before our session.'
+    desc: 'Your call is locked in. Add the event to your calendar and watch the pre-call video before our session.'
   },
   'booking-new': {
     title: 'Book a Free Call — Website Design Dubai | Atlantic Bear',
@@ -1996,11 +2000,35 @@ const pageMeta: Record<Page, { title: string; desc: string }> = {
     title: 'Blog — Website Design & SEO Tips for UAE Businesses | Atlantic Bear',
     desc: 'Expert articles on website design, SEO, and digital marketing for small businesses in Dubai and the UAE. Written by the Atlantic Bear team.'
   }
-};
+} as Record<Page, { title: string; desc: string }>;
+
+// FAQPage structured data, built from the same FAQS array the page renders so
+// the two can't disagree. Google renders JavaScript when collecting structured
+// data, and only the contact page carries an FAQ.
+function updateFaqSchema(page: Page) {
+  const existing = document.getElementById('faq-schema');
+  if (existing) existing.remove();
+  if (page !== 'contact') return;
+
+  const script = document.createElement('script');
+  script.type = 'application/ld+json';
+  script.id = 'faq-schema';
+  script.textContent = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: FAQS.map(f => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a }
+    }))
+  });
+  document.head.appendChild(script);
+}
 
 function updateMetadata(page: Page) {
   const meta = pageMeta[page] || pageMeta.home;
   document.title = meta.title;
+  updateFaqSchema(page);
   
   // Update meta description
   let descTag = document.querySelector('meta[name="description"]');
@@ -2027,7 +2055,7 @@ function updateMetadata(page: Page) {
     'og:description': meta.desc,
     'og:url': canonicalUrl,
     'og:type': 'website',
-    'og:image': `${window.location.origin}/logo.png`
+    'og:image': `${window.location.origin}${seo.site.ogImage}`
   };
 
   for (const [property, content] of Object.entries(ogTags)) {
@@ -2045,7 +2073,7 @@ function updateMetadata(page: Page) {
     'twitter:card': 'summary_large_image',
     'twitter:title': meta.title,
     'twitter:description': meta.desc,
-    'twitter:image': `${window.location.origin}/logo.png`
+    'twitter:image': `${window.location.origin}${seo.site.ogImage}`
   };
 
   for (const [name, content] of Object.entries(twitterTags)) {
