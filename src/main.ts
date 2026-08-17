@@ -1758,9 +1758,6 @@ function BookedPage(): string {
         <img src="/exemple on how to accept meeting to calender.png" alt="Example of accepting meeting invitation in calendar" style="width: 100%; display: block;" />
       </div>
 
-      <div class="reveal" style="margin-top: 32px;">
-        <a href="/pricing" class="btn btn-primary" data-link="pricing">View Our Plans & Pricing</a>
-      </div>
     </div>
   </section>`;
 }
