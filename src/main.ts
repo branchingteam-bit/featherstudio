@@ -1133,28 +1133,6 @@ function PricingPage(): string {
   `;
 }
 
-// ─── Our Work Page (kept but hidden from nav) ────────────────────────────────
-function WorkPage(): string {
-  return `
-  <div class="page-header" style="border-bottom:1px solid var(--border);">
-    <div class="container">
-      <div class="section-label">Portfolio</div>
-      <h1>Our Work</h1>
-      <p>Coming soon. We're putting together our portfolio. In the meantime, reach out to see what we can build for you.</p>
-    </div>
-  </div>
-  <section class="cta-section">
-    <div class="container">
-      <h2>Let's build yours</h2>
-      <p>Tell us about your business and what you need.</p>
-      <div class="cta-ctas">
-        <a href="/booking" class="btn btn-dark btn-large" data-link="booking" id="work-cta">
-          Book a Call ${Icons.arrow}
-        </a>
-      </div>
-    </div>
-  </section>`;
-}
 
 // ─── Testimonials Page ───────────────────────────────────────────────────────
 function TestimonialsPage(): string {
@@ -1755,193 +1733,51 @@ function StrategyBookingPage(): string {
 
 
 
-// ─── Booked / Confirmation Page (/booked) ──────────────────────────────────────
 function BookedPage(): string {
   return `
-  <div class="funnel-page">
-    <!-- Top Bar -->
-    <div class="funnel-urgency-bar">
-      <a href="/" class="funnel-urgency-logo" data-link="home" aria-label="Atlantic Bear Home">
-        <span class="logo-wordmark">Atlantic</span>
-        <img src="/atlanticbear-logo.png" alt="Atlantic Bear Logo" class="logo-bear-img" width="36" height="36" />
-      </a>
-      <div class="funnel-urgency-pill-wrap">
-        <div class="funnel-urgency-pill" style="border-color: rgba(62,207,142,0.4); background: rgba(62,207,142,0.1); color: #3ecf8e;">
-          <span class="urgency-dot" style="background: #3ecf8e;"></span>
-          <span>CALL CONFIRMED — YOU'RE ALL SET</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Main Confirmation Content -->
-    <div class="funnel-hero" style="padding-bottom: 60px;">
-      <div style="width:64px; height:64px; margin: 0 auto 20px; border-radius:50%; background:rgba(59,105,255,0.15); display:flex; align-items:center; justify-content:center;">
-        <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent, #3b69ff)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="36" height="36">
+  <div class="page-header" style="border-bottom:1px solid var(--border);">
+    <div class="container" style="text-align: center;">
+      <div style="width:64px; height:64px; margin: 0 auto 20px; border-radius:50%; background:rgba(62,207,142,0.15); display:flex; align-items:center; justify-content:center;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#3ecf8e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="36" height="36">
           <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
           <polyline points="22 4 12 14.01 9 11.01"></polyline>
         </svg>
       </div>
-      <h1 class="funnel-headline" style="font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 14px;">CONFIRM YOUR CALL</h1>
-      <p class="funnel-subheadline" style="max-width: 640px; margin: 0 auto 16px; font-size: 1.15rem; line-height: 1.5;">
-        Go to your email right now — you'll have a meeting invitation waiting for you.
-      </p>
-      <p style="font-size: 0.98rem; color: rgba(255,255,255,0.8); max-width: 620px; margin: 0 auto 28px; line-height: 1.6;">
-        It's going to ask you to click either <strong>Yes</strong> or <strong>Accept</strong>. Simply click that to add it to your calendar so we can show up on the meeting, and we're all set!
-      </p>
+      <h1 class="reveal" style="font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 800; line-height: 1.1; margin-bottom: 12px;">Call Confirmed!</h1>
+      <p class="reveal" style="max-width: 600px; margin: 12px auto 0; font-size: 1.1rem; color: var(--text-muted);">Your website strategy call is locked in. Let's get your business ready to grow.</p>
+    </div>
+  </div>
+
+  <section class="section-pad">
+    <div class="container" style="max-width: 680px; margin: 0 auto; text-align: center;">
+      <h2 class="reveal" style="font-size: 1.4rem; font-weight: 700; margin-bottom: 12px;">Next Step: Add to Calendar</h2>
+      <p class="reveal" style="margin-bottom: 24px; color: var(--text-muted); line-height: 1.6;">Please go to your email inbox and accept the meeting invitation. Click "Yes" or "Accept" to add it to your calendar so we both show up on time.</p>
       
       <!-- Calendar Accept Image Banner -->
-      <div style="max-width: 580px; margin: 0 auto 36px; border-radius: 16px; overflow: hidden; box-shadow: 0 12px 36px rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.15);">
+      <div class="reveal" style="max-width: 580px; margin: 0 auto 36px; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-md); border: 1px solid var(--border);">
         <img src="/exemple on how to accept meeting to calender.png" alt="Example of accepting meeting invitation in calendar" style="width: 100%; display: block;" />
       </div>
 
-      <div style="margin-top: 24px;">
-        <a href="/pricing" data-link="pricing" style="color: rgba(255,255,255,0.75); text-decoration: underline; font-size: 0.95rem; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.75)'">
-          Want to check out our packages? Click here &rarr;
-        </a>
+      <div class="reveal" style="margin-top: 32px;">
+        <a href="/pricing" class="btn btn-primary" data-link="pricing">View Our Plans & Pricing</a>
       </div>
     </div>
-  </div>
-  `;
+  </section>`;
 }
 
 
-// ─── Booking Page New (with Popups) ───────────────────────────────────────────
-function BookingNewPage(): string {
-  return `
-  <!-- HEADER -->
-  <div class="page-header booking-page-header">
-    <div class="container">
-      <div class="booking-page-badge">For Small Business Owners in the UAE</div>
-      <h1 class="funnel-headline" style="font-size: clamp(1.9rem, 4.5vw, 3rem); text-transform: uppercase; margin-bottom: 16px;">WE BUILD WEBSITES THAT TURN VISITORS INTO PAYING CUSTOMERS.</h1>
-      <p class="booking-page-value-prop">Whether you clicked our ad or found us online, you're here because you want a better website for your business. Watch the video below to see exactly what we'll build for you then book your free demo call.</p>
-      <div class="booking-page-divider"></div>
-    </div>
-  </div>
 
-  <section class="booking-section">
-    <div class="container">
-      <div class="booking-steps-timeline">
-
-        <!-- VIDEO -->
-        <div class="booking-step-card reveal">
-          <div class="custom-video-wrap" id="custom-video-wrap">
-            <video
-              id="booking-video"
-              class="booking-video-el"
-              preload="metadata"
-              width="1920"
-              height="1080"
-              playsinline
-              src="/videos for funnel call/v5/Custom UAE Websites in Five Days.mp4#t=0.001"
-            ></video>
-            <!-- Overlay (shown when paused/before play) -->
-            <div class="bv-overlay" id="bv-overlay">
-              <button class="bv-play-btn" id="bv-play-btn" aria-label="Play video">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-              </button>
-            </div>
-            <!-- Custom controls bar -->
-            <div class="bv-controls" id="bv-controls">
-              <button class="bv-ctrl-btn bv-playpause" id="bv-playpause" aria-label="Play/Pause">
-                <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
-              </button>
-              <div class="bv-progress-wrap" id="bv-progress-wrap">
-                <div class="bv-progress-track">
-                  <div class="bv-progress-fill" id="bv-progress-fill"></div>
-                  <div class="bv-progress-thumb" id="bv-progress-thumb"></div>
-                </div>
-              </div>
-              <span class="bv-time" id="bv-time">0:00 / 0:00</span>
-              <div class="bv-volume-wrap">
-                <button class="bv-ctrl-btn bv-mute" id="bv-mute" aria-label="Mute/Unmute">
-                  <svg class="icon-vol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11,5 6,9 2,9 2,15 6,15 11,19 11,5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path class="vol-hi" d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
-                </button>
-                 <input class="bv-volume-slider" id="bv-volume" type="range" min="0" max="1" step="0.05" value="0.9" aria-label="Volume"/>
-              </div>
-              <button class="bv-ctrl-btn bv-fullscreen" id="bv-fullscreen" aria-label="Fullscreen">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
-              </button>
-          </div>
-        </div>
-
-        <!-- NEW BUTTON UNDER VIDEO CARD -->
-        <div class="booking-step-card reveal" style="text-align: center; padding: 0; margin-top: -40px; margin-bottom: 20px;">
-          <div class="video-cta-container" style="text-align: center;">
-            <button id="book-demo-btn-v2" class="btn btn-primary btn-large" style="padding: 16px 42px; font-size: 1.25rem; border-radius: var(--r-md); font-weight: 800; box-shadow: var(--shadow-md); letter-spacing: -0.01em; cursor: pointer;">
-              Book my free demo
-            </button>
-          </div>
-        </div>
-
-        <!-- BRIDGE: video → calendar -->
-        <div class="booking-bridge-text reveal">
-          <p>Now that you've watched the video, book your call below to get your free demo.</p>
-        </div>
-
-        <!-- BOOKING CALENDAR -->
-        <div class="booking-step-card reveal" id="booking-calendar">
-          <div class="booking-step-header">
-            <h2 class="booking-step-title">Book your free <span style="color:var(--accent);">demo call</span></h2>
-          </div>
-
-          <div class="calendly-widget-wrap">
-            <!-- Calendly inline widget begin -->
-            <div class="calendly-inline-widget" data-url="https://calendly.com/officialatlanticbear/demo-call?hide_gdpr_banner=1&primary_color=3366ff" style="min-width:320px;height:900px;width:100%;"></div>
-            <!-- Calendly inline widget end -->
-          </div>
-
-          <div class="fallback-calendly-link-wrap">
-            <a href="https://calendly.com/officialatlanticbear/demo-call?hide_gdpr_banner=1&primary_color=3366ff" target="_blank" rel="noopener" class="fallback-calendly-link">
-              Open the calendar in a new tab if it doesn't appear above.
-            </a>
-          </div>
-        </div>
-
-        <!-- CLIENT TESTIMONIAL (optional) -->
-        <div class="booking-step-card reveal" style="transition-delay: 0.2s;">
-          <div class="booking-step-header">
-            <h2 class="booking-step-title">Hear from our clients</h2>
-          </div>
-
-          <div class="booking-testimonials-wrap" style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 24px;">
-            <div class="custom-testimonial-video-wrap" style="max-width: 320px; width: 100%; aspect-ratio: 9/16; border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-md); background: #000; border: 1px solid var(--border); position: relative;">
-              <video class="testimonial-video" preload="metadata" loop muted playsinline style="width: 100%; height: 100%; display: block; border: none; object-fit: cover;" src="/testimonials/sonder%20training%20group%20testimonial.mp4#t=0.001">
-                Your browser does not support the video tag.
-              </video>
-              <div class="testimonial-video-overlay">
-                <div class="testimonial-play-btn">
-                  <svg viewBox="0 0 24 24" width="28" height="28" fill="#000" style="margin-left: 3px;"><path d="M8 5v14l11-7z"/></svg>
-                </div>
-              </div>
-            </div>
-            <p class="video-testimonial-quote">
-              "We approached Alexi at Atlantic Bear, who was absolutely fantastic at putting together our ideas and bringing them across on the website in a way that really engaged our target market."
-            </p>
-            <p class="video-testimonial-link-note">
-              <a href="https://sondertraininggroup.com/" target="_blank" rel="noopener">Take a look at the website we built for them</a>
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-  `;
-}
 
 // ─── Router ───────────────────────────────────────────────────────────────────
-type Page = 'home' | 'pricing' | 'work' | 'contact' | 'testimonials' | 'booking' | 'booking-new' | 'meta-ads' | 'booked' | 'terms' | 'privacy' | 'blog';
+type Page = 'home' | 'pricing' | 'contact' | 'testimonials' | 'booking' | 'meta-ads' | 'booked' | 'terms' | 'privacy' | 'blog';
 
 const pageMap: Record<Page, () => string> = {
   home:         HomePage,
   pricing:      PricingPage,
-  work:         WorkPage,
   contact:      ContactPage,
   testimonials: TestimonialsPage,
   booking:      StrategyBookingPage,
   booked:       BookedPage,
-  'booking-new': BookingNewPage,
   'meta-ads':   MetaAdsPage,
   terms:        TermsPage,
   privacy:      PrivacyPage,
@@ -1960,10 +1796,6 @@ const pageMeta: Record<Page, { title: string; desc: string }> = {
     title: 'Website Design Pricing in Dubai & UAE | Atlantic Bear',
     desc: 'Transparent pricing for custom website design in Dubai and the UAE. Fully managed, no contracts, live in 5 days. Plans from AED 3,500 setup + AED 300/mo.'
   },
-  work: {
-    title: 'Website Portfolio — Client Work | Atlantic Bear Dubai',
-    desc: 'Explore custom websites designed and built by Atlantic Bear for UAE businesses. Real before-and-after case studies showing professional website transformations.'
-  },
   contact: {
     title: 'Contact a Dubai Website Design Agency | Atlantic Bear',
     desc: 'Get in touch with Atlantic Bear — a custom website design agency based in Dubai. Fast response, usually within a few hours. Start your UAE website project today.'
@@ -1979,10 +1811,6 @@ const pageMeta: Record<Page, { title: string; desc: string }> = {
   booked: {
     title: 'Call Confirmed | Atlantic Bear',
     desc: 'Your call is locked in. Add the event to your calendar and watch the pre-call video before our session.'
-  },
-  'booking-new': {
-    title: 'Book a Free Call — Website Design Dubai | Atlantic Bear',
-    desc: 'Watch our video, tell us about your business, and schedule your free discovery call with Atlantic Bear, a website design agency based in Dubai, UAE.'
   },
   'meta-ads': {
     title: 'Facebook & Instagram Ads Dubai, UAE | Atlantic Bear',
@@ -2678,283 +2506,7 @@ function initBookingPageVideo(rigged = false) {
   }
 }
 
-// ─── Booking Modal Flow Handler (3-Step: Name/Phone -> Calendly -> Confirmation) ───
-function initBookingModal() {
-  const modal = document.getElementById('booking-modal') as HTMLElement | null;
-  const openBtn = document.getElementById('book-demo-btn-v2') as HTMLElement | null;
-  const closeBtn = document.getElementById('booking-modal-close-btn') as HTMLElement | null;
-  const step1 = document.getElementById('modal-step-1') as HTMLElement | null;
-  const step2 = document.getElementById('modal-step-2') as HTMLElement | null;
-  const step3 = document.getElementById('modal-step-3') as HTMLElement | null;
-  const stepNum = document.getElementById('modal-step-num') as HTMLElement | null;
-  const stepTitle = document.getElementById('modal-step-title') as HTMLElement | null;
-  const stepBadge = document.getElementById('modal-step-badge') as HTMLElement | null;
-  const progressBar = document.getElementById('modal-progress-bar') as HTMLElement | null;
-  const step1Form = document.getElementById('modal-step1-form') as HTMLFormElement | null;
-  const inputName = document.getElementById('modal-input-name') as HTMLInputElement | null;
-  const inputPhone = document.getElementById('modal-input-phone') as HTMLInputElement | null;
-  const step1Error = document.getElementById('modal-step1-error') as HTMLElement | null;
-  const pricingLink = document.getElementById('modal-confirm-pricing-link') as HTMLElement | null;
 
-  if (!modal || !closeBtn) return;
-
-  // Move the modal to document.body to bypass transformed parent elements and center perfectly relative to viewport
-  if (modal.parentElement !== document.body) {
-    document.body.appendChild(modal);
-  }
-
-  let userName = '';
-  let userPhone = '';
-  let lastPrefillStr = '';
-
-  // Restore name & phone inputs from localStorage immediately so we can preload
-  if (inputName && localStorage.getItem('feather_booking_name')) {
-    inputName.value = localStorage.getItem('feather_booking_name') || '';
-  }
-  if (inputPhone && localStorage.getItem('feather_booking_phone')) {
-    inputPhone.value = localStorage.getItem('feather_booking_phone') || '';
-  }
-
-  // ─── Phone flag prefix logic ───
-  const flagEl = document.getElementById('phone-flag-prefix');
-  const countryFlags: Record<string, string> = {
-    '+971': '\ud83c\udde6\ud83c\uddea', '+966': '\ud83c\uddf8\ud83c\udde6', '+968': '\ud83c\uddf4\ud83c\uddf2', '+974': '\ud83c\uddf6\ud83c\udde6', '+973': '\ud83c\udde7\ud83c\udded', '+965': '\ud83c\uddf0\ud83c\uddfc',
-    '+44': '\ud83c\uddec\ud83c\udde7', '+1': '\ud83c\uddfa\ud83c\uddf8', '+91': '\ud83c\uddee\ud83c\uddf3', '+92': '\ud83c\uddf5\ud83c\uddf0', '+63': '\ud83c\uddf5\ud83c\udded',
-    '+20': '\ud83c\uddea\ud83c\uddec', '+27': '\ud83c\uddff\ud83c\udde6', '+33': '\ud83c\uddeb\ud83c\uddf7', '+49': '\ud83c\udde9\ud83c\uddea', '+61': '\ud83c\udde6\ud83c\uddfa',
-    '+62': '\ud83c\uddee\ud83c\udde9', '+90': '\ud83c\uddf9\ud83c\uddf7', '+234': '\ud83c\uddf3\ud83c\uddec', '+254': '\ud83c\uddf0\ud83c\uddea',
-  };
-
-  const updatePhoneFlag = () => {
-    if (!flagEl || !inputPhone) return;
-    const val = inputPhone.value.trim();
-    let matched = '\ud83c\udde6\ud83c\uddea'; // default UAE
-    for (const [code, flag] of Object.entries(countryFlags)) {
-      if (val.startsWith(code)) { matched = flag; break; }
-    }
-    flagEl.textContent = matched;
-  };
-
-  const formatPhoneNumber = () => {
-    if (!inputPhone) return;
-    let val = inputPhone.value;
-    let prefix = '';
-
-    // Find country code prefix
-    for (const code of Object.keys(countryFlags)) {
-      if (val.startsWith(code)) {
-        prefix = code + ' ';
-        break;
-      }
-    }
-
-    if (!prefix && val.startsWith('+')) {
-      const spaceIdx = val.indexOf(' ');
-      if (spaceIdx > 0) {
-        prefix = val.substring(0, spaceIdx + 1);
-      } else {
-        const match = val.match(/^\+\d+/);
-        if (match) prefix = match[0] + ' ';
-      }
-    }
-
-    const suffixRaw = val.substring(prefix.length);
-    const digits = suffixRaw.replace(/\D/g, '').substring(0, 9); // max 9 digits for UAE mobile
-
-    let formattedSuffix = '';
-    if (digits.length > 0) {
-      if (digits.length <= 2) {
-        formattedSuffix = digits;
-      } else if (digits.length <= 5) {
-        formattedSuffix = `${digits.substring(0, 2)} ${digits.substring(2)}`;
-      } else {
-        formattedSuffix = `${digits.substring(0, 2)} ${digits.substring(2, 5)} ${digits.substring(5)}`;
-      }
-    }
-
-    const finalVal = prefix + formattedSuffix;
-    if (inputPhone.value !== finalVal) {
-      inputPhone.value = finalVal;
-    }
-  };
-
-  if (inputPhone) {
-    if (!inputPhone.value || inputPhone.value.trim() === '' || inputPhone.value.trim() === '+971') {
-      inputPhone.value = '+971 ';
-    }
-    
-    inputPhone.addEventListener('input', (e) => {
-      const inputEvent = e as InputEvent;
-      // Allow user to backspace space characters and prefixes without auto-formatting snapping it back
-      if (inputEvent.inputType && inputEvent.inputType.startsWith('delete')) {
-        updatePhoneFlag();
-        return;
-      }
-      formatPhoneNumber();
-      updatePhoneFlag();
-    });
-    updatePhoneFlag();
-  }
-
-  const initCalendlyIframe = () => {
-    if (!userName || !userPhone) return;
-    const prefillStr = `${userName}|${userPhone}`;
-    if (lastPrefillStr === prefillStr) return; // Already preloaded/preloading this configuration
-    lastPrefillStr = prefillStr;
-
-    const container = document.getElementById('modal-calendly-container');
-    if (!container) return;
-
-    container.innerHTML = '';
-    attachLoaderToContainer(container);
-    const calendlyBaseUrl = 'https://calendly.com/officialatlanticbear/demo-call?hide_gdpr_banner=1&primary_color=3366ff';
-    const prefillUrl = `${calendlyBaseUrl}&name=${encodeURIComponent(userName)}&a1=${encodeURIComponent(userPhone)}`;
-    const prefillOpts = {
-      url: prefillUrl,
-      parentElement: container,
-      prefill: {
-        name: userName,
-        customAnswers: { a1: userPhone }
-      }
-    };
-
-    const doInit = () => (window as any).Calendly.initInlineWidget(prefillOpts);
-
-    if ((window as any).Calendly) {
-      doInit();
-    } else {
-      // SDK is loading via <head> script — just wait for it
-      const existingScript = document.getElementById('calendly-sdk') as HTMLScriptElement | null;
-      if (existingScript) {
-        existingScript.addEventListener('load', doInit, { once: true });
-      }
-    }
-  };
-
-  // Preload Calendly in background as soon as user types their name and phone
-  const handleInputCheck = () => {
-    const nameVal = inputName?.value.trim() || '';
-    const phoneVal = inputPhone?.value.trim() || '';
-    if (nameVal.length >= 3 && phoneVal.length >= 5) {
-      userName = nameVal;
-      userPhone = phoneVal;
-      initCalendlyIframe();
-    }
-  };
-
-  inputName?.addEventListener('input', handleInputCheck);
-  inputPhone?.addEventListener('input', handleInputCheck);
-
-  // If user has saved name+phone, preload Calendly iframe right away
-  handleInputCheck();
-
-  const goToStep = (step: number) => {
-    if (step === 1) {
-      if (step1) step1.style.display = 'block';
-      if (step2) step2.style.display = 'none';
-      if (step3) step3.style.display = 'none';
-      if (stepNum) stepNum.textContent = '1';
-      if (stepTitle) stepTitle.textContent = 'Tell us about yourself';
-      if (stepBadge) stepBadge.style.display = 'inline';
-      if (progressBar) progressBar.style.width = '50%';
-    } else if (step === 2) {
-      if (step1) step1.style.display = 'none';
-      if (step2) step2.style.display = 'block';
-      if (step3) step3.style.display = 'none';
-      if (stepNum) stepNum.textContent = '2';
-      if (stepTitle) stepTitle.textContent = 'Schedule your demo call';
-      if (stepBadge) stepBadge.style.display = 'inline';
-      if (progressBar) progressBar.style.width = '100%';
-
-      // Ensure widget is loaded with the final values (even if they skipped keyboard preload triggers)
-      userName = inputName?.value.trim() || '';
-      userPhone = inputPhone?.value.trim() || '';
-      initCalendlyIframe();
-    } else if (step === 3) {
-      if (step1) step1.style.display = 'none';
-      if (step2) step2.style.display = 'none';
-      if (step3) step3.style.display = 'block';
-      if (stepTitle) stepTitle.textContent = 'Call Confirmed!';
-      if (stepBadge) stepBadge.style.display = 'none';
-      if (progressBar) progressBar.style.width = '100%';
-    }
-  };
-
-  const openModal = () => {
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden'; // prevent background scrolling
-    if (step1Error) step1Error.style.display = 'none';
-
-    // Reset Calendly preload cache so it re-inits with whatever the user enters this session
-    lastPrefillStr = '';
-
-    // Restore name & phone inputs from localStorage
-    if (inputName && localStorage.getItem('feather_booking_name')) {
-      inputName.value = localStorage.getItem('feather_booking_name') || '';
-    }
-    if (inputPhone && localStorage.getItem('feather_booking_phone')) {
-      inputPhone.value = localStorage.getItem('feather_booking_phone') || '';
-    }
-
-    // Always start at Step 1
-    goToStep(1);
-  };
-
-  const closeModal = () => {
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
-  };
-
-  // Step 1 Form submission / Next button click
-  const handleStep1Submit = (e?: Event) => {
-    if (e) e.preventDefault();
-    const nameVal = inputName?.value.trim() || '';
-    const phoneVal = inputPhone?.value.trim() || '';
-
-    if (!nameVal || !phoneVal) {
-      if (step1Error) step1Error.style.display = 'block';
-      return;
-    }
-
-    // Capitalize name nicely (e.g. "john smith" -> "John Smith")
-    const formattedName = nameVal
-      .split(' ')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ');
-
-    if (step1Error) step1Error.style.display = 'none';
-    userName = formattedName;
-    userPhone = phoneVal;
-
-    goToStep(2);
-  };
-
-  if (step1Form) {
-    step1Form.addEventListener('submit', handleStep1Submit);
-  }
-
-  if (openBtn) openBtn.addEventListener('click', openModal);
-  closeBtn.addEventListener('click', closeModal);
-
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) closeModal();
-  });
-
-  const escHandler = (e: KeyboardEvent) => {
-    if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
-  };
-  window.addEventListener('keydown', escHandler);
-
-  if (pricingLink) {
-    pricingLink.addEventListener('click', (e) => {
-      e.preventDefault();
-      closeModal();
-      navigate('pricing', true);
-    });
-  }
-
-  (window as any).goToBookingStep = goToStep;
-  (window as any).openBookingModal = openModal;
-}
 
 
 // ─── Strategy Booking Qualifying Modal Flow Handler (4-Step) ────────────────
@@ -3244,7 +2796,7 @@ function initStrategyBookingModal() {
 
 // Left-to-right reading order of the site, used to decide which way the page
 // slides. Going "forward" in this list slides left; going back slides right.
-const PAGE_ORDER: Page[] = ['home', 'pricing', 'work', 'testimonials', 'meta-ads', 'contact', 'booking', 'booking-new', 'booked'];
+const PAGE_ORDER: Page[] = ['home', 'pricing', 'testimonials', 'meta-ads', 'contact', 'booking', 'booked'];
 let activePage: Page | null = null;
 
 function navigate(page: Page, pushHistory = true) {
@@ -3264,7 +2816,7 @@ function navigate(page: Page, pushHistory = true) {
   // Hide/show site chrome immediately for funnel landing page
   const navEl = document.getElementById('main-nav');
   const footerEl = document.querySelector('.site-footer') as HTMLElement | null;
-  if (page === 'booking' || page === 'booked') {
+  if (page === 'booking') {
     if (navEl) navEl.style.display = 'none';
     if (footerEl) footerEl.style.display = 'none';
   } else {
@@ -3316,24 +2868,15 @@ function navigate(page: Page, pushHistory = true) {
       initFormspree();
     }
 
-    if (page === 'booking' || page === 'booked' || page === 'booking-new') {
+    if (page === 'booking' || page === 'booked') {
       trackAbacusEvent('pageload', 2000); // Deferred by 2s to not block LCP/FCP paint
       startPageTimeTracking();
       startScrollTracking();
       loadCalendlyWidget();
-      initBookingPageVideo(page === 'booking' || page === 'booked');
+      initBookingPageVideo(page === 'booking');
 
       // Initialize modals based on route
-      if (page === 'booking-new') {
-        initBookingModal();
-        document.querySelectorAll('.funnel-cta-btn').forEach(btn => {
-          btn.addEventListener('click', () => {
-            if ((window as any).openBookingModal) {
-              (window as any).openBookingModal();
-            }
-          });
-        });
-      } else if (page === 'booking') {
+      if (page === 'booking') {
         initStrategyBookingModal();
         document.querySelectorAll('.strat-modal-trigger, .funnel-cta-wrap .funnel-cta-btn').forEach(btn => {
           btn.addEventListener('click', () => {
