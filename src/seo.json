@@ -1,0 +1,59 @@
+{
+  "site": {
+    "origin": "https://atlanticbear.com",
+    "name": "Atlantic Bear",
+    "ogImage": "/og-image.png",
+    "phone": "+971502446531",
+    "email": "officialatlanticbear@gmail.com"
+  },
+  "pages": {
+    "home": {
+      "path": "/",
+      "title": "Atlantic Bear | Custom Website Design Agency in the UAE",
+      "desc": "Atlantic Bear is a leading website agency in the UAE. We build custom, premium websites for businesses, live in five days and fully managed.",
+      "priority": "1.0"
+    },
+    "pricing": {
+      "path": "/pricing",
+      "title": "Website Pricing for UAE Businesses | Atlantic Bear",
+      "desc": "Transparent website pricing for UAE businesses. The Launch Plan from AED 3,500 and the Growth Plan from AED 6,500, both fully managed with hosting, updates and support included.",
+      "priority": "0.9"
+    },
+    "testimonials": {
+      "path": "/testimonials",
+      "title": "Client Work & Testimonials | Atlantic Bear",
+      "desc": "See real website transformations by Atlantic Bear. Before and after case studies showing how we help businesses across the UAE look professional online.",
+      "priority": "0.8"
+    },
+    "contact": {
+      "path": "/contact",
+      "title": "Contact Atlantic Bear | UAE Web Design Agency",
+      "desc": "Get in touch with Atlantic Bear in Dubai. Call +971-50-244-6531, email us, or read answers to the questions we are asked most about building a website in the UAE.",
+      "priority": "0.8"
+    },
+    "meta-ads": {
+      "path": "/meta-ads",
+      "title": "Meta Ads for UAE Small Businesses | Atlantic Bear",
+      "desc": "Drive local client leads via Facebook and Instagram ads for small businesses in the UAE. AED 2,500 per month retainer, fully managed.",
+      "priority": "0.7"
+    },
+    "booking": {
+      "path": "/booking",
+      "title": "Book a Strategy Call | Atlantic Bear",
+      "desc": "Schedule a 30-minute strategy call with Atlantic Bear and start your UAE website project today.",
+      "priority": "0.7"
+    },
+    "terms": {
+      "path": "/terms",
+      "title": "Terms & Conditions | Atlantic Bear",
+      "desc": "The terms covering Atlantic Bear website design, development, hosting, and maintenance services for businesses in the UAE.",
+      "priority": "0.3"
+    },
+    "privacy": {
+      "path": "/privacy",
+      "title": "Privacy Policy | Atlantic Bear",
+      "desc": "How Atlantic Bear collects, uses, stores, and protects the personal information you share through our website.",
+      "priority": "0.3"
+    }
+  }
+}

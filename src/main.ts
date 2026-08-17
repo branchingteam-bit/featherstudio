@@ -1,3 +1,4 @@
+import seo from './seo.json';
 import './style.css';
 
 // ─── Utilities ───────────────────────────────────────────────────────────────
@@ -1853,56 +1854,52 @@ const pageMap: Record<Page, () => string> = {
   privacy:      PrivacyPage,
 };
 
+// Titles and descriptions come from src/seo.json so the client-side tags and
+// the prerendered static HTML can never drift apart. Routes that are
+// intentionally kept out of the sitemap are declared here.
 const pageMeta: Record<Page, { title: string; desc: string }> = {
-  home: {
-    title: 'Atlantic Bear | Custom Website Design Agency in the UAE',
-    desc: 'Atlantic Bear is a leading website agency in the UAE. We build custom, premium websites for businesses, live in five days and fully managed.'
-  },
-  pricing: {
-    title: 'More Clients Starts Here | Atlantic Bear Pricing',
-    desc: 'Transparent pricing for fully-managed brand positioning and high-conversion client acquisition platforms in the UAE. See your online presence live in 5 days, see it finished before you pay anything.'
-  },
+  ...(seo.pages as Record<string, { title: string; desc: string }>),
   work: {
     title: 'Our Work | Atlantic Bear Portfolio',
     desc: 'Explore custom websites designed and developed for UAE businesses. Professional layouts, mobile optimization, and fast load times.'
   },
-  contact: {
-    title: 'Contact Atlantic Bear | Start Your UAE Website Project',
-    desc: 'Get in touch with Atlantic Bear. Let\'s discuss your business website needs. Fast response and custom layouts in Dubai & UAE.'
-  },
-  testimonials: {
-    title: 'Client Testimonials & Transformations | Atlantic Bear',
-    desc: 'See real website transformations by Atlantic Bear. Before and after case studies showing how we help businesses across the UAE look professional online.'
-  },
-  booking: {
-    title: 'Book a Strategy Call | Atlantic Bear',
-    desc: 'Watch our video, schedule your free 30-minute strategy call, and view our client success stories. Start your UAE website project today.'
-  },
   booked: {
     title: 'Call Confirmed | Atlantic Bear',
-    desc: 'Your call is locked in! Make sure to add the event to your calendar and watch the pre-call video before our session.'
+    desc: 'Your call is locked in. Add the event to your calendar and watch the pre-call video before our session.'
   },
   'booking-new': {
-    title: 'Book a Call (New Flow) | Atlantic Bear Discovery Session',
-    desc: 'Watch our video, tell us about yourself, and schedule your free 30-minute discovery call. Start your UAE website project today.'
-  },
-  'meta-ads': {
-    title: 'Meta Ads for UAE Small Businesses | Atlantic Bear',
-    desc: 'Drive local client leads via Facebook & Instagram ads for small businesses in the UAE. AED 2,500/mo retainer.'
-  },
-  terms: {
-    title: 'Terms & Conditions | Atlantic Bear',
-    desc: 'The terms covering Atlantic Bear website design, development, hosting, and maintenance services for businesses in the UAE.'
-  },
-  privacy: {
-    title: 'Privacy Policy | Atlantic Bear',
-    desc: 'How Atlantic Bear collects, uses, stores, and protects the personal information you share through our website.'
+    title: 'Book a Call | Atlantic Bear Discovery Session',
+    desc: 'Tell us about your business and schedule a 30-minute discovery call. Start your UAE website project today.'
   }
-};
+} as Record<Page, { title: string; desc: string }>;
+
+// FAQPage structured data, built from the same FAQS array the page renders so
+// the two can't disagree. Google renders JavaScript when collecting structured
+// data, and only the contact page carries an FAQ.
+function updateFaqSchema(page: Page) {
+  const existing = document.getElementById('faq-schema');
+  if (existing) existing.remove();
+  if (page !== 'contact') return;
+
+  const script = document.createElement('script');
+  script.type = 'application/ld+json';
+  script.id = 'faq-schema';
+  script.textContent = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: FAQS.map(f => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a }
+    }))
+  });
+  document.head.appendChild(script);
+}
 
 function updateMetadata(page: Page) {
   const meta = pageMeta[page] || pageMeta.home;
   document.title = meta.title;
+  updateFaqSchema(page);
   
   // Update meta description
   let descTag = document.querySelector('meta[name="description"]');
@@ -1929,7 +1926,7 @@ function updateMetadata(page: Page) {
     'og:description': meta.desc,
     'og:url': canonicalUrl,
     'og:type': 'website',
-    'og:image': `${window.location.origin}/logo.png`
+    'og:image': `${window.location.origin}${seo.site.ogImage}`
   };
 
   for (const [property, content] of Object.entries(ogTags)) {
@@ -1947,7 +1944,7 @@ function updateMetadata(page: Page) {
     'twitter:card': 'summary_large_image',
     'twitter:title': meta.title,
     'twitter:description': meta.desc,
-    'twitter:image': `${window.location.origin}/logo.png`
+    'twitter:image': `${window.location.origin}${seo.site.ogImage}`
   };
 
   for (const [name, content] of Object.entries(twitterTags)) {
