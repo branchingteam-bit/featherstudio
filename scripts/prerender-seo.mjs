@@ -9,7 +9,7 @@
  * the SPA rewrite, so dist/pricing/index.html is served for /pricing and the
  * correct tags are present in the raw HTML.
  */
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -59,16 +59,26 @@ function buildPage({ title, desc, path }) {
 
 let written = 0;
 for (const [key, page] of Object.entries(seo.pages)) {
-  const html = buildPage(page);
   if (page.path === '/') {
+    const html = buildPage(page);
     writeFileSync(join(dist, 'index.html'), html);           // rewrite the root shell too
+    written++;
+    console.log(`  ${page.path.padEnd(16)} ${key} (prerendered)`);
   } else {
+    // Check if there is a custom static file in public
+    const publicPath = join(root, 'public', page.path.replace(/^\//, ''), 'index.html');
+    const publicFilePath = join(root, 'public', page.path.replace(/^\//, '') + '.html');
+    if (existsSync(publicPath) || existsSync(publicFilePath)) {
+      console.log(`  ${page.path.padEnd(16)} ${key} (skipped - custom static file exists in public/)`);
+      continue;
+    }
+    const html = buildPage(page);
     const dir = join(dist, page.path.replace(/^\//, ''));
     mkdirSync(dir, { recursive: true });
     writeFileSync(join(dir, 'index.html'), html);
+    written++;
+    console.log(`  ${page.path.padEnd(16)} ${key} (prerendered)`);
   }
-  written++;
-  console.log(`  ${page.path.padEnd(16)} ${key}`);
 }
 
 // ── sitemap.xml, generated from the same source so it cannot drift ──

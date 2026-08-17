@@ -9,51 +9,75 @@
   "pages": {
     "home": {
       "path": "/",
-      "title": "Atlantic Bear | Custom Website Design Agency in the UAE",
-      "desc": "Atlantic Bear is a leading website agency in the UAE. We build custom, premium websites for businesses, live in five days and fully managed.",
+      "title": "Website Design Agency in Dubai, UAE | Atlantic Bear",
+      "desc": "Atlantic Bear is a custom website design agency in Dubai, UAE. We build premium websites for small businesses — live in 5 days, fully managed, no templates.",
       "priority": "1.0"
     },
     "pricing": {
       "path": "/pricing",
-      "title": "Website Pricing for UAE Businesses | Atlantic Bear",
-      "desc": "Transparent website pricing for UAE businesses. The Launch Plan from AED 3,500 and the Growth Plan from AED 6,500, both fully managed with hosting, updates and support included.",
+      "title": "Website Design Pricing in Dubai & UAE | Atlantic Bear",
+      "desc": "Transparent pricing for custom website design in Dubai and the UAE. Fully managed, no contracts, live in 5 days. Plans from AED 3,500 setup + AED 300/mo.",
       "priority": "0.9"
     },
     "testimonials": {
       "path": "/testimonials",
-      "title": "Client Work & Testimonials | Atlantic Bear",
-      "desc": "See real website transformations by Atlantic Bear. Before and after case studies showing how we help businesses across the UAE look professional online.",
+      "title": "Client Reviews & Website Transformations | Atlantic Bear Dubai",
+      "desc": "See real client results from Atlantic Bear. Before and after website case studies for businesses in the UAE and UK. Watch client video testimonials.",
       "priority": "0.8"
     },
     "contact": {
       "path": "/contact",
-      "title": "Contact Atlantic Bear | UAE Web Design Agency",
-      "desc": "Get in touch with Atlantic Bear in Dubai. Call +971-50-244-6531, email us, or read answers to the questions we are asked most about building a website in the UAE.",
+      "title": "Contact a Dubai Website Design Agency | Atlantic Bear",
+      "desc": "Get in touch with Atlantic Bear — a custom website design agency based in Dubai. Fast response, usually within a few hours. Start your UAE website project today.",
       "priority": "0.8"
     },
     "meta-ads": {
       "path": "/meta-ads",
-      "title": "Meta Ads for UAE Small Businesses | Atlantic Bear",
-      "desc": "Drive local client leads via Facebook and Instagram ads for small businesses in the UAE. AED 2,500 per month retainer, fully managed.",
+      "title": "Facebook & Instagram Ads Dubai, UAE | Atlantic Bear",
+      "desc": "Run targeted Facebook and Instagram ad campaigns in Dubai and the UAE with Atlantic Bear. Local targeting, ad creatives, and direct WhatsApp leads. AED 2,500/mo.",
       "priority": "0.7"
     },
     "booking": {
       "path": "/booking",
-      "title": "Book a Strategy Call | Atlantic Bear",
-      "desc": "Schedule a 30-minute strategy call with Atlantic Bear and start your UAE website project today.",
+      "title": "Book a Free Call — Website Agency Dubai | Atlantic Bear",
+      "desc": "Book a free 30-minute strategy call with Atlantic Bear, a website design agency in Dubai. Watch our overview video and schedule your slot.",
       "priority": "0.7"
     },
     "terms": {
       "path": "/terms",
-      "title": "Terms & Conditions | Atlantic Bear",
-      "desc": "The terms covering Atlantic Bear website design, development, hosting, and maintenance services for businesses in the UAE.",
+      "title": "Terms & Conditions | Atlantic Bear Website Agency Dubai",
+      "desc": "The terms covering Atlantic Bear website design, development, hosting, and maintenance services for businesses in Dubai and the UAE.",
       "priority": "0.3"
     },
     "privacy": {
       "path": "/privacy",
-      "title": "Privacy Policy | Atlantic Bear",
+      "title": "Privacy Policy | Atlantic Bear Website Agency Dubai",
       "desc": "How Atlantic Bear collects, uses, stores, and protects the personal information you share through our website.",
       "priority": "0.3"
+    },
+    "blog": {
+      "path": "/blog",
+      "title": "Blog — Website Design & SEO Tips for UAE Businesses | Atlantic Bear",
+      "desc": "Expert articles on website design, SEO, and digital marketing for small businesses in Dubai and the UAE. Written by the Atlantic Bear team.",
+      "priority": "0.8"
+    },
+    "blog-cost": {
+      "path": "/blog/website-cost-dubai-2026",
+      "title": "How Much Does a Website Cost in Dubai in 2026? | Atlantic Bear",
+      "desc": "Freelancers, agencies, DIY builders — see real Dubai website prices and what you actually get for your money.",
+      "priority": "0.7"
+    },
+    "blog-agency": {
+      "path": "/blog/website-agency-dubai-uae",
+      "title": "What to Look for in a Website Design Agency in Dubai (2026 Guide) | Atlantic Bear",
+      "desc": "Not all website agencies in Dubai are the same. Here's what UAE small business owners should look for — and the red flags to avoid.",
+      "priority": "0.7"
+    },
+    "blog-seo": {
+      "path": "/blog/get-found-on-google-dubai",
+      "title": "How to Get Your Dubai Business Found on Google in 2026 | Atlantic Bear",
+      "desc": "A practical local SEO guide for small business owners in Dubai and the UAE. Step by step, no jargon.",
+      "priority": "0.7"
     }
   }
 }
