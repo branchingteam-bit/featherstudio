@@ -494,7 +494,7 @@ function HomePage(): string {
     <div class="container" style="position: relative; z-index: 1;">
       <h1>Your business deserves<br>to be <span class="hook-word"><span class="hook-drop-inner"><span class="hook-rig" aria-hidden="true"><span class="hook-line"></span><svg class="hook-icon" viewBox="0 0 20 34" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="3" r="2.4" stroke="currentColor" stroke-width="2"/><path d="M10 5.4 V17 C10 25.5 2.6 27 2.6 19.6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M2.6 19.6 L6 22.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><span class="hook-label text-blue">found</span></span></span>.</h1>
       <p class="hero-sub">
-        Custom websites built exclusively for UAE small businesses. Live in five days, fully managed, never a template.
+        Dubai's custom website design agency — premium websites for UAE small businesses, live in 5 days, fully managed, never a template.
       </p>
       <div class="hero-ctas">
         <a href="/booking" class="btn btn-primary btn-large btn-pulse" data-link="booking" id="hero-cta-book">
@@ -731,6 +731,41 @@ function HomePage(): string {
   </section>
 
   ${ReviewsWall()}
+
+  <!-- CONTENT DISCOVERY SECTION -->
+  <section class="section-pad" style="border-top: 1px solid var(--border); background: var(--surface);">
+    <div class="container">
+      <div class="section-label reveal" style="text-align:center;">Explore</div>
+      <h2 class="section-title reveal" style="text-align:center;">More from Atlantic Bear</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 40px; max-width: 900px; margin-left: auto; margin-right: auto;">
+
+        <a href="/testimonials" data-link="testimonials" id="home-explore-testimonials" class="reveal" style="display: block; background: var(--bg); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 28px 28px 24px; text-decoration: none; color: inherit; transition: border-color 0.2s, box-shadow 0.2s;" onmouseover="this.style.borderColor='var(--blue)'; this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.borderColor='var(--border)'; this.style.boxShadow='none'">
+          <div style="font-size: 1.6rem; margin-bottom: 12px;">🏆</div>
+          <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); margin-bottom: 8px;">Client Work</div>
+          <h3 style="font-size: 1.1rem; margin: 0 0 10px; font-weight: 700;">See our client transformations</h3>
+          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin: 0 0 16px;">Real before-and-after website projects. Watch the client video review and explore how we helped Sonder Training Group grow their online presence.</p>
+          <span style="font-size: 0.85rem; font-weight: 700; color: var(--blue);">View testimonials →</span>
+        </a>
+
+        <a href="/blog" data-link="blog" id="home-explore-blog" class="reveal" style="display: block; background: var(--bg); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 28px 28px 24px; text-decoration: none; color: inherit; transition: border-color 0.2s, box-shadow 0.2s;" onmouseover="this.style.borderColor='var(--blue)'; this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.borderColor='var(--border)'; this.style.boxShadow='none'">
+          <div style="font-size: 1.6rem; margin-bottom: 12px;">📖</div>
+          <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); margin-bottom: 8px;">Blog</div>
+          <h3 style="font-size: 1.1rem; margin: 0 0 10px; font-weight: 700;">Website & SEO tips for UAE businesses</h3>
+          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin: 0 0 16px;">How much should a website cost in Dubai? How to get found on Google in the UAE? We answer the questions small business owners actually search for.</p>
+          <span style="font-size: 0.85rem; font-weight: 700; color: var(--blue);">Read the blog →</span>
+        </a>
+
+        <a href="/pricing" data-link="pricing" id="home-explore-pricing" class="reveal" style="display: block; background: var(--bg); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 28px 28px 24px; text-decoration: none; color: inherit; transition: border-color 0.2s, box-shadow 0.2s;" onmouseover="this.style.borderColor='var(--blue)'; this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.borderColor='var(--border)'; this.style.boxShadow='none'">
+          <div style="font-size: 1.6rem; margin-bottom: 12px;">💡</div>
+          <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); margin-bottom: 8px;">Pricing</div>
+          <h3 style="font-size: 1.1rem; margin: 0 0 10px; font-weight: 700;">Transparent pricing, no surprises</h3>
+          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin: 0 0 16px;">Two simple plans starting from AED 3,500 setup. Fully managed, no contracts, and you see the site finished before you pay anything.</p>
+          <span style="font-size: 0.85rem; font-weight: 700; color: var(--blue);">See pricing →</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
   `;
 }
 
@@ -785,6 +820,64 @@ function MetaAdsPage(): string {
         </div>
       </div>
 
+    </div>
+  </section>
+  `;
+}
+
+
+// ─── Blog Page ──────────────────────────────────────────────────────────────────
+function BlogPage(): string {
+  return `
+  <div class="page-header" style="border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div class="section-label reveal">Knowledge Base</div>
+      <h1 class="reveal" style="transition-delay:0.05s;">Website & SEO Tips for<br>UAE Small Businesses</h1>
+      <p class="reveal" style="transition-delay:0.1s; max-width: 600px;">Practical guides on website design, Google rankings, and digital marketing written by the Atlantic Bear team for business owners in Dubai and the UAE.</p>
+    </div>
+  </div>
+
+  <section class="section-pad">
+    <div class="container">
+      <div style="display: grid; gap: 28px; max-width: 800px;">
+
+        <a href="/blog/website-cost-dubai-2026" class="reveal" style="display: block; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 32px; text-decoration: none; color: inherit; transition: border-color 0.2s, box-shadow 0.2s;" onmouseover="this.style.borderColor='var(--blue)'; this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.borderColor='var(--border)'; this.style.boxShadow='none'">
+          <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px;">Website Design · Dubai</div>
+          <h2 style="font-size: 1.25rem; margin: 0 0 12px; font-weight: 700;">How Much Does a Website Cost in Dubai in 2026?</h2>
+          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin: 0 0 16px;">Freelancers, agencies, DIY builders — we break down the real costs of every option so you can make the right choice for your UAE business.</p>
+          <span style="font-size: 0.85rem; font-weight: 700; color: var(--blue);">Read article →</span>
+        </a>
+
+        <a href="/blog/website-agency-dubai-uae" class="reveal" style="display: block; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 32px; text-decoration: none; color: inherit; transition: border-color 0.2s, box-shadow 0.2s;" onmouseover="this.style.borderColor='var(--blue)'; this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.borderColor='var(--border)'; this.style.boxShadow='none'">
+          <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px;">Agency Guide · UAE</div>
+          <h2 style="font-size: 1.25rem; margin: 0 0 12px; font-weight: 700;">What to Look for in a Website Design Agency in Dubai (2026 Guide)</h2>
+          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin: 0 0 16px;">Not all agencies are the same. Here's what small business owners in Dubai and the UAE should look for — and the red flags to avoid.</p>
+          <span style="font-size: 0.85rem; font-weight: 700; color: var(--blue);">Read article →</span>
+        </a>
+
+        <a href="/blog/get-found-on-google-dubai" class="reveal" style="display: block; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 32px; text-decoration: none; color: inherit; transition: border-color 0.2s, box-shadow 0.2s;" onmouseover="this.style.borderColor='var(--blue)'; this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.borderColor='var(--border)'; this.style.boxShadow='none'">
+          <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px;">SEO Guide · Dubai</div>
+          <h2 style="font-size: 1.25rem; margin: 0 0 12px; font-weight: 700;">How to Get Your Dubai Business Found on Google in 2026</h2>
+          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin: 0 0 16px;">A step-by-step local SEO guide for UAE small business owners. From Google Business Profile to your website structure — what actually moves the needle.</p>
+          <span style="font-size: 0.85rem; font-weight: 700; color: var(--blue);">Read article →</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section" style="border-top:1px solid var(--border);">
+    <div class="container">
+      <h2>Want a website that actually ranks on Google?</h2>
+      <p>We build SEO-ready, custom websites for UAE businesses. Live in 5 days, fully managed.</p>
+      <div class="cta-ctas">
+        <a href="/booking" class="btn btn-primary btn-pulse btn-large" data-link="booking" id="blog-cta-book">
+          Book a Free Call ${Icons.arrow}
+        </a>
+        <a href="/pricing" class="btn btn-secondary btn-large" data-link="pricing" id="blog-cta-pricing">
+          View Plans
+        </a>
+      </div>
     </div>
   </section>
   `;
@@ -1837,7 +1930,7 @@ function BookingNewPage(): string {
 }
 
 // ─── Router ───────────────────────────────────────────────────────────────────
-type Page = 'home' | 'pricing' | 'work' | 'contact' | 'testimonials' | 'booking' | 'booking-new' | 'meta-ads' | 'booked' | 'terms' | 'privacy';
+type Page = 'home' | 'pricing' | 'work' | 'contact' | 'testimonials' | 'booking' | 'booking-new' | 'meta-ads' | 'booked' | 'terms' | 'privacy' | 'blog';
 
 const pageMap: Record<Page, () => string> = {
   home:         HomePage,
@@ -1851,52 +1944,57 @@ const pageMap: Record<Page, () => string> = {
   'meta-ads':   MetaAdsPage,
   terms:        TermsPage,
   privacy:      PrivacyPage,
+  blog:         BlogPage,
 };
 
 const pageMeta: Record<Page, { title: string; desc: string }> = {
   home: {
-    title: 'Atlantic Bear | Custom Website Design Agency in the UAE',
-    desc: 'Atlantic Bear is a leading website agency in the UAE. We build custom, premium websites for businesses, live in five days and fully managed.'
+    title: 'Website Design Agency in Dubai, UAE | Atlantic Bear',
+    desc: 'Atlantic Bear is a custom website design agency in Dubai, UAE. We build premium websites for small businesses — live in 5 days, fully managed, no templates.'
   },
   pricing: {
-    title: 'More Clients Starts Here | Atlantic Bear Pricing',
-    desc: 'Transparent pricing for fully-managed brand positioning and high-conversion client acquisition platforms in the UAE. See your online presence live in 5 days, see it finished before you pay anything.'
+    title: 'Website Design Pricing in Dubai & UAE | Atlantic Bear',
+    desc: 'Transparent pricing for custom website design in Dubai and the UAE. Fully managed, no contracts, live in 5 days. Plans from AED 3,500 setup + AED 300/mo.'
   },
   work: {
-    title: 'Our Work | Atlantic Bear Portfolio',
-    desc: 'Explore custom websites designed and developed for UAE businesses. Professional layouts, mobile optimization, and fast load times.'
+    title: 'Website Portfolio — Client Work | Atlantic Bear Dubai',
+    desc: 'Explore custom websites designed and built by Atlantic Bear for UAE businesses. Real before-and-after case studies showing professional website transformations.'
   },
   contact: {
-    title: 'Contact Atlantic Bear | Start Your UAE Website Project',
-    desc: 'Get in touch with Atlantic Bear. Let\'s discuss your business website needs. Fast response and custom layouts in Dubai & UAE.'
+    title: 'Contact a Dubai Website Design Agency | Atlantic Bear',
+    desc: 'Get in touch with Atlantic Bear — a custom website design agency based in Dubai. Fast response, usually within a few hours. Start your UAE website project today.'
   },
   testimonials: {
-    title: 'Client Testimonials & Transformations | Atlantic Bear',
-    desc: 'See real website transformations by Atlantic Bear. Before and after case studies showing how we help businesses across the UAE look professional online.'
+    title: 'Client Reviews & Website Transformations | Atlantic Bear Dubai',
+    desc: 'See real client results from Atlantic Bear. Before and after website case studies for businesses in the UAE and UK. Watch client video testimonials.'
   },
   booking: {
-    title: 'Book a Strategy Call | Atlantic Bear',
-    desc: 'Watch our video, schedule your free 30-minute strategy call, and view our client success stories. Start your UAE website project today.'
+    title: 'Book a Free Call — Website Agency Dubai | Atlantic Bear',
+    desc: 'Book a free 30-minute strategy call with Atlantic Bear, a website design agency in Dubai. Watch our overview video and schedule your slot.'
   },
   booked: {
     title: 'Call Confirmed | Atlantic Bear',
     desc: 'Your call is locked in! Make sure to add the event to your calendar and watch the pre-call video before our session.'
   },
   'booking-new': {
-    title: 'Book a Call (New Flow) | Atlantic Bear Discovery Session',
-    desc: 'Watch our video, tell us about yourself, and schedule your free 30-minute discovery call. Start your UAE website project today.'
+    title: 'Book a Free Call — Website Design Dubai | Atlantic Bear',
+    desc: 'Watch our video, tell us about your business, and schedule your free discovery call with Atlantic Bear, a website design agency based in Dubai, UAE.'
   },
   'meta-ads': {
-    title: 'Meta Ads for UAE Small Businesses | Atlantic Bear',
-    desc: 'Drive local client leads via Facebook & Instagram ads for small businesses in the UAE. AED 2,500/mo retainer.'
+    title: 'Facebook & Instagram Ads Dubai, UAE | Atlantic Bear',
+    desc: 'Run targeted Facebook and Instagram ad campaigns in Dubai and the UAE with Atlantic Bear. Local targeting, ad creatives, and direct WhatsApp leads. AED 2,500/mo.'
   },
   terms: {
-    title: 'Terms & Conditions | Atlantic Bear',
-    desc: 'The terms covering Atlantic Bear website design, development, hosting, and maintenance services for businesses in the UAE.'
+    title: 'Terms & Conditions | Atlantic Bear Website Agency Dubai',
+    desc: 'The terms covering Atlantic Bear website design, development, hosting, and maintenance services for businesses in Dubai and the UAE.'
   },
   privacy: {
-    title: 'Privacy Policy | Atlantic Bear',
+    title: 'Privacy Policy | Atlantic Bear Website Agency Dubai',
     desc: 'How Atlantic Bear collects, uses, stores, and protects the personal information you share through our website.'
+  },
+  blog: {
+    title: 'Blog — Website Design & SEO Tips for UAE Businesses | Atlantic Bear',
+    desc: 'Expert articles on website design, SEO, and digital marketing for small businesses in Dubai and the UAE. Written by the Atlantic Bear team.'
   }
 };
 
@@ -1963,7 +2061,7 @@ function updateMetadata(page: Page) {
 
 function getPageFromPath(path: string): Page {
   const cleanPath = path.replace(/^\/|\/$/g, '');
-  if (cleanPath === 'pricing' || cleanPath === 'work' || cleanPath === 'contact' || cleanPath === 'testimonials' || cleanPath === 'booking' || cleanPath === 'booking-new' || cleanPath === 'meta-ads' || cleanPath === 'booked' || cleanPath === 'terms' || cleanPath === 'privacy') {
+  if (cleanPath === 'pricing' || cleanPath === 'work' || cleanPath === 'contact' || cleanPath === 'testimonials' || cleanPath === 'booking' || cleanPath === 'booking-new' || cleanPath === 'meta-ads' || cleanPath === 'booked' || cleanPath === 'terms' || cleanPath === 'privacy' || cleanPath === 'blog') {
     return cleanPath as Page;
   }
   return 'home';

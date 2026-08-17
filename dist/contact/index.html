@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Contact a Dubai Website Design Agency | Atlantic Bear</title>
+  <meta name="description" content="Get in touch with Atlantic Bear — a custom website design agency based in Dubai. Fast response, usually within a few hours. Start your UAE website project today." />
+  <link rel="canonical" href="https://atlanticbear.com/contact" />
+  <meta name="geo.region" content="AE-DU" />
+  <meta property="og:title" content="Contact a Dubai Website Design Agency | Atlantic Bear" />
+  <meta property="og:description" content="Get in touch with Atlantic Bear. Fast response, usually within a few hours." />
+  <meta property="og:url" content="https://atlanticbear.com/contact" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://atlanticbear.com/logo.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact Atlantic Bear — Website Design Agency Dubai",
+    "url": "https://atlanticbear.com/contact",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://atlanticbear.com"},
+        {"@type":"ListItem","position":2,"name":"Contact","item":"https://atlanticbear.com/contact"}
+      ]
+    }
+  }
+  </script>
+
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fff; color: #111; margin: 0; }
+    .seo-shell { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    h1 { font-size: 2rem; font-weight: 800; margin-bottom: 16px; }
+    h2 { font-size: 1.2rem; font-weight: 700; margin: 20px 0 8px; }
+    p { font-size: 0.95rem; line-height: 1.7; color: #333; margin-bottom: 12px; }
+    a { color: #3B69FF; }
+  </style>
+</head>
+<body>
+  <div class="seo-shell" id="seo-prerender">
+    <h1>Contact Atlantic Bear — Website Design Agency in Dubai, UAE</h1>
+    <p>Atlantic Bear is a custom website design agency based in Dubai, UAE. Get in touch to discuss your website project. We respond fast — usually within a few hours.</p>
+    <h2>Phone / WhatsApp</h2>
+    <p><a href="tel:+971502446531">+971-50-244-6531</a></p>
+    <h2>Email</h2>
+    <p><a href="mailto:officialatlanticbear@gmail.com">officialatlanticbear@gmail.com</a></p>
+    <h2>Instagram</h2>
+    <p><a href="https://www.instagram.com/officialatlanticbear/" target="_blank" rel="noopener">@officialatlanticbear</a></p>
+    <h2>Location</h2>
+    <p>Dubai, United Arab Emirates</p>
+    <p>We work with small businesses across Dubai, Abu Dhabi, and the wider UAE. Remote collaboration available throughout the UAE.</p>
+  </div>
+  <div id="app"></div>
+  <script type="module" src="/src/main.ts"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var spa = document.getElementById('app');
+      var shell = document.getElementById('seo-prerender');
+      if (spa && shell) {
+        var observer = new MutationObserver(function() {
+          if (spa.children.length > 0) { shell.style.display = 'none'; observer.disconnect(); }
+        });
+        observer.observe(spa, { childList: true });
+      }
+    });
+  </script>
+</body>
+</html>
