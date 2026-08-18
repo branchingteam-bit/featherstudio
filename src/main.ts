@@ -2987,10 +2987,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (isStratActive) {
         if (isCurrentStrategyCallHighTier) {
           trackAbacusEvent('bookedcall_strategy');
-          if (typeof (window as any).fbq === 'function' && !sessionStorage.getItem('fbq_schedule_fired') && !sessionStorage.getItem('notrack')) {
-            (window as any).fbq('track', 'Schedule');
-            sessionStorage.setItem('fbq_schedule_fired', '1');
-          }
         } else {
           trackAbacusEvent('bookedcall_intro');
         }
