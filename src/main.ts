@@ -2941,9 +2941,21 @@ function initNavScroll() {
 
 // ─── Bootstrap ───────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
+  const _urlParams = new URLSearchParams(window.location.search);
+
   // Detect ?notrack=1 so internal test visits don't fire Meta Pixel events
-  if (new URLSearchParams(window.location.search).get('notrack') === '1') {
+  if (_urlParams.get('notrack') === '1') {
     sessionStorage.setItem('notrack', '1');
+  }
+
+  // Detect Meta ad traffic: Meta appends fbclid to all ad-click URLs automatically.
+  // Also check UTM source as a fallback for manually-tagged campaigns.
+  // Only visitors who arrived via a Meta ad should trigger the Schedule conversion.
+  const _fbclid = _urlParams.get('fbclid');
+  const _utmSource = (_urlParams.get('utm_source') || '').toLowerCase();
+  const _isMetaTraffic = !!_fbclid || ['facebook', 'instagram', 'fb', 'meta'].some(s => _utmSource.includes(s));
+  if (_isMetaTraffic) {
+    sessionStorage.setItem('came_from_meta', '1');
   }
 
   const app = document.getElementById('app')!;
@@ -2987,6 +2999,14 @@ document.addEventListener('DOMContentLoaded', () => {
       if (isStratActive) {
         if (isCurrentStrategyCallHighTier) {
           trackAbacusEvent('bookedcall_strategy');
+          // Only fire Schedule pixel if visitor came via a Meta ad (fbclid or utm_source=facebook/instagram).
+          // This prevents test bookings from polluting ad conversion data.
+          if (typeof (window as any).fbq === 'function'
+              && sessionStorage.getItem('came_from_meta')
+              && !sessionStorage.getItem('fbq_schedule_fired')) {
+            (window as any).fbq('track', 'Schedule');
+            sessionStorage.setItem('fbq_schedule_fired', '1');
+          }
         } else {
           trackAbacusEvent('bookedcall_intro');
         }
