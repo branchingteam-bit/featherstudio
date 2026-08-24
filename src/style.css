@@ -4199,3 +4199,279 @@ h1, h2, h3, h4 {
 @media (max-width: 560px) {
   .teaser-card { padding: 32px 24px; }
 }
+
+/* ─── Sales Presentation Pages (/launch, /growth) ─────────────────────────── */
+.sp-wrap {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 24px 120px;
+}
+
+/* ── Header ── */
+.sp-header {
+  padding: 72px 0 60px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0;
+}
+.sp-logo-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.sp-logo-row img { border-radius: 50%; }
+.sp-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0 0 14px;
+}
+.sp-title {
+  font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  margin: 0 0 18px;
+}
+.sp-sub {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ── Pillars ── */
+.sp-pillars {
+  display: flex;
+  flex-direction: column;
+}
+.sp-pillar {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  padding: 52px 0;
+  border-bottom: 1px solid var(--border);
+}
+.sp-pillar-num {
+  font-size: clamp(3.5rem, 9vw, 6rem);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  min-width: 96px;
+  flex-shrink: 0;
+  color: var(--blue);
+}
+.sp-pillar-content { flex: 1; }
+.sp-pillar-title {
+  font-size: clamp(1.7rem, 3.8vw, 2.5rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  margin: 0 0 10px;
+  line-height: 1.1;
+}
+.sp-pillar-desc {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  margin: 0 0 18px;
+  line-height: 1.65;
+}
+
+/* Pills */
+.sp-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.sp-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: 100px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+}
+.sp-pill-accent {
+  background: #3366ff14;
+  border-color: #3366ff50;
+  color: var(--blue);
+  font-weight: 700;
+}
+
+/* ── How It Works ── */
+.sp-how {
+  padding: 72px 0 60px;
+  border-bottom: 1px solid var(--border);
+}
+.sp-how-title {
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
+  font-weight: 900;
+  letter-spacing: -0.035em;
+  margin: 0 0 56px;
+}
+.sp-hw-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.sp-hw-step {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  padding: 44px 0;
+  border-bottom: 1px solid var(--border);
+}
+.sp-hw-step:last-child { border-bottom: none; }
+.sp-hw-num {
+  font-size: clamp(3rem, 7vw, 5rem);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  min-width: 96px;
+  flex-shrink: 0;
+  color: var(--blue);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+.sp-hw-unit {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: var(--blue);
+  opacity: 0.7;
+  display: block;
+  margin-top: -4px;
+}
+/* Hero step (unlimited revisions) */
+.sp-hw-step-hero {
+  background: linear-gradient(135deg, #3366ff0a 0%, #3366ff05 100%);
+  border-radius: 20px;
+  padding: 44px 36px;
+  border: 1.5px solid #3366ff30;
+  margin: 0 -12px;
+}
+.sp-hw-num-hero { color: var(--blue); }
+.sp-hw-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blue);
+  background: #3366ff14;
+  border: 1px solid #3366ff30;
+  border-radius: 100px;
+  padding: 4px 12px;
+  margin-bottom: 10px;
+}
+.sp-hw-body { flex: 1; padding-top: 6px; }
+.sp-hw-heading {
+  font-size: clamp(1.4rem, 3.2vw, 2rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  margin: 0 0 10px;
+  line-height: 1.1;
+}
+.sp-hw-desc {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── Testimonial pull-quote ── */
+.sp-testimonial {
+  padding: 64px 0;
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+.sp-tq-quote {
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+  font-weight: 500;
+  line-height: 1.65;
+  color: var(--text);
+  max-width: 600px;
+  margin: 0 auto 20px;
+  font-style: italic;
+}
+.sp-tq-attr {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+/* ── Investment gap — intentional so price is below fold during pitch ── */
+.sp-investment-gap {
+  height: 45vh;
+  min-height: 320px;
+}
+
+/* ── Investment reveal ── */
+.sp-investment {
+  padding: 72px 0 48px;
+  text-align: center;
+  border-top: 2px solid var(--border-mid);
+}
+.sp-inv-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin: 0 0 16px;
+}
+.sp-inv-total {
+  font-size: clamp(3rem, 9vw, 5.5rem);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  margin-bottom: 48px;
+  color: var(--text);
+}
+.sp-inv-mo {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: -0.01em;
+}
+.sp-inv-split {
+  max-width: 480px;
+  margin: 0 auto 28px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1.5px solid #3366ff30;
+  background: linear-gradient(135deg, #3366ff08 0%, #ffffff 100%);
+}
+.sp-inv-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 28px;
+  font-size: 1rem;
+  border-bottom: 1px solid rgba(51,102,255,0.12);
+}
+.sp-inv-row:last-child { border-bottom: none; }
+.sp-inv-row span { color: var(--text-muted); }
+.sp-inv-row strong { font-weight: 800; font-size: 1.1rem; color: var(--blue); }
+.sp-inv-row-monthly strong { color: var(--text); }
+.sp-inv-note {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .sp-pillar, .sp-hw-step { flex-direction: column; gap: 8px; }
+  .sp-pillar-num, .sp-hw-num { font-size: 2.8rem; min-width: unset; }
+  .sp-hw-step-hero { padding: 32px 24px; margin: 0; }
+  .sp-inv-row { padding: 16px 20px; }
+}
+
+

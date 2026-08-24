@@ -495,7 +495,7 @@ function HomePage(): string {
     <div class="container" style="position: relative; z-index: 1;">
       <h1>Your business deserves<br>to be <span class="hook-word"><span class="hook-drop-inner"><span class="hook-rig" aria-hidden="true"><span class="hook-line"></span><svg class="hook-icon" viewBox="0 0 20 34" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="3" r="2.4" stroke="currentColor" stroke-width="2"/><path d="M10 5.4 V17 C10 25.5 2.6 27 2.6 19.6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M2.6 19.6 L6 22.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><span class="hook-label text-blue">found</span></span></span>.</h1>
       <p class="hero-sub">
-        Dubai's custom website design agency — premium websites for UAE small businesses, live in 5 days, fully managed, never a template.
+        We're a Dubai-based website design agency. We build custom, fully managed websites for UAE businesses — no templates, no lock-in, live in 5 days.
       </p>
       <div class="hero-ctas">
         <a href="/booking" class="btn btn-primary btn-large btn-pulse" data-link="booking" id="hero-cta-book">
@@ -1099,9 +1099,9 @@ function PricingPage(): string {
         <div class="guarantee-card striking pos-top-left reveal">
           <div class="guarantee-card-header">
             <span class="guarantee-number">01</span>
-            <h3>See It Before You Pay It</h3>
+            <h3>See It Live Before You Commit</h3>
           </div>
-          <p>We build your actual website first, completely free, and show it to you on a call. You only pay if you love it. If you don't, you owe us nothing and you're free to walk away.</p>
+          <p>On our first call, we go through your vision or your current site together in real time, so you see exactly how we think and build before you decide anything. Once you're in, you get the first version of your actual site in 5 days.</p>
         </div>
 
         <!-- Guarantee 2: Middle Right -->
@@ -1126,7 +1126,7 @@ function PricingPage(): string {
 
       <!-- Pay on Call tweak note (moved here, lower) -->
       <div class="call-action-notice" style="margin-top: 72px; margin-bottom: 0;">
-        <strong>Fast-Action Bonus:</strong> If you pay on the call when we walk you through your new site, you get <strong>unlimited small tweaks</strong> of the website for your first month.
+        <strong>Fast-Action Bonus:</strong> If you get started on the call, you get <strong>unlimited small tweaks</strong> of the website for your first month.
       </div>
     </div>
   </section>
@@ -1177,31 +1177,8 @@ function TestimonialsPage(): string {
         </div>
       </div>
 
-      <!-- CASE STUDY WRITE-UP -->
-      <div class="case-study reveal" style="transition-delay:0.1s;">
-        <div class="case-study-main">
-          <h2>What we changed, and why</h2>
-          <p>Sonder Training Group deliver professional training. Their previous website did not reflect that. It had been put together years earlier, had drifted out of date, and the layout worked against them: the important information sat low on the page, the structure was difficult to scan, and the whole thing had the look of a site built once and never revisited. For a business whose customers are assessing credibility before they ever make contact, that is an expensive problem.</p>
-          <p>The brief was straightforward. Make it look like the organisation it represents, make it clear what they offer, and make it easy for someone who has just found them to take the next step.</p>
-          <p>We rebuilt the site rather than patching it. The content was restructured so the courses and the offer appear immediately instead of being buried, and each section was written to answer the question a prospective client actually has at that point on the page. The visual design was rebuilt around clear typography and generous spacing, so the page reads as considered rather than crowded.</p>
-          <p>The technical work matters as much as the appearance, even though none of it is visible. The site was built mobile-first, because most people who search for training providers do it on a phone. Pages were kept light so they load quickly on mobile data rather than only on office wifi. Headings, page titles, and meta descriptions were structured properly so search engines can understand what each page is about, and the site was given a sitemap and an SSL certificate as standard.</p>
-          <p>The result is a site that does the job the old one could not: it presents the business at the level it actually operates at, and it gives visitors an obvious route to get in touch.</p>
-        </div>
-        <aside class="case-study-side">
-          <h3>Project at a glance</h3>
-          <dl class="case-study-facts">
-            <div><dt>Client</dt><dd>Sonder Training Group</dd></div>
-            <div><dt>Sector</dt><dd>Professional training</dd></div>
-            <div><dt>Scope</dt><dd>Full rebuild, copywriting, hosting</dd></div>
-            <div><dt>Built for</dt><dd>Mobile first</dd></div>
-            <div><dt>Includes</dt><dd>SSL, sitemap, search setup</dd></div>
-          </dl>
-          <a href="https://sondertraininggroup.com/" target="_blank" rel="noopener" class="btn btn-secondary btn-sm case-study-link">Visit the live site ${Icons.arrow}</a>
-        </aside>
-      </div>
-
       <!-- VIDEO TESTIMONIAL -->
-      <div class="tm-shot-block reveal" style="transition-delay:0.12s; max-width: 600px; margin: 0 auto;">
+      <div class="tm-shot-block reveal" style="transition-delay:0.1s; max-width: 600px; margin: 0 auto 64px;">
         <div class="tm-shot-label tm-label-after" style="position: static; display: inline-block; margin-bottom: 16px;">Video Review</div>
         <div class="booking-testimonials-wrap" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
           <div class="custom-testimonial-video-wrap" style="max-width: 320px; width: 100%; aspect-ratio: 9/16; border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-md); background: #000; border: 1px solid var(--border); position: relative;">
@@ -1221,6 +1198,29 @@ function TestimonialsPage(): string {
             <a href="https://sondertraininggroup.com/" target="_blank" rel="noopener">Take a look at the website we built for them</a>
           </p>
         </div>
+      </div>
+
+      <!-- CASE STUDY WRITE-UP -->
+      <div class="case-study reveal" style="transition-delay:0.12s;">
+        <div class="case-study-main">
+          <h2>What we changed, and why</h2>
+          <p>Sonder Training Group deliver professional training. Their previous website did not reflect that. It had been put together years earlier, had drifted out of date, and the layout worked against them: the important information sat low on the page, the structure was difficult to scan, and the whole thing had the look of a site built once and never revisited. For a business whose customers are assessing credibility before they ever make contact, that is an expensive problem.</p>
+          <p>The brief was straightforward. Make it look like the organisation it represents, make it clear what they offer, and make it easy for someone who has just found them to take the next step.</p>
+          <p>We rebuilt the site rather than patching it. The content was restructured so the courses and the offer appear immediately instead of being buried, and each section was written to answer the question a prospective client actually has at that point on the page. The visual design was rebuilt around clear typography and generous spacing, so the page reads as considered rather than crowded.</p>
+          <p>The technical work matters as much as the appearance, even though none of it is visible. The site was built mobile-first, because most people who search for training providers do it on a phone. Pages were kept light so they load quickly on mobile data rather than only on office wifi. Headings, page titles, and meta descriptions were structured properly so search engines can understand what each page is about, and the site was given a sitemap and an SSL certificate as standard.</p>
+          <p>The result is a site that does the job the old one could not: it presents the business at the level it actually operates at, and it gives visitors an obvious route to get in touch.</p>
+        </div>
+        <aside class="case-study-side">
+          <h3>Project at a glance</h3>
+          <dl class="case-study-facts">
+            <div><dt>Client</dt><dd>Sonder Training Group</dd></div>
+            <div><dt>Sector</dt><dd>Professional training</dd></div>
+            <div><dt>Scope</dt><dd>Full rebuild, copywriting, hosting</dd></div>
+            <div><dt>Built for</dt><dd>Mobile first</dd></div>
+            <div><dt>Includes</dt><dd>SSL, sitemap, search setup</dd></div>
+          </dl>
+          <a href="https://sondertraininggroup.com/" target="_blank" rel="noopener" class="btn btn-secondary btn-sm case-study-link">Visit the live site ${Icons.arrow}</a>
+        </aside>
       </div>
 
     </div>
@@ -1763,10 +1763,161 @@ function BookedPage(): string {
 }
 
 
+// ─── Internal Sales Pages ─────────────────────────────────────────────────────
+// /launch and /growth — not in nav, not in sitemap, screen-share only
+
+function SalesPillarPage(plan: 'launch' | 'growth'): string {
+  const isLaunch = plan === 'launch';
+  const setupFee = isLaunch ? 'AED 3,500' : 'AED 6,500';
+  const monthly  = 'AED 300';
+  const halfUp   = isLaunch ? 'AED 1,750' : 'AED 3,250';
+  const planName = isLaunch ? 'Launch Plan' : 'Growth Plan';
+  const pageTitle = isLaunch ? "What's Included in the Launch Plan" : "What's Included in the Growth Plan";
+
+  // Pillars — kept short and non-overwhelming
+  const websiteFeatures = isLaunch
+    ? ['Up to 5 pages', 'Custom design — no templates', 'WhatsApp button + click-to-call', 'Mobile responsive']
+    : ['Up to 15 pages', 'Photos & video support', 'Custom design — no templates', 'WhatsApp button + contact form', 'Mobile responsive', 'Blog included'];
+
+  const seoFeatures = isLaunch
+    ? ['Written to rank on Google', 'Page titles & meta descriptions', 'SEO-ready structure']
+    : ['Written to rank on Google', 'Targeting your service keywords', 'Page titles & meta descriptions', 'Blog SEO structure'];
+
+  const hostingFeatures = isLaunch
+    ? ['Fully managed', 'Daily backups']
+    : ['Fully managed', 'Daily backups'];
+
+  const changesCount = isLaunch ? '1' : '2';
+  const changesDesc  = isLaunch
+    ? 'One revision session per month — book time with us, tell us what to change, we handle it.'
+    : 'Two revision sessions per month — book time with us, tell us what to change, we handle it.';
+
+  function pills(items: string[]): string {
+    return items.map(i => `<span class="sp-pill">${i}</span>`).join('');
+  }
+
+  return `
+  <div class="sp-wrap">
+    <!-- HEADER -->
+    <div class="sp-header">
+      <div class="sp-logo-row">
+        <img src="/atlanticbear-logo.png" alt="Atlantic Bear" width="56" height="56" />
+      </div>
+      <p class="sp-label">Atlantic Bear — ${planName}</p>
+      <h1 class="sp-title">${pageTitle}</h1>
+      <p class="sp-sub">Four things. Walk me through each one and ask any questions along the way.</p>
+    </div>
+
+    <!-- FOUR PILLARS -->
+    <div class="sp-pillars">
+
+      <div class="sp-pillar">
+        <div class="sp-pillar-num">01</div>
+        <div class="sp-pillar-content">
+          <h2 class="sp-pillar-title">Custom Website</h2>
+          <p class="sp-pillar-desc">Built from scratch around your business. No templates. No guesswork. Built to get you more clients.</p>
+          <div class="sp-pills">${pills(websiteFeatures)}</div>
+        </div>
+      </div>
+
+      <div class="sp-pillar">
+        <div class="sp-pillar-num">02</div>
+        <div class="sp-pillar-content">
+          <h2 class="sp-pillar-title">Site SEO</h2>
+          <p class="sp-pillar-desc">So when someone's searching for what you offer, they can actually find you — on Google and AI search.</p>
+          <div class="sp-pills">${pills(seoFeatures)}</div>
+        </div>
+      </div>
+
+      <div class="sp-pillar">
+        <div class="sp-pillar-num">03</div>
+        <div class="sp-pillar-content">
+          <h2 class="sp-pillar-title">Hosting</h2>
+          <p class="sp-pillar-desc">We handle all of it. You don't touch a thing — ever.</p>
+          <div class="sp-pills">${pills(hostingFeatures)}</div>
+        </div>
+      </div>
+
+      <div class="sp-pillar">
+        <div class="sp-pillar-num">04</div>
+        <div class="sp-pillar-content">
+          <h2 class="sp-pillar-title">Ongoing Changes</h2>
+          <p class="sp-pillar-desc">${changesDesc}</p>
+          <div class="sp-pills"><span class="sp-pill sp-pill-accent">${changesCount} session revision${isLaunch ? '' : 's'}/month</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- HOW IT WORKS -->
+    <div class="sp-how">
+      <h2 class="sp-how-title">How it works from here</h2>
+      <div class="sp-hw-steps">
+
+        <div class="sp-hw-step">
+          <div class="sp-hw-num">50/50</div>
+          <div class="sp-hw-body">
+            <h3 class="sp-hw-heading">Simple split — nothing complicated</h3>
+            <p class="sp-hw-desc">Half to kick things off. The other half once your site is live and you love it.</p>
+          </div>
+        </div>
+
+        <div class="sp-hw-step">
+          <div class="sp-hw-num">5<span class="sp-hw-unit">days</span></div>
+          <div class="sp-hw-body">
+            <h3 class="sp-hw-heading">Website reveal call</h3>
+            <p class="sp-hw-desc">We get to work right away on our end — you don't prep a thing. In 5 days, we're back on a call to show you the first version.</p>
+          </div>
+        </div>
+
+        <div class="sp-hw-step sp-hw-step-hero">
+          <div class="sp-hw-num sp-hw-num-hero">1<span class="sp-hw-unit">month</span></div>
+          <div class="sp-hw-body">
+            <div class="sp-hw-badge">🔥 Best part</div>
+            <h3 class="sp-hw-heading">Unlimited session revisions</h3>
+            <p class="sp-hw-desc">For a full month after launch — book sessions with us, tell us what to change, we handle it. As many times as it takes until it's perfect.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TESTIMONIAL PULL-QUOTE -->
+    <div class="sp-testimonial">
+      <div class="sp-tq-quote">"We approached Alexi at Atlantic Bear, who was absolutely fantastic at putting together our ideas and bringing them across on the website in a way that really engaged our target market."</div>
+      <div class="sp-tq-attr">— Sonder Training Group, UK</div>
+    </div>
+
+    <!-- INVESTMENT — gap is intentional: price stays off-screen during the pitch -->
+    <div class="sp-investment-gap"></div>
+    <div class="sp-investment">
+      <p class="sp-inv-eyebrow">The Investment</p>
+      <div class="sp-inv-total">${setupFee}<span class="sp-inv-mo"> + ${monthly}/mo</span></div>
+      <div class="sp-inv-split">
+        <div class="sp-inv-row">
+          <span>To get started (50%)</span>
+          <strong>${halfUp}</strong>
+        </div>
+        <div class="sp-inv-row">
+          <span>Once the site's live (50%)</span>
+          <strong>${halfUp}</strong>
+        </div>
+        <div class="sp-inv-row sp-inv-row-monthly">
+          <span>Ongoing care</span>
+          <strong>${monthly}/month</strong>
+        </div>
+      </div>
+      <p class="sp-inv-note">No contracts. You own everything. Cancel the monthly anytime.</p>
+    </div>
+  </div>`;
+}
+
+function LaunchPage(): string { return SalesPillarPage('launch'); }
+function GrowthPage(): string { return SalesPillarPage('growth'); }
 
 
 // ─── Router ───────────────────────────────────────────────────────────────────
-type Page = 'home' | 'pricing' | 'contact' | 'testimonials' | 'booking' | 'meta-ads' | 'booked' | 'terms' | 'privacy' | 'blog';
+type Page = 'home' | 'pricing' | 'contact' | 'testimonials' | 'booking' | 'meta-ads' | 'booked' | 'terms' | 'privacy' | 'blog' | 'launch' | 'growth';
 
 const pageMap: Record<Page, () => string> = {
   home:         HomePage,
@@ -1779,6 +1930,8 @@ const pageMap: Record<Page, () => string> = {
   terms:        TermsPage,
   privacy:      PrivacyPage,
   blog:         BlogPage,
+  launch:       LaunchPage,
+  growth:       GrowthPage,
 };
 
 // Titles and descriptions come from src/seo.json so the client-side tags and
@@ -1824,6 +1977,14 @@ const pageMeta: Record<Page, { title: string; desc: string }> = {
   blog: {
     title: 'Blog — Website Design & SEO Tips for UAE Businesses | Atlantic Bear',
     desc: 'Expert articles on website design, SEO, and digital marketing for small businesses in Dubai and the UAE. Written by the Atlantic Bear team.'
+  },
+  launch: {
+    title: 'The Launch Plan | Atlantic Bear',
+    desc: 'Atlantic Bear Launch Plan — internal sales presentation.'
+  },
+  growth: {
+    title: 'The Growth Plan | Atlantic Bear',
+    desc: 'Atlantic Bear Growth Plan — internal sales presentation.'
   }
 } as Record<Page, { title: string; desc: string }>;
 
@@ -1914,7 +2075,7 @@ function updateMetadata(page: Page) {
 
 function getPageFromPath(path: string): Page {
   const cleanPath = path.replace(/^\/|\/$/g, '');
-  if (cleanPath === 'pricing' || cleanPath === 'work' || cleanPath === 'contact' || cleanPath === 'testimonials' || cleanPath === 'booking' || cleanPath === 'booking-new' || cleanPath === 'meta-ads' || cleanPath === 'booked' || cleanPath === 'terms' || cleanPath === 'privacy' || cleanPath === 'blog') {
+  if (cleanPath === 'pricing' || cleanPath === 'work' || cleanPath === 'contact' || cleanPath === 'testimonials' || cleanPath === 'booking' || cleanPath === 'booking-new' || cleanPath === 'meta-ads' || cleanPath === 'booked' || cleanPath === 'terms' || cleanPath === 'privacy' || cleanPath === 'blog' || cleanPath === 'launch' || cleanPath === 'growth') {
     return cleanPath as Page;
   }
   return 'home';
