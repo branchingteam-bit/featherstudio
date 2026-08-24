@@ -1314,7 +1314,7 @@
           <div class="sp-hw-body">
             <div class="sp-hw-badge">Included</div>
             <h3 class="sp-hw-heading">Unlimited session revisions</h3>
-            <p class="sp-hw-desc">For a full month after launch, book sessions with us. Tell us what to change, we handle it. As many times as it takes until it's right.</p>
+            <p class="sp-hw-desc">For a full month from your first deposit, book sessions with us. Tell us what to change, we handle it. As many times as it takes until it's right.</p>
           </div>
         </div>
 
