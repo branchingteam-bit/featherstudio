@@ -1235,16 +1235,16 @@
       </div>
 
     </div>
-  </section>`}function ce(t){const e=t==="launch",a=e?"AED 3,500":"AED 6,500",s="AED 300",o=e?"AED 1,750":"AED 3,250",n=e?"Launch Plan":"Growth Plan",c=e?"What's Included in the Launch Plan":"What's Included in the Growth Plan",v=e?["Up to 5 pages","Custom design — no templates","WhatsApp button + click-to-call","Mobile responsive"]:["Up to 15 pages","Photos & video support","Custom design — no templates","WhatsApp button + contact form","Mobile responsive","Blog included"],u=e?["Written to rank on Google","Page titles & meta descriptions","SEO-ready structure"]:["Written to rank on Google","Targeting your service keywords","Page titles & meta descriptions","Blog SEO structure"],m=e?["Fully managed","Daily backups"]:["Fully managed","Daily backups"],C=e?"1":"2",E=e?"One revision session per month — book time with us, tell us what to change, we handle it.":"Two revision sessions per month — book time with us, tell us what to change, we handle it.";function f(d){return d.map(b=>`<span class="sp-pill">${b}</span>`).join("")}return`
+  </section>`}function ce(t){const e=t==="launch",a=e?"AED 3,500":"AED 6,500",s="AED 300",o=e?"AED 1,750":"AED 3,250",n=e?"Launch Plan":"Growth Plan",c=e?"What's Included in the Launch Plan":"What's Included in the Growth Plan",v=e?["Up to 5 pages","Custom design, no templates","WhatsApp button, click-to-call","Mobile responsive"]:["Up to 15 pages","Photos and video","Custom design, no templates","Contact form","Mobile responsive"],u=e?["Written to rank on Google","Page titles and meta descriptions","SEO-ready structure"]:["Written to rank on Google","Targeting your service keywords","Blog SEO structure"],m=["Fully managed","Daily backups"],C=e?"1":"2",E=e?"One revision session per month. Book time with us, tell us what to change, we handle it.":"Two revision sessions per month. Book time with us, tell us what to change, we handle it.";function f(d){return d.map(b=>`<span class="sp-pill">${b}</span>`).join("")}return`
   <div class="sp-wrap">
     <!-- HEADER -->
     <div class="sp-header">
       <div class="sp-logo-row">
         <img src="/atlanticbear-logo.png" alt="Atlantic Bear" width="56" height="56" />
       </div>
-      <p class="sp-label">Atlantic Bear — ${n}</p>
+      <p class="sp-label">Atlantic Bear, ${n}</p>
       <h1 class="sp-title">${c}</h1>
-      <p class="sp-sub">Four things. Walk me through each one and ask any questions along the way.</p>
+      <p class="sp-sub">Any questions along the way, just ask.</p>
     </div>
 
     <!-- FOUR PILLARS -->
@@ -1254,7 +1254,7 @@
         <div class="sp-pillar-num">01</div>
         <div class="sp-pillar-content">
           <h2 class="sp-pillar-title">Custom Website</h2>
-          <p class="sp-pillar-desc">Built from scratch around your business. No templates. No guesswork. Built to get you more clients.</p>
+          <p class="sp-pillar-desc">Built from scratch around your business. No templates, no guesswork. Built to get you more clients.</p>
           <div class="sp-pills">${f(v)}</div>
         </div>
       </div>
@@ -1263,7 +1263,7 @@
         <div class="sp-pillar-num">02</div>
         <div class="sp-pillar-content">
           <h2 class="sp-pillar-title">Site SEO</h2>
-          <p class="sp-pillar-desc">So when someone's searching for what you offer, they can actually find you — on Google and AI search.</p>
+          <p class="sp-pillar-desc">So when someone's searching for what you offer, they can actually find you on Google and through AI search.</p>
           <div class="sp-pills">${f(u)}</div>
         </div>
       </div>
@@ -1272,7 +1272,7 @@
         <div class="sp-pillar-num">03</div>
         <div class="sp-pillar-content">
           <h2 class="sp-pillar-title">Hosting</h2>
-          <p class="sp-pillar-desc">We handle all of it. You don't touch a thing — ever.</p>
+          <p class="sp-pillar-desc">We handle all of it. You never have to touch a thing.</p>
           <div class="sp-pills">${f(m)}</div>
         </div>
       </div>
@@ -1296,25 +1296,25 @@
         <div class="sp-hw-step">
           <div class="sp-hw-num">50/50</div>
           <div class="sp-hw-body">
-            <h3 class="sp-hw-heading">Simple split — nothing complicated</h3>
-            <p class="sp-hw-desc">Half to kick things off. The other half once your site is live and you love it.</p>
+            <h3 class="sp-hw-heading">Simple payment split</h3>
+            <p class="sp-hw-desc">Half upfront, half once the site is live.</p>
           </div>
         </div>
 
         <div class="sp-hw-step">
           <div class="sp-hw-num">5<span class="sp-hw-unit">days</span></div>
           <div class="sp-hw-body">
-            <h3 class="sp-hw-heading">Website reveal call</h3>
-            <p class="sp-hw-desc">We get to work right away on our end — you don't prep a thing. In 5 days, we're back on a call to show you the first version.</p>
+            <h3 class="sp-hw-heading">Website reveal in 5 days</h3>
+            <p class="sp-hw-desc">We build everything on our end. You don't prep a thing. In 5 days we're back on a call to show you the first version.</p>
           </div>
         </div>
 
         <div class="sp-hw-step sp-hw-step-hero">
           <div class="sp-hw-num sp-hw-num-hero">1<span class="sp-hw-unit">month</span></div>
           <div class="sp-hw-body">
-            <div class="sp-hw-badge">🔥 Best part</div>
+            <div class="sp-hw-badge">Included</div>
             <h3 class="sp-hw-heading">Unlimited session revisions</h3>
-            <p class="sp-hw-desc">For a full month after launch — book sessions with us, tell us what to change, we handle it. As many times as it takes until it's perfect.</p>
+            <p class="sp-hw-desc">For a full month after launch, book sessions with us. Tell us what to change, we handle it. As many times as it takes until it's right.</p>
           </div>
         </div>
 
@@ -1323,8 +1323,8 @@
 
     <!-- TESTIMONIAL PULL-QUOTE -->
     <div class="sp-testimonial">
-      <div class="sp-tq-quote">"We approached Alexi at Atlantic Bear, who was absolutely fantastic at putting together our ideas and bringing them across on the website in a way that really engaged our target market."</div>
-      <div class="sp-tq-attr">— Sonder Training Group, UK</div>
+      <div class="sp-tq-quote">"Atlantic Bear were absolutely fantastic at putting together our ideas and bringing them across on the website in a way that really engaged our target market."</div>
+      <div class="sp-tq-attr">Sonder Training Group, UK</div>
     </div>
 
     <!-- INVESTMENT — gap is intentional: price stays off-screen during the pitch -->

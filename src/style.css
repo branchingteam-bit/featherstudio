@@ -4209,7 +4209,7 @@ h1, h2, h3, h4 {
 
 /* ── Header ── */
 .sp-header {
-  padding: 72px 0 60px;
+  padding: 80px 0 72px;
   text-align: center;
   border-bottom: 1px solid var(--border);
   margin-bottom: 0;
@@ -4251,7 +4251,7 @@ h1, h2, h3, h4 {
   display: flex;
   gap: 40px;
   align-items: flex-start;
-  padding: 52px 0;
+  padding: 64px 0;
   border-bottom: 1px solid var(--border);
 }
 .sp-pillar-num {
@@ -4301,7 +4301,7 @@ h1, h2, h3, h4 {
 
 /* ── How It Works ── */
 .sp-how {
-  padding: 72px 0 60px;
+  padding: 88px 0 60px;
   border-bottom: 1px solid var(--border);
 }
 .sp-how-title {
@@ -4319,7 +4319,7 @@ h1, h2, h3, h4 {
   display: flex;
   gap: 40px;
   align-items: flex-start;
-  padding: 44px 0;
+  padding: 56px 0;
   border-bottom: 1px solid var(--border);
 }
 .sp-hw-step:last-child { border-bottom: none; }
@@ -4347,27 +4347,27 @@ h1, h2, h3, h4 {
 }
 /* Hero step (unlimited revisions) */
 .sp-hw-step-hero {
-  background: linear-gradient(135deg, #3366ff0a 0%, #3366ff05 100%);
+  background: linear-gradient(135deg, #3366ff0c 0%, #3366ff04 100%);
   border-radius: 20px;
-  padding: 44px 36px;
-  border: 1.5px solid #3366ff30;
-  margin: 0 -12px;
+  padding: 56px 40px;
+  border: 1.5px solid #3366ff25;
+  margin: 24px -12px 0;
 }
 .sp-hw-num-hero { color: var(--blue); }
 .sp-hw-badge {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  gap: 8px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--blue);
-  background: #3366ff14;
-  border: 1px solid #3366ff30;
-  border-radius: 100px;
-  padding: 4px 12px;
-  margin-bottom: 10px;
+  background: #3366ff12;
+  border: 1.5px solid #3366ff35;
+  border-radius: 6px;
+  padding: 5px 12px;
+  margin-bottom: 14px;
 }
 .sp-hw-body { flex: 1; padding-top: 6px; }
 .sp-hw-heading {
@@ -4406,15 +4406,15 @@ h1, h2, h3, h4 {
   letter-spacing: 0.04em;
 }
 
-/* ── Investment gap — intentional so price is below fold during pitch ── */
+/* ── Investment gap ── */
 .sp-investment-gap {
-  height: 45vh;
-  min-height: 320px;
+  height: 36vh;
+  min-height: 260px;
 }
 
 /* ── Investment reveal ── */
 .sp-investment {
-  padding: 72px 0 48px;
+  padding: 72px 0 100px;
   text-align: center;
   border-top: 2px solid var(--border-mid);
 }
