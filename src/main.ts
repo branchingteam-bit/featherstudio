@@ -2901,7 +2901,23 @@ function initStrategyBookingModal() {
       e.preventDefault();
       const nameVal = inputName?.value.trim() || '';
       const phoneVal = inputPhone?.value.trim() || '';
-      if (!nameVal || !phoneVal) {
+
+      // Determine country prefix vs subscriber digits entered
+      let prefix = '';
+      for (const code of Object.keys(stratCountryFlags)) {
+        if (phoneVal.startsWith(code)) { prefix = code; break; }
+      }
+      if (!prefix && phoneVal.startsWith('+')) {
+        const m = phoneVal.match(/^\+\d+/);
+        if (m) prefix = m[0];
+      }
+      const digitsAfterPrefix = phoneVal.substring(prefix.length).replace(/\D/g, '');
+      const totalDigits = phoneVal.replace(/\D/g, '');
+
+      // Requires at least 6 digits after country prefix (or 7 total) to ensure a full valid phone number
+      const isPhoneValid = prefix ? digitsAfterPrefix.length >= 6 : totalDigits.length >= 7;
+
+      if (!nameVal || !isPhoneValid) {
         if (step1Error) step1Error.style.display = 'block';
         return;
       }
