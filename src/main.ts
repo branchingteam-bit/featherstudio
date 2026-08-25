@@ -9,6 +9,16 @@ const $$ = (sel: string, ctx: Document | Element = document) =>
 
 const ABACUS_NAMESPACE = 'atlanticbear_analytics_8d24';
 
+// ─── Internal Session Guard ───────────────────────────────────────────────────
+// Returns true if the current session is internal/admin (should not fire pixel events)
+function isInternalSession(): boolean {
+  if (sessionStorage.getItem('notrack')) return true;
+  try {
+    if (new URLSearchParams(window.location.search).get('preview') === 'true') return true;
+  } catch (_) {}
+  return false;
+}
+
 function trackAbacusEvent(event: string, delay = 0) {
   const fire = () => {
     // 1. Fire global hit
@@ -1535,14 +1545,14 @@ function StrategyBookingPage(): string {
       <div class="funnel-urgency-pill-wrap">
         <div class="funnel-urgency-pill">
           <span class="urgency-dot"></span>
-          <span>LIMITED SPOTS AVAILABLE THIS WEEK — BOOK A STRATEGY CALL</span>
+          <span>WE ONLY TAKE ON 3 NEW BUSINESSES PER WEEK — BOOK YOUR SPOT</span>
         </div>
       </div>
     </div>
 
     <!-- Hero — dark navy bg, massive headline -->
     <div class="funnel-hero">
-      <h1 class="funnel-headline">WE BUILD WEBSITES THAT TURN VISITORS INTO PAYING CUSTOMERS.</h1>
+      <h1 class="funnel-headline">WE BUILD WEBSITES THAT ACTUALLY CATCH CUSTOMERS</h1>
       <p class="funnel-subheadline">Watch the video below to see exactly how we build custom websites for UAE businesses and get you found online, then book your strategy call.</p>
     </div>
 
@@ -1558,7 +1568,7 @@ function StrategyBookingPage(): string {
             height="1080"
             playsinline
             muted
-            src="/videos for funnel call/v5/Custom UAE Websites in Five Days.mp4#t=0.001"
+            src="/videos for funnel call/v6/Custom UAE Websites in Five Days.mp4#t=0.001"
           ></video>
           <!-- Play overlay -->
           <div class="bv-overlay" id="bv-overlay">
@@ -1602,6 +1612,7 @@ function StrategyBookingPage(): string {
       <!-- CTA Button 1 -->
       <div class="funnel-cta-wrap">
         <button class="funnel-cta-btn strat-modal-trigger" id="strat-cta-1">Book My Call</button>
+        <p style="margin: 8px auto 0; color: #9ca3af; font-size: 0.72rem; text-align: center; letter-spacing: 0.01em;">Packages from AED 3,500</p>
       </div>
 
       <!-- Generous Spacer -->
@@ -2522,13 +2533,25 @@ function initBookingPageVideo(rigged = false) {
 
   // ─── Video Analytics Tracking ───
   let played = false;
+  let vslPlayFired = false;
   const milestonesFired = {
     m25: false,
     m50: false,
     m75: false,
+    m95: false,
     m100: false
   };
   const intervalsFired: Record<number, boolean> = {};
+
+  // Fire VSL_Play once when video genuinely starts playing (not preview loop)
+  video.addEventListener('play', () => {
+    if (!vslPlayFired && !isPreviewLooping) {
+      vslPlayFired = true;
+      if (typeof (window as any).fbq === 'function' && !isInternalSession()) {
+        (window as any).fbq('trackCustom', 'VSL_Play');
+      }
+    }
+  });
 
   video.addEventListener('timeupdate', () => {
     const duration = video.duration;
@@ -2537,24 +2560,42 @@ function initBookingPageVideo(rigged = false) {
     const currentTime = video.currentTime;
     const pct = (currentTime / duration) * 100;
 
-    // Track play initiation (at >0.5s playback)
-    if (!played && currentTime > 0.5) {
+    // Track play initiation (at >0.5s playback) — Abacus analytics
+    if (!played && currentTime > 0.5 && !isPreviewLooping) {
       played = true;
       trackAbacusEvent('videoplay');
     }
 
-    // Milestones progress
+    // Skip milestone tracking during muted preview loop
+    if (isPreviewLooping) return;
+
+    // Milestones progress — Abacus + Meta Pixel
     if (pct >= 25 && !milestonesFired.m25) {
       milestonesFired.m25 = true;
       trackAbacusEvent('videowatch_25pct');
+      if (typeof (window as any).fbq === 'function' && !isInternalSession()) {
+        (window as any).fbq('trackCustom', 'VSL_25');
+      }
     }
     if (pct >= 50 && !milestonesFired.m50) {
       milestonesFired.m50 = true;
       trackAbacusEvent('videowatch_50pct');
+      if (typeof (window as any).fbq === 'function' && !isInternalSession()) {
+        (window as any).fbq('trackCustom', 'VSL_50');
+      }
     }
     if (pct >= 75 && !milestonesFired.m75) {
       milestonesFired.m75 = true;
       trackAbacusEvent('videowatch_75pct');
+      if (typeof (window as any).fbq === 'function' && !isInternalSession()) {
+        (window as any).fbq('trackCustom', 'VSL_75');
+      }
+    }
+    if (pct >= 95 && !milestonesFired.m95) {
+      milestonesFired.m95 = true;
+      if (typeof (window as any).fbq === 'function' && !isInternalSession()) {
+        (window as any).fbq('trackCustom', 'VSL_95');
+      }
     }
     if (pct >= 98 && !milestonesFired.m100) {
       milestonesFired.m100 = true;
@@ -3036,6 +3077,10 @@ function navigate(page: Page, pushHistory = true) {
         initStrategyBookingModal();
         document.querySelectorAll('.strat-modal-trigger, .funnel-cta-wrap .funnel-cta-btn').forEach(btn => {
           btn.addEventListener('click', () => {
+            // Fire BookButtonClick pixel event (once per click, not per session — each tap is intentional)
+            if (typeof (window as any).fbq === 'function' && !isInternalSession()) {
+              (window as any).fbq('trackCustom', 'BookButtonClick');
+            }
             if ((window as any).openStratBookingModal) {
               (window as any).openStratBookingModal();
             }
@@ -3102,8 +3147,8 @@ function initNavScroll() {
 document.addEventListener('DOMContentLoaded', () => {
   const _urlParams = new URLSearchParams(window.location.search);
 
-  // Detect ?notrack=1 so internal test visits don't fire Meta Pixel events
-  if (_urlParams.get('notrack') === '1') {
+  // Detect ?notrack=1 or ?preview=true so internal test visits don't fire Meta Pixel events
+  if (_urlParams.get('notrack') === '1' || _urlParams.get('preview') === 'true') {
     sessionStorage.setItem('notrack', '1');
   }
 
