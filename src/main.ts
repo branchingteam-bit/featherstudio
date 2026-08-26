@@ -1568,7 +1568,7 @@ function StrategyBookingPage(): string {
             height="1080"
             playsinline
             muted
-            src="/videos for funnel call/v6/Custom UAE Websites in Five Days.mp4#t=0.001"
+            src="/videos for funnel call/v7/UAE Custom Website Upgrade in Five Days.mp4#t=0.001"
           ></video>
           <!-- Play overlay -->
           <div class="bv-overlay" id="bv-overlay">
