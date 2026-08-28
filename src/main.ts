@@ -343,115 +343,7 @@ function ClaudeCodeSection(): string {
   </section>`;
 }
 
-// ─── Reviews wall ────────────────────────────────────────────────────────────
-// Three columns of review cards scrolling vertically at different speeds,
-// faded out at the top and bottom.
-//
-// ⚠ DEMO CONTENT — NOT REAL CUSTOMER REVIEWS.
-// Only the Sonder Training Group quote is genuine. Every other entry below is
-// invented sample copy with a made-up name, used to fill out the layout while
-// the design is being built. Publishing fabricated reviews as real customer
-// feedback is deceptive and, in most markets, unlawful advertising — swap
-// these for genuine quotes before this page goes live.
-// `avatar` is fixed per person, so a review that appears in more than one
-// column always shows the same face.
-type Review = { quote: string; name: string; role: string; avatar: number };
 
-const SONDER: Review = {
-  quote: 'We approached Alexi at Atlantic Bear, who was absolutely fantastic at putting together our ideas and bringing them across on the website in a way that really engaged our target market.',
-  name: 'Sonder Training Group',
-  role: 'Training Provider, UAE',
-  avatar: 0,
-};
-
-const REVIEWS: Review[] = [
-  { quote: 'Five days from the first call to a live site. I had budgeted two months, and half of that for arguing about revisions.', name: 'Tom Whitfield', role: 'Founder, Dental Clinic', avatar: 1 },
-  { quote: 'We now come up first for our category in Dubai. Enquiries through the site have roughly tripled since launch.', name: 'Priya Nair', role: 'Director, Facilities Services', avatar: 2 },
-  { quote: 'They asked good questions, then just built it. I approved two rounds of small tweaks and that was the whole process.', name: 'Marcus Oyelaran', role: 'Manager, Hospitality Group', avatar: 3 },
-  { quote: 'Most of our customers are on their phones and the old site was unusable there. The new one loads instantly.', name: 'Yasmin Farouk', role: 'Owner, Fitness Studio', avatar: 4 },
-  { quote: 'Handover was clean. Domain, hosting, files, all in our name from day one, exactly as they promised.', name: 'Lena Vasquez', role: 'Founder, E-commerce', avatar: 5 },
-];
-
-// Sonder is seeded into every column so it comes around most often.
-const REVIEW_COLUMNS: Review[][] = [
-  [SONDER, REVIEWS[0], REVIEWS[1]],
-  [REVIEWS[2], SONDER, REVIEWS[3]],
-  [REVIEWS[4], SONDER, REVIEWS[0]],
-];
-
-// Generated portrait avatars. Drawn rather than photographed, so they are
-// royalty-free by construction and no real person's face is attached to a
-// quote they never gave. To use real photos, drop licensed files into
-// public/reviews/ and swap this for an <img>.
-const AVATAR_TONES = [
-  { bg: '#3b69ff', fg: '#dfe8ff' },
-  { bg: '#1e46c7', fg: '#d5e0ff' },
-  { bg: '#6391ff', fg: '#eef3ff' },
-  { bg: '#2a50e0', fg: '#dbe5ff' },
-  { bg: '#142d80', fg: '#ccd9ff' },
-  { bg: '#4a80ff', fg: '#e7eeff' },
-  { bg: '#27418f', fg: '#d2ddff' },
-  { bg: '#5b7cff', fg: '#e9efff' },
-  { bg: '#1a3fb5', fg: '#d8e2ff' },
-];
-
-function Avatar(name: string, i: number): string {
-  const t = AVATAR_TONES[i % AVATAR_TONES.length];
-  const headR = 7.2 + (i % 3) * 0.5;          // small variation so they
-  const shoulderR = 14.5 + (i % 4) * 0.8;     // don't all look identical
-  const headY = 19.5 - (i % 3) * 0.3;
-
-  // Photo first; if the file isn't there the <img> removes itself and the
-  // drawn avatar underneath shows through, so the layout never breaks.
-  return `
-    <span class="review-avatar-wrap">
-      <svg class="review-avatar" viewBox="0 0 48 48" role="img" aria-label="Avatar for ${name}">
-        <circle cx="24" cy="24" r="24" fill="${t.bg}" />
-        <circle cx="24" cy="${headY}" r="${headR}" fill="${t.fg}" />
-        <path d="M${24 - shoulderR} 46 a${shoulderR} ${shoulderR} 0 0 1 ${shoulderR * 2} 0 z" fill="${t.fg}" />
-      </svg>
-      <img class="review-avatar-img" src="/reviews/person-${(i % 9) + 1}.jpg" alt=""
-           loading="lazy" width="42" height="42" onerror="this.remove()" />
-    </span>`;
-}
-
-function ReviewCard(r: Review): string {
-  return `
-    <article class="review-card">
-      <p class="review-quote">${r.quote}</p>
-      <div class="review-author">
-        ${Avatar(r.name, r.avatar)}
-        <span class="review-author-meta">
-          <span class="review-name">${r.name}</span>
-          <span class="review-role">${r.role}</span>
-        </span>
-      </div>
-    </article>`;
-}
-
-function ReviewsWall(): string {
-  const cols = REVIEW_COLUMNS.map((col, i) => {
-    // Cards are rendered twice so the track can loop by exactly -50%.
-    const cards = col.map(ReviewCard).join('');
-    return `
-      <div class="reviews-col reviews-col-${i + 1}">
-        <div class="reviews-track">${cards}${cards}</div>
-      </div>`;
-  }).join('');
-
-  return `
-  <!-- REVIEWS WALL -->
-  <section class="reviews-wall">
-    <div class="container">
-      <div class="reviews-head">
-        <span class="reviews-badge">${Icons.star} Reviews</span>
-        <h2>What our clients say</h2>
-        <p>See what UAE businesses say about working with us.</p>
-      </div>
-    </div>
-    <div class="reviews-cols">${cols}</div>
-  </section>`;
-}
 
 
 // ─── Section Waves ───────────────────────────────────────────────────────────
@@ -713,7 +605,7 @@ function HomePage(): string {
             <span class="teaser-pill">Elite Growth</span>
             <span class="teaser-pill">Deep SEO Search</span>
             <span class="teaser-pill">Lead Capture Form</span>
-            <span class="teaser-pill">3 Updates / Mo</span>
+            <span class="teaser-pill">2 Updates / Mo</span>
           </div>
           <a href="/pricing" class="teaser-btn teaser-btn-outline" data-link="pricing" id="home-growth-teaser-cta">
             Explore Growth Plan ${Icons.arrow}
@@ -740,8 +632,6 @@ function HomePage(): string {
       </div>
     </div>
   </section>
-
-  ${ReviewsWall()}
 
   <!-- CONTENT DISCOVERY SECTION -->
   <section class="section-pad" style="border-top: 1px solid var(--border); background: var(--surface);">
@@ -1018,7 +908,7 @@ function PricingPage(): string {
             <div class="growth-plus-header">EVERYTHING IN THE LAUNCH PLAN, PLUS:</div>
             <div class="pricing-features-list">
               <div class="pricing-feature-row highlight-row">
-                <span class="feature-desc"><strong class="changes-highlight">3 content changes per month</strong></span>
+                <span class="feature-desc"><strong class="changes-highlight">2 content changes per month</strong></span>
                 <span class="feature-val">Increased Care</span>
               </div>
               <div class="pricing-feature-row">
@@ -1086,7 +976,7 @@ function PricingPage(): string {
 
       <!-- Growth teaser note between offers -->
       <div class="growth-teaser-text">
-        Want video on your site, a real contact form, a blog, 10 pages, and 3 changes a month instead of 1? That's the Growth Plan.
+        Want video on your site, a real contact form, a blog, 10 pages, and 2 changes a month instead of 1? That's the Growth Plan.
       </div>
       
       <!-- Content change footnote -->
