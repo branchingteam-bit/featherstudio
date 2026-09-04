@@ -737,9 +737,9 @@ function MetaAdsShazayPage(): string {
       <div class="booking-page-badge" style="background: rgba(235,92,92,0.1); color: #EB5C5C; border: 1px solid rgba(235,92,92,0.25); display: inline-block; margin-bottom: 16px;">
         Meta Ads Retainer
       </div>
-      <h1 style="color: #000;">Set Up Your Monthly Payment</h1>
+      <h1 style="color: #000;">Set Up Your Payment</h1>
       <p style="color: rgba(0,0,0,0.7); max-width: 560px; margin: 12px auto 0; font-size: 1.05rem; line-height: 1.6;">
-        Start your Atlantic Bear Meta Ads retainer. This creates a recurring monthly subscription through PayPal, which you can cancel at any time from your PayPal account.
+        Start your Atlantic Bear Meta Ads retainer. This creates a recurring subscription through PayPal, which you can cancel at any time from your PayPal account.
       </p>
     </div>
   </div>
@@ -747,7 +747,7 @@ function MetaAdsShazayPage(): string {
   <section class="section-pad">
     <div class="container">
       <div style="background: var(--surface); border: 2px solid var(--border-mid); border-radius: var(--r-lg); padding: 40px; max-width: 460px; margin: 0 auto; text-align: center;">
-        <div style="font-size: 1.1rem; font-weight: 800; color: #000; letter-spacing: -0.02em; margin-bottom: 4px;">Meta Ads — Monthly Retainer</div>
+        <div style="font-size: 1.1rem; font-weight: 800; color: #000; letter-spacing: -0.02em; margin-bottom: 4px;">Meta Ads — Retainer</div>
         <div style="font-size: 0.9rem; color: rgba(0,0,0,0.6); font-weight: 600; margin-bottom: 28px;">Recurring subscription · Managed campaign optimization</div>
 
         <div id="paypal-button-container-P-3J276348CL7673454NKNKCRA"></div>
@@ -1907,7 +1907,7 @@ const pageMeta: Record<Page, { title: string; desc: string }> = {
   },
   'meta-ads-shazay': {
     title: 'Meta Ads Retainer — Payment | Atlantic Bear',
-    desc: 'Set up your Atlantic Bear Meta Ads monthly retainer subscription.'
+    desc: 'Set up your Atlantic Bear Meta Ads retainer subscription.'
   },
   terms: {
     title: 'Terms & Conditions | Atlantic Bear Website Agency Dubai',
