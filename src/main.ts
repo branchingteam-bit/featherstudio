@@ -727,6 +727,45 @@ function MetaAdsPage(): string {
 }
 
 
+// ─── Meta Ads · Shazay payment page ─────────────────────────────────────────────
+// Private link shared directly with the client. Not in the sitemap, noindex.
+// Renders a single PayPal subscription button (see initPaypalSubscription).
+function MetaAdsShazayPage(): string {
+  return `
+  <div class="page-header" style="border-bottom:1px solid var(--border); padding-bottom: 40px;">
+    <div class="container">
+      <div class="booking-page-badge" style="background: rgba(235,92,92,0.1); color: #EB5C5C; border: 1px solid rgba(235,92,92,0.25); display: inline-block; margin-bottom: 16px;">
+        Meta Ads Retainer
+      </div>
+      <h1 style="color: #000;">Set Up Your Monthly Payment</h1>
+      <p style="color: rgba(0,0,0,0.7); max-width: 560px; margin: 12px auto 0; font-size: 1.05rem; line-height: 1.6;">
+        Start your Atlantic Bear Meta Ads retainer. This creates a recurring monthly subscription through PayPal, which you can cancel at any time from your PayPal account.
+      </p>
+    </div>
+  </div>
+
+  <section class="section-pad">
+    <div class="container">
+      <div style="background: var(--surface); border: 2px solid var(--border-mid); border-radius: var(--r-lg); padding: 40px; max-width: 460px; margin: 0 auto; text-align: center;">
+        <div style="font-size: 1.1rem; font-weight: 800; color: #000; letter-spacing: -0.02em; margin-bottom: 4px;">Meta Ads — Monthly Retainer</div>
+        <div style="font-size: 0.9rem; color: rgba(0,0,0,0.6); font-weight: 600; margin-bottom: 28px;">Recurring subscription · Managed campaign optimization</div>
+
+        <div id="paypal-button-container-P-3J276348CL7673454NKNKCRA"></div>
+
+        <div id="paypal-shazay-success" style="display:none; margin-top: 8px; padding: 20px; background: rgba(46,160,67,0.08); border: 1px solid rgba(46,160,67,0.35); border-radius: var(--r-md); color: #1a7f37; font-weight: 600; font-size: 0.95rem; line-height: 1.5;">
+          Payment set up successfully. Thank you — we'll be in touch shortly to get started.
+        </div>
+
+        <p style="font-size: 0.78rem; color: rgba(0,0,0,0.5); margin: 20px 0 0; line-height: 1.5;">
+          Payments are processed securely by PayPal. Atlantic Bear never sees your card details.
+        </p>
+      </div>
+    </div>
+  </section>
+  `;
+}
+
+
 // ─── Blog Page ──────────────────────────────────────────────────────────────────
 function BlogPage(): string {
   return `
@@ -1816,7 +1855,7 @@ function GrowthPage(): string { return SalesPillarPage('growth'); }
 
 
 // ─── Router ───────────────────────────────────────────────────────────────────
-type Page = 'home' | 'pricing' | 'contact' | 'testimonials' | 'booking' | 'meta-ads' | 'booked' | 'terms' | 'privacy' | 'blog' | 'launch' | 'growth';
+type Page = 'home' | 'pricing' | 'contact' | 'testimonials' | 'booking' | 'meta-ads' | 'meta-ads-shazay' | 'booked' | 'terms' | 'privacy' | 'blog' | 'launch' | 'growth';
 
 const pageMap: Record<Page, () => string> = {
   home:         HomePage,
@@ -1826,6 +1865,7 @@ const pageMap: Record<Page, () => string> = {
   booking:      StrategyBookingPage,
   booked:       BookedPage,
   'meta-ads':   MetaAdsPage,
+  'meta-ads-shazay': MetaAdsShazayPage,
   terms:        TermsPage,
   privacy:      PrivacyPage,
   blog:         BlogPage,
@@ -1864,6 +1904,10 @@ const pageMeta: Record<Page, { title: string; desc: string }> = {
   'meta-ads': {
     title: 'Facebook & Instagram Ads Dubai, UAE | Atlantic Bear',
     desc: 'Run targeted Facebook and Instagram ad campaigns in Dubai and the UAE with Atlantic Bear. Local targeting, ad creatives, and direct WhatsApp leads. AED 2,500/mo.'
+  },
+  'meta-ads-shazay': {
+    title: 'Meta Ads Retainer — Payment | Atlantic Bear',
+    desc: 'Set up your Atlantic Bear Meta Ads monthly retainer subscription.'
   },
   terms: {
     title: 'Terms & Conditions | Atlantic Bear Website Agency Dubai',
@@ -1910,11 +1954,27 @@ function updateFaqSchema(page: Page) {
   document.head.appendChild(script);
 }
 
+// Routes that must never be indexed (private client links shared directly).
+const NOINDEX_PAGES: Page[] = ['meta-ads-shazay'];
+
 function updateMetadata(page: Page) {
   const meta = pageMeta[page] || pageMeta.home;
   document.title = meta.title;
   updateFaqSchema(page);
-  
+
+  // Robots: add a noindex tag for private routes, remove it everywhere else.
+  let robotsTag = document.querySelector('meta[name="robots"]');
+  if (NOINDEX_PAGES.includes(page)) {
+    if (!robotsTag) {
+      robotsTag = document.createElement('meta');
+      robotsTag.setAttribute('name', 'robots');
+      document.head.appendChild(robotsTag);
+    }
+    robotsTag.setAttribute('content', 'noindex, nofollow');
+  } else if (robotsTag) {
+    robotsTag.remove();
+  }
+
   // Update meta description
   let descTag = document.querySelector('meta[name="description"]');
   if (!descTag) {
@@ -1974,7 +2034,7 @@ function updateMetadata(page: Page) {
 
 function getPageFromPath(path: string): Page {
   const cleanPath = path.replace(/^\/|\/$/g, '');
-  if (cleanPath === 'pricing' || cleanPath === 'work' || cleanPath === 'contact' || cleanPath === 'testimonials' || cleanPath === 'booking' || cleanPath === 'booking-new' || cleanPath === 'meta-ads' || cleanPath === 'booked' || cleanPath === 'terms' || cleanPath === 'privacy' || cleanPath === 'blog' || cleanPath === 'launch' || cleanPath === 'growth') {
+  if (cleanPath === 'pricing' || cleanPath === 'work' || cleanPath === 'contact' || cleanPath === 'testimonials' || cleanPath === 'booking' || cleanPath === 'booking-new' || cleanPath === 'meta-ads' || cleanPath === 'meta-ads-shazay' || cleanPath === 'booked' || cleanPath === 'terms' || cleanPath === 'privacy' || cleanPath === 'blog' || cleanPath === 'launch' || cleanPath === 'growth') {
     return cleanPath as Page;
   }
   return 'home';
@@ -2146,6 +2206,53 @@ function initFormspree() {
       }
     }
   });
+}
+
+// ─── PayPal subscription button (Meta Ads · Shazay page) ─────────────────────
+// The PayPal SDK is loaded on demand — only when the client opens the private
+// /meta-ads-shazay link — so it never touches any other route. Loading the SDK
+// twice throws, so the <script> is injected once and reused on return visits.
+function initPaypalSubscription() {
+  const PLAN_ID = 'P-3J276348CL7673454NKNKCRA';
+  const CONTAINER_SEL = '#paypal-button-container-' + PLAN_ID;
+  const SDK_SRC = 'https://www.paypal.com/sdk/js?client-id=BAAeLN9PQY_40P1TyOqzvSGlsxkJvgSNc84tV2boPr7iX-TUntDkuIFWfjw3zc3V8zc13VS2nx64j-E710&vault=true&intent=subscription';
+
+  function renderButton() {
+    const paypal = (window as any).paypal;
+    const container = document.querySelector(CONTAINER_SEL) as HTMLElement | null;
+    if (!paypal || !container || container.dataset.rendered === '1') return;
+    container.dataset.rendered = '1';
+
+    paypal.Buttons({
+      style: { shape: 'rect', color: 'blue', layout: 'vertical', label: 'subscribe' },
+      createSubscription: function (_data: any, actions: any) {
+        return actions.subscription.create({ plan_id: PLAN_ID });
+      },
+      onApprove: function () {
+        const success = document.getElementById('paypal-shazay-success');
+        if (success) success.style.display = 'block';
+        container.style.display = 'none';
+      }
+    }).render(CONTAINER_SEL);
+  }
+
+  if ((window as any).paypal) {
+    renderButton();
+    return;
+  }
+
+  const existing = document.getElementById('paypal-sdk-shazay') as HTMLScriptElement | null;
+  if (existing) {
+    existing.addEventListener('load', renderButton, { once: true });
+    return;
+  }
+
+  const script = document.createElement('script');
+  script.id = 'paypal-sdk-shazay';
+  script.src = SDK_SRC;
+  script.setAttribute('data-sdk-integration-source', 'button-factory');
+  script.onload = renderButton;
+  document.body.appendChild(script);
 }
 
 // ─── Calendly Loader ─────────────────────────────────────────────────────────
@@ -2969,6 +3076,10 @@ function navigate(page: Page, pushHistory = true) {
 
     if (page === 'contact') {
       initFormspree();
+    }
+
+    if (page === 'meta-ads-shazay') {
+      initPaypalSubscription();
     }
 
     if (page === 'booking' || page === 'booked') {
