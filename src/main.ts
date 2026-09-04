@@ -2704,7 +2704,6 @@ function initBookingPageVideo(rigged = false) {
 
 
 // ─── Strategy Booking Qualifying Modal Flow Handler (4-Step) ────────────────
-let isCurrentStrategyCallHighTier = true; // Global flag to determine if pixel should fire
 let lastSubmittedLead = {
   name: '',
   phone: '',
@@ -2847,16 +2846,8 @@ function initStrategyBookingModal() {
     const container = document.getElementById('strat-modal-calendly-container');
     if (!container) return;
 
-    const isUnder5k = (
-      stratRevenue === 'Under AED 5k/month' ||
-      stratRevenue === 'Under $5k' ||
-      stratRevenue === '$0 - $5k'
-    );
-    isCurrentStrategyCallHighTier = !isUnder5k;
-
-    const calendlyBaseUrl = isUnder5k
-      ? 'https://calendly.com/officialatlanticbear/intro-call?hide_gdpr_banner=1&primary_color=3b69ff'
-      : 'https://calendly.com/officialatlanticbear/strategy-call?hide_gdpr_banner=1&primary_color=3b69ff';
+    // Every lead books the same strategy call, whatever revenue they picked.
+    const calendlyBaseUrl = 'https://calendly.com/officialatlanticbear/strategy-call?hide_gdpr_banner=1&primary_color=3b69ff';
 
     const cleanRevenue = stratRevenue.replace(/–/g, '-').trim();
 
@@ -2945,41 +2936,33 @@ function initStrategyBookingModal() {
       lastSubmittedLead.business = businessVal;
       lastSubmittedLead.revenue = revenueVal;
 
-      const isUnder5k = (
-        revenueVal === 'Under AED 5k/month' ||
-        revenueVal === 'Under $5k' ||
-        revenueVal === '$0 - $5k'
-      );
+      // Every lead is submitted to Google Sheets, regardless of revenue picked.
+      const submitBtn = document.getElementById('strat-modal-step2-submit-btn') as HTMLButtonElement | null;
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Verifying...';
+      }
 
-      // Only submit lead data to Google Sheets if revenue is >= AED 5k or "Rather not say"
-      if (!isUnder5k) {
-        const submitBtn = document.getElementById('strat-modal-step2-submit-btn') as HTMLButtonElement | null;
-        if (submitBtn) {
-          submitBtn.disabled = true;
-          submitBtn.textContent = 'Verifying...';
-        }
+      // Execute reCAPTCHA v3 token generation before Google Sheets submission
+      const recaptchaToken = await getReCaptchaToken('booking_submit');
 
-        // Execute reCAPTCHA v3 token generation before Google Sheets submission
-        const recaptchaToken = await getReCaptchaToken('booking_submit');
+      fetch('https://script.google.com/macros/s/AKfycbxhmc6G4n4zpk0SGvjzP81_Cd9ipLxM3Wx5MZNWzF02tBqqUMD0JCAuDnH1OojQfv7vJQ/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        body: JSON.stringify({
+          action: 'form_submit',
+          name: stratName,
+          phone: stratPhone,
+          business: stratBusiness,
+          revenue: stratRevenue,
+          source: 'strategy_call',
+          recaptchaToken: recaptchaToken || ''
+        })
+      }).catch(err => console.error('Google Sheet submission failed:', err));
 
-        fetch('https://script.google.com/macros/s/AKfycbxhmc6G4n4zpk0SGvjzP81_Cd9ipLxM3Wx5MZNWzF02tBqqUMD0JCAuDnH1OojQfv7vJQ/exec', {
-          method: 'POST',
-          mode: 'no-cors',
-          body: JSON.stringify({
-            action: 'form_submit',
-            name: stratName,
-            phone: stratPhone,
-            business: stratBusiness,
-            revenue: stratRevenue,
-            source: 'strategy_call',
-            recaptchaToken: recaptchaToken || ''
-          })
-        }).catch(err => console.error('Google Sheet submission failed:', err));
-
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Continue to Calendar \u2192';
-        }
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Continue to Calendar \u2192';
       }
 
       goToStep(3);
@@ -3218,18 +3201,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const isStratActive = stratModal && stratModal.classList.contains('active');
 
       if (isStratActive) {
-        if (isCurrentStrategyCallHighTier) {
-          trackAbacusEvent('bookedcall_strategy');
-          // Only fire Schedule pixel if visitor came via a Meta ad (fbclid or utm_source=facebook/instagram).
-          // This prevents test bookings from polluting ad conversion data.
-          if (typeof (window as any).fbq === 'function'
-              && sessionStorage.getItem('came_from_meta')
-              && !sessionStorage.getItem('fbq_schedule_fired')) {
-            (window as any).fbq('track', 'Schedule');
-            sessionStorage.setItem('fbq_schedule_fired', '1');
-          }
-        } else {
-          trackAbacusEvent('bookedcall_intro');
+        trackAbacusEvent('bookedcall_strategy');
+        // Only fire Schedule pixel if visitor came via a Meta ad (fbclid or utm_source=facebook/instagram).
+        // This prevents test bookings from polluting ad conversion data.
+        if (typeof (window as any).fbq === 'function'
+            && sessionStorage.getItem('came_from_meta')
+            && !sessionStorage.getItem('fbq_schedule_fired')) {
+          (window as any).fbq('track', 'Schedule');
+          sessionStorage.setItem('fbq_schedule_fired', '1');
         }
         if (stratModal) stratModal.classList.remove('active');
       } else {
