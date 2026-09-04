@@ -727,7 +727,7 @@ function MetaAdsPage(): string {
 }
 
 
-// ─── Meta Ads · Shazay payment page ─────────────────────────────────────────────
+// ─── TikTok Ads · Shazay payment page ───────────────────────────────────────────
 // Private link shared directly with the client. Not in the sitemap, noindex.
 // Renders a single PayPal subscription button (see initPaypalSubscription).
 function MetaAdsShazayPage(): string {
@@ -735,11 +735,11 @@ function MetaAdsShazayPage(): string {
   <div class="page-header" style="border-bottom:1px solid var(--border); padding-bottom: 40px;">
     <div class="container">
       <div class="booking-page-badge" style="background: rgba(235,92,92,0.1); color: #EB5C5C; border: 1px solid rgba(235,92,92,0.25); display: inline-block; margin-bottom: 16px;">
-        Meta Ads Retainer
+        TikTok Ads Retainer
       </div>
       <h1 style="color: #000;">Set Up Your Payment</h1>
       <p style="color: rgba(0,0,0,0.7); max-width: 560px; margin: 12px auto 0; font-size: 1.05rem; line-height: 1.6;">
-        Start your Atlantic Bear Meta Ads retainer. This creates a recurring subscription through PayPal, which you can cancel at any time from your PayPal account.
+        Start your Atlantic Bear TikTok Ads retainer. This creates a recurring subscription, billed every 15 days, through PayPal — you can cancel at any time from your PayPal account.
       </p>
     </div>
   </div>
@@ -747,8 +747,8 @@ function MetaAdsShazayPage(): string {
   <section class="section-pad">
     <div class="container">
       <div style="background: var(--surface); border: 2px solid var(--border-mid); border-radius: var(--r-lg); padding: 40px; max-width: 460px; margin: 0 auto; text-align: center;">
-        <div style="font-size: 1.1rem; font-weight: 800; color: #000; letter-spacing: -0.02em; margin-bottom: 4px;">Meta Ads — Retainer</div>
-        <div style="font-size: 0.9rem; color: rgba(0,0,0,0.6); font-weight: 600; margin-bottom: 28px;">Recurring subscription · Managed campaign optimization</div>
+        <div style="font-size: 1.1rem; font-weight: 800; color: #000; letter-spacing: -0.02em; margin-bottom: 4px;">TikTok Ads — Retainer</div>
+        <div style="font-size: 0.9rem; color: rgba(0,0,0,0.6); font-weight: 600; margin-bottom: 28px;">Billed every 15 days · Managed campaign optimization</div>
 
         <div id="paypal-button-container-P-3J276348CL7673454NKNKCRA"></div>
 
@@ -1906,8 +1906,8 @@ const pageMeta: Record<Page, { title: string; desc: string }> = {
     desc: 'Run targeted Facebook and Instagram ad campaigns in Dubai and the UAE with Atlantic Bear. Local targeting, ad creatives, and direct WhatsApp leads. AED 2,500/mo.'
   },
   'meta-ads-shazay': {
-    title: 'Meta Ads Retainer — Payment | Atlantic Bear',
-    desc: 'Set up your Atlantic Bear Meta Ads retainer subscription.'
+    title: 'TikTok Ads Retainer — Payment | Atlantic Bear',
+    desc: 'Set up your Atlantic Bear TikTok Ads retainer subscription, billed every 15 days.'
   },
   terms: {
     title: 'Terms & Conditions | Atlantic Bear Website Agency Dubai',
@@ -2208,7 +2208,7 @@ function initFormspree() {
   });
 }
 
-// ─── PayPal subscription button (Meta Ads · Shazay page) ─────────────────────
+// ─── PayPal subscription button (TikTok Ads · Shazay page) ───────────────────
 // The PayPal SDK is loaded on demand — only when the client opens the private
 // /meta-ads-shazay link — so it never touches any other route. Loading the SDK
 // twice throws, so the <script> is injected once and reused on return visits.
