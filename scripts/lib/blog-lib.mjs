@@ -45,7 +45,11 @@ export function renderPostHtml(template, post) {
 
 /** Build the <a class="blog-card"> snippet for the /blog index page. */
 export function buildBlogCard(post) {
-  return `    <a href="/blog/${post.slug}" class="blog-card">
+  // The part of cardTag before "·" doubles as the filter category on the
+  // /blog index page (see the inline script there that builds filter pills
+  // from whatever data-category values are present).
+  const category = String(post.cardTag).split('·')[0].trim();
+  return `    <a href="/blog/${post.slug}" class="blog-card" data-category="${htmlAttrEsc(category)}">
       <div class="tag">${htmlAttrEsc(post.cardTag)}</div>
       <h2>${htmlAttrEsc(post.title)}</h2>
       <p>${htmlAttrEsc(post.cardSummary)}</p>
@@ -56,10 +60,9 @@ export function buildBlogCard(post) {
 
 /** Insert a new card as the first item in the .blog-list on public/blog/index.html. */
 export function insertCardIntoIndex(indexHtml, cardHtml) {
-  const marker = '<div class="blog-list">';
-  const i = indexHtml.indexOf(marker);
-  if (i === -1) throw new Error('Could not find <div class="blog-list"> in blog index.html');
-  const insertAt = i + marker.length;
+  const openTagMatch = indexHtml.match(/<div class="blog-list"[^>]*>/);
+  if (!openTagMatch) throw new Error('Could not find <div class="blog-list"> in blog index.html');
+  const insertAt = openTagMatch.index + openTagMatch[0].length;
   return indexHtml.slice(0, insertAt) + '\n\n' + cardHtml + indexHtml.slice(insertAt);
 }
 
