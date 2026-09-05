@@ -321,9 +321,9 @@
   </nav>
 
   <div class="header">
-    <div class="label">Knowledge Base</div>
-    <h1>Website & SEO Tips for<br>UAE Small Businesses</h1>
-    <p>Practical guides on website design, Google rankings, and digital marketing written by the Atlantic Bear team for business owners in Dubai and the UAE.</p>
+    <div class="label">Blog</div>
+    <h1>The Atlantic Bear Blog</h1>
+    <p>Straight, practical writing on websites and getting found online, for business owners in the UAE.</p>
   </div>
 
   <div class="filter-bar" id="filter-bar">
@@ -452,8 +452,9 @@
           '<div class="tag">' + heroSource.querySelector('.tag').textContent + '</div>' +
           '<h2>' + heroSource.querySelector('h2').textContent + '</h2>' +
           '<span class="post-date" data-date-for="' + heroSource.getAttribute('href') + '"></span>' +
-          '<p>' + heroSource.querySelector('p').textContent + '</p>' +
-          '<span class="read-more">Read article →</span>';
+          '<p class="featured-excerpt" data-excerpt-for="' + heroSource.getAttribute('href') + '">' +
+            heroSource.querySelector('p').textContent + '</p>' +
+          '<span class="read-more">Read the full article →</span>';
         featuredSlot.appendChild(clone);
       } else {
         featuredWrap.classList.add('is-hidden');
@@ -501,7 +502,7 @@
       // That means a post published by the weekly cron shows its date here
       // automatically, with no change needed to the publishing pipeline.
       // Only the dates actually on screen are fetched, and each URL once.
-      var dateCache = {};
+      var pageCache = {};
 
       function formatDate(iso) {
         var d = new Date(iso + 'T00:00:00Z');
@@ -511,48 +512,80 @@
         });
       }
 
-      function applyDate(url, iso) {
-        var text = iso ? formatDate(iso) : '';
-        if (!text) return;
-        Array.prototype.forEach.call(
-          document.querySelectorAll('.post-date[data-date-for="' + url + '"]'),
-          function (el) { el.textContent = text; }
-        );
+      function applyInfo(url, info) {
+        if (!info) return;
+        if (info.date) {
+          var text = formatDate(info.date);
+          if (text) {
+            Array.prototype.forEach.call(
+              document.querySelectorAll('.post-date[data-date-for="' + url + '"]'),
+              function (el) { el.textContent = text; }
+            );
+          }
+        }
+        if (info.excerpt) {
+          Array.prototype.forEach.call(
+            document.querySelectorAll('.featured-excerpt[data-excerpt-for="' + url + '"]'),
+            function (el) { el.textContent = info.excerpt; }
+          );
+        }
       }
 
-      function loadDate(url) {
-        if (Object.prototype.hasOwnProperty.call(dateCache, url)) {
-          applyDate(url, dateCache[url]);
+      // Pull the opening of the article itself so the featured block shows a
+      // real taste of the post rather than the card blurb. Parsed with
+      // DOMParser, which does not run scripts or load anything.
+      function parsePage(html) {
+        var info = { date: null, excerpt: null };
+        var m = html.match(/"datePublished"\s*:\s*"(\d{4}-\d{2}-\d{2})/);
+        if (m) info.date = m[1];
+        try {
+          var doc = new DOMParser().parseFromString(html, 'text/html');
+          var para = doc.querySelector('.article-wrap p');
+          if (para) {
+            var t = (para.textContent || '').replace(/\s+/g, ' ').trim();
+            if (t.length > 260) {
+              var cut = t.slice(0, 260);
+              var stop = cut.lastIndexOf(' ');
+              t = (stop > 180 ? cut.slice(0, stop) : cut) + '...';
+            }
+            if (t) info.excerpt = t;
+          }
+        } catch (e) { /* excerpt is optional */ }
+        return info;
+      }
+
+      function loadPage(url) {
+        if (Object.prototype.hasOwnProperty.call(pageCache, url)) {
+          applyInfo(url, pageCache[url]);
           return;
         }
-        dateCache[url] = null; // claim it so we only fetch once
+        pageCache[url] = null; // claim it so we only fetch once
         fetch(url, { credentials: 'same-origin' })
           .then(function (r) { return r.ok ? r.text() : null; })
           .then(function (html) {
             if (!html) return;
-            var m = html.match(/"datePublished"\s*:\s*"(\d{4}-\d{2}-\d{2})/);
-            if (!m) return;
-            dateCache[url] = m[1];
-            applyDate(url, m[1]);
+            var info = parsePage(html);
+            pageCache[url] = info;
+            applyInfo(url, info);
           })
-          .catch(function () { /* no date shown, card still works */ });
+          .catch(function () { /* card still works without this */ });
       }
 
-      function loadVisibleDates() {
+      function loadVisibleInfo() {
         Array.prototype.forEach.call(
           document.querySelectorAll('.post-date[data-date-for]'),
           function (el) {
             if (el.textContent) return;
             if (!el.closest('.featured-card') && el.closest('.blog-card.is-hidden')) return;
-            loadDate(el.getAttribute('data-date-for'));
+            loadPage(el.getAttribute('data-date-for'));
           }
         );
       }
 
       if (window.fetch) {
-        loadVisibleDates();
-        filterBar.addEventListener('click', loadVisibleDates);
-        loadMoreBtn.addEventListener('click', loadVisibleDates);
+        loadVisibleInfo();
+        filterBar.addEventListener('click', loadVisibleInfo);
+        loadMoreBtn.addEventListener('click', loadVisibleInfo);
       }
     })();
   </script>

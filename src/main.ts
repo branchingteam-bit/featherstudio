@@ -331,13 +331,13 @@ function StartingPointSection(): string {
         <div class="basic-system-card reveal">
           <span class="basic-card-num">01</span>
           <h3>You've outgrown your website</h3>
-          <p>It was fine three years ago. Now it undersells you, and you've quietly stopped sending the link to good prospects. We rebuild it to match where the business actually is.</p>
+          <p>Your business has moved on and the website hasn't kept up. We rebuild it so it reflects where you are now rather than where you started.</p>
         </div>
 
         <div class="basic-system-card reveal" style="transition-delay:0.08s;">
           <span class="basic-card-num">02</span>
           <h3>You've never had a proper one</h3>
-          <p>Real business, real clients, but online you're an Instagram grid and a WhatsApp number. That works until someone who wasn't referred looks you up. We build the first proper site that proves you're serious.</p>
+          <p>You've built something real without a proper website behind it. We build the first one properly, so it holds up as the business keeps growing.</p>
         </div>
 
       </div>
@@ -387,8 +387,8 @@ function OperatingStyleSection(): string {
 
         <div class="basic-system-card reveal" style="transition-delay:0.16s;">
           <span class="basic-card-num">04</span>
-          <h3>Your website is the first meeting</h3>
-          <p>Most people who hear your name will look you up before they contact you. We build the site to win that moment, carrying the credibility and proof a first call would normally have to do.</p>
+          <h3>Your website sets your price ceiling</h3>
+          <p>When you're quoting bigger numbers, the website is what a client weighs up before they agree to them. A business that looks smaller than it is gets negotiated down. Moving upmarket is far easier when the site already looks like it belongs there.</p>
         </div>
 
       </div>
@@ -934,6 +934,30 @@ function PricingPage(): string {
               </div>
               <div class="pricing-feature-row">
                 <span class="feature-desc">Priority build queue: your project goes to the front of the line</span>
+                <span class="feature-val">Included</span>
+              </div>
+            </div>
+
+            <div class="pricing-stack-header pricing-margin-top">YOUR MONTHLY CARE, AED 300:</div>
+            <div class="pricing-features-list">
+              <div class="pricing-feature-row">
+                <span class="feature-desc">Hosting and daily backups</span>
+                <span class="feature-val">Included</span>
+              </div>
+              <div class="pricing-feature-row">
+                <span class="feature-desc">Ongoing support from our team whenever you need something</span>
+                <span class="feature-val">Included</span>
+              </div>
+              <div class="pricing-feature-row highlight-row">
+                <span class="feature-desc"><strong class="changes-highlight">Your own admin dashboard</strong></span>
+                <span class="feature-val">Growth Only</span>
+              </div>
+              <div class="pricing-feature-row">
+                <span class="feature-desc">Track the basics in one place: visitors, most-viewed pages, and enquiries coming through the site</span>
+                <span class="feature-val">Included</span>
+              </div>
+              <div class="pricing-feature-row">
+                <span class="feature-desc">Write and publish your own blog posts straight from the dashboard, on top of the articles we set up for you</span>
                 <span class="feature-val">Included</span>
               </div>
             </div>
