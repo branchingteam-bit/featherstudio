@@ -40,64 +40,6 @@ function trackAbacusEvent(event: string, delay = 0) {
   }
 }
 
-// ─── reCAPTCHA v3 Setup ──────────────────────────────────────────────────────
-// Replace with your Google reCAPTCHA v3 Site Key from https://www.google.com/recaptcha/admin
-export const RECAPTCHA_SITE_KEY = (window as any).RECAPTCHA_SITE_KEY || '6Ldfp-gqAAAAABpP_placeholder_key';
-
-export function loadReCaptchaScript() {
-  const siteKey = (window as any).RECAPTCHA_SITE_KEY || RECAPTCHA_SITE_KEY;
-  if (!siteKey || document.getElementById('recaptcha-v3-script')) return;
-
-  const script = document.createElement('script');
-  script.id = 'recaptcha-v3-script';
-  script.src = `https://www.google.com/recaptcha/api.js?render=${encodeURIComponent(siteKey)}`;
-  script.async = true;
-  script.defer = true;
-  document.head.appendChild(script);
-}
-
-/**
- * Safely executes Google reCAPTCHA v3 without blocking legitimate users.
- * Returns the token if successful, or null if reCAPTCHA fails, is blocked, or times out.
- */
-export async function getReCaptchaToken(action: string): Promise<string | null> {
-  const siteKey = (window as any).RECAPTCHA_SITE_KEY || RECAPTCHA_SITE_KEY;
-  loadReCaptchaScript();
-
-  return new Promise((resolve) => {
-    // Safety fallback timeout (2500ms max) - guarantees real users are never blocked
-    const timer = setTimeout(() => {
-      console.warn(`reCAPTCHA [${action}] timed out. Continuing submission.`);
-      resolve(null);
-    }, 2500);
-
-    const grecaptcha = (window as any).grecaptcha;
-    if (grecaptcha && typeof grecaptcha.ready === 'function') {
-      try {
-        grecaptcha.ready(() => {
-          grecaptcha.execute(siteKey, { action })
-            .then((token: string) => {
-              clearTimeout(timer);
-              resolve(token);
-            })
-            .catch((err: any) => {
-              clearTimeout(timer);
-              console.warn(`reCAPTCHA [${action}] execution error:`, err);
-              resolve(null);
-            });
-        });
-      } catch (err) {
-        clearTimeout(timer);
-        console.warn(`reCAPTCHA [${action}] error:`, err);
-        resolve(null);
-      }
-    } else {
-      clearTimeout(timer);
-      resolve(null);
-    }
-  });
-}
-
 // ─── Time and Scroll Tracking ───
 let timeTrackers: Record<string, number> = {};
 
@@ -1196,7 +1138,7 @@ function ContactPage(): string {
             <div class="contact-methods">
               <a href="tel:+971502446531" class="contact-method">
                 <div class="contact-method-icon" style="background:rgba(59,105,255,0.08); color:var(--blue);">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${Icons.phone}</svg>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${Icons.phone}</svg>
                 </div>
                 <div>
                   <div class="contact-method-label">Phone</div>
@@ -1205,7 +1147,7 @@ function ContactPage(): string {
               </a>
               <a href="mailto:officialatlanticbear@gmail.com" class="contact-method">
                 <div class="contact-method-icon" style="background:rgba(59,105,255,0.08); color:var(--blue);">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${Icons.mail}</svg>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${Icons.mail}</svg>
                 </div>
                 <div>
                   <div class="contact-method-label">Email</div>
@@ -1214,7 +1156,7 @@ function ContactPage(): string {
               </a>
               <a href="https://www.instagram.com/officialatlanticbear/" target="_blank" class="contact-method">
                 <div class="contact-method-icon" style="background:rgba(59,105,255,0.08); color:var(--blue);">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${Icons.instagram}</svg>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${Icons.instagram}</svg>
                 </div>
                 <div>
                   <div class="contact-method-label">Instagram</div>
@@ -1223,7 +1165,7 @@ function ContactPage(): string {
               </a>
               <div class="contact-method">
                 <div class="contact-method-icon" style="background:rgba(59,105,255,0.08); color:var(--blue);">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${Icons.map}</svg>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${Icons.map}</svg>
                 </div>
                 <div>
                   <div class="contact-method-label">Location</div>
@@ -1231,37 +1173,6 @@ function ContactPage(): string {
                 </div>
               </div>
             </div>
-          </div>
-
-          <div class="contact-form-card reveal" style="transition-delay:0.1s; border-top: 3px solid var(--blue);">
-            <h3>Send us a message</h3>
-            <p>We'll get back to you within a few hours.</p>
-            
-            <div data-fs-success class="fs-success-msg" style="display:none;">
-              <div style="font-size:1.2rem; margin-bottom:4px;">✅</div>
-              <div style="font-size:0.9rem; font-weight:700; color:var(--navy);">Message sent!</div>
-              <div style="font-size:0.82rem; color:var(--text-muted); margin-top:4px;">We'll get back to you within a few hours — usually faster.</div>
-            </div>
-            <div data-fs-error class="fs-error-msg"></div>
-
-            <form class="enquiry-form" id="contact-form">
-              <input class="form-input" id="form-name" name="name" type="text" placeholder="Your name" required data-fs-field />
-              <span data-fs-error="name" class="fs-field-error"></span>
-              <input class="form-input" id="form-email" name="email" type="email" placeholder="Email address" required data-fs-field />
-              <span data-fs-error="email" class="fs-field-error"></span>
-              <input class="form-input" id="form-business" name="business" type="text" placeholder="Business name" data-fs-field />
-              <select class="form-input" id="form-tier" name="tier" data-fs-field>
-                <option value="">Which plan are you interested in?</option>
-                <option value="launch">The Launch Plan (AED 3,500 + 300/mo)</option>
-                <option value="growth">The Growth Plan (AED 6,500 + 300/mo)</option>
-                <option value="unsure">Not sure yet</option>
-              </select>
-              <textarea class="form-input form-textarea" id="form-message" name="message" placeholder="Tell us about your business and what you need..." required data-fs-field></textarea>
-              <span data-fs-error="message" class="fs-field-error"></span>
-              <button type="submit" class="btn btn-primary btn-block btn-large btn-pulse" id="form-submit-btn" data-fs-submit-btn>
-                Send message ${Icons.arrow}
-              </button>
-            </form>
           </div>
         </div>
 
@@ -1273,7 +1184,7 @@ function ContactPage(): string {
 
 // ─── Legal pages ─────────────────────────────────────────────────────────────
 // General-purpose terms and a privacy notice covering what the site actually
-// collects (contact form, booking form, Meta Pixel, reCAPTCHA, Calendly).
+// collects (Calendly booking, Meta Pixel).
 // NOTE: written as a solid starting point, not as legal advice — have a
 // UAE-qualified lawyer review both before relying on them.
 function LegalPage(title: string, updated: string, blocks: { h: string; p: string[] }[]): string {
@@ -1355,7 +1266,7 @@ function PrivacyPage(): string {
       'We keep this deliberately plain. We are a small web design business, not an advertising network, and we do not sell personal information to anyone.',
     ]},
     { h: '2. Information you give us directly', p: [
-      'When you fill in our contact form we collect your name, email address, business name, the plan you are interested in, and the message you write. When you book a call we collect your name, email address, and phone number so we can contact you and hold the appointment.',
+      'We do not run a contact form on this website. If you reach out by phone, email, or Instagram, we only receive whatever you choose to tell us directly. When you book a call, our scheduling provider Calendly collects your name, email address, and phone number so we can contact you and hold the appointment.',
       'We use this information for one purpose: to respond to you and to provide the services you have asked about. We do not add you to unrelated marketing lists, and we do not pass your details to third parties for their own marketing.',
     ]},
     { h: '3. Information collected automatically', p: [
@@ -1364,8 +1275,8 @@ function PrivacyPage(): string {
     ]},
     { h: '4. Cookies and third-party services', p: [
       'We use a small number of third-party services, and each may set cookies or receive some data when you use our site.',
-      'Google reCAPTCHA protects our forms from automated spam. It collects device and browsing signals to tell humans from bots, and is governed by Google\'s own privacy policy and terms. Calendly powers our booking scheduler and receives the name, email, and phone number you enter when booking. Meta Pixel measures whether visitors who arrive from our Facebook and Instagram advertising go on to enquire, and may be used to show you our ads elsewhere. Our contact form is delivered through Formspree, and booking enquiries are recorded in Google Sheets.',
-      'You can block or delete cookies in your browser settings at any time. Doing so may stop the booking scheduler or the contact form from working properly, but the rest of the site will function normally.',
+      'Calendly powers our booking scheduler and receives the name, email, and phone number you enter when booking a call. Meta Pixel measures whether visitors who arrive from our Facebook and Instagram advertising go on to enquire, and may be used to show you our ads elsewhere.',
+      'You can block or delete cookies in your browser settings at any time. Doing so may stop the booking scheduler from working properly, but the rest of the site will function normally.',
     ]},
     { h: '5. Legal basis and consent', p: [
       'Where you submit a form, we process your information because you have asked us to respond to you and because it is necessary to provide the service you requested. Where we use analytics and advertising measurement, we rely on our legitimate interest in understanding and improving how our business reaches customers.',
@@ -1576,93 +1487,17 @@ function StrategyBookingPage(): string {
     </div>
   </div>
 
-  <!-- Strategy Booking Qualifying Modal (Step 1: Contact -> Step 2: Revenue -> Step 3: Calendly -> Step 4: Confirm) -->
+  <!-- Strategy Booking Modal — straight to Calendly, no qualifying questions -->
   <div class="booking-modal-overlay" id="strat-booking-modal">
     <div class="booking-modal-container">
       <div class="booking-modal-header">
-        <div class="booking-modal-steps">
-          <span class="step-badge" id="strat-modal-step-badge">Step <span id="strat-modal-step-num">1</span> of 3</span>
-          <h3 class="booking-modal-title" id="strat-modal-step-title">Tell us about yourself</h3>
-        </div>
+        <h3 class="booking-modal-title">Book Your Strategy Call</h3>
         <button class="booking-modal-close" id="strat-modal-close-btn" aria-label="Close modal">&times;</button>
       </div>
-      
-      <div class="booking-modal-progress">
-        <div class="booking-modal-progress-bar" id="strat-modal-progress-bar" style="width: 33%;"></div>
-      </div>
-      
+
       <div class="booking-modal-body">
-        <!-- Step 1: Contact Form (Name + Phone) -->
-        <div class="booking-modal-step active" id="strat-modal-step-1">
-          <form id="strat-modal-step1-form" class="funnel-modal-form" onsubmit="return false;" autocomplete="off">
-            <div class="funnel-form-group">
-              <label for="strat-input-name" class="funnel-form-label">Full Name</label>
-              <input type="text" id="strat-input-name" class="funnel-form-input" placeholder="e.g. John Smith" autocomplete="off" required />
-            </div>
-            <div class="funnel-form-group">
-              <label for="strat-input-phone" class="funnel-form-label">Phone Number</label>
-              <div class="phone-input-wrap">
-                <span class="phone-flag-prefix" id="strat-phone-flag-prefix">🇦🇪</span>
-                <input type="tel" id="strat-input-phone" class="funnel-form-input phone-with-flag" value="+971 " placeholder="+971 50 123 4567" autocomplete="off" required />
-              </div>
-            </div>
-            <div id="strat-modal-step1-error" class="funnel-form-error" style="display:none;">Please enter your name and phone number to continue.</div>
-            <button type="submit" id="strat-modal-step1-next-btn" class="funnel-modal-btn">Next &rarr;</button>
-          </form>
-        </div>
-
-        <!-- Step 2: Business Name & Revenue Qualification -->
-        <div class="booking-modal-step" id="strat-modal-step-2" style="display: none;">
-          <form id="strat-modal-step2-form" class="funnel-modal-form" onsubmit="return false;" autocomplete="off">
-            <div class="funnel-form-group">
-              <label for="strat-input-business" class="funnel-form-label">Business / Company Name</label>
-              <input type="text" id="strat-input-business" class="funnel-form-input" placeholder="e.g. Acme Studio" autocomplete="off" required />
-            </div>
-            <div class="funnel-form-group">
-              <label for="strat-select-revenue" class="funnel-form-label">What’s your monthly revenue roughly?</label>
-              <select id="strat-select-revenue" class="funnel-form-input" autocomplete="off" required>
-                <option value="" disabled selected>Select monthly revenue range...</option>
-                <option value="Under AED 5k/month">Under AED 5k/month</option>
-                <option value="AED 5k - 20k/month">AED 5k - 20k/month</option>
-                <option value="AED 20k - 50k/month">AED 20k - 50k/month</option>
-                <option value="AED 50k - 100k/month">AED 50k - 100k/month</option>
-                <option value="AED 100k+/month">AED 100k+/month</option>
-                <option value="Rather not say">Rather not say</option>
-              </select>
-            </div>
-            <div id="strat-modal-step2-error" class="funnel-form-error" style="display:none;">Please enter your business name and select your monthly revenue.</div>
-            <button type="submit" id="strat-modal-step2-submit-btn" class="funnel-modal-btn">Continue to Calendar &rarr;</button>
-          </form>
-        </div>
-        
-        <!-- Step 3: Calendly Embed (Prefilled) -->
-        <div class="booking-modal-step" id="strat-modal-step-3" style="display: none;">
-          <div class="modal-calendly-widget-wrap">
-            <div id="strat-modal-calendly-container" style="min-width:320px;height:580px;width:100%;"></div>
-          </div>
-        </div>
-
-        <!-- Step 4: Confirmation Screen -->
-        <div class="booking-modal-step" id="strat-modal-step-4" style="display: none;">
-          <div class="funnel-confirm-container">
-            <div class="funnel-confirm-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent, #3b69ff)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="48" height="48">
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-              </svg>
-            </div>
-            <h3 class="funnel-confirm-title">Call Scheduled!</h3>
-            <p class="funnel-confirm-text">You'll have a meeting invitation waiting in your inbox.</p>
-            <p class="funnel-confirm-subtext">Open the email invitation and click <strong>Yes</strong>, <strong>Accept</strong>, or <strong>Add to calendar</strong> to confirm your slot.</p>
-            
-            <div class="funnel-confirm-img-wrap">
-              <img src="/exemple on how to accept meeting to calender.png" alt="Example of accepting meeting invitation in calendar" class="funnel-confirm-img" />
-            </div>
-
-            <div class="funnel-confirm-footer">
-              <a href="/pricing" data-link="pricing" class="funnel-confirm-pricing-link" id="strat-confirm-pricing-link">Want to check out our packages? Click here &rarr;</a>
-            </div>
-          </div>
+        <div class="modal-calendly-widget-wrap">
+          <div id="strat-modal-calendly-container" style="min-width:320px;height:580px;width:100%;"></div>
         </div>
       </div>
     </div>
@@ -2056,7 +1891,7 @@ const AUTO_REVEAL_SELECTOR = [
   '.step', '.feature-item',
   '.teaser-card', '.tier-card', '.level-one-card',
   '.pricing-plan-card', '.guarantee-card', '.pricing-bonus-block',
-  '.problem-card', '.contact-method', '.contact-form-card',
+  '.problem-card', '.contact-method',
   '.cc-copy', '.cc-visual',
   '.reviews-head',
   '.competitor-banner-text',
@@ -2137,75 +1972,6 @@ function initFactNumbers() {
   }, { threshold: 0.4 });
 
   nums.forEach(n => obs.observe(n));
-}
-
-function initFormspree() {
-  const form = document.getElementById('contact-form') as HTMLFormElement | null;
-  if (!form) return;
-
-  // Initialize formspree ajax
-  const script = document.createElement('script');
-  script.src = 'https://unpkg.com/@formspree/ajax@1';
-  script.defer = true;
-  document.head.appendChild(script);
-
-  // Use the formspree global once it's loaded
-  script.onload = () => {
-    if ((window as any).formspree) {
-      (window as any).formspree('initForm', { formElement: '#contact-form', formId: 'mykanvrr' });
-    }
-  };
-
-  // Fallback: also handle it manually with fetch for reliability
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const btn = document.getElementById('form-submit-btn') as HTMLButtonElement;
-    const successEl = document.querySelector('[data-fs-success]') as HTMLElement;
-    const errorEl = document.querySelector('[data-fs-error]:not([data-fs-error="name"]):not([data-fs-error="email"]):not([data-fs-error="message"])') as HTMLElement;
-
-    if (btn) {
-      btn.disabled = true;
-      btn.textContent = 'Sending...';
-    }
-
-    try {
-      const recaptchaToken = await getReCaptchaToken('contact_submit');
-      const data = new FormData(form);
-      if (recaptchaToken) {
-        data.append('g-recaptcha-response', recaptchaToken);
-      }
-      const res = await fetch('https://formspree.io/f/mykanvrr', {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' },
-      });
-
-      if (res.ok) {
-        form.style.display = 'none';
-        if (successEl) {
-          successEl.style.display = 'block';
-          successEl.style.textAlign = 'center';
-          successEl.style.padding = '18px';
-          successEl.style.background = 'rgba(62,207,142,.07)';
-          successEl.style.borderRadius = '10px';
-          successEl.style.border = '1px solid rgba(62,207,142,.20)';
-        }
-      } else {
-        throw new Error('Server error');
-      }
-    } catch {
-      if (errorEl) {
-        errorEl.textContent = 'Something went wrong. Please try again or email officialatlanticbear@gmail.com.';
-        errorEl.style.color = 'var(--red)';
-        errorEl.style.fontSize = '0.85rem';
-        errorEl.style.marginTop = '8px';
-      }
-      if (btn) {
-        btn.disabled = false;
-        btn.textContent = 'Try again';
-      }
-    }
-  });
 }
 
 // ─── PayPal subscription button (TikTok Ads · Shazay page) ───────────────────
@@ -2703,35 +2469,12 @@ function initBookingPageVideo(rigged = false) {
 
 
 
-// ─── Strategy Booking Qualifying Modal Flow Handler (4-Step) ────────────────
-let lastSubmittedLead = {
-  name: '',
-  phone: '',
-  business: '',
-  revenue: ''
-};
-
+// ─── Strategy Booking Modal Handler ──────────────────────────────────────────
+// Straight to Calendly — no name/phone/business/revenue qualifying steps.
+// Calendly's own scheduling form asks whatever questions we need.
 function initStrategyBookingModal() {
   const modal = document.getElementById('strat-booking-modal') as HTMLElement | null;
   const closeBtn = document.getElementById('strat-modal-close-btn') as HTMLElement | null;
-  const step1 = document.getElementById('strat-modal-step-1') as HTMLElement | null;
-  const step2 = document.getElementById('strat-modal-step-2') as HTMLElement | null;
-  const step3 = document.getElementById('strat-modal-step-3') as HTMLElement | null;
-  const step4 = document.getElementById('strat-modal-step-4') as HTMLElement | null;
-  const stepNum = document.getElementById('strat-modal-step-num') as HTMLElement | null;
-  const stepTitle = document.getElementById('strat-modal-step-title') as HTMLElement | null;
-  const stepBadge = document.getElementById('strat-modal-step-badge') as HTMLElement | null;
-  const progressBar = document.getElementById('strat-modal-progress-bar') as HTMLElement | null;
-  
-  const step1Form = document.getElementById('strat-modal-step1-form') as HTMLFormElement | null;
-  const step2Form = document.getElementById('strat-modal-step2-form') as HTMLFormElement | null;
-  const inputName = document.getElementById('strat-input-name') as HTMLInputElement | null;
-  const inputPhone = document.getElementById('strat-input-phone') as HTMLInputElement | null;
-  const inputBusiness = document.getElementById('strat-input-business') as HTMLInputElement | null;
-  const selectRevenue = document.getElementById('strat-select-revenue') as HTMLSelectElement | null;
-  const step1Error = document.getElementById('strat-modal-step1-error') as HTMLElement | null;
-  const step2Error = document.getElementById('strat-modal-step2-error') as HTMLElement | null;
-  const pricingLink = document.getElementById('strat-modal-confirm-pricing-link') as HTMLElement | null;
 
   if (!modal || !closeBtn) return;
 
@@ -2739,140 +2482,16 @@ function initStrategyBookingModal() {
     document.body.appendChild(modal);
   }
 
-  let stratName = '';
-  let stratPhone = '';
-  let stratBusiness = '';
-  let stratRevenue = '';
-
-  // ─── Phone formatting for strat modal ───
-  const stratCountryFlags: Record<string, string> = {
-    '+971': '\ud83c\udde6\ud83c\uddea', '+966': '\ud83c\uddf8\ud83c\udde6', '+968': '\ud83c\uddf4\ud83c\uddf2', '+974': '\ud83c\uddf6\ud83c\udde6', '+973': '\ud83c\udde7\ud83c\udded', '+965': '\ud83c\uddf0\ud83c\uddfc',
-    '+44': '\ud83c\uddec\ud83c\udde7', '+1': '\ud83c\uddfa\ud83c\uddf8', '+91': '\ud83c\uddee\ud83c\uddf3', '+92': '\ud83c\uddf5\ud83c\uddf0', '+63': '\ud83c\uddf5\ud83c\udded',
-    '+20': '\ud83c\uddea\ud83c\uddec', '+27': '\ud83c\uddff\ud83c\udde6', '+33': '\ud83c\uddeb\ud83c\uddf7', '+49': '\ud83c\udde9\ud83c\uddea', '+61': '\ud83c\udde6\ud83c\uddfa',
-    '+62': '\ud83c\uddee\ud83c\udde9', '+90': '\ud83c\uddf9\ud83c\uddf7', '+234': '\ud83c\uddf3\ud83c\uddec', '+254': '\ud83c\uddf0\ud83c\uddea',
-  };
-  const stratFlagEl = document.getElementById('strat-phone-flag-prefix');
-
-  const updateStratPhoneFlag = () => {
-    if (!stratFlagEl || !inputPhone) return;
-    const val = inputPhone.value.trim();
-    let matched = '\ud83c\udde6\ud83c\uddea';
-    for (const [code, flag] of Object.entries(stratCountryFlags)) {
-      if (val.startsWith(code)) { matched = flag; break; }
-    }
-    stratFlagEl.textContent = matched;
-  };
-
-  const formatStratPhone = () => {
-    if (!inputPhone) return;
-    let val = inputPhone.value;
-    let prefix = '';
-    for (const code of Object.keys(stratCountryFlags)) {
-      if (val.startsWith(code)) { prefix = code + ' '; break; }
-    }
-    if (!prefix && val.startsWith('+')) {
-      const spaceIdx = val.indexOf(' ');
-      if (spaceIdx > 0) { prefix = val.substring(0, spaceIdx + 1); }
-      else { const m = val.match(/^\+\d+/); if (m) prefix = m[0] + ' '; }
-    }
-    const suffixRaw = val.substring(prefix.length);
-    const digits = suffixRaw.replace(/\D/g, '').substring(0, 9);
-    let formattedSuffix = '';
-    if (digits.length > 0) {
-      if (digits.length <= 2) formattedSuffix = digits;
-      else if (digits.length <= 5) formattedSuffix = `${digits.substring(0, 2)} ${digits.substring(2)}`;
-      else formattedSuffix = `${digits.substring(0, 2)} ${digits.substring(2, 5)} ${digits.substring(5)}`;
-    }
-    const finalVal = prefix + formattedSuffix;
-    if (inputPhone.value !== finalVal) inputPhone.value = finalVal;
-  };
-
-  if (inputPhone) {
-    inputPhone.addEventListener('input', (e) => {
-      const inputEvent = e as InputEvent;
-      if (inputEvent.inputType && inputEvent.inputType.startsWith('delete')) {
-        updateStratPhoneFlag();
-        return;
-      }
-      formatStratPhone();
-      updateStratPhoneFlag();
-    });
-    updateStratPhoneFlag();
-  }
-
-  const openModal = () => {
-    // Reset form inputs each time modal opens so fields start clean
-    if (inputName) inputName.value = '';
-    if (inputPhone) inputPhone.value = '+971 ';
-    if (inputBusiness) inputBusiness.value = '';
-    if (selectRevenue) selectRevenue.value = '';
-    if (step1Error) step1Error.style.display = 'none';
-    if (step2Error) step2Error.style.display = 'none';
-    goToStep(1);
-
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  };
-
-  const closeModal = () => {
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
-  };
-
-  const goToStep = (step: number) => {
-    if (!step1 || !step2 || !step3 || !step4 || !stepNum || !stepTitle || !stepBadge || !progressBar) return;
-
-    if (step === 1) {
-      step1.style.display = 'block'; step2.style.display = 'none'; step3.style.display = 'none'; step4.style.display = 'none';
-      stepBadge.style.display = 'inline'; stepNum.textContent = '1'; stepTitle.textContent = 'Tell us about yourself';
-      progressBar.style.width = '33%';
-    } else if (step === 2) {
-      step1.style.display = 'none'; step2.style.display = 'block'; step3.style.display = 'none'; step4.style.display = 'none';
-      stepBadge.style.display = 'inline'; stepNum.textContent = '2'; stepTitle.textContent = 'Your business details';
-      progressBar.style.width = '66%';
-    } else if (step === 3) {
-      step1.style.display = 'none'; step2.style.display = 'none'; step3.style.display = 'block'; step4.style.display = 'none';
-      stepBadge.style.display = 'inline'; stepNum.textContent = '3'; stepTitle.textContent = 'Schedule your strategy call';
-      progressBar.style.width = '100%';
-      initCalendlyEmbed();
-    } else if (step === 4) {
-      step1.style.display = 'none'; step2.style.display = 'none'; step3.style.display = 'none'; step4.style.display = 'block';
-      stepBadge.style.display = 'none'; stepTitle.textContent = 'Call Scheduled!';
-      progressBar.style.width = '100%';
-    }
-  };
-
   const initCalendlyEmbed = () => {
     const container = document.getElementById('strat-modal-calendly-container');
     if (!container) return;
 
-    // Every lead books the same strategy call, whatever revenue they picked.
-    const calendlyBaseUrl = 'https://calendly.com/officialatlanticbear/strategy-call?hide_gdpr_banner=1&primary_color=3b69ff';
-
-    const cleanRevenue = stratRevenue.replace(/–/g, '-').trim();
-
-    // Pass custom answers across a1, a2, a3, a4 so Revenue is prefilled regardless of question order in Calendly
-    const prefillUrl = `${calendlyBaseUrl}&name=${encodeURIComponent(stratName)}&a1=${encodeURIComponent(stratPhone)}&a2=${encodeURIComponent(stratBusiness)}&a3=${encodeURIComponent(cleanRevenue)}&a4=${encodeURIComponent(cleanRevenue)}`;
+    const calendlyUrl = 'https://calendly.com/officialatlanticbear/strategy-call?hide_gdpr_banner=1&primary_color=3b69ff';
 
     container.innerHTML = '';
     attachLoaderToContainer(container);
 
-    const prefillOpts = {
-      url: prefillUrl,
-      parentElement: container,
-      prefill: {
-        name: stratName,
-        customAnswers: {
-          a1: stratPhone,
-          a2: stratBusiness,
-          a3: cleanRevenue,
-          a4: cleanRevenue,
-          a5: cleanRevenue
-        }
-      }
-    };
-
-    const doInit = () => (window as any).Calendly.initInlineWidget(prefillOpts);
+    const doInit = () => (window as any).Calendly.initInlineWidget({ url: calendlyUrl, parentElement: container });
     if ((window as any).Calendly) {
       doInit();
     } else {
@@ -2883,91 +2502,16 @@ function initStrategyBookingModal() {
     }
   };
 
-  // Step 1 Submission
-  if (step1Form) {
-    step1Form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const nameVal = inputName?.value.trim() || '';
-      const phoneVal = inputPhone?.value.trim() || '';
+  const openModal = () => {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    initCalendlyEmbed();
+  };
 
-      // Determine country prefix vs subscriber digits entered
-      let prefix = '';
-      for (const code of Object.keys(stratCountryFlags)) {
-        if (phoneVal.startsWith(code)) { prefix = code; break; }
-      }
-      if (!prefix && phoneVal.startsWith('+')) {
-        const m = phoneVal.match(/^\+\d+/);
-        if (m) prefix = m[0];
-      }
-      const digitsAfterPrefix = phoneVal.substring(prefix.length).replace(/\D/g, '');
-      const totalDigits = phoneVal.replace(/\D/g, '');
-
-      // Requires at least 6 digits after country prefix (or 7 total) to ensure a full valid phone number
-      const isPhoneValid = prefix ? digitsAfterPrefix.length >= 6 : totalDigits.length >= 7;
-
-      if (!nameVal || !isPhoneValid) {
-        if (step1Error) step1Error.style.display = 'block';
-        return;
-      }
-      if (step1Error) step1Error.style.display = 'none';
-      stratName = nameVal;
-      // Strip spaces so Calendly prefill and Google Sheets receive a clean number (e.g. +97150123456)
-      stratPhone = phoneVal.replace(/\s+/g, '');
-      lastSubmittedLead.name = nameVal;
-      lastSubmittedLead.phone = stratPhone;
-      goToStep(2);
-    });
-  }
-
-  // Step 2 Submission & Apps Script POST
-  if (step2Form) {
-    step2Form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const businessVal = inputBusiness?.value.trim() || '';
-      const revenueVal = selectRevenue?.value || '';
-
-      if (!businessVal || !revenueVal) {
-        if (step2Error) step2Error.style.display = 'block';
-        return;
-      }
-      if (step2Error) step2Error.style.display = 'none';
-      stratBusiness = businessVal;
-      stratRevenue = revenueVal;
-      lastSubmittedLead.business = businessVal;
-      lastSubmittedLead.revenue = revenueVal;
-
-      // Every lead is submitted to Google Sheets, regardless of revenue picked.
-      const submitBtn = document.getElementById('strat-modal-step2-submit-btn') as HTMLButtonElement | null;
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Verifying...';
-      }
-
-      // Execute reCAPTCHA v3 token generation before Google Sheets submission
-      const recaptchaToken = await getReCaptchaToken('booking_submit');
-
-      fetch('https://script.google.com/macros/s/AKfycbxhmc6G4n4zpk0SGvjzP81_Cd9ipLxM3Wx5MZNWzF02tBqqUMD0JCAuDnH1OojQfv7vJQ/exec', {
-        method: 'POST',
-        mode: 'no-cors',
-        body: JSON.stringify({
-          action: 'form_submit',
-          name: stratName,
-          phone: stratPhone,
-          business: stratBusiness,
-          revenue: stratRevenue,
-          source: 'strategy_call',
-          recaptchaToken: recaptchaToken || ''
-        })
-      }).catch(err => console.error('Google Sheet submission failed:', err));
-
-      if (submitBtn) {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Continue to Calendar \u2192';
-      }
-
-      goToStep(3);
-    });
-  }
+  const closeModal = () => {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  };
 
   // Close triggers — only X button closes the modal (no overlay tap, no Escape on mobile)
   closeBtn.addEventListener('click', closeModal);
@@ -2975,15 +2519,6 @@ function initStrategyBookingModal() {
     if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
   });
 
-  if (pricingLink) {
-    pricingLink.addEventListener('click', (e) => {
-      e.preventDefault();
-      closeModal();
-      navigate('pricing', true);
-    });
-  }
-
-  (window as any).goToStratBookingStep = goToStep;
   (window as any).openStratBookingModal = openModal;
 }
 
@@ -3056,10 +2591,6 @@ function navigate(page: Page, pushHistory = true) {
     initAutoReveal();
     scrollReveal();
     initFactNumbers();
-
-    if (page === 'contact') {
-      initFormspree();
-    }
 
     if (page === 'meta-ads-shazay') {
       initPaypalSubscription();
@@ -3136,11 +2667,6 @@ function initNavScroll() {
 }
 
 
-// ─── Formspree global queue ───────────────────────────────────────────────────
-(window as any).formspree = (window as any).formspree || function() {
-  ((window as any).formspree.q = (window as any).formspree.q || []).push(arguments);
-};
-
 
 
 // ─── Bootstrap ───────────────────────────────────────────────────────────────
@@ -3178,7 +2704,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   delegateLinks(app);
   initNavScroll();
-  loadReCaptchaScript();
 
   // Listen for Calendly event scheduling to track conversions via Meta Pixel & update UI state.
   window.addEventListener('message', (e) => {
