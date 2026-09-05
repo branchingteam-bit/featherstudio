@@ -192,6 +192,17 @@
       max-width: 640px;
       margin-bottom: 18px;
     }
+    .post-date {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      letter-spacing: 0.01em;
+    }
+    .post-date:empty { display: none; }
+    .featured-card .post-date { font-size: 0.85rem; }
+
     .featured-card .read-more {
       font-size: 0.9rem;
       font-weight: 700;
@@ -369,7 +380,7 @@
 
   <script>
     (function () {
-      var PAGE_SIZE = 6;
+      var PAGE_SIZE = 4;
       var PALETTE = ['#3B69FF', '#7C3AED', '#059669', '#EA580C', '#DB2777', '#0891B2', '#CA8A04'];
       var list = document.getElementById('blog-list');
       var cards = Array.prototype.slice.call(list.querySelectorAll('.blog-card'));
@@ -397,6 +408,15 @@
       cards.forEach(function (card) {
         var cat = card.getAttribute('data-category');
         if (cat) card.style.setProperty('--accent', colorFor(cat));
+        // Date slot, filled in later from the article page itself. Doing it
+        // here rather than in the card markup means posts added by the weekly
+        // auto-publish job get a date without the publisher knowing about it.
+        var slot = document.createElement('span');
+        slot.className = 'post-date';
+        slot.setAttribute('data-date-for', card.getAttribute('href'));
+        var h2 = card.querySelector('h2');
+        if (h2) h2.insertAdjacentElement('afterend', slot);
+        else card.appendChild(slot);
       });
 
       // Build filter pills from whatever categories are actually present,
@@ -431,6 +451,7 @@
         clone.innerHTML =
           '<div class="tag">' + heroSource.querySelector('.tag').textContent + '</div>' +
           '<h2>' + heroSource.querySelector('h2').textContent + '</h2>' +
+          '<span class="post-date" data-date-for="' + heroSource.getAttribute('href') + '"></span>' +
           '<p>' + heroSource.querySelector('p').textContent + '</p>' +
           '<span class="read-more">Read article →</span>';
         featuredSlot.appendChild(clone);
@@ -474,6 +495,65 @@
       });
 
       render();
+
+      // Publish dates are read from each article page's own JSON-LD
+      // ("datePublished"), which every post gets from the shared template.
+      // That means a post published by the weekly cron shows its date here
+      // automatically, with no change needed to the publishing pipeline.
+      // Only the dates actually on screen are fetched, and each URL once.
+      var dateCache = {};
+
+      function formatDate(iso) {
+        var d = new Date(iso + 'T00:00:00Z');
+        if (isNaN(d.getTime())) return '';
+        return d.toLocaleDateString('en-GB', {
+          day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC'
+        });
+      }
+
+      function applyDate(url, iso) {
+        var text = iso ? formatDate(iso) : '';
+        if (!text) return;
+        Array.prototype.forEach.call(
+          document.querySelectorAll('.post-date[data-date-for="' + url + '"]'),
+          function (el) { el.textContent = text; }
+        );
+      }
+
+      function loadDate(url) {
+        if (Object.prototype.hasOwnProperty.call(dateCache, url)) {
+          applyDate(url, dateCache[url]);
+          return;
+        }
+        dateCache[url] = null; // claim it so we only fetch once
+        fetch(url, { credentials: 'same-origin' })
+          .then(function (r) { return r.ok ? r.text() : null; })
+          .then(function (html) {
+            if (!html) return;
+            var m = html.match(/"datePublished"\s*:\s*"(\d{4}-\d{2}-\d{2})/);
+            if (!m) return;
+            dateCache[url] = m[1];
+            applyDate(url, m[1]);
+          })
+          .catch(function () { /* no date shown, card still works */ });
+      }
+
+      function loadVisibleDates() {
+        Array.prototype.forEach.call(
+          document.querySelectorAll('.post-date[data-date-for]'),
+          function (el) {
+            if (el.textContent) return;
+            if (!el.closest('.featured-card') && el.closest('.blog-card.is-hidden')) return;
+            loadDate(el.getAttribute('data-date-for'));
+          }
+        );
+      }
+
+      if (window.fetch) {
+        loadVisibleDates();
+        filterBar.addEventListener('click', loadVisibleDates);
+        loadMoreBtn.addEventListener('click', loadVisibleDates);
+      }
     })();
   </script>
 

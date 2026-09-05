@@ -331,19 +331,19 @@ function StartingPointSection(): string {
         <div class="basic-system-card reveal">
           <span class="basic-card-num">01</span>
           <h3>You've outgrown your website</h3>
-          <p>The business has changed. The website hasn't. It still reads like the version of you from three years ago: a dated layout, copy you would no longer say out loud, and a mobile experience you quietly hope nobody sees. You've stopped sending the link to good prospects, which already tells you what it's costing.</p>
+          <p>It was fine three years ago. Now it undersells you, and you've quietly stopped sending the link to good prospects. We rebuild it to match where the business actually is.</p>
         </div>
 
         <div class="basic-system-card reveal" style="transition-delay:0.08s;">
           <span class="basic-card-num">02</span>
           <h3>You've never had a proper one</h3>
-          <p>The business is real and the revenue is real, but online you're an Instagram grid, a WhatsApp number, and a pin on Google Maps. That has worked because people arrived already referred. It stops working the moment someone who wasn't referred looks you up and finds nothing that proves you're serious.</p>
+          <p>Real business, real clients, but online you're an Instagram grid and a WhatsApp number. That works until someone who wasn't referred looks you up. We build the first proper site that proves you're serious.</p>
         </div>
 
       </div>
 
       <div class="growth-teaser-text">
-        Neither is the worse starting point. A first website and a rebuild take the same five days, follow the same process, and cost the same.
+        Same five days, same process, same price either way.
       </div>
     </div>
   </section>`;
@@ -357,48 +357,40 @@ function StartingPointSection(): string {
 // them. Nationality stays out of headlines, meta descriptions, and ad copy.
 function OperatingStyleSection(): string {
   return `
-  <!-- BUILT FOR HOW YOU RUN YOUR BUSINESS -->
+  <!-- WHY WE WORK WITH THESE BUSINESSES -->
   <section class="section-pad" style="background: var(--surface); border-top:1px solid var(--border); border-bottom: 1px solid var(--border);">
     <div class="container">
       <div class="section-header centered reveal">
-        <div class="section-label">How we work</div>
+        <div class="section-label">Why us</div>
         <h2 class="section-title">We build for Western-style businesses in the UAE</h2>
-      </div>
-
-      <div class="header-callout-box reveal" style="margin-bottom: 8px;">
-        That describes how a business runs, not where its owner is from. A Western-style business sells to people who research before they buy, expects to be measured against firms in London or New York, and runs on tools rather than favours. Every one of those things changes what the website actually has to do.
       </div>
 
       <div class="basic-system-grid">
 
         <div class="basic-system-card reveal">
           <span class="basic-card-num">01</span>
-          <h3>The website is the first meeting</h3>
-          <p>In a purely relationship-led market the site is a brochure people skim after they've already decided. In yours it is the meeting. Someone finds you, reads you, and works out whether you're in their bracket before they send a single message. So the site has to carry the credibility, the proof, and the qualifying that a first call would normally do.</p>
+          <h3>We work the way you do</h3>
+          <p>Everything in English, direct, and to the point. Fixed price, written scope, agreed timeline, and no chasing us for updates. The kind of process you would expect from a good agency back home, run by a team that is actually here.</p>
         </div>
 
         <div class="basic-system-card reveal" style="transition-delay:0.08s;">
           <span class="basic-card-num">02</span>
-          <h3>You buy the way you sell</h3>
-          <p>You publish your pricing, your scope, and your process, and you expect the same in return. "Contact us for a quote" doesn't read as premium to you, it reads as evasive. That's why our prices, deliverables, timeline, and guarantees are all on this site rather than held back for a discovery call.</p>
+          <h3>We build to the standard you're used to</h3>
+          <p>Your clients, partners, and hires are comparing you to companies in London, Sydney, and New York. Your website should hold up in that company rather than look like it came off a template shelf.</p>
         </div>
 
         <div class="basic-system-card reveal" style="transition-delay:0.12s;">
           <span class="basic-card-num">03</span>
-          <h3>It has to run on the tools you already use</h3>
-          <p>You're likely already running some mix of Stripe, Calendly, Mailchimp or Klaviyo, a CRM, Google Analytics, and a Meta pixel. A website that can't connect to any of it is a dead end. We treat the site as business infrastructure: bookings, payments, forms, email capture, and tracking wired in as part of the build, not sold back to you later as an add-on.</p>
+          <h3>We know the UAE side too</h3>
+          <p>We're based in Dubai and build for this market every day. Your site is set up to be found by local search and local clients while still reading as international.</p>
         </div>
 
         <div class="basic-system-card reveal" style="transition-delay:0.16s;">
           <span class="basic-card-num">04</span>
-          <h3>You're judged against your home market</h3>
-          <p>Your clients, your partners, and the people you want to hire are comparing you to companies in London, Sydney, and New York, not only to the business two units down the road. A site that reads as a local template quietly costs you the exact audience you most need to impress.</p>
+          <h3>Your website is the first meeting</h3>
+          <p>Most people who hear your name will look you up before they contact you. We build the site to win that moment, carrying the credibility and proof a first call would normally have to do.</p>
         </div>
 
-      </div>
-
-      <div class="growth-teaser-text">
-        We're building the thing your clients judge you on, so we have to think about presentation the way you already do. Most of the job is that alignment.
       </div>
     </div>
   </section>`;
@@ -431,17 +423,13 @@ function HomePage(): string {
     <div class="container" style="position: relative; z-index: 1;">
       <h1>Your business deserves<br>to be <span class="hook-word"><span class="hook-drop-inner"><span class="hook-rig" aria-hidden="true"><span class="hook-line"></span><svg class="hook-icon" viewBox="0 0 20 34" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="3" r="2.4" stroke="currentColor" stroke-width="2"/><path d="M10 5.4 V17 C10 25.5 2.6 27 2.6 19.6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M2.6 19.6 L6 22.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><span class="hook-label text-blue">chosen</span></span></span>.</h1>
       <p class="hero-sub">
-        Most of your clients decide whether you're worth a conversation before they ever speak to you. We build custom, fully managed websites for UAE business owners who want that first impression to match the standard of the work. Live in 5 days, no templates, no lock-in.
+        We build custom websites for Western-style businesses across the UAE. Live in 5 days, fully managed, no templates.
       </p>
       <div class="hero-ctas">
         <a href="/booking" class="btn btn-primary btn-large btn-pulse" data-link="booking" id="hero-cta-book">
           Book a Call ${Icons.arrow}
         </a>
-        <a href="/pricing" class="btn btn-secondary btn-large" data-link="pricing" id="hero-cta-plans">
-          View Plans
-        </a>
       </div>
-      <p class="hero-note">Fixed pricing, fixed scope, published before you call. <a href="/pricing" data-link="pricing">See plans and pricing</a></p>
     </div>
   </section>
 
@@ -454,14 +442,10 @@ function HomePage(): string {
     </div>
   </div>
 
-  <!-- COMPETITOR BANNER -->
-  <section class="competitor-banner">
-    <div class="container">
-      <p class="competitor-banner-text">Half your market is judging you on a website you already know is out of date. <strong>Let's fix the first impression.</strong></p>
-    </div>
-  </section>
 
   ${StartingPointSection()}
+
+  ${OperatingStyleSection()}
 
   <!-- THE FACTS SECTION -->
   <section class="facts-section" style="border-top:1px solid var(--border);">
@@ -505,8 +489,6 @@ function HomePage(): string {
 
   ${ClaudeCodeSection()}
 
-  ${OperatingStyleSection()}
-
   <!-- THE MARKET LEADER SYSTEM SECTION -->
   <section class="section-pad" style="background: var(--surface); border-bottom: 1px solid var(--border);">
     <div class="container">
@@ -548,52 +530,13 @@ function HomePage(): string {
         <a href="/booking" class="btn btn-primary btn-large btn-pulse" data-link="booking">
           Get Started with Market Leader ${Icons.arrow}
         </a>
+        <p style="font-size: 0.85rem; color: var(--text-muted); max-width: 560px; margin: 18px auto 0; line-height: 1.6;">
+          Your total time involved: one 30-minute call, one short form, one 30-minute review. No contracts, and you own the site, the domain, and the files from day one.
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- WHY ATLANTIC BEAR SECTION (PLACED UNDER MARKET LEADER SYSTEM) -->
-  <section class="section-pad">
-    <div class="container">
-      <div class="section-header reveal">
-        <div class="section-label">Why Us</div>
-        <h2 class="section-title">Why Atlantic Bear</h2>
-        <p class="section-sub">The website is what people meet before they meet you. We build it to hold up under that.</p>
-      </div>
-      <div class="feature-grid">
-        <div class="feature-item reveal">
-          <div class="feature-icon-wrap">${Icons.globe}</div>
-          <h3>Win the people who research first</h3>
-          <p>Your best prospects hear your name, then check you out privately before they ever get in touch. What they find in those two minutes decides whether you get the message at all. We build for that moment.</p>
-        </div>
-        <div class="feature-item reveal">
-          <div class="feature-icon-wrap">${Icons.star}</div>
-          <h3>Look as established as you already are</h3>
-          <p>A serious business running off an Instagram grid and a WhatsApp number reads as smaller and newer than it is. The gap between how good you are and how you look online is the thing we close.</p>
-        </div>
-        <div class="feature-item reveal">
-          <div class="feature-icon-wrap">${Icons.shield}</div>
-          <h3>Own your online presence (stop renting it)</h3>
-          <p>Instagram can shadowban you. The algorithm can bury you. Meta can suspend your account overnight. Your website is the one asset you actually control.</p>
-        </div>
-        <div class="feature-item reveal">
-          <div class="feature-icon-wrap">${Icons.phone}</div>
-          <h3>Built to plug into your stack</h3>
-          <p>Bookings, payments, forms, email capture, analytics, and your pixel wired in during the build, and laid out mobile-first because that is where most of your traffic reads you. If you already run Stripe, Calendly, or a CRM, the site connects to it rather than sitting beside it.</p>
-        </div>
-        <div class="feature-item reveal">
-          <div class="feature-icon-wrap">${Icons.rocket}</div>
-          <h3>No contracts, no lock-in</h3>
-          <p>If we do good work, you stay. We don't need a contract to make that happen. Cancel anytime, we hand over everything within 48 hours.</p>
-        </div>
-        <div class="feature-item reveal" style="display:flex; flex-direction:column; justify-content:center; background:var(--surface);">
-          <h3 style="font-size:1.1rem; margin-bottom:8px;">Your total effort: under one hour</h3>
-          <p style="margin-bottom:16px; font-size:0.82rem; color:var(--text-muted);">One 30-minute discovery call. One short form. One 30-minute review call. That's it. We handle design, copy, hosting, domain, and launch.</p>
-          <a href="/booking" class="btn btn-primary btn-sm" data-link="booking" style="align-self:flex-start;">Book a Call ${Icons.arrow}</a>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- TIER TEASERS (PACKAGES) SECTION -->
   <section class="teasers-section">
@@ -679,26 +622,23 @@ function HomePage(): string {
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 40px; max-width: 900px; margin-left: auto; margin-right: auto;">
 
         <a href="/testimonials" data-link="testimonials" id="home-explore-testimonials" class="reveal" style="display: block; background: var(--bg); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 28px 28px 24px; text-decoration: none; color: inherit; transition: border-color 0.2s, box-shadow 0.2s;" onmouseover="this.style.borderColor='var(--blue)'; this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.borderColor='var(--border)'; this.style.boxShadow='none'">
-          <div style="font-size: 1.6rem; margin-bottom: 12px;">🏆</div>
           <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); margin-bottom: 8px;">Client Work</div>
           <h3 style="font-size: 1.1rem; margin: 0 0 10px; font-weight: 700;">See our client transformations</h3>
-          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin: 0 0 16px;">Real before-and-after website projects. Watch the client video review and explore how we helped Sonder Training Group grow their online presence.</p>
+          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin: 0 0 16px;">Real before-and-after builds, plus a client video review.</p>
           <span style="font-size: 0.85rem; font-weight: 700; color: var(--blue);">View testimonials →</span>
         </a>
 
         <a href="/blog" data-link="blog" id="home-explore-blog" class="reveal" style="display: block; background: var(--bg); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 28px 28px 24px; text-decoration: none; color: inherit; transition: border-color 0.2s, box-shadow 0.2s;" onmouseover="this.style.borderColor='var(--blue)'; this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.borderColor='var(--border)'; this.style.boxShadow='none'">
-          <div style="font-size: 1.6rem; margin-bottom: 12px;">📖</div>
           <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); margin-bottom: 8px;">Blog</div>
           <h3 style="font-size: 1.1rem; margin: 0 0 10px; font-weight: 700;">Website & SEO tips for UAE businesses</h3>
-          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin: 0 0 16px;">How much should a website cost in Dubai? How to get found on Google in the UAE? We answer the questions small business owners actually search for.</p>
+          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin: 0 0 16px;">Straight answers on what a website should cost, and how to get found on Google here.</p>
           <span style="font-size: 0.85rem; font-weight: 700; color: var(--blue);">Read the blog →</span>
         </a>
 
         <a href="/pricing" data-link="pricing" id="home-explore-pricing" class="reveal" style="display: block; background: var(--bg); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 28px 28px 24px; text-decoration: none; color: inherit; transition: border-color 0.2s, box-shadow 0.2s;" onmouseover="this.style.borderColor='var(--blue)'; this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.borderColor='var(--border)'; this.style.boxShadow='none'">
-          <div style="font-size: 1.6rem; margin-bottom: 12px;">💡</div>
           <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); margin-bottom: 8px;">Pricing</div>
           <h3 style="font-size: 1.1rem; margin: 0 0 10px; font-weight: 700;">Transparent pricing, no surprises</h3>
-          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin: 0 0 16px;">Two simple plans starting from AED 3,500 setup. Fully managed, no contracts, and you see the site finished before you pay anything.</p>
+          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin: 0 0 16px;">Two plans from AED 3,500 setup. Fully managed, no contracts.</p>
           <span style="font-size: 0.85rem; font-weight: 700; color: var(--blue);">See pricing →</span>
         </a>
 
@@ -913,7 +853,7 @@ function PricingPage(): string {
                 <span class="feature-val">AED 1,200 Value</span>
               </div>
               <div class="pricing-feature-row">
-                <span class="feature-desc">We build your site using your own photos. If you don't have any, we source professional images for you</span>
+                <span class="feature-desc">Professional images sourced for you if you don't have your own</span>
                 <span class="feature-val">AED 800 Value</span>
               </div>
               <div class="pricing-feature-row">
@@ -923,10 +863,6 @@ function PricingPage(): string {
               <div class="pricing-feature-row">
                 <span class="feature-desc">WhatsApp button so visitors can message you in one tap</span>
                 <span class="feature-val">AED 500 Value</span>
-              </div>
-              <div class="pricing-feature-row">
-                <span class="feature-desc">Your phone number and email placed across the site so clients contact you directly</span>
-                <span class="feature-val">Included</span>
               </div>
               <div class="pricing-feature-row">
                 <span class="feature-desc">Fully mobile responsive on every device</span>
@@ -946,18 +882,6 @@ function PricingPage(): string {
               </div>
             </div>
 
-            <!-- DEDICATED BONUS CARD -->
-            <div class="pricing-bonus-block">
-              <div class="bonus-header-row">
-                <span class="bonus-badge-label">FREE BONUS</span>
-                <span class="bonus-value-badge">AED 1,500 VALUE</span>
-              </div>
-              <h3 class="bonus-title">Free Video Guide for Meta Ads</h3>
-              <p class="bonus-subtitle">Get immediate traction after launch with step-by-step video templates:</p>
-              <ul class="bonus-bullet-list">
-                <li>Video guide: how to run Instagram and Facebook ads for your business, step by step</li>
-              </ul>
-            </div>
           </div>
 
           <div class="pricing-plan-footer">
@@ -1005,20 +929,8 @@ function PricingPage(): string {
                 <span class="feature-val">AED 1,200 Value</span>
               </div>
               <div class="pricing-feature-row">
-                <span class="feature-desc">Real contact form: visitors submit an inquiry and it lands straight in your email inbox</span>
+                <span class="feature-desc">Contact form that drops enquiries straight into your inbox</span>
                 <span class="feature-val">AED 800 Value</span>
-              </div>
-              <div class="pricing-feature-row">
-                <span class="feature-desc">Premium visual pass: custom graphics plus image and video optimization</span>
-                <span class="feature-val">AED 800 Value</span>
-              </div>
-              <div class="pricing-feature-row">
-                <span class="feature-desc">Extra design review rounds during the build, so we refine until it feels right</span>
-                <span class="feature-val">AED 600 Value</span>
-              </div>
-              <div class="pricing-feature-row">
-                <span class="feature-desc">Google Maps embedded on your contact page</span>
-                <span class="feature-val">AED 300 Value</span>
               </div>
               <div class="pricing-feature-row">
                 <span class="feature-desc">Priority build queue: your project goes to the front of the line</span>
@@ -1026,18 +938,6 @@ function PricingPage(): string {
               </div>
             </div>
 
-            <!-- DEDICATED BONUS CARD -->
-            <div class="pricing-bonus-block">
-              <div class="bonus-header-row">
-                <span class="bonus-badge-label">FREE BONUS</span>
-                <span class="bonus-value-badge">AED 1,500 VALUE</span>
-              </div>
-              <h3 class="bonus-title">Free Video Guide for Meta Ads</h3>
-              <p class="bonus-subtitle">Get immediate traction after launch with step-by-step video templates:</p>
-              <ul class="bonus-bullet-list">
-                <li>Video guide: how to run Instagram and Facebook ads for your business, step by step</li>
-              </ul>
-            </div>
           </div>
 
           <div class="pricing-plan-footer">
@@ -1051,15 +951,6 @@ function PricingPage(): string {
 
       </div>
 
-      <!-- Growth teaser note between offers -->
-      <div class="growth-teaser-text">
-        Want video on your site, a real contact form, a blog, 10 pages, and 2 changes a month instead of 1? That's the Growth Plan.
-      </div>
-      
-      <!-- Content change footnote -->
-      <div class="pricing-footnote-text">
-        * A content change is defined as a text edit, photo swap, or updated prices/hours (a small tweak). 1 content change includes up to 3 small tweaks.
-      </div>
     </div>
   </section>
 
@@ -1089,6 +980,22 @@ function PricingPage(): string {
 
       <div class="growth-teaser-text">
         If you're not sure which side of that you're on, book the call and we'll tell you straight. We would rather say no on a first call than build something that was never going to work.
+      </div>
+    </div>
+  </section>
+
+  <!-- META ADS UPSELL -->
+  <section class="section-pad-sm" style="border-top: 1px solid var(--border); background: #080b12; padding: 64px 0;">
+    <div class="container">
+      <div class="meta-ads-teaser-box reveal" style="margin-top: 0;">
+        <div class="meta-ads-teaser-content">
+          <span class="meta-ads-price-tag" style="background: rgba(235,92,92,0.2); color: #EB5C5C; font-weight: 800; font-size: 0.82rem; padding: 4px 12px; border-radius: 999px; display: inline-block; margin-bottom: 10px; border: 1px solid rgba(235,92,92,0.4);">AED 2,500 / mo retainer</span>
+          <h3>Want the traffic as well as the website?</h3>
+          <p>Once your site is live, we can run your Facebook and Instagram ads to fill it. Local UAE targeting, ad creative, and leads landing straight in your WhatsApp and inbox. Added whenever you're ready, not bundled into the build.</p>
+        </div>
+        <a href="/meta-ads" class="btn btn-primary btn-large btn-pulse" data-link="meta-ads" style="white-space: nowrap;">
+          Explore Meta Ads ${Icons.arrow}
+        </a>
       </div>
     </div>
   </section>
@@ -1211,11 +1118,7 @@ function TestimonialsPage(): string {
       <div class="case-study reveal" style="transition-delay:0.12s;">
         <div class="case-study-main">
           <h2>What we changed, and why</h2>
-          <p>Sonder Training Group deliver professional training. Their previous website did not reflect that. It had been put together years earlier, had drifted out of date, and the layout worked against them: the important information sat low on the page, the structure was difficult to scan, and the whole thing had the look of a site built once and never revisited. For a business whose customers are assessing credibility before they ever make contact, that is an expensive problem.</p>
-          <p>The brief was straightforward. Make it look like the organisation it represents, make it clear what they offer, and make it easy for someone who has just found them to take the next step.</p>
-          <p>We rebuilt the site rather than patching it. The content was restructured so the courses and the offer appear immediately instead of being buried, and each section was written to answer the question a prospective client actually has at that point on the page. The visual design was rebuilt around clear typography and generous spacing, so the page reads as considered rather than crowded.</p>
-          <p>The technical work matters as much as the appearance, even though none of it is visible. The site was built mobile-first, because most people who search for training providers do it on a phone. Pages were kept light so they load quickly on mobile data rather than only on office wifi. Headings, page titles, and meta descriptions were structured properly so search engines can understand what each page is about, and the site was given a sitemap and an SSL certificate as standard.</p>
-          <p>The result is a site that does the job the old one could not: it presents the business at the level it actually operates at, and it gives visitors an obvious route to get in touch.</p>
+          <p>Their old site had drifted years out of date and buried the important information, which is expensive for a business whose clients judge credibility before making contact. We rebuilt it rather than patched it: the courses and the offer now appear immediately, and the whole thing is mobile-first, fast, and set up properly for search.</p>
         </div>
         <aside class="case-study-side">
           <h3>Project at a glance</h3>
