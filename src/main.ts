@@ -313,6 +313,98 @@ function SectionWaves(): string {
   return `<div class="section-waves" aria-hidden="true">${svgs}</div>`;
 }
 
+// ─── Two starting situations ─────────────────────────────────────────────────
+// Qualifier section. Almost every enquiry is one of these two, and the brief is
+// explicit that first-time builds must not read as the lesser of the pair.
+function StartingPointSection(): string {
+  return `
+  <!-- WHO WE BUILD FOR -->
+  <section class="section-pad" style="border-top:1px solid var(--border);">
+    <div class="container">
+      <div class="section-header centered reveal">
+        <div class="section-label">Who we build for</div>
+        <h2 class="section-title">Two versions of the same problem</h2>
+      </div>
+
+      <div class="basic-system-grid">
+
+        <div class="basic-system-card reveal">
+          <span class="basic-card-num">01</span>
+          <h3>You've outgrown your website</h3>
+          <p>The business has changed. The website hasn't. It still reads like the version of you from three years ago: a dated layout, copy you would no longer say out loud, and a mobile experience you quietly hope nobody sees. You've stopped sending the link to good prospects, which already tells you what it's costing.</p>
+        </div>
+
+        <div class="basic-system-card reveal" style="transition-delay:0.08s;">
+          <span class="basic-card-num">02</span>
+          <h3>You've never had a proper one</h3>
+          <p>The business is real and the revenue is real, but online you're an Instagram grid, a WhatsApp number, and a pin on Google Maps. That has worked because people arrived already referred. It stops working the moment someone who wasn't referred looks you up and finds nothing that proves you're serious.</p>
+        </div>
+
+      </div>
+
+      <div class="growth-teaser-text">
+        Neither is the worse starting point. A first website and a rebuild take the same five days, follow the same process, and cost the same.
+      </div>
+    </div>
+  </section>`;
+}
+
+
+// ─── How this buyer operates ─────────────────────────────────────────────────
+// The positioning section. "Western-style" here is deliberately framed as a way
+// of running a business rather than anything about the owner, and the section
+// earns the claim by describing the operating differences instead of asserting
+// them. Nationality stays out of headlines, meta descriptions, and ad copy.
+function OperatingStyleSection(): string {
+  return `
+  <!-- BUILT FOR HOW YOU RUN YOUR BUSINESS -->
+  <section class="section-pad" style="background: var(--surface); border-top:1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="container">
+      <div class="section-header centered reveal">
+        <div class="section-label">How we work</div>
+        <h2 class="section-title">We build for Western-style businesses in the UAE</h2>
+      </div>
+
+      <div class="header-callout-box reveal" style="margin-bottom: 8px;">
+        That describes how a business runs, not where its owner is from. A Western-style business sells to people who research before they buy, expects to be measured against firms in London or New York, and runs on tools rather than favours. Every one of those things changes what the website actually has to do.
+      </div>
+
+      <div class="basic-system-grid">
+
+        <div class="basic-system-card reveal">
+          <span class="basic-card-num">01</span>
+          <h3>The website is the first meeting</h3>
+          <p>In a purely relationship-led market the site is a brochure people skim after they've already decided. In yours it is the meeting. Someone finds you, reads you, and works out whether you're in their bracket before they send a single message. So the site has to carry the credibility, the proof, and the qualifying that a first call would normally do.</p>
+        </div>
+
+        <div class="basic-system-card reveal" style="transition-delay:0.08s;">
+          <span class="basic-card-num">02</span>
+          <h3>You buy the way you sell</h3>
+          <p>You publish your pricing, your scope, and your process, and you expect the same in return. "Contact us for a quote" doesn't read as premium to you, it reads as evasive. That's why our prices, deliverables, timeline, and guarantees are all on this site rather than held back for a discovery call.</p>
+        </div>
+
+        <div class="basic-system-card reveal" style="transition-delay:0.12s;">
+          <span class="basic-card-num">03</span>
+          <h3>It has to run on the tools you already use</h3>
+          <p>You're likely already running some mix of Stripe, Calendly, Mailchimp or Klaviyo, a CRM, Google Analytics, and a Meta pixel. A website that can't connect to any of it is a dead end. We treat the site as business infrastructure: bookings, payments, forms, email capture, and tracking wired in as part of the build, not sold back to you later as an add-on.</p>
+        </div>
+
+        <div class="basic-system-card reveal" style="transition-delay:0.16s;">
+          <span class="basic-card-num">04</span>
+          <h3>You're judged against your home market</h3>
+          <p>Your clients, your partners, and the people you want to hire are comparing you to companies in London, Sydney, and New York, not only to the business two units down the road. A site that reads as a local template quietly costs you the exact audience you most need to impress.</p>
+        </div>
+
+      </div>
+
+      <div class="growth-teaser-text">
+        We're building the thing your clients judge you on, so we have to think about presentation the way you already do. Most of the job is that alignment.
+      </div>
+    </div>
+  </section>`;
+}
+
+
 // ─── Home Page ───────────────────────────────────────────────────────────────
 function HomePage(): string {
   // Build marquee items (duplicated 4 times for seamless infinite loop)
@@ -337,9 +429,9 @@ function HomePage(): string {
   <section class="hero" style="position: relative; overflow: hidden;">
     <img src="/huge-bear-watermark.webp" class="huge-bear" alt="Atlantic Bear Watermark" fetchpriority="high" width="600" height="600" />
     <div class="container" style="position: relative; z-index: 1;">
-      <h1>Your business deserves<br>to be <span class="hook-word"><span class="hook-drop-inner"><span class="hook-rig" aria-hidden="true"><span class="hook-line"></span><svg class="hook-icon" viewBox="0 0 20 34" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="3" r="2.4" stroke="currentColor" stroke-width="2"/><path d="M10 5.4 V17 C10 25.5 2.6 27 2.6 19.6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M2.6 19.6 L6 22.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><span class="hook-label text-blue">found</span></span></span>.</h1>
+      <h1>Your business deserves<br>to be <span class="hook-word"><span class="hook-drop-inner"><span class="hook-rig" aria-hidden="true"><span class="hook-line"></span><svg class="hook-icon" viewBox="0 0 20 34" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="3" r="2.4" stroke="currentColor" stroke-width="2"/><path d="M10 5.4 V17 C10 25.5 2.6 27 2.6 19.6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M2.6 19.6 L6 22.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><span class="hook-label text-blue">chosen</span></span></span>.</h1>
       <p class="hero-sub">
-        We're a Dubai-based website design agency. We build custom, fully managed websites for UAE businesses — no templates, no lock-in, live in 5 days.
+        Most of your clients decide whether you're worth a conversation before they ever speak to you. We build custom, fully managed websites for UAE business owners who want that first impression to match the standard of the work. Live in 5 days, no templates, no lock-in.
       </p>
       <div class="hero-ctas">
         <a href="/booking" class="btn btn-primary btn-large btn-pulse" data-link="booking" id="hero-cta-book">
@@ -349,7 +441,7 @@ function HomePage(): string {
           View Plans
         </a>
       </div>
-      <p class="hero-note">No templates, no lock-in, no long timelines. <a href="/pricing" data-link="pricing">See plans and pricing</a></p>
+      <p class="hero-note">Fixed pricing, fixed scope, published before you call. <a href="/pricing" data-link="pricing">See plans and pricing</a></p>
     </div>
   </section>
 
@@ -365,9 +457,11 @@ function HomePage(): string {
   <!-- COMPETITOR BANNER -->
   <section class="competitor-banner">
     <div class="container">
-      <p class="competitor-banner-text">Your competitor is capturing your clients online. <strong>Let's lock down your category in the UAE.</strong></p>
+      <p class="competitor-banner-text">Half your market is judging you on a website you already know is out of date. <strong>Let's fix the first impression.</strong></p>
     </div>
   </section>
+
+  ${StartingPointSection()}
 
   <!-- THE FACTS SECTION -->
   <section class="facts-section" style="border-top:1px solid var(--border);">
@@ -411,13 +505,15 @@ function HomePage(): string {
 
   ${ClaudeCodeSection()}
 
+  ${OperatingStyleSection()}
+
   <!-- THE MARKET LEADER SYSTEM SECTION -->
   <section class="section-pad" style="background: var(--surface); border-bottom: 1px solid var(--border);">
     <div class="container">
       <div class="section-header centered reveal">
         <div class="section-label">The Complete System</div>
         <h2 class="section-title">The Market Leader System</h2>
-        <p class="section-sub">Four core pillars engineered to give your business a dominant online presence in the UAE.</p>
+        <p class="section-sub">Four pillars, included in every build. Nothing here is an upsell later.</p>
       </div>
 
       <div class="basic-system-grid">
@@ -462,18 +558,18 @@ function HomePage(): string {
       <div class="section-header reveal">
         <div class="section-label">Why Us</div>
         <h2 class="section-title">Why Atlantic Bear</h2>
-        <p class="section-sub">We don't just build websites. We build the online presence your UAE business is missing.</p>
+        <p class="section-sub">The website is what people meet before they meet you. We build it to hold up under that.</p>
       </div>
       <div class="feature-grid">
         <div class="feature-item reveal">
           <div class="feature-icon-wrap">${Icons.globe}</div>
-          <h3>Capture clients already looking for you</h3>
-          <p>People hear about you through word of mouth, Instagram, and Google Maps in the UAE. They search your name, find nothing, and quietly choose your competitor. We stop that.</p>
+          <h3>Win the people who research first</h3>
+          <p>Your best prospects hear your name, then check you out privately before they ever get in touch. What they find in those two minutes decides whether you get the message at all. We build for that moment.</p>
         </div>
         <div class="feature-item reveal">
           <div class="feature-icon-wrap">${Icons.star}</div>
-          <h3>Look like the biggest player in your category</h3>
-          <p>A business running off WhatsApp and Instagram looks small. Your website makes you look like a 50-person company, even if you're 3 people.</p>
+          <h3>Look as established as you already are</h3>
+          <p>A serious business running off an Instagram grid and a WhatsApp number reads as smaller and newer than it is. The gap between how good you are and how you look online is the thing we close.</p>
         </div>
         <div class="feature-item reveal">
           <div class="feature-icon-wrap">${Icons.shield}</div>
@@ -482,8 +578,8 @@ function HomePage(): string {
         </div>
         <div class="feature-item reveal">
           <div class="feature-icon-wrap">${Icons.phone}</div>
-          <h3>Every screen, every device, every time</h3>
-          <p>87% of your customers visit on their phone. Your site looks flawless on every screen: mobile, tablet, desktop. No pinching, no broken layouts.</p>
+          <h3>Built to plug into your stack</h3>
+          <p>Bookings, payments, forms, email capture, analytics, and your pixel wired in during the build, and laid out mobile-first because that is where most of your traffic reads you. If you already run Stripe, Calendly, or a CRM, the site connects to it rather than sitting beside it.</p>
         </div>
         <div class="feature-item reveal">
           <div class="feature-icon-wrap">${Icons.rocket}</div>
@@ -503,8 +599,8 @@ function HomePage(): string {
   <section class="teasers-section">
     <div class="container">
       <div class="teasers-header">
-        <h2>Capture Your Category in the UAE</h2>
-        <p>Two plans. Both fully managed. We run your online reputation while you run your business.</p>
+        <h2>Fixed scope. Fixed price. Published.</h2>
+        <p>Two plans, both fully managed. You can see exactly what you get before you book a call, which is the point.</p>
       </div>
       <div class="teasers-grid" style="grid-template-columns: repeat(2, 1fr); max-width: 1000px; margin: 0 auto; gap: 28px;">
 
@@ -515,7 +611,7 @@ function HomePage(): string {
             <span class="teaser-level-name">Most Popular</span>
           </div>
           <h3>The Launch Plan</h3>
-          <p class="teaser-pitch">Everything your business needs to lock down a premium online reputation, capture existing word-of-mouth clients, and let customers reach you instantly.</p>
+          <p class="teaser-pitch">A professional site that stands up to being researched, built around one clear path from first visit to first message.</p>
           <div class="teaser-price">
             <div class="teaser-price-main">AED 3,500</div>
             <div class="teaser-price-sub">+ AED 300/mo managed</div>
@@ -538,7 +634,7 @@ function HomePage(): string {
             <span class="teaser-level-name">Scale & Video</span>
           </div>
           <h3>The Growth Plan</h3>
-          <p class="teaser-pitch">For businesses that want to look like the biggest player in their field, rank for high-intent search terms, embed fast video assets, and launch marketing funnels.</p>
+          <p class="teaser-pitch">For businesses that need more room: more pages, deeper search work, video, a real contact form, and a blog that keeps earning traffic.</p>
           <div class="teaser-price">
             <div class="teaser-price-main">AED 6,500</div>
             <div class="teaser-price-sub">+ AED 300/mo managed</div>
@@ -681,7 +777,7 @@ function MetaAdsShazayPage(): string {
       </div>
       <h1 style="color: #000;">Set Up Your Payment</h1>
       <p style="color: rgba(0,0,0,0.7); max-width: 560px; margin: 12px auto 0; font-size: 1.05rem; line-height: 1.6;">
-        Start your Atlantic Bear TikTok Ads retainer. This creates a recurring subscription, billed every 15 days, through PayPal — you can cancel at any time from your PayPal account.
+        Start your Atlantic Bear TikTok Ads retainer. This creates a recurring subscription, billed every 15 days, through PayPal. You can cancel at any time from your PayPal account.
       </p>
     </div>
   </div>
@@ -689,13 +785,13 @@ function MetaAdsShazayPage(): string {
   <section class="section-pad">
     <div class="container">
       <div style="background: var(--surface); border: 2px solid var(--border-mid); border-radius: var(--r-lg); padding: 40px; max-width: 460px; margin: 0 auto; text-align: center;">
-        <div style="font-size: 1.1rem; font-weight: 800; color: #000; letter-spacing: -0.02em; margin-bottom: 4px;">TikTok Ads — Retainer</div>
+        <div style="font-size: 1.1rem; font-weight: 800; color: #000; letter-spacing: -0.02em; margin-bottom: 4px;">TikTok Ads Retainer</div>
         <div style="font-size: 0.9rem; color: rgba(0,0,0,0.6); font-weight: 600; margin-bottom: 28px;">Billed every 15 days · Managed campaign optimization</div>
 
         <div id="paypal-button-container-P-3J276348CL7673454NKNKCRA"></div>
 
         <div id="paypal-shazay-success" style="display:none; margin-top: 8px; padding: 20px; background: rgba(46,160,67,0.08); border: 1px solid rgba(46,160,67,0.35); border-radius: var(--r-md); color: #1a7f37; font-weight: 600; font-size: 0.95rem; line-height: 1.5;">
-          Payment set up successfully. Thank you — we'll be in touch shortly to get started.
+          Payment set up successfully. Thank you, we'll be in touch shortly to get started.
         </div>
 
         <p style="font-size: 0.78rem; color: rgba(0,0,0,0.5); margin: 20px 0 0; line-height: 1.5;">
@@ -726,21 +822,21 @@ function BlogPage(): string {
         <a href="/blog/website-cost-dubai-2026" class="reveal" style="display: block; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 32px; text-decoration: none; color: inherit; transition: border-color 0.2s, box-shadow 0.2s;" onmouseover="this.style.borderColor='var(--blue)'; this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.borderColor='var(--border)'; this.style.boxShadow='none'">
           <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px;">Website Design · Dubai</div>
           <h2 style="font-size: 1.25rem; margin: 0 0 12px; font-weight: 700;">How Much Does a Website Cost in Dubai in 2026?</h2>
-          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin: 0 0 16px;">Freelancers, agencies, DIY builders — we break down the real costs of every option so you can make the right choice for your UAE business.</p>
+          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin: 0 0 16px;">Freelancers, agencies, DIY builders. We break down the real costs of every option so you can make the right choice for your UAE business.</p>
           <span style="font-size: 0.85rem; font-weight: 700; color: var(--blue);">Read article →</span>
         </a>
 
         <a href="/blog/website-agency-dubai-uae" class="reveal" style="display: block; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 32px; text-decoration: none; color: inherit; transition: border-color 0.2s, box-shadow 0.2s;" onmouseover="this.style.borderColor='var(--blue)'; this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.borderColor='var(--border)'; this.style.boxShadow='none'">
           <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px;">Agency Guide · UAE</div>
           <h2 style="font-size: 1.25rem; margin: 0 0 12px; font-weight: 700;">What to Look for in a Website Design Agency in Dubai (2026 Guide)</h2>
-          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin: 0 0 16px;">Not all agencies are the same. Here's what small business owners in Dubai and the UAE should look for — and the red flags to avoid.</p>
+          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin: 0 0 16px;">Not all agencies are the same. Here's what business owners in Dubai and the UAE should look for, and the red flags to avoid.</p>
           <span style="font-size: 0.85rem; font-weight: 700; color: var(--blue);">Read article →</span>
         </a>
 
         <a href="/blog/get-found-on-google-dubai" class="reveal" style="display: block; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 32px; text-decoration: none; color: inherit; transition: border-color 0.2s, box-shadow 0.2s;" onmouseover="this.style.borderColor='var(--blue)'; this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.borderColor='var(--border)'; this.style.boxShadow='none'">
           <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px;">SEO Guide · Dubai</div>
           <h2 style="font-size: 1.25rem; margin: 0 0 12px; font-weight: 700;">How to Get Your Dubai Business Found on Google in 2026</h2>
-          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin: 0 0 16px;">A step-by-step local SEO guide for UAE small business owners. From Google Business Profile to your website structure — what actually moves the needle.</p>
+          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin: 0 0 16px;">A step-by-step local SEO guide for UAE small business owners. From Google Business Profile to your website structure, here is what actually moves the needle.</p>
           <span style="font-size: 0.85rem; font-weight: 700; color: var(--blue);">Read article →</span>
         </a>
 
@@ -772,8 +868,8 @@ function PricingPage(): string {
   <!-- PAGE HEADER -->
   <div class="page-header" style="border-bottom:1px solid var(--border); padding-bottom: 32px;">
     <div class="container">
-      <h1>More Clients Starts Here</h1>
-      <p class="pricing-header-sub">Two plans. Both fully managed. You run your business, we run your website.</p>
+      <h1>Priced, scoped, and published.</h1>
+      <p class="pricing-header-sub">Built for businesses that are ready for their website to match the quality of what they actually do. Two plans, both fully managed, both listed in full below so you can decide before you ever speak to us.</p>
     </div>
   </div>
 
@@ -967,6 +1063,36 @@ function PricingPage(): string {
     </div>
   </section>
 
+  <!-- WHO THIS IS AND ISN'T FOR -->
+  <section class="section-pad" style="border-top:1px solid var(--border);">
+    <div class="container">
+      <div class="section-header centered reveal">
+        <div class="section-label">Fit</div>
+        <h2 class="section-title">Who this is built for</h2>
+      </div>
+
+      <div class="basic-system-grid">
+
+        <div class="basic-system-card reveal">
+          <span class="basic-card-num">A GOOD FIT</span>
+          <h3>You're already running a real business</h3>
+          <p>You have clients, revenue, and a service you're confident in. You're either replacing a site you've outgrown or getting your first proper one, and you can make the decision yourself without routing it through four stakeholders. At this size the build pays for itself on a couple of decent clients, which is exactly the point.</p>
+        </div>
+
+        <div class="basic-system-card reveal" style="transition-delay:0.08s;">
+          <span class="basic-card-num">NOT A FIT</span>
+          <h3>Where we'd tell you to look elsewhere</h3>
+          <p>Enterprise projects needing months of bespoke development, custom platforms, or a large committee to sign off. Businesses still working out whether the idea holds, where any website spend is premature. And anyone shopping purely on price: there is always someone cheaper, and we are not going to pretend to be them.</p>
+        </div>
+
+      </div>
+
+      <div class="growth-teaser-text">
+        If you're not sure which side of that you're on, book the call and we'll tell you straight. We would rather say no on a first call than build something that was never going to work.
+      </div>
+    </div>
+  </section>
+
   <!-- THE GUARANTEE STACK (ASYMMETRICAL LAYOUT) -->
   <section class="section-pad guarantee-diagonal-section" style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); overflow: hidden; padding-bottom: 72px;">
     <div class="container relative">
@@ -1026,7 +1152,7 @@ function TestimonialsPage(): string {
       </div>
       <div class="section-label reveal" style="transition-delay:0.05s;">Client Work</div>
       <h1 class="reveal" style="transition-delay:0.1s;">Here's one we're proud of.</h1>
-      <p class="reveal" style="transition-delay:0.15s;">We work with businesses across the UK and UAE. This is a look at what we do — one example from our portfolio.</p>
+      <p class="reveal" style="transition-delay:0.15s;">We work with businesses across the UK and UAE. This is a look at what we do, using one example from our portfolio.</p>
     </div>
   </div>
 
@@ -1185,7 +1311,7 @@ function ContactPage(): string {
 // ─── Legal pages ─────────────────────────────────────────────────────────────
 // General-purpose terms and a privacy notice covering what the site actually
 // collects (Calendly booking, Meta Pixel).
-// NOTE: written as a solid starting point, not as legal advice — have a
+// NOTE: written as a solid starting point, not as legal advice. Have a
 // UAE-qualified lawyer review both before relying on them.
 function LegalPage(title: string, updated: string, blocks: { h: string; p: string[] }[]): string {
   const body = blocks.map(b => `
@@ -1216,7 +1342,7 @@ function TermsPage(): string {
       'By engaging us to build or maintain a website, or by paying an invoice, you accept these terms. If you are agreeing on behalf of a company, you confirm that you are authorised to bind that company.',
     ]},
     { h: '2. Services and scope', p: [
-      'We design, build, host, and maintain websites. The exact deliverables for your project — the number of pages, the features included, and the timeline — are agreed with you in writing before work begins, whether by email, proposal, or the plan you select on our pricing page.',
+      'We design, build, host, and maintain websites. The exact deliverables for your project, the number of pages, the features included, and the timeline, are agreed with you in writing before work begins, whether by email, proposal, or the plan you select on our pricing page.',
       'Anything not set out in that written scope is not included. Requests that fall outside it, such as adding an online shop, a booking system, additional languages, or a substantial new section, are treated as new work and quoted separately. We will always tell you the cost before starting, and we will never add charges to an invoice you have not agreed to.',
     ]},
     { h: '3. Fees and payment', p: [
@@ -1317,6 +1443,26 @@ const FAQS: { q: string; a: string }[] = [
     a: 'The Launch Plan is AED 3,500 to build plus AED 300 per month, and the Growth Plan is AED 6,500 to build plus AED 300 per month. The build fee is one-off. The monthly fee covers hosting, your domain, security and software updates, backups, and unlimited small content changes. There are no setup fees, no per-page charges, and no surprise invoices later. If your project genuinely needs something outside those plans we will quote it before any work starts.',
   },
   {
+    q: 'Why pay AED 6,500 when a freelancer quoted me a fraction of that?',
+    a: 'Because you are buying different things. A freelance build is cheaper on the invoice and the cost usually shows up later: nobody to call once it is live, hosting and updates left to you, copy you end up writing yourself, and in a lot of cases a site you cannot edit and do not fully own. Our price covers the design, the copywriting, the search groundwork, hosting, backups, ongoing content changes, and a team that answers when you email. We will also be straight with you: if you need a single holding page and you already have a developer you trust, a freelancer is a perfectly sensible choice and we will tell you so on the call.',
+  },
+  {
+    q: 'Can the website connect to the tools I already use?',
+    a: 'Yes, and it is worth telling us what you run on the first call so we build around it. We regularly wire up Stripe for payments, Calendly for bookings, Mailchimp and Klaviyo for email, HubSpot and most common CRMs, Zapier for anything else, plus Google Analytics and the Meta pixel. Analytics and pixel tracking are part of the standard build rather than a paid extra, because a site you cannot measure is a site you cannot improve.',
+  },
+  {
+    q: 'Can I edit the website myself?',
+    a: 'Partly, and it depends on what you want. Your site is custom-coded rather than assembled in a page builder, which is why it loads quickly and looks the way it does, so there is no drag-and-drop editor to log into by default. In practice most clients prefer to email us: content changes are included in the monthly plan and usually done the same day. If editing things yourself genuinely matters to you, say so on the first call and we will build the sections you want to control onto a simple editor you can access. Either way you own the site and the files.',
+  },
+  {
+    q: 'What happens if I do not like the first version?',
+    a: 'You tell us, and we change it. Within about five days of kick-off you get the first version of the real site rather than a flat mockup, so you are reacting to something you can actually click through. From there you get unlimited small tweaks for the first 30 days: text, colours, images, layout, spacing, whatever is bothering you. Almost nobody loves every detail of a first draft, and the review round is a normal part of the process rather than a sign something went wrong. It also helps to send us two or three sites you like before we start, since showing us is far faster than describing it.',
+  },
+  {
+    q: 'What results should I actually expect?',
+    a: 'Here is the honest split. What we can commit to: a fast, professional site that works properly on a phone, is built on the technical groundwork search engines look for, and is wired into your booking, payment, and tracking tools. What depends on time and on you: search rankings build over months, not days, and how much traffic arrives depends on your own marketing as well as the site. The change most clients notice first is not a traffic number, it is that they start sending the link to good prospects again instead of avoiding it.',
+  },
+  {
     q: 'Who owns the website, the domain, and the files?',
     a: 'You do, from day one. The domain is registered in your business name, not ours, and the site files are yours. This matters more than most business owners realise: a common practice in the industry is to register the domain under the agency account, which means leaving costs you your web address and your search rankings. If you ever decide to move to another provider or bring the work in-house, we hand over everything within 48 hours and we do not hold anything back.',
   },
@@ -1376,7 +1522,7 @@ function FaqSection(): string {
 function StrategyBookingPage(): string {
   return `
   <div class="funnel-page">
-    <!-- Urgency Top Bar — logo left, pill centred -->
+    <!-- Urgency Top Bar: logo left, pill centred -->
     <div class="funnel-urgency-bar">
       <a href="/" class="funnel-urgency-logo" data-link="home" aria-label="Atlantic Bear Home">
         <span class="logo-wordmark">Atlantic Bear</span>
@@ -1385,18 +1531,18 @@ function StrategyBookingPage(): string {
       <div class="funnel-urgency-pill-wrap">
         <div class="funnel-urgency-pill">
           <span class="urgency-dot"></span>
-          <span>WE ONLY TAKE ON 3 NEW BUSINESSES PER WEEK — BOOK YOUR SPOT</span>
+          <span>WE ONLY TAKE ON 3 NEW BUSINESSES PER WEEK · BOOK YOUR SPOT</span>
         </div>
       </div>
     </div>
 
-    <!-- Hero — dark navy bg, massive headline -->
+    <!-- Hero: dark navy bg, massive headline -->
     <div class="funnel-hero">
       <h1 class="funnel-headline">WE BUILD WEBSITES THAT ACTUALLY CATCH CUSTOMERS</h1>
       <p class="funnel-subheadline">Watch the video below to see exactly how we build custom websites for UAE businesses and get you found online, then book your strategy call.</p>
     </div>
 
-    <!-- VSL Video Block — still on dark bg -->
+    <!-- VSL Video Block: still on dark bg -->
     <div class="funnel-video-section">
       <div class="funnel-vsl-container">
         <div class="custom-video-wrap" id="custom-video-wrap">
@@ -1487,7 +1633,7 @@ function StrategyBookingPage(): string {
     </div>
   </div>
 
-  <!-- Strategy Booking Modal — straight to Calendly, no qualifying questions -->
+  <!-- Strategy Booking Modal: straight to Calendly, no qualifying questions -->
   <div class="booking-modal-overlay" id="strat-booking-modal">
     <div class="booking-modal-container">
       <div class="booking-modal-header">
@@ -1539,7 +1685,7 @@ function BookedPage(): string {
 
 
 // ─── Internal Sales Pages ─────────────────────────────────────────────────────
-// /launch and /growth — not in nav, not in sitemap, screen-share only
+// /launch and /growth: not in nav, not in sitemap, screen-share only
 
 function SalesPillarPage(plan: 'launch' | 'growth'): string {
   const isLaunch = plan === 'launch';
@@ -1661,7 +1807,7 @@ function SalesPillarPage(plan: 'launch' | 'growth'): string {
       <div class="sp-tq-attr">Sonder Training Group, UK</div>
     </div>
 
-    <!-- INVESTMENT — gap is intentional: price stays off-screen during the pitch -->
+    <!-- INVESTMENT. Gap is intentional: price stays off-screen during the pitch -->
     <div class="sp-investment-gap"></div>
     <div class="sp-investment">
       <p class="sp-inv-eyebrow">The Investment</p>
@@ -1714,7 +1860,7 @@ const pageMap: Record<Page, () => string> = {
 const pageMeta: Record<Page, { title: string; desc: string }> = {
   home: {
     title: 'Website Design Agency in Dubai, UAE | Atlantic Bear',
-    desc: 'Atlantic Bear is a custom website design agency in Dubai, UAE. We build premium websites for small businesses — live in 5 days, fully managed, no templates.'
+    desc: 'Custom website design agency in Dubai, UAE. We build professional, conversion-focused websites for serious UAE business owners. Live in 5 days, fully managed.'
   },
   pricing: {
     title: 'Website Design Pricing in Dubai & UAE | Atlantic Bear',
@@ -1722,14 +1868,14 @@ const pageMeta: Record<Page, { title: string; desc: string }> = {
   },
   contact: {
     title: 'Contact a Dubai Website Design Agency | Atlantic Bear',
-    desc: 'Get in touch with Atlantic Bear — a custom website design agency based in Dubai. Fast response, usually within a few hours. Start your UAE website project today.'
+    desc: 'Get in touch with Atlantic Bear, a custom website design agency based in Dubai. Fast response, usually within a few hours. Start your UAE website project today.'
   },
   testimonials: {
     title: 'Client Reviews & Website Transformations | Atlantic Bear Dubai',
     desc: 'See real client results from Atlantic Bear. Before and after website case studies for businesses in the UAE and UK. Watch client video testimonials.'
   },
   booking: {
-    title: 'Book a Free Call — Website Agency Dubai | Atlantic Bear',
+    title: 'Book a Free Call | Website Agency Dubai | Atlantic Bear',
     desc: 'Book a free 30-minute strategy call with Atlantic Bear, a website design agency in Dubai. Watch our overview video and schedule your slot.'
   },
   booked: {
@@ -1741,7 +1887,7 @@ const pageMeta: Record<Page, { title: string; desc: string }> = {
     desc: 'Run targeted Facebook and Instagram ad campaigns in Dubai and the UAE with Atlantic Bear. Local targeting, ad creatives, and direct WhatsApp leads. AED 2,500/mo.'
   },
   'meta-ads-shazay': {
-    title: 'TikTok Ads Retainer — Payment | Atlantic Bear',
+    title: 'TikTok Ads Retainer Payment | Atlantic Bear',
     desc: 'Set up your Atlantic Bear TikTok Ads retainer subscription, billed every 15 days.'
   },
   terms: {
@@ -1753,16 +1899,16 @@ const pageMeta: Record<Page, { title: string; desc: string }> = {
     desc: 'How Atlantic Bear collects, uses, stores, and protects the personal information you share through our website.'
   },
   blog: {
-    title: 'Blog — Website Design & SEO Tips for UAE Businesses | Atlantic Bear',
+    title: 'Blog: Website Design & SEO Tips for UAE Businesses | Atlantic Bear',
     desc: 'Expert articles on website design, SEO, and digital marketing for small businesses in Dubai and the UAE. Written by the Atlantic Bear team.'
   },
   launch: {
     title: 'The Launch Plan | Atlantic Bear',
-    desc: 'Atlantic Bear Launch Plan — internal sales presentation.'
+    desc: 'Atlantic Bear Launch Plan, internal sales presentation.'
   },
   growth: {
     title: 'The Growth Plan | Atlantic Bear',
-    desc: 'Atlantic Bear Growth Plan — internal sales presentation.'
+    desc: 'Atlantic Bear Growth Plan, internal sales presentation.'
   }
 } as Record<Page, { title: string; desc: string }>;
 
@@ -1975,8 +2121,8 @@ function initFactNumbers() {
 }
 
 // ─── PayPal subscription button (TikTok Ads · Shazay page) ───────────────────
-// The PayPal SDK is loaded on demand — only when the client opens the private
-// /meta-ads-shazay link — so it never touches any other route. Loading the SDK
+// The PayPal SDK is loaded on demand, only when the client opens the private
+// /meta-ads-shazay link, so it never touches any other route. Loading the SDK
 // twice throws, so the <script> is injected once and reused on return visits.
 function initPaypalSubscription() {
   const PLAN_ID = 'P-3J276348CL7673454NKNKCRA';
@@ -2248,7 +2394,7 @@ function initBookingPageVideo(rigged = false) {
     }
   };
 
-  // Play on overlay click — stop preview loop, unmute, play
+  // Play on overlay click: stop preview loop, unmute, play
   overlay.addEventListener('click', () => {
     if (isPreviewLooping) {
       isPreviewLooping = false;
@@ -2323,7 +2469,7 @@ function initBookingPageVideo(rigged = false) {
     const currentTime = video.currentTime;
     const pct = (currentTime / duration) * 100;
 
-    // Track play initiation (at >0.5s playback) — Abacus analytics
+    // Track play initiation (at >0.5s playback) via Abacus analytics
     if (!played && currentTime > 0.5 && !isPreviewLooping) {
       played = true;
       trackAbacusEvent('videoplay');
@@ -2332,7 +2478,7 @@ function initBookingPageVideo(rigged = false) {
     // Skip milestone tracking during muted preview loop
     if (isPreviewLooping) return;
 
-    // Milestones progress — Abacus + Meta Pixel
+    // Milestones progress: Abacus + Meta Pixel
     if (pct >= 25 && !milestonesFired.m25) {
       milestonesFired.m25 = true;
       trackAbacusEvent('videowatch_25pct');
@@ -2432,7 +2578,7 @@ function initBookingPageVideo(rigged = false) {
           // Safari desktop
           (wrap as any).webkitRequestFullscreen();
         } else if ((video as any).webkitEnterFullscreen) {
-          // iOS Safari — only video elements can go fullscreen
+          // iOS Safari: only video elements can go fullscreen
           (video as any).webkitEnterFullscreen();
         }
       } else {
@@ -2470,7 +2616,7 @@ function initBookingPageVideo(rigged = false) {
 
 
 // ─── Strategy Booking Modal Handler ──────────────────────────────────────────
-// Straight to Calendly — no name/phone/business/revenue qualifying steps.
+// Straight to Calendly, no name/phone/business/revenue qualifying steps.
 // Calendly's own scheduling form asks whatever questions we need.
 function initStrategyBookingModal() {
   const modal = document.getElementById('strat-booking-modal') as HTMLElement | null;
@@ -2513,7 +2659,7 @@ function initStrategyBookingModal() {
     document.body.style.overflow = '';
   };
 
-  // Close triggers — only X button closes the modal (no overlay tap, no Escape on mobile)
+  // Close triggers: only X button closes the modal (no overlay tap, no Escape on mobile)
   closeBtn.addEventListener('click', closeModal);
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
@@ -2608,7 +2754,7 @@ function navigate(page: Page, pushHistory = true) {
         initStrategyBookingModal();
         document.querySelectorAll('.strat-modal-trigger, .funnel-cta-wrap .funnel-cta-btn').forEach(btn => {
           btn.addEventListener('click', () => {
-            // Fire BookButtonClick pixel event (once per click, not per session — each tap is intentional)
+            // Fire BookButtonClick pixel event (once per click, not per session, since each tap is intentional)
             if (typeof (window as any).fbq === 'function' && !isInternalSession()) {
               (window as any).fbq('trackCustom', 'BookButtonClick');
             }

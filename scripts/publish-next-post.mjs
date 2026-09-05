@@ -1,10 +1,10 @@
 /**
  * Manual/local version of what api/cron-publish.js does automatically every
  * week. Run this yourself (`node scripts/publish-next-post.mjs`) to publish
- * the next queued post right now instead of waiting for the weekly cron —
- * useful for testing or for pushing an extra post out of schedule.
+ * the next queued post right now instead of waiting for the weekly cron.
+ * Useful for testing or for pushing an extra post out of schedule.
  *
- * It does NOT commit or push — it just writes the files. Review the diff,
+ * It does NOT commit or push, it just writes the files. Review the diff,
  * then `git add -A && git commit && git push` (or let the cron do it).
  */
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
