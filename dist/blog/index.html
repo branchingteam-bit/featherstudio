@@ -136,62 +136,6 @@
     }
     .filter-pill.active .dot { background: #fff; }
 
-    /* FEATURED / HERO POST */
-    .featured-wrap {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 36px 24px 0;
-    }
-    .featured-wrap.is-hidden { display: none; }
-    .featured-label {
-      font-size: 0.7rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 12px;
-    }
-    .featured-card {
-      display: block;
-      position: relative;
-      background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 10%, white), #fff);
-      border: 1px solid var(--border);
-      border-top: 4px solid var(--accent);
-      border-radius: var(--r);
-      padding: 40px;
-      text-decoration: none;
-      color: inherit;
-      transition: box-shadow 0.2s, transform 0.2s;
-    }
-    .featured-card:hover {
-      box-shadow: 0 16px 40px rgba(0,0,0,0.1);
-      transform: translateY(-2px);
-    }
-    .featured-card .tag {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 800;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      color: #fff;
-      background: var(--accent);
-      padding: 5px 12px;
-      border-radius: 999px;
-      margin-bottom: 16px;
-    }
-    .featured-card h2 {
-      font-size: clamp(1.35rem, 3vw, 1.9rem);
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      margin-bottom: 12px;
-      max-width: 720px;
-    }
-    .featured-card p {
-      font-size: 1rem;
-      color: var(--text-muted);
-      max-width: 640px;
-      margin-bottom: 18px;
-    }
     .post-date {
       display: block;
       font-size: 0.78rem;
@@ -201,13 +145,6 @@
       letter-spacing: 0.01em;
     }
     .post-date:empty { display: none; }
-    .featured-card .post-date { font-size: 0.85rem; }
-
-    .featured-card .read-more {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--accent);
-    }
 
     /* GRID */
     .blog-list {
@@ -234,7 +171,36 @@
       box-shadow: 0 10px 28px rgba(0,0,0,0.08);
       transform: translateY(-2px);
     }
-    .blog-card.is-hidden, .blog-card.is-hero { display: none; }
+    .blog-card.is-hidden { display: none; }
+
+    /* The newest post: full width, larger, labelled. Still a .blog-card so
+       it reads as the same kind of thing as the ones below it. */
+    .blog-card.featured {
+      grid-column: 1 / -1;
+      border-left: 1px solid var(--border);
+      border-top: 4px solid var(--accent);
+      background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 9%, white), #fff);
+      padding: 38px 40px 32px;
+    }
+    .blog-card.featured::before {
+      content: 'Latest article';
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .blog-card.featured h2 {
+      font-size: clamp(1.3rem, 3vw, 1.85rem);
+      letter-spacing: -0.02em;
+      max-width: 720px;
+    }
+    .blog-card.featured p {
+      font-size: 1rem;
+      max-width: 640px;
+    }
+    .blog-card.featured .post-date { font-size: 0.85rem; }
     .blog-card .tag {
       display: inline-flex;
       align-items: center;
@@ -330,12 +296,6 @@
     <button type="button" class="filter-pill active" data-filter="all"><span class="dot"></span>All</button>
   </div>
 
-  <div class="featured-wrap" id="featured-wrap">
-    <div class="featured-label">Latest article</div>
-    <!-- populated by script from the first card in #blog-list -->
-    <div id="featured-slot"></div>
-  </div>
-
   <div class="blog-list" id="blog-list">
 
     <a href="/blog/website-for-western-owned-business-uae" class="blog-card" data-category="Agency Guide">
@@ -388,8 +348,6 @@
       var emptyState = document.getElementById('empty-state');
       var loadMoreWrap = document.getElementById('load-more-wrap');
       var loadMoreBtn = document.getElementById('load-more-btn');
-      var featuredWrap = document.getElementById('featured-wrap');
-      var featuredSlot = document.getElementById('featured-slot');
 
       var activeFilter = 'all';
       var visibleCount = PAGE_SIZE;
@@ -437,44 +395,26 @@
         filterBar.appendChild(btn);
       });
 
-      // The most recent post (first card in the list) becomes the large
-      // featured block up top when browsing "All". A cloned link keeps the
-      // original card in the grid/filter logic untouched.
-      var heroSource = cards[0] || null;
-      if (heroSource) {
-        heroSource.classList.add('is-hero');
-        var accent = heroSource.style.getPropertyValue('--accent');
-        var clone = document.createElement('a');
-        clone.href = heroSource.getAttribute('href');
-        clone.className = 'featured-card';
-        if (accent) clone.style.setProperty('--accent', accent);
-        clone.innerHTML =
-          '<div class="tag">' + heroSource.querySelector('.tag').textContent + '</div>' +
-          '<h2>' + heroSource.querySelector('h2').textContent + '</h2>' +
-          '<span class="post-date" data-date-for="' + heroSource.getAttribute('href') + '"></span>' +
-          '<p class="featured-excerpt" data-excerpt-for="' + heroSource.getAttribute('href') + '">' +
-            heroSource.querySelector('p').textContent + '</p>' +
-          '<span class="read-more">Read the full article →</span>';
-        featuredSlot.appendChild(clone);
-      } else {
-        featuredWrap.classList.add('is-hidden');
-      }
-
       function render() {
-        var showHero = activeFilter === 'all';
-        featuredWrap.classList.toggle('is-hidden', !showHero || !heroSource);
-
         var pool = cards.filter(function (card) {
-          if (showHero && card === heroSource) return false; // already shown as the featured block
           return activeFilter === 'all' || card.getAttribute('data-category') === activeFilter;
         });
 
-        cards.forEach(function (card) { card.classList.add('is-hidden'); });
+        cards.forEach(function (card) {
+          card.classList.add('is-hidden');
+          card.classList.remove('featured');
+        });
         pool.slice(0, visibleCount).forEach(function (card) {
           card.classList.remove('is-hidden');
         });
 
-        emptyState.classList.toggle('is-visible', pool.length === 0 && !showHero);
+        // The newest post (first in the list) shows as the large featured
+        // card, but only in the unfiltered view where it is genuinely first.
+        if (activeFilter === 'all' && pool.length) {
+          pool[0].classList.add('featured');
+        }
+
+        emptyState.classList.toggle('is-visible', pool.length === 0);
         loadMoreWrap.classList.toggle('is-hidden', pool.length <= visibleCount);
       }
 
@@ -497,12 +437,13 @@
 
       render();
 
-      // Publish dates are read from each article page's own JSON-LD
-      // ("datePublished"), which every post gets from the shared template.
-      // That means a post published by the weekly cron shows its date here
-      // automatically, with no change needed to the publishing pipeline.
-      // Only the dates actually on screen are fetched, and each URL once.
-      var pageCache = {};
+      // Each card's publish date is read from that article page's own
+      // JSON-LD ("datePublished"), which every post gets from the shared
+      // template. A post added by the weekly cron therefore shows its date
+      // here with no change to the publishing pipeline. Only visible cards
+      // are fetched, and each URL only once. A failed fetch just leaves the
+      // date off; the card still works.
+      var dateCache = {};
 
       function formatDate(iso) {
         var d = new Date(iso + 'T00:00:00Z');
@@ -512,80 +453,48 @@
         });
       }
 
-      function applyInfo(url, info) {
-        if (!info) return;
-        if (info.date) {
-          var text = formatDate(info.date);
-          if (text) {
-            Array.prototype.forEach.call(
-              document.querySelectorAll('.post-date[data-date-for="' + url + '"]'),
-              function (el) { el.textContent = text; }
-            );
-          }
-        }
-        if (info.excerpt) {
-          Array.prototype.forEach.call(
-            document.querySelectorAll('.featured-excerpt[data-excerpt-for="' + url + '"]'),
-            function (el) { el.textContent = info.excerpt; }
-          );
-        }
+      function applyDate(url, iso) {
+        var text = iso ? formatDate(iso) : '';
+        if (!text) return;
+        Array.prototype.forEach.call(
+          document.querySelectorAll('.post-date[data-date-for="' + url + '"]'),
+          function (el) { el.textContent = text; }
+        );
       }
 
-      // Pull the opening of the article itself so the featured block shows a
-      // real taste of the post rather than the card blurb. Parsed with
-      // DOMParser, which does not run scripts or load anything.
-      function parsePage(html) {
-        var info = { date: null, excerpt: null };
-        var m = html.match(/"datePublished"\s*:\s*"(\d{4}-\d{2}-\d{2})/);
-        if (m) info.date = m[1];
-        try {
-          var doc = new DOMParser().parseFromString(html, 'text/html');
-          var para = doc.querySelector('.article-wrap p');
-          if (para) {
-            var t = (para.textContent || '').replace(/\s+/g, ' ').trim();
-            if (t.length > 260) {
-              var cut = t.slice(0, 260);
-              var stop = cut.lastIndexOf(' ');
-              t = (stop > 180 ? cut.slice(0, stop) : cut) + '...';
-            }
-            if (t) info.excerpt = t;
-          }
-        } catch (e) { /* excerpt is optional */ }
-        return info;
-      }
-
-      function loadPage(url) {
-        if (Object.prototype.hasOwnProperty.call(pageCache, url)) {
-          applyInfo(url, pageCache[url]);
+      function loadDate(url) {
+        if (Object.prototype.hasOwnProperty.call(dateCache, url)) {
+          applyDate(url, dateCache[url]);
           return;
         }
-        pageCache[url] = null; // claim it so we only fetch once
+        dateCache[url] = null; // claim it so we only fetch once
         fetch(url, { credentials: 'same-origin' })
           .then(function (r) { return r.ok ? r.text() : null; })
           .then(function (html) {
             if (!html) return;
-            var info = parsePage(html);
-            pageCache[url] = info;
-            applyInfo(url, info);
+            var m = html.match(/"datePublished"\s*:\s*"(\d{4}-\d{2}-\d{2})/);
+            if (!m) return;
+            dateCache[url] = m[1];
+            applyDate(url, m[1]);
           })
-          .catch(function () { /* card still works without this */ });
+          .catch(function () { /* card still works without a date */ });
       }
 
-      function loadVisibleInfo() {
+      function loadVisibleDates() {
         Array.prototype.forEach.call(
           document.querySelectorAll('.post-date[data-date-for]'),
           function (el) {
             if (el.textContent) return;
-            if (!el.closest('.featured-card') && el.closest('.blog-card.is-hidden')) return;
-            loadPage(el.getAttribute('data-date-for'));
+            if (el.closest('.blog-card.is-hidden')) return;
+            loadDate(el.getAttribute('data-date-for'));
           }
         );
       }
 
       if (window.fetch) {
-        loadVisibleInfo();
-        filterBar.addEventListener('click', loadVisibleInfo);
-        loadMoreBtn.addEventListener('click', loadVisibleInfo);
+        loadVisibleDates();
+        filterBar.addEventListener('click', loadVisibleDates);
+        loadMoreBtn.addEventListener('click', loadVisibleDates);
       }
     })();
   </script>

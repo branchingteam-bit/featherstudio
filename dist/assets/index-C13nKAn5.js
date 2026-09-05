@@ -696,11 +696,7 @@
             <div class="pricing-stack-header pricing-margin-top">YOUR MONTHLY CARE, AED 300:</div>
             <div class="pricing-features-list">
               <div class="pricing-feature-row">
-                <span class="feature-desc">Hosting and daily backups</span>
-                <span class="feature-val">Included</span>
-              </div>
-              <div class="pricing-feature-row">
-                <span class="feature-desc">Ongoing support from our team whenever you need something</span>
+                <span class="feature-desc">Everything in the Launch monthly care: hosting, backups, and ongoing support</span>
                 <span class="feature-val">Included</span>
               </div>
               <div class="pricing-feature-row highlight-row">
