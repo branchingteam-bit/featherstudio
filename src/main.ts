@@ -144,7 +144,7 @@ function Navbar(): string {
   return `
   <nav class="nav" id="main-nav">
     <a href="/" class="logo" data-link="home" id="logo-btn" aria-label="Atlantic Bear Home">
-      <span class="logo-wordmark">Atlantic</span>
+      <span class="logo-wordmark">Atlantic Bear</span>
       <img src="/atlanticbear-mark.png" alt="Atlantic Bear Logo" class="logo-bear-img" width="56" height="56" fetchpriority="high" />
     </a>
     <div class="nav-links">
@@ -168,7 +168,7 @@ function Footer(): string {
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="/" class="logo" data-link="home" aria-label="Atlantic Bear Home">
-            <span class="logo-wordmark">Atlantic</span>
+            <span class="logo-wordmark">Atlantic Bear</span>
             <img src="/atlanticbear-logo.png" alt="Atlantic Bear Logo" class="footer-bear-img" width="28" height="28" />
           </a>
           <p>Professional websites for businesses across the UAE.</p>
@@ -1379,7 +1379,7 @@ function StrategyBookingPage(): string {
     <!-- Urgency Top Bar — logo left, pill centred -->
     <div class="funnel-urgency-bar">
       <a href="/" class="funnel-urgency-logo" data-link="home" aria-label="Atlantic Bear Home">
-        <span class="logo-wordmark">Atlantic</span>
+        <span class="logo-wordmark">Atlantic Bear</span>
         <img src="/atlanticbear-logo.png" alt="Atlantic Bear Logo" class="logo-bear-img" width="36" height="36" />
       </a>
       <div class="funnel-urgency-pill-wrap">

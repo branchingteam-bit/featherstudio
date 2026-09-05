@@ -10,14 +10,17 @@ Not "small business" in general anymore. Specifically:
 
 - **Established, not brand-new.** A business that already has some traction,
   clients, or revenue, not someone testing an idea on zero budget.
-- **Mid-sized, not enterprise.** They do not need (and will not pay for) a
-  60,000-200,000+ AED custom build with a big agency. Our AED 3,500 / 6,500
-  setup + AED 300/mo pricing should feel like an obvious, easy yes to them,
-  not a stretch and not "too cheap to be good."
-- **Not a micro-freelancer or solopreneur running on a shoestring.** If AED
-  3,500 is a real stretch for them, they're not the fit; they'll want DIY or
-  a cheap freelancer instead, and that's fine, that's not who we're writing
-  for.
+- **Small to medium by revenue, roughly AED 5,000-100,000 a month.** That's
+  the real range: a solo operator doing a few thousand a month up through a
+  business doing six figures a month is all still a fit. Not enterprise,
+  they do not need (and will not pay for) a 60,000-200,000+ AED custom build
+  with a big agency. Our AED 3,500 / 6,500 setup + AED 300/mo pricing should
+  feel like an obvious, easy yes across that whole range, not a stretch and
+  not "too cheap to be good."
+- **Not a true micro-freelancer or side-hustle with no real revenue yet.**
+  If AED 3,500 is a real stretch for them, they're not the fit; they'll want
+  DIY or a cheap freelancer instead, and that's fine, that's not who we're
+  writing for.
 - **Professional communicators who care how they're presented.** They think
   about brand, tone, and how a client perceives them before they've even met.
   They want a site that reads as competent and current, not just "a website

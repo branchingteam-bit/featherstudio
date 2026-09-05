@@ -27,7 +27,8 @@
       --border: #e8e8e8;
       --text: #111;
       --text-muted: #666;
-      --r: 12px;
+      --r: 14px;
+      --accent: #3B69FF;
     }
     body {
       font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -68,8 +69,8 @@
       font-size: 0.85rem;
     }
     .header {
-      padding: 64px 24px 32px;
-      max-width: 800px;
+      padding: 60px 24px 28px;
+      max-width: 1080px;
       margin: 0 auto;
     }
     .header .label {
@@ -90,18 +91,19 @@
     .header p {
       font-size: 1rem;
       color: var(--text-muted);
-      max-width: 520px;
+      max-width: 560px;
     }
     /* CATEGORY FILTER */
     .filter-bar {
-      max-width: 800px;
+      max-width: 1080px;
       margin: 0 auto;
       padding: 0 24px 24px;
       display: flex;
       flex-wrap: wrap;
+      align-items: center;
       gap: 8px;
       border-bottom: 1px solid var(--border);
-      padding-bottom: 28px;
+      padding-bottom: 24px;
     }
     .filter-pill {
       font-family: inherit;
@@ -114,62 +116,153 @@
       padding: 7px 16px;
       cursor: pointer;
       transition: background 0.15s, border-color 0.15s, color 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
+    .filter-pill .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+    .filter-pill[data-filter="all"] .dot { display: none; }
     .filter-pill:hover { border-color: var(--blue); }
     .filter-pill.active {
       background: #000;
       border-color: #000;
       color: #fff;
     }
-    .blog-list {
-      max-width: 800px;
+    .filter-pill.active .dot { background: #fff; }
+
+    /* FEATURED / HERO POST */
+    .featured-wrap {
+      max-width: 1080px;
       margin: 0 auto;
-      padding: 40px 24px 24px;
-      display: grid;
-      gap: 24px;
+      padding: 36px 24px 0;
     }
-    .blog-card {
+    .featured-wrap.is-hidden { display: none; }
+    .featured-label {
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .featured-card {
       display: block;
-      background: var(--surface);
+      position: relative;
+      background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 10%, white), #fff);
       border: 1px solid var(--border);
+      border-top: 4px solid var(--accent);
       border-radius: var(--r);
-      padding: 32px;
+      padding: 40px;
       text-decoration: none;
       color: inherit;
-      transition: border-color 0.2s, box-shadow 0.2s;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .featured-card:hover {
+      box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+    .featured-card .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--accent);
+      padding: 5px 12px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+    .featured-card h2 {
+      font-size: clamp(1.35rem, 3vw, 1.9rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      max-width: 720px;
+    }
+    .featured-card p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 640px;
+      margin-bottom: 18px;
+    }
+    .featured-card .read-more {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    /* GRID */
+    .blog-list {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 32px 24px 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .blog-card {
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--r);
+      padding: 26px 26px 22px;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
     }
     .blog-card:hover {
-      border-color: var(--blue);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
     }
-    .blog-card.is-hidden { display: none; }
+    .blog-card.is-hidden, .blog-card.is-hero { display: none; }
     .blog-card .tag {
-      font-size: 0.72rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.7rem;
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 10px;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .blog-card .tag::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
     }
     .blog-card h2 {
-      font-size: 1.2rem;
+      font-size: 1.08rem;
       font-weight: 700;
       margin-bottom: 10px;
       color: #000;
+      flex-grow: 0;
     }
     .blog-card p {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--text-muted);
       line-height: 1.6;
       margin-bottom: 16px;
+      flex-grow: 1;
     }
     .blog-card .read-more {
       font-size: 0.85rem;
       font-weight: 700;
-      color: var(--blue);
+      color: var(--accent);
     }
     .empty-state {
-      max-width: 800px;
+      max-width: 1080px;
       margin: 0 auto;
       padding: 0 24px 60px;
       color: var(--text-muted);
@@ -178,9 +271,9 @@
     }
     .empty-state.is-visible { display: block; }
     .load-more-wrap {
-      max-width: 800px;
+      max-width: 1080px;
       margin: 0 auto;
-      padding: 0 24px 80px;
+      padding: 8px 24px 80px;
       text-align: center;
     }
     .load-more-btn {
@@ -210,7 +303,7 @@
 
   <nav class="nav">
     <a href="/" class="nav-logo">
-      Atlantic
+      Atlantic Bear
       <img src="/atlanticbear-logo.png" alt="Atlantic Bear Logo" />
     </a>
     <a href="/booking" class="nav-cta">Book a Free Call →</a>
@@ -223,7 +316,13 @@
   </div>
 
   <div class="filter-bar" id="filter-bar">
-    <button type="button" class="filter-pill active" data-filter="all">All</button>
+    <button type="button" class="filter-pill active" data-filter="all"><span class="dot"></span>All</button>
+  </div>
+
+  <div class="featured-wrap" id="featured-wrap">
+    <div class="featured-label">Latest article</div>
+    <!-- populated by script from the first card in #blog-list -->
+    <div id="featured-slot"></div>
   </div>
 
   <div class="blog-list" id="blog-list">
@@ -271,15 +370,34 @@
   <script>
     (function () {
       var PAGE_SIZE = 6;
+      var PALETTE = ['#3B69FF', '#7C3AED', '#059669', '#EA580C', '#DB2777', '#0891B2', '#CA8A04'];
       var list = document.getElementById('blog-list');
       var cards = Array.prototype.slice.call(list.querySelectorAll('.blog-card'));
       var filterBar = document.getElementById('filter-bar');
       var emptyState = document.getElementById('empty-state');
       var loadMoreWrap = document.getElementById('load-more-wrap');
       var loadMoreBtn = document.getElementById('load-more-btn');
+      var featuredWrap = document.getElementById('featured-wrap');
+      var featuredSlot = document.getElementById('featured-slot');
 
       var activeFilter = 'all';
       var visibleCount = PAGE_SIZE;
+
+      // Deterministic accent color per category, so the same category always
+      // gets the same color, and any new category (from a future auto-published
+      // post) still gets a consistent one without editing this file by hand.
+      function colorFor(category) {
+        var hash = 0;
+        for (var i = 0; i < category.length; i++) {
+          hash = (hash * 31 + category.charCodeAt(i)) >>> 0;
+        }
+        return PALETTE[hash % PALETTE.length];
+      }
+
+      cards.forEach(function (card) {
+        var cat = card.getAttribute('data-category');
+        if (cat) card.style.setProperty('--accent', colorFor(cat));
+      });
 
       // Build filter pills from whatever categories are actually present,
       // so new blog posts (added by the weekly auto-publish job) show up
@@ -294,22 +412,48 @@
         btn.type = 'button';
         btn.className = 'filter-pill';
         btn.setAttribute('data-filter', cat);
-        btn.textContent = cat;
+        btn.style.setProperty('--accent', colorFor(cat));
+        btn.innerHTML = '<span class="dot"></span>' + cat;
         filterBar.appendChild(btn);
       });
 
+      // The most recent post (first card in the list) becomes the large
+      // featured block up top when browsing "All". A cloned link keeps the
+      // original card in the grid/filter logic untouched.
+      var heroSource = cards[0] || null;
+      if (heroSource) {
+        heroSource.classList.add('is-hero');
+        var accent = heroSource.style.getPropertyValue('--accent');
+        var clone = document.createElement('a');
+        clone.href = heroSource.getAttribute('href');
+        clone.className = 'featured-card';
+        if (accent) clone.style.setProperty('--accent', accent);
+        clone.innerHTML =
+          '<div class="tag">' + heroSource.querySelector('.tag').textContent + '</div>' +
+          '<h2>' + heroSource.querySelector('h2').textContent + '</h2>' +
+          '<p>' + heroSource.querySelector('p').textContent + '</p>' +
+          '<span class="read-more">Read article →</span>';
+        featuredSlot.appendChild(clone);
+      } else {
+        featuredWrap.classList.add('is-hidden');
+      }
+
       function render() {
-        var matching = cards.filter(function (card) {
+        var showHero = activeFilter === 'all';
+        featuredWrap.classList.toggle('is-hidden', !showHero || !heroSource);
+
+        var pool = cards.filter(function (card) {
+          if (showHero && card === heroSource) return false; // already shown as the featured block
           return activeFilter === 'all' || card.getAttribute('data-category') === activeFilter;
         });
 
         cards.forEach(function (card) { card.classList.add('is-hidden'); });
-        matching.slice(0, visibleCount).forEach(function (card) {
+        pool.slice(0, visibleCount).forEach(function (card) {
           card.classList.remove('is-hidden');
         });
 
-        emptyState.classList.toggle('is-visible', matching.length === 0);
-        loadMoreWrap.classList.toggle('is-hidden', matching.length <= visibleCount);
+        emptyState.classList.toggle('is-visible', pool.length === 0 && !showHero);
+        loadMoreWrap.classList.toggle('is-hidden', pool.length <= visibleCount);
       }
 
       filterBar.addEventListener('click', function (e) {
