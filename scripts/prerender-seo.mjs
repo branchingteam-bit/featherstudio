@@ -81,6 +81,35 @@ for (const [key, page] of Object.entries(seo.pages)) {
   }
 }
 
+// ── Guard: the SPA must not own a route that has a real static file ──
+// A hand-written BlogPage() component once lived in src/main.ts and shadowed
+// public/blog/index.html (the file the weekly cron updates) whenever a user
+// reached /blog through in-app navigation, so the blog looked frozen. This
+// check fails the build if any top-level custom static route is missing from
+// the STATIC_ROUTES allow-list in src/main.ts, which is what tells the router
+// to hand that path to the browser instead of rendering it itself.
+{
+  const mainTs = readFileSync(join(root, 'src/main.ts'), 'utf8');
+  const staticRoutesMatch = mainTs.match(/const STATIC_ROUTES\s*=\s*\[([^\]]*)\]/);
+  const declared = staticRoutesMatch
+    ? [...staticRoutesMatch[1].matchAll(/['"]([^'"]+)['"]/g)].map(m => m[1])
+    : [];
+
+  const customStaticRoutes = Object.values(seo.pages)
+    .filter(p => p.path !== '/' &&
+      existsSync(join(root, 'public', p.path.replace(/^\//, ''), 'index.html')))
+    .map(p => '/' + p.path.replace(/^\//, '').split('/')[0]);
+
+  const missing = [...new Set(customStaticRoutes)].filter(r => !declared.includes(r));
+  if (missing.length) {
+    console.error(
+      `\n✗ Static route(s) ${missing.join(', ')} have a file in public/ but are ` +
+      `not in STATIC_ROUTES in src/main.ts. The SPA router will shadow them ` +
+      `with a client-side render. Add them to STATIC_ROUTES.\n`);
+    process.exit(1);
+  }
+}
+
 // ── sitemap.xml, generated from the same source so it cannot drift ──
 const today = new Date().toISOString().slice(0, 10);
 const urls = Object.values(seo.pages)

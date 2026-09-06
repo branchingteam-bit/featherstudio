@@ -124,14 +124,14 @@
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: var(--accent);
+      background: var(--blue);
       flex-shrink: 0;
     }
     .filter-pill[data-filter="all"] .dot { display: none; }
     .filter-pill:hover { border-color: var(--blue); }
     .filter-pill.active {
-      background: #000;
-      border-color: #000;
+      background: var(--blue);
+      border-color: var(--blue);
       color: #fff;
     }
     .filter-pill.active .dot { background: #fff; }
@@ -160,7 +160,7 @@
       flex-direction: column;
       background: #fff;
       border: 1px solid var(--border);
-      border-left: 4px solid var(--accent);
+      border-left: 3px solid var(--blue);
       border-radius: var(--r);
       padding: 26px 26px 22px;
       text-decoration: none;
@@ -177,10 +177,10 @@
        it reads as the same kind of thing as the ones below it. */
     .blog-card.featured {
       grid-column: 1 / -1;
-      border-left: 1px solid var(--border);
-      border-top: 4px solid var(--accent);
-      background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 9%, white), #fff);
-      padding: 38px 40px 32px;
+      border: 1px solid #d8e2ff;
+      border-top: 3px solid var(--blue);
+      background: linear-gradient(180deg, #f4f7ff, #fff 60%);
+      padding: 34px 36px 30px;
     }
     .blog-card.featured::before {
       content: 'Latest article';
@@ -188,8 +188,8 @@
       font-weight: 800;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 16px;
+      color: var(--blue);
+      margin-bottom: 14px;
     }
     .blog-card.featured h2 {
       font-size: clamp(1.3rem, 3vw, 1.85rem);
@@ -209,7 +209,7 @@
       font-weight: 700;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--blue);
       margin-bottom: 12px;
     }
     .blog-card .tag::before {
@@ -217,7 +217,7 @@
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: var(--accent);
+      background: var(--blue);
     }
     .blog-card h2 {
       font-size: 1.08rem;
@@ -236,7 +236,7 @@
     .blog-card .read-more {
       font-size: 0.85rem;
       font-weight: 700;
-      color: var(--accent);
+      color: var(--blue);
     }
     .empty-state {
       max-width: 1080px;
@@ -341,7 +341,6 @@
   <script>
     (function () {
       var PAGE_SIZE = 4;
-      var PALETTE = ['#3B69FF', '#7C3AED', '#059669', '#EA580C', '#DB2777', '#0891B2', '#CA8A04'];
       var list = document.getElementById('blog-list');
       var cards = Array.prototype.slice.call(list.querySelectorAll('.blog-card'));
       var filterBar = document.getElementById('filter-bar');
@@ -352,20 +351,7 @@
       var activeFilter = 'all';
       var visibleCount = PAGE_SIZE;
 
-      // Deterministic accent color per category, so the same category always
-      // gets the same color, and any new category (from a future auto-published
-      // post) still gets a consistent one without editing this file by hand.
-      function colorFor(category) {
-        var hash = 0;
-        for (var i = 0; i < category.length; i++) {
-          hash = (hash * 31 + category.charCodeAt(i)) >>> 0;
-        }
-        return PALETTE[hash % PALETTE.length];
-      }
-
       cards.forEach(function (card) {
-        var cat = card.getAttribute('data-category');
-        if (cat) card.style.setProperty('--accent', colorFor(cat));
         // Date slot, filled in later from the article page itself. Doing it
         // here rather than in the card markup means posts added by the weekly
         // auto-publish job get a date without the publisher knowing about it.
@@ -390,7 +376,6 @@
         btn.type = 'button';
         btn.className = 'filter-pill';
         btn.setAttribute('data-filter', cat);
-        btn.style.setProperty('--accent', colorFor(cat));
         btn.innerHTML = '<span class="dot"></span>' + cat;
         filterBar.appendChild(btn);
       });

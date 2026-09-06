@@ -628,7 +628,7 @@ function HomePage(): string {
           <span style="font-size: 0.85rem; font-weight: 700; color: var(--blue);">View testimonials →</span>
         </a>
 
-        <a href="/blog" data-link="blog" id="home-explore-blog" class="reveal" style="display: block; background: var(--bg); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 28px 28px 24px; text-decoration: none; color: inherit; transition: border-color 0.2s, box-shadow 0.2s;" onmouseover="this.style.borderColor='var(--blue)'; this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.borderColor='var(--border)'; this.style.boxShadow='none'">
+        <a href="/blog" id="home-explore-blog" class="reveal" style="display: block; background: var(--bg); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 28px 28px 24px; text-decoration: none; color: inherit; transition: border-color 0.2s, box-shadow 0.2s;" onmouseover="this.style.borderColor='var(--blue)'; this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.borderColor='var(--border)'; this.style.boxShadow='none'">
           <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); margin-bottom: 8px;">Blog</div>
           <h3 style="font-size: 1.1rem; margin: 0 0 10px; font-weight: 700;">Website & SEO tips for UAE businesses</h3>
           <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin: 0 0 16px;">Straight answers on what a website should cost, and how to get found on Google here.</p>
@@ -737,64 +737,6 @@ function MetaAdsShazayPage(): string {
         <p style="font-size: 0.78rem; color: rgba(0,0,0,0.5); margin: 20px 0 0; line-height: 1.5;">
           Payments are processed securely by PayPal. Atlantic Bear never sees your card details.
         </p>
-      </div>
-    </div>
-  </section>
-  `;
-}
-
-
-// ─── Blog Page ──────────────────────────────────────────────────────────────────
-function BlogPage(): string {
-  return `
-  <div class="page-header" style="border-bottom:1px solid var(--border);">
-    <div class="container">
-      <div class="section-label reveal">Knowledge Base</div>
-      <h1 class="reveal" style="transition-delay:0.05s;">Website & SEO Tips for<br>UAE Small Businesses</h1>
-      <p class="reveal" style="transition-delay:0.1s; max-width: 600px;">Practical guides on website design, Google rankings, and digital marketing written by the Atlantic Bear team for business owners in Dubai and the UAE.</p>
-    </div>
-  </div>
-
-  <section class="section-pad">
-    <div class="container">
-      <div style="display: grid; gap: 28px; max-width: 800px;">
-
-        <a href="/blog/website-cost-dubai-2026" class="reveal" style="display: block; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 32px; text-decoration: none; color: inherit; transition: border-color 0.2s, box-shadow 0.2s;" onmouseover="this.style.borderColor='var(--blue)'; this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.borderColor='var(--border)'; this.style.boxShadow='none'">
-          <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px;">Website Design · Dubai</div>
-          <h2 style="font-size: 1.25rem; margin: 0 0 12px; font-weight: 700;">How Much Does a Website Cost in Dubai in 2026?</h2>
-          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin: 0 0 16px;">Freelancers, agencies, DIY builders. We break down the real costs of every option so you can make the right choice for your UAE business.</p>
-          <span style="font-size: 0.85rem; font-weight: 700; color: var(--blue);">Read article →</span>
-        </a>
-
-        <a href="/blog/website-agency-dubai-uae" class="reveal" style="display: block; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 32px; text-decoration: none; color: inherit; transition: border-color 0.2s, box-shadow 0.2s;" onmouseover="this.style.borderColor='var(--blue)'; this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.borderColor='var(--border)'; this.style.boxShadow='none'">
-          <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px;">Agency Guide · UAE</div>
-          <h2 style="font-size: 1.25rem; margin: 0 0 12px; font-weight: 700;">What to Look for in a Website Design Agency in Dubai (2026 Guide)</h2>
-          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin: 0 0 16px;">Not all agencies are the same. Here's what business owners in Dubai and the UAE should look for, and the red flags to avoid.</p>
-          <span style="font-size: 0.85rem; font-weight: 700; color: var(--blue);">Read article →</span>
-        </a>
-
-        <a href="/blog/get-found-on-google-dubai" class="reveal" style="display: block; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 32px; text-decoration: none; color: inherit; transition: border-color 0.2s, box-shadow 0.2s;" onmouseover="this.style.borderColor='var(--blue)'; this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.borderColor='var(--border)'; this.style.boxShadow='none'">
-          <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px;">SEO Guide · Dubai</div>
-          <h2 style="font-size: 1.25rem; margin: 0 0 12px; font-weight: 700;">How to Get Your Dubai Business Found on Google in 2026</h2>
-          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin: 0 0 16px;">A step-by-step local SEO guide for UAE small business owners. From Google Business Profile to your website structure, here is what actually moves the needle.</p>
-          <span style="font-size: 0.85rem; font-weight: 700; color: var(--blue);">Read article →</span>
-        </a>
-
-      </div>
-    </div>
-  </section>
-
-  <section class="cta-section" style="border-top:1px solid var(--border);">
-    <div class="container">
-      <h2>Want a website that actually ranks on Google?</h2>
-      <p>We build SEO-ready, custom websites for UAE businesses. Live in 5 days, fully managed.</p>
-      <div class="cta-ctas">
-        <a href="/booking" class="btn btn-primary btn-pulse btn-large" data-link="booking" id="blog-cta-book">
-          Book a Free Call ${Icons.arrow}
-        </a>
-        <a href="/pricing" class="btn btn-secondary btn-large" data-link="pricing" id="blog-cta-pricing">
-          View Plans
-        </a>
       </div>
     </div>
   </section>
@@ -1759,7 +1701,7 @@ function GrowthPage(): string { return SalesPillarPage('growth'); }
 
 
 // ─── Router ───────────────────────────────────────────────────────────────────
-type Page = 'home' | 'pricing' | 'contact' | 'testimonials' | 'booking' | 'meta-ads' | 'meta-ads-shazay' | 'booked' | 'terms' | 'privacy' | 'blog' | 'launch' | 'growth';
+type Page = 'home' | 'pricing' | 'contact' | 'testimonials' | 'booking' | 'meta-ads' | 'meta-ads-shazay' | 'booked' | 'terms' | 'privacy' | 'launch' | 'growth';
 
 const pageMap: Record<Page, () => string> = {
   home:         HomePage,
@@ -1772,7 +1714,6 @@ const pageMap: Record<Page, () => string> = {
   'meta-ads-shazay': MetaAdsShazayPage,
   terms:        TermsPage,
   privacy:      PrivacyPage,
-  blog:         BlogPage,
   launch:       LaunchPage,
   growth:       GrowthPage,
 };
@@ -1820,10 +1761,6 @@ const pageMeta: Record<Page, { title: string; desc: string }> = {
   privacy: {
     title: 'Privacy Policy | Atlantic Bear Website Agency Dubai',
     desc: 'How Atlantic Bear collects, uses, stores, and protects the personal information you share through our website.'
-  },
-  blog: {
-    title: 'Blog: Website Design & SEO Tips for UAE Businesses | Atlantic Bear',
-    desc: 'Expert articles on website design, SEO, and digital marketing for small businesses in Dubai and the UAE. Written by the Atlantic Bear team.'
   },
   launch: {
     title: 'The Launch Plan | Atlantic Bear',
@@ -1936,9 +1873,23 @@ function updateMetadata(page: Page) {
   }
 }
 
+// Paths that are served by a real static HTML file in public/ (currently just
+// the blog, plus every individual post under it). The SPA must never render
+// these itself. There used to be a BlogPage() component here; it silently
+// shadowed public/blog/index.html, which is the file the weekly publishing
+// cron actually updates, so in-app navigation showed a frozen, months-old
+// copy of the blog. Links to these paths are handled as full browser
+// navigations (see delegateLinks), and if the SPA ever boots on one of them
+// it forces a real reload so the static file is served.
+const STATIC_ROUTES = ['/blog'];
+
+function isStaticRoute(pathname: string): boolean {
+  return STATIC_ROUTES.some(r => pathname === r || pathname.startsWith(r + '/'));
+}
+
 function getPageFromPath(path: string): Page {
   const cleanPath = path.replace(/^\/|\/$/g, '');
-  if (cleanPath === 'pricing' || cleanPath === 'work' || cleanPath === 'contact' || cleanPath === 'testimonials' || cleanPath === 'booking' || cleanPath === 'booking-new' || cleanPath === 'meta-ads' || cleanPath === 'meta-ads-shazay' || cleanPath === 'booked' || cleanPath === 'terms' || cleanPath === 'privacy' || cleanPath === 'blog' || cleanPath === 'launch' || cleanPath === 'growth') {
+  if (cleanPath === 'pricing' || cleanPath === 'work' || cleanPath === 'contact' || cleanPath === 'testimonials' || cleanPath === 'booking' || cleanPath === 'booking-new' || cleanPath === 'meta-ads' || cleanPath === 'meta-ads-shazay' || cleanPath === 'booked' || cleanPath === 'terms' || cleanPath === 'privacy' || cleanPath === 'launch' || cleanPath === 'growth') {
     return cleanPath as Page;
   }
   return 'home';
@@ -2716,6 +2667,11 @@ function delegateLinks(root: HTMLElement) {
     // Check if it's a normal click (not cmd+click, middle click, etc.)
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
 
+    // Links to a statically served page (the blog) must do a real navigation
+    // so Vercel serves the current static file, not a stale SPA render.
+    const href = target.getAttribute('href') || '';
+    if (isStaticRoute(href)) return;
+
     e.preventDefault();
     const link = target.getAttribute('data-link') as Page;
     if (link && pageMap[link]) {
@@ -2815,6 +2771,20 @@ document.addEventListener('DOMContentLoaded', () => {
       navigate('booked');
     }
   });
+
+  // If this SPA shell was served for a static route (stale cache, or a
+  // misconfigured rewrite), pull the real static file instead of rendering
+  // the home page under the wrong URL. The sessionStorage flag stops this
+  // from looping if the static file is ever genuinely missing.
+  if (isStaticRoute(window.location.pathname)) {
+    if (!sessionStorage.getItem('static_route_reload')) {
+      sessionStorage.setItem('static_route_reload', '1');
+      window.location.reload();
+      return;
+    }
+  } else {
+    sessionStorage.removeItem('static_route_reload');
+  }
 
   const initialPage = getPageFromPath(window.location.pathname);
   navigate(initialPage, false);
