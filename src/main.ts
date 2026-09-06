@@ -744,6 +744,85 @@ function MetaAdsShazayPage(): string {
 }
 
 
+// ─── Client retainer payment page ───────────────────────────────────────────
+// Private per-client link: /payment-<client-slug> (e.g. /payment-acme-cafe).
+// Every client gets the same AED 200/month retainer unless their slug is
+// listed in PAYMENT_PLANS with its own PayPal plan id. Shared PayPal
+// client-id; only plan_id changes. noindex, never in the sitemap.
+const DEFAULT_RETAINER_PLAN = 'P-27V392505V141031PNKOZ3EQ';
+const PAYMENT_PLANS: Record<string, string> = {
+  // 'client-slug': 'P-XXXXXXXXXXXX',  // add here only if this client's plan differs
+};
+
+function paymentSlug(): string {
+  return window.location.pathname
+    .replace(/^\/payment-?/, '')
+    .replace(/\/+$/, '')
+    .toLowerCase();
+}
+
+function paymentPlanId(): string {
+  return PAYMENT_PLANS[paymentSlug()] || DEFAULT_RETAINER_PLAN;
+}
+
+function PaymentPage(): string {
+  const slug = paymentSlug();
+  const clientName = slug
+    ? slug.split(/[-_]+/).filter(Boolean).map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
+    : '';
+  const planId = paymentPlanId();
+  const heading = clientName ? `Monthly retainer for ${clientName}` : 'Your monthly retainer';
+
+  return `
+  <div class="page-header" style="border-bottom:1px solid var(--border); padding-bottom: 40px;">
+    <div class="container">
+      <div class="booking-page-badge" style="background: rgba(59,105,255,0.1); color: var(--blue); border: 1px solid rgba(59,105,255,0.25); display: inline-block; margin-bottom: 16px;">
+        Monthly Retainer
+      </div>
+      <h1 style="color: #000;">${heading}</h1>
+      <p style="color: rgba(0,0,0,0.7); max-width: 600px; margin: 12px auto 0; font-size: 1.05rem; line-height: 1.6;">
+        AED 200 per month (about $54). This sets up a recurring PayPal subscription. You can cancel any time from your PayPal account.
+      </p>
+    </div>
+  </div>
+
+  <section class="section-pad">
+    <div class="container" style="max-width: 760px;">
+
+      <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 32px 36px; margin-bottom: 28px;">
+        <div style="font-size: 0.8rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); margin-bottom: 18px;">What's included every month</div>
+        <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 14px;">
+          <li style="display: flex; gap: 10px; font-size: 0.95rem; color: #1a1a1a; line-height: 1.5;"><span style="color: var(--blue); font-weight: 800;">&#10003;</span> Your website hosted and kept live, always connected</li>
+          <li style="display: flex; gap: 10px; font-size: 0.95rem; color: #1a1a1a; line-height: 1.5;"><span style="color: var(--blue); font-weight: 800;">&#10003;</span> Your blog, published and kept up to date</li>
+          <li style="display: flex; gap: 10px; font-size: 0.95rem; color: #1a1a1a; line-height: 1.5;"><span style="color: var(--blue); font-weight: 800;">&#10003;</span> Ongoing monthly work on the site</li>
+          <li style="display: flex; gap: 10px; font-size: 0.95rem; color: #1a1a1a; line-height: 1.5;"><span style="color: var(--blue); font-weight: 800;">&#10003;</span> Your own admin dashboard, live 24/7</li>
+          <li style="display: flex; gap: 10px; font-size: 0.95rem; color: #1a1a1a; line-height: 1.5;"><span style="color: var(--blue); font-weight: 800;">&#10003;</span> 2 content changes per month</li>
+          <li style="display: flex; gap: 10px; font-size: 0.95rem; color: #1a1a1a; line-height: 1.5;"><span style="color: var(--blue); font-weight: 800;">&#10003;</span> Unlimited revisions in your first month</li>
+          <li style="display: flex; gap: 10px; font-size: 0.95rem; color: #1a1a1a; line-height: 1.5;"><span style="color: var(--blue); font-weight: 800;">&#10003;</span> A contact form that sends enquiries straight to your inbox</li>
+        </ul>
+      </div>
+
+      <div style="background: #fff; border: 2px solid var(--border-mid); border-radius: var(--r-lg); padding: 40px; text-align: center;">
+        <div style="font-size: 2rem; font-weight: 900; color: #000; letter-spacing: -0.03em; line-height: 1;">AED 200 <span style="font-size: 1rem; font-weight: 500; color: rgba(0,0,0,0.55);">/ month</span></div>
+        <div style="font-size: 0.9rem; color: rgba(0,0,0,0.6); font-weight: 600; margin: 8px 0 28px;">Billed monthly &middot; Cancel any time</div>
+
+        <div id="paypal-button-container-${planId}"></div>
+
+        <div id="payment-success" style="display:none; margin-top: 8px; padding: 20px; background: rgba(46,160,67,0.08); border: 1px solid rgba(46,160,67,0.35); border-radius: var(--r-md); color: #1a7f37; font-weight: 600; font-size: 0.95rem; line-height: 1.5;">
+          Payment set up successfully. Thank you, you're all set and we'll be in touch.
+        </div>
+
+        <p style="font-size: 0.78rem; color: rgba(0,0,0,0.5); margin: 20px 0 0; line-height: 1.5;">
+          Payments are processed securely by PayPal. Atlantic Bear never sees your card details.
+        </p>
+      </div>
+
+    </div>
+  </section>
+  `;
+}
+
+
 // ─── Pricing Page ────────────────────────────────────────────────────────────
 function PricingPage(): string {
   return `
@@ -1701,7 +1780,7 @@ function GrowthPage(): string { return SalesPillarPage('growth'); }
 
 
 // ─── Router ───────────────────────────────────────────────────────────────────
-type Page = 'home' | 'pricing' | 'contact' | 'testimonials' | 'booking' | 'meta-ads' | 'meta-ads-shazay' | 'booked' | 'terms' | 'privacy' | 'launch' | 'growth';
+type Page = 'home' | 'pricing' | 'contact' | 'testimonials' | 'booking' | 'meta-ads' | 'meta-ads-shazay' | 'payment' | 'booked' | 'terms' | 'privacy' | 'launch' | 'growth';
 
 const pageMap: Record<Page, () => string> = {
   home:         HomePage,
@@ -1712,6 +1791,7 @@ const pageMap: Record<Page, () => string> = {
   booked:       BookedPage,
   'meta-ads':   MetaAdsPage,
   'meta-ads-shazay': MetaAdsShazayPage,
+  payment:      PaymentPage,
   terms:        TermsPage,
   privacy:      PrivacyPage,
   launch:       LaunchPage,
@@ -1753,6 +1833,10 @@ const pageMeta: Record<Page, { title: string; desc: string }> = {
   'meta-ads-shazay': {
     title: 'TikTok Ads Retainer Payment | Atlantic Bear',
     desc: 'Set up your Atlantic Bear TikTok Ads retainer subscription, billed every 15 days.'
+  },
+  payment: {
+    title: 'Monthly Retainer Payment | Atlantic Bear',
+    desc: 'Set up your Atlantic Bear monthly retainer subscription.'
   },
   terms: {
     title: 'Terms & Conditions | Atlantic Bear Website Agency Dubai',
@@ -1796,7 +1880,7 @@ function updateFaqSchema(page: Page) {
 }
 
 // Routes that must never be indexed (private client links shared directly).
-const NOINDEX_PAGES: Page[] = ['meta-ads-shazay'];
+const NOINDEX_PAGES: Page[] = ['meta-ads-shazay', 'payment'];
 
 function updateMetadata(page: Page) {
   const meta = pageMeta[page] || pageMeta.home;
@@ -1889,6 +1973,10 @@ function isStaticRoute(pathname: string): boolean {
 
 function getPageFromPath(path: string): Page {
   const cleanPath = path.replace(/^\/|\/$/g, '');
+  // Private per-client payment links: /payment or /payment-<client-slug>.
+  if (cleanPath === 'payment' || cleanPath.startsWith('payment-')) {
+    return 'payment';
+  }
   if (cleanPath === 'pricing' || cleanPath === 'work' || cleanPath === 'contact' || cleanPath === 'testimonials' || cleanPath === 'booking' || cleanPath === 'booking-new' || cleanPath === 'meta-ads' || cleanPath === 'meta-ads-shazay' || cleanPath === 'booked' || cleanPath === 'terms' || cleanPath === 'privacy' || cleanPath === 'launch' || cleanPath === 'growth') {
     return cleanPath as Page;
   }
@@ -1998,9 +2086,11 @@ function initFactNumbers() {
 // The PayPal SDK is loaded on demand, only when the client opens the private
 // /meta-ads-shazay link, so it never touches any other route. Loading the SDK
 // twice throws, so the <script> is injected once and reused on return visits.
-function initPaypalSubscription() {
-  const PLAN_ID = 'P-3J276348CL7673454NKNKCRA';
-  const CONTAINER_SEL = '#paypal-button-container-' + PLAN_ID;
+function initPaypalSubscription(
+  planId = 'P-3J276348CL7673454NKNKCRA',
+  successElId = 'paypal-shazay-success'
+) {
+  const CONTAINER_SEL = '#paypal-button-container-' + planId;
   const SDK_SRC = 'https://www.paypal.com/sdk/js?client-id=BAAeLN9PQY_40P1TyOqzvSGlsxkJvgSNc84tV2boPr7iX-TUntDkuIFWfjw3zc3V8zc13VS2nx64j-E710&vault=true&intent=subscription';
 
   function renderButton() {
@@ -2012,10 +2102,10 @@ function initPaypalSubscription() {
     paypal.Buttons({
       style: { shape: 'rect', color: 'blue', layout: 'vertical', label: 'subscribe' },
       createSubscription: function (_data: any, actions: any) {
-        return actions.subscription.create({ plan_id: PLAN_ID });
+        return actions.subscription.create({ plan_id: planId });
       },
       onApprove: function () {
-        const success = document.getElementById('paypal-shazay-success');
+        const success = document.getElementById(successElId);
         if (success) success.style.display = 'block';
         container.style.display = 'none';
       }
@@ -2027,18 +2117,24 @@ function initPaypalSubscription() {
     return;
   }
 
-  const existing = document.getElementById('paypal-sdk-shazay') as HTMLScriptElement | null;
+  const existing = document.getElementById('paypal-sdk-subscription') as HTMLScriptElement | null;
   if (existing) {
     existing.addEventListener('load', renderButton, { once: true });
     return;
   }
 
   const script = document.createElement('script');
-  script.id = 'paypal-sdk-shazay';
+  script.id = 'paypal-sdk-subscription';
   script.src = SDK_SRC;
   script.setAttribute('data-sdk-integration-source', 'button-factory');
   script.onload = renderButton;
   document.body.appendChild(script);
+}
+
+// Client retainer page: same PayPal integration, plan id resolved from the
+// /payment-<slug> URL (see PAYMENT_PLANS).
+function initPaymentPage() {
+  initPaypalSubscription(paymentPlanId(), 'payment-success');
 }
 
 // ─── Calendly Loader ─────────────────────────────────────────────────────────
@@ -2614,6 +2710,10 @@ function navigate(page: Page, pushHistory = true) {
 
     if (page === 'meta-ads-shazay') {
       initPaypalSubscription();
+    }
+
+    if (page === 'payment') {
+      initPaymentPage();
     }
 
     if (page === 'booking' || page === 'booked') {
