@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://atlanticbear.com/sitemap.xml
+Sitemap: https://www.atlanticbear.com/sitemap.xml

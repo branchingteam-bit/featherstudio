@@ -29,7 +29,7 @@ function setTag(html, matcher, replacement) {
 }
 
 function buildPage({ title, desc, path }) {
-  const url = path === '/' ? origin : origin + path;
+  const url = path === '/' ? origin + '/' : origin + path;
   let html = shell;
 
   html = setTag(html, /<title>[\s\S]*?<\/title>/, `<title>${esc(title)}</title>`);

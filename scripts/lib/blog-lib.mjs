@@ -10,7 +10,7 @@
  * GitHub API) so the two never drift apart.
  */
 
-const ORIGIN = 'https://atlanticbear.com';
+const ORIGIN = 'https://www.atlanticbear.com';
 
 function jsonEsc(s) {
   return String(s).replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, '\\n');
