@@ -4,16 +4,57 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blog: Website Design & SEO Tips for UAE Businesses | Atlantic Bear</title>
-  <meta name="description" content="Expert articles on website design, SEO, and digital marketing for small businesses in Dubai and the UAE. Written by the Atlantic Bear team." />
+  <meta name="description" content="Practical guides on website design, Google rankings, and online growth for small businesses in Dubai and the UAE, written by the Atlantic Bear team." />
   <link rel="canonical" href="https://atlanticbear.com/blog" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <meta name="author" content="Atlantic Bear" />
   <meta name="geo.region" content="AE-DU" />
+  <meta name="geo.placename" content="Dubai" />
 
   <meta property="og:title" content="Blog: Website Design & SEO Tips for UAE Businesses | Atlantic Bear" />
-  <meta property="og:description" content="Expert articles on website design, SEO, and digital marketing for small businesses in Dubai and the UAE." />
+  <meta property="og:description" content="Practical guides on website design, Google rankings, and online growth for small businesses in Dubai and the UAE." />
   <meta property="og:url" content="https://atlanticbear.com/blog" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://atlanticbear.com/logo.png" />
+  <meta property="og:image" content="https://atlanticbear.com/og-image.png" />
+  <meta property="og:locale" content="en_AE" />
   <meta property="og:site_name" content="Atlantic Bear" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Blog: Website Design & SEO Tips for UAE Businesses | Atlantic Bear" />
+  <meta name="twitter:description" content="Practical guides on website design, Google rankings, and online growth for small businesses in Dubai and the UAE." />
+  <meta name="twitter:image" content="https://atlanticbear.com/og-image.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Blog",
+        "@id": "https://atlanticbear.com/blog#blog",
+        "url": "https://atlanticbear.com/blog",
+        "name": "The Atlantic Bear Blog",
+        "description": "Practical guides on website design, Google rankings, and online growth for small businesses in Dubai and the UAE.",
+        "inLanguage": "en-AE",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Atlantic Bear",
+          "url": "https://atlanticbear.com",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://atlanticbear.com/atlanticbear-logo.png"
+          }
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://atlanticbear.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://atlanticbear.com/blog" }
+        ]
+      }
+    ]
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,50 +93,56 @@
     .nav-inner {
       max-width: var(--maxw);
       margin: 0 auto;
-      padding: 0 32px;
-      height: 66px;
+      padding: 0 24px;
+      min-height: 74px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 20px;
+      gap: 36px;
     }
+    /* White-box lockup, matching the booking page top bar. */
     .nav-logo {
       display: inline-flex;
       align-items: center;
-      gap: 9px;
-      color: #fff;
+      gap: 8px;
+      background: #fff;
+      color: #000;
       font-weight: 800;
-      font-size: 1.02rem;
+      font-size: 1.12rem;
       letter-spacing: -0.02em;
+      line-height: 1;
+      padding: 8px 14px 8px 12px;
+      border-radius: 7px;
       flex-shrink: 0;
     }
     .nav-logo img { width: 30px; height: 30px; display: block; }
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 30px;
-      margin-left: auto;
+      gap: 28px;
     }
     .nav-links a {
-      color: rgba(255,255,255,0.66);
-      font-size: 0.9rem;
+      color: rgba(255,255,255,0.68);
+      font-size: 0.92rem;
       font-weight: 500;
       transition: color 0.15s;
     }
     .nav-links a:hover { color: #fff; }
     .nav-cta {
+      margin-left: auto;
       background: var(--blue);
       color: #fff;
-      padding: 9px 20px;
+      padding: 14px 30px;
       border-radius: 999px;
       font-weight: 700;
-      font-size: 0.85rem;
+      font-size: 1rem;
       flex-shrink: 0;
       transition: filter 0.15s;
     }
     .nav-cta:hover { filter: brightness(1.08); }
-    @media (max-width: 860px) {
+    @media (max-width: 900px) {
+      .nav-inner { gap: 20px; }
       .nav-links { display: none; }
+      .nav-cta { font-size: 0.9rem; padding: 12px 22px; }
     }
 
     /* ── PAGE HEADER ───────────────────────────────────────── */
@@ -331,24 +378,37 @@
     }
     .empty-state.is-visible { display: block; }
 
-    .load-more-wrap {
-      margin-top: 36px;
+    /* ── BOTTOM CTA ────────────────────────────────────────── */
+    .blog-cta {
+      background: var(--blue);
+      color: #fff;
       text-align: center;
+      padding: 76px 24px;
     }
-    .load-more-wrap.is-hidden { display: none; }
-    .load-more-btn {
-      font-family: inherit;
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--ink);
+    .blog-cta h2 {
+      font-size: clamp(1.7rem, 3.6vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+    .blog-cta p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.88);
+      max-width: 520px;
+      margin: 0 auto 30px;
+    }
+    .blog-cta a {
+      display: inline-block;
       background: #fff;
-      border: 1px solid var(--line);
+      color: var(--blue);
+      font-weight: 800;
+      font-size: 1rem;
+      padding: 16px 36px;
       border-radius: 999px;
-      padding: 13px 30px;
-      cursor: pointer;
-      transition: border-color 0.15s, background 0.15s;
+      transition: transform 0.15s ease;
     }
-    .load-more-btn:hover { border-color: var(--ink); }
+    .blog-cta a:hover { transform: translateY(-2px); }
 
     /* ── FOOTER ────────────────────────────────────────────── */
     .site-footer {
@@ -376,7 +436,7 @@
     <div class="nav-inner">
       <a href="/" class="nav-logo" aria-label="Atlantic Bear home">
         Atlantic Bear
-        <img src="/atlanticbear-logo-reversed.png" alt="" />
+        <img src="/atlanticbear-logo.png" alt="" width="30" height="30" />
       </a>
       <div class="nav-links">
         <a href="/">Home</a>
@@ -384,7 +444,7 @@
         <a href="/testimonials">Testimonials</a>
         <a href="/contact">Contact</a>
       </div>
-      <a href="/booking" class="nav-cta">Book a Call</a>
+      <a href="/booking" class="nav-cta">Book a Free Call</a>
     </div>
   </nav>
 
@@ -458,11 +518,13 @@
       </div>
 
       <p class="empty-state" id="empty-state">No articles match that search. Try a different word or topic.</p>
-
-      <div class="load-more-wrap is-hidden" id="load-more-wrap">
-        <button type="button" class="load-more-btn" id="load-more-btn">Show more articles</button>
-      </div>
     </div>
+  </section>
+
+  <section class="blog-cta">
+    <h2>Your website should be pulling in clients</h2>
+    <p>We build custom, fully managed websites for businesses across the UAE. If yours isn't doing its job, let's talk.</p>
+    <a href="/booking">Book your free strategy call →</a>
   </section>
 
   <footer class="site-footer">
@@ -471,8 +533,6 @@
 
   <script>
     (function () {
-      var PAGE_SIZE = 6;
-
       var list = document.getElementById('blog-list');
       var cards = Array.prototype.slice.call(list.querySelectorAll('.blog-card'));
       var featuredSection = document.getElementById('featured-section');
@@ -481,12 +541,9 @@
       var catSelect = document.getElementById('cat-select');
       var archiveCount = document.getElementById('archive-count');
       var emptyState = document.getElementById('empty-state');
-      var loadMoreWrap = document.getElementById('load-more-wrap');
-      var loadMoreBtn = document.getElementById('load-more-btn');
 
       var query = '';
       var activeCat = 'all';
-      var visibleCount = PAGE_SIZE;
 
       // Give every card a searchable text blob and a date slot. The date slot
       // is filled later from the article page itself, so a post published by
@@ -550,6 +607,31 @@
         featuredSection.classList.add('is-hidden');
       }
 
+      // Emit an ItemList of every article for search engines, built from the
+      // cards that are actually on the page, so it stays correct as the
+      // weekly job adds posts without anyone touching structured data.
+      try {
+        var itemEls = cards.map(function (card, i) {
+          var h2 = card.querySelector('h2');
+          return {
+            '@type': 'ListItem',
+            position: i + 1,
+            url: 'https://atlanticbear.com' + card.getAttribute('href'),
+            name: h2 ? h2.textContent.trim() : undefined
+          };
+        });
+        var ld = document.createElement('script');
+        ld.type = 'application/ld+json';
+        ld.textContent = JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'ItemList',
+          itemListOrder: 'https://schema.org/ItemListOrderDescending',
+          numberOfItems: itemEls.length,
+          itemListElement: itemEls
+        });
+        document.head.appendChild(ld);
+      } catch (e) { /* structured data is a bonus, never block the page */ }
+
       function matches(card) {
         if (activeCat !== 'all' && card.getAttribute('data-category') !== activeCat) return false;
         if (query && card._text.indexOf(query) === -1) return false;
@@ -559,45 +641,32 @@
       function render() {
         var browsing = query !== '' || activeCat !== 'all';
 
-        // Featured block only in the default, unfiltered view.
+        // The featured block spotlights the newest post in the default view.
+        // It hides while browsing so the focus stays on the results.
         featuredSection.classList.toggle('is-hidden', browsing || !newest);
 
-        var pool = cards.filter(function (card) {
-          if (!browsing && card === newest) return false; // shown as the featured block instead
-          return matches(card);
-        });
-
+        // "All articles" always lists every matching post, newest included,
+        // with no pagination. The grid just keeps growing as the weekly job
+        // adds posts.
+        var pool = cards.filter(matches);
         cards.forEach(function (card) { card.classList.add('is-hidden'); });
-        pool.slice(0, visibleCount).forEach(function (card) {
-          card.classList.remove('is-hidden');
-        });
+        pool.forEach(function (card) { card.classList.remove('is-hidden'); });
 
-        if (browsing) {
-          archiveCount.textContent = pool.length === cards.length
-            ? '(' + pool.length + ')'
-            : '(' + pool.length + ' of ' + cards.length + ')';
-        } else {
-          archiveCount.textContent = '(' + cards.length + ')';
-        }
+        archiveCount.textContent = browsing
+          ? '(' + pool.length + ' of ' + cards.length + ')'
+          : '(' + cards.length + ')';
 
         emptyState.classList.toggle('is-visible', pool.length === 0);
-        loadMoreWrap.classList.toggle('is-hidden', pool.length <= visibleCount);
 
         loadVisibleDates();
       }
 
       searchInput.addEventListener('input', function () {
         query = searchInput.value.trim().toLowerCase();
-        visibleCount = PAGE_SIZE;
         render();
       });
       catSelect.addEventListener('change', function () {
         activeCat = catSelect.value;
-        visibleCount = PAGE_SIZE;
-        render();
-      });
-      loadMoreBtn.addEventListener('click', function () {
-        visibleCount += PAGE_SIZE;
         render();
       });
 
@@ -639,17 +708,21 @@
           .catch(function () { /* the card still works without a date */ });
       }
 
+      // Load the date for every article currently on the page. Each URL is
+      // fetched at most once (see loadDate) and the request is small and
+      // same-origin, so this stays cheap as posts accumulate.
       function loadVisibleDates() {
         if (!window.fetch) return;
-        Array.prototype.forEach.call(
-          document.querySelectorAll('.post-date[data-date-for]'),
-          function (el) {
-            if (el.textContent) return;
-            if (el.closest('.blog-card') && el.closest('.blog-card').classList.contains('is-hidden')) return;
-            if (el.closest('.featured-section') && el.closest('.featured-section').classList.contains('is-hidden')) return;
-            loadDate(el.getAttribute('data-date-for'));
-          }
-        );
+        var hosts = [];
+        var fa = document.querySelector('.featured-article');
+        if (fa && !featuredSection.classList.contains('is-hidden')) hosts.push(fa);
+        cards.forEach(function (card) {
+          if (!card.classList.contains('is-hidden')) hosts.push(card);
+        });
+        hosts.forEach(function (host) {
+          var slot = host.querySelector('.post-date[data-date-for]');
+          if (slot && !slot.textContent) loadDate(slot.getAttribute('data-date-for'));
+        });
       }
 
       render();
