@@ -766,20 +766,12 @@ function paymentPlanId(): string {
 }
 
 function PaymentPage(): string {
-  const slug = paymentSlug();
-  const clientName = slug
-    ? slug.split(/[-_]+/).filter(Boolean).map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
-    : '';
   const planId = paymentPlanId();
-  const heading = clientName ? `Monthly retainer for ${clientName}` : 'Your monthly retainer';
 
   return `
   <div class="page-header" style="border-bottom:1px solid var(--border); padding-bottom: 40px;">
     <div class="container">
-      <div class="booking-page-badge" style="background: rgba(59,105,255,0.1); color: var(--blue); border: 1px solid rgba(59,105,255,0.25); display: inline-block; margin-bottom: 16px;">
-        Monthly Retainer
-      </div>
-      <h1 style="color: #000;">${heading}</h1>
+      <h1 style="color: #000;">Monthly retainer</h1>
       <p style="color: rgba(0,0,0,0.7); max-width: 600px; margin: 12px auto 0; font-size: 1.05rem; line-height: 1.6;">
         AED 200 per month (about $54). This sets up a recurring PayPal subscription. You can cancel any time from your PayPal account.
       </p>
