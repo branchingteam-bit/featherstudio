@@ -745,13 +745,12 @@ function MetaAdsShazayPage(): string {
 
 
 // ─── Client retainer payment page ───────────────────────────────────────────
-// Private per-client link: /payment-<client-slug> (e.g. /payment-acme-cafe).
-// Every client gets the same AED 200/month retainer unless their slug is
-// listed in PAYMENT_PLANS with its own PayPal plan id. Shared PayPal
+// Private per-client link: /payment-<slug>. Only the slugs registered below
+// resolve; any other /payment... path falls through to the home page. To give
+// a client a link, add "slug: their PayPal plan id" here. Shared PayPal
 // client-id; only plan_id changes. noindex, never in the sitemap.
-const DEFAULT_RETAINER_PLAN = 'P-27V392505V141031PNKOZ3EQ';
 const PAYMENT_PLANS: Record<string, string> = {
-  // 'client-slug': 'P-XXXXXXXXXXXX',  // add here only if this client's plan differs
+  edlund: 'P-27V392505V141031PNKOZ3EQ',
 };
 
 function paymentSlug(): string {
@@ -762,7 +761,7 @@ function paymentSlug(): string {
 }
 
 function paymentPlanId(): string {
-  return PAYMENT_PLANS[paymentSlug()] || DEFAULT_RETAINER_PLAN;
+  return PAYMENT_PLANS[paymentSlug()] || Object.values(PAYMENT_PLANS)[0];
 }
 
 function PaymentPage(): string {
@@ -1965,8 +1964,9 @@ function isStaticRoute(pathname: string): boolean {
 
 function getPageFromPath(path: string): Page {
   const cleanPath = path.replace(/^\/|\/$/g, '');
-  // Private per-client payment links: /payment or /payment-<client-slug>.
-  if (cleanPath === 'payment' || cleanPath.startsWith('payment-')) {
+  // Private client payment links: only registered /payment-<slug> paths.
+  if (cleanPath.startsWith('payment-') &&
+      Object.prototype.hasOwnProperty.call(PAYMENT_PLANS, cleanPath.slice(8))) {
     return 'payment';
   }
   if (cleanPath === 'pricing' || cleanPath === 'work' || cleanPath === 'contact' || cleanPath === 'testimonials' || cleanPath === 'booking' || cleanPath === 'booking-new' || cleanPath === 'meta-ads' || cleanPath === 'meta-ads-shazay' || cleanPath === 'booked' || cleanPath === 'terms' || cleanPath === 'privacy' || cleanPath === 'launch' || cleanPath === 'growth') {
