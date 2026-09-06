@@ -187,7 +187,7 @@ function Footer(): string {
           <h3>Contact</h3>
           <div class="footer-links">
             <a href="mailto:officialatlanticbear@gmail.com">officialatlanticbear@gmail.com</a>
-            <a href="https://www.instagram.com/officialatlanticbear/" target="_blank">@officialatlanticbear</a>
+            <a href="https://www.instagram.com/officialatlanticbear/" target="_blank" rel="noopener">@officialatlanticbear</a>
           </div>
         </div>
       </div>
@@ -1145,7 +1145,7 @@ function ContactPage(): string {
                   <div class="contact-method-value">officialatlanticbear@gmail.com</div>
                 </div>
               </a>
-              <a href="https://www.instagram.com/officialatlanticbear/" target="_blank" class="contact-method">
+              <a href="https://www.instagram.com/officialatlanticbear/" target="_blank" rel="noopener" class="contact-method">
                 <div class="contact-method-icon" style="background:rgba(59,105,255,0.08); color:var(--blue);">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${Icons.instagram}</svg>
                 </div>
