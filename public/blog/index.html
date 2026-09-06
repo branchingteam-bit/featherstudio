@@ -23,316 +23,447 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --blue: #3B69FF;
-      --surface: #f7f7f7;
-      --border: #e8e8e8;
-      --text: #111;
-      --text-muted: #666;
-      --r: 14px;
-      --accent: #3B69FF;
+      --ink: #101114;
+      --muted: #667085;
+      --line: #e7e7e9;
+      --wash: #f6f7f9;
+      --r: 16px;
+      --maxw: 1120px;
     }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-      color: var(--text);
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--ink);
       background: #fff;
-      line-height: 1.65;
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
-    a { color: var(--blue); text-decoration: none; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
+
+    /* ── NAV ───────────────────────────────────────────────── */
     .nav {
-      background: #000;
-      padding: 0 24px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      background: #0b0b0d;
       position: sticky;
       top: 0;
       z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
-    .nav-logo {
+    .nav-inner {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 32px;
+      height: 66px;
       display: flex;
       align-items: center;
-      gap: 6px;
-      text-decoration: none;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .nav-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
       color: #fff;
       font-weight: 800;
-      font-size: 1rem;
+      font-size: 1.02rem;
+      letter-spacing: -0.02em;
+      flex-shrink: 0;
     }
-    .nav-logo img { width: 22px; height: 22px; }
+    .nav-logo img { width: 30px; height: 30px; display: block; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      margin-left: auto;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.66);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: #fff; }
     .nav-cta {
       background: var(--blue);
       color: #fff;
-      text-decoration: none;
-      padding: 8px 18px;
+      padding: 9px 20px;
       border-radius: 999px;
       font-weight: 700;
       font-size: 0.85rem;
+      flex-shrink: 0;
+      transition: filter 0.15s;
     }
-    .header {
-      padding: 60px 24px 28px;
-      max-width: 1080px;
-      margin: 0 auto;
+    .nav-cta:hover { filter: brightness(1.08); }
+    @media (max-width: 860px) {
+      .nav-links { display: none; }
     }
-    .header .label {
+
+    /* ── PAGE HEADER ───────────────────────────────────────── */
+    .page-head { padding: 76px 0 8px; }
+    .eyebrow {
       font-size: 0.72rem;
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 14px;
+      color: var(--muted);
+      margin-bottom: 16px;
     }
-    .header h1 {
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
+    .page-head h1 {
+      font-size: clamp(2.1rem, 4.4vw, 3.2rem);
       font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 14px;
-      line-height: 1.15;
+      letter-spacing: -0.035em;
+      line-height: 1.08;
+      margin-bottom: 16px;
     }
-    .header p {
-      font-size: 1rem;
-      color: var(--text-muted);
-      max-width: 560px;
+    .page-head p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 540px;
     }
-    /* CATEGORY FILTER */
-    .filter-bar {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 0 24px 24px;
+
+    /* ── FEATURED ──────────────────────────────────────────── */
+    .featured-section { padding: 40px 0 64px; }
+    .featured-section.is-hidden { display: none; }
+    .featured-article {
+      display: block;
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      padding: clamp(28px, 4vw, 48px);
+      background: #fff;
+      transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+    }
+    .featured-article:hover {
+      box-shadow: 0 18px 48px rgba(16,17,20,0.10);
+      transform: translateY(-3px);
+      border-color: #d7d7db;
+    }
+    .fa-meta {
       display: flex;
-      flex-wrap: wrap;
       align-items: center;
-      gap: 8px;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 24px;
-    }
-    .filter-pill {
-      font-family: inherit;
+      gap: 10px;
+      flex-wrap: wrap;
       font-size: 0.8rem;
       font-weight: 600;
-      color: var(--text);
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 7px 16px;
-      cursor: pointer;
-      transition: background 0.15s, border-color 0.15s, color 0.15s;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+    .fa-meta .fa-cat {
+      color: var(--ink);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+    .fa-meta .sep { opacity: 0.4; }
+    .featured-article h2 {
+      font-size: clamp(1.6rem, 3.4vw, 2.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.12;
+      margin-bottom: 16px;
+      max-width: 760px;
+    }
+    .featured-article p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 620px;
+      margin-bottom: 26px;
+    }
+    .fa-cta {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 7px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--blue);
     }
-    .filter-pill .dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--blue);
-      flex-shrink: 0;
-    }
-    .filter-pill[data-filter="all"] .dot { display: none; }
-    .filter-pill:hover { border-color: var(--blue); }
-    .filter-pill.active {
-      background: var(--blue);
-      border-color: var(--blue);
-      color: #fff;
-    }
-    .filter-pill.active .dot { background: #fff; }
 
-    .post-date {
-      display: block;
-      font-size: 0.78rem;
+    /* ── ARCHIVE ───────────────────────────────────────────── */
+    .archive-section {
+      background: var(--wash);
+      border-top: 1px solid var(--line);
+      padding: 60px 0 96px;
+    }
+    .archive-head {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .archive-head h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+    }
+    .archive-head .count {
+      font-size: 0.95rem;
       font-weight: 600;
-      color: var(--text-muted);
-      margin-bottom: 14px;
-      letter-spacing: 0.01em;
+      color: var(--muted);
     }
-    .post-date:empty { display: none; }
 
-    /* GRID */
+    .toolbar {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+    .search-field {
+      position: relative;
+      flex: 1 1 280px;
+    }
+    .search-field svg {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      color: var(--muted);
+      pointer-events: none;
+    }
+    .search-field input {
+      width: 100%;
+      font-family: inherit;
+      font-size: 0.92rem;
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 12px 16px 12px 42px;
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .search-field input:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(59,105,255,0.12);
+    }
+    .search-field input::placeholder { color: var(--muted); }
+    .cat-select {
+      font-family: inherit;
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 12px 40px 12px 16px;
+      cursor: pointer;
+      outline: none;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23667085' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .cat-select:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(59,105,255,0.12);
+    }
+
+    /* ── CARD GRID ─────────────────────────────────────────── */
     .blog-list {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 32px 24px 24px;
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 20px;
     }
     .blog-card {
       display: flex;
       flex-direction: column;
       background: #fff;
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--blue);
-      border-radius: var(--r);
-      padding: 26px 26px 22px;
-      text-decoration: none;
-      color: inherit;
-      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 26px 26px 24px;
+      transition: box-shadow 0.18s ease, transform 0.18s ease, border-color 0.18s ease;
     }
     .blog-card:hover {
-      box-shadow: 0 10px 28px rgba(0,0,0,0.08);
-      transform: translateY(-2px);
+      box-shadow: 0 14px 34px rgba(16,17,20,0.08);
+      transform: translateY(-3px);
+      border-color: #d7d7db;
     }
     .blog-card.is-hidden { display: none; }
-
-    /* The newest post: full width, larger, labelled. Still a .blog-card so
-       it reads as the same kind of thing as the ones below it. */
-    .blog-card.featured {
-      grid-column: 1 / -1;
-      border: 1px solid #d8e2ff;
-      border-top: 3px solid var(--blue);
-      background: linear-gradient(180deg, #f4f7ff, #fff 60%);
-      padding: 34px 36px 30px;
+    .blog-card .post-date {
+      order: 0;
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 10px;
     }
-    .blog-card.featured::before {
-      content: 'Latest article';
-      font-size: 0.7rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 14px;
-    }
-    .blog-card.featured h2 {
-      font-size: clamp(1.3rem, 3vw, 1.85rem);
-      letter-spacing: -0.02em;
-      max-width: 720px;
-    }
-    .blog-card.featured p {
-      font-size: 1rem;
-      max-width: 640px;
-    }
-    .blog-card.featured .post-date { font-size: 0.85rem; }
+    .blog-card .post-date:empty { display: none; }
     .blog-card .tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.7rem;
+      order: 1;
+      font-size: 0.68rem;
       font-weight: 700;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--blue);
+      color: var(--muted);
       margin-bottom: 12px;
     }
-    .blog-card .tag::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--blue);
-    }
     .blog-card h2 {
-      font-size: 1.08rem;
+      order: 2;
+      font-size: 1.12rem;
       font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.35;
+      color: var(--ink);
       margin-bottom: 10px;
-      color: #000;
-      flex-grow: 0;
     }
     .blog-card p {
+      order: 3;
       font-size: 0.88rem;
-      color: var(--text-muted);
+      color: var(--muted);
       line-height: 1.6;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
       flex-grow: 1;
     }
     .blog-card .read-more {
-      font-size: 0.85rem;
+      order: 4;
+      font-size: 0.82rem;
       font-weight: 700;
       color: var(--blue);
     }
+
     .empty-state {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 0 24px 60px;
-      color: var(--text-muted);
-      font-size: 0.9rem;
       display: none;
+      padding: 48px 4px;
+      color: var(--muted);
+      font-size: 0.95rem;
     }
     .empty-state.is-visible { display: block; }
+
     .load-more-wrap {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 8px 24px 80px;
+      margin-top: 36px;
       text-align: center;
     }
+    .load-more-wrap.is-hidden { display: none; }
     .load-more-btn {
       font-family: inherit;
       font-size: 0.9rem;
       font-weight: 700;
-      color: var(--blue);
+      color: var(--ink);
       background: #fff;
-      border: 1px solid var(--border);
+      border: 1px solid var(--line);
       border-radius: 999px;
-      padding: 12px 28px;
+      padding: 13px 30px;
       cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
     }
-    .load-more-btn:hover { border-color: var(--blue); }
-    .load-more-wrap.is-hidden { display: none; }
+    .load-more-btn:hover { border-color: var(--ink); }
+
+    /* ── FOOTER ────────────────────────────────────────────── */
     .site-footer {
-      background: #000;
+      background: #0b0b0d;
       color: rgba(255,255,255,0.5);
       text-align: center;
-      padding: 32px 24px;
+      padding: 34px 24px;
       font-size: 0.82rem;
     }
-    .site-footer a { color: rgba(255,255,255,0.6); }
+    .site-footer a { color: rgba(255,255,255,0.68); }
+    .site-footer a:hover { color: #fff; }
+
+    @media (max-width: 620px) {
+      .wrap { padding: 0 20px; }
+      .nav-inner { padding: 0 20px; }
+      .page-head { padding: 52px 0 8px; }
+      .toolbar { flex-direction: column; }
+      .cat-select { width: 100%; }
+    }
   </style>
 </head>
 <body>
 
   <nav class="nav">
-    <a href="/" class="nav-logo">
-      Atlantic Bear
-      <img src="/atlanticbear-logo.png" alt="Atlantic Bear Logo" />
-    </a>
-    <a href="/booking" class="nav-cta">Book a Free Call →</a>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="Atlantic Bear home">
+        Atlantic Bear
+        <img src="/atlanticbear-logo-reversed.png" alt="" />
+      </a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/testimonials">Testimonials</a>
+        <a href="/contact">Contact</a>
+      </div>
+      <a href="/booking" class="nav-cta">Book a Call</a>
+    </div>
   </nav>
 
-  <div class="header">
-    <div class="label">Blog</div>
-    <h1>The Atlantic Bear Blog</h1>
-    <p>Straight, practical writing on websites and getting found online, for business owners in the UAE.</p>
-  </div>
+  <header class="page-head">
+    <div class="wrap">
+      <div class="eyebrow">Blog</div>
+      <h1>The Atlantic Bear Blog</h1>
+      <p>Straight, practical writing on websites and getting found online, for business owners in the UAE.</p>
+    </div>
+  </header>
 
-  <div class="filter-bar" id="filter-bar">
-    <button type="button" class="filter-pill active" data-filter="all"><span class="dot"></span>All</button>
-  </div>
+  <section class="featured-section" id="featured-section">
+    <div class="wrap">
+      <div class="eyebrow">Latest article</div>
+      <div id="featured-slot"></div>
+    </div>
+  </section>
 
-  <div class="blog-list" id="blog-list">
+  <section class="archive-section">
+    <div class="wrap">
+      <div class="archive-head">
+        <h2>All articles</h2>
+        <span class="count" id="archive-count"></span>
+      </div>
 
-    <a href="/blog/website-for-western-owned-business-uae" class="blog-card" data-category="Agency Guide">
-      <div class="tag">Agency Guide · UAE</div>
-      <h2>Website Design for Western-Owned Small Businesses in the UAE</h2>
-      <p>The trust signals, structure, and positioning that matter most when your target client is judging a UAE-based business by its website alone, especially if you're not from here either.</p>
-      <span class="read-more">Read article →</span>
-    </a>
+      <div class="toolbar">
+        <div class="search-field">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" id="search-input" placeholder="Search articles" autocomplete="off" />
+        </div>
+        <select class="cat-select" id="cat-select" aria-label="Filter by topic">
+          <option value="all">All topics</option>
+        </select>
+      </div>
 
-    <a href="/blog/website-cost-dubai-2026" class="blog-card" data-category="Website Design">
-      <div class="tag">Website Design · Dubai</div>
-      <h2>How Much Does a Website Cost in Dubai in 2026?</h2>
-      <p>Freelancers, agencies, DIY builders: we break down the real costs of every option so you can make the right choice for your UAE business. Includes a full price comparison table.</p>
-      <span class="read-more">Read article →</span>
-    </a>
+      <!-- The weekly publish job (scripts/lib/blog-lib.mjs) prepends new
+           <a class="blog-card"> entries right after this opening tag, so the
+           newest post is always first. The script below reads this list,
+           promotes the first card into the featured slot above, and renders
+           the rest into the grid. Nothing here needs editing by hand. -->
+      <div class="blog-list" id="blog-list">
 
-    <a href="/blog/website-agency-dubai-uae" class="blog-card" data-category="Agency Guide">
-      <div class="tag">Agency Guide · UAE</div>
-      <h2>What to Look for in a Website Design Agency in Dubai (2026 Guide)</h2>
-      <p>Not all agencies are the same. Here's what small business owners in Dubai and the UAE should look for, and the red flags to avoid before signing anything.</p>
-      <span class="read-more">Read article →</span>
-    </a>
+        <a href="/blog/website-for-western-owned-business-uae" class="blog-card" data-category="Agency Guide">
+          <div class="tag">Agency Guide · UAE</div>
+          <h2>Website Design for Western-Owned Small Businesses in the UAE</h2>
+          <p>The trust signals, structure, and positioning that matter most when your target client is judging a UAE-based business by its website alone, especially if you're not from here either.</p>
+          <span class="read-more">Read article →</span>
+        </a>
 
-    <a href="/blog/get-found-on-google-dubai" class="blog-card" data-category="SEO Guide">
-      <div class="tag">SEO Guide · Dubai</div>
-      <h2>How to Get Your Dubai Business Found on Google in 2026</h2>
-      <p>A step-by-step local SEO guide for UAE small business owners. From Google Business Profile to your website structure: what actually moves the needle, with no jargon.</p>
-      <span class="read-more">Read article →</span>
-    </a>
+        <a href="/blog/website-cost-dubai-2026" class="blog-card" data-category="Website Design">
+          <div class="tag">Website Design · Dubai</div>
+          <h2>How Much Does a Website Cost in Dubai in 2026?</h2>
+          <p>Freelancers, agencies, DIY builders: we break down the real costs of every option so you can make the right choice for your UAE business. Includes a full price comparison table.</p>
+          <span class="read-more">Read article →</span>
+        </a>
 
-  </div>
+        <a href="/blog/website-agency-dubai-uae" class="blog-card" data-category="Agency Guide">
+          <div class="tag">Agency Guide · UAE</div>
+          <h2>What to Look for in a Website Design Agency in Dubai (2026 Guide)</h2>
+          <p>Not all agencies are the same. Here's what small business owners in Dubai and the UAE should look for, and the red flags to avoid before signing anything.</p>
+          <span class="read-more">Read article →</span>
+        </a>
 
-  <p class="empty-state" id="empty-state">No articles in this category yet, check back soon.</p>
+        <a href="/blog/get-found-on-google-dubai" class="blog-card" data-category="SEO Guide">
+          <div class="tag">SEO Guide · Dubai</div>
+          <h2>How to Get Your Dubai Business Found on Google in 2026</h2>
+          <p>A step-by-step local SEO guide for UAE small business owners. From Google Business Profile to your website structure: what actually moves the needle, with no jargon.</p>
+          <span class="read-more">Read article →</span>
+        </a>
 
-  <div class="load-more-wrap is-hidden" id="load-more-wrap">
-    <button type="button" class="load-more-btn" id="load-more-btn">Show more articles</button>
-  </div>
+      </div>
+
+      <p class="empty-state" id="empty-state">No articles match that search. Try a different word or topic.</p>
+
+      <div class="load-more-wrap is-hidden" id="load-more-wrap">
+        <button type="button" class="load-more-btn" id="load-more-btn">Show more articles</button>
+      </div>
+    </div>
+  </section>
 
   <footer class="site-footer">
     <p>&copy; 2026 Atlantic Bear · Website Design Agency, Dubai, UAE · <a href="/">Home</a> · <a href="/pricing">Pricing</a> · <a href="/contact">Contact</a></p>
@@ -340,94 +471,137 @@
 
   <script>
     (function () {
-      var PAGE_SIZE = 4;
+      var PAGE_SIZE = 6;
+
       var list = document.getElementById('blog-list');
       var cards = Array.prototype.slice.call(list.querySelectorAll('.blog-card'));
-      var filterBar = document.getElementById('filter-bar');
+      var featuredSection = document.getElementById('featured-section');
+      var featuredSlot = document.getElementById('featured-slot');
+      var searchInput = document.getElementById('search-input');
+      var catSelect = document.getElementById('cat-select');
+      var archiveCount = document.getElementById('archive-count');
       var emptyState = document.getElementById('empty-state');
       var loadMoreWrap = document.getElementById('load-more-wrap');
       var loadMoreBtn = document.getElementById('load-more-btn');
 
-      var activeFilter = 'all';
+      var query = '';
+      var activeCat = 'all';
       var visibleCount = PAGE_SIZE;
 
+      // Give every card a searchable text blob and a date slot. The date slot
+      // is filled later from the article page itself, so a post published by
+      // the weekly cron shows its date with no change to the publish script.
       cards.forEach(function (card) {
-        // Date slot, filled in later from the article page itself. Doing it
-        // here rather than in the card markup means posts added by the weekly
-        // auto-publish job get a date without the publisher knowing about it.
+        var h2 = card.querySelector('h2');
+        var p = card.querySelector('p');
+        var tag = card.querySelector('.tag');
+        card._text = (
+          (h2 ? h2.textContent : '') + ' ' +
+          (p ? p.textContent : '') + ' ' +
+          (tag ? tag.textContent : '')
+        ).toLowerCase();
+
         var slot = document.createElement('span');
         slot.className = 'post-date';
         slot.setAttribute('data-date-for', card.getAttribute('href'));
-        var h2 = card.querySelector('h2');
-        if (h2) h2.insertAdjacentElement('afterend', slot);
-        else card.appendChild(slot);
+        if (h2) h2.insertAdjacentElement('beforebegin', slot);
+        else card.insertBefore(slot, card.firstChild);
       });
 
-      // Build filter pills from whatever categories are actually present,
-      // so new blog posts (added by the weekly auto-publish job) show up
-      // here automatically without editing this file by hand.
-      var categories = [];
+      // Topic dropdown, built from whatever categories exist. New categories
+      // from future posts appear here automatically.
+      var seen = {};
       cards.forEach(function (card) {
         var cat = card.getAttribute('data-category');
-        if (cat && categories.indexOf(cat) === -1) categories.push(cat);
+        if (cat && !seen[cat]) {
+          seen[cat] = true;
+          var opt = document.createElement('option');
+          opt.value = cat;
+          opt.textContent = cat;
+          catSelect.appendChild(opt);
+        }
       });
-      categories.forEach(function (cat) {
-        var btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'filter-pill';
-        btn.setAttribute('data-filter', cat);
-        btn.innerHTML = '<span class="dot"></span>' + cat;
-        filterBar.appendChild(btn);
-      });
+
+      // Build the featured block from the newest card (a clone, so the card
+      // itself stays in the list and re-appears there whenever the visitor
+      // searches or filters).
+      var newest = cards[0] || null;
+      if (newest) {
+        var catText = newest.getAttribute('data-category') || '';
+        var titleText = newest.querySelector('h2') ? newest.querySelector('h2').textContent : '';
+        var summaryText = newest.querySelector('p') ? newest.querySelector('p').textContent : '';
+        var a = document.createElement('a');
+        a.href = newest.getAttribute('href');
+        a.className = 'featured-article';
+        a.innerHTML =
+          '<div class="fa-meta">' +
+            '<span class="fa-cat"></span>' +
+            '<span class="sep">·</span>' +
+            '<span class="post-date" data-date-for="' + newest.getAttribute('href') + '"></span>' +
+          '</div>' +
+          '<h2></h2>' +
+          '<p></p>' +
+          '<span class="fa-cta">Read the full article →</span>';
+        a.querySelector('.fa-cat').textContent = catText;
+        a.querySelector('h2').textContent = titleText;
+        a.querySelector('p').textContent = summaryText;
+        featuredSlot.appendChild(a);
+      } else {
+        featuredSection.classList.add('is-hidden');
+      }
+
+      function matches(card) {
+        if (activeCat !== 'all' && card.getAttribute('data-category') !== activeCat) return false;
+        if (query && card._text.indexOf(query) === -1) return false;
+        return true;
+      }
 
       function render() {
+        var browsing = query !== '' || activeCat !== 'all';
+
+        // Featured block only in the default, unfiltered view.
+        featuredSection.classList.toggle('is-hidden', browsing || !newest);
+
         var pool = cards.filter(function (card) {
-          return activeFilter === 'all' || card.getAttribute('data-category') === activeFilter;
+          if (!browsing && card === newest) return false; // shown as the featured block instead
+          return matches(card);
         });
 
-        cards.forEach(function (card) {
-          card.classList.add('is-hidden');
-          card.classList.remove('featured');
-        });
+        cards.forEach(function (card) { card.classList.add('is-hidden'); });
         pool.slice(0, visibleCount).forEach(function (card) {
           card.classList.remove('is-hidden');
         });
 
-        // The newest post (first in the list) shows as the large featured
-        // card, but only in the unfiltered view where it is genuinely first.
-        if (activeFilter === 'all' && pool.length) {
-          pool[0].classList.add('featured');
+        if (browsing) {
+          archiveCount.textContent = pool.length === cards.length
+            ? '(' + pool.length + ')'
+            : '(' + pool.length + ' of ' + cards.length + ')';
+        } else {
+          archiveCount.textContent = '(' + cards.length + ')';
         }
 
         emptyState.classList.toggle('is-visible', pool.length === 0);
         loadMoreWrap.classList.toggle('is-hidden', pool.length <= visibleCount);
+
+        loadVisibleDates();
       }
 
-      filterBar.addEventListener('click', function (e) {
-        var btn = e.target.closest('.filter-pill');
-        if (!btn) return;
-        Array.prototype.forEach.call(filterBar.querySelectorAll('.filter-pill'), function (p) {
-          p.classList.remove('active');
-        });
-        btn.classList.add('active');
-        activeFilter = btn.getAttribute('data-filter');
+      searchInput.addEventListener('input', function () {
+        query = searchInput.value.trim().toLowerCase();
         visibleCount = PAGE_SIZE;
         render();
       });
-
+      catSelect.addEventListener('change', function () {
+        activeCat = catSelect.value;
+        visibleCount = PAGE_SIZE;
+        render();
+      });
       loadMoreBtn.addEventListener('click', function () {
         visibleCount += PAGE_SIZE;
         render();
       });
 
-      render();
-
-      // Each card's publish date is read from that article page's own
-      // JSON-LD ("datePublished"), which every post gets from the shared
-      // template. A post added by the weekly cron therefore shows its date
-      // here with no change to the publishing pipeline. Only visible cards
-      // are fetched, and each URL only once. A failed fetch just leaves the
-      // date off; the card still works.
+      // ── Publish dates, pulled from each article's own JSON-LD ──────────
       var dateCache = {};
 
       function formatDate(iso) {
@@ -462,25 +636,23 @@
             dateCache[url] = m[1];
             applyDate(url, m[1]);
           })
-          .catch(function () { /* card still works without a date */ });
+          .catch(function () { /* the card still works without a date */ });
       }
 
       function loadVisibleDates() {
+        if (!window.fetch) return;
         Array.prototype.forEach.call(
           document.querySelectorAll('.post-date[data-date-for]'),
           function (el) {
             if (el.textContent) return;
-            if (el.closest('.blog-card.is-hidden')) return;
+            if (el.closest('.blog-card') && el.closest('.blog-card').classList.contains('is-hidden')) return;
+            if (el.closest('.featured-section') && el.closest('.featured-section').classList.contains('is-hidden')) return;
             loadDate(el.getAttribute('data-date-for'));
           }
         );
       }
 
-      if (window.fetch) {
-        loadVisibleDates();
-        filterBar.addEventListener('click', loadVisibleDates);
-        loadMoreBtn.addEventListener('click', loadVisibleDates);
-      }
+      render();
     })();
   </script>
 
